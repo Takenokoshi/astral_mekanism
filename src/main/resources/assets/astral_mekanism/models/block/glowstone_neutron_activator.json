@@ -1,0 +1,11 @@
+{
+  "parent": "block/cube",
+  "textures": {
+    "up": "astral_mekanism:block/glowstone_neutron_activator/top",
+    "down": "astral_mekanism:block/glowstone_neutron_activator/bottom",
+    "north": "astral_mekanism:block/glowstone_neutron_activator/front",
+    "south": "astral_mekanism:block/glowstone_neutron_activator/back",
+    "east": "astral_mekanism:block/glowstone_neutron_activator/right",
+    "west": "astral_mekanism:block/glowstone_neutron_activator/left"
+  }
+}

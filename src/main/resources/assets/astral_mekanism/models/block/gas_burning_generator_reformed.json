@@ -1,0 +1,11 @@
+{
+  "parent": "block/cube",
+  "textures": {
+    "up": "astral_mekanism:block/gas_burning_generator_reformed/top",
+    "down": "astral_mekanism:block/gas_burning_generator_reformed/bottom",
+    "north": "astral_mekanism:block/gas_burning_generator_reformed/front",
+    "south": "astral_mekanism:block/gas_burning_generator_reformed/back",
+    "east": "astral_mekanism:block/gas_burning_generator_reformed/right",
+    "west": "astral_mekanism:block/gas_burning_generator_reformed/left"
+  }
+}

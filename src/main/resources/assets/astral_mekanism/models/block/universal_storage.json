@@ -1,0 +1,11 @@
+{
+  "parent": "block/cube",
+  "textures": {
+    "up": "astral_mekanism:block/universal_storage/top",
+    "down": "astral_mekanism:block/universal_storage/bottom",
+    "north": "astral_mekanism:block/universal_storage/front",
+    "south": "astral_mekanism:block/universal_storage/back",
+    "east": "astral_mekanism:block/universal_storage/right",
+    "west": "astral_mekanism:block/universal_storage/left"
+  }
+}
