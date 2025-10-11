@@ -1,0 +1,11 @@
+{
+    
+
+  "java.configuration.updateBuildConfiguration": "automatic",
+  "java.import.gradle.enabled": true,
+  "java.import.gradle.wrapper.enabled": true,
+  "java.referencesCodeLens.enabled": true,
+  "java.implementationsCodeLens.enabled": true,
+  "java.errors.incompleteClasspath.severity": "warning",
+  "java.compile.nullAnalysis.mode": "disabled"
+}
