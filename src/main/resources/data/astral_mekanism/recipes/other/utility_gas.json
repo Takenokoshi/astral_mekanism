@@ -1,0 +1,12 @@
+{
+    "type": "mekanism:oxidizing",
+    "input": {
+        "ingredient": {
+            "item": "astral_mekanism:utility_dust"
+        }
+    },
+    "output": {
+        "amount": 100,
+        "gas": "astral_mekanism:utility_gas"
+    }
+}

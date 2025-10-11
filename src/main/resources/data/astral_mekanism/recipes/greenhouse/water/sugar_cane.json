@@ -1,0 +1,23 @@
+{
+  "type": "astral_mekanism:greenhouse", 
+  "itemInput": {
+    "ingredient": {
+      "item": "minecraft:sugar_cane"
+    },
+    "amount": 1
+  },
+  "fluidInput": {
+    "tag":"minecraft:water",
+    "amount": 1000
+  },
+  "energyRequired": 5000,
+  "duration": 600,
+  "itemOutputA": {
+    "item": "minecraft:sugar_cane",
+    "count": 4
+  },
+  "itemOutputB": {
+    "item": "minecraft:sugar_cane",
+    "count": 1
+  }
+}

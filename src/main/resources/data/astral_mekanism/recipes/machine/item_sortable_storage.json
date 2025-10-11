@@ -1,0 +1,18 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "key": {
+        "C": {
+            "item": "astral_mekanism:universal_storage"
+        },
+        "B": {
+            "item": "astral_mekanism:utility_dust"
+        }
+    },
+    "pattern": [
+        "BCB"
+    ],
+    "result": {
+        "item": "astral_mekanism:item_sortable_storage",
+        "count": 1
+    }
+}

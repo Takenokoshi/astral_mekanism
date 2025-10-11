@@ -1,0 +1,27 @@
+{
+    "type": "mekanism:reaction",
+    "duration": 400,
+    "energyRequired": 200,
+    "fluidInput": {
+        "amount": 1000,
+        "tag": "minecraft:water"
+    },
+    "gasInput": {
+        "amount": 4000,
+        "gas": "astral_mekanism:diluted_astral_ether"
+    },
+    "gasOutput": {
+        "amount": 4000,
+        "gas": "astral_mekanism:utility_gas"
+    },
+    "itemInput": {
+        "amount": 1,
+        "ingredient": {
+            "item": "mekanism:ingot_refined_glowstone"
+        }
+    },
+    "itemOutput": {
+        "count": 1,
+        "item": "astral_mekanism:astral_glowstone_ingot"
+    }
+}

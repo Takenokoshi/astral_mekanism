@@ -1,0 +1,26 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "key": {
+        "X": {
+            "item": "mekanism:enrichment_chamber"
+        },
+        "A": {
+            "item": "astral_mekanism:alloy_stardust"
+        },
+        "C": {
+            "item": "astral_mekanism:illusion_control_circuit"
+        },
+        "I": {
+            "item": "astral_mekanism:spacetime_modulation_core"
+        }
+    },
+    "pattern": [
+        "ACA",
+        "IXI",
+        "ACA"
+    ],
+    "result": {
+        "item": "astral_mekanism:astral_enrichment_chamber",
+        "count": 1
+    }
+}

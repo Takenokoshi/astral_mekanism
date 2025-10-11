@@ -1,0 +1,13 @@
+{
+	"type": "astral_mekanism:melter",
+	"itemInput": {
+		"ingredient": {
+			"item": "minecraft:cobblestone"
+		},
+		"amount": 1
+	},
+	"fluidOutput": {
+		"fluid": "minecraft:lava",
+		"amount": 100
+	}
+}

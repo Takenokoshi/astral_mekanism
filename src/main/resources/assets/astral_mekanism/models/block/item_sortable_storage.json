@@ -1,0 +1,11 @@
+{
+  "parent": "block/cube",
+  "textures": {
+    "up": "astral_mekanism:block/item_sortable_storage/top",
+    "down": "astral_mekanism:block/item_sortable_storage/bottom",
+    "north": "astral_mekanism:block/item_sortable_storage/front",
+    "south": "astral_mekanism:block/item_sortable_storage/back",
+    "east": "astral_mekanism:block/item_sortable_storage/right",
+    "west": "astral_mekanism:block/item_sortable_storage/left"
+  }
+}

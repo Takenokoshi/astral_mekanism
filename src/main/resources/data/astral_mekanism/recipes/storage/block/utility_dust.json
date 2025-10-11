@@ -1,0 +1,17 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "key": {
+        "A": {
+            "item": "astral_mekanism:utility_dust"
+        }
+    },
+    "pattern": [
+        "AAA",
+        "AAA",
+        "AAA"
+    ],
+    "result": {
+        "item": "astral_mekanism:utility_block",
+        "count": 1
+    }
+}

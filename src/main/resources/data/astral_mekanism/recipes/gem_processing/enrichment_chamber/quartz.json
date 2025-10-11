@@ -1,0 +1,11 @@
+{
+  "type": "mekanism:enriching",
+  "input": {
+    "ingredient": {
+      "item": "astral_mekanism:crushed_quartz"
+    }
+  },
+  "output": {
+    "item": "astral_mekanism:raw_quartz"
+  }
+}

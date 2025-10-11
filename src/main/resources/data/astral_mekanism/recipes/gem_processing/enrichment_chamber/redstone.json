@@ -1,0 +1,12 @@
+{
+  "type": "mekanism:enriching",
+  "input": {
+    "ingredient": {
+      "item": "astral_mekanism:crushed_redstone"
+    }
+  },
+  "output": {
+    "item": "astral_mekanism:raw_redstone",
+    "count": 6
+  }
+}

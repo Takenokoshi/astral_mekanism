@@ -1,0 +1,23 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "key": {
+        "A": {
+            "item": "astral_mekanism:alloy_elastic"
+        },
+        "G": {
+            "tag": "forge:glass"
+        },
+        "H": {
+            "item": "minecraft:hopper"
+        }
+    },
+    "pattern": [
+        " G ",
+        "AHA",
+        " G "
+    ],
+    "result": {
+        "item": "astral_mekanism:item_insert_upgrade",
+        "count": 1
+    }
+}

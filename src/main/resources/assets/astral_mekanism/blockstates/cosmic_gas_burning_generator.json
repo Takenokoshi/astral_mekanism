@@ -1,0 +1,8 @@
+{
+  "variants": {
+    "facing=north":  { "model": "astral_mekanism:block/generator/cosmic_gas_burning_generator", "y": 0 },
+    "facing=south":  { "model": "astral_mekanism:block/generator/cosmic_gas_burning_generator", "y": 180 },
+    "facing=west":   { "model": "astral_mekanism:block/generator/cosmic_gas_burning_generator", "y": 270 },
+    "facing=east":   { "model": "astral_mekanism:block/generator/cosmic_gas_burning_generator", "y": 90 }
+  }
+}

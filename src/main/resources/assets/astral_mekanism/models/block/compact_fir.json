@@ -1,0 +1,8 @@
+{
+	"parent": "mekanism:block/machine_front_led",
+	"textures": {
+		"sides": "mekanismgenerators:block/fission_reactor_port_input",
+		"front": "mekanismgenerators:block/fission_reactor_casing",
+		"front_led": "mekanism:block/thermal_evaporation_controller_on_led"
+	}
+}

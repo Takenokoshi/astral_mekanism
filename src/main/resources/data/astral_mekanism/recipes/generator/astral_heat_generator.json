@@ -1,0 +1,26 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "key": {
+        "X": {
+            "item": "astral_mekanism:cosmic_heat_generator"
+        },
+        "A": {
+            "item": "astral_mekanism:alloy_stardust"
+        },
+        "C": {
+            "item": "astral_mekanism:illusion_control_circuit"
+        },
+        "I": {
+            "item": "mekanism:pellet_polonium"
+        }
+    },
+    "pattern": [
+        "ACA",
+        "IXI",
+        "ACA"
+    ],
+    "result": {
+        "item": "astral_mekanism:astral_heat_generator",
+        "count": 1
+    }
+}

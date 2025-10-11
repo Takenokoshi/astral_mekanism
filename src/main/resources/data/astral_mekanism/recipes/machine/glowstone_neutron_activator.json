@@ -1,0 +1,20 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "key": {
+        "A": {
+            "item": "astral_mekanism:astral_glowstone_ingot"
+        },
+        "C": {
+            "item": "mekanism:solar_neutron_activator"
+        }
+    },
+    "pattern": [
+        "AAA",
+        "ACA",
+        "AAA"
+    ],
+    "result": {
+        "item": "astral_mekanism:glowstone_neutron_activator",
+        "count": 1
+    }
+}

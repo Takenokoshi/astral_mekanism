@@ -1,0 +1,13 @@
+{
+	"type": "astral_mekanism:melter",
+	"itemInput": {
+		"ingredient": {
+			"item": "minecraft:diamond"
+		},
+		"amount": 4
+	},
+	"fluidOutput": {
+		"fluid": "astral_mekanism:fluid_diamond",
+		"amount": 100
+	}
+}

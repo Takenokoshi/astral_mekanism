@@ -1,0 +1,11 @@
+{
+  "type": "mekanism:enriching",
+  "input": {
+    "ingredient": {
+      "item": "minecraft:nether_star"
+    }
+  },
+  "output": {
+    "item": "astral_mekanism:enriched_nether_star"
+  }
+}

@@ -1,0 +1,17 @@
+{
+	"type": "mekanism:dissolution",
+	"gasInput": {
+		"amount": 1,
+		"gas": "astral_mekanism:aqua_regia"
+	},
+	"itemInput": {
+		"ingredient": {
+			"item": "minecraft:nether_star"
+		}
+	},
+	"output": {
+		"amount": 1000,
+		"chemicalType": "gas",
+		"gas": "astral_mekanism:astral_ether"
+	}
+}

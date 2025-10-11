@@ -1,0 +1,16 @@
+{
+    "type": "mekanism:purifying",
+    "chemicalInput": {
+        "amount": 4,
+        "gas": "mekanism:hydrogen"
+    },
+    "itemInput": {
+        "ingredient": {
+            "tag": "forge:ores/tin"
+        }
+    },
+    "output": {
+        "item": "mekanism:raw_tin",
+        "count": 3
+    }
+}

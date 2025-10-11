@@ -1,0 +1,11 @@
+{
+  "type": "mekanism:crushing",
+  "input": {
+    "ingredient": {
+      "item": "astral_mekanism:clump_quartz"
+    }
+  },
+  "output": {
+    "item": "astral_mekanism:crushed_quartz"
+  }
+}

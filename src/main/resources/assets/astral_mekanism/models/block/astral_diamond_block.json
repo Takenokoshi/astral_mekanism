@@ -1,0 +1,6 @@
+{
+  "parent": "block/cube_all",
+  "textures": {
+    "all": "astral_mekanism:block/simple_block/astral_diamond_block"
+  }
+}

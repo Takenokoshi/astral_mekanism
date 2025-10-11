@@ -1,0 +1,16 @@
+{
+	"type": "mekanism:metallurgic_infusing",
+	"itemInput": {
+		"ingredient": {
+			"item": "mekanism:thermal_evaporation_valve"
+		},
+		"amount": 2
+	},
+	"chemicalInput": {
+		"infuse_type": "astral_mekanism:utility_infuse",
+		"amount": 10
+	},
+	"output": {
+		"item": "astral_mekanism:summarized_thermal_evaporation_valve"
+	}
+}

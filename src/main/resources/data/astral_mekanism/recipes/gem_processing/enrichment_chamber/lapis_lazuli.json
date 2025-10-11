@@ -1,0 +1,12 @@
+{
+  "type": "mekanism:enriching",
+  "input": {
+    "ingredient": {
+      "item": "astral_mekanism:crushed_lapis_lazuli"
+    }
+  },
+  "output": {
+    "item": "astral_mekanism:raw_lapis_lazuli",
+    "count": 6
+  }
+}

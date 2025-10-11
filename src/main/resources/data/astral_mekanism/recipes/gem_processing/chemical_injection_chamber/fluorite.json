@@ -1,0 +1,15 @@
+{
+  "type": "mekanism:injecting",
+  "chemicalInput": {
+    "amount": 1,
+    "gas": "mekanism:hydrogen_chloride"
+  },
+  "itemInput": {
+    "ingredient": {
+      "item": "astral_mekanism:crystal_fluorite"
+    }
+  },
+  "output": {
+    "item": "astral_mekanism:shard_fluorite"
+  }
+}

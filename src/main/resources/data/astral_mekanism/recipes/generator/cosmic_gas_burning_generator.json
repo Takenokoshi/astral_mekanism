@@ -1,0 +1,26 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "key": {
+        "X": {
+            "item": "astral_mekanism:essential_gas_burning_generator"
+        },
+        "A": {
+            "item": "astral_mekanism:alloy_convergent"
+        },
+        "C": {
+            "item": "astral_mekanism:resonance_control_circuit"
+        },
+        "I": {
+            "tag": "forge:ingots/bronze"
+        }
+    },
+    "pattern": [
+        "ACA",
+        "IXI",
+        "ACA"
+    ],
+    "result": {
+        "item": "astral_mekanism:cosmic_gas_burning_generator",
+        "count": 1
+    }
+}

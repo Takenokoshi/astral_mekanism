@@ -1,0 +1,23 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "key": {
+        "A": {
+            "tag": "forge:ingots/bronze"
+        },
+        "C": {
+            "item": "minecraft:chest"
+        },
+        "B": {
+            "item": "minecraft:glass"
+        }
+    },
+    "pattern": [
+        "ABA",
+        "BCB",
+        "ABA"
+    ],
+    "result": {
+        "item": "astral_mekanism:universal_storage",
+        "count": 1
+    }
+}

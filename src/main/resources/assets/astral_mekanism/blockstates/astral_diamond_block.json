@@ -1,0 +1,5 @@
+{
+  "variants": {
+    "": { "model": "astral_mekanism:block/astral_diamond_block" }
+  }
+}

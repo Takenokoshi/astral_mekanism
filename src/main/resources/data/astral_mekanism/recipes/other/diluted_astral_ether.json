@@ -1,0 +1,16 @@
+
+{
+  "type": "mekanism:chemical_infusing",
+  "leftInput": {
+    "amount": 1,
+    "gas": "astral_mekanism:astral_ether"
+  },
+  "output": {
+    "amount": 200,
+    "gas": "astral_mekanism:diluted_astral_ether"
+  },
+  "rightInput": {
+    "amount": 200,
+    "gas": "astral_mekanism:utility_gas"
+  }
+}

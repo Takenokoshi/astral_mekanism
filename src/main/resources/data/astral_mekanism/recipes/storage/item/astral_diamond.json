@@ -1,0 +1,15 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "key": {
+        "A": {
+            "item": "astral_mekanism:astral_diamond_block"
+        }
+    },
+    "pattern": [
+        "A"
+    ],
+    "result": {
+        "item": "astral_mekanism:astral_diamond",
+        "count": 9
+    }
+}

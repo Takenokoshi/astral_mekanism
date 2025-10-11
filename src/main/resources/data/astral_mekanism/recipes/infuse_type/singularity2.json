@@ -1,0 +1,13 @@
+{
+  "type": "mekanism:infusion_conversion",
+  "input": {
+    "ingredient": {
+      "item": "astral_mekanism:enriched_singularity"
+    },
+    "amount": 1
+  },
+  "output": {
+    "infuse_type": "astral_mekanism:singularity",
+    "amount": 80
+  }
+}

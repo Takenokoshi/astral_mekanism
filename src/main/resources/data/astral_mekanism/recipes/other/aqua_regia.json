@@ -1,0 +1,16 @@
+
+{
+  "type": "mekanism:chemical_infusing",
+  "leftInput": {
+    "amount": 3,
+    "gas": "mekanism:hydrogen_chloride"
+  },
+  "output": {
+    "amount": 4,
+    "gas": "astral_mekanism:aqua_regia"
+  },
+  "rightInput": {
+    "amount": 1,
+    "gas": "astral_mekanism:nitric_acid"
+  }
+}

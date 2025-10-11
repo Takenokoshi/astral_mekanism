@@ -1,0 +1,5 @@
+{
+  "variants": {
+    "": { "model": "astral_mekanism:block/utility_block" }
+  }
+}

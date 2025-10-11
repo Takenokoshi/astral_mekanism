@@ -1,0 +1,26 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "key": {
+        "X": {
+            "item": "astral_mekanism:astral_diamond"
+        },
+        "A": {
+            "item": "astral_mekanism:crystal_antimatter"
+        },
+        "C": {
+            "item": "astral_mekanism:alloy_stardust"
+        },
+        "I": {
+            "item": "astral_mekanism:astral_glowstone_ingot"
+        }
+    },
+    "pattern": [
+        "ACA",
+        "IXI",
+        "ACA"
+    ],
+    "result": {
+        "item": "astral_mekanism:spacetime_modulation_core",
+        "count": 1
+    }
+}

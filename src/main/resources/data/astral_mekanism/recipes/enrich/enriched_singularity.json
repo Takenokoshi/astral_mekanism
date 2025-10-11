@@ -1,0 +1,11 @@
+{
+  "type": "mekanism:enriching",
+  "input": {
+    "ingredient": {
+      "item": "ae2:singularity"
+    }
+  },
+  "output": {
+    "item": "astral_mekanism:enriched_singularity"
+  }
+}

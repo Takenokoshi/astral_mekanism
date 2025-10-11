@@ -1,0 +1,13 @@
+{
+  "type": "mekanism:infusion_conversion",
+  "input": {
+    "ingredient": {
+      "item": "astral_mekanism:utility_dust"
+    },
+    "amount": 1
+  },
+  "output": {
+    "infuse_type": "astral_mekanism:utility_infuse",
+    "amount": 10
+  }
+}

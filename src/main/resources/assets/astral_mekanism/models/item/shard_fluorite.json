@@ -1,0 +1,6 @@
+{
+    "parent": "item/generated",
+    "textures":{
+        "layer0": "astral_mekanism:item/shard_gem/shard_fluorite"
+    }
+}

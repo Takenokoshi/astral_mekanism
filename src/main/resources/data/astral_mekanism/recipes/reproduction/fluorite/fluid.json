@@ -1,0 +1,13 @@
+{
+	"type": "astral_mekanism:melter",
+	"itemInput": {
+		"ingredient": {
+			"item": "mekanism:fluorite_gem"
+		},
+		"amount": 12
+	},
+	"fluidOutput": {
+		"fluid": "astral_mekanism:fluid_fluorite",
+		"amount": 100
+	}
+}

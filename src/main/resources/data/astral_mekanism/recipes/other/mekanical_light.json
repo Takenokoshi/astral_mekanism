@@ -1,0 +1,23 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "key": {
+        "X": {
+            "item": "minecraft:torch"
+        },
+        "A": {
+            "tag": "forge:nuggets/steel"
+        },
+        "C": {
+            "item": "minecraft:glass"
+        }
+    },
+    "pattern": [
+        "ACA",
+        "CXC",
+        "ACA"
+    ],
+    "result": {
+        "item": "astral_mekanism:mekanical_light",
+        "count": 1
+    }
+}

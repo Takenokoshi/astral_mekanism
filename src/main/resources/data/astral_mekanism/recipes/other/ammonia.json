@@ -1,0 +1,23 @@
+{
+    "type": "mekanism:reaction",
+    "duration": 400,
+    "energyRequired": 200,
+    "fluidInput": {
+        "amount": 100,
+        "tag": "minecraft:water"
+    },
+    "gasInput": {
+        "amount": 100,
+        "gas": "mekanism:sodium"
+    },
+    "gasOutput": {
+        "amount": 100,
+        "gas": "astral_mekanism:ammonia"
+    },
+    "itemInput": {
+        "amount": 1,
+        "ingredient": {
+            "item": "mekanism:substrate"
+        }
+    }
+}

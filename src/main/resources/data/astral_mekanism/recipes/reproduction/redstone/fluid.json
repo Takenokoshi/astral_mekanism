@@ -1,0 +1,13 @@
+{
+	"type": "astral_mekanism:melter",
+	"itemInput": {
+		"ingredient": {
+			"item": "minecraft:redstone"
+		},
+		"amount": 24
+	},
+	"fluidOutput": {
+		"fluid": "astral_mekanism:fluid_redstone",
+		"amount": 100
+	}
+}

@@ -1,0 +1,11 @@
+{
+  "type": "mekanism:crystallizing",
+  "chemicalType": "slurry",
+  "input": {
+    "amount": 200,
+    "slurry": "astral_mekanism:clean_coal"
+  },
+  "output": {
+    "item": "astral_mekanism:crystal_coal"
+  }
+}

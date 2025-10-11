@@ -1,0 +1,8 @@
+{
+	"parent": "mekanism:block/machine_front_led",
+	"textures": {
+		"sides": "mekanism:block/sps_casing",
+		"front": "mekanism:block/sps_casing",
+		"front_led": "mekanism:block/thermal_evaporation_controller_on_led"
+	}
+}

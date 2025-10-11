@@ -1,0 +1,13 @@
+{
+  "type": "mekanism:infusion_conversion",
+  "input": {
+    "ingredient": {
+      "item": "astral_mekanism:enriched_nether_star"
+    },
+    "amount": 1
+  },
+  "output": {
+    "infuse_type": "astral_mekanism:nether_star",
+    "amount": 80
+  }
+}

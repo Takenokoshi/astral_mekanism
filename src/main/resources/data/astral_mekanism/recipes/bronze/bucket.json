@@ -1,0 +1,16 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "key": {
+        "A": {
+            "tag": "forge:ingots/bronze"
+        }
+    },
+    "pattern": [
+        "A A",
+        " A "
+    ],
+    "result": {
+        "item": "minecraft:bucket",
+        "count": 1
+    }
+}

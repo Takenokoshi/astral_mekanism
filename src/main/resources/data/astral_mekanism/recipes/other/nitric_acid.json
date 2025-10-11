@@ -1,0 +1,16 @@
+
+{
+  "type": "mekanism:chemical_infusing",
+  "leftInput": {
+    "amount": 1,
+    "gas": "astral_mekanism:ammonia"
+  },
+  "output": {
+    "amount": 1,
+    "gas": "astral_mekanism:nitric_acid"
+  },
+  "rightInput": {
+    "amount": 2,
+    "gas": "mekanism:oxygen"
+  }
+}

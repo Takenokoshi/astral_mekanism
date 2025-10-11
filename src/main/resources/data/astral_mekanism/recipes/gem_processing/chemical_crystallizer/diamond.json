@@ -1,0 +1,11 @@
+{
+  "type": "mekanism:crystallizing",
+  "chemicalType": "slurry",
+  "input": {
+    "amount": 200,
+    "slurry": "astral_mekanism:clean_diamond"
+  },
+  "output": {
+    "item": "astral_mekanism:crystal_diamond"
+  }
+}
