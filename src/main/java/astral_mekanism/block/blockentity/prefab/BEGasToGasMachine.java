@@ -39,13 +39,14 @@ import mekanism.common.recipe.lookup.ISingleRecipeLookupHandler.ChemicalRecipeLo
 import mekanism.common.tile.base.SubstanceType;
 import mekanism.common.tile.component.TileComponentConfig;
 import mekanism.common.tile.component.TileComponentEjector;
+import mekanism.common.tile.interfaces.IBoundingBlock;
 import mekanism.common.tile.prefab.TileEntityRecipeMachine;
 import mekanism.common.util.MekanismUtils;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.block.state.BlockState;
 
 public abstract class BEGasToGasMachine extends TileEntityRecipeMachine<GasToGasRecipe>
-        implements ChemicalRecipeLookupHandler<Gas, GasStack, GasToGasRecipe> {
+        implements IBoundingBlock, ChemicalRecipeLookupHandler<Gas, GasStack, GasToGasRecipe> {
     private static final List<RecipeError> TRACKED_ERROR_TYPES = List.of(
             RecipeError.NOT_ENOUGH_ENERGY,
             RecipeError.NOT_ENOUGH_ENERGY_REDUCED_RATE,
