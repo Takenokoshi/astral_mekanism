@@ -4,6 +4,8 @@ import java.util.Map;
 import java.util.function.UnaryOperator;
 
 import astral_mekanism.AstralMekanismID;
+import astral_mekanism.block.blockentity.astralmachine.BEAstralGNA;
+import astral_mekanism.block.blockentity.astralmachine.BEAstralSPS;
 import astral_mekanism.block.blockentity.compact.BECompactFIR;
 import astral_mekanism.block.blockentity.compact.BECompactSPS;
 import astral_mekanism.block.blockentity.compact.BECompactTEP;
@@ -99,5 +101,11 @@ public class AstralMekanismMachines {
 
     public static final MachineRegistryObject<BECompactSPS, BlockTypeMachine<BECompactSPS>, BlockTileModel<BECompactSPS, BlockTypeMachine<BECompactSPS>>, MekanismTileContainer<BECompactSPS>, ItemBlockMachine> COMPACT_SPS = MACHINES
             .register("compact_sps", AstralMekanismBlockTypes.COMPACT_SPS, BECompactSPS.class, BECompactSPS::new);
+
+    public static final MachineRegistryObject<BEAstralGNA, BlockTypeTile<BEAstralGNA>, BlockTileModel<BEAstralGNA, BlockTypeTile<BEAstralGNA>>, MekanismTileContainer<BEAstralGNA>, ItemBlockMachine> ASTRAL_GNA = MACHINES
+            .register("astral_gna", AstralMekanismBlockTypes.ASTRAL_GNA, BEAstralGNA::new, BEAstralGNA.class);
+
+    public static final MachineRegistryObject<BEAstralSPS, BlockTypeMachine<BEAstralSPS>, BlockTileModel<BEAstralSPS, BlockTypeMachine<BEAstralSPS>>, MekanismTileContainer<BEAstralSPS>, ItemBlockMachine> ASTRAL_SPS = MACHINES
+            .register("astral_sps", AstralMekanismBlockTypes.ASTRAL_SPS, BEAstralSPS.class, BEAstralSPS::new);
 
 }

@@ -5,6 +5,8 @@ import java.util.Map;
 import java.util.Set;
 import astral_mekanism.AstralMekanismConfig;
 import astral_mekanism.AstralMekanismLang;
+import astral_mekanism.block.blockentity.astralmachine.BEAstralGNA;
+import astral_mekanism.block.blockentity.astralmachine.BEAstralSPS;
 import astral_mekanism.block.blockentity.astralmachine.advanced.BEAstralChemicalInjectionChamber;
 import astral_mekanism.block.blockentity.astralmachine.advanced.BEAstralOsmiumCompressor;
 import astral_mekanism.block.blockentity.astralmachine.advanced.BEAstralPurificationChamber;
@@ -214,5 +216,20 @@ public class AstralMekanismBlockTypes {
 			.withSupportedUpgrades(EnumSet.of(Upgrade.ENERGY, Upgrade.SPEED, Upgrade.MUFFLING, Upgrade.GAS))
 			.withGui(() -> AstralMekanismContainers.ASTRAL_PURIFICATION_CHAMBER)
 			.withSound(MekanismSounds.PURIFICATION_CHAMBER)
+			.build();
+
+	public static final BlockTypeTile<BEAstralGNA> ASTRAL_GNA = BlockTileBuilder
+			.createBlock(() -> AstralMekanismMachines.ASTRAL_GNA.getTileRO(),
+					AstralMekanismLang.DESCRIPTION_GLOWSTONE_NEUTRON_ACTIVATOR)
+			.withGui(() -> AstralMekanismMachines.ASTRAL_GNA.getContainerRO())
+			.withCustomShape(AMBlockShapes.GLOWSTONE_NEUTRON_ACTIVATOR)
+			.with(new AttributeStateFacing())
+			.build();
+
+	public static final BlockTypeMachine<BEAstralSPS> ASTRAL_SPS = BlockMachineBuilder
+			.createMachine(() -> AstralMekanismMachines.ASTRAL_SPS.getTileRO(), MekanismLang.DESCRIPTION_SPS_CASING)
+			.withGui(() -> AstralMekanismMachines.ASTRAL_SPS.getContainerRO())
+			.withEnergyConfig(() -> FloatingLong.create(1000000000), () -> FloatingLong.MAX_VALUE)
+			.withSupportedUpgrades(Set.of(Upgrade.MUFFLING))
 			.build();
 }
