@@ -1,0 +1,17 @@
+Astral Mekanism
+Copyright (c) 2025 筍氏
+Licensed under the MIT License
+
+---
+
+This project interacts with or was inspired by:
+
+- Mekanism and official addons (MIT License)
+- Applied Energistics 2 (MIT License)
+- Applied Mekanistics / AppMek (MIT License)
+- AE2 Mega Cells (MIT License)
+- Crazy AE2 (MIT License)
+- Minecraft Forge and other required mods (various open-source licenses)
+
+All third-party projects retain their respective copyrights.
+See LICENSE for details.
