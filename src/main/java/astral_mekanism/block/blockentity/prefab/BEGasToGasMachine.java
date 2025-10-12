@@ -73,7 +73,7 @@ public abstract class BEGasToGasMachine extends TileEntityRecipeMachine<GasToGas
         configComponent.setupInputConfig(TransmissionType.ENERGY, energyContainer);
         ejectorComponent = new TileComponentEjector(this, this::tankCapacity);
         ejectorComponent.setOutputData(configComponent, TransmissionType.GAS).setCanTankEject(t -> t == outputTank);
-        baselineMaxOperations = 1;
+        baselineMaxOperations = maxOperation();
         inputHandler = InputHelper.getInputHandler(inputTank, RecipeError.NOT_ENOUGH_INPUT);
         outputHandler = OutputHelper.getOutputHandler(outputTank, RecipeError.NOT_ENOUGH_OUTPUT_SPACE);
     }
