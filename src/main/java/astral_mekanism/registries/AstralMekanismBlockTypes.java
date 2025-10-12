@@ -6,6 +6,7 @@ import java.util.Set;
 import astral_mekanism.AstralMekanismConfig;
 import astral_mekanism.AstralMekanismLang;
 import astral_mekanism.block.blockentity.astralmachine.BEAstralGNA;
+import astral_mekanism.block.blockentity.astralmachine.BEAstralPRC;
 import astral_mekanism.block.blockentity.astralmachine.BEAstralSPS;
 import astral_mekanism.block.blockentity.astralmachine.advanced.BEAstralChemicalInjectionChamber;
 import astral_mekanism.block.blockentity.astralmachine.advanced.BEAstralOsmiumCompressor;
@@ -38,6 +39,7 @@ import mekanism.api.Upgrade;
 import mekanism.common.MekanismLang;
 import mekanism.common.block.attribute.AttributeStateFacing;
 import mekanism.common.block.attribute.AttributeTier;
+import mekanism.common.config.MekanismConfig;
 import mekanism.common.content.blocktype.BlockTypeTile;
 import mekanism.common.content.blocktype.BlockTypeTile.BlockTileBuilder;
 import mekanism.common.registries.MekanismSounds;
@@ -231,5 +233,13 @@ public class AstralMekanismBlockTypes {
 			.withGui(() -> AstralMekanismMachines.ASTRAL_SPS.getContainerRO())
 			.withEnergyConfig(() -> FloatingLong.create(1000000000), () -> FloatingLong.MAX_VALUE)
 			.withSupportedUpgrades(Set.of(Upgrade.MUFFLING))
+			.build();
+
+	public static final BlockTypeMachine<BEAstralPRC> ASTRAL_PRC = BlockMachineBuilder
+			.createMachine(() -> AstralMekanismMachines.ASTRAL_PRC.getTileRO(),
+					MekanismLang.DESCRIPTION_PRESSURIZED_REACTION_CHAMBER)
+			.withGui(() -> AstralMekanismMachines.ASTRAL_PRC.getContainerRO())
+			.withEnergyConfig(MekanismConfig.usage.pressurizedReactionBase, () -> FloatingLong.MAX_VALUE)
+			.withSound(MekanismSounds.PRESSURIZED_REACTION_CHAMBER)
 			.build();
 }

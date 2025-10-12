@@ -5,6 +5,7 @@ import java.util.function.UnaryOperator;
 
 import astral_mekanism.AstralMekanismID;
 import astral_mekanism.block.blockentity.astralmachine.BEAstralGNA;
+import astral_mekanism.block.blockentity.astralmachine.BEAstralPRC;
 import astral_mekanism.block.blockentity.astralmachine.BEAstralSPS;
 import astral_mekanism.block.blockentity.compact.BECompactFIR;
 import astral_mekanism.block.blockentity.compact.BECompactSPS;
@@ -107,5 +108,8 @@ public class AstralMekanismMachines {
 
     public static final MachineRegistryObject<BEAstralSPS, BlockTypeMachine<BEAstralSPS>, BlockTileModel<BEAstralSPS, BlockTypeMachine<BEAstralSPS>>, MekanismTileContainer<BEAstralSPS>, ItemBlockMachine> ASTRAL_SPS = MACHINES
             .register("astral_sps", AstralMekanismBlockTypes.ASTRAL_SPS, BEAstralSPS.class, BEAstralSPS::new);
+
+    public static final MachineRegistryObject<BEAstralPRC, BlockTypeMachine<BEAstralPRC>, BlockTileModel<BEAstralPRC, BlockTypeMachine<BEAstralPRC>>, MekanismTileContainer<BEAstralPRC>, ItemBlockMachine> ASTRAL_PRC = MACHINES
+            .register("astral_prc", AstralMekanismBlockTypes.ASTRAL_PRC, BEAstralPRC.class, BEAstralPRC::new);
 
 }
