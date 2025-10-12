@@ -146,6 +146,13 @@ public class BEAstralGreenHouse extends TileEntityRecipeMachine<GreenHouseRecipe
     }
 
     @Override
+    protected void onUpdateServer() {
+        super.onUpdateServer();
+        energySlot.fillContainerOrConvert();
+        recipeCacheLookupMonitor.updateAndProcess();
+    }
+
+    @Override
     public @NotNull CachedRecipe<GreenHouseRecipe> createNewCachedRecipe(@NotNull GreenHouseRecipe recipe,
             int cacheIndex) {
         CachedRecipe<GreenHouseRecipe> cachedRecipe = new GreenHouseCachedRecipe(recipe, recheckAllRecipeErrors,
