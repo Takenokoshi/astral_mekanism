@@ -9,6 +9,7 @@ import mekanism.api.IContentsListener;
 import mekanism.api.RelativeSide;
 import mekanism.api.Upgrade;
 import mekanism.api.chemical.ChemicalTankBuilder;
+import mekanism.api.chemical.attribute.ChemicalAttributeValidator;
 import mekanism.api.chemical.gas.Gas;
 import mekanism.api.chemical.gas.GasStack;
 import mekanism.api.chemical.gas.IGasTank;
@@ -86,8 +87,10 @@ public abstract class BEGasToGasMachine extends TileEntityRecipeMachine<GasToGas
             IContentsListener recipeCacheListener) {
         ChemicalTankHelper<Gas, GasStack, IGasTank> builder = ChemicalTankHelper
                 .forSideGasWithConfig(this::getDirection, this::getConfig);
-        builder.addTank(
-                inputTank = ChemicalTankBuilder.GAS.create(gasTankCap, this::containsRecipe, recipeCacheListener));
+        builder.addTank(inputTank = ChemicalTankBuilder.GAS.create(gasTankCap,
+                ChemicalTankHelper.radioactiveInputTankPredicate(() -> outputTank),
+                ChemicalTankBuilder.GAS.alwaysTrueBi, this::containsRecipe,
+                ChemicalAttributeValidator.ALWAYS_ALLOW, recipeCacheListener));
         builder.addTank(outputTank = ChemicalTankBuilder.GAS.output(gasTankCap, listener));
         return builder.build();
     }
