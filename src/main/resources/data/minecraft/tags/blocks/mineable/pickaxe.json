@@ -24,6 +24,8 @@
         "astral_mekanism:astral_energized_smelter",
         "astral_mekanism:astral_enrichment_chamber",
         "astral_mekanism:astral_mekanical_charger",
+        "astral_mekanism:astral_gna",
+        "astral_mekanism:astral_sps",
         "astral_mekanism:cobblestone_supply_device"
     ]
 }
