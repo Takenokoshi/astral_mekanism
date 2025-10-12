@@ -162,8 +162,7 @@ public class BEGlowstoneNeutronActivator extends TileEntityRecipeMachine<GasToGa
 				.setActive(this::setActive)
 				.setOnFinish(this::markForSave)
 				.setRequiredTicks(() -> 1)
-				.setBaselineMaxOperations(() -> productionRate > 0 && productionRate < 1 ? 1
-						: (int) productionRate);
+				.setBaselineMaxOperations(() -> (int) productionRate);
 	}
 
 	@Override
