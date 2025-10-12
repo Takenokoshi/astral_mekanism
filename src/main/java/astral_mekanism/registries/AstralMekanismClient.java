@@ -10,6 +10,7 @@ import astral_mekanism.block.blockentity.astralmachine.electric.BEAstralEnrichme
 import astral_mekanism.block.blockentity.astralmachine.electric.BEAstralMekanicalCharger;
 import astral_mekanism.block.blockentity.compact.BECompactSPS;
 import astral_mekanism.block.blockentity.generator.AstralMekGeneratorTier;
+import astral_mekanism.block.blockentity.normalmachine.BEGlowstoneNeutronActivator;
 import astral_mekanism.block.blockentity.normalmachine.BEMekanicalCharger;
 import astral_mekanism.block.blockentity.other.BEItemSortableStorage;
 import astral_mekanism.block.blockentity.other.BEUniversalStorage;
@@ -22,10 +23,10 @@ import astral_mekanism.block.gui.compact.GuiCompactTEP;
 import astral_mekanism.block.gui.generator.GuiGasBurningGenerator;
 import astral_mekanism.block.gui.generator.GuiHeatGenerator;
 import astral_mekanism.block.gui.normalmachine.GuiFluidInfuser;
-import astral_mekanism.block.gui.normalmachine.GuiGlowstoneNeutronActivator;
 import astral_mekanism.block.gui.normalmachine.GuiGreenHouse;
 import astral_mekanism.block.gui.normalmachine.GuiMelter;
 import astral_mekanism.block.gui.prefab.GuiAbstractStorage;
+import astral_mekanism.block.gui.prefab.GuiGasToGasBlock;
 import astral_mekanism.block.gui.prefab.GuiGasToGasMachine;
 import astral_mekanism.block.gui.supplydevice.GuiCobblestoneSupplyDevice;
 import astral_mekanism.block.gui.supplydevice.GuiWaterSupplyDevice;
@@ -62,7 +63,7 @@ public class AstralMekanismClient {
 					GuiAbstractStorage<BEItemSortableStorage, ContainerItemSortableStorage<BEItemSortableStorage>>::new);
 			regScreen(AstralMekanismMachines.COBBLESTONE_SUPPLY_DEVICE, GuiCobblestoneSupplyDevice::new);
 			regScreen(AstralMekanismMachines.WATER_SUPPLY_DEVICE, GuiWaterSupplyDevice::new);
-			regScreen(AstralMekanismMachines.GLOWSTONE_NEUTRON_ACTIVATOR, GuiGlowstoneNeutronActivator::new);
+			regScreen(AstralMekanismMachines.GLOWSTONE_NEUTRON_ACTIVATOR, GuiGasToGasBlock<BEGlowstoneNeutronActivator>::new);
 			regScreen(AstralMekanismMachines.GREENHOUSE, GuiGreenHouse::new);
 			regScreen(AstralMekanismMachines.MELTER, GuiMelter::new);
 			regScreen(AstralMekanismMachines.COMPACT_TEP, GuiCompactTEP::new);
