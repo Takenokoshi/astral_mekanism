@@ -36,7 +36,7 @@ public class BEAstralGNA extends BEGasToGasBlock {
 
     @Override
     public String getJEI() {
-        return "mekanism:solar_newtron_activator";
+        return "mekanism:solar_neutron_activator";
     }
     
 }
