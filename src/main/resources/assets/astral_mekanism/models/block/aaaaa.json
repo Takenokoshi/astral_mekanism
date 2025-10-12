@@ -1,0 +1,11 @@
+{
+  "parent": "block/cube",
+  "textures": {
+    "up": "astral_mekanism:block/machine_basic/top",
+    "down": "astral_mekanism:block/machine_basic/bottom",
+    "north": "astral_mekanism:block/machine_basic/front",
+    "south": "astral_mekanism:block/machine_basic/back",
+    "east": "astral_mekanism:block/machine_basic/right",
+    "west": "astral_mekanism:block/machine_basic/left"
+  }
+}
