@@ -1,6 +1,8 @@
 package astral_mekanism.registries;
 
 import astral_mekanism.AstralMekanismID;
+import astral_mekanism.block.blockentity.astralmachine.BEAstralGNA;
+import astral_mekanism.block.blockentity.astralmachine.BEAstralSPS;
 import astral_mekanism.block.blockentity.astralmachine.advanced.BEAstralChemicalInjectionChamber;
 import astral_mekanism.block.blockentity.astralmachine.advanced.BEAstralOsmiumCompressor;
 import astral_mekanism.block.blockentity.astralmachine.advanced.BEAstralPurificationChamber;
@@ -72,6 +74,8 @@ public class AstralMekanismClient {
 					GuiElectricMachine<BEMekanicalCharger, MekanismTileContainer<BEMekanicalCharger>>::new);
 			regScreen(AstralMekanismMachines.COMPACT_FIR, GuiCompactFissionReactor::new);
 			regScreen(AstralMekanismMachines.COMPACT_SPS, GuiGasToGasMachine<BECompactSPS>::new);
+			regScreen(AstralMekanismMachines.ASTRAL_GNA, GuiGasToGasBlock<BEAstralGNA>::new);
+			regScreen(AstralMekanismMachines.ASTRAL_SPS, GuiGasToGasMachine<BEAstralSPS>::new);
 			ClientRegistrationUtil.registerScreen(AstralMekanismContainers.ASTRAL_CRUSHER,
 					GuiAstralElectricMachine<BEAstralCrusher>::new);
 			ClientRegistrationUtil.registerScreen(AstralMekanismContainers.ASTRAL_ENERGIZED_SMELTER,
