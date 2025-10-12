@@ -22,10 +22,62 @@ THE SOFTWARE.
 
 ---
 
-### Third-party Licenses
+# Third-Party Licenses and Credits
 
-Portions of this project are based on or inspired by Mekanism,  
-which is licensed under the MIT License:
+This project, Astral Mekanism, is developed under the MIT License.  
+It references, interacts with, or was inspired by the following open-source projects:
 
-Copyright (c) 2014-2025 Aidancbrady and the Mekanism Team  
-https://github.com/mekanism/Mekanism
+---
+
+### Mekanism and Official Addons
+- [Mekanism](https://github.com/mekanism/Mekanism)  
+  Copyright (c) 2014-2025 Aidancbrady and the Mekanism Team  
+  Licensed under the MIT License
+
+- [Mekanism Generators](https://github.com/mekanism/Mekanism)  
+  Licensed under the MIT License
+
+- [Mekanism Tools](https://github.com/mekanism/Mekanism)  
+  Licensed under the MIT License
+
+- [Mekanism Additions](https://github.com/mekanism/Mekanism)  
+  Licensed under the MIT License
+
+---
+
+### Applied Energistics 2
+- [Applied Energistics 2 (AE2)](https://github.com/AppliedEnergistics/Applied-Energistics-2)  
+  Copyright (c) 2013–2025 AlgorithmX2, AE2 Team  
+  Licensed under the MIT License
+
+---
+
+### AE2-Related Addons
+- [AppMek (Applied Mekanistics)](https://github.com/Technici4n/Applied-Mekanistics)  
+  Copyright (c) 2021–2025 Technici4n  
+  Licensed under the MIT License
+
+- [AE2 Mega Cells](https://github.com/Mari023/AE2-MEGA-Cells)  
+  Licensed under the MIT License
+
+- [Crazy AE2](https://github.com/CrazyModsTeam/Crazy-AE2)  
+  Licensed under the MIT License
+
+---
+
+### Dependency Mods (as references)
+These projects are *not* redistributed, but used as runtime dependencies or references.  
+Please consult each repository for its license details.
+
+Examples may include:
+- [Minecraft Forge](https://github.com/MinecraftForge/MinecraftForge) — LGPL v2.1
+- [Architectury API](https://github.com/architectury/architectury-api) — LGPL v3
+- [Curios API](https://github.com/TheIllusiveC4/Curios) — MIT
+- [Mixin](https://github.com/SpongePowered/Mixin) — MIT
+- [Patchouli](https://github.com/VazkiiMods/Patchouli) — CC BY-NC-SA 4.0
+- [Cloth Config API](https://github.com/shedaniel/cloth-config) — MIT
+
+---
+
+These licenses apply only to the respective projects listed above.  
+Astral Mekanism itself is an original work released under the MIT License by 筍氏.
