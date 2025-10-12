@@ -80,4 +80,17 @@ Examples may include:
 ---
 
 These licenses apply only to the respective projects listed above.  
-Astral Mekanism itself is an original work released under the MIT License by 筍氏.
+Astral Mekanism itself is an original work released under the MIT License by Takenokoshi.
+
+### Referenced Projects (Code Inspiration Only)
+
+The following projects were not directly used or distributed within Astral Mekanism,
+but their source code or design concepts were referenced during development.
+
+Each project is licensed under the MIT License:
+
+- [GregMek](https://github.com/toapuro/Gregmek) - MIT
+- [EvolvedMekanism](https://github.com/iglee42/EvolvedMekanism) - MIT
+
+These projects remain the property of their respective authors and are not included
+in Astral Mekanism’s distributed codebase.
