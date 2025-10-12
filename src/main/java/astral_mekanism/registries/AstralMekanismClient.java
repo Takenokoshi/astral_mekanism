@@ -20,6 +20,8 @@ import astral_mekanism.block.container.other.ContainerItemSortableStorage;
 import astral_mekanism.block.container.prefab.ContainerAbstractStorage;
 import astral_mekanism.block.gui.astralmachine.GuiAstralAdvancedMachine;
 import astral_mekanism.block.gui.astralmachine.GuiAstralElectricMachine;
+import astral_mekanism.block.gui.astralmachine.GuiAstralGreenHouse;
+import astral_mekanism.block.gui.astralmachine.GuiAstralPRC;
 import astral_mekanism.block.gui.compact.GuiCompactFissionReactor;
 import astral_mekanism.block.gui.compact.GuiCompactTEP;
 import astral_mekanism.block.gui.generator.GuiGasBurningGenerator;
@@ -76,6 +78,8 @@ public class AstralMekanismClient {
 			regScreen(AstralMekanismMachines.COMPACT_SPS, GuiGasToGasMachine<BECompactSPS>::new);
 			regScreen(AstralMekanismMachines.ASTRAL_GNA, GuiGasToGasBlock<BEAstralGNA>::new);
 			regScreen(AstralMekanismMachines.ASTRAL_SPS, GuiGasToGasMachine<BEAstralSPS>::new);
+			regScreen(AstralMekanismMachines.ASTRAL_PRC, GuiAstralPRC::new);
+			regScreen(AstralMekanismMachines.ASTRAL_GREENHOUSE, GuiAstralGreenHouse::new);
 			ClientRegistrationUtil.registerScreen(AstralMekanismContainers.ASTRAL_CRUSHER,
 					GuiAstralElectricMachine<BEAstralCrusher>::new);
 			ClientRegistrationUtil.registerScreen(AstralMekanismContainers.ASTRAL_ENERGIZED_SMELTER,

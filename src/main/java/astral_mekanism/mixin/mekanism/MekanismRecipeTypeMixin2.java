@@ -13,10 +13,12 @@ import appeng.recipes.handlers.ChargerRecipe;
 import astral_mekanism.recipes.Irecipe.MekanicalChagerIRecipe;
 import astral_mekanism.registries.AstralMekanismRecipeTypes;
 import mekanism.api.recipes.MekanismRecipe;
+import mekanism.api.recipes.PressurizedReactionRecipe;
 import mekanism.api.recipes.ingredients.ItemStackIngredient;
 import mekanism.api.recipes.ingredients.creator.IItemStackIngredientCreator;
 import mekanism.api.recipes.ingredients.creator.IngredientCreatorAccess;
 import mekanism.common.recipe.MekanismRecipeType;
+import mekanism.common.registries.MekanismItems;
 import net.minecraft.core.NonNullList;
 import net.minecraft.core.RegistryAccess;
 import net.minecraft.world.item.ItemStack;
@@ -37,16 +39,26 @@ public class MekanismRecipeTypeMixin2 {
             recipes = new ArrayList<>(recipes);
             for (ChargerRecipe chargerRecipe : recipeManager.getAllRecipesFor(AERecipeTypes.CHARGER)) {
                 ItemStack recipeOutput = chargerRecipe.getResultItem();
-                if (!chargerRecipe.isSpecial()&&!chargerRecipe.isIncomplete()&&!recipeOutput.isEmpty()) {
+                if (!chargerRecipe.isSpecial() && !chargerRecipe.isIncomplete() && !recipeOutput.isEmpty()) {
                     NonNullList<Ingredient> ingredients = chargerRecipe.getIngredients();
                     ItemStackIngredient input;
                     if (ingredients.isEmpty()) {
                         continue;
-                    } else{
+                    } else {
                         IItemStackIngredientCreator ingredientCreator = IngredientCreatorAccess.item();
                         input = ingredientCreator.from(ingredients.stream().map(ingredientCreator::from));
                     }
                     recipes.add((RECIPE) new MekanicalChagerIRecipe(chargerRecipe.getId(), input, recipeOutput));
+                }
+            }
+            cir.setReturnValue(recipes);
+        } else if ((MekanismRecipeType<?, ?>) (Object) this == MekanismRecipeType.REACTION.get()) {
+            List<RECIPE> recipes = cir.getReturnValue();
+            for (int i = 0; i < recipes.size(); i++) {
+                PressurizedReactionRecipe recipe = (PressurizedReactionRecipe) recipes.get(i);
+                ItemStack result = recipe.getOutputDefinition().get(0).item();
+                if (ItemStack.isSameItem(result, MekanismItems.SUBSTRATE.getItemStack()) && result.getCount() > 1) {
+                    recipes.remove(i);
                 }
             }
             cir.setReturnValue(recipes);

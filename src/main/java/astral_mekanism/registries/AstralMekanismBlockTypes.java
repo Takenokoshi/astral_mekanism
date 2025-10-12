@@ -6,6 +6,7 @@ import java.util.Set;
 import astral_mekanism.AstralMekanismConfig;
 import astral_mekanism.AstralMekanismLang;
 import astral_mekanism.block.blockentity.astralmachine.BEAstralGNA;
+import astral_mekanism.block.blockentity.astralmachine.BEAstralGreenHouse;
 import astral_mekanism.block.blockentity.astralmachine.BEAstralPRC;
 import astral_mekanism.block.blockentity.astralmachine.BEAstralSPS;
 import astral_mekanism.block.blockentity.astralmachine.advanced.BEAstralChemicalInjectionChamber;
@@ -241,5 +242,13 @@ public class AstralMekanismBlockTypes {
 			.withGui(() -> AstralMekanismMachines.ASTRAL_PRC.getContainerRO())
 			.withEnergyConfig(MekanismConfig.usage.pressurizedReactionBase, () -> FloatingLong.MAX_VALUE)
 			.withSound(MekanismSounds.PRESSURIZED_REACTION_CHAMBER)
+			.build();
+
+	public static final BlockTypeMachine<BEAstralGreenHouse> ASTRAL_GREENHOUSE = BlockMachineBuilder
+			.createMachine(() -> AstralMekanismMachines.ASTRAL_GREENHOUSE.getTileRO(),
+					AstralMekanismLang.DESCRIPTION_GREENHOUSE)
+			.withGui(() -> AstralMekanismMachines.ASTRAL_GREENHOUSE.getContainerRO())
+			.withEnergyConfig(() -> FloatingLong.create(1000 * AstralMekanismConfig.energyRate),
+					() -> FloatingLong.MAX_VALUE)
 			.build();
 }

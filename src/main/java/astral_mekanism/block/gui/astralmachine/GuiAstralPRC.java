@@ -12,6 +12,7 @@ import mekanism.client.gui.element.gauge.GuiGasGauge;
 import mekanism.client.gui.element.progress.GuiProgress;
 import mekanism.client.gui.element.progress.ProgressType;
 import mekanism.client.gui.element.tab.GuiEnergyTab;
+import mekanism.client.jei.MekanismJEIRecipeType;
 import mekanism.common.inventory.container.tile.MekanismTileContainer;
 import mekanism.common.inventory.warning.WarningTracker.WarningType;
 import mekanism.common.tile.machine.TileEntityPressurizedReactionChamber;
@@ -44,7 +45,7 @@ public class GuiAstralPRC extends GuiConfigurableTile<BEAstralPRC, MekanismTileC
                         tile.getWarningCheck(TileEntityPressurizedReactionChamber.NOT_ENOUGH_SPACE_GAS_OUTPUT_ERROR)));
         addRenderableWidget(new GuiVerticalPowerBar(this, tile.getEnergyContainer(), 163, 16)
                 .warning(WarningType.NOT_ENOUGH_ENERGY, tile.getWarningCheck(RecipeError.NOT_ENOUGH_ENERGY)));
-        addRenderableWidget(new GuiProgress(tile::getActive, ProgressType.RIGHT, this, 77, 38).jeiCategory(tile))
+        addRenderableWidget(new GuiProgress(tile::getActive, ProgressType.RIGHT, this, 77, 38).jeiCategories(MekanismJEIRecipeType.REACTION))
                 .warning(WarningType.INPUT_DOESNT_PRODUCE_OUTPUT,
                         tile.getWarningCheck(RecipeError.INPUT_DOESNT_PRODUCE_OUTPUT));
     }
