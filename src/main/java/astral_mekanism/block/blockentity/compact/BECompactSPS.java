@@ -29,4 +29,14 @@ public class BECompactSPS extends BEGasToGasMachine {
     public String getJEI() {
         return "mekanism:sps_casing";
     }
+
+    @Override
+    protected long tankCapacity() {
+        return 2000;
+    }
+
+    @Override
+    protected int maxOperation() {
+        return 2;
+    }
 }

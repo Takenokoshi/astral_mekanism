@@ -76,10 +76,13 @@ public abstract class BEGasToGasMachine extends TileEntityRecipeMachine<GasToGas
         configComponent.setupInputConfig(TransmissionType.ENERGY, energyContainer);
         ejectorComponent = new TileComponentEjector(this, () -> gasTankCap);
         ejectorComponent.setOutputData(configComponent, TransmissionType.GAS).setCanTankEject(t -> t == outputTank);
-        baselineMaxOperations = (int) Math.min(gasTankCap / 1000l, (long) Integer.MAX_VALUE);
+        baselineMaxOperations = 1;
         inputHandler = InputHelper.getInputHandler(inputTank, RecipeError.NOT_ENOUGH_INPUT);
         outputHandler = OutputHelper.getOutputHandler(outputTank, RecipeError.NOT_ENOUGH_OUTPUT_SPACE);
     }
+
+    protected abstract long tankCapacity();
+    protected abstract int maxOperation();
 
     @NotNull
     @Override
@@ -87,11 +90,11 @@ public abstract class BEGasToGasMachine extends TileEntityRecipeMachine<GasToGas
             IContentsListener recipeCacheListener) {
         ChemicalTankHelper<Gas, GasStack, IGasTank> builder = ChemicalTankHelper
                 .forSideGasWithConfig(this::getDirection, this::getConfig);
-        builder.addTank(inputTank = ChemicalTankBuilder.GAS.create(2000,
+        builder.addTank(inputTank = ChemicalTankBuilder.GAS.create(tankCapacity(),
                 ChemicalTankHelper.radioactiveInputTankPredicate(() -> outputTank),
                 ChemicalTankBuilder.GAS.alwaysTrueBi, this::containsRecipe,
                 ChemicalAttributeValidator.ALWAYS_ALLOW, recipeCacheListener));
-        builder.addTank(outputTank = ChemicalTankBuilder.GAS.output(2000, listener));
+        builder.addTank(outputTank = ChemicalTankBuilder.GAS.output(tankCapacity(), listener));
         return builder.build();
     }
 
@@ -145,7 +148,7 @@ public abstract class BEGasToGasMachine extends TileEntityRecipeMachine<GasToGas
         super.recalculateUpgrades(upgrade);
         if (upgrade == Upgrade.SPEED) {
             baselineMaxOperations = (int) Math.pow(2, upgradeComponent.getUpgrades(Upgrade.SPEED))
-                    * (int) Math.min(gasTankCap / 1000l, (long) Integer.MAX_VALUE);
+                    * maxOperation();
         }
     }
 
