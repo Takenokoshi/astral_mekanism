@@ -54,14 +54,16 @@ public class MekanismRecipeTypeMixin2 {
             cir.setReturnValue(recipes);
         } else if ((MekanismRecipeType<?, ?>) (Object) this == MekanismRecipeType.REACTION.get()) {
             List<RECIPE> recipes = cir.getReturnValue();
+            List<RECIPE> results = new ArrayList<>();
             for (int i = 0; i < recipes.size(); i++) {
                 PressurizedReactionRecipe recipe = (PressurizedReactionRecipe) recipes.get(i);
                 ItemStack result = recipe.getOutputDefinition().get(0).item();
                 if (ItemStack.isSameItem(result, MekanismItems.SUBSTRATE.getItemStack()) && result.getCount() > 1) {
-                    recipes.remove(i);
+                } else {
+                    results.add((RECIPE) recipe);
                 }
             }
-            cir.setReturnValue(recipes);
+            cir.setReturnValue(results);
         }
     }
 }
