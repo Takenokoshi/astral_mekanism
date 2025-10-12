@@ -87,11 +87,11 @@ public abstract class BEGasToGasMachine extends TileEntityRecipeMachine<GasToGas
             IContentsListener recipeCacheListener) {
         ChemicalTankHelper<Gas, GasStack, IGasTank> builder = ChemicalTankHelper
                 .forSideGasWithConfig(this::getDirection, this::getConfig);
-        builder.addTank(inputTank = ChemicalTankBuilder.GAS.create(gasTankCap,
+        builder.addTank(inputTank = ChemicalTankBuilder.GAS.create(2000,
                 ChemicalTankHelper.radioactiveInputTankPredicate(() -> outputTank),
                 ChemicalTankBuilder.GAS.alwaysTrueBi, this::containsRecipe,
                 ChemicalAttributeValidator.ALWAYS_ALLOW, recipeCacheListener));
-        builder.addTank(outputTank = ChemicalTankBuilder.GAS.output(gasTankCap, listener));
+        builder.addTank(outputTank = ChemicalTankBuilder.GAS.output(2000, listener));
         return builder.build();
     }
 
