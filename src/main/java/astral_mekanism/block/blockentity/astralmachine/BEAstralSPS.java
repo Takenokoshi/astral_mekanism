@@ -1,4 +1,4 @@
-package astral_mekanism.block.blockentity.compact;
+package astral_mekanism.block.blockentity.astralmachine;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -13,16 +13,25 @@ import mekanism.common.recipe.lookup.cache.InputRecipeCache.SingleChemical;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.block.state.BlockState;
 
-public class BECompactSPS extends BEGasToGasMachine {
+public class BEAstralSPS extends BEGasToGasMachine {
 
-    public BECompactSPS(IBlockProvider blockProvider, BlockPos pos, BlockState state) {
+    protected BEAstralSPS(IBlockProvider blockProvider, BlockPos pos, BlockState state) {
         super(blockProvider, pos, state);
     }
 
-    @NotNull
     @Override
-    public IMekanismRecipeTypeProvider<GasToGasRecipe, SingleChemical<Gas, GasStack, GasToGasRecipe>> getRecipeType() {
+    public @NotNull IMekanismRecipeTypeProvider<GasToGasRecipe, SingleChemical<Gas, GasStack, GasToGasRecipe>> getRecipeType() {
         return AstralMekanismRecipeTypes.SPS_RECIPE;
+    }
+
+    @Override
+    protected long tankCapacity() {
+        return Long.MAX_VALUE;
+    }
+
+    @Override
+    protected int maxOperation() {
+        return Integer.MAX_VALUE;
     }
 
     @Override
@@ -30,13 +39,4 @@ public class BECompactSPS extends BEGasToGasMachine {
         return "mekanism:sps_casing";
     }
 
-    @Override
-    protected long tankCapacity() {
-        return 2000;
-    }
-
-    @Override
-    protected int maxOperation() {
-        return 2;
-    }
 }

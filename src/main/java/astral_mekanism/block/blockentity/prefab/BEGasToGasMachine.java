@@ -65,7 +65,7 @@ public abstract class BEGasToGasMachine extends TileEntityRecipeMachine<GasToGas
     private final IOutputHandler<@NotNull GasStack> outputHandler;
     private final IInputHandler<@NotNull GasStack> inputHandler;
 
-    protected BEGasToGasMachine(IBlockProvider blockProvider, BlockPos pos, BlockState state, long tankCap) {
+    protected BEGasToGasMachine(IBlockProvider blockProvider, BlockPos pos, BlockState state) {
         super(blockProvider, pos, state, TRACKED_ERROR_TYPES);
         configComponent = new TileComponentConfig(this, TransmissionType.GAS, TransmissionType.ENERGY);
         configComponent.setupIOConfig(TransmissionType.GAS, inputTank, outputTank, RelativeSide.RIGHT)
