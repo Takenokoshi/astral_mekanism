@@ -94,6 +94,7 @@ public class AstralMekanismBlockTypes {
 			.createBlock(() -> AstralMekanismMachines.GLOWSTONE_NEUTRON_ACTIVATOR.getTileRO(),
 					AstralMekanismLang.DESCRIPTION_GLOWSTONE_NEUTRON_ACTIVATOR)
 			.withGui(() -> AstralMekanismMachines.GLOWSTONE_NEUTRON_ACTIVATOR.getContainerRO())
+			.withCustomShape(AMBlockShapes.GLOWSTONE_NEUTRON_ACTIVATOR)
 			.with(new AttributeStateFacing())
 			.build();
 
