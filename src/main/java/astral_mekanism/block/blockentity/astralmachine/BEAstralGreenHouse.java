@@ -14,6 +14,8 @@ import astral_mekanism.recipes.IDoubleRecipeLookUpHandler2.ItemFluidRecipeLookup
 import astral_mekanism.recipes.InputRecipeCache2.ItemFluid;
 import astral_mekanism.recipes.OutputHelper2;
 import astral_mekanism.recipes.cachedRecipe.GreenHouseCachedRecipe;
+import mekanism.api.Action;
+import mekanism.api.AutomationType;
 import mekanism.api.IContentsListener;
 import mekanism.api.math.FloatingLong;
 import mekanism.api.providers.IBlockProvider;
@@ -129,7 +131,7 @@ public class BEAstralGreenHouse extends TileEntityRecipeMachine<GreenHouseRecipe
     protected IFluidTankHolder getInitialFluidTanks(IContentsListener listener,
             IContentsListener recipeCacheListener) {
         FluidTankHelper builder = FluidTankHelper.forSideWithConfig(this::getDirection, this::getConfig);
-        builder.addTank(inputFluidTank = BasicFluidTank.input(100000,
+        builder.addTank(inputFluidTank = BasicFluidTank.input(Integer.MAX_VALUE,
                 fluid -> containsRecipeBA(inputSlot.getStack(), fluid), this::containsRecipeB,
                 recipeCacheListener));
         return builder.build();
@@ -150,6 +152,7 @@ public class BEAstralGreenHouse extends TileEntityRecipeMachine<GreenHouseRecipe
         super.onUpdateServer();
         energySlot.fillContainerOrConvert();
         recipeCacheLookupMonitor.updateAndProcess();
+        outputSlotB.setStack(inputSlot.insertItem(outputSlotB.getStack(), Action.EXECUTE, AutomationType.INTERNAL));
     }
 
     @Override

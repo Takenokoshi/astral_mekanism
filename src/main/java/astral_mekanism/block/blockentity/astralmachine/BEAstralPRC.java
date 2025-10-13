@@ -33,6 +33,7 @@ import mekanism.common.capabilities.holder.fluid.FluidTankHelper;
 import mekanism.common.capabilities.holder.fluid.IFluidTankHolder;
 import mekanism.common.capabilities.holder.slot.IInventorySlotHolder;
 import mekanism.common.capabilities.holder.slot.InventorySlotHelper;
+import mekanism.common.config.MekanismConfig;
 import mekanism.common.inventory.slot.EnergyInventorySlot;
 import mekanism.common.inventory.slot.InputInventorySlot;
 import mekanism.common.inventory.slot.OutputInventorySlot;
@@ -178,7 +179,8 @@ public class BEAstralPRC extends TileEntityRecipeMachine<PressurizedReactionReci
         if (cachedRecipe == null) {
             this.recipeEnergyRequired = FloatingLong.ZERO;
         } else {
-            this.recipeEnergyRequired = cachedRecipe.getRecipe().getEnergyRequired();
+            this.recipeEnergyRequired = cachedRecipe.getRecipe().getEnergyRequired()
+                    .add(MekanismConfig.usage.pressurizedReactionBase.get());
         }
     }
 

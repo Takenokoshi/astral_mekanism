@@ -6,6 +6,7 @@ import astral_mekanism.block.blockentity.astralmachine.BEAstralGreenHouse;
 import astral_mekanism.jei.AstralMekanismJEIRecipeType;
 import mekanism.api.recipes.cache.CachedRecipe.OperationTracker.RecipeError;
 import mekanism.client.gui.GuiConfigurableTile;
+import mekanism.client.gui.element.bar.GuiVerticalPowerBar;
 import mekanism.client.gui.element.gauge.GaugeType;
 import mekanism.client.gui.element.gauge.GuiFluidGauge;
 import mekanism.client.gui.element.progress.GuiProgress;
@@ -38,6 +39,9 @@ public class GuiAstralGreenHouse
                 .jeiCategories(AstralMekanismJEIRecipeType.Greenhouse_recipe)
                 .warning(WarningType.INPUT_DOESNT_PRODUCE_OUTPUT, tile.getWarningCheck(
                         RecipeError.INPUT_DOESNT_PRODUCE_OUTPUT));
+		addRenderableWidget(new GuiVerticalPowerBar(this, tile.getEnergyContainer(), 163, 16)
+				.warning(WarningType.NOT_ENOUGH_ENERGY,
+						tile.getWarningCheck(RecipeError.NOT_ENOUGH_ENERGY)));
     }
 
     @Override
