@@ -242,6 +242,7 @@ public class AstralMekanismBlockTypes {
 			.withGui(() -> AstralMekanismMachines.ASTRAL_PRC.getContainerRO())
 			.withEnergyConfig(MekanismConfig.usage.pressurizedReactionBase, () -> FloatingLong.MAX_VALUE)
 			.withSound(MekanismSounds.PRESSURIZED_REACTION_CHAMBER)
+			.withCustomShape(AMBlockShapes.ASTRAL_PRC)
 			.build();
 
 	public static final BlockTypeMachine<BEAstralGreenHouse> ASTRAL_GREENHOUSE = BlockMachineBuilder

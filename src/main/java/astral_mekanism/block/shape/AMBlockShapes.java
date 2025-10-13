@@ -129,6 +129,15 @@ public final class AMBlockShapes {
 			.addShape(4, 4, 0, 12, 12, 16)
 			.build4();
 
+	public static final VoxelShape[] ASTRAL_PRC = VoxelShapeBuilder.create()
+			.addShape(mekanism.common.content.blocktype.BlockShapes.PRESSURIZED_REACTION_CHAMBER[0])
+			.addShape(0, 0, 0, 2, 16, 2)
+			.addShape(14, 0, 0, 16, 16, 2)
+			.addShape(0, 14, 0, 16, 16, 2)
+			.addShape(0, 14, 0, 2, 16, 16)
+			.addShape(14, 14, 0, 16, 16, 16)
+			.build4();
+
 	public static final VoxelShape[] ASTRAL_GREENHOUSE = VoxelShapeBuilder.create()
 			.addShape(GREENHOUSE[0])
 			.addShape(0, 0, 0, 1, 16, 1)
