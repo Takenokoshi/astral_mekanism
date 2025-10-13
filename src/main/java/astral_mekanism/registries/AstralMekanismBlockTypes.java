@@ -260,7 +260,7 @@ public class AstralMekanismBlockTypes {
 					MekanismLang.DESCRIPTION_ELECTROLYTIC_SEPARATOR)
 			.withGui(() -> AstralMekanismMachines.ASTRAL_ELECTROLYTIC_SEPARATOR.getContainerRO())
 			.withEnergyConfig(() -> MekanismConfig.general.FROM_H2.get().multiply(2),
-					MekanismConfig.storage.electrolyticSeparator)
+					() -> FloatingLong.MAX_VALUE)
 			.withCustomShape(mekanism.common.content.blocktype.BlockShapes.ELECTROLYTIC_SEPARATOR)
 			.build();
 }

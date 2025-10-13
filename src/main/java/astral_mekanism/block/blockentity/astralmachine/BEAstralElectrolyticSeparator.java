@@ -117,7 +117,6 @@ public class BEAstralElectrolyticSeparator extends TileEntityRecipeMachine<Elect
             itemConfig.addSlotInfo(DataType.OUTPUT_2, new InventorySlotInfo(true, true, rightOutputSlot));
             itemConfig.addSlotInfo(DataType.INPUT_OUTPUT, new InventorySlotInfo(true, true, fluidSlot, leftOutputSlot, rightOutputSlot));
             itemConfig.addSlotInfo(DataType.ENERGY, new InventorySlotInfo(true, true, energySlot));
-            //Set default config directions
             itemConfig.setDataType(DataType.INPUT, RelativeSide.FRONT);
             itemConfig.setDataType(DataType.OUTPUT_1, RelativeSide.LEFT);
             itemConfig.setDataType(DataType.OUTPUT_2, RelativeSide.RIGHT);
@@ -155,7 +154,7 @@ public class BEAstralElectrolyticSeparator extends TileEntityRecipeMachine<Elect
     @Override
     protected IFluidTankHolder getInitialFluidTanks(IContentsListener listener, IContentsListener recipeCacheListener) {
         FluidTankHelper builder = FluidTankHelper.forSideWithConfig(this::getDirection, this::getConfig);
-        builder.addTank(fluidTank = BasicFluidTank.input(24_000, this::containsRecipe, recipeCacheListener));
+        builder.addTank(fluidTank = BasicFluidTank.input(Integer.MAX_VALUE, this::containsRecipe, recipeCacheListener));
         return builder.build();
     }
 
