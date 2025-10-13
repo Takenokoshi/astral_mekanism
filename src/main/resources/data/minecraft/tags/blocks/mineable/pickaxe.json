@@ -1,5 +1,5 @@
 {
-    "values":[
+    "values": [
         "astral_mekanism:utility_block",
         "astral_mekanism:astral_diamond_block",
         "astral_mekanism:mekanical_light",
@@ -28,6 +28,7 @@
         "astral_mekanism:astral_sps",
         "astral_mekanism:astral_prc",
         "astral_mekanism:astral_greenhouse",
+        "astral_mekanism:astral_electrolytic_separator",
         "astral_mekanism:cobblestone_supply_device"
     ]
 }

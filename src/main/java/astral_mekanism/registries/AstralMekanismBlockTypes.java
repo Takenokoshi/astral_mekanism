@@ -5,6 +5,7 @@ import java.util.Map;
 import java.util.Set;
 import astral_mekanism.AstralMekanismConfig;
 import astral_mekanism.AstralMekanismLang;
+import astral_mekanism.block.blockentity.astralmachine.BEAstralElectrolyticSeparator;
 import astral_mekanism.block.blockentity.astralmachine.BEAstralGNA;
 import astral_mekanism.block.blockentity.astralmachine.BEAstralGreenHouse;
 import astral_mekanism.block.blockentity.astralmachine.BEAstralPRC;
@@ -252,5 +253,14 @@ public class AstralMekanismBlockTypes {
 			.withEnergyConfig(() -> FloatingLong.create(1000 * AstralMekanismConfig.energyRate),
 					() -> FloatingLong.MAX_VALUE)
 			.withCustomShape(AMBlockShapes.ASTRAL_GREENHOUSE)
+			.build();
+
+	public static final BlockTypeMachine<BEAstralElectrolyticSeparator> ASTRAL_ELECTROLYTIC_SEPARATOR = BlockMachineBuilder
+			.createMachine(() -> AstralMekanismMachines.ASTRAL_ELECTROLYTIC_SEPARATOR.getTileRO(),
+					MekanismLang.DESCRIPTION_ELECTROLYTIC_SEPARATOR)
+			.withGui(() -> AstralMekanismMachines.ASTRAL_ELECTROLYTIC_SEPARATOR.getContainerRO())
+			.withEnergyConfig(() -> MekanismConfig.general.FROM_H2.get().multiply(2),
+					MekanismConfig.storage.electrolyticSeparator)
+			.withCustomShape(mekanism.common.content.blocktype.BlockShapes.ELECTROLYTIC_SEPARATOR)
 			.build();
 }

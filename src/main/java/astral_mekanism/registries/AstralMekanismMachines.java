@@ -4,6 +4,7 @@ import java.util.Map;
 import java.util.function.UnaryOperator;
 
 import astral_mekanism.AstralMekanismID;
+import astral_mekanism.block.blockentity.astralmachine.BEAstralElectrolyticSeparator;
 import astral_mekanism.block.blockentity.astralmachine.BEAstralGNA;
 import astral_mekanism.block.blockentity.astralmachine.BEAstralGreenHouse;
 import astral_mekanism.block.blockentity.astralmachine.BEAstralPRC;
@@ -82,38 +83,52 @@ public class AstralMekanismMachines {
                     BEGlowstoneNeutronActivator::new, BEGlowstoneNeutronActivator.class);
 
     public static final MachineRegistryObject<BEGreenHouse, BlockTypeMachine<BEGreenHouse>, BlockTileModel<BEGreenHouse, BlockTypeMachine<BEGreenHouse>>, MekanismTileContainer<BEGreenHouse>, ItemBlockMachine> GREENHOUSE = MACHINES
-            .register("greenhouse", AstralMekanismBlockTypes.GREENHOUSE, BEGreenHouse.class, BEGreenHouse::new);
+            .register("greenhouse", AstralMekanismBlockTypes.GREENHOUSE, BEGreenHouse.class,
+                    BEGreenHouse::new);
 
     public static final MachineRegistryObject<BEMelter, BlockTypeTile<BEMelter>, BlockTileModel<BEMelter, BlockTypeTile<BEMelter>>, MekanismTileContainer<BEMelter>, ItemBlockMachine> MELTER = MACHINES
             .register("melter", AstralMekanismBlockTypes.MELTER, BEMelter::new, BEMelter.class);
 
     public static final MachineRegistryObject<BECompactTEP, BlockTypeTile<BECompactTEP>, BlockTileModel<BECompactTEP, BlockTypeTile<BECompactTEP>>, MekanismTileContainer<BECompactTEP>, ItemBlockMachine> COMPACT_TEP = MACHINES
-            .register("compact_tep", AstralMekanismBlockTypes.COMPACT_TEP, BECompactTEP::new, BECompactTEP.class);
+            .register("compact_tep", AstralMekanismBlockTypes.COMPACT_TEP, BECompactTEP::new,
+                    BECompactTEP.class);
 
     public static final MachineRegistryObject<BEFluidInfuser, BlockTypeMachine<BEFluidInfuser>, BlockTileModel<BEFluidInfuser, BlockTypeMachine<BEFluidInfuser>>, MekanismTileContainer<BEFluidInfuser>, ItemBlockMachine> FLUID_INFUSER = MACHINES
             .register("fluid_infuser", AstralMekanismBlockTypes.FLUID_INFUSER,
                     BEFluidInfuser.class, BEFluidInfuser::new);
 
     public static final MachineRegistryObject<BEMekanicalCharger, BlockTypeMachine<BEMekanicalCharger>, BlockTileModel<BEMekanicalCharger, BlockTypeMachine<BEMekanicalCharger>>, MekanismTileContainer<BEMekanicalCharger>, ItemBlockMachine> MEKANICAL_CHARGER = MACHINES
-            .register("mekanical_charger", AstralMekanismBlockTypes.MEKANICAL_CHARGER, BEMekanicalCharger.class,
+            .register("mekanical_charger", AstralMekanismBlockTypes.MEKANICAL_CHARGER,
+                    BEMekanicalCharger.class,
                     BEMekanicalCharger::new);
 
     public static final MachineRegistryObject<BECompactFIR, BlockTypeTile<BECompactFIR>, BlockTileModel<BECompactFIR, BlockTypeTile<BECompactFIR>>, MekanismTileContainer<BECompactFIR>, ItemBlockMachine> COMPACT_FIR = MACHINES
-            .register("compact_fir", AstralMekanismBlockTypes.COMPACT_FIR, BECompactFIR::new, BECompactFIR.class);
+            .register("compact_fir", AstralMekanismBlockTypes.COMPACT_FIR, BECompactFIR::new,
+                    BECompactFIR.class);
 
     public static final MachineRegistryObject<BECompactSPS, BlockTypeMachine<BECompactSPS>, BlockTileModel<BECompactSPS, BlockTypeMachine<BECompactSPS>>, MekanismTileContainer<BECompactSPS>, ItemBlockMachine> COMPACT_SPS = MACHINES
-            .register("compact_sps", AstralMekanismBlockTypes.COMPACT_SPS, BECompactSPS.class, BECompactSPS::new);
+            .register("compact_sps", AstralMekanismBlockTypes.COMPACT_SPS, BECompactSPS.class,
+                    BECompactSPS::new);
 
     public static final MachineRegistryObject<BEAstralGNA, BlockTypeTile<BEAstralGNA>, BlockTileModel<BEAstralGNA, BlockTypeTile<BEAstralGNA>>, MekanismTileContainer<BEAstralGNA>, ItemBlockMachine> ASTRAL_GNA = MACHINES
-            .register("astral_gna", AstralMekanismBlockTypes.ASTRAL_GNA, BEAstralGNA::new, BEAstralGNA.class);
+            .register("astral_gna", AstralMekanismBlockTypes.ASTRAL_GNA, BEAstralGNA::new,
+                    BEAstralGNA.class);
 
     public static final MachineRegistryObject<BEAstralSPS, BlockTypeMachine<BEAstralSPS>, BlockTileModel<BEAstralSPS, BlockTypeMachine<BEAstralSPS>>, MekanismTileContainer<BEAstralSPS>, ItemBlockMachine> ASTRAL_SPS = MACHINES
-            .register("astral_sps", AstralMekanismBlockTypes.ASTRAL_SPS, BEAstralSPS.class, BEAstralSPS::new);
+            .register("astral_sps", AstralMekanismBlockTypes.ASTRAL_SPS, BEAstralSPS.class,
+                    BEAstralSPS::new);
 
     public static final MachineRegistryObject<BEAstralPRC, BlockTypeMachine<BEAstralPRC>, BlockTileModel<BEAstralPRC, BlockTypeMachine<BEAstralPRC>>, MekanismTileContainer<BEAstralPRC>, ItemBlockMachine> ASTRAL_PRC = MACHINES
-            .register("astral_prc", AstralMekanismBlockTypes.ASTRAL_PRC, BEAstralPRC.class, BEAstralPRC::new);
+            .register("astral_prc", AstralMekanismBlockTypes.ASTRAL_PRC, BEAstralPRC.class,
+                    BEAstralPRC::new);
 
     public static final MachineRegistryObject<BEAstralGreenHouse, BlockTypeMachine<BEAstralGreenHouse>, BlockTileModel<BEAstralGreenHouse, BlockTypeMachine<BEAstralGreenHouse>>, MekanismTileContainer<BEAstralGreenHouse>, ItemBlockMachine> ASTRAL_GREENHOUSE = MACHINES
-            .register("astral_greenhouse", AstralMekanismBlockTypes.ASTRAL_GREENHOUSE, BEAstralGreenHouse.class, BEAstralGreenHouse::new);
+            .register("astral_greenhouse", AstralMekanismBlockTypes.ASTRAL_GREENHOUSE,
+                    BEAstralGreenHouse.class, BEAstralGreenHouse::new);
+
+    public static final MachineRegistryObject<BEAstralElectrolyticSeparator, BlockTypeMachine<BEAstralElectrolyticSeparator>, BlockTileModel<BEAstralElectrolyticSeparator, BlockTypeMachine<BEAstralElectrolyticSeparator>>, MekanismTileContainer<BEAstralElectrolyticSeparator>, ItemBlockMachine> ASTRAL_ELECTROLYTIC_SEPARATOR = MACHINES
+            .register("astral_electrolytic_separator",
+                    AstralMekanismBlockTypes.ASTRAL_ELECTROLYTIC_SEPARATOR,
+                    BEAstralElectrolyticSeparator.class, BEAstralElectrolyticSeparator::new);
 
 }
