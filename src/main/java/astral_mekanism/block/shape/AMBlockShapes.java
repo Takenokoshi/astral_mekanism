@@ -128,4 +128,14 @@ public final class AMBlockShapes {
 			.addShape(4, 0, 4, 12, 16, 12)
 			.addShape(4, 4, 0, 12, 12, 16)
 			.build4();
+
+	public static final VoxelShape[] ASTRAL_GREENHOUSE = VoxelShapeBuilder.create()
+			.addShape(GREENHOUSE[0])
+			.addShape(0, 0, 0, 1, 16, 1)
+			.addShape(15, 0, 0, 15, 16, 1)
+			.addShape(0, 15, 0, 16, 16, 1)
+			.addShape(0, 15, 15, 16, 16, 16)
+			.addShape(0, 15, 0, 1, 16, 16)
+			.addShape(15, 15, 0, 16, 16, 16)
+			.build4();
 }

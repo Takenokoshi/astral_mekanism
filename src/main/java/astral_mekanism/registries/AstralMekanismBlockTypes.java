@@ -250,5 +250,6 @@ public class AstralMekanismBlockTypes {
 			.withGui(() -> AstralMekanismMachines.ASTRAL_GREENHOUSE.getContainerRO())
 			.withEnergyConfig(() -> FloatingLong.create(1000 * AstralMekanismConfig.energyRate),
 					() -> FloatingLong.MAX_VALUE)
+			.withCustomShape(AMBlockShapes.ASTRAL_GREENHOUSE)
 			.build();
 }
