@@ -1,7 +1,7 @@
 {
 	"format_version": "1.9.0",
 	"credit": "Made with Blockbench",
-	"parent": "block/cube_all",
+	"parent": "block/orientable",
 	"textures": {
 		"1": "mekanism:block/block_refined_glowstone",
 		"2": "mekanism:block/models/ports",

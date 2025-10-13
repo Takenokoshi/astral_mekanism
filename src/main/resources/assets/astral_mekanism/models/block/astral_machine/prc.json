@@ -1,6 +1,7 @@
 {
 	"format_version": "1.9.0",
 	"credit": "Made with Blockbench",
+	"parent": "block/orientable",
 	"textures": {
 		"0": "mekanism:block/models/pressurized_reaction_chamber_elements",
 		"1": "mekanism:block/models/pressurized_reaction_chamber",
