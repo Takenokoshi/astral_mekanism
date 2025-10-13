@@ -24,7 +24,7 @@ import net.minecraft.world.entity.player.Inventory;
 public class GuiAstralElectrolyticSeparator extends
         GuiConfigurableTile<BEAstralElectrolyticSeparator, MekanismTileContainer<BEAstralElectrolyticSeparator>> {
 
-    protected GuiAstralElectrolyticSeparator(MekanismTileContainer<BEAstralElectrolyticSeparator> container,
+    public GuiAstralElectrolyticSeparator(MekanismTileContainer<BEAstralElectrolyticSeparator> container,
             Inventory inv, Component title) {
         super(container, inv, title);
         dynamicSlots = true;
