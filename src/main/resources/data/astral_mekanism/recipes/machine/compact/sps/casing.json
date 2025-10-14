@@ -1,0 +1,16 @@
+{
+	"type": "mekanism:metallurgic_infusing",
+	"itemInput": {
+		"ingredient": {
+			"item": "mekanism:sps_casing"
+		},
+		"amount": 36
+	},
+	"chemicalInput": {
+		"infuse_type": "astral_mekanism:utility_infuse",
+		"amount": 10
+	},
+	"output": {
+		"item": "astral_mekanism:summarized_sps_casing"
+	}
+}

@@ -1,0 +1,23 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "key": {
+        "A": {
+            "item": "astral_mekanism:summarized_sps_valve"
+        },
+        "C": {
+            "item": "mekanism:supercharged_coil"
+        },
+        "B": {
+            "item": "astral_mekanism:summarized_sps_casing"
+        }
+    },
+    "pattern": [
+        "BAB",
+        "C C",
+        "BBB"
+    ],
+    "result": {
+        "item": "astral_mekanism:compact_sps",
+        "count": 1
+    }
+}

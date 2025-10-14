@@ -47,6 +47,10 @@ public class AstralMekanismItems {
 			.register("summarized_thermal_evaporation_block");
 	public static final ItemRegistryObject<Item> SUMMARIZED_THERMAL_EVAPORTION_VALVE = ITEMS
 			.register("summarized_thermal_evaporation_valve");
+	public static final ItemRegistryObject<Item> SUMMARIZED_SPS_CASING = ITEMS
+			.register("summarized_sps_casing");
+	public static final ItemRegistryObject<Item> SUMMARIZED_SPS_VALVE = ITEMS
+			.register("summarized_sps_valve");
 
 	static Map<OreType, Map<IntermediateState, ItemRegistryObject<Item>>> GII() {
 		Map<OreType, Map<IntermediateState, ItemRegistryObject<Item>>> result = new HashMap<>();
