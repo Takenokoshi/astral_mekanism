@@ -49,8 +49,8 @@ public class AstralMekanismItems {
 			.register("summarized_thermal_evaporation_valve");
 	public static final ItemRegistryObject<Item> SUMMARIZED_SPS_CASING = ITEMS
 			.register("summarized_sps_casing");
-	public static final ItemRegistryObject<Item> SUMMARIZED_SPS_VALVE = ITEMS
-			.register("summarized_sps_valve");
+	public static final ItemRegistryObject<Item> SUMMARIZED_SPS_PORT = ITEMS
+			.register("summarized_sps_port");
 	public static final ItemRegistryObject<Item> SUMMARIZED_FIR_CASING = ITEMS
 			.register("summarized_fir_casing");
 	public static final ItemRegistryObject<Item> SUPERSUMMARIZED_FIR_CASING = ITEMS
