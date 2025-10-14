@@ -1,0 +1,16 @@
+{
+	"type": "mekanism:metallurgic_infusing",
+	"itemInput": {
+		"ingredient": {
+			"item": "mekanismgenerators:fission_reactor_casing"
+		},
+		"amount": 64
+	},
+	"chemicalInput": {
+		"infuse_type": "astral_mekanism:utility_infuse",
+		"amount": 10
+	},
+	"output": {
+		"item": "astral_mekanism:summarized_fir_casing"
+	}
+}

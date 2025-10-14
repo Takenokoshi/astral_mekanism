@@ -1,0 +1,16 @@
+{
+	"type": "mekanism:metallurgic_infusing",
+	"itemInput": {
+		"ingredient": {
+			"item": "astral_mekanism:summarized_fir_fuel_assembly"
+		},
+		"amount": 30
+	},
+	"chemicalInput": {
+		"infuse_type": "astral_mekanism:utility_infuse",
+		"amount": 10
+	},
+	"output": {
+		"item": "astral_mekanism:supersummarized_fir_fuel_assembly"
+	}
+}

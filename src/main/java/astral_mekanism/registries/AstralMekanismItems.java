@@ -51,6 +51,22 @@ public class AstralMekanismItems {
 			.register("summarized_sps_casing");
 	public static final ItemRegistryObject<Item> SUMMARIZED_SPS_VALVE = ITEMS
 			.register("summarized_sps_valve");
+	public static final ItemRegistryObject<Item> SUMMARIZED_FIR_CASING = ITEMS
+			.register("summarized_fir_casing");
+	public static final ItemRegistryObject<Item> SUPERSUMMARIZED_FIR_CASING = ITEMS
+			.register("supersummarized_fir_casing");
+	public static final ItemRegistryObject<Item> SUMMARIZED_FIR_FUEL_ASSEMBLY = ITEMS
+			.register("summarized_fir_fuel_assembly");
+	public static final ItemRegistryObject<Item> SUPERSUMMARIZED_FIR_FUEL_ASSEMBLY = ITEMS
+			.register("supersummarized_fir_fuel_assembly");
+	public static final ItemRegistryObject<Item> SUMMARIZED_FIR_CONTROL_ROD_ASSEMBLY = ITEMS
+			.register("summarized_fir_control_rod_assembly");
+	public static final ItemRegistryObject<Item> SUPERSUMMARIZED_FIR_CONTROL_ROD_ASSEMBLY = ITEMS
+			.register("supersummarized_fir_control_rod_assembly");
+	public static final ItemRegistryObject<Item> SUMMARIZED_FIR_PORT = ITEMS
+			.register("summarized_fir_port");
+	public static final ItemRegistryObject<Item> SUMMARIZED_FIR_LOGIC_ADAPTOR = ITEMS
+			.register("summarized_fir_logic_adaptor");
 
 	static Map<OreType, Map<IntermediateState, ItemRegistryObject<Item>>> GII() {
 		Map<OreType, Map<IntermediateState, ItemRegistryObject<Item>>> result = new HashMap<>();

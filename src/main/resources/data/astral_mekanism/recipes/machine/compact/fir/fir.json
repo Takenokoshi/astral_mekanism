@@ -1,0 +1,29 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "key": {
+        "L": {
+            "item": "astral_mekanism:summarized_fir_logic_adapter"
+        },
+        "P": {
+            "item": "astral_mekanism:summarized_fir_port"
+        },
+        "F": {
+            "item": "astral_mekanism:supersummarized_fir_fuel_assembly"
+        },
+        "R": {
+            "item": "astral_mekanism:supersummarized_fir_control_rod_assembly"
+        },
+        "C": {
+            "item": "astral_mekanism:supersummarized_fir_casing"
+        }
+    },
+    "pattern": [
+        " R ",
+        "LFP",
+        " C "
+    ],
+    "result": {
+        "item": "astral_mekanism:compact_fir",
+        "count": 1
+    }
+}
