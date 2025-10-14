@@ -66,7 +66,7 @@ public class AstralMekanismItems {
 	public static final ItemRegistryObject<Item> SUMMARIZED_FIR_PORT = ITEMS
 			.register("summarized_fir_port");
 	public static final ItemRegistryObject<Item> SUMMARIZED_FIR_LOGIC_ADAPTOR = ITEMS
-			.register("summarized_fir_logic_adaptor");
+			.register("summarized_fir_logic_adapter");
 
 	static Map<OreType, Map<IntermediateState, ItemRegistryObject<Item>>> GII() {
 		Map<OreType, Map<IntermediateState, ItemRegistryObject<Item>>> result = new HashMap<>();

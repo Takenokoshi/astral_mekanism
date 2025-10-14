@@ -2,7 +2,7 @@
 	"type": "mekanism:metallurgic_infusing",
 	"itemInput": {
 		"ingredient": {
-			"item": "mekanism:sps_valve"
+			"item": "mekanism:sps_port"
 		},
 		"amount": 6
 	},
@@ -11,6 +11,6 @@
 		"amount": 10
 	},
 	"output": {
-		"item": "astral_mekanism:summarized_sps_valve"
+		"item": "astral_mekanism:summarized_sps_port"
 	}
 }

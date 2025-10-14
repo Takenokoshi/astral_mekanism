@@ -2,7 +2,7 @@
     "type": "minecraft:crafting_shaped",
     "key": {
         "A": {
-            "item": "astral_mekanism:summarized_sps_valve"
+            "item": "astral_mekanism:summarized_sps_port"
         },
         "C": {
             "item": "mekanism:supercharged_coil"
