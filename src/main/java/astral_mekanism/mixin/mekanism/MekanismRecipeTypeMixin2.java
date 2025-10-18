@@ -10,10 +10,12 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 import appeng.recipes.AERecipeTypes;
 import appeng.recipes.handlers.ChargerRecipe;
+import astral_mekanism.recipes.Irecipe.FormulizedSawingIRecipe;
 import astral_mekanism.recipes.Irecipe.MekanicalChagerIRecipe;
 import astral_mekanism.registries.AstralMekanismRecipeTypes;
 import mekanism.api.recipes.MekanismRecipe;
 import mekanism.api.recipes.PressurizedReactionRecipe;
+import mekanism.api.recipes.SawmillRecipe;
 import mekanism.api.recipes.ingredients.ItemStackIngredient;
 import mekanism.api.recipes.ingredients.creator.IItemStackIngredientCreator;
 import mekanism.api.recipes.ingredients.creator.IngredientCreatorAccess;
@@ -64,6 +66,26 @@ public class MekanismRecipeTypeMixin2 {
                 }
             }
             cir.setReturnValue(results);
+        } else if ((MekanismRecipeType<?, ?>) (Object) this == AstralMekanismRecipeTypes.FORMULIZED_SAWING_RECIPE
+                .get()) {
+            List<RECIPE> result = new ArrayList<>(cir.getReturnValue());
+            for (SawmillRecipe sawmillRecipe : MekanismRecipeType.SAWING.getRecipes(null)) {
+                int multiplier = (int) Math.ceil(1 / sawmillRecipe.getSecondaryChance());
+                List<ItemStack> outputADef = sawmillRecipe.getMainOutputDefinition();
+                ItemStack outputA = outputADef.isEmpty() ? ItemStack.EMPTY : outputADef.get(1);
+                List<ItemStack> outputBDef = sawmillRecipe.getSecondaryOutputDefinition();
+                result.add((RECIPE) new FormulizedSawingIRecipe(sawmillRecipe.getId(),
+                        IngredientCreatorAccess.item().createMulti(
+                                sawmillRecipe.getInput().getRepresentations().stream().map(stack -> {
+                                    ItemStack copy = stack.copy();
+                                    copy.setCount(stack.getCount() * multiplier);
+                                    ItemStackIngredient rtv = IngredientCreatorAccess.item().from(copy);
+                                    return rtv;
+                                }).toArray(ItemStackIngredient[]::new)),
+                        outputA.copyWithCount(outputA.getCount() * multiplier),
+                        outputBDef.isEmpty() ? ItemStack.EMPTY : outputBDef.get(1)));
+            }
+            cir.setReturnValue(result);
         }
     }
 }
