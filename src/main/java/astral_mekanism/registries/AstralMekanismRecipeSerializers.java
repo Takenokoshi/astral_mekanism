@@ -21,7 +21,6 @@ import mekanism.common.recipe.serializer.GasToGasRecipeSerializer;
 import mekanism.common.recipe.serializer.ItemStackToItemStackRecipeSerializer;
 import mekanism.common.registration.impl.RecipeSerializerDeferredRegister;
 import mekanism.common.registration.impl.RecipeSerializerRegistryObject;
-import mekanism.common.registries.MekanismRecipeSerializers;
 
 public class AstralMekanismRecipeSerializers {
 
@@ -31,7 +30,7 @@ public class AstralMekanismRecipeSerializers {
     public static final RecipeSerializerDeferredRegister RECIPE_SERIALIZERS = new RecipeSerializerDeferredRegister(
             AstralMekanismID.MODID);
 
-    public static final RecipeSerializerRegistryObject<ItemToItemItemRecipe> FORMULIZED_SAWING_RECIPE = MekanismRecipeSerializers.RECIPE_SERIALIZERS
+    public static final RecipeSerializerRegistryObject<ItemToItemItemRecipe> FORMULIZED_SAWING_RECIPE = RECIPE_SERIALIZERS
             .register("sawing", () -> new ItemToItemItemRecipeSerializer<>(FormulizedSawingIRecipe::new));
 
     public static final RecipeSerializerRegistryObject<GreenHouseRecipe> Greenhouse_recipe = RECIPE_SERIALIZERS
