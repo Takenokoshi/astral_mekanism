@@ -14,6 +14,7 @@ import astral_mekanism.recipes.IDoubleRecipeLookUpHandler2.ItemFluidRecipeLookup
 import astral_mekanism.recipes.InputRecipeCache2.ItemFluid;
 import astral_mekanism.recipes.OutputHelper2;
 import astral_mekanism.recipes.cachedRecipe.GreenHouseCachedRecipe;
+import astral_mekanism.recipes.output.DoubleItemStackOutput;
 import mekanism.api.Action;
 import mekanism.api.AutomationType;
 import mekanism.api.IContentsListener;
@@ -75,7 +76,7 @@ public class BEAstralGreenHouse extends TileEntityRecipeMachine<GreenHouseRecipe
     FluidInventorySlot fluidSlot;
 
     private FloatingLong recipeEnergyRequired = FloatingLong.ZERO;
-    private final IOutputHandler<GreenHouseRecipe.GreenHouseRecipeOutput> outputHandler;
+    private final IOutputHandler<DoubleItemStackOutput> outputHandler;
     private final IInputHandler<@NotNull ItemStack> itemInputHandler;
     private final IInputHandler<@NotNull FluidStack> fluidInputHandler;
 

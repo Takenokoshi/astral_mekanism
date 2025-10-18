@@ -6,18 +6,19 @@ import java.util.List;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import astral_mekanism.recipes.OutputHelper2;
+import astral_mekanism.recipes.cachedRecipe.ItemToItemItemCachedRecipe;
+import astral_mekanism.recipes.output.DoubleItemStackOutput;
+import astral_mekanism.recipes.recipe.ItemToItemItemRecipe;
+import astral_mekanism.registries.AstralMekanismRecipeTypes;
 import mekanism.api.IContentsListener;
 import mekanism.api.math.FloatingLong;
 import mekanism.api.providers.IBlockProvider;
-import mekanism.api.recipes.SawmillRecipe;
-import mekanism.api.recipes.SawmillRecipe.ChanceOutput;
 import mekanism.api.recipes.cache.CachedRecipe;
 import mekanism.api.recipes.cache.CachedRecipe.OperationTracker.RecipeError;
-import mekanism.api.recipes.cache.OneInputCachedRecipe;
 import mekanism.api.recipes.inputs.IInputHandler;
 import mekanism.api.recipes.inputs.InputHelper;
 import mekanism.api.recipes.outputs.IOutputHandler;
-import mekanism.api.recipes.outputs.OutputHelper;
 import mekanism.common.capabilities.energy.MachineEnergyContainer;
 import mekanism.common.capabilities.holder.energy.EnergyContainerHelper;
 import mekanism.common.capabilities.holder.energy.IEnergyContainerHolder;
@@ -29,7 +30,6 @@ import mekanism.common.inventory.slot.OutputInventorySlot;
 import mekanism.common.inventory.warning.WarningTracker.WarningType;
 import mekanism.common.lib.transmitter.TransmissionType;
 import mekanism.common.recipe.IMekanismRecipeTypeProvider;
-import mekanism.common.recipe.MekanismRecipeType;
 import mekanism.common.recipe.lookup.ISingleRecipeLookupHandler.ItemRecipeLookupHandler;
 import mekanism.common.recipe.lookup.cache.InputRecipeCache.SingleItem;
 import mekanism.common.tile.component.TileComponentConfig;
@@ -42,8 +42,8 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 
-public class BEAstralPrecisionSawmill extends TileEntityRecipeMachine<SawmillRecipe>
-        implements ItemRecipeLookupHandler<SawmillRecipe> {
+public class BEAstralPrecisionSawmill extends TileEntityRecipeMachine<ItemToItemItemRecipe>
+        implements ItemRecipeLookupHandler<ItemToItemItemRecipe> {
 
     public static final RecipeError NOT_ENOUGH_SPACE_SECONDARY_OUTPUT_ERROR = RecipeError.create();
     private static final List<RecipeError> TRACKED_ERROR_TYPES = List.of(
@@ -53,7 +53,7 @@ public class BEAstralPrecisionSawmill extends TileEntityRecipeMachine<SawmillRec
             NOT_ENOUGH_SPACE_SECONDARY_OUTPUT_ERROR,
             RecipeError.INPUT_DOESNT_PRODUCE_OUTPUT);
 
-    private final IOutputHandler<@NotNull ChanceOutput> outputHandler;
+    private final IOutputHandler<@NotNull DoubleItemStackOutput> outputHandler;
     private final IInputHandler<@NotNull ItemStack> inputHandler;
 
     private MachineEnergyContainer<BEAstralPrecisionSawmill> energyContainer;
@@ -73,7 +73,7 @@ public class BEAstralPrecisionSawmill extends TileEntityRecipeMachine<SawmillRec
         ejectorComponent.setOutputData(configComponent, TransmissionType.ITEM);
 
         inputHandler = InputHelper.getInputHandler(inputSlot, RecipeError.NOT_ENOUGH_INPUT);
-        outputHandler = OutputHelper.getOutputHandler(outputSlot, RecipeError.NOT_ENOUGH_OUTPUT_SPACE,
+        outputHandler = OutputHelper2.getOutputHandler(outputSlot, RecipeError.NOT_ENOUGH_OUTPUT_SPACE,
                 secondaryOutputSlot, NOT_ENOUGH_SPACE_SECONDARY_OUTPUT_ERROR);
     }
 
@@ -110,20 +110,20 @@ public class BEAstralPrecisionSawmill extends TileEntityRecipeMachine<SawmillRec
 
     @Override
     @NotNull
-    public IMekanismRecipeTypeProvider<SawmillRecipe, SingleItem<SawmillRecipe>> getRecipeType() {
-        return MekanismRecipeType.SAWING;
+    public IMekanismRecipeTypeProvider<ItemToItemItemRecipe, SingleItem<ItemToItemItemRecipe>> getRecipeType() {
+        return AstralMekanismRecipeTypes.FORMULIZED_SAWING_RECIPE;
     }
 
     @Nullable
     @Override
-    public SawmillRecipe getRecipe(int cacheIndex) {
+    public ItemToItemItemRecipe getRecipe(int cacheIndex) {
         return findFirstRecipe(inputHandler);
     }
 
     @NotNull
     @Override
-    public CachedRecipe<SawmillRecipe> createNewCachedRecipe(@NotNull SawmillRecipe recipe, int cacheIndex) {
-        return OneInputCachedRecipe.sawing(recipe, recheckAllRecipeErrors, inputHandler, outputHandler)
+    public CachedRecipe<ItemToItemItemRecipe> createNewCachedRecipe(@NotNull ItemToItemItemRecipe recipe, int cacheIndex) {
+        return new ItemToItemItemCachedRecipe(recipe, recheckAllRecipeErrors, inputHandler, outputHandler)
                 .setErrorsChanged(this::onErrorsChanged)
                 .setCanHolderFunction(() -> MekanismUtils.canFunction(this))
                 .setActive(this::setActive)

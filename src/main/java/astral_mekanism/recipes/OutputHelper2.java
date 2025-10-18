@@ -2,8 +2,7 @@ package astral_mekanism.recipes;
 
 import java.util.Objects;
 
-import astral_mekanism.recipes.recipe.GreenHouseRecipe;
-import astral_mekanism.recipes.recipe.GreenHouseRecipe.GreenHouseRecipeOutput;
+import astral_mekanism.recipes.output.DoubleItemStackOutput;
 import mekanism.api.Action;
 import mekanism.api.AutomationType;
 import mekanism.api.annotations.NothingNullByDefault;
@@ -16,24 +15,24 @@ import net.minecraft.world.item.ItemStack;
 
 @NothingNullByDefault
 public class OutputHelper2 {
-    public static IOutputHandler<GreenHouseRecipe.GreenHouseRecipeOutput> getOutputHandler(IInventorySlot slotA,
+    public static IOutputHandler<DoubleItemStackOutput> getOutputHandler(IInventorySlot slotA,
             CachedRecipe.OperationTracker.RecipeError errorA, IInventorySlot slotB,
             CachedRecipe.OperationTracker.RecipeError errorB) {
         Objects.requireNonNull(slotA);
         Objects.requireNonNull(slotB);
         Objects.requireNonNull(errorA);
         Objects.requireNonNull(errorB);
-        return new IOutputHandler<GreenHouseRecipe.GreenHouseRecipeOutput>() {
+        return new IOutputHandler<DoubleItemStackOutput>() {
             @Override
-            public void handleOutput(GreenHouseRecipe.GreenHouseRecipeOutput output, int operations) {
+            public void handleOutput(DoubleItemStackOutput output, int operations) {
                 OutputHelper2.handleOutput(slotA, output.itemA(), operations);
                 OutputHelper2.handleOutput(slotB, output.itemB(), operations);
             };
 
             @Override
-            public void calculateOperationsCanSupport(OperationTracker arg0, GreenHouseRecipeOutput arg1) {
-                OutputHelper2.calculateOperationsCanSupport(arg0,errorA,slotA,arg1.itemA());
-                OutputHelper2.calculateOperationsCanSupport(arg0,errorB,slotB,arg1.itemB());
+            public void calculateOperationsCanSupport(OperationTracker arg0, DoubleItemStackOutput arg1) {
+                OutputHelper2.calculateOperationsCanSupport(arg0, errorA, slotA, arg1.itemA());
+                OutputHelper2.calculateOperationsCanSupport(arg0, errorB, slotB, arg1.itemB());
             };
         };
     }
@@ -48,23 +47,24 @@ public class OutputHelper2 {
             inventorySlot.insertItem(output, Action.EXECUTE, AutomationType.INTERNAL);
         }
     }
-    
-   private static void calculateOperationsCanSupport(CachedRecipe.OperationTracker tracker, CachedRecipe.OperationTracker.RecipeError notEnoughSpace, IInventorySlot slot, ItemStack toOutput) {
-      if (!toOutput.isEmpty()) {
-         ItemStack output = toOutput.copyWithCount(toOutput.getMaxStackSize());
-         ItemStack remainder = slot.insertItem(output, Action.SIMULATE, AutomationType.INTERNAL);
-         int amountUsed = output.getCount() - remainder.getCount();
-         int operations = amountUsed / toOutput.getCount();
-         tracker.updateOperations(operations);
-         if (operations == 0) {
-            if (amountUsed == 0 && slot.getLimit(slot.getStack()) - slot.getCount() > 0) {
-               tracker.addError(RecipeError.INPUT_DOESNT_PRODUCE_OUTPUT);
-            } else {
-               tracker.addError(notEnoughSpace);
-            }
-         }
-      }
 
-   }
+    private static void calculateOperationsCanSupport(CachedRecipe.OperationTracker tracker,
+            CachedRecipe.OperationTracker.RecipeError notEnoughSpace, IInventorySlot slot, ItemStack toOutput) {
+        if (!toOutput.isEmpty()) {
+            ItemStack output = toOutput.copyWithCount(toOutput.getMaxStackSize());
+            ItemStack remainder = slot.insertItem(output, Action.SIMULATE, AutomationType.INTERNAL);
+            int amountUsed = output.getCount() - remainder.getCount();
+            int operations = amountUsed / toOutput.getCount();
+            tracker.updateOperations(operations);
+            if (operations == 0) {
+                if (amountUsed == 0 && slot.getLimit(slot.getStack()) - slot.getCount() > 0) {
+                    tracker.addError(RecipeError.INPUT_DOESNT_PRODUCE_OUTPUT);
+                } else {
+                    tracker.addError(notEnoughSpace);
+                }
+            }
+        }
+
+    }
 
 }

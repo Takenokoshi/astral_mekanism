@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.antlr.v4.runtime.misc.NotNull;
 
+import astral_mekanism.recipes.output.DoubleItemStackOutput;
 import astral_mekanism.recipes.recipe.GreenHouseRecipe;
 import astral_mekanism.registries.AstralMekanismMachines;
 import mekanism.client.gui.element.bar.GuiVerticalPowerBar;
@@ -53,7 +54,7 @@ public class GreenHouseRecipeCategory extends BaseRecipeCategory<GreenHouseRecip
 				recipe.getInputFluid().getRepresentations());
 		List<ItemStack> itemOutputsA = new ArrayList<ItemStack>();
 		List<ItemStack> itemOutputsB = new ArrayList<ItemStack>();
-		for (GreenHouseRecipe.GreenHouseRecipeOutput output : recipe.getOutputDefinition()) {
+		for (DoubleItemStackOutput output : recipe.getOutputDefinition()) {
 			itemOutputsA.add(output.itemA());
 			itemOutputsB.add(output.itemB());
 		}

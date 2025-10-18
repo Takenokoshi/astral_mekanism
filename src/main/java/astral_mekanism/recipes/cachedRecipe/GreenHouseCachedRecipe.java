@@ -7,6 +7,7 @@ import javax.annotation.Nullable;
 
 import org.jetbrains.annotations.NotNull;
 
+import astral_mekanism.recipes.output.DoubleItemStackOutput;
 import astral_mekanism.recipes.recipe.GreenHouseRecipe;
 import mekanism.api.recipes.cache.CachedRecipe;
 import mekanism.api.recipes.inputs.IInputHandler;
@@ -16,17 +17,17 @@ import net.minecraftforge.fluids.FluidStack;
 
 public class GreenHouseCachedRecipe extends CachedRecipe<GreenHouseRecipe> {
 
-    private final IOutputHandler<GreenHouseRecipe.GreenHouseRecipeOutput> outputHandler;
+    private final IOutputHandler<DoubleItemStackOutput> outputHandler;
     private final IInputHandler<@NotNull ItemStack> itemInputHandler;
     private final IInputHandler<@NotNull FluidStack> fluidInputHandler;
     private ItemStack recipeItem;
     private FluidStack recipeFluid;
     @Nullable
-    private GreenHouseRecipe.GreenHouseRecipeOutput output;
+    private DoubleItemStackOutput output;
 
     public GreenHouseCachedRecipe(GreenHouseRecipe recipe, BooleanSupplier recheckAllErrors,
             IInputHandler<@NotNull ItemStack> itemInputHandler, IInputHandler<@NotNull FluidStack> fluidInputHandler,
-            IOutputHandler<GreenHouseRecipe.GreenHouseRecipeOutput> outputHandler) {
+            IOutputHandler<DoubleItemStackOutput> outputHandler) {
         super(recipe, recheckAllErrors);
         this.recipeItem = ItemStack.EMPTY;
         this.recipeFluid = FluidStack.EMPTY;

@@ -7,6 +7,7 @@ import java.util.function.BiPredicate;
 
 import org.jetbrains.annotations.NotNull;
 
+import astral_mekanism.recipes.output.DoubleItemStackOutput;
 import mekanism.api.math.FloatingLong;
 import mekanism.api.recipes.MekanismRecipe;
 import mekanism.api.recipes.ingredients.FluidStackIngredient;
@@ -39,13 +40,9 @@ public abstract class GreenHouseRecipe extends MekanismRecipe implements BiPredi
     private final ItemStack outputItemA;
     private final ItemStack outputItemB;
 
-    public record GreenHouseRecipeOutput(@NotNull ItemStack itemA, @NotNull ItemStack itemB) {
-        public GreenHouseRecipeOutput {
-        };
-    }
 
-    public GreenHouseRecipeOutput getOutput(ItemStack item,FluidStack fluid){
-        return new GreenHouseRecipeOutput(this.outputItemA.copy(), this.outputItemB.copy());
+    public DoubleItemStackOutput getOutput(ItemStack item,FluidStack fluid){
+        return new DoubleItemStackOutput(this.outputItemA.copy(), this.outputItemB.copy());
     }
 
     @Override
@@ -89,8 +86,8 @@ public abstract class GreenHouseRecipe extends MekanismRecipe implements BiPredi
         return energyRequired;
     }
 
-    public List<GreenHouseRecipeOutput> getOutputDefinition() {
-        return Collections.singletonList(new GreenHouseRecipeOutput(outputItemA, outputItemB));
+    public List<DoubleItemStackOutput> getOutputDefinition() {
+        return Collections.singletonList(new DoubleItemStackOutput(outputItemA, outputItemB));
     }
 
 }
