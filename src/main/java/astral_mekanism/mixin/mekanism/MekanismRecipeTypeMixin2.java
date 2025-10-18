@@ -72,7 +72,7 @@ public class MekanismRecipeTypeMixin2 {
             for (SawmillRecipe sawmillRecipe : MekanismRecipeType.SAWING.getRecipes(null)) {
                 int multiplier = (int) Math.ceil(1 / sawmillRecipe.getSecondaryChance());
                 List<ItemStack> outputADef = sawmillRecipe.getMainOutputDefinition();
-                ItemStack outputA = outputADef.isEmpty() ? ItemStack.EMPTY : outputADef.get(1);
+                ItemStack outputA = outputADef.isEmpty() ? ItemStack.EMPTY : outputADef.get(0);
                 List<ItemStack> outputBDef = sawmillRecipe.getSecondaryOutputDefinition();
                 result.add((RECIPE) new FormulizedSawingIRecipe(sawmillRecipe.getId(),
                         IngredientCreatorAccess.item().createMulti(
@@ -83,7 +83,7 @@ public class MekanismRecipeTypeMixin2 {
                                     return rtv;
                                 }).toArray(ItemStackIngredient[]::new)),
                         outputA.copyWithCount(outputA.getCount() * multiplier),
-                        outputBDef.isEmpty() ? ItemStack.EMPTY : outputBDef.get(1)));
+                        outputBDef.isEmpty() ? ItemStack.EMPTY : outputBDef.get(0)));
             }
             cir.setReturnValue(result);
         }
