@@ -90,6 +90,10 @@ public class BEItemSortableStorage extends BEAbstractStorage implements BEAbstra
         ItemSingularityUpgrade.running(singularityUpgradeSlotA, isSingularityUpgrade, outputInventorySlotsA);
         ItemSingularityUpgrade.running(singularityUpgradeSlotB, isSingularityUpgrade, outputInventorySlotsB);
         ItemSingularityUpgrade.running(singularityUpgradeSlotC, isSingularityUpgrade, outputInventorySlotsC);
+        BlockEntityUtils.itemEject(this, List.of(AstralMekDataType.INPUT_OUTPUT1), DataType.OUTPUT_1);
+        BlockEntityUtils.itemEject(this, List.of(AstralMekDataType.INPUT_OUTPUT2), DataType.OUTPUT_2);
+        BlockEntityUtils.itemEject(this, List.of(AstralMekDataType.INPUT_OUTPUTleft, AstralMekDataType.OUTPUTleft),
+                AstralMekDataType.OUTPUTleft);
     }
 
     private void filtering() {
