@@ -269,7 +269,7 @@ public class AstralMekanismBlockTypes {
             .createMachine(AstralMekanismMachines.ASTRAL_PRECISION_SAWMILL::getTileRO,
                     MekanismLang.DESCRIPTION_PRECISION_SAWMILL)
             .withGui(AstralMekanismMachines.ASTRAL_PRECISION_SAWMILL::getContainerRO)
-            .withEnergyConfig(MekanismConfig.usage.precisionSawmill,()->FloatingLong.MAX_VALUE)
+            .withEnergyConfig(MekanismConfig.usage.precisionSawmill, () -> FloatingLong.MAX_VALUE)
             .withCustomShape(AMBlockShapes.ASTRAL_MACHINE_BASIC)
             .build();
 }
