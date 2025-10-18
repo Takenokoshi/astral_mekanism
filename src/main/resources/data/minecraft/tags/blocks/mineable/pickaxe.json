@@ -29,6 +29,7 @@
         "astral_mekanism:astral_prc",
         "astral_mekanism:astral_greenhouse",
         "astral_mekanism:astral_electrolytic_separator",
+        "astral_mekanism:astral_precision_sawmill",
         "astral_mekanism:cobblestone_supply_device"
     ]
 }

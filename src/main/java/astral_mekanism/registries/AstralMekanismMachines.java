@@ -8,6 +8,7 @@ import astral_mekanism.block.blockentity.astralmachine.BEAstralElectrolyticSepar
 import astral_mekanism.block.blockentity.astralmachine.BEAstralGNA;
 import astral_mekanism.block.blockentity.astralmachine.BEAstralGreenHouse;
 import astral_mekanism.block.blockentity.astralmachine.BEAstralPRC;
+import astral_mekanism.block.blockentity.astralmachine.BEAstralPrecisionSawmill;
 import astral_mekanism.block.blockentity.astralmachine.BEAstralSPS;
 import astral_mekanism.block.blockentity.compact.BECompactFIR;
 import astral_mekanism.block.blockentity.compact.BECompactSPS;
@@ -130,5 +131,9 @@ public class AstralMekanismMachines {
             .register("astral_electrolytic_separator",
                     AstralMekanismBlockTypes.ASTRAL_ELECTROLYTIC_SEPARATOR,
                     BEAstralElectrolyticSeparator.class, BEAstralElectrolyticSeparator::new);
+
+    public static final MachineRegistryObject<BEAstralPrecisionSawmill, BlockTypeMachine<BEAstralPrecisionSawmill>, BlockTileModel<BEAstralPrecisionSawmill, BlockTypeMachine<BEAstralPrecisionSawmill>>, MekanismTileContainer<BEAstralPrecisionSawmill>, ItemBlockMachine> ASTRAL_PRECISION_SAWMILL = MACHINES
+            .register("astral_precision_sawmill", AstralMekanismBlockTypes.ASTRAL_PRECISION_SAWMILL,
+                    BEAstralPrecisionSawmill.class, BEAstralPrecisionSawmill::new);
 
 }
