@@ -19,6 +19,7 @@ import mekanism.api.recipes.SawmillRecipe;
 import mekanism.api.recipes.ingredients.ItemStackIngredient;
 import mekanism.api.recipes.ingredients.creator.IItemStackIngredientCreator;
 import mekanism.api.recipes.ingredients.creator.IngredientCreatorAccess;
+import mekanism.common.Mekanism;
 import mekanism.common.recipe.MekanismRecipeType;
 import mekanism.common.registries.MekanismItems;
 import net.minecraft.core.NonNullList;
@@ -88,6 +89,7 @@ public class MekanismRecipeTypeMixin2 {
                             outputA.copyWithCount(outputA.getCount() * multiplier),
                             outputBDef.isEmpty() ? ItemStack.EMPTY : outputBDef.get(0)));
                 }
+                Mekanism.logger.info(sawmillRecipe.getId().getNamespace());
             }
             cir.setReturnValue(result);
         }
