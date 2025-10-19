@@ -89,7 +89,7 @@ public class MekanismRecipeTypeMixin2 {
                             outputA.copyWithCount(outputA.getCount() * multiplier),
                             outputBDef.isEmpty() ? ItemStack.EMPTY : outputBDef.get(0)));
                 }
-                Mekanism.logger.info(sawmillRecipe.getId().getNamespace());
+                Mekanism.logger.info(sawmillRecipe.getId().getPath());
             }
             cir.setReturnValue(result);
         }
