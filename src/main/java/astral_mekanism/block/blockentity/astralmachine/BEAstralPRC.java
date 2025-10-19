@@ -88,10 +88,12 @@ public class BEAstralPRC extends TileEntityRecipeMachine<PressurizedReactionReci
                 TransmissionType.GAS, TransmissionType.FLUID);
         configComponent.setupInputConfig(TransmissionType.ENERGY, energyContainer);
         configComponent.setupItemIOConfig(inputSlot, outputSlot, energySlot);
-        configComponent.setupIOConfig(TransmissionType.GAS, inputGasTank, outputGasTank, RelativeSide.RIGHT);
+        configComponent.setupIOConfig(TransmissionType.GAS, inputGasTank, outputGasTank, RelativeSide.RIGHT)
+                .setEjecting(true);
         configComponent.setupInputConfig(TransmissionType.FLUID, inputFluidTank);
         ejectorComponent = new TileComponentEjector(this, () -> Long.MAX_VALUE);
-        ejectorComponent.setCanTankEject(t -> t == outputGasTank);
+        ejectorComponent.setOutputData(configComponent, TransmissionType.ITEM, TransmissionType.GAS)
+                .setCanTankEject(t -> t == outputGasTank);
         itemInputHandler = InputHelper.getInputHandler(inputSlot, NOT_ENOUGH_ITEM_INPUT_ERROR);
         fluidInputHandler = InputHelper.getInputHandler(inputFluidTank, NOT_ENOUGH_FLUID_INPUT_ERROR);
         gasInputHandler = InputHelper.getInputHandler(inputGasTank, NOT_ENOUGH_GAS_INPUT_ERROR);
