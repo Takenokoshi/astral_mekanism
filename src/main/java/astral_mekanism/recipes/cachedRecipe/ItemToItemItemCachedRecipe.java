@@ -23,10 +23,10 @@ public class ItemToItemItemCachedRecipe extends CachedRecipe<ItemToItemItemRecip
     private DoubleItemStackOutput recipeOutput;
 
     public ItemToItemItemCachedRecipe(ItemToItemItemRecipe recipe, BooleanSupplier recheckAllErrors,
-            IInputHandler<ItemStack> inputHandler, IOutputHandler<DoubleItemStackOutput> outputHandlerA) {
+            IInputHandler<ItemStack> inputHandler, IOutputHandler<DoubleItemStackOutput> outputHandler) {
         super(recipe, recheckAllErrors);
         this.inputHandler = inputHandler;
-        this.outputHandler = outputHandlerA;
+        this.outputHandler = outputHandler;
     }
 
     @Override

@@ -70,20 +70,32 @@ public class MekanismRecipeTypeMixin2 {
                 .get()) {
             List<RECIPE> result = new ArrayList<>(cir.getReturnValue());
             for (SawmillRecipe sawmillRecipe : MekanismRecipeType.SAWING.getRecipes(null)) {
-                int multiplier = (int) Math.ceil(1 / sawmillRecipe.getSecondaryChance());
+                double chance = sawmillRecipe.getSecondaryChance();
+                RECIPE toAdd;
                 List<ItemStack> outputADef = sawmillRecipe.getMainOutputDefinition();
                 ItemStack outputA = outputADef.isEmpty() ? ItemStack.EMPTY : outputADef.get(0);
-                List<ItemStack> outputBDef = sawmillRecipe.getSecondaryOutputDefinition();
-                result.add((RECIPE) new FormulizedSawingIRecipe(sawmillRecipe.getId(),
-                        IngredientCreatorAccess.item().createMulti(
-                                sawmillRecipe.getInput().getRepresentations().stream().map(stack -> {
-                                    ItemStack copy = stack.copy();
-                                    copy.setCount(stack.getCount() * multiplier);
-                                    ItemStackIngredient rtv = IngredientCreatorAccess.item().from(copy);
-                                    return rtv;
-                                }).toArray(ItemStackIngredient[]::new)),
-                        outputA.copyWithCount(outputA.getCount() * multiplier),
-                        outputBDef.isEmpty() ? ItemStack.EMPTY : outputBDef.get(0)));
+                if (chance == 0) {
+                    toAdd = (RECIPE) new FormulizedSawingIRecipe(sawmillRecipe.getId(),
+                            IngredientCreatorAccess.item().createMulti(
+                                    sawmillRecipe.getInput().getRepresentations().stream()
+                                            .map(stack -> IngredientCreatorAccess.item().from(stack.copy()))
+                                            .toArray(ItemStackIngredient[]::new)),
+                            outputA, ItemStack.EMPTY);
+                } else {
+                    int multiplier = (int) Math.ceil(1 / sawmillRecipe.getSecondaryChance());
+                    List<ItemStack> outputBDef = sawmillRecipe.getSecondaryOutputDefinition();
+                    toAdd = (RECIPE) new FormulizedSawingIRecipe(sawmillRecipe.getId(),
+                            IngredientCreatorAccess.item().createMulti(
+                                    sawmillRecipe.getInput().getRepresentations().stream().map(stack -> {
+                                        ItemStack copy = stack.copy();
+                                        copy.setCount(stack.getCount() * multiplier);
+                                        ItemStackIngredient rtv = IngredientCreatorAccess.item().from(copy);
+                                        return rtv;
+                                    }).toArray(ItemStackIngredient[]::new)),
+                            outputA.copyWithCount(outputA.getCount() * multiplier),
+                            outputBDef.isEmpty() ? ItemStack.EMPTY : outputBDef.get(0));
+                }
+                result.add(toAdd);
             }
             cir.setReturnValue(result);
         }
