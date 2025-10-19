@@ -74,15 +74,11 @@ public class MekanismRecipeTypeMixin2 {
                 RECIPE toAdd;
                 List<ItemStack> outputADef = sawmillRecipe.getMainOutputDefinition();
                 ItemStack outputA = outputADef.isEmpty() ? ItemStack.EMPTY : outputADef.get(0);
-                if (chance == 0) {
-                    toAdd = (RECIPE) new FormulizedSawingIRecipe(sawmillRecipe.getId(),
-                            IngredientCreatorAccess.item().createMulti(
-                                    sawmillRecipe.getInput().getRepresentations().stream()
-                                            .map(stack -> IngredientCreatorAccess.item().from(stack.copy()))
-                                            .toArray(ItemStackIngredient[]::new)),
+                if (chance == 0d) {
+                    toAdd = (RECIPE) new FormulizedSawingIRecipe(sawmillRecipe.getId(), sawmillRecipe.getInput(),
                             outputA, ItemStack.EMPTY);
                 } else {
-                    int multiplier = (int) Math.ceil(1 / sawmillRecipe.getSecondaryChance());
+                    int multiplier = (int) Math.ceil(1 / chance);
                     List<ItemStack> outputBDef = sawmillRecipe.getSecondaryOutputDefinition();
                     toAdd = (RECIPE) new FormulizedSawingIRecipe(sawmillRecipe.getId(),
                             IngredientCreatorAccess.item().createMulti(
