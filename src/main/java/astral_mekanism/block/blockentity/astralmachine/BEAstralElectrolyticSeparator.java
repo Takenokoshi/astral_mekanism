@@ -108,14 +108,16 @@ public class BEAstralElectrolyticSeparator extends TileEntityRecipeMachine<Elect
 
     public BEAstralElectrolyticSeparator(IBlockProvider blockProvider, BlockPos pos, BlockState state) {
         super(blockProvider, pos, state, TRACKED_ERROR_TYPES);
-        configComponent = new TileComponentConfig(this, TransmissionType.ITEM, TransmissionType.GAS, TransmissionType.FLUID, TransmissionType.ENERGY);
+        configComponent = new TileComponentConfig(this, TransmissionType.ITEM, TransmissionType.GAS,
+                TransmissionType.FLUID, TransmissionType.ENERGY);
 
         ConfigInfo itemConfig = configComponent.getConfig(TransmissionType.ITEM);
         if (itemConfig != null) {
             itemConfig.addSlotInfo(DataType.INPUT, new InventorySlotInfo(true, true, fluidSlot));
             itemConfig.addSlotInfo(DataType.OUTPUT_1, new InventorySlotInfo(true, true, leftOutputSlot));
             itemConfig.addSlotInfo(DataType.OUTPUT_2, new InventorySlotInfo(true, true, rightOutputSlot));
-            itemConfig.addSlotInfo(DataType.INPUT_OUTPUT, new InventorySlotInfo(true, true, fluidSlot, leftOutputSlot, rightOutputSlot));
+            itemConfig.addSlotInfo(DataType.INPUT_OUTPUT,
+                    new InventorySlotInfo(true, true, fluidSlot, leftOutputSlot, rightOutputSlot));
             itemConfig.addSlotInfo(DataType.ENERGY, new InventorySlotInfo(true, true, energySlot));
             itemConfig.setDataType(DataType.INPUT, RelativeSide.FRONT);
             itemConfig.setDataType(DataType.OUTPUT_1, RelativeSide.LEFT);
@@ -135,16 +137,16 @@ public class BEAstralElectrolyticSeparator extends TileEntityRecipeMachine<Elect
         configComponent.setupInputConfig(TransmissionType.FLUID, fluidTank);
         configComponent.setupInputConfig(TransmissionType.ENERGY, energyContainer);
 
-        ejectorComponent = new TileComponentEjector(this);
+        ejectorComponent = new TileComponentEjector(this, () -> Long.MAX_VALUE);
         ejectorComponent.setOutputData(configComponent, TransmissionType.ITEM, TransmissionType.GAS)
-              .setCanTankEject(tank -> {
-                  if (tank == leftTank) {
-                      return dumpLeft != GasMode.DUMPING;
-                  } else if (tank == rightTank) {
-                      return dumpRight != GasMode.DUMPING;
-                  }
-                  return true;
-              });
+                .setCanTankEject(tank -> {
+                    if (tank == leftTank) {
+                        return dumpLeft != GasMode.DUMPING;
+                    } else if (tank == rightTank) {
+                        return dumpRight != GasMode.DUMPING;
+                    }
+                    return true;
+                });
         inputHandler = InputHelper.getInputHandler(fluidTank, RecipeError.NOT_ENOUGH_INPUT);
         outputHandler = OutputHelper.getOutputHandler(leftTank, NOT_ENOUGH_SPACE_LEFT_OUTPUT_ERROR,
                 rightTank, NOT_ENOUGH_SPACE_RIGHT_OUTPUT_ERROR);
