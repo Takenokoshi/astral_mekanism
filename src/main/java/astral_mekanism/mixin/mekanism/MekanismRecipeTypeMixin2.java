@@ -28,6 +28,7 @@ import net.minecraft.core.RegistryAccess;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.RecipeManager;
+
 @Mixin(value = MekanismRecipeType.class, remap = false)
 public class MekanismRecipeTypeMixin2 {
 
@@ -44,15 +45,16 @@ public class MekanismRecipeTypeMixin2 {
         if (type == AstralMekanismRecipeTypes.MEKANICAL_CHARGER_RECIPE.get()) {
             for (ChargerRecipe chargerRecipe : recipeManager.getAllRecipesFor(AERecipeTypes.CHARGER)) {
                 ItemStack recipeOutput = chargerRecipe.getResultItem();
-                if (chargerRecipe.isSpecial() || chargerRecipe.isIncomplete() || recipeOutput.isEmpty()) continue;
+                if (chargerRecipe.isSpecial() || chargerRecipe.isIncomplete() || recipeOutput.isEmpty())
+                    continue;
 
                 NonNullList<Ingredient> ingredients = chargerRecipe.getIngredients();
-                if (ingredients.isEmpty()) continue;
+                if (ingredients.isEmpty())
+                    continue;
 
                 IItemStackIngredientCreator ingredientCreator = IngredientCreatorAccess.item();
                 ItemStackIngredient input = ingredientCreator.from(
-                        ingredients.stream().map(ingredientCreator::from)
-                );
+                        ingredients.stream().map(ingredientCreator::from));
 
                 recipes.add((RECIPE) new MekanicalChagerIRecipe(chargerRecipe.getId(), input, recipeOutput));
             }
@@ -74,10 +76,12 @@ public class MekanismRecipeTypeMixin2 {
             return;
         }
 
-        if (Objects.equals(type.getRegistryName(), 
+        if (Objects.equals(type.getRegistryName(),
                 AstralMekanismRecipeTypes.FORMULIZED_SAWING_RECIPE.get().getRegistryName())) {
 
-            for (SawmillRecipe sawmillRecipe : MekanismRecipeType.SAWING.getRecipes(null)) {
+            List<SawmillRecipe> hugv = recipeManager.getAllRecipesFor(MekanismRecipeType.SAWING.get());
+            Mekanism.logger.info("" + hugv.size());
+            for (SawmillRecipe sawmillRecipe : hugv) {
                 double chance = sawmillRecipe.getSecondaryChance();
                 List<ItemStack> outputADef = sawmillRecipe.getMainOutputDefinition();
                 ItemStack outputA = outputADef.isEmpty() ? ItemStack.EMPTY : outputADef.get(0);
@@ -87,8 +91,7 @@ public class MekanismRecipeTypeMixin2 {
                             sawmillRecipe.getId(),
                             sawmillRecipe.getInput(),
                             outputA,
-                            ItemStack.EMPTY
-                    ));
+                            ItemStack.EMPTY));
                 } else {
                     int multiplier = (int) Math.ceil(1d / chance);
                     List<ItemStack> outputBDef = sawmillRecipe.getSecondaryOutputDefinition();
@@ -97,16 +100,14 @@ public class MekanismRecipeTypeMixin2 {
                             sawmillRecipe.getInput().getRepresentations().stream()
                                     .map(stack -> IngredientCreatorAccess.item()
                                             .from(stack.copyWithCount(stack.getCount() * multiplier)))
-                                    .toArray(ItemStackIngredient[]::new)
-                    );
+                                    .toArray(ItemStackIngredient[]::new));
 
                     ItemStack outputB = outputBDef.isEmpty() ? ItemStack.EMPTY : outputBDef.get(0);
                     recipes.add((RECIPE) new FormulizedSawingIRecipe(
                             sawmillRecipe.getId(),
                             multipliedInput,
                             outputA.copyWithCount(outputA.getCount() * multiplier),
-                            outputB
-                    ));
+                            outputB));
                 }
 
                 Mekanism.logger.info("[AstralMek] Added sawmill recipe: {}", sawmillRecipe.getId());
