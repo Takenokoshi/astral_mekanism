@@ -2,6 +2,7 @@ package astral_mekanism.mixin.mekanism;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
@@ -27,7 +28,6 @@ import net.minecraft.core.RegistryAccess;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.RecipeManager;
-
 @Mixin(value = MekanismRecipeType.class, remap = false)
 public class MekanismRecipeTypeMixin2 {
 
@@ -37,61 +37,82 @@ public class MekanismRecipeTypeMixin2 {
             RecipeManager recipeManager,
             RegistryAccess registryAccess,
             CallbackInfoReturnable<List<RECIPE>> cir) {
-        if ((MekanismRecipeType<?, ?>) (Object) this == AstralMekanismRecipeTypes.MEKANICAL_CHARGER_RECIPE.get()) {
-            List<RECIPE> recipes = cir.getReturnValue();
-            recipes = new ArrayList<>(recipes);
+
+        MekanismRecipeType<?, ?> type = (MekanismRecipeType<?, ?>) (Object) this;
+        List<RECIPE> recipes = new ArrayList<>(cir.getReturnValue());
+
+        if (type == AstralMekanismRecipeTypes.MEKANICAL_CHARGER_RECIPE.get()) {
             for (ChargerRecipe chargerRecipe : recipeManager.getAllRecipesFor(AERecipeTypes.CHARGER)) {
                 ItemStack recipeOutput = chargerRecipe.getResultItem();
-                if (!chargerRecipe.isSpecial() && !chargerRecipe.isIncomplete() && !recipeOutput.isEmpty()) {
-                    NonNullList<Ingredient> ingredients = chargerRecipe.getIngredients();
-                    ItemStackIngredient input;
-                    if (ingredients.isEmpty()) {
-                        continue;
-                    } else {
-                        IItemStackIngredientCreator ingredientCreator = IngredientCreatorAccess.item();
-                        input = ingredientCreator.from(ingredients.stream().map(ingredientCreator::from));
-                    }
-                    recipes.add((RECIPE) new MekanicalChagerIRecipe(chargerRecipe.getId(), input, recipeOutput));
-                }
+                if (chargerRecipe.isSpecial() || chargerRecipe.isIncomplete() || recipeOutput.isEmpty()) continue;
+
+                NonNullList<Ingredient> ingredients = chargerRecipe.getIngredients();
+                if (ingredients.isEmpty()) continue;
+
+                IItemStackIngredientCreator ingredientCreator = IngredientCreatorAccess.item();
+                ItemStackIngredient input = ingredientCreator.from(
+                        ingredients.stream().map(ingredientCreator::from)
+                );
+
+                recipes.add((RECIPE) new MekanicalChagerIRecipe(chargerRecipe.getId(), input, recipeOutput));
             }
             cir.setReturnValue(recipes);
-        } else if ((MekanismRecipeType<?, ?>) (Object) this == MekanismRecipeType.REACTION.get()) {
-            List<RECIPE> recipes = cir.getReturnValue();
+            return;
+        }
+
+        if (type == MekanismRecipeType.REACTION.get()) {
             List<RECIPE> results = new ArrayList<>();
-            for (int i = 0; i < recipes.size(); i++) {
-                PressurizedReactionRecipe recipe = (PressurizedReactionRecipe) recipes.get(i);
-                ItemStack result = recipe.getOutputDefinition().get(0).item();
+            for (RECIPE recipe : recipes) {
+                PressurizedReactionRecipe reaction = (PressurizedReactionRecipe) recipe;
+                ItemStack result = reaction.getOutputDefinition().get(0).item();
                 if (ItemStack.isSameItem(result, MekanismItems.SUBSTRATE.getItemStack()) && result.getCount() > 1) {
-                } else {
-                    results.add((RECIPE) recipe);
+                    continue;
                 }
+                results.add(recipe);
             }
             cir.setReturnValue(results);
-        } else if ((MekanismRecipeType<?, ?>) (Object) this == AstralMekanismRecipeTypes.FORMULIZED_SAWING_RECIPE
-                .get()) {
-            List<RECIPE> result = new ArrayList<>(cir.getReturnValue());
+            return;
+        }
+
+        if (Objects.equals(type.getRegistryName(), 
+                AstralMekanismRecipeTypes.FORMULIZED_SAWING_RECIPE.get().getRegistryName())) {
+
             for (SawmillRecipe sawmillRecipe : MekanismRecipeType.SAWING.getRecipes(null)) {
                 double chance = sawmillRecipe.getSecondaryChance();
                 List<ItemStack> outputADef = sawmillRecipe.getMainOutputDefinition();
                 ItemStack outputA = outputADef.isEmpty() ? ItemStack.EMPTY : outputADef.get(0);
+
                 if (chance == 0d) {
-                    result.add((RECIPE) new FormulizedSawingIRecipe(sawmillRecipe.getId(), sawmillRecipe.getInput(),
-                            outputA, ItemStack.EMPTY));
+                    recipes.add((RECIPE) new FormulizedSawingIRecipe(
+                            sawmillRecipe.getId(),
+                            sawmillRecipe.getInput(),
+                            outputA,
+                            ItemStack.EMPTY
+                    ));
                 } else {
-                    int multiplier = (int) Math.ceil(1 / chance);
+                    int multiplier = (int) Math.ceil(1d / chance);
                     List<ItemStack> outputBDef = sawmillRecipe.getSecondaryOutputDefinition();
-                    result.add((RECIPE) new FormulizedSawingIRecipe(sawmillRecipe.getId(),
-                            IngredientCreatorAccess.item().createMulti(
-                                    sawmillRecipe.getInput().getRepresentations().stream()
-                                            .map(stack -> IngredientCreatorAccess.item()
-                                                    .from(stack.copyWithCount(stack.getCount() * multiplier)))
-                                            .toArray(ItemStackIngredient[]::new)),
+
+                    ItemStackIngredient multipliedInput = IngredientCreatorAccess.item().createMulti(
+                            sawmillRecipe.getInput().getRepresentations().stream()
+                                    .map(stack -> IngredientCreatorAccess.item()
+                                            .from(stack.copyWithCount(stack.getCount() * multiplier)))
+                                    .toArray(ItemStackIngredient[]::new)
+                    );
+
+                    ItemStack outputB = outputBDef.isEmpty() ? ItemStack.EMPTY : outputBDef.get(0);
+                    recipes.add((RECIPE) new FormulizedSawingIRecipe(
+                            sawmillRecipe.getId(),
+                            multipliedInput,
                             outputA.copyWithCount(outputA.getCount() * multiplier),
-                            outputBDef.isEmpty() ? ItemStack.EMPTY : outputBDef.get(0)));
+                            outputB
+                    ));
                 }
-                Mekanism.logger.info(sawmillRecipe.getId().getPath());
+
+                Mekanism.logger.info("[AstralMek] Added sawmill recipe: {}", sawmillRecipe.getId());
             }
-            cir.setReturnValue(result);
+
+            cir.setReturnValue(recipes);
         }
     }
 }
