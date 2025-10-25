@@ -3,6 +3,7 @@ package astral_mekanism.registries;
 import java.util.function.Function;
 
 import astral_mekanism.AstralMekanismID;
+import astral_mekanism.block.block.BlockAstralUniversalcable;
 import astral_mekanism.block.block.BlockMekanicalLight;
 import astral_mekanism.block.blockentity.astralmachine.advanced.BEAstralChemicalInjectionChamber;
 import astral_mekanism.block.blockentity.astralmachine.advanced.BEAstralOsmiumCompressor;
@@ -14,7 +15,6 @@ import astral_mekanism.block.blockentity.astralmachine.electric.BEAstralMekanica
 import astral_mekanism.enumexpansion.AMCableTier;
 import astral_mekanism.registration.BlockTypeMachine;
 import mekanism.common.block.prefab.BlockTile.BlockTileModel;
-import mekanism.common.block.transmitter.BlockUniversalCable;
 import mekanism.common.content.blocktype.BlockTypeTile;
 import mekanism.common.item.block.machine.ItemBlockMachine;
 import mekanism.common.item.block.transmitter.ItemBlockUniversalCable;
@@ -48,8 +48,8 @@ public class AstralMekanismBlocks {
     public static final BlockRegistryObject<BlockMekanicalLight, BlockItem> MEKANICAL_LIGHT = BLOCKS
             .registerDefaultProperties("mekanical_light", BlockMekanicalLight::create, BlockItem::new);
 
-    public static final BlockRegistryObject<BlockUniversalCable, ItemBlockUniversalCable> ASTRAL_UNIVERSAL_CABLE = BLOCKS
-            .register("astral_universal_cable", () -> new BlockUniversalCable(AMCableTier.ASTRAL),
+    public static final BlockRegistryObject<BlockAstralUniversalcable, ItemBlockUniversalCable> ASTRAL_UNIVERSAL_CABLE = BLOCKS
+            .register("astral_universal_cable", () -> new BlockAstralUniversalcable(AMCableTier.ASTRAL),
                     ItemBlockUniversalCable::new);
 
     private static <MACHINE extends TileEntityMekanism, BLOCKTYPE extends BlockTypeTile<MACHINE>, ITEM extends ItemBlockMachine> BlockRegistryObject<BlockTileModel<MACHINE, BLOCKTYPE>, ITEM> regMachineAndItem(
