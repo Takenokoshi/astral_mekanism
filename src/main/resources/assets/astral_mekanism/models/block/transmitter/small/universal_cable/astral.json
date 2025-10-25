@@ -1,0 +1,9 @@
+{
+    "parent": "mekanism:block/transmitter/small/small",
+    "textures": {
+        "side": "astral_mekanism:block/models/multipart/astral_universal_cable_vertical",
+        "center_down": "astral_mekanism:block/models/multipart/astral_universal_cable",
+        "side_opaque": "astral_mekanism:block/models/multipart/opaque/astral_universal_cable_vertical",
+        "center_opaque": "astral_mekanism:block/models/multipart/astral_universal_cable"
+    }
+}
