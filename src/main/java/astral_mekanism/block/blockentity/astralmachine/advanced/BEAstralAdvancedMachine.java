@@ -15,8 +15,7 @@ import mekanism.api.math.FloatingLong;
 import mekanism.api.providers.IBlockProvider;
 import mekanism.api.recipes.ItemStackGasToItemStackRecipe;
 import mekanism.api.recipes.cache.CachedRecipe;
-import mekanism.api.recipes.cache.ItemStackConstantChemicalToItemStackCachedRecipe;
-import mekanism.api.recipes.ingredients.ChemicalStackIngredient.GasStackIngredient;
+import mekanism.api.recipes.cache.TwoInputCachedRecipe;
 import mekanism.api.recipes.cache.CachedRecipe.OperationTracker.RecipeError;
 import mekanism.api.recipes.inputs.IInputHandler;
 import mekanism.api.recipes.inputs.ILongInputHandler;
@@ -152,16 +151,7 @@ public abstract class BEAstralAdvancedMachine
     @Override
     public CachedRecipe<ItemStackGasToItemStackRecipe> createNewCachedRecipe(@NotNull ItemStackGasToItemStackRecipe recipe, int index) {
 
-        CachedRecipe<ItemStackGasToItemStackRecipe> cachedRecipe = new ItemStackConstantChemicalToItemStackCachedRecipe<Gas, GasStack, GasStackIngredient, ItemStackGasToItemStackRecipe>(
-                recipe,
-                recheckAllRecipeErrors, inputHandler, gasInputHandler,
-                (usedSoFar, operatingTicks) -> Math.max(1l,
-                        (long) (recipe.getChemicalInput()
-                                .getNeededAmount(recipe.getChemicalInput()
-                                        .getRepresentations().get(0))
-                                * gas)),
-                (u) -> {
-                }, outputHandler)
+        CachedRecipe<ItemStackGasToItemStackRecipe> cachedRecipe = TwoInputCachedRecipe.itemChemicalToItem(recipe, recheckAllRecipeErrors, inputHandler, gasInputHandler, outputHandler)
                 .setErrorsChanged(this::onErrorsChanged)
                 .setCanHolderFunction(() -> MekanismUtils.canFunction(this))
                 .setActive(this::setActive)

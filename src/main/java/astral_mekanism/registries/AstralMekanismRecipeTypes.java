@@ -13,12 +13,14 @@ import astral_mekanism.recipes.recipe.ItemToItemItemRecipe;
 import mekanism.api.chemical.gas.Gas;
 import mekanism.api.chemical.gas.GasStack;
 import mekanism.api.recipes.GasToGasRecipe;
+import mekanism.api.recipes.ItemStackGasToItemStackRecipe;
 import mekanism.api.recipes.ItemStackToFluidRecipe;
 import mekanism.api.recipes.ItemStackToItemStackRecipe;
 import mekanism.api.recipes.MekanismRecipe;
 import mekanism.common.recipe.MekanismRecipeType;
 import mekanism.common.recipe.lookup.cache.IInputRecipeCache;
 import mekanism.common.recipe.lookup.cache.InputRecipeCache;
+import mekanism.common.recipe.lookup.cache.InputRecipeCache.ItemChemical;
 import mekanism.common.recipe.lookup.cache.InputRecipeCache.SingleChemical;
 import mekanism.common.recipe.lookup.cache.InputRecipeCache.SingleItem;
 import mekanism.common.registration.impl.RecipeTypeDeferredRegister;
@@ -40,6 +42,17 @@ public class AstralMekanismRecipeTypes {
             }
             return recipeType;
         });
+    }
+
+    private static RecipeTypeRegistryObject<ItemStackGasToItemStackRecipe, ItemChemical<Gas, GasStack, ItemStackGasToItemStackRecipe>>[] gasFReg(
+            String neme) {
+        @SuppressWarnings("unchecked")
+        RecipeTypeRegistryObject<ItemStackGasToItemStackRecipe, ItemChemical<Gas, GasStack, ItemStackGasToItemStackRecipe>>[] result = new RecipeTypeRegistryObject[9];
+        for (int i = 0; i < 9; i++) {
+            result[i] = register(neme + i, rt -> new InputRecipeCache.ItemChemical<>(rt,
+                    ItemStackGasToItemStackRecipe::getItemInput, ItemStackGasToItemStackRecipe::getChemicalInput));
+        }
+        return result;
     }
 
     public static final RecipeTypeRegistryObject<ItemToItemItemRecipe, SingleItem<ItemToItemItemRecipe>> FORMULIZED_SAWING_RECIPE = register(
@@ -66,4 +79,7 @@ public class AstralMekanismRecipeTypes {
     public static final RecipeTypeRegistryObject<GasToGasRecipe, SingleChemical<Gas, GasStack, GasToGasRecipe>> SPS_RECIPE = register(
             "sps", recipeType -> new InputRecipeCache.SingleChemical<Gas, GasStack, GasToGasRecipe>(recipeType,
                     GasToGasRecipe::getInput));
+
+    public static final RecipeTypeRegistryObject<ItemStackGasToItemStackRecipe,ItemChemical<Gas,GasStack,ItemStackGasToItemStackRecipe>>[] AM_INJECTING = gasFReg("injecting");
+    public static final RecipeTypeRegistryObject<ItemStackGasToItemStackRecipe,ItemChemical<Gas,GasStack,ItemStackGasToItemStackRecipe>>[] AM_PURIFYING = gasFReg("purifying");
 }
