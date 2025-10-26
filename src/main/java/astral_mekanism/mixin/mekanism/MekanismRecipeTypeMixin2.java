@@ -15,6 +15,7 @@ import astral_mekanism.AstralMekanismID;
 import astral_mekanism.recipes.Irecipe.FormulizedSawingIRecipe;
 import astral_mekanism.recipes.Irecipe.MekanicalChagerIRecipe;
 import astral_mekanism.recipes.Irecipe.gasformulized.AMInjectionIrecipe;
+import astral_mekanism.recipes.Irecipe.gasformulized.AMPurifyingIrecipe;
 import astral_mekanism.registries.AstralMekanismRecipeTypes;
 import mekanism.api.chemical.gas.GasStack;
 import mekanism.api.recipes.ItemStackGasToItemStackRecipe;
@@ -142,6 +143,28 @@ public class MekanismRecipeTypeMixin2 {
                     result.add((RECIPE) toAdd);
                 }
                 cir.setReturnValue(result);
+                return;
+            }
+            if (Objects.equals(type.getRegistryName(), AstralMekanismRecipeTypes.AM_PURIFYING[i].getRegistryName())) {
+                List<RECIPE> result = new ArrayList<>();
+                for (ItemStackGasToItemStackRecipe rrrr : recipeManager
+                        .getAllRecipesFor(MekanismRecipeType.PURIFYING.get())) {
+                    List<ItemStack> outputDef = rrrr.getOutputDefinition();
+                    AMPurifyingIrecipe toAdd = new AMPurifyingIrecipe(rrrr.getId(), rrrr.getItemInput(),
+                            IngredientCreatorAccess.gas()
+                                    .createMulti(rrrr.getChemicalInput().getRepresentations().stream()
+                                            .map(stack -> {
+                                                GasStack newStack = stack.copy();
+                                                newStack.setAmount(
+                                                        (long) Math.floor(stack.getAmount() * Math.pow(0.75, i)));
+                                                return IngredientCreatorAccess.gas().from(newStack);
+                                            })
+                                            .toArray(GasStackIngredient[]::new)),
+                            outputDef.isEmpty() ? ItemStack.EMPTY : outputDef.get(0), i);
+                    result.add((RECIPE) toAdd);
+                }
+                cir.setReturnValue(result);
+                return;
             }
         }
     }
