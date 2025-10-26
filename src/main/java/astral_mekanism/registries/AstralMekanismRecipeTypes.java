@@ -38,7 +38,6 @@ public class AstralMekanismRecipeTypes {
                 rtMixin.setRegistryName(AstralMekanismID.rl(name));
                 rtMixin.setInputCache(inputCacheCreator.apply(recipeType));
             }
-
             return recipeType;
         });
     }

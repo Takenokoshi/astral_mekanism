@@ -114,6 +114,7 @@ public class MekanismRecipeTypeMixin2 {
             }
 
             cir.setReturnValue(recipes);
+            return;
         }
     }
 }
