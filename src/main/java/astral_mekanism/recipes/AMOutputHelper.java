@@ -14,7 +14,7 @@ import mekanism.api.recipes.outputs.IOutputHandler;
 import net.minecraft.world.item.ItemStack;
 
 @NothingNullByDefault
-public class OutputHelper2 {
+public class AMOutputHelper {
     public static IOutputHandler<DoubleItemStackOutput> getOutputHandler(IInventorySlot slotA,
             CachedRecipe.OperationTracker.RecipeError errorA, IInventorySlot slotB,
             CachedRecipe.OperationTracker.RecipeError errorB) {
@@ -25,14 +25,14 @@ public class OutputHelper2 {
         return new IOutputHandler<DoubleItemStackOutput>() {
             @Override
             public void handleOutput(DoubleItemStackOutput output, int operations) {
-                OutputHelper2.handleOutput(slotA, output.itemA(), operations);
-                OutputHelper2.handleOutput(slotB, output.itemB(), operations);
+                AMOutputHelper.handleOutput(slotA, output.itemA(), operations);
+                AMOutputHelper.handleOutput(slotB, output.itemB(), operations);
             };
 
             @Override
             public void calculateOperationsCanSupport(OperationTracker arg0, DoubleItemStackOutput arg1) {
-                OutputHelper2.calculateOperationsCanSupport(arg0, errorA, slotA, arg1.itemA());
-                OutputHelper2.calculateOperationsCanSupport(arg0, errorB, slotB, arg1.itemB());
+                AMOutputHelper.calculateOperationsCanSupport(arg0, errorA, slotA, arg1.itemA());
+                AMOutputHelper.calculateOperationsCanSupport(arg0, errorB, slotB, arg1.itemB());
             };
         };
     }

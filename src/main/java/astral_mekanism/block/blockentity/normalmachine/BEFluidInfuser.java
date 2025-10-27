@@ -7,9 +7,9 @@ import org.jetbrains.annotations.Nullable;
 
 import astral_mekanism.block.blockentity.core.BlockEntityUtils;
 import astral_mekanism.block.blockentity.elements.AstralMekDataType;
-import astral_mekanism.recipes.IDoubleRecipeLookUpHandler2;
-import astral_mekanism.recipes.InputRecipeCache2.FluidFluid;
+import astral_mekanism.recipes.AMIDoubleRecipeLookUpHandler;
 import astral_mekanism.recipes.cachedRecipe.FluidFluidToFluidCachedRecipe;
+import astral_mekanism.recipes.inputRecipeCache.AMInputRecipeCache.FluidFluid;
 import astral_mekanism.recipes.recipe.FluidFluidToFluidRecipe;
 import astral_mekanism.registries.AstralMekanismRecipeTypes;
 import mekanism.api.IContentsListener;
@@ -50,7 +50,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.fluids.FluidStack;
 
 public class BEFluidInfuser extends TileEntityRecipeMachine<FluidFluidToFluidRecipe>
-		implements IDoubleRecipeLookUpHandler2.FluidFluidRecipeLookupHandler<FluidFluidToFluidRecipe> {
+		implements AMIDoubleRecipeLookUpHandler.FluidFluidRecipeLookupHandler<FluidFluidToFluidRecipe> {
 
 	public static final RecipeError NOT_ENOUGH_FLUIDA_INPUT_ERROR = RecipeError.create();
 	public static final RecipeError NOT_ENOUGH_FLUIDB_INPUT_ERROR = RecipeError.create();

@@ -24,8 +24,8 @@ public class ItemStackToFluidRecipeSerializer<RECIPE extends ItemStackToFluidRec
 		this.factory = factory;
 	}
 
-	private final String itemInputJsonKey = "itemInput";
-	private final String fluidOutputJsonKey = "fluidOutput";
+	private static final String itemInputJsonKey = "itemInput";
+	private static final String fluidOutputJsonKey = "fluidOutput";
 
 	@Override
 	public RECIPE fromJson(ResourceLocation recipeId, JsonObject json) {

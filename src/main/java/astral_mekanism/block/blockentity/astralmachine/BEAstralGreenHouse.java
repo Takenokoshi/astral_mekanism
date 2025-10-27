@@ -10,10 +10,10 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import astral_mekanism.AstralMekanismID;
-import astral_mekanism.recipes.IDoubleRecipeLookUpHandler2.ItemFluidRecipeLookupHandler;
-import astral_mekanism.recipes.InputRecipeCache2.ItemFluid;
-import astral_mekanism.recipes.OutputHelper2;
+import astral_mekanism.recipes.AMIDoubleRecipeLookUpHandler.ItemFluidRecipeLookupHandler;
+import astral_mekanism.recipes.AMOutputHelper;
 import astral_mekanism.recipes.cachedRecipe.GreenHouseCachedRecipe;
+import astral_mekanism.recipes.inputRecipeCache.AMInputRecipeCache.ItemFluid;
 import astral_mekanism.recipes.output.DoubleItemStackOutput;
 import mekanism.api.Action;
 import mekanism.api.AutomationType;
@@ -98,7 +98,7 @@ public class BEAstralGreenHouse extends TileEntityRecipeMachine<GreenHouseRecipe
         this.ejectorComponent.setOutputData(configComponent, TransmissionType.ITEM);
         itemInputHandler = InputHelper.getInputHandler(inputSlot, NOT_ENOUGH_ITEM_INPUT_ERROR);
         fluidInputHandler = InputHelper.getInputHandler(inputFluidTank, NOT_ENOUGH_FLUID_INPUT_ERROR);
-        outputHandler = OutputHelper2.getOutputHandler(outputSlotA, NOT_ENOUGH_SPACE_ITEMA_OUTPUT_ERROR,
+        outputHandler = AMOutputHelper.getOutputHandler(outputSlotA, NOT_ENOUGH_SPACE_ITEMA_OUTPUT_ERROR,
                 outputSlotB,
                 NOT_ENOUGH_SPACE_ITEMB_OUTPUT_ERROR);
     }

@@ -6,7 +6,7 @@ import java.util.List;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-import astral_mekanism.recipes.OutputHelper2;
+import astral_mekanism.recipes.AMOutputHelper;
 import astral_mekanism.recipes.cachedRecipe.ItemToItemItemCachedRecipe;
 import astral_mekanism.recipes.output.DoubleItemStackOutput;
 import astral_mekanism.recipes.recipe.ItemToItemItemRecipe;
@@ -73,7 +73,7 @@ public class BEAstralPrecisionSawmill extends TileEntityRecipeMachine<ItemToItem
         ejectorComponent.setOutputData(configComponent, TransmissionType.ITEM);
 
         inputHandler = InputHelper.getInputHandler(inputSlot, RecipeError.NOT_ENOUGH_INPUT);
-        outputHandler = OutputHelper2.getOutputHandler(outputSlot, RecipeError.NOT_ENOUGH_OUTPUT_SPACE,
+        outputHandler = AMOutputHelper.getOutputHandler(outputSlot, RecipeError.NOT_ENOUGH_OUTPUT_SPACE,
                 secondaryOutputSlot, NOT_ENOUGH_SPACE_SECONDARY_OUTPUT_ERROR);
     }
 

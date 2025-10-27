@@ -4,23 +4,21 @@ import java.util.function.Function;
 
 import astral_mekanism.AstralMekanismID;
 import astral_mekanism.mixin.mekanism.MekanismRecipeTypeMixin;
-import astral_mekanism.recipes.InputRecipeCache2;
-import astral_mekanism.recipes.InputRecipeCache2.FluidFluid;
-import astral_mekanism.recipes.InputRecipeCache2.ItemFluid;
+import astral_mekanism.recipes.inputRecipeCache.AMInputRecipeCache;
+import astral_mekanism.recipes.inputRecipeCache.AMInputRecipeCache.FluidFluid;
+import astral_mekanism.recipes.inputRecipeCache.AMInputRecipeCache.ItemFluid;
 import astral_mekanism.recipes.recipe.FluidFluidToFluidRecipe;
 import astral_mekanism.recipes.recipe.GreenHouseRecipe;
 import astral_mekanism.recipes.recipe.ItemToItemItemRecipe;
 import mekanism.api.chemical.gas.Gas;
 import mekanism.api.chemical.gas.GasStack;
 import mekanism.api.recipes.GasToGasRecipe;
-import mekanism.api.recipes.ItemStackGasToItemStackRecipe;
 import mekanism.api.recipes.ItemStackToFluidRecipe;
 import mekanism.api.recipes.ItemStackToItemStackRecipe;
 import mekanism.api.recipes.MekanismRecipe;
 import mekanism.common.recipe.MekanismRecipeType;
 import mekanism.common.recipe.lookup.cache.IInputRecipeCache;
 import mekanism.common.recipe.lookup.cache.InputRecipeCache;
-import mekanism.common.recipe.lookup.cache.InputRecipeCache.ItemChemical;
 import mekanism.common.recipe.lookup.cache.InputRecipeCache.SingleChemical;
 import mekanism.common.recipe.lookup.cache.InputRecipeCache.SingleItem;
 import mekanism.common.registration.impl.RecipeTypeDeferredRegister;
@@ -44,23 +42,12 @@ public class AstralMekanismRecipeTypes {
         });
     }
 
-    private static RecipeTypeRegistryObject<ItemStackGasToItemStackRecipe, ItemChemical<Gas, GasStack, ItemStackGasToItemStackRecipe>>[] gasFReg(
-            String neme) {
-        @SuppressWarnings("unchecked")
-        RecipeTypeRegistryObject<ItemStackGasToItemStackRecipe, ItemChemical<Gas, GasStack, ItemStackGasToItemStackRecipe>>[] result = new RecipeTypeRegistryObject[9];
-        for (int i = 0; i < 9; i++) {
-            result[i] = register(neme + i, rt -> new InputRecipeCache.ItemChemical<>(rt,
-                    ItemStackGasToItemStackRecipe::getItemInput, ItemStackGasToItemStackRecipe::getChemicalInput));
-        }
-        return result;
-    }
-
     public static final RecipeTypeRegistryObject<ItemToItemItemRecipe, SingleItem<ItemToItemItemRecipe>> FORMULIZED_SAWING_RECIPE = register(
             "sawing", rT -> new InputRecipeCache.SingleItem<>(rT, ItemToItemItemRecipe::getInput));
 
     public static final RecipeTypeRegistryObject<GreenHouseRecipe, ItemFluid<GreenHouseRecipe>> Greenhouse_recipe = register(
             "greenhouse",
-            recipeType -> new InputRecipeCache2.ItemFluid<>(recipeType, GreenHouseRecipe::getInputItem,
+            recipeType -> new AMInputRecipeCache.ItemFluid<>(recipeType, GreenHouseRecipe::getInputItem,
                     GreenHouseRecipe::getInputFluid));
 
     public static final RecipeTypeRegistryObject<ItemStackToFluidRecipe, SingleItem<ItemStackToFluidRecipe>> Melter_recipe = register(
@@ -69,7 +56,7 @@ public class AstralMekanismRecipeTypes {
 
     public static final RecipeTypeRegistryObject<FluidFluidToFluidRecipe, FluidFluid<FluidFluidToFluidRecipe>> FLUID_INFUSER_RECIPE = register(
             "fluid_infuser",
-            recipeType -> new InputRecipeCache2.FluidFluid<>(recipeType, FluidFluidToFluidRecipe::getInputA,
+            recipeType -> new AMInputRecipeCache.FluidFluid<>(recipeType, FluidFluidToFluidRecipe::getInputA,
                     FluidFluidToFluidRecipe::getInputB));
 
     public static final RecipeTypeRegistryObject<ItemStackToItemStackRecipe, SingleItem<ItemStackToItemStackRecipe>> MEKANICAL_CHARGER_RECIPE = register(
@@ -79,7 +66,4 @@ public class AstralMekanismRecipeTypes {
     public static final RecipeTypeRegistryObject<GasToGasRecipe, SingleChemical<Gas, GasStack, GasToGasRecipe>> SPS_RECIPE = register(
             "sps", recipeType -> new InputRecipeCache.SingleChemical<Gas, GasStack, GasToGasRecipe>(recipeType,
                     GasToGasRecipe::getInput));
-
-    public static final RecipeTypeRegistryObject<ItemStackGasToItemStackRecipe,ItemChemical<Gas,GasStack,ItemStackGasToItemStackRecipe>>[] AM_INJECTING = gasFReg("injecting");
-    public static final RecipeTypeRegistryObject<ItemStackGasToItemStackRecipe,ItemChemical<Gas,GasStack,ItemStackGasToItemStackRecipe>>[] AM_PURIFYING = gasFReg("purifying");
 }

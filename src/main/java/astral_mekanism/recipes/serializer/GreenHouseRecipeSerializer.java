@@ -27,12 +27,12 @@ public class GreenHouseRecipeSerializer<RECIPE extends GreenHouseRecipe> impleme
         this.factory = factory;
     }
 
-    private final String itemInputJsonKey = "itemInput";
-    private final String fluidInputJsonKey = "fluidInput";
-    private final String energyRequiredJsonKey = "energyRequired";
-    private final String durationJsonKey = "duration";
-    private final String itemOutputAJsonKey = "itemOutputA";
-    private final String itemOutputBJsonKey = "itemOutputB";
+    private static final String itemInputJsonKey = "itemInput";
+    private static final String fluidInputJsonKey = "fluidInput";
+    private static final String energyRequiredJsonKey = "energyRequired";
+    private static final String durationJsonKey = "duration";
+    private static final String itemOutputAJsonKey = "itemOutputA";
+    private static final String itemOutputBJsonKey = "itemOutputB";
 
     @NotNull
     @Override

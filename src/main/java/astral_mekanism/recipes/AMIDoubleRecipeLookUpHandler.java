@@ -4,8 +4,8 @@ import java.util.function.BiPredicate;
 
 import javax.annotation.Nullable;
 
-import astral_mekanism.recipes.InputRecipeCache2.FluidFluid;
-import astral_mekanism.recipes.InputRecipeCache2.ItemFluid;
+import astral_mekanism.recipes.inputRecipeCache.AMInputRecipeCache.FluidFluid;
+import astral_mekanism.recipes.inputRecipeCache.AMInputRecipeCache.ItemFluid;
 import mekanism.api.recipes.MekanismRecipe;
 import mekanism.api.recipes.inputs.IInputHandler;
 import mekanism.common.recipe.lookup.IDoubleRecipeLookupHandler;
@@ -14,7 +14,7 @@ import mekanism.common.recipe.lookup.cache.DoubleInputRecipeCache;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.fluids.FluidStack;
 
-public interface IDoubleRecipeLookUpHandler2<INPUT_A, INPUT_B, RECIPE extends MekanismRecipe & BiPredicate<INPUT_A, INPUT_B>,
+public interface AMIDoubleRecipeLookUpHandler<INPUT_A, INPUT_B, RECIPE extends MekanismRecipe & BiPredicate<INPUT_A, INPUT_B>,
       INPUT_CACHE extends DoubleInputRecipeCache<INPUT_A, ?, INPUT_B, ?, RECIPE, ?, ?>> extends IRecipeTypedLookupHandler<RECIPE, INPUT_CACHE> {
 
     default boolean containsRecipeAB(INPUT_A inputA, INPUT_B inputB) {

@@ -24,9 +24,9 @@ public class FluidFluidToFluidRecipeSerializer<RECIPE extends FluidFluidToFluidR
 		this.factory = factory;
 	}
 
-	private final String fluidInputAJsonKey = "fluidInputA";
-	private final String fluidInputBJsonKey = "fluidInputB";
-	private final String fluidOutputJsonKey = "fluidOutput";
+	private static final String fluidInputAJsonKey = "fluidInputA";
+	private static final String fluidInputBJsonKey = "fluidInputB";
+	private static final String fluidOutputJsonKey = "fluidOutput";
 
 	@Override
 	public RECIPE fromJson(ResourceLocation recipeId, JsonObject json) {
