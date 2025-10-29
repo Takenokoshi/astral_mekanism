@@ -6,8 +6,8 @@ import java.util.List;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-import astral_mekanism.recipes.AMOutputHelper;
 import astral_mekanism.recipes.cachedRecipe.ItemToItemItemCachedRecipe;
+import astral_mekanism.recipes.output.AMOutputHelper;
 import astral_mekanism.recipes.output.DoubleItemStackOutput;
 import astral_mekanism.recipes.recipe.ItemToItemItemRecipe;
 import astral_mekanism.registries.AstralMekanismRecipeTypes;

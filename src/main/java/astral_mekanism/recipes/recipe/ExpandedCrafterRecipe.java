@@ -35,7 +35,7 @@ public abstract class ExpandedCrafterRecipe extends MekanismRecipe
         this.output = output;
     }
 
-    public ItemStack getOutput() {
+    public ItemStack getOutput(ItemStack[] t, FluidStack f, GasStack g) {
         return output.copy();
     }
 

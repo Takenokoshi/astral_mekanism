@@ -7,9 +7,9 @@ import org.jetbrains.annotations.Nullable;
 
 import astral_mekanism.block.blockentity.core.BlockEntityUtils;
 import astral_mekanism.block.blockentity.elements.AstralMekDataType;
-import astral_mekanism.recipes.AMIDoubleRecipeLookUpHandler;
 import astral_mekanism.recipes.cachedRecipe.FluidFluidToFluidCachedRecipe;
 import astral_mekanism.recipes.inputRecipeCache.AMInputRecipeCache.FluidFluid;
+import astral_mekanism.recipes.lookup.AMIDoubleRecipeLookUpHandler;
 import astral_mekanism.recipes.recipe.FluidFluidToFluidRecipe;
 import astral_mekanism.registries.AstralMekanismRecipeTypes;
 import mekanism.api.IContentsListener;

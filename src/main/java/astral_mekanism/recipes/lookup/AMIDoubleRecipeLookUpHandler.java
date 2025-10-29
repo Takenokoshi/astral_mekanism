@@ -1,4 +1,4 @@
-package astral_mekanism.recipes;
+package astral_mekanism.recipes.lookup;
 
 import java.util.function.BiPredicate;
 

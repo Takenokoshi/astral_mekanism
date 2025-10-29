@@ -1,8 +1,7 @@
-package astral_mekanism.recipes;
+package astral_mekanism.recipes.output;
 
 import java.util.Objects;
 
-import astral_mekanism.recipes.output.DoubleItemStackOutput;
 import mekanism.api.Action;
 import mekanism.api.AutomationType;
 import mekanism.api.annotations.NothingNullByDefault;
