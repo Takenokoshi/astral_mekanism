@@ -2,6 +2,8 @@ package astral_mekanism.recipes.Irecipe;
 
 import astral_mekanism.recipes.ingredient.ArrayItemStackIngredient;
 import astral_mekanism.recipes.recipe.ExpandedCrafterRecipe;
+import astral_mekanism.registries.AstralMekanismRecipeSerializers;
+import astral_mekanism.registries.AstralMekanismRecipeTypes;
 import mekanism.api.recipes.ingredients.ChemicalStackIngredient.GasStackIngredient;
 import mekanism.api.recipes.ingredients.FluidStackIngredient;
 import net.minecraft.resources.ResourceLocation;
@@ -18,14 +20,12 @@ public class ExpandedCrafterIRecipe extends ExpandedCrafterRecipe {
 
     @Override
     public RecipeSerializer<?> getSerializer() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getSerializer'");
+        return AstralMekanismRecipeSerializers.EXPANDED_CRAFTER_RECIPE.get();
     }
 
     @Override
     public RecipeType<?> getType() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getType'");
+        return AstralMekanismRecipeTypes.EXPANDED_CRAFTER_RECIPE.get();
     }
     
 }

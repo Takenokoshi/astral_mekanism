@@ -1,15 +1,18 @@
 package astral_mekanism.registries;
 
 import astral_mekanism.AstralMekanismID;
+import astral_mekanism.recipes.Irecipe.ExpandedCrafterIRecipe;
 import astral_mekanism.recipes.Irecipe.FluidInfuserIRecipe;
 import astral_mekanism.recipes.Irecipe.FormulizedSawingIRecipe;
 import astral_mekanism.recipes.Irecipe.GreenHouseIRecipe;
 import astral_mekanism.recipes.Irecipe.MekanicalChagerIRecipe;
 import astral_mekanism.recipes.Irecipe.MelterIRecipe;
 import astral_mekanism.recipes.Irecipe.SPSIRecipe;
+import astral_mekanism.recipes.recipe.ExpandedCrafterRecipe;
 import astral_mekanism.recipes.recipe.FluidFluidToFluidRecipe;
 import astral_mekanism.recipes.recipe.GreenHouseRecipe;
 import astral_mekanism.recipes.recipe.ItemToItemItemRecipe;
+import astral_mekanism.recipes.serializer.ExpandedCrafterRecipeSerializer;
 import astral_mekanism.recipes.serializer.FluidFluidToFluidRecipeSerializer;
 import astral_mekanism.recipes.serializer.GreenHouseRecipeSerializer;
 import astral_mekanism.recipes.serializer.ItemStackToFluidRecipeSerializer;
@@ -49,4 +52,7 @@ public class AstralMekanismRecipeSerializers {
 
     public static final RecipeSerializerRegistryObject<GasToGasRecipe> SPS_RECIPE = RECIPE_SERIALIZERS
             .register("sps", () -> new GasToGasRecipeSerializer<>(SPSIRecipe::new));
+
+    public static final RecipeSerializerRegistryObject<ExpandedCrafterRecipe> EXPANDED_CRAFTER_RECIPE = RECIPE_SERIALIZERS
+            .register("expanded_crafter", () -> new ExpandedCrafterRecipeSerializer<>(ExpandedCrafterIRecipe::new));
 }

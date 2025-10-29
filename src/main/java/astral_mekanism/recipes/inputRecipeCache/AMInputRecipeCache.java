@@ -48,11 +48,10 @@ public class AMInputRecipeCache {
             TripleInputRecipeCache<ItemStack[], ArrayItemStackIngredient, FluidStack, FluidStackIngredient, GasStack, ChemicalStackIngredient<Gas, GasStack>, RECIPE, ArrayItemInputCache<RECIPE>, FluidInputCache<RECIPE>, ChemicalInputCache<Gas, GasStack, RECIPE>> {
 
         public ArrayItemFluidGas(MekanismRecipeType<RECIPE, ?> recipeType,
-                Function<RECIPE, ArrayItemStackIngredient> inputAExtractor, ArrayItemInputCache<RECIPE> cacheA,
-                Function<RECIPE, FluidStackIngredient> inputBExtractor, FluidInputCache<RECIPE> cacheB,
-                Function<RECIPE, ChemicalStackIngredient<Gas, GasStack>> inputCExtractor,
-                ChemicalInputCache<Gas, GasStack, RECIPE> cacheC) {
-            super(recipeType, inputAExtractor, cacheA, inputBExtractor, cacheB, inputCExtractor, cacheC);
+                Function<RECIPE, ArrayItemStackIngredient> inputAExtractor,
+                Function<RECIPE, FluidStackIngredient> inputBExtractor,
+                Function<RECIPE, ChemicalStackIngredient<Gas, GasStack>> inputCExtractor) {
+            super(recipeType, inputAExtractor, new ArrayItemInputCache<>(), inputBExtractor, new FluidInputCache<>(), inputCExtractor, new ChemicalInputCache<>());
         }
 
     }
