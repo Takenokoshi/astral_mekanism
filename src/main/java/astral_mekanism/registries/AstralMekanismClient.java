@@ -28,6 +28,7 @@ import astral_mekanism.block.gui.compact.GuiCompactFissionReactor;
 import astral_mekanism.block.gui.compact.GuiCompactTEP;
 import astral_mekanism.block.gui.generator.GuiGasBurningGenerator;
 import astral_mekanism.block.gui.generator.GuiHeatGenerator;
+import astral_mekanism.block.gui.normalmachine.GuiExpandedCrafter;
 import astral_mekanism.block.gui.normalmachine.GuiFluidInfuser;
 import astral_mekanism.block.gui.normalmachine.GuiGreenHouse;
 import astral_mekanism.block.gui.normalmachine.GuiMelter;
@@ -78,6 +79,7 @@ public class AstralMekanismClient {
 					GuiElectricMachine<BEMekanicalCharger, MekanismTileContainer<BEMekanicalCharger>>::new);
 			regScreen(AstralMekanismMachines.COMPACT_FIR, GuiCompactFissionReactor::new);
 			regScreen(AstralMekanismMachines.COMPACT_SPS, GuiGasToGasMachine<BECompactSPS>::new);
+            regScreen(AstralMekanismMachines.EXPANDED_CRAFTER, GuiExpandedCrafter::new);
 			regScreen(AstralMekanismMachines.ASTRAL_GNA, GuiGasToGasBlock<BEAstralGNA>::new);
 			regScreen(AstralMekanismMachines.ASTRAL_SPS, GuiGasToGasMachine<BEAstralSPS>::new);
 			regScreen(AstralMekanismMachines.ASTRAL_PRC, GuiAstralPRC::new);
