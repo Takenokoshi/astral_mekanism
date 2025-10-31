@@ -10,6 +10,8 @@ import mekanism.client.gui.element.bar.GuiVerticalPowerBar;
 import mekanism.client.gui.element.gauge.GaugeType;
 import mekanism.client.gui.element.gauge.GuiFluidGauge;
 import mekanism.client.gui.element.gauge.GuiGasGauge;
+import mekanism.client.gui.element.progress.GuiProgress;
+import mekanism.client.gui.element.progress.ProgressType;
 import mekanism.common.inventory.warning.WarningTracker.WarningType;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.network.chat.Component;
@@ -33,9 +35,10 @@ public class GuiExpandedCrafter extends GuiConfigurableTile<BEExpandedCrafter, C
                 GaugeType.STANDARD, this, 7, 17));
         addRenderableWidget(new GuiGasGauge(tile::getGasTank, () -> tile.getGasTanks(null),
                 GaugeType.STANDARD, this, 25, 17));
-        addRenderableWidget(new GuiVerticalPowerBar(this, tile.getEnergyContainer(), 163, 16)
+        addRenderableWidget(new GuiVerticalPowerBar(this, tile.getEnergyContainer(), 190, 17)
                 .warning(WarningType.NOT_ENOUGH_ENERGY,
                         tile.getWarningCheck(RecipeError.NOT_ENOUGH_ENERGY)));
+        addRenderableWidget(new GuiProgress(tile::getScaledProgress, ProgressType.RIGHT, this, 163, 54));
     }
 
     @Override

@@ -39,7 +39,10 @@ import mekanism.common.inventory.slot.FluidInventorySlot;
 import mekanism.common.inventory.slot.InputInventorySlot;
 import mekanism.common.inventory.slot.OutputInventorySlot;
 import mekanism.common.inventory.slot.chemical.GasInventorySlot;
+import mekanism.common.lib.transmitter.TransmissionType;
 import mekanism.common.recipe.IMekanismRecipeTypeProvider;
+import mekanism.common.tile.component.TileComponentConfig;
+import mekanism.common.tile.component.TileComponentEjector;
 import mekanism.common.tile.prefab.TileEntityProgressMachine;
 import mekanism.common.util.MekanismUtils;
 import net.minecraft.core.BlockPos;
@@ -77,6 +80,11 @@ public class BEExpandedCrafter extends TileEntityProgressMachine<ExpandedCrafter
 
     public BEExpandedCrafter(IBlockProvider blockProvider, BlockPos pos, BlockState state) {
         super(blockProvider, pos, state, TRACKED_ERROR_TYPES, 100);
+        configComponent = new TileComponentConfig(this, TransmissionType.ENERGY,TransmissionType.FLUID,TransmissionType.GAS);
+        configComponent.setupInputConfig(TransmissionType.ENERGY, energyContainer);
+        configComponent.setupInputConfig(TransmissionType.FLUID, fluidTank);
+        configComponent.setupInputConfig(TransmissionType.GAS, gasTank);
+        ejectorComponent = new TileComponentEjector(this);
         itemsInputHandler = AMInputHelper.getInputHandler(inputSlots, NOT_ENOUGH_ITEMS_INPUT_ERROR);
         fluidInputHandler = InputHelper.getInputHandler(fluidTank, NOT_ENOUGH_FLUID_INPUT_ERROR);
         gasInputHandler = InputHelper.getInputHandler(gasTank, NOT_ENOUGH_GAS_INPUT_ERROR);
@@ -106,7 +114,7 @@ public class BEExpandedCrafter extends TileEntityProgressMachine<ExpandedCrafter
         }
         builder.addSlot(outputSlot = OutputInventorySlot.at(recipeCacheListener, 170, 54));
         builder.addSlot(this.energySlot = EnergyInventorySlot.fillOrConvert(
-                this.energyContainer, this::getLevel, listener, 141, 17));
+                this.energyContainer, this::getLevel, listener, 174, 18));
         builder.addSlot(fluidSlot = FluidInventorySlot.fill(fluidTank, listener, 8, 76));
         builder.addSlot(gasSlot = GasInventorySlot.fill(gasTank, listener, 26, 76));
         return builder.build();

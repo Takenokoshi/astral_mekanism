@@ -24,10 +24,11 @@ import mezz.jei.api.helpers.IGuiHelper;
 import mezz.jei.api.recipe.IFocusGroup;
 import mezz.jei.api.recipe.RecipeIngredientRole;
 import net.minecraft.world.item.ItemStack;
+import net.minecraftforge.fluids.FluidStack;
 
 public class GreenHouseRecipeCategory extends BaseRecipeCategory<GreenHouseRecipe> {
 
-	private final GuiGauge<?> inputFluid;
+	private final GuiGauge<FluidStack> inputFluid;
 	private final GuiSlot inputItem;
 	private final GuiSlot outputItemA;
 	private final GuiSlot outputItemB;
