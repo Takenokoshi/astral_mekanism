@@ -1,0 +1,47 @@
+{
+  "type": "astral_mekanism:expanded_crafter",
+  "itemsInput": {
+    "ingredients": [
+      { "ingredient": { "item": "minecraft:acacia_sapling" }, "amount": 1 },
+      { "ingredient": { "item": "minecraft:acacia_sapling" }, "amount": 1 },
+      { "ingredient": { "item": "minecraft:acacia_sapling" }, "amount": 1 },
+      { "ingredient": { "item": "minecraft:acacia_sapling" }, "amount": 1 },
+      { "ingredient": { "item": "minecraft:acacia_sapling" }, "amount": 1 },
+      { "ingredient": { "item": "minecraft:acacia_sapling" }, "amount": 1 },
+      { "ingredient": { "item": "minecraft:acacia_sapling" }, "amount": 1 },
+      { "ingredient": { "item": "minecraft:acacia_sapling" }, "amount": 1 },
+      { "ingredient": { "item": "minecraft:acacia_sapling" }, "amount": 1 },
+      { "ingredient": { "item": "minecraft:acacia_sapling" }, "amount": 1 },
+      { "ingredient": { "item": "minecraft:acacia_sapling" }, "amount": 1 },
+      { "ingredient": { "item": "minecraft:acacia_sapling" }, "amount": 1 },
+      { "ingredient": { "item": "minecraft:acacia_sapling" }, "amount": 1 },
+      { "ingredient": { "item": "minecraft:acacia_sapling" }, "amount": 1 },
+      { "ingredient": { "item": "minecraft:acacia_sapling" }, "amount": 1 },
+      { "ingredient": { "item": "minecraft:acacia_sapling" }, "amount": 1 },
+      { "ingredient": { "item": "minecraft:acacia_sapling" }, "amount": 1 },
+      { "ingredient": { "item": "minecraft:acacia_sapling" }, "amount": 1 },
+      { "ingredient": { "item": "minecraft:acacia_sapling" }, "amount": 1 },
+      { "ingredient": { "item": "minecraft:acacia_sapling" }, "amount": 1 },
+      { "ingredient": { "item": "minecraft:acacia_sapling" }, "amount": 1 },
+      { "ingredient": { "item": "minecraft:acacia_sapling" }, "amount": 1 },
+      { "ingredient": { "item": "minecraft:acacia_sapling" }, "amount": 1 },
+      { "ingredient": { "item": "minecraft:acacia_sapling" }, "amount": 1 },
+      { "ingredient": { "item": "minecraft:acacia_sapling" }, "amount": 1 }
+    ]
+  },
+
+  "fluidInput": {
+    "ingredient": { "fluid": "minecraft:water" },
+    "amount": 1000
+  },
+
+  "gasInput": {
+    "ingredient": { "gas": "mekanism:oxygen" },
+    "amount": 50
+  },
+
+  "output": {
+    "item": "minecraft:oak_log",
+    "count": 1
+  }
+}
