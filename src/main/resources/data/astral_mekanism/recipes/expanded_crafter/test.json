@@ -29,15 +29,14 @@
       { "ingredient": { "item": "minecraft:acacia_sapling" }, "amount": 1 }
     ]
   },
-
   "fluidInput": {
-    "ingredient": { "fluid": "minecraft:water" },
+    "tag":"minecraft:water",
     "amount": 1000
   },
 
   "gasInput": {
-    "ingredient": { "gas": "mekanism:oxygen" },
-    "amount": 50
+    "amount": 2,
+    "gas": "mekanism:oxygen"
   },
 
   "output": {
