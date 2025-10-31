@@ -55,7 +55,7 @@ public class ExpandedCrafterRecipeCategory extends BaseRecipeCategory<ExpandedCr
     public void setRecipe(IRecipeLayoutBuilder builder, ExpandedCrafterRecipe recipe, IFocusGroup focusGroup) {
         initArrayItem(builder, RecipeIngredientRole.INPUT, inputItems, recipe.getInputItems().getRepresentations());
         initFluid(builder, RecipeIngredientRole.INPUT, inputFluid, recipe.getInputFluid().getRepresentations());
-        initChemical(builder, MekanismJEI.TYPE_GAS, RecipeIngredientRole.INPUT, inputFluid,
+        initChemical(builder, MekanismJEI.TYPE_GAS, RecipeIngredientRole.INPUT, inputGas,
                 recipe.getInputGas().getRepresentations());
         initItem(builder, RecipeIngredientRole.OUTPUT, output, recipe.getOutputDefinition());
     }

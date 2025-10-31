@@ -25,7 +25,7 @@ public class GuiExpandedCrafter extends GuiConfigurableTile<BEExpandedCrafter, C
         imageHeight += 36;
         imageWidth += 18;
         inventoryLabelX += 9;
-        inventoryLabelY += 18;
+        inventoryLabelY += 36;
     }
 
     @Override
@@ -38,7 +38,8 @@ public class GuiExpandedCrafter extends GuiConfigurableTile<BEExpandedCrafter, C
         addRenderableWidget(new GuiVerticalPowerBar(this, tile.getEnergyContainer(), 190, 17)
                 .warning(WarningType.NOT_ENOUGH_ENERGY,
                         tile.getWarningCheck(RecipeError.NOT_ENOUGH_ENERGY)));
-        addRenderableWidget(new GuiProgress(tile::getScaledProgress, ProgressType.RIGHT, this, 163, 54));
+        addRenderableWidget(new GuiProgress(tile::getScaledProgress, ProgressType.RIGHT, this, 134, 54)
+        .jeiCategory(tile));
     }
 
     @Override
