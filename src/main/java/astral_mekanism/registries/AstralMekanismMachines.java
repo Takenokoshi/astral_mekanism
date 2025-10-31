@@ -16,6 +16,7 @@ import astral_mekanism.block.blockentity.compact.BECompactTEP;
 import astral_mekanism.block.blockentity.generator.AstralMekGeneratorTier;
 import astral_mekanism.block.blockentity.generator.BEGasBurningGenerator;
 import astral_mekanism.block.blockentity.generator.BEHeatGenerator;
+import astral_mekanism.block.blockentity.normalmachine.BEExpandedCrafter;
 import astral_mekanism.block.blockentity.normalmachine.BEFluidInfuser;
 import astral_mekanism.block.blockentity.normalmachine.BEGlowstoneNeutronActivator;
 import astral_mekanism.block.blockentity.normalmachine.BEGreenHouse;
@@ -25,6 +26,7 @@ import astral_mekanism.block.blockentity.other.BEItemSortableStorage;
 import astral_mekanism.block.blockentity.other.BEUniversalStorage;
 import astral_mekanism.block.blockentity.supplydevice.BECobblestoneSupplyDevice;
 import astral_mekanism.block.blockentity.supplydevice.BEWaterSupplyDevice;
+import astral_mekanism.block.container.normal_machine.ContainerExpandedCrafter;
 import astral_mekanism.block.container.other.ContainerItemSortableStorage;
 import astral_mekanism.block.container.prefab.ContainerAbstractStorage;
 import astral_mekanism.registration.BlockTypeMachine;
@@ -135,5 +137,10 @@ public class AstralMekanismMachines {
     public static final MachineRegistryObject<BEAstralPrecisionSawmill, BlockTypeMachine<BEAstralPrecisionSawmill>, BlockTileModel<BEAstralPrecisionSawmill, BlockTypeMachine<BEAstralPrecisionSawmill>>, MekanismTileContainer<BEAstralPrecisionSawmill>, ItemBlockMachine> ASTRAL_PRECISION_SAWMILL = MACHINES
             .register("astral_precision_sawmill", AstralMekanismBlockTypes.ASTRAL_PRECISION_SAWMILL,
                     BEAstralPrecisionSawmill.class, BEAstralPrecisionSawmill::new);
+
+    public static final MachineRegistryObject<BEExpandedCrafter, BlockTypeMachine<BEExpandedCrafter>, BlockTileModel<BEExpandedCrafter, BlockTypeMachine<BEExpandedCrafter>>, ContainerExpandedCrafter, ItemBlockMachine> EXPANDED_CRAFTER = MACHINES
+            .register("expanded_crafter", AstralMekanismBlockTypes.EXPANDED_CRAFTER,
+                    bt -> new BlockTileModel<>(bt, normalOperator), ItemBlockMachine::new,
+                    BEExpandedCrafter::new, BEExpandedCrafter.class, ContainerExpandedCrafter::new);
 
 }

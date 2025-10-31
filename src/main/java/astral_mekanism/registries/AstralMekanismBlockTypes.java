@@ -24,6 +24,7 @@ import astral_mekanism.block.blockentity.compact.BECompactTEP;
 import astral_mekanism.block.blockentity.generator.AstralMekGeneratorTier;
 import astral_mekanism.block.blockentity.generator.BEGasBurningGenerator;
 import astral_mekanism.block.blockentity.generator.BEHeatGenerator;
+import astral_mekanism.block.blockentity.normalmachine.BEExpandedCrafter;
 import astral_mekanism.block.blockentity.normalmachine.BEFluidInfuser;
 import astral_mekanism.block.blockentity.normalmachine.BEGlowstoneNeutronActivator;
 import astral_mekanism.block.blockentity.normalmachine.BEGreenHouse;
@@ -271,5 +272,12 @@ public class AstralMekanismBlockTypes {
             .withGui(() -> AstralMekanismMachines.ASTRAL_PRECISION_SAWMILL.getContainerRO())
             .withEnergyConfig(MekanismConfig.usage.precisionSawmill, () -> FloatingLong.MAX_VALUE)
             .withCustomShape(AMBlockShapes.ASTRAL_MACHINE_BASIC)
+            .build();
+
+    public static final BlockTypeMachine<BEExpandedCrafter> EXPANDED_CRAFTER = BlockMachineBuilder
+            .createMachine(() -> AstralMekanismMachines.EXPANDED_CRAFTER.getTileRO(), null)
+            .withGui(() -> AstralMekanismMachines.EXPANDED_CRAFTER.getContainerRO())
+            .withEnergyConfig(() -> FloatingLong.create(1000 * AstralMekanismConfig.energyRate),
+                    () -> FloatingLong.create(2000 * AstralMekanismConfig.energyRate))
             .build();
 }
