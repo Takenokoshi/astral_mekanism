@@ -3,12 +3,13 @@ package astral_mekanism.recipes.inputRecipeCache;
 import astral_mekanism.recipes.ingredient.ArrayItemStackIngredient;
 import astral_mekanism.util.ArrayItemStackUtils;
 import mekanism.api.recipes.MekanismRecipe;
-import mekanism.common.recipe.lookup.cache.type.BaseInputCache;
+import mekanism.common.lib.inventory.HashedItem;
+import mekanism.common.recipe.lookup.cache.type.NBTSensitiveInputCache;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 
 public class ArrayItemInputCache<RECIPE extends MekanismRecipe>
-        extends BaseInputCache<Item[], ItemStack[], ArrayItemStackIngredient, RECIPE> {
+        extends NBTSensitiveInputCache<Item[], HashedItem[], ItemStack[], ArrayItemStackIngredient, RECIPE> {
 
     @Override
     public boolean isEmpty(ItemStack[] input) {
@@ -23,6 +24,15 @@ public class ArrayItemInputCache<RECIPE extends MekanismRecipe>
         }
         addInputCache(input, recipe);
         return false;
+    }
+
+    @Override
+    protected HashedItem[] createNbtKey(ItemStack[] input) {
+        HashedItem[] result = new HashedItem[input.length];
+        for (int i = 0; i < result.length; i++) {
+            result[i] = HashedItem.raw(input[i]);
+        }
+        return result;
     }
 
     @Override
