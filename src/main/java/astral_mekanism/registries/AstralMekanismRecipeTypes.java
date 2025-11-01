@@ -15,12 +15,14 @@ import astral_mekanism.recipes.recipe.ItemToItemItemRecipe;
 import mekanism.api.chemical.gas.Gas;
 import mekanism.api.chemical.gas.GasStack;
 import mekanism.api.recipes.GasToGasRecipe;
+import mekanism.api.recipes.ItemStackGasToItemStackRecipe;
 import mekanism.api.recipes.ItemStackToFluidRecipe;
 import mekanism.api.recipes.ItemStackToItemStackRecipe;
 import mekanism.api.recipes.MekanismRecipe;
 import mekanism.common.recipe.MekanismRecipeType;
 import mekanism.common.recipe.lookup.cache.IInputRecipeCache;
 import mekanism.common.recipe.lookup.cache.InputRecipeCache;
+import mekanism.common.recipe.lookup.cache.InputRecipeCache.ItemChemical;
 import mekanism.common.recipe.lookup.cache.InputRecipeCache.SingleChemical;
 import mekanism.common.recipe.lookup.cache.InputRecipeCache.SingleItem;
 import mekanism.common.registration.impl.RecipeTypeDeferredRegister;
@@ -73,4 +75,19 @@ public class AstralMekanismRecipeTypes {
             "expanded_crafter",
             rt -> new AMInputRecipeCache.ArrayItemFluidGas<>(rt, ExpandedCrafterRecipe::getInputItems,
                     ExpandedCrafterRecipe::getInputFluid, ExpandedCrafterRecipe::getInputGas));
+
+    public static final RecipeTypeRegistryObject<ItemStackGasToItemStackRecipe, ItemChemical<Gas, GasStack, ItemStackGasToItemStackRecipe>> AM_INJECTING = register(
+            "am_injecting",
+            rt -> new InputRecipeCache.ItemChemical<>(rt, ItemStackGasToItemStackRecipe::getItemInput,
+                    ItemStackGasToItemStackRecipe::getChemicalInput));
+
+    public static final RecipeTypeRegistryObject<ItemStackGasToItemStackRecipe, ItemChemical<Gas, GasStack, ItemStackGasToItemStackRecipe>> AM_PURIFYING = register(
+            "am_purifying",
+            rt -> new InputRecipeCache.ItemChemical<>(rt, ItemStackGasToItemStackRecipe::getItemInput,
+                    ItemStackGasToItemStackRecipe::getChemicalInput));
+
+    public static final RecipeTypeRegistryObject<ItemStackGasToItemStackRecipe, ItemChemical<Gas, GasStack, ItemStackGasToItemStackRecipe>> AM_COMPRESSING = register(
+            "am_compressing",
+            rt -> new InputRecipeCache.ItemChemical<>(rt, ItemStackGasToItemStackRecipe::getItemInput,
+                    ItemStackGasToItemStackRecipe::getChemicalInput));
 }

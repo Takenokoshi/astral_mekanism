@@ -12,12 +12,17 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import appeng.recipes.AERecipeTypes;
 import appeng.recipes.handlers.ChargerRecipe;
 import astral_mekanism.recipes.Irecipe.FormulizedSawingIRecipe;
+import astral_mekanism.recipes.Irecipe.InjectingAMIRecipe;
 import astral_mekanism.recipes.Irecipe.MekanicalChagerIRecipe;
 import astral_mekanism.registries.AstralMekanismRecipeTypes;
+import mekanism.api.chemical.gas.GasStack;
+import mekanism.api.math.FloatingLong;
+import mekanism.api.recipes.ItemStackGasToItemStackRecipe;
 import mekanism.api.recipes.MekanismRecipe;
 import mekanism.api.recipes.PressurizedReactionRecipe;
 import mekanism.api.recipes.SawmillRecipe;
 import mekanism.api.recipes.ingredients.ItemStackIngredient;
+import mekanism.api.recipes.ingredients.ChemicalStackIngredient.GasStackIngredient;
 import mekanism.api.recipes.ingredients.creator.IItemStackIngredientCreator;
 import mekanism.api.recipes.ingredients.creator.IngredientCreatorAccess;
 import mekanism.common.Mekanism;
@@ -115,6 +120,22 @@ public class MekanismRecipeTypeMixin2 {
 
             cir.setReturnValue(recipes);
             return;
+        }
+        if (Objects.equals(type.getRegistryName(),
+                AstralMekanismRecipeTypes.AM_INJECTING.get().getRegistryName())) {
+            List<ItemStackGasToItemStackRecipe> beforeRecipes = recipeManager
+                    .getAllRecipesFor(MekanismRecipeType.INJECTING.get());
+            for (ItemStackGasToItemStackRecipe recipe : beforeRecipes) {
+                recipes.add((RECIPE) new InjectingAMIRecipe(
+                        recipe.getId(), recipe.getItemInput(), IngredientCreatorAccess.gas().createMulti(
+                                recipe.getChemicalInput().getRepresentations().stream()
+                                        .map(stack -> IngredientCreatorAccess.gas()
+                                                .from(new GasStack(stack,
+                                                        FloatingLong.create(stack.getAmount()).divide(10).ceil()
+                                                                .longValue())))
+                                        .toArray(GasStackIngredient[]::new)),
+                        recipe.getOutputDefinition().get(0)));
+            }
         }
     }
 }
