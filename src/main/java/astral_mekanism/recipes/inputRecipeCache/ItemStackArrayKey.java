@@ -10,7 +10,7 @@ public class ItemStackArrayKey {
     public ItemStackArrayKey(ItemStack[] stacks) {
         this.stacks = stacks;
         for (int i = 0; i < stacks.length; i++) {
-            stacks[i] = stacks[i].copyWithCount(1);
+            this.stacks[i] = stacks[i].copyWithCount(1);
         }
     }
 

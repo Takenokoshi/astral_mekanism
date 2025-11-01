@@ -34,6 +34,7 @@ import mekanism.common.capabilities.holder.fluid.FluidTankHelper;
 import mekanism.common.capabilities.holder.fluid.IFluidTankHolder;
 import mekanism.common.capabilities.holder.slot.IInventorySlotHolder;
 import mekanism.common.capabilities.holder.slot.InventorySlotHelper;
+import mekanism.common.inventory.container.slot.SlotOverlay;
 import mekanism.common.inventory.slot.EnergyInventorySlot;
 import mekanism.common.inventory.slot.FluidInventorySlot;
 import mekanism.common.inventory.slot.InputInventorySlot;
@@ -117,6 +118,8 @@ public class BEExpandedCrafter extends TileEntityProgressMachine<ExpandedCrafter
                 this.energyContainer, this::getLevel, listener, 174, 18));
         builder.addSlot(fluidSlot = FluidInventorySlot.fill(fluidTank, listener, 8, 76));
         builder.addSlot(gasSlot = GasInventorySlot.fill(gasTank, listener, 26, 76));
+        fluidSlot.setSlotOverlay(SlotOverlay.MINUS);
+        gasSlot.setSlotOverlay(SlotOverlay.MINUS);
         return builder.build();
     }
 

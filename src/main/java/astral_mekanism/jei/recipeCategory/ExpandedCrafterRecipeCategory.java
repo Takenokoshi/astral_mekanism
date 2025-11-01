@@ -43,7 +43,7 @@ public class ExpandedCrafterRecipeCategory extends BaseRecipeCategory<ExpandedCr
         inputFluid = this.addElement(GuiFluidGauge.getDummy(GaugeType.STANDARD.with(DataType.INPUT),
                 this, 7, 17));
         inputGas = this.addElement(GuiGasGauge.getDummy(GaugeType.STANDARD.with(DataType.INPUT),
-                this, 25, 27));
+                this, 25, 17));
         output = this.addSlot(SlotType.OUTPUT, 170, 54);
         this.addElement(new GuiVerticalPowerBar(this, FULL_BAR, 190, 17));
         addSlot(SlotType.POWER, 174, 18).with(SlotOverlay.POWER);

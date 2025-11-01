@@ -11,9 +11,11 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 import appeng.recipes.AERecipeTypes;
 import appeng.recipes.handlers.ChargerRecipe;
+import astral_mekanism.recipes.Irecipe.CompressingAMIRecipe;
 import astral_mekanism.recipes.Irecipe.FormulizedSawingIRecipe;
 import astral_mekanism.recipes.Irecipe.InjectingAMIRecipe;
 import astral_mekanism.recipes.Irecipe.MekanicalChagerIRecipe;
+import astral_mekanism.recipes.Irecipe.PurifyingAMIRecipe;
 import astral_mekanism.registries.AstralMekanismRecipeTypes;
 import mekanism.api.chemical.gas.GasStack;
 import mekanism.api.math.FloatingLong;
@@ -127,6 +129,38 @@ public class MekanismRecipeTypeMixin2 {
                     .getAllRecipesFor(MekanismRecipeType.INJECTING.get());
             for (ItemStackGasToItemStackRecipe recipe : beforeRecipes) {
                 recipes.add((RECIPE) new InjectingAMIRecipe(
+                        recipe.getId(), recipe.getItemInput(), IngredientCreatorAccess.gas().createMulti(
+                                recipe.getChemicalInput().getRepresentations().stream()
+                                        .map(stack -> IngredientCreatorAccess.gas()
+                                                .from(new GasStack(stack,
+                                                        FloatingLong.create(stack.getAmount()).divide(10).ceil()
+                                                                .longValue())))
+                                        .toArray(GasStackIngredient[]::new)),
+                        recipe.getOutputDefinition().get(0)));
+            }
+        }
+        if (Objects.equals(type.getRegistryName(),
+                AstralMekanismRecipeTypes.AM_PURIFYING.get().getRegistryName())) {
+            List<ItemStackGasToItemStackRecipe> beforeRecipes = recipeManager
+                    .getAllRecipesFor(MekanismRecipeType.PURIFYING.get());
+            for (ItemStackGasToItemStackRecipe recipe : beforeRecipes) {
+                recipes.add((RECIPE) new PurifyingAMIRecipe(
+                        recipe.getId(), recipe.getItemInput(), IngredientCreatorAccess.gas().createMulti(
+                                recipe.getChemicalInput().getRepresentations().stream()
+                                        .map(stack -> IngredientCreatorAccess.gas()
+                                                .from(new GasStack(stack,
+                                                        FloatingLong.create(stack.getAmount()).divide(10).ceil()
+                                                                .longValue())))
+                                        .toArray(GasStackIngredient[]::new)),
+                        recipe.getOutputDefinition().get(0)));
+            }
+        }
+        if (Objects.equals(type.getRegistryName(),
+                AstralMekanismRecipeTypes.AM_COMPRESSING.get().getRegistryName())) {
+            List<ItemStackGasToItemStackRecipe> beforeRecipes = recipeManager
+                    .getAllRecipesFor(MekanismRecipeType.INJECTING.get());
+            for (ItemStackGasToItemStackRecipe recipe : beforeRecipes) {
+                recipes.add((RECIPE) new CompressingAMIRecipe(
                         recipe.getId(), recipe.getItemInput(), IngredientCreatorAccess.gas().createMulti(
                                 recipe.getChemicalInput().getRepresentations().stream()
                                         .map(stack -> IngredientCreatorAccess.gas()
