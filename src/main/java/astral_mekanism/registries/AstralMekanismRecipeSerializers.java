@@ -65,8 +65,8 @@ public class AstralMekanismRecipeSerializers {
             .register("am_injecting", () -> new ItemStackGasToItemStackRecipeSerializer<>(InjectingAMIRecipe::new));
 
     public static final RecipeSerializerRegistryObject<ItemStackGasToItemStackRecipe> AM_PURIFYING = RECIPE_SERIALIZERS
-            .register("am_injecting", () -> new ItemStackGasToItemStackRecipeSerializer<>(PurifyingAMIRecipe::new));
+            .register("am_purifying", () -> new ItemStackGasToItemStackRecipeSerializer<>(PurifyingAMIRecipe::new));
 
     public static final RecipeSerializerRegistryObject<ItemStackGasToItemStackRecipe> AM_COMPRESSING = RECIPE_SERIALIZERS
-            .register("am_injecting", () -> new ItemStackGasToItemStackRecipeSerializer<>(CompressingAMIRecipe::new));
+            .register("am_compressing", () -> new ItemStackGasToItemStackRecipeSerializer<>(CompressingAMIRecipe::new));
 }
