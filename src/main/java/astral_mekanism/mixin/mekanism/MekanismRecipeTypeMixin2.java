@@ -11,14 +11,12 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 import appeng.recipes.AERecipeTypes;
 import appeng.recipes.handlers.ChargerRecipe;
-import astral_mekanism.recipes.Irecipe.CompressingAMIRecipe;
 import astral_mekanism.recipes.Irecipe.FormulizedSawingIRecipe;
 import astral_mekanism.recipes.Irecipe.InjectingAMIRecipe;
 import astral_mekanism.recipes.Irecipe.MekanicalChagerIRecipe;
 import astral_mekanism.recipes.Irecipe.PurifyingAMIRecipe;
 import astral_mekanism.registries.AstralMekanismRecipeTypes;
 import mekanism.api.chemical.gas.GasStack;
-import mekanism.api.math.FloatingLong;
 import mekanism.api.recipes.ItemStackGasToItemStackRecipe;
 import mekanism.api.recipes.MekanismRecipe;
 import mekanism.api.recipes.PressurizedReactionRecipe;
@@ -116,8 +114,6 @@ public class MekanismRecipeTypeMixin2 {
                             outputA.copyWithCount(outputA.getCount() * multiplier),
                             outputB));
                 }
-
-                Mekanism.logger.info("[AstralMek] Added sawmill recipe: {}", sawmillRecipe.getId());
             }
 
             cir.setReturnValue(recipes);
@@ -132,12 +128,12 @@ public class MekanismRecipeTypeMixin2 {
                         recipe.getId(), recipe.getItemInput(), IngredientCreatorAccess.gas().createMulti(
                                 recipe.getChemicalInput().getRepresentations().stream()
                                         .map(stack -> IngredientCreatorAccess.gas()
-                                                .from(new GasStack(stack,
-                                                        FloatingLong.create(stack.getAmount()).divide(10).ceil()
-                                                                .longValue())))
+                                                .from(new GasStack(stack, (stack.getAmount() + 9) / 10)))
                                         .toArray(GasStackIngredient[]::new)),
                         recipe.getOutputDefinition().get(0)));
             }
+            cir.setReturnValue(recipes);
+            return;
         }
         if (Objects.equals(type.getRegistryName(),
                 AstralMekanismRecipeTypes.AM_PURIFYING.get().getRegistryName())) {
@@ -148,28 +144,12 @@ public class MekanismRecipeTypeMixin2 {
                         recipe.getId(), recipe.getItemInput(), IngredientCreatorAccess.gas().createMulti(
                                 recipe.getChemicalInput().getRepresentations().stream()
                                         .map(stack -> IngredientCreatorAccess.gas()
-                                                .from(new GasStack(stack,
-                                                        FloatingLong.create(stack.getAmount()).divide(10).ceil()
-                                                                .longValue())))
+                                                .from(new GasStack(stack, (stack.getAmount() + 9) / 10)))
                                         .toArray(GasStackIngredient[]::new)),
                         recipe.getOutputDefinition().get(0)));
             }
-        }
-        if (Objects.equals(type.getRegistryName(),
-                AstralMekanismRecipeTypes.AM_COMPRESSING.get().getRegistryName())) {
-            List<ItemStackGasToItemStackRecipe> beforeRecipes = recipeManager
-                    .getAllRecipesFor(MekanismRecipeType.INJECTING.get());
-            for (ItemStackGasToItemStackRecipe recipe : beforeRecipes) {
-                recipes.add((RECIPE) new CompressingAMIRecipe(
-                        recipe.getId(), recipe.getItemInput(), IngredientCreatorAccess.gas().createMulti(
-                                recipe.getChemicalInput().getRepresentations().stream()
-                                        .map(stack -> IngredientCreatorAccess.gas()
-                                                .from(new GasStack(stack,
-                                                        FloatingLong.create(stack.getAmount()).divide(10).ceil()
-                                                                .longValue())))
-                                        .toArray(GasStackIngredient[]::new)),
-                        recipe.getOutputDefinition().get(0)));
-            }
+            cir.setReturnValue(recipes);
+            return;
         }
     }
 }
