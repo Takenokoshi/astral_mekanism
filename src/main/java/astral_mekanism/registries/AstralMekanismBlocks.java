@@ -8,10 +8,6 @@ import astral_mekanism.block.block.BlockMekanicalLight;
 import astral_mekanism.block.blockentity.astralmachine.advanced.BEAstralChemicalInjectionChamber;
 import astral_mekanism.block.blockentity.astralmachine.advanced.BEAstralOsmiumCompressor;
 import astral_mekanism.block.blockentity.astralmachine.advanced.BEAstralPurificationChamber;
-import astral_mekanism.block.blockentity.astralmachine.electric.BEAstralCrusher;
-import astral_mekanism.block.blockentity.astralmachine.electric.BEAstralEnergizedSmelter;
-import astral_mekanism.block.blockentity.astralmachine.electric.BEAstralEnrichmentChamber;
-import astral_mekanism.block.blockentity.astralmachine.electric.BEAstralMekanicalCharger;
 import astral_mekanism.enumexpansion.AMCableTier;
 import astral_mekanism.registration.BlockTypeMachine;
 import mekanism.common.block.prefab.BlockTile.BlockTileModel;
@@ -68,30 +64,6 @@ public class AstralMekanismBlocks {
             String name, BLOCKTYPE blockType) {
         return regMachineAndItem(name, blockType, ItemBlockMachine::new);
     }
-
-    public static final BlockRegistryObject<BlockTileModel<BEAstralCrusher, BlockTypeMachine<BEAstralCrusher>>, ItemBlockMachine> ASTRAL_CRUSHER = BLOCKS
-            .register("astral_crusher",
-                    () -> new BlockTileModel<>(AstralMekanismBlockTypes.ASTRAL_CRUSHER,
-                            properties -> properties.mapColor(MapColor.COLOR_GRAY).noParticlesOnBreak().strength(1.5f,
-                                    18000000.0f)),
-                    ItemBlockMachine::new);
-
-    public static final BlockRegistryObject<BlockTileModel<BEAstralEnergizedSmelter, BlockTypeMachine<BEAstralEnergizedSmelter>>, ItemBlockMachine> ASTRAL_ENERGIZED_SMELTER = BLOCKS
-            .register("astral_energized_smelter",
-                    () -> new BlockTileModel<>(AstralMekanismBlockTypes.ASTRAL_ENERGIZED_SMELTER,
-                            properties -> properties.mapColor(MapColor.COLOR_GRAY).noParticlesOnBreak().strength(1.5f,
-                                    18000000.0f)),
-                    ItemBlockMachine::new);
-
-    public static final BlockRegistryObject<BlockTileModel<BEAstralEnrichmentChamber, BlockTypeMachine<BEAstralEnrichmentChamber>>, ItemBlockMachine> ASTRAL_ENRICHMENT_CHAMBER = BLOCKS
-            .register("astral_enrichment_chamber",
-                    () -> new BlockTileModel<>(AstralMekanismBlockTypes.ASTRAL_ENRICHMENT_CHAMBER,
-                            properties -> properties.mapColor(MapColor.COLOR_GRAY).noParticlesOnBreak().strength(1.5f,
-                                    18000000.0f)),
-                    ItemBlockMachine::new);
-
-    public static final BlockRegistryObject<BlockTileModel<BEAstralMekanicalCharger, BlockTypeMachine<BEAstralMekanicalCharger>>, ItemBlockMachine> ASTRAL_MEKANICAL_CHARGER = regMachine(
-            "astral_mekanical_charger", AstralMekanismBlockTypes.ASTRAL_MEKANICAL_CHARGER);
 
     public static final BlockRegistryObject<BlockTileModel<BEAstralChemicalInjectionChamber, BlockTypeMachine<BEAstralChemicalInjectionChamber>>, ItemBlockMachine> ASTRAL_CHEMICAL_INJECTION_CHAMBER = regMachine(
             "astral_chemical_injection_chamber", AstralMekanismBlockTypes.ASTRAL_CHEMICAL_INJECTION_CHAMBER);

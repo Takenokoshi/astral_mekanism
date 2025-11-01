@@ -4,10 +4,6 @@ import astral_mekanism.AstralMekanismID;
 import astral_mekanism.block.blockentity.astralmachine.advanced.BEAstralChemicalInjectionChamber;
 import astral_mekanism.block.blockentity.astralmachine.advanced.BEAstralOsmiumCompressor;
 import astral_mekanism.block.blockentity.astralmachine.advanced.BEAstralPurificationChamber;
-import astral_mekanism.block.blockentity.astralmachine.electric.BEAstralCrusher;
-import astral_mekanism.block.blockentity.astralmachine.electric.BEAstralEnergizedSmelter;
-import astral_mekanism.block.blockentity.astralmachine.electric.BEAstralEnrichmentChamber;
-import astral_mekanism.block.blockentity.astralmachine.electric.BEAstralMekanicalCharger;
 import astral_mekanism.registration.RegistrationInterfaces.BlockEntityConstructor;
 import mekanism.common.block.prefab.BlockTile.BlockTileModel;
 import mekanism.common.content.blocktype.BlockTypeTile;
@@ -45,18 +41,6 @@ public class AstralMekanismTileEntityTypes {
             .builder(AstralMekanismBlocks.ASTRAL_UNIVERSAL_CABLE,
                     (p, s) -> new TileEntityUniversalCable(AstralMekanismBlocks.ASTRAL_UNIVERSAL_CABLE, p, s))
             .serverTicker(TileEntityTransmitter::tickServer).build();
-
-    public static final TileEntityTypeRegistryObject<BEAstralCrusher> ASTRAL_CRUSHER = reg(
-            AstralMekanismBlocks.ASTRAL_CRUSHER, BEAstralCrusher::new);
-
-    public static final TileEntityTypeRegistryObject<BEAstralEnrichmentChamber> ASTRAL_ENRICHMENT_CHAMBER = reg(
-            AstralMekanismBlocks.ASTRAL_ENRICHMENT_CHAMBER, BEAstralEnrichmentChamber::new);
-
-    public static final TileEntityTypeRegistryObject<BEAstralEnergizedSmelter> ASTRAL_ENERGIZED_SMELTER = reg(
-            AstralMekanismBlocks.ASTRAL_ENERGIZED_SMELTER, BEAstralEnergizedSmelter::new);
-
-    public static final TileEntityTypeRegistryObject<BEAstralMekanicalCharger> ASTRAL_MEKANICAL_CHARGER = reg(
-            AstralMekanismBlocks.ASTRAL_MEKANICAL_CHARGER, BEAstralMekanicalCharger::new);
 
     public static final TileEntityTypeRegistryObject<BEAstralChemicalInjectionChamber> ASTRAL_CHEMICAL_INJECTION_CHAMBER = reg(
             AstralMekanismBlocks.ASTRAL_CHEMICAL_INJECTION_CHAMBER, BEAstralChemicalInjectionChamber::new);

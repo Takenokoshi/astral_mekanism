@@ -6,7 +6,6 @@ import astral_mekanism.jei.recipeCategory.ExpandedCrafterRecipeCategory;
 import astral_mekanism.jei.recipeCategory.FluidInfuserRecipeCategory;
 import astral_mekanism.jei.recipeCategory.GreenHouseRecipeCategory;
 import astral_mekanism.jei.recipeCategory.MelterRecipeCategory;
-import astral_mekanism.registries.AstralMekanismBlocks;
 import astral_mekanism.registries.AstralMekanismMachines;
 import astral_mekanism.registries.AstralMekanismRecipeTypes;
 import mekanism.client.jei.CatalystRegistryHelper;
@@ -96,13 +95,13 @@ public class AstralMekJEIPlugin implements IModPlugin {
 				AstralMekanismMachines.MEKANICAL_CHARGER);
 		CatalystRegistryHelper.register(registry, AstralMekanismJEIRecipeType.EXPANDED_CRAFTER_RECIPE,
 				AstralMekanismMachines.EXPANDED_CRAFTER);
-		CatalystRegistryHelper.register(registry, MekanismJEIRecipeType.CRUSHING, AstralMekanismBlocks.ASTRAL_CRUSHER);
+		CatalystRegistryHelper.register(registry, MekanismJEIRecipeType.CRUSHING, AstralMekanismMachines.ASTRAL_CRUSHER);
 		CatalystRegistryHelper.register(registry, MekanismJEIRecipeType.SMELTING,
-				AstralMekanismBlocks.ASTRAL_ENERGIZED_SMELTER);
+				AstralMekanismMachines.ASTRAL_ENERGIZED_SMELTER);
 		CatalystRegistryHelper.register(registry, MekanismJEIRecipeType.ENRICHING,
-				AstralMekanismBlocks.ASTRAL_ENRICHMENT_CHAMBER);
+				AstralMekanismMachines.ASTRAL_ENRICHMENT_CHAMBER);
 		CatalystRegistryHelper.register(registry, AstralMekanismJEIRecipeType.MEKANICAL_CHARGER_RECIPE,
-				AstralMekanismBlocks.ASTRAL_MEKANICAL_CHARGER);
+				AstralMekanismMachines.ASTRAL_MEKANICAL_CHARGER);
 
 	}
 }

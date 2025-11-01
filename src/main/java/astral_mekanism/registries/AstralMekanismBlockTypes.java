@@ -161,37 +161,37 @@ public class AstralMekanismBlockTypes {
             .build();
 
     public static final BlockTypeMachine<BEAstralCrusher> ASTRAL_CRUSHER = BlockMachineBuilder
-            .createMachine(() -> AstralMekanismTileEntityTypes.ASTRAL_CRUSHER, MekanismLang.DESCRIPTION_CRUSHER)
+            .createMachine(() -> AstralMekanismMachines.ASTRAL_CRUSHER.getTileRO(), MekanismLang.DESCRIPTION_CRUSHER)
             .withEnergyConfig(() -> FloatingLong.create(10000 * AstralMekanismConfig.energyRate),
                     () -> FloatingLong.MAX_VALUE)
-            .withGui(() -> AstralMekanismContainers.ASTRAL_CRUSHER)
+            .withGui(() -> AstralMekanismMachines.ASTRAL_CRUSHER.getContainerRO())
             .withSound(MekanismSounds.CRUSHER)
             .build();
 
     public static final BlockTypeMachine<BEAstralEnergizedSmelter> ASTRAL_ENERGIZED_SMELTER = BlockMachineBuilder
-            .createMachine(() -> AstralMekanismTileEntityTypes.ASTRAL_ENERGIZED_SMELTER,
+            .createMachine(() -> AstralMekanismMachines.ASTRAL_ENERGIZED_SMELTER.getTileRO(),
                     MekanismLang.DESCRIPTION_ENERGIZED_SMELTER)
             .withEnergyConfig(() -> FloatingLong.create(10000 * AstralMekanismConfig.energyRate),
                     () -> FloatingLong.MAX_VALUE)
-            .withGui(() -> AstralMekanismContainers.ASTRAL_ENERGIZED_SMELTER)
+            .withGui(() -> AstralMekanismMachines.ASTRAL_ENERGIZED_SMELTER.getContainerRO())
             .withSound(MekanismSounds.ENERGIZED_SMELTER)
             .build();
 
     public static final BlockTypeMachine<BEAstralEnrichmentChamber> ASTRAL_ENRICHMENT_CHAMBER = BlockMachineBuilder
-            .createMachine(() -> AstralMekanismTileEntityTypes.ASTRAL_ENRICHMENT_CHAMBER,
+            .createMachine(() -> AstralMekanismMachines.ASTRAL_ENRICHMENT_CHAMBER.getTileRO(),
                     MekanismLang.DESCRIPTION_ENRICHMENT_CHAMBER)
             .withEnergyConfig(() -> FloatingLong.create(10000 * AstralMekanismConfig.energyRate),
                     () -> FloatingLong.MAX_VALUE)
-            .withGui(() -> AstralMekanismContainers.ASTRAL_ENRICHMENT_CHAMBER)
+            .withGui(() -> AstralMekanismMachines.ASTRAL_ENRICHMENT_CHAMBER.getContainerRO())
             .withSound(MekanismSounds.ENRICHMENT_CHAMBER)
             .build();
 
     public static final BlockTypeMachine<BEAstralMekanicalCharger> ASTRAL_MEKANICAL_CHARGER = BlockMachineBuilder
-            .createMachine(() -> AstralMekanismTileEntityTypes.ASTRAL_MEKANICAL_CHARGER,
+            .createMachine(() -> AstralMekanismMachines.ASTRAL_MEKANICAL_CHARGER.getTileRO(),
                     AstralMekanismLang.DESCRIPTION_MEKANICAL_CHARGER)
             .withEnergyConfig(() -> FloatingLong.create(800 * AstralMekanismConfig.energyRate),
                     () -> FloatingLong.MAX_VALUE)
-            .withGui(() -> AstralMekanismContainers.ASTRAL_MEKANICAL_CHARGER)
+            .withGui(() -> AstralMekanismMachines.ASTRAL_MEKANICAL_CHARGER.getContainerRO())
             .withCustomShape(AMBlockShapes.MEKANICAL_CHARGER)
             .build();
 

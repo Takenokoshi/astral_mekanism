@@ -10,6 +10,10 @@ import astral_mekanism.block.blockentity.astralmachine.BEAstralGreenHouse;
 import astral_mekanism.block.blockentity.astralmachine.BEAstralPRC;
 import astral_mekanism.block.blockentity.astralmachine.BEAstralPrecisionSawmill;
 import astral_mekanism.block.blockentity.astralmachine.BEAstralSPS;
+import astral_mekanism.block.blockentity.astralmachine.electric.BEAstralCrusher;
+import astral_mekanism.block.blockentity.astralmachine.electric.BEAstralEnergizedSmelter;
+import astral_mekanism.block.blockentity.astralmachine.electric.BEAstralEnrichmentChamber;
+import astral_mekanism.block.blockentity.astralmachine.electric.BEAstralMekanicalCharger;
 import astral_mekanism.block.blockentity.compact.BECompactFIR;
 import astral_mekanism.block.blockentity.compact.BECompactSPS;
 import astral_mekanism.block.blockentity.compact.BECompactTEP;
@@ -142,5 +146,21 @@ public class AstralMekanismMachines {
             .register("expanded_crafter", AstralMekanismBlockTypes.EXPANDED_CRAFTER,
                     bt -> new BlockTileModel<>(bt, normalOperator), ItemBlockMachine::new,
                     BEExpandedCrafter::new, BEExpandedCrafter.class, ContainerExpandedCrafter::new);
+
+    public static final MachineRegistryObject<BEAstralCrusher, BlockTypeMachine<BEAstralCrusher>, BlockTileModel<BEAstralCrusher, BlockTypeMachine<BEAstralCrusher>>, MekanismTileContainer<BEAstralCrusher>, ItemBlockMachine> ASTRAL_CRUSHER = MACHINES
+            .register("astral_crusher", AstralMekanismBlockTypes.ASTRAL_CRUSHER,
+                    BEAstralCrusher.class, BEAstralCrusher::new);
+
+    public static final MachineRegistryObject<BEAstralEnergizedSmelter, BlockTypeMachine<BEAstralEnergizedSmelter>, BlockTileModel<BEAstralEnergizedSmelter, BlockTypeMachine<BEAstralEnergizedSmelter>>, MekanismTileContainer<BEAstralEnergizedSmelter>, ItemBlockMachine> ASTRAL_ENERGIZED_SMELTER = MACHINES
+            .register("astral_energized_smelter", AstralMekanismBlockTypes.ASTRAL_ENERGIZED_SMELTER,
+                    BEAstralEnergizedSmelter.class, BEAstralEnergizedSmelter::new);
+
+    public static final MachineRegistryObject<BEAstralEnrichmentChamber, BlockTypeMachine<BEAstralEnrichmentChamber>, BlockTileModel<BEAstralEnrichmentChamber, BlockTypeMachine<BEAstralEnrichmentChamber>>, MekanismTileContainer<BEAstralEnrichmentChamber>, ItemBlockMachine> ASTRAL_ENRICHMENT_CHAMBER = MACHINES
+            .register("astral_enrichment_chamber", AstralMekanismBlockTypes.ASTRAL_ENRICHMENT_CHAMBER,
+                    BEAstralEnrichmentChamber.class, BEAstralEnrichmentChamber::new);
+
+    public static final MachineRegistryObject<BEAstralMekanicalCharger, BlockTypeMachine<BEAstralMekanicalCharger>, BlockTileModel<BEAstralMekanicalCharger, BlockTypeMachine<BEAstralMekanicalCharger>>, MekanismTileContainer<BEAstralMekanicalCharger>, ItemBlockMachine> ASTRAL_MEKANICAL_CHARGER = MACHINES
+            .register("astral_mekanical_charger", AstralMekanismBlockTypes.ASTRAL_MEKANICAL_CHARGER,
+                    BEAstralMekanicalCharger.class, BEAstralMekanicalCharger::new);
 
 }

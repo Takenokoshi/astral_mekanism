@@ -1,6 +1,7 @@
 package astral_mekanism.recipes.inputRecipeCache;
 
 import astral_mekanism.recipes.ingredient.ArrayItemStackIngredient;
+import astral_mekanism.util.ArrayItemStackUtils;
 import mekanism.api.recipes.MekanismRecipe;
 import mekanism.common.recipe.lookup.cache.type.BaseInputCache;
 import net.minecraft.world.item.Item;
@@ -11,13 +12,7 @@ public class ArrayItemInputCache<RECIPE extends MekanismRecipe>
 
     @Override
     public boolean isEmpty(ItemStack[] input) {
-        boolean result = false;
-        int i = 0;
-        while (!result && i < input.length) {
-            result |= input[i].isEmpty();
-            i++;
-        }
-        return result;
+        return ArrayItemStackUtils.includeNullOrEmpty(input);
     }
 
     @Override
