@@ -1,8 +1,6 @@
 package astral_mekanism.block.blockentity.normalmachine;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 
 import org.jetbrains.annotations.NotNull;
@@ -72,17 +70,38 @@ public class BEAstralCrafter extends TileEntityProgressMachine<AstralCraftingRec
     public static final RecipeError NOT_ENOUGH_FLUID = RecipeError.create();
     public static final RecipeError NOT_ENOUGH_GAS = RecipeError.create();
 
-    public static List<RecipeError> errorTypes() {
-        List<RecipeError> result = new ArrayList<>(TRACKED_ERROR_TYPES);
-        result.add(NOT_ENOUGH_FLUID);
-        result.add(NOT_ENOUGH_GAS);
-        result.add(RecipeError.NOT_ENOUGH_ENERGY);
-        result.add(RecipeError.INPUT_DOESNT_PRODUCE_OUTPUT);
-        result.add(RecipeError.NOT_ENOUGH_OUTPUT_SPACE);
-        return Collections.unmodifiableList(result);
-    }
 
-    public static final List<RecipeError> TRACKED_ERROR_TYPES = errorTypes();
+    public static final List<RecipeError> TRACKED_ERROR_TYPES = List.of(
+            RecipeError.NOT_ENOUGH_ENERGY,
+            NOT_ENOUGH_ITEMS[0],
+            NOT_ENOUGH_ITEMS[1],
+            NOT_ENOUGH_ITEMS[2],
+            NOT_ENOUGH_ITEMS[3],
+            NOT_ENOUGH_ITEMS[4],
+            NOT_ENOUGH_ITEMS[5],
+            NOT_ENOUGH_ITEMS[6],
+            NOT_ENOUGH_ITEMS[7],
+            NOT_ENOUGH_ITEMS[8],
+            NOT_ENOUGH_ITEMS[9],
+            NOT_ENOUGH_ITEMS[10],
+            NOT_ENOUGH_ITEMS[11],
+            NOT_ENOUGH_ITEMS[12],
+            NOT_ENOUGH_ITEMS[13],
+            NOT_ENOUGH_ITEMS[14],
+            NOT_ENOUGH_ITEMS[15],
+            NOT_ENOUGH_ITEMS[16],
+            NOT_ENOUGH_ITEMS[17],
+            NOT_ENOUGH_ITEMS[18],
+            NOT_ENOUGH_ITEMS[19],
+            NOT_ENOUGH_ITEMS[20],
+            NOT_ENOUGH_ITEMS[21],
+            NOT_ENOUGH_ITEMS[22],
+            NOT_ENOUGH_ITEMS[23],
+            NOT_ENOUGH_ITEMS[24],
+            NOT_ENOUGH_FLUID,
+            NOT_ENOUGH_GAS,
+            RecipeError.INPUT_DOESNT_PRODUCE_OUTPUT,
+            RecipeError.NOT_ENOUGH_OUTPUT_SPACE);
     private InputInventorySlot[] inputSlots;
     private BasicFluidTank fluidTank;
     private IGasTank gasTank;

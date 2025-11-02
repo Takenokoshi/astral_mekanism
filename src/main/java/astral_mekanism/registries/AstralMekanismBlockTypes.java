@@ -147,7 +147,7 @@ public class AstralMekanismBlockTypes {
             .build();
 
     public static final BlockTypeMachine<BEAstralCrafter> ASTRAL_CRAFTER = BlockMachineBuilder
-            .createMachine(() -> AstralMekanismMachines.ASTRAL_CRAFTER.getTileRO(), null)
+            .createMachine(() -> AstralMekanismMachines.ASTRAL_CRAFTER.getTileRO(), AstralMekanismLang.ITEM_GROUP)
             .withEnergyConfig(() -> FloatingLong.create(400 * AstralMekanismConfig.energyRate),
                     () -> FloatingLong.create(10000000 * AstralMekanismConfig.energyRate))
             .withGui(() -> AstralMekanismMachines.ASTRAL_CRAFTER.getContainerRO())
