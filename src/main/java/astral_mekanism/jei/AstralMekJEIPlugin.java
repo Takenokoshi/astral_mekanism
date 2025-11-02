@@ -29,7 +29,7 @@ public class AstralMekJEIPlugin implements IModPlugin {
 
     @Override
     public ResourceLocation getPluginUid() {
-        return new ResourceLocation(AstralMekanismID.MODID, "jei_plugin");
+        return AstralMekanismID.rl("jei_plugin");
     }
 
     @Override

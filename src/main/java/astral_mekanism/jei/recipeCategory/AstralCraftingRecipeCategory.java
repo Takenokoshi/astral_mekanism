@@ -1,7 +1,6 @@
 package astral_mekanism.jei.recipeCategory;
 
 import astral_mekanism.recipes.recipe.AstralCraftingRecipe;
-import mekanism.api.chemical.gas.Gas;
 import mekanism.api.providers.IBlockProvider;
 import mekanism.client.gui.element.bar.GuiVerticalPowerBar;
 import mekanism.client.gui.element.gauge.GaugeType;
@@ -26,7 +25,7 @@ public class AstralCraftingRecipeCategory extends BaseRecipeCategory<AstralCraft
 
     private final GuiSlot[] inputItems;
     private final GuiGauge<FluidStack> inputFluid;
-    private final GuiGauge<Gas> inputGas;
+    private final GuiGauge<?> inputGas;
     private final GuiSlot output;
 
     public AstralCraftingRecipeCategory(IGuiHelper helper, MekanismJEIRecipeType<AstralCraftingRecipe> recipeType,

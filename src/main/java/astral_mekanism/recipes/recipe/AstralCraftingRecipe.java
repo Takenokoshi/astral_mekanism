@@ -78,13 +78,12 @@ public abstract class AstralCraftingRecipe extends MekanismRecipe
         buffer.writeItem(output);
     }
 
-    public ItemStackIngredient[] getInputItems(){
+    public ItemStackIngredient[] getInputItems() {
         return inputItems;
     }
 
-    public ItemStackIngredient getInputItem(int index){
-        index = index%25;
-        return inputItems[index];
+    public ItemStackIngredient getInputItem(int index) {
+        return inputItems[index % 25];
     }
 
     public FluidStackIngredient getInputFluid() {
