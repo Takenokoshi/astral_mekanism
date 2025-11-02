@@ -147,6 +147,7 @@ public class BEAstralCrafter extends TileEntityProgressMachine<AstralCraftingRec
         builder.addSlot(gasSlot = GasInventorySlot.fill(gasTank, recipeCacheListener, 26, 90));
         gasSlot.setSlotOverlay(SlotOverlay.MINUS);
         builder.addSlot(energySlot = EnergyInventorySlot.fill(energyContainer, recipeCacheListener, 170, 18));
+        inputSlots = new InputInventorySlot[25];
         for (int i : AstralMekanismID.ZERO_24) {
             builder.addSlot(inputSlots[i] = InputInventorySlot.at(
                     stack -> containsInputItemOther(level, stack, i,
