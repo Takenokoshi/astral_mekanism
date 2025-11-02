@@ -47,6 +47,7 @@ public class AstralCraftingRecipeCategory extends BaseRecipeCategory<AstralCraft
 
     @Override
     public void setRecipe(IRecipeLayoutBuilder builder, AstralCraftingRecipe recipe, IFocusGroup focusGroup) {
+        builder.setShapeless();
         for (int i = 0; i < 25; i++) {
             this.initItem(builder, RecipeIngredientRole.INPUT, inputItems[i],
                     recipe.getInputItem(i).getRepresentations());
