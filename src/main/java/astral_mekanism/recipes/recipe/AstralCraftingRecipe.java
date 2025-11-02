@@ -3,10 +3,10 @@ package astral_mekanism.recipes.recipe;
 import java.util.Collections;
 import java.util.List;
 
-import astral_mekanism.recipes.ingredient.ArrayItemStackIngredient;
 import mekanism.api.chemical.gas.GasStack;
 import mekanism.api.recipes.MekanismRecipe;
 import mekanism.api.recipes.ingredients.FluidStackIngredient;
+import mekanism.api.recipes.ingredients.ItemStackIngredient;
 import mekanism.api.recipes.ingredients.ChemicalStackIngredient.GasStackIngredient;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceLocation;
@@ -14,22 +14,21 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.common.util.TriPredicate;
 import net.minecraftforge.fluids.FluidStack;
 
-public abstract class ExpandedCrafterRecipe extends MekanismRecipe
+public abstract class AstralCraftingRecipe extends MekanismRecipe
         implements TriPredicate<ItemStack[], FluidStack, GasStack> {
 
-    private final ArrayItemStackIngredient inputItems;
+    private final ItemStackIngredient[] inputItems;
     private final FluidStackIngredient inputFluid;
     private final GasStackIngredient inputGas;
     private final ItemStack output;
 
-    protected ExpandedCrafterRecipe(
-            ResourceLocation id,
-            ArrayItemStackIngredient inputItems,
-            FluidStackIngredient inputFluid,
-            GasStackIngredient inputGas,
-            ItemStack output) {
+    protected AstralCraftingRecipe(ResourceLocation id, ItemStackIngredient[] inputItems,
+            FluidStackIngredient inputFluid, GasStackIngredient inputGas, ItemStack output) {
         super(id);
-        this.inputItems = inputItems;
+        this.inputItems = new ItemStackIngredient[25];
+        for (int i = 0; i < 25; i++) {
+            this.inputItems[i] = inputItems[i % inputItems.length];
+        }
         this.inputFluid = inputFluid;
         this.inputGas = inputGas;
         this.output = output;
@@ -41,32 +40,51 @@ public abstract class ExpandedCrafterRecipe extends MekanismRecipe
 
     @Override
     public boolean test(ItemStack[] t, FluidStack f, GasStack g) {
-        return inputItems.test(t) && inputFluid.test(f) && inputGas.test(g);
+        boolean result = inputFluid.test(f) && inputGas.test(g);
+        int i = 0;
+        while (result && i < 25) {
+            result &= inputItems[i].test(t[i % t.length]);
+            i++;
+        }
+        return result;
     }
 
     @Override
     public boolean isIncomplete() {
-        return inputItems.hasNoMatchingInstances() || inputFluid.hasNoMatchingInstances()
-                || inputGas.hasNoMatchingInstances();
+        boolean result = inputFluid.hasNoMatchingInstances() || inputGas.hasNoMatchingInstances();
+        int i = 0;
+        while (!result && i < 25) {
+            result |= inputItems[i].hasNoMatchingInstances();
+        }
+        return result;
     }
 
     @Override
     public void logMissingTags() {
-        inputItems.logMissingTags();
+        for (int i = 0; i < 25; i++) {
+            inputItems[i].logMissingTags();
+        }
         inputFluid.logMissingTags();
         inputGas.logMissingTags();
     }
 
     @Override
     public void write(FriendlyByteBuf buffer) {
-        inputItems.write(buffer);
+        for (int i = 0; i < 25; i++) {
+            inputItems[i].write(buffer);
+        }
         inputFluid.write(buffer);
         inputGas.write(buffer);
         buffer.writeItem(output);
     }
 
-    public ArrayItemStackIngredient getInputItems() {
+    public ItemStackIngredient[] getInputItems(){
         return inputItems;
+    }
+
+    public ItemStackIngredient getInputItem(int index){
+        index = index%25;
+        return inputItems[index];
     }
 
     public FluidStackIngredient getInputFluid() {
@@ -80,4 +98,5 @@ public abstract class ExpandedCrafterRecipe extends MekanismRecipe
     public List<ItemStack> getOutputDefinition() {
         return Collections.singletonList(output.copy());
     }
+
 }

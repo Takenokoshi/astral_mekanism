@@ -2,7 +2,7 @@ package astral_mekanism.jei;
 
 import appeng.integration.modules.jei.ChargerCategory;
 import astral_mekanism.AstralMekanismID;
-import astral_mekanism.jei.recipeCategory.ExpandedCrafterRecipeCategory;
+import astral_mekanism.jei.recipeCategory.AstralCraftingRecipeCategory;
 import astral_mekanism.jei.recipeCategory.FluidInfuserRecipeCategory;
 import astral_mekanism.jei.recipeCategory.GreenHouseRecipeCategory;
 import astral_mekanism.jei.recipeCategory.MelterRecipeCategory;
@@ -27,81 +27,82 @@ import net.minecraft.resources.ResourceLocation;
 
 public class AstralMekJEIPlugin implements IModPlugin {
 
-	@Override
-	public ResourceLocation getPluginUid() {
-		return new ResourceLocation(AstralMekanismID.MODID, "jei_plugin");
-	}
+    @Override
+    public ResourceLocation getPluginUid() {
+        return new ResourceLocation(AstralMekanismID.MODID, "jei_plugin");
+    }
 
-	@Override
-	public void registerCategories(IRecipeCategoryRegistration registry) {
-		IGuiHelper guiHelper = registry.getJeiHelpers().getGuiHelper();
-		registry.addRecipeCategories(
-				new IRecipeCategory[] { new GreenHouseRecipeCategory(guiHelper,
-						AstralMekanismJEIRecipeType.Greenhouse_recipe) });
-		registry.addRecipeCategories(
-				new IRecipeCategory[] {
-						new MelterRecipeCategory(guiHelper, AstralMekanismJEIRecipeType.Melter_recipe) });
-		registry.addRecipeCategories(
-				new IRecipeCategory[] {
-						new FluidInfuserRecipeCategory(guiHelper, AstralMekanismJEIRecipeType.FLUID_INFUSER_RECIPE)
-				});
-		registry.addRecipeCategories(
-				new IRecipeCategory[] {
-						new ItemStackToItemStackRecipeCategory(guiHelper,
-								AstralMekanismJEIRecipeType.MEKANICAL_CHARGER_RECIPE,
-								AstralMekanismMachines.MEKANICAL_CHARGER)
-				});
-		registry.addRecipeCategories(new IRecipeCategory[] {
-				new GasToGasRecipeCategory(guiHelper, AstralMekanismJEIRecipeType.SPS_RECIPE,
-						AstralMekanismMachines.COMPACT_SPS)
-		});
-		registry.addRecipeCategories(new IRecipeCategory[] {
-				new ExpandedCrafterRecipeCategory(guiHelper, AstralMekanismJEIRecipeType.EXPANDED_CRAFTER_RECIPE,
-						AstralMekanismMachines.EXPANDED_CRAFTER)
-		});
-	}
+    @Override
+    public void registerCategories(IRecipeCategoryRegistration registry) {
+        IGuiHelper guiHelper = registry.getJeiHelpers().getGuiHelper();
+        registry.addRecipeCategories(
+                new IRecipeCategory[] { new GreenHouseRecipeCategory(guiHelper,
+                        AstralMekanismJEIRecipeType.Greenhouse_recipe) });
+        registry.addRecipeCategories(
+                new IRecipeCategory[] {
+                        new MelterRecipeCategory(guiHelper, AstralMekanismJEIRecipeType.Melter_recipe) });
+        registry.addRecipeCategories(
+                new IRecipeCategory[] {
+                        new FluidInfuserRecipeCategory(guiHelper, AstralMekanismJEIRecipeType.FLUID_INFUSER_RECIPE)
+                });
+        registry.addRecipeCategories(
+                new IRecipeCategory[] {
+                        new ItemStackToItemStackRecipeCategory(guiHelper,
+                                AstralMekanismJEIRecipeType.MEKANICAL_CHARGER_RECIPE,
+                                AstralMekanismMachines.MEKANICAL_CHARGER)
+                });
+        registry.addRecipeCategories(new IRecipeCategory[] {
+                new GasToGasRecipeCategory(guiHelper, AstralMekanismJEIRecipeType.SPS_RECIPE,
+                        AstralMekanismMachines.COMPACT_SPS)
+        });
+        registry.addRecipeCategories(new IRecipeCategory[] {
+                new AstralCraftingRecipeCategory(guiHelper, AstralMekanismJEIRecipeType.ASTRAL_CRAFTING,
+                        AstralMekanismMachines.ASTRAL_CRAFTER)
+        });
+    }
 
-	@Override
-	public void registerRecipes(IRecipeRegistration registry) {
-		RecipeRegistryHelper.register(registry, AstralMekanismJEIRecipeType.Greenhouse_recipe,
-				AstralMekanismRecipeTypes.Greenhouse_recipe);
-		RecipeRegistryHelper.register(registry, AstralMekanismJEIRecipeType.Melter_recipe,
-				AstralMekanismRecipeTypes.Melter_recipe);
-		RecipeRegistryHelper.register(registry, AstralMekanismJEIRecipeType.FLUID_INFUSER_RECIPE,
-				AstralMekanismRecipeTypes.FLUID_INFUSER_RECIPE);
-		RecipeRegistryHelper.register(registry, AstralMekanismJEIRecipeType.MEKANICAL_CHARGER_RECIPE,
-				AstralMekanismRecipeTypes.MEKANICAL_CHARGER_RECIPE);
-		RecipeRegistryHelper.register(registry, AstralMekanismJEIRecipeType.SPS_RECIPE,
-				AstralMekanismRecipeTypes.SPS_RECIPE);
-		RecipeRegistryHelper.register(registry, AstralMekanismJEIRecipeType.EXPANDED_CRAFTER_RECIPE,
-				AstralMekanismRecipeTypes.EXPANDED_CRAFTER_RECIPE);
-	}
+    @Override
+    public void registerRecipes(IRecipeRegistration registry) {
+        RecipeRegistryHelper.register(registry, AstralMekanismJEIRecipeType.Greenhouse_recipe,
+                AstralMekanismRecipeTypes.Greenhouse_recipe);
+        RecipeRegistryHelper.register(registry, AstralMekanismJEIRecipeType.Melter_recipe,
+                AstralMekanismRecipeTypes.Melter_recipe);
+        RecipeRegistryHelper.register(registry, AstralMekanismJEIRecipeType.FLUID_INFUSER_RECIPE,
+                AstralMekanismRecipeTypes.FLUID_INFUSER_RECIPE);
+        RecipeRegistryHelper.register(registry, AstralMekanismJEIRecipeType.MEKANICAL_CHARGER_RECIPE,
+                AstralMekanismRecipeTypes.MEKANICAL_CHARGER_RECIPE);
+        RecipeRegistryHelper.register(registry, AstralMekanismJEIRecipeType.SPS_RECIPE,
+                AstralMekanismRecipeTypes.SPS_RECIPE);
+        RecipeRegistryHelper.register(registry, AstralMekanismJEIRecipeType.ASTRAL_CRAFTING,
+                AstralMekanismRecipeTypes.ASTRAL_CRAFTING);
+    }
 
-	@Override
-	public void registerRecipeCatalysts(IRecipeCatalystRegistration registry) {
-		CatalystRegistryHelper.register(registry, AstralMekanismJEIRecipeType.Greenhouse_recipe,
-				AstralMekanismMachines.GREENHOUSE);
-		CatalystRegistryHelper.register(registry, AstralMekanismJEIRecipeType.Melter_recipe,
-				AstralMekanismMachines.MELTER);
-		CatalystRegistryHelper.register(registry, MekanismJEIRecipeType.ACTIVATING,
-				AstralMekanismMachines.GLOWSTONE_NEUTRON_ACTIVATOR);
-		CatalystRegistryHelper.register(registry, MekanismJEIRecipeType.EVAPORATING,
-				AstralMekanismMachines.COMPACT_TEP);
-		CatalystRegistryHelper.register(registry, AstralMekanismJEIRecipeType.FLUID_INFUSER_RECIPE,
-				AstralMekanismMachines.FLUID_INFUSER);
-		registry.addRecipeCatalyst(AstralMekanismMachines.MEKANICAL_CHARGER,
-				new RecipeType[] { ChargerCategory.RECIPE_TYPE });
-		CatalystRegistryHelper.register(registry, AstralMekanismJEIRecipeType.MEKANICAL_CHARGER_RECIPE,
-				AstralMekanismMachines.MEKANICAL_CHARGER);
-		CatalystRegistryHelper.register(registry, AstralMekanismJEIRecipeType.EXPANDED_CRAFTER_RECIPE,
-				AstralMekanismMachines.EXPANDED_CRAFTER);
-		CatalystRegistryHelper.register(registry, MekanismJEIRecipeType.CRUSHING, AstralMekanismMachines.ASTRAL_CRUSHER);
-		CatalystRegistryHelper.register(registry, MekanismJEIRecipeType.SMELTING,
-				AstralMekanismMachines.ASTRAL_ENERGIZED_SMELTER);
-		CatalystRegistryHelper.register(registry, MekanismJEIRecipeType.ENRICHING,
-				AstralMekanismMachines.ASTRAL_ENRICHMENT_CHAMBER);
-		CatalystRegistryHelper.register(registry, AstralMekanismJEIRecipeType.MEKANICAL_CHARGER_RECIPE,
-				AstralMekanismMachines.ASTRAL_MEKANICAL_CHARGER);
+    @Override
+    public void registerRecipeCatalysts(IRecipeCatalystRegistration registry) {
+        CatalystRegistryHelper.register(registry, AstralMekanismJEIRecipeType.Greenhouse_recipe,
+                AstralMekanismMachines.GREENHOUSE);
+        CatalystRegistryHelper.register(registry, AstralMekanismJEIRecipeType.Melter_recipe,
+                AstralMekanismMachines.MELTER);
+        CatalystRegistryHelper.register(registry, MekanismJEIRecipeType.ACTIVATING,
+                AstralMekanismMachines.GLOWSTONE_NEUTRON_ACTIVATOR);
+        CatalystRegistryHelper.register(registry, MekanismJEIRecipeType.EVAPORATING,
+                AstralMekanismMachines.COMPACT_TEP);
+        CatalystRegistryHelper.register(registry, AstralMekanismJEIRecipeType.FLUID_INFUSER_RECIPE,
+                AstralMekanismMachines.FLUID_INFUSER);
+        registry.addRecipeCatalyst(AstralMekanismMachines.MEKANICAL_CHARGER,
+                new RecipeType[] { ChargerCategory.RECIPE_TYPE });
+        CatalystRegistryHelper.register(registry, AstralMekanismJEIRecipeType.MEKANICAL_CHARGER_RECIPE,
+                AstralMekanismMachines.MEKANICAL_CHARGER);
+        CatalystRegistryHelper.register(registry, AstralMekanismJEIRecipeType.ASTRAL_CRAFTING,
+                AstralMekanismMachines.ASTRAL_CRAFTER);
+        CatalystRegistryHelper.register(registry, MekanismJEIRecipeType.CRUSHING,
+                AstralMekanismMachines.ASTRAL_CRUSHER);
+        CatalystRegistryHelper.register(registry, MekanismJEIRecipeType.SMELTING,
+                AstralMekanismMachines.ASTRAL_ENERGIZED_SMELTER);
+        CatalystRegistryHelper.register(registry, MekanismJEIRecipeType.ENRICHING,
+                AstralMekanismMachines.ASTRAL_ENRICHMENT_CHAMBER);
+        CatalystRegistryHelper.register(registry, AstralMekanismJEIRecipeType.MEKANICAL_CHARGER_RECIPE,
+                AstralMekanismMachines.ASTRAL_MEKANICAL_CHARGER);
 
-	}
+    }
 }

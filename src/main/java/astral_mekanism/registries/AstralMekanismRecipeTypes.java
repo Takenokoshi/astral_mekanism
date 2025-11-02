@@ -5,10 +5,10 @@ import java.util.function.Function;
 import astral_mekanism.AstralMekanismID;
 import astral_mekanism.mixin.mekanism.MekanismRecipeTypeMixin;
 import astral_mekanism.recipes.inputRecipeCache.AMInputRecipeCache;
-import astral_mekanism.recipes.inputRecipeCache.AMInputRecipeCache.ArrayItemFluidGas;
+import astral_mekanism.recipes.inputRecipeCache.AstralCraftingRecipeCache;
 import astral_mekanism.recipes.inputRecipeCache.AMInputRecipeCache.FluidFluid;
 import astral_mekanism.recipes.inputRecipeCache.AMInputRecipeCache.ItemFluid;
-import astral_mekanism.recipes.recipe.ExpandedCrafterRecipe;
+import astral_mekanism.recipes.recipe.AstralCraftingRecipe;
 import astral_mekanism.recipes.recipe.FluidFluidToFluidRecipe;
 import astral_mekanism.recipes.recipe.GreenHouseRecipe;
 import astral_mekanism.recipes.recipe.ItemToItemItemRecipe;
@@ -71,11 +71,6 @@ public class AstralMekanismRecipeTypes {
             "sps", recipeType -> new InputRecipeCache.SingleChemical<Gas, GasStack, GasToGasRecipe>(recipeType,
                     GasToGasRecipe::getInput));
 
-    public static final RecipeTypeRegistryObject<ExpandedCrafterRecipe, ArrayItemFluidGas<ExpandedCrafterRecipe>> EXPANDED_CRAFTER_RECIPE = register(
-            "expanded_crafter",
-            rt -> new AMInputRecipeCache.ArrayItemFluidGas<>(rt, ExpandedCrafterRecipe::getInputItems,
-                    ExpandedCrafterRecipe::getInputFluid, ExpandedCrafterRecipe::getInputGas));
-
     public static final RecipeTypeRegistryObject<ItemStackGasToItemStackRecipe, ItemChemical<Gas, GasStack, ItemStackGasToItemStackRecipe>> AM_INJECTING = register(
             "am_injecting",
             rt -> new InputRecipeCache.ItemChemical<>(rt, ItemStackGasToItemStackRecipe::getItemInput,
@@ -85,4 +80,7 @@ public class AstralMekanismRecipeTypes {
             "am_purifying",
             rt -> new InputRecipeCache.ItemChemical<>(rt, ItemStackGasToItemStackRecipe::getItemInput,
                     ItemStackGasToItemStackRecipe::getChemicalInput));
+
+    public static final RecipeTypeRegistryObject<AstralCraftingRecipe, AstralCraftingRecipeCache> ASTRAL_CRAFTING = register(
+            "astral_crafting", AstralCraftingRecipeCache::new);
 }

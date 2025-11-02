@@ -28,7 +28,7 @@ import astral_mekanism.block.gui.compact.GuiCompactFissionReactor;
 import astral_mekanism.block.gui.compact.GuiCompactTEP;
 import astral_mekanism.block.gui.generator.GuiGasBurningGenerator;
 import astral_mekanism.block.gui.generator.GuiHeatGenerator;
-import astral_mekanism.block.gui.normalmachine.GuiExpandedCrafter;
+import astral_mekanism.block.gui.normalmachine.GuiAstralCrafter;
 import astral_mekanism.block.gui.normalmachine.GuiFluidInfuser;
 import astral_mekanism.block.gui.normalmachine.GuiGreenHouse;
 import astral_mekanism.block.gui.normalmachine.GuiMelter;
@@ -78,9 +78,9 @@ public class AstralMekanismClient {
             regScreen(AstralMekanismMachines.FLUID_INFUSER, GuiFluidInfuser::new);
             regScreen(AstralMekanismMachines.MEKANICAL_CHARGER,
                     GuiElectricMachine<BEMekanicalCharger, MekanismTileContainer<BEMekanicalCharger>>::new);
+            regScreen(AstralMekanismMachines.ASTRAL_CRAFTER, GuiAstralCrafter::new);
             regScreen(AstralMekanismMachines.COMPACT_FIR, GuiCompactFissionReactor::new);
             regScreen(AstralMekanismMachines.COMPACT_SPS, GuiGasToGasMachine<BECompactSPS>::new);
-            regScreen(AstralMekanismMachines.EXPANDED_CRAFTER, GuiExpandedCrafter::new);
             regScreen(AstralMekanismMachines.ASTRAL_GNA, GuiGasToGasBlock<BEAstralGNA>::new);
             regScreen(AstralMekanismMachines.ASTRAL_SPS, GuiGasToGasMachine<BEAstralSPS>::new);
             regScreen(AstralMekanismMachines.ASTRAL_PRC, GuiAstralPRC::new);
@@ -88,9 +88,12 @@ public class AstralMekanismClient {
             regScreen(AstralMekanismMachines.ASTRAL_ELECTROLYTIC_SEPARATOR, GuiAstralElectrolyticSeparator::new);
             regScreen(AstralMekanismMachines.ASTRAL_PRECISION_SAWMILL, GuiAstralPrecisionSawmill::new);
             regScreen(AstralMekanismMachines.ASTRAL_CRUSHER, GuiAstralElectricMachine<BEAstralCrusher>::new);
-            regScreen(AstralMekanismMachines.ASTRAL_ENERGIZED_SMELTER, GuiAstralElectricMachine<BEAstralEnergizedSmelter>::new);
-            regScreen(AstralMekanismMachines.ASTRAL_ENRICHMENT_CHAMBER, GuiAstralElectricMachine<BEAstralEnrichmentChamber>::new);
-            regScreen(AstralMekanismMachines.ASTRAL_MEKANICAL_CHARGER, GuiAstralElectricMachine<BEAstralMekanicalCharger>::new);
+            regScreen(AstralMekanismMachines.ASTRAL_ENERGIZED_SMELTER,
+                    GuiAstralElectricMachine<BEAstralEnergizedSmelter>::new);
+            regScreen(AstralMekanismMachines.ASTRAL_ENRICHMENT_CHAMBER,
+                    GuiAstralElectricMachine<BEAstralEnrichmentChamber>::new);
+            regScreen(AstralMekanismMachines.ASTRAL_MEKANICAL_CHARGER,
+                    GuiAstralElectricMachine<BEAstralMekanicalCharger>::new);
             ClientRegistrationUtil.registerScreen(
                     AstralMekanismContainers.ASTRAL_CHEMICAL_INJECTION_CHAMBER,
                     GuiAstralAdvancedMachine<BEAstralChemicalInjectionChamber>::new);

@@ -1,7 +1,7 @@
 package astral_mekanism.registries;
 
 import astral_mekanism.AstralMekanismID;
-import astral_mekanism.recipes.Irecipe.ExpandedCrafterIRecipe;
+import astral_mekanism.recipes.Irecipe.AstralCraftingIRecipe;
 import astral_mekanism.recipes.Irecipe.FluidInfuserIRecipe;
 import astral_mekanism.recipes.Irecipe.FormulizedSawingIRecipe;
 import astral_mekanism.recipes.Irecipe.GreenHouseIRecipe;
@@ -10,11 +10,11 @@ import astral_mekanism.recipes.Irecipe.MekanicalChagerIRecipe;
 import astral_mekanism.recipes.Irecipe.MelterIRecipe;
 import astral_mekanism.recipes.Irecipe.PurifyingAMIRecipe;
 import astral_mekanism.recipes.Irecipe.SPSIRecipe;
-import astral_mekanism.recipes.recipe.ExpandedCrafterRecipe;
+import astral_mekanism.recipes.recipe.AstralCraftingRecipe;
 import astral_mekanism.recipes.recipe.FluidFluidToFluidRecipe;
 import astral_mekanism.recipes.recipe.GreenHouseRecipe;
 import astral_mekanism.recipes.recipe.ItemToItemItemRecipe;
-import astral_mekanism.recipes.serializer.ExpandedCrafterRecipeSerializer;
+import astral_mekanism.recipes.serializer.AstralCraftingRecipeSerializer;
 import astral_mekanism.recipes.serializer.FluidFluidToFluidRecipeSerializer;
 import astral_mekanism.recipes.serializer.GreenHouseRecipeSerializer;
 import astral_mekanism.recipes.serializer.ItemStackToFluidRecipeSerializer;
@@ -57,12 +57,12 @@ public class AstralMekanismRecipeSerializers {
     public static final RecipeSerializerRegistryObject<GasToGasRecipe> SPS_RECIPE = RECIPE_SERIALIZERS
             .register("sps", () -> new GasToGasRecipeSerializer<>(SPSIRecipe::new));
 
-    public static final RecipeSerializerRegistryObject<ExpandedCrafterRecipe> EXPANDED_CRAFTER_RECIPE = RECIPE_SERIALIZERS
-            .register("expanded_crafter", () -> new ExpandedCrafterRecipeSerializer<>(ExpandedCrafterIRecipe::new));
-
     public static final RecipeSerializerRegistryObject<ItemStackGasToItemStackRecipe> AM_INJECTING = RECIPE_SERIALIZERS
             .register("am_injecting", () -> new ItemStackGasToItemStackRecipeSerializer<>(InjectingAMIRecipe::new));
 
     public static final RecipeSerializerRegistryObject<ItemStackGasToItemStackRecipe> AM_PURIFYING = RECIPE_SERIALIZERS
             .register("am_purifying", () -> new ItemStackGasToItemStackRecipeSerializer<>(PurifyingAMIRecipe::new));
+
+    public static final RecipeSerializerRegistryObject<AstralCraftingRecipe> ASTRAL_CRAFTING = RECIPE_SERIALIZERS
+            .register("astral_crafting", () -> new AstralCraftingRecipeSerializer<>(AstralCraftingIRecipe::new));
 }

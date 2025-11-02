@@ -1,0 +1,59 @@
+package astral_mekanism.jei.recipeCategory;
+
+import astral_mekanism.recipes.recipe.AstralCraftingRecipe;
+import mekanism.api.chemical.gas.Gas;
+import mekanism.api.providers.IBlockProvider;
+import mekanism.client.gui.element.bar.GuiVerticalPowerBar;
+import mekanism.client.gui.element.gauge.GaugeType;
+import mekanism.client.gui.element.gauge.GuiFluidGauge;
+import mekanism.client.gui.element.gauge.GuiGasGauge;
+import mekanism.client.gui.element.gauge.GuiGauge;
+import mekanism.client.gui.element.progress.ProgressType;
+import mekanism.client.gui.element.slot.GuiSlot;
+import mekanism.client.gui.element.slot.SlotType;
+import mekanism.client.jei.BaseRecipeCategory;
+import mekanism.client.jei.MekanismJEI;
+import mekanism.client.jei.MekanismJEIRecipeType;
+import mekanism.common.tile.component.config.DataType;
+import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
+import mezz.jei.api.helpers.IGuiHelper;
+import mezz.jei.api.recipe.IFocusGroup;
+import mezz.jei.api.recipe.RecipeIngredientRole;
+import net.minecraftforge.fluids.FluidStack;
+
+public class AstralCraftingRecipeCategory extends BaseRecipeCategory<AstralCraftingRecipe> {
+
+    private final GuiSlot[] inputItems;
+    private final GuiGauge<FluidStack> inputFluid;
+    private final GuiGauge<Gas> inputGas;
+    private final GuiSlot output;
+
+    public AstralCraftingRecipeCategory(IGuiHelper helper, MekanismJEIRecipeType<AstralCraftingRecipe> recipeType, IBlockProvider mekanismBlock) {
+        super(helper, recipeType, mekanismBlock, 3, 10, 212, 126);
+        inputItems = new GuiSlot[25];
+        for (int i = 0; i < 25; i++) {
+            this.addSlot(SlotType.INPUT, 44 + (i % 5) * 18, 18 + (i / 5) * 18);
+        }
+        this.inputFluid = this.addElement(GuiFluidGauge.getDummy(GaugeType.STANDARD.with(DataType.INPUT), this, 8, 32));
+        this.inputGas = this.addElement(GuiGasGauge.getDummy(GaugeType.STANDARD.with(DataType.INPUT), this, 26, 32));
+        this.output = this.addSlot(SlotType.OUTPUT, 170, 54);
+        this.addSlot(SlotType.INPUT_2, 8, 90);
+        this.addSlot(SlotType.INPUT_2, 26, 90);
+        this.addSlot(SlotType.POWER, 170, 18);
+        this.addElement(new GuiVerticalPowerBar(this, FULL_BAR, 188, 16));
+        this.addSimpleProgress(ProgressType.RIGHT, 134, 56);
+    }
+
+    @Override
+    public void setRecipe(IRecipeLayoutBuilder builder, AstralCraftingRecipe recipe, IFocusGroup focusGroup) {
+        for (int i = 0; i < 25; i++) {
+            this.initItem(builder, RecipeIngredientRole.INPUT, inputItems[i],
+                    recipe.getInputItem(i).getRepresentations());
+        }
+        this.initFluid(builder, RecipeIngredientRole.INPUT, inputFluid, recipe.getInputFluid().getRepresentations());
+        this.initChemical(builder, MekanismJEI.TYPE_GAS, RecipeIngredientRole.INPUT, inputFluid,
+                recipe.getInputGas().getRepresentations());
+        this.initItem(builder, RecipeIngredientRole.OUTPUT, output, recipe.getOutputDefinition());
+    }
+
+}

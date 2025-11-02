@@ -1,6 +1,6 @@
 package astral_mekanism.jei;
 
-import astral_mekanism.recipes.recipe.ExpandedCrafterRecipe;
+import astral_mekanism.recipes.recipe.AstralCraftingRecipe;
 import astral_mekanism.recipes.recipe.FluidFluidToFluidRecipe;
 import astral_mekanism.recipes.recipe.GreenHouseRecipe;
 import astral_mekanism.registries.AstralMekanismMachines;
@@ -20,6 +20,6 @@ public class AstralMekanismJEIRecipeType {
             AstralMekanismMachines.MEKANICAL_CHARGER, ItemStackToItemStackRecipe.class);
     public static final MekanismJEIRecipeType<GasToGasRecipe> SPS_RECIPE = new MekanismJEIRecipeType<>(
             AstralMekanismMachines.COMPACT_SPS, GasToGasRecipe.class);
-    public static final MekanismJEIRecipeType<ExpandedCrafterRecipe> EXPANDED_CRAFTER_RECIPE = new MekanismJEIRecipeType<>(
-            AstralMekanismMachines.EXPANDED_CRAFTER, ExpandedCrafterRecipe.class);
+    public static final MekanismJEIRecipeType<AstralCraftingRecipe> ASTRAL_CRAFTING = new MekanismJEIRecipeType<>(
+            AstralMekanismMachines.ASTRAL_CRAFTER, AstralCraftingRecipe.class);
 }
