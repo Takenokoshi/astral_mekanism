@@ -32,7 +32,7 @@
   "itemInputE5": { "amount": 1, "ingredient": { "item": "minecraft:glass_pane" } },
 
   "fluidInput": {
-    "chemical": "minecraft:water",
+    "tag":"minecraft:water",
     "amount": 1000
   },
 
