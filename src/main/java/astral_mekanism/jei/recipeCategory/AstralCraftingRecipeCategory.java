@@ -51,7 +51,7 @@ public class AstralCraftingRecipeCategory extends BaseRecipeCategory<AstralCraft
                     recipe.getInputItem(i).getRepresentations());
         }
         this.initFluid(builder, RecipeIngredientRole.INPUT, inputFluid, recipe.getInputFluid().getRepresentations());
-        this.initChemical(builder, MekanismJEI.TYPE_GAS, RecipeIngredientRole.INPUT, inputFluid,
+        this.initChemical(builder, MekanismJEI.TYPE_GAS, RecipeIngredientRole.INPUT, inputGas,
                 recipe.getInputGas().getRepresentations());
         this.initItem(builder, RecipeIngredientRole.OUTPUT, output, recipe.getOutputDefinition());
     }
