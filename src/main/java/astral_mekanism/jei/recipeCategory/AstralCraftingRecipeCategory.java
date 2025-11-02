@@ -1,6 +1,7 @@
 package astral_mekanism.jei.recipeCategory;
 
 import astral_mekanism.recipes.recipe.AstralCraftingRecipe;
+import mekanism.api.chemical.gas.Gas;
 import mekanism.api.providers.IBlockProvider;
 import mekanism.client.gui.element.bar.GuiVerticalPowerBar;
 import mekanism.client.gui.element.gauge.GaugeType;
@@ -25,7 +26,7 @@ public class AstralCraftingRecipeCategory extends BaseRecipeCategory<AstralCraft
 
     private final GuiSlot[] inputItems;
     private final GuiGauge<FluidStack> inputFluid;
-    private final GuiGauge<?> inputGas;
+    private final GuiGauge<Gas> inputGas;
     private final GuiSlot output;
 
     public AstralCraftingRecipeCategory(IGuiHelper helper, MekanismJEIRecipeType<AstralCraftingRecipe> recipeType,
@@ -33,7 +34,7 @@ public class AstralCraftingRecipeCategory extends BaseRecipeCategory<AstralCraft
         super(helper, recipeType, mekanismBlock, 3, 10, 212, 126);
         inputItems = new GuiSlot[25];
         for (int i = 0; i < 25; i++) {
-            this.addSlot(SlotType.INPUT, 44 + (i % 5) * 18, 18 + (i / 5) * 18);
+            inputItems[i] = this.addSlot(SlotType.INPUT, 44 + (i % 5) * 18, 18 + (i / 5) * 18);
         }
         this.inputFluid = this.addElement(GuiFluidGauge.getDummy(GaugeType.STANDARD.with(DataType.INPUT), this, 8, 32));
         this.inputGas = this.addElement(GuiGasGauge.getDummy(GaugeType.STANDARD.with(DataType.INPUT), this, 26, 32));
