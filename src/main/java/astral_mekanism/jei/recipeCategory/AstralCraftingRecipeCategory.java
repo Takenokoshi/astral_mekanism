@@ -14,6 +14,7 @@ import mekanism.client.gui.element.slot.SlotType;
 import mekanism.client.jei.BaseRecipeCategory;
 import mekanism.client.jei.MekanismJEI;
 import mekanism.client.jei.MekanismJEIRecipeType;
+import mekanism.common.inventory.container.slot.SlotOverlay;
 import mekanism.common.tile.component.config.DataType;
 import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
 import mezz.jei.api.helpers.IGuiHelper;
@@ -28,7 +29,8 @@ public class AstralCraftingRecipeCategory extends BaseRecipeCategory<AstralCraft
     private final GuiGauge<Gas> inputGas;
     private final GuiSlot output;
 
-    public AstralCraftingRecipeCategory(IGuiHelper helper, MekanismJEIRecipeType<AstralCraftingRecipe> recipeType, IBlockProvider mekanismBlock) {
+    public AstralCraftingRecipeCategory(IGuiHelper helper, MekanismJEIRecipeType<AstralCraftingRecipe> recipeType,
+            IBlockProvider mekanismBlock) {
         super(helper, recipeType, mekanismBlock, 3, 10, 212, 126);
         inputItems = new GuiSlot[25];
         for (int i = 0; i < 25; i++) {
@@ -37,9 +39,9 @@ public class AstralCraftingRecipeCategory extends BaseRecipeCategory<AstralCraft
         this.inputFluid = this.addElement(GuiFluidGauge.getDummy(GaugeType.STANDARD.with(DataType.INPUT), this, 8, 32));
         this.inputGas = this.addElement(GuiGasGauge.getDummy(GaugeType.STANDARD.with(DataType.INPUT), this, 26, 32));
         this.output = this.addSlot(SlotType.OUTPUT, 170, 54);
-        this.addSlot(SlotType.INPUT_2, 8, 90);
-        this.addSlot(SlotType.INPUT_2, 26, 90);
-        this.addSlot(SlotType.POWER, 170, 18);
+        this.addSlot(SlotType.INPUT_2, 8, 90).with(SlotOverlay.MINUS);
+        this.addSlot(SlotType.INPUT_2, 26, 90).with(SlotOverlay.MINUS);
+        this.addSlot(SlotType.POWER, 170, 18).with(SlotOverlay.POWER);
         this.addElement(new GuiVerticalPowerBar(this, FULL_BAR, 188, 16));
         this.addSimpleProgress(ProgressType.RIGHT, 134, 56);
     }
