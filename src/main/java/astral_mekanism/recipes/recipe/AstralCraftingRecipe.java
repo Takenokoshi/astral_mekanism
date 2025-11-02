@@ -55,6 +55,7 @@ public abstract class AstralCraftingRecipe extends MekanismRecipe
         int i = 0;
         while (!result && i < 25) {
             result |= inputItems[i].hasNoMatchingInstances();
+            i++;
         }
         return result;
     }

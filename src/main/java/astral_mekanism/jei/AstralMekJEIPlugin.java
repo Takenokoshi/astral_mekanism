@@ -36,29 +36,18 @@ public class AstralMekJEIPlugin implements IModPlugin {
     public void registerCategories(IRecipeCategoryRegistration registry) {
         IGuiHelper guiHelper = registry.getJeiHelpers().getGuiHelper();
         registry.addRecipeCategories(
-                new IRecipeCategory[] { new GreenHouseRecipeCategory(guiHelper,
-                        AstralMekanismJEIRecipeType.Greenhouse_recipe) });
-        registry.addRecipeCategories(
                 new IRecipeCategory[] {
-                        new MelterRecipeCategory(guiHelper, AstralMekanismJEIRecipeType.Melter_recipe) });
-        registry.addRecipeCategories(
-                new IRecipeCategory[] {
-                        new FluidInfuserRecipeCategory(guiHelper, AstralMekanismJEIRecipeType.FLUID_INFUSER_RECIPE)
-                });
-        registry.addRecipeCategories(
-                new IRecipeCategory[] {
+                        new GreenHouseRecipeCategory(guiHelper, AstralMekanismJEIRecipeType.Greenhouse_recipe),
+                        new MelterRecipeCategory(guiHelper, AstralMekanismJEIRecipeType.Melter_recipe),
+                        new FluidInfuserRecipeCategory(guiHelper, AstralMekanismJEIRecipeType.FLUID_INFUSER_RECIPE),
                         new ItemStackToItemStackRecipeCategory(guiHelper,
                                 AstralMekanismJEIRecipeType.MEKANICAL_CHARGER_RECIPE,
-                                AstralMekanismMachines.MEKANICAL_CHARGER)
+                                AstralMekanismMachines.MEKANICAL_CHARGER),
+                        new GasToGasRecipeCategory(guiHelper, AstralMekanismJEIRecipeType.SPS_RECIPE,
+                                AstralMekanismMachines.COMPACT_SPS),
+                        new AstralCraftingRecipeCategory(guiHelper, AstralMekanismJEIRecipeType.ASTRAL_CRAFTING,
+                                AstralMekanismMachines.ASTRAL_CRAFTER)
                 });
-        registry.addRecipeCategories(new IRecipeCategory[] {
-                new GasToGasRecipeCategory(guiHelper, AstralMekanismJEIRecipeType.SPS_RECIPE,
-                        AstralMekanismMachines.COMPACT_SPS)
-        });
-        registry.addRecipeCategories(new IRecipeCategory[] {
-                new AstralCraftingRecipeCategory(guiHelper, AstralMekanismJEIRecipeType.ASTRAL_CRAFTING,
-                        AstralMekanismMachines.ASTRAL_CRAFTER)
-        });
     }
 
     @Override

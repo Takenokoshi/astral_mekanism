@@ -1,5 +1,7 @@
 package astral_mekanism.jei.recipeCategory;
 
+import org.jetbrains.annotations.NotNull;
+
 import astral_mekanism.recipes.recipe.AstralCraftingRecipe;
 import mekanism.api.providers.IBlockProvider;
 import mekanism.client.gui.element.bar.GuiVerticalPowerBar;
@@ -46,7 +48,8 @@ public class AstralCraftingRecipeCategory extends BaseRecipeCategory<AstralCraft
     }
 
     @Override
-    public void setRecipe(IRecipeLayoutBuilder builder, AstralCraftingRecipe recipe, IFocusGroup focusGroup) {
+    public void setRecipe(@NotNull IRecipeLayoutBuilder builder, AstralCraftingRecipe recipe,
+            @NotNull IFocusGroup focusGroup) {
         builder.setShapeless();
         for (int i = 0; i < 25; i++) {
             this.initItem(builder, RecipeIngredientRole.INPUT, inputItems[i],

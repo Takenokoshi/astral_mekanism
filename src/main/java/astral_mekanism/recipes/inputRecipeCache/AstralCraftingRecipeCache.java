@@ -62,8 +62,8 @@ public class AstralCraftingRecipeCache extends AbstractInputRecipeCache<AstralCr
     }
 
     public boolean containsInputItem(@Nullable Level world, ItemStack input, int index) {
-        return containsInput(world, input, r -> r.getInputItem(index), cacheItems[index],
-                complexIngredientItems[index]);
+        return containsInput(world, input, r -> r.getInputItem(index), cacheItems[index%25],
+                complexIngredientItems[index%25]);
     }
 
     public boolean containsInputFluid(@Nullable Level world, FluidStack input) {
