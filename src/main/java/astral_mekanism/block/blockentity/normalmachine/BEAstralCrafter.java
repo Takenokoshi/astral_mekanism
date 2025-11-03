@@ -142,26 +142,26 @@ public class BEAstralCrafter extends TileEntityProgressMachine<AstralCraftingRec
             IContentsListener recipeCacheListener) {
         InventorySlotHelper builder = InventorySlotHelper.forSideWithConfig(this::getDirection,
                 this::getConfig);
-        builder.addSlot(fluidSlot = FluidInventorySlot.fill(fluidTank, recipeCacheListener, 8, 90));
-        fluidSlot.setSlotOverlay(SlotOverlay.MINUS);
-        builder.addSlot(gasSlot = GasInventorySlot.fill(gasTank, recipeCacheListener, 26, 90));
-        gasSlot.setSlotOverlay(SlotOverlay.MINUS);
+        builder.addSlot(fluidSlot = FluidInventorySlot.fill(fluidTank, recipeCacheListener, 8, 90))
+                .setSlotOverlay(SlotOverlay.MINUS);
+        builder.addSlot(gasSlot = GasInventorySlot.fill(gasTank, recipeCacheListener, 26, 90))
+                .setSlotOverlay(SlotOverlay.MINUS);
         builder.addSlot(energySlot = EnergyInventorySlot.fill(energyContainer, recipeCacheListener, 170, 18));
         inputSlots = new InputInventorySlot[25];
         for (int i : AstralMekanismID.ZERO_24) {
             builder.addSlot(inputSlots[i] = InputInventorySlot.at(
-                    stack -> containsInputItemOther(level, stack, i,
+                    stack -> containsInputItemOther(stack, i,
                             Arrays.stream(inputSlots).map(IInventorySlot::getStack).toArray(ItemStack[]::new),
                             fluidTank.getFluid(), gasTank.getStack()),
-                    stack -> containsInputItem(level, stack, i),
+                    stack -> containsInputItem(stack, i),
                     recipeCacheListener,
                     44 + (i % 5) * 18, 18 + (i / 5) * 18))
-                    .tracksWarnings(slot -> slot.warning(
-                            WarningType.NO_MATCHING_RECIPE, getWarningCheck(NOT_ENOUGH_ITEMS[i])));
+                    .tracksWarnings(
+                            slot -> slot.warning(WarningType.NO_MATCHING_RECIPE, getWarningCheck(NOT_ENOUGH_ITEMS[i])));
         }
         builder.addSlot(outputSlot = OutputInventorySlot.at(recipeCacheListener, 170, 54))
-        .tracksWarnings(slot->slot.warning(
-            WarningType.NO_SPACE_IN_OUTPUT, getWarningCheck(RecipeError.NOT_ENOUGH_OUTPUT_SPACE)));
+                .tracksWarnings(slot -> slot.warning(
+                        WarningType.NO_SPACE_IN_OUTPUT, getWarningCheck(RecipeError.NOT_ENOUGH_OUTPUT_SPACE)));
         return builder.build();
     }
 
@@ -171,10 +171,10 @@ public class BEAstralCrafter extends TileEntityProgressMachine<AstralCraftingRec
             IContentsListener recipeCacheListener) {
         FluidTankHelper builder = FluidTankHelper.forSideWithConfig(this::getDirection, this::getConfig);
         builder.addTank(fluidTank = BasicFluidTank.input(10000,
-                stack -> containsInputFluidOther(level, stack,
+                stack -> containsInputFluidOther(stack,
                         Arrays.stream(inputSlots).map(IInventorySlot::getStack).toArray(ItemStack[]::new),
                         gasTank.getStack()),
-                stack -> containsInputFluid(level, stack), recipeCacheListener));
+                this::containsInputFluid, recipeCacheListener));
         return builder.build();
     }
 
@@ -185,10 +185,10 @@ public class BEAstralCrafter extends TileEntityProgressMachine<AstralCraftingRec
         ChemicalTankHelper<Gas, GasStack, IGasTank> builder = ChemicalTankHelper
                 .forSideGasWithConfig(this::getDirection, this::getConfig);
         builder.addTank(gasTank = ChemicalTankBuilder.GAS.input(10000,
-                gas -> containsInputGasOther(level, gas.getStack(1),
+                gas -> containsInputGasOther(gas.getStack(1),
                         Arrays.stream(inputSlots).map(IInventorySlot::getStack).toArray(ItemStack[]::new),
                         fluidTank.getFluid()),
-                gas -> containsInputGas(level, gas), recipeCacheListener));
+                this::containsInputGas, recipeCacheListener));
         return builder.build();
     }
 
@@ -248,7 +248,7 @@ public class BEAstralCrafter extends TileEntityProgressMachine<AstralCraftingRec
     }
 
     public FloatingLong getEnergyUsage() {
-        return energyContainer.getEnergyPerTick();
+        return getActive() ? energyContainer.getEnergyPerTick() : FloatingLong.ZERO;
     }
 
 }
