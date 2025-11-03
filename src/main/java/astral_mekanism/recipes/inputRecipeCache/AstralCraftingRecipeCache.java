@@ -21,11 +21,31 @@ public class AstralCraftingRecipeCache extends AbstractInputRecipeCache<AstralCr
 
     @SuppressWarnings("unchecked")
     private final Set<AstralCraftingRecipe>[] complexIngredientItems = new Set[] {
-            new HashSet<>(), new HashSet<>(), new HashSet<>(), new HashSet<>(), new HashSet<>(),
-            new HashSet<>(), new HashSet<>(), new HashSet<>(), new HashSet<>(), new HashSet<>(),
-            new HashSet<>(), new HashSet<>(), new HashSet<>(), new HashSet<>(), new HashSet<>(),
-            new HashSet<>(), new HashSet<>(), new HashSet<>(), new HashSet<>(), new HashSet<>(),
-            new HashSet<>(), new HashSet<>(), new HashSet<>(), new HashSet<>(), new HashSet<>()
+            new HashSet<AstralCraftingRecipe>(),
+            new HashSet<AstralCraftingRecipe>(),
+            new HashSet<AstralCraftingRecipe>(),
+            new HashSet<AstralCraftingRecipe>(),
+            new HashSet<AstralCraftingRecipe>(),
+            new HashSet<AstralCraftingRecipe>(),
+            new HashSet<AstralCraftingRecipe>(),
+            new HashSet<AstralCraftingRecipe>(),
+            new HashSet<AstralCraftingRecipe>(),
+            new HashSet<AstralCraftingRecipe>(),
+            new HashSet<AstralCraftingRecipe>(),
+            new HashSet<AstralCraftingRecipe>(),
+            new HashSet<AstralCraftingRecipe>(),
+            new HashSet<AstralCraftingRecipe>(),
+            new HashSet<AstralCraftingRecipe>(),
+            new HashSet<AstralCraftingRecipe>(),
+            new HashSet<AstralCraftingRecipe>(),
+            new HashSet<AstralCraftingRecipe>(),
+            new HashSet<AstralCraftingRecipe>(),
+            new HashSet<AstralCraftingRecipe>(),
+            new HashSet<AstralCraftingRecipe>(),
+            new HashSet<AstralCraftingRecipe>(),
+            new HashSet<AstralCraftingRecipe>(),
+            new HashSet<AstralCraftingRecipe>(),
+            new HashSet<AstralCraftingRecipe>()
     };
 
     private final Set<AstralCraftingRecipe> complexIngredientFluid = new HashSet<>();
@@ -41,10 +61,10 @@ public class AstralCraftingRecipeCache extends AbstractInputRecipeCache<AstralCr
         super(recipeType);
         this.cacheItems = new ItemInputCache[25];
         for (int i = 0; i < 25; i++) {
-            this.cacheItems[i] = new ItemInputCache<>();
+            this.cacheItems[i] = new ItemInputCache<AstralCraftingRecipe>();
         }
-        this.cacheFluid = new FluidInputCache<>();
-        this.cacheGas = new ChemicalInputCache<>();
+        this.cacheFluid = new FluidInputCache<AstralCraftingRecipe>();
+        this.cacheGas = new ChemicalInputCache<Gas, GasStack, AstralCraftingRecipe>();
     }
 
     @Override
