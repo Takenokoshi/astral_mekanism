@@ -32,18 +32,27 @@ public interface AstralCraftingRecipeLookUpHandler
 
     default boolean containsInputItemOther(ItemStack input, int index,
             ItemStack[] inputItems, FluidStack inputFluid, GasStack inputGas) {
-        return this.getRecipeType().getInputCache().containsInputItemOther(this.getHandlerWorld(), input, index, inputItems, inputFluid,
+        return this.getRecipeType().getInputCache().containsInputItemOther(this.getHandlerWorld(), input, index,
+                inputItems, inputFluid,
                 inputGas);
     }
 
     default boolean containsInputFluidOther(FluidStack input,
             ItemStack[] inputItems, GasStack inputGas) {
-        return this.getRecipeType().getInputCache().containsInputFluidOther(this.getHandlerWorld(), input, inputItems, inputGas);
+        return this.getRecipeType().getInputCache().containsInputFluidOther(this.getHandlerWorld(), input, inputItems,
+                inputGas);
     }
 
     default boolean containsInputGasOther(GasStack input,
             ItemStack[] inputItems, FluidStack inputFluid) {
-        return this.getRecipeType().getInputCache().containsInputGasOther(this.getHandlerWorld(), input, inputItems, inputFluid);
+        return this.getRecipeType().getInputCache().containsInputGasOther(this.getHandlerWorld(), input, inputItems,
+                inputFluid);
+    }
+
+    default boolean containsInputGasOther(Gas input,
+            ItemStack[] inputItems, FluidStack inputFluid) {
+        return this.getRecipeType().getInputCache().containsInputGasOther(this.getHandlerWorld(), input.getStack(1),
+                inputItems, inputFluid);
     }
 
     default AstralCraftingRecipe findFirstRecipe(ItemStack[] inputItems, FluidStack inputFluid,
