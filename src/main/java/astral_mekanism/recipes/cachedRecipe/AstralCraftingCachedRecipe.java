@@ -8,13 +8,11 @@ import org.jetbrains.annotations.Nullable;
 import astral_mekanism.recipes.recipe.AstralCraftingRecipe;
 import mekanism.api.chemical.gas.GasStack;
 import mekanism.api.recipes.cache.CachedRecipe;
-import mekanism.api.recipes.ingredients.ChemicalStackIngredient.GasStackIngredient;
-import mekanism.api.recipes.ingredients.FluidStackIngredient;
-import mekanism.api.recipes.ingredients.ItemStackIngredient;
 import mekanism.api.recipes.inputs.IInputHandler;
 import mekanism.api.recipes.outputs.IOutputHandler;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.fluids.FluidStack;
+
 public class AstralCraftingCachedRecipe extends CachedRecipe<AstralCraftingRecipe> {
 
     private final IInputHandler<ItemStack>[] itemInputHandlers;
@@ -53,49 +51,32 @@ public class AstralCraftingCachedRecipe extends CachedRecipe<AstralCraftingRecip
         if (!tracker.shouldContinueChecking()) {
             return;
         }
-        ItemStack[] itemStacks = new ItemStack[25];
         for (int i = 0; i < 25; i++) {
-            itemStacks[i] = itemInputHandlers[i].getInput();
-            if (itemStacks[i].isEmpty()) {
+            itemsRecipeInput[i] = itemInputHandlers[i].getInput();
+        }
+
+        fluidRecipeInput = fluidInputHandler.getInput();
+        gasRecipeInput = gasInputHandler.getInput();
+        recipeOutput = recipe.getOutput(itemsRecipeInput, fluidRecipeInput, gasRecipeInput);
+        if (fluidRecipeInput.isEmpty() || gasRecipeInput.isEmpty()) {
+            tracker.mismatchedRecipe();
+            return;
+        }
+        for (int i = 0; i < 25; i++) {
+            if (itemsRecipeInput[i].isEmpty()) {
                 tracker.mismatchedRecipe();
                 return;
             }
         }
-
-        FluidStack fluidStack = fluidInputHandler.getInput();
-        if (fluidStack.isEmpty()) {
-            tracker.mismatchedRecipe();
-            return;
+        for (int i = 0; i < 25; i++) {
+            itemInputHandlers[i].calculateOperationsCanSupport(tracker, itemsRecipeInput[i]);
+            if (!tracker.shouldContinueChecking()) {
+                return;
+            }
         }
-
-        GasStack gasStack = gasInputHandler.getInput();
-        if (gasStack.isEmpty()) {
-            tracker.mismatchedRecipe();
-            return;
-        }
-        ItemStackIngredient[] inputItems = recipe.getInputItems();
-        FluidStackIngredient inputFluid = recipe.getInputFluid();
-        GasStackIngredient inputGas = recipe.getInputGas();
-
-        AMCachedRecipeHelper.astralCraftingInputCalculateOperationsThisTick(
-                tracker,
-                itemInputHandlers,
-                i -> inputItems[i % 25],
-                fluidInputHandler,
-                () -> inputFluid,
-                gasInputHandler,
-                () -> inputGas,
-                (a, f, g) -> {
-                    itemsRecipeInput = a;
-                    fluidRecipeInput = f;
-                    gasRecipeInput = g;
-                },
-                outputHandler,
-                recipe::getOutput,
-                o -> recipeOutput = o,
-                (a, b) -> inputItems[b].test(a),
-                inputFluid, inputGas
-        );
+        fluidInputHandler.calculateOperationsCanSupport(tracker, fluidRecipeInput);
+        gasInputHandler.calculateOperationsCanSupport(tracker, gasRecipeInput);
+        outputHandler.calculateOperationsCanSupport(tracker, recipeOutput);
     }
 
     @Override
@@ -131,7 +112,6 @@ public class AstralCraftingCachedRecipe extends CachedRecipe<AstralCraftingRecip
                 && recipe.test(
                         Arrays.stream(itemInputHandlers).map(IInputHandler::getInput).toArray(ItemStack[]::new),
                         fluidInputHandler.getInput(),
-                        gasInputHandler.getInput()
-                );
+                        gasInputHandler.getInput());
     }
 }
