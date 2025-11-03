@@ -1,9 +1,6 @@
 package astral_mekanism.registries;
 
 import astral_mekanism.AstralMekanismID;
-import astral_mekanism.block.blockentity.astralmachine.advanced.BEAstralChemicalInjectionChamber;
-import astral_mekanism.block.blockentity.astralmachine.advanced.BEAstralOsmiumCompressor;
-import astral_mekanism.block.blockentity.astralmachine.advanced.BEAstralPurificationChamber;
 import astral_mekanism.registration.RegistrationInterfaces.BlockEntityConstructor;
 import mekanism.common.block.prefab.BlockTile.BlockTileModel;
 import mekanism.common.content.blocktype.BlockTypeTile;
@@ -41,14 +38,5 @@ public class AstralMekanismTileEntityTypes {
             .builder(AstralMekanismBlocks.ASTRAL_UNIVERSAL_CABLE,
                     (p, s) -> new TileEntityUniversalCable(AstralMekanismBlocks.ASTRAL_UNIVERSAL_CABLE, p, s))
             .serverTicker(TileEntityTransmitter::tickServer).build();
-
-    public static final TileEntityTypeRegistryObject<BEAstralChemicalInjectionChamber> ASTRAL_CHEMICAL_INJECTION_CHAMBER = reg(
-            AstralMekanismBlocks.ASTRAL_CHEMICAL_INJECTION_CHAMBER, BEAstralChemicalInjectionChamber::new);
-
-    public static final TileEntityTypeRegistryObject<BEAstralOsmiumCompressor> ASTRAL_OSMIUM_COMPRESSOR = reg(
-            AstralMekanismBlocks.ASTRAL_OSMIUM_COMPRESSOR, BEAstralOsmiumCompressor::new);
-
-    public static final TileEntityTypeRegistryObject<BEAstralPurificationChamber> ASTRAL_PURIFICATION_CHAMBER = reg(
-            AstralMekanismBlocks.ASTRAL_PURIFICATION_CHAMBER, BEAstralPurificationChamber::new);
 
 }

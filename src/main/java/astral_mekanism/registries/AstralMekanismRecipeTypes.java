@@ -81,6 +81,11 @@ public class AstralMekanismRecipeTypes {
             rt -> new InputRecipeCache.ItemChemical<>(rt, ItemStackGasToItemStackRecipe::getItemInput,
                     ItemStackGasToItemStackRecipe::getChemicalInput));
 
+    public static final RecipeTypeRegistryObject<ItemStackGasToItemStackRecipe, ItemChemical<Gas, GasStack, ItemStackGasToItemStackRecipe>> AM_COMPRESSING = register(
+            "am_compressing",
+            rt -> new InputRecipeCache.ItemChemical<>(rt, ItemStackGasToItemStackRecipe::getItemInput,
+                    ItemStackGasToItemStackRecipe::getChemicalInput));
+
     public static final RecipeTypeRegistryObject<AstralCraftingRecipe, AstralCraftingRecipeCache> ASTRAL_CRAFTING = register(
             "astral_crafting", AstralCraftingRecipeCache::new);
 }

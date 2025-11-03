@@ -92,6 +92,11 @@ public class AstralMekJEIPlugin implements IModPlugin {
                 AstralMekanismMachines.ASTRAL_ENRICHMENT_CHAMBER);
         CatalystRegistryHelper.register(registry, AstralMekanismJEIRecipeType.MEKANICAL_CHARGER_RECIPE,
                 AstralMekanismMachines.ASTRAL_MEKANICAL_CHARGER);
-
+        CatalystRegistryHelper.register(registry, MekanismJEIRecipeType.INJECTING,
+                AstralMekanismMachines.ASTRAL_CHEMICAL_INJECTION_CHAMBER);
+        CatalystRegistryHelper.register(registry, MekanismJEIRecipeType.COMPRESSING,
+                AstralMekanismMachines.ASTRAL_OSMIUM_COMPRESSOR);
+        CatalystRegistryHelper.register(registry, MekanismJEIRecipeType.PURIFYING,
+                AstralMekanismMachines.ASTRAL_PURIFICATION_CHAMBER);
     }
 }

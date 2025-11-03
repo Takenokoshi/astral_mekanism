@@ -94,12 +94,11 @@ public class AstralMekanismClient {
                     GuiAstralElectricMachine<BEAstralEnrichmentChamber>::new);
             regScreen(AstralMekanismMachines.ASTRAL_MEKANICAL_CHARGER,
                     GuiAstralElectricMachine<BEAstralMekanicalCharger>::new);
-            ClientRegistrationUtil.registerScreen(
-                    AstralMekanismContainers.ASTRAL_CHEMICAL_INJECTION_CHAMBER,
+            regScreen(AstralMekanismMachines.ASTRAL_CHEMICAL_INJECTION_CHAMBER,
                     GuiAstralAdvancedMachine<BEAstralChemicalInjectionChamber>::new);
-            ClientRegistrationUtil.registerScreen(AstralMekanismContainers.ASTRAL_OSMIUM_COMPRESSOR,
+            regScreen(AstralMekanismMachines.ASTRAL_OSMIUM_COMPRESSOR,
                     GuiAstralAdvancedMachine<BEAstralOsmiumCompressor>::new);
-            ClientRegistrationUtil.registerScreen(AstralMekanismContainers.ASTRAL_PURIFICATION_CHAMBER,
+            regScreen(AstralMekanismMachines.ASTRAL_PURIFICATION_CHAMBER,
                     GuiAstralAdvancedMachine<BEAstralPurificationChamber>::new);
         });
     }

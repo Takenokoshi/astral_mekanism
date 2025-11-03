@@ -151,5 +151,21 @@ public class MekanismRecipeTypeMixin2 {
             cir.setReturnValue(recipes);
             return;
         }
+        if (Objects.equals(type.getRegistryName(),
+                AstralMekanismRecipeTypes.AM_COMPRESSING.get().getRegistryName())) {
+            List<ItemStackGasToItemStackRecipe> beforeRecipes = recipeManager
+                    .getAllRecipesFor(MekanismRecipeType.COMPRESSING.get());
+            for (ItemStackGasToItemStackRecipe recipe : beforeRecipes) {
+                recipes.add((RECIPE) new PurifyingAMIRecipe(
+                        recipe.getId(), recipe.getItemInput(), IngredientCreatorAccess.gas().createMulti(
+                                recipe.getChemicalInput().getRepresentations().stream()
+                                        .map(stack -> IngredientCreatorAccess.gas()
+                                                .from(new GasStack(stack, stack.getAmount() * 200)))
+                                        .toArray(GasStackIngredient[]::new)),
+                        recipe.getOutputDefinition().get(0)));
+            }
+            cir.setReturnValue(recipes);
+            return;
+        }
     }
 }

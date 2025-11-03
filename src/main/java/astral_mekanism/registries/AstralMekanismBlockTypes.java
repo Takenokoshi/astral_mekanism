@@ -1,6 +1,5 @@
 package astral_mekanism.registries;
 
-import java.util.EnumSet;
 import java.util.Map;
 import java.util.Set;
 import astral_mekanism.AstralMekanismConfig;
@@ -203,31 +202,29 @@ public class AstralMekanismBlockTypes {
             .build();
 
     public static final BlockTypeMachine<BEAstralChemicalInjectionChamber> ASTRAL_CHEMICAL_INJECTION_CHAMBER = BlockMachineBuilder
-            .createMachine(() -> AstralMekanismTileEntityTypes.ASTRAL_CHEMICAL_INJECTION_CHAMBER,
+            .createMachine(() -> AstralMekanismMachines.ASTRAL_CHEMICAL_INJECTION_CHAMBER.getTileRO(),
                     MekanismLang.DESCRIPTION_CHEMICAL_INJECTION_CHAMBER)
             .withEnergyConfig(() -> FloatingLong.create(20000 * AstralMekanismConfig.energyRate),
                     () -> FloatingLong.MAX_VALUE)
-            .withSupportedUpgrades(EnumSet.of(Upgrade.ENERGY, Upgrade.SPEED, Upgrade.MUFFLING, Upgrade.GAS))
-            .withGui(() -> AstralMekanismContainers.ASTRAL_CHEMICAL_INJECTION_CHAMBER)
+            .withGui(() -> AstralMekanismMachines.ASTRAL_CHEMICAL_INJECTION_CHAMBER.getContainerRO())
             .withSound(MekanismSounds.CHEMICAL_INJECTION_CHAMBER)
             .build();
 
     public static final BlockTypeMachine<BEAstralOsmiumCompressor> ASTRAL_OSMIUM_COMPRESSOR = BlockMachineBuilder
-            .createMachine(() -> AstralMekanismTileEntityTypes.ASTRAL_OSMIUM_COMPRESSOR,
+            .createMachine(() -> AstralMekanismMachines.ASTRAL_OSMIUM_COMPRESSOR.getTileRO(),
                     MekanismLang.DESCRIPTION_OSMIUM_COMPRESSOR)
             .withEnergyConfig(() -> FloatingLong.create(10000 * AstralMekanismConfig.energyRate),
                     () -> FloatingLong.MAX_VALUE)
-            .withGui(() -> AstralMekanismContainers.ASTRAL_OSMIUM_COMPRESSOR)
+            .withGui(() -> AstralMekanismMachines.ASTRAL_OSMIUM_COMPRESSOR.getContainerRO())
             .withSound(MekanismSounds.OSMIUM_COMPRESSOR)
             .build();
 
     public static final BlockTypeMachine<BEAstralPurificationChamber> ASTRAL_PURIFICATION_CHAMBER = BlockMachineBuilder
-            .createMachine(() -> AstralMekanismTileEntityTypes.ASTRAL_PURIFICATION_CHAMBER,
+            .createMachine(() -> AstralMekanismMachines.ASTRAL_PURIFICATION_CHAMBER.getTileRO(),
                     MekanismLang.DESCRIPTION_PURIFICATION_CHAMBER)
             .withEnergyConfig(() -> FloatingLong.create(10000 * AstralMekanismConfig.energyRate),
                     () -> FloatingLong.MAX_VALUE)
-            .withSupportedUpgrades(EnumSet.of(Upgrade.ENERGY, Upgrade.SPEED, Upgrade.MUFFLING, Upgrade.GAS))
-            .withGui(() -> AstralMekanismContainers.ASTRAL_PURIFICATION_CHAMBER)
+            .withGui(() -> AstralMekanismMachines.ASTRAL_PURIFICATION_CHAMBER.getContainerRO())
             .withSound(MekanismSounds.PURIFICATION_CHAMBER)
             .build();
 

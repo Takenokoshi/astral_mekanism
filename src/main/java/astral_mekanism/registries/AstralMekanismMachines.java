@@ -10,6 +10,9 @@ import astral_mekanism.block.blockentity.astralmachine.BEAstralGreenHouse;
 import astral_mekanism.block.blockentity.astralmachine.BEAstralPRC;
 import astral_mekanism.block.blockentity.astralmachine.BEAstralPrecisionSawmill;
 import astral_mekanism.block.blockentity.astralmachine.BEAstralSPS;
+import astral_mekanism.block.blockentity.astralmachine.advanced.BEAstralChemicalInjectionChamber;
+import astral_mekanism.block.blockentity.astralmachine.advanced.BEAstralOsmiumCompressor;
+import astral_mekanism.block.blockentity.astralmachine.advanced.BEAstralPurificationChamber;
 import astral_mekanism.block.blockentity.astralmachine.electric.BEAstralCrusher;
 import astral_mekanism.block.blockentity.astralmachine.electric.BEAstralEnergizedSmelter;
 import astral_mekanism.block.blockentity.astralmachine.electric.BEAstralEnrichmentChamber;
@@ -162,5 +165,17 @@ public class AstralMekanismMachines {
     public static final MachineRegistryObject<BEAstralMekanicalCharger, BlockTypeMachine<BEAstralMekanicalCharger>, BlockTileModel<BEAstralMekanicalCharger, BlockTypeMachine<BEAstralMekanicalCharger>>, MekanismTileContainer<BEAstralMekanicalCharger>, ItemBlockMachine> ASTRAL_MEKANICAL_CHARGER = MACHINES
             .register("astral_mekanical_charger", AstralMekanismBlockTypes.ASTRAL_MEKANICAL_CHARGER,
                     BEAstralMekanicalCharger.class, BEAstralMekanicalCharger::new);
+
+    public static final MachineRegistryObject<BEAstralChemicalInjectionChamber, BlockTypeMachine<BEAstralChemicalInjectionChamber>, BlockTileModel<BEAstralChemicalInjectionChamber, BlockTypeMachine<BEAstralChemicalInjectionChamber>>, MekanismTileContainer<BEAstralChemicalInjectionChamber>, ItemBlockMachine> ASTRAL_CHEMICAL_INJECTION_CHAMBER = MACHINES
+            .register("astral_chemical_injection_chamber", AstralMekanismBlockTypes.ASTRAL_CHEMICAL_INJECTION_CHAMBER,
+                    BEAstralChemicalInjectionChamber.class, BEAstralChemicalInjectionChamber::new);
+
+    public static final MachineRegistryObject<BEAstralOsmiumCompressor, BlockTypeMachine<BEAstralOsmiumCompressor>, BlockTileModel<BEAstralOsmiumCompressor, BlockTypeMachine<BEAstralOsmiumCompressor>>, MekanismTileContainer<BEAstralOsmiumCompressor>, ItemBlockMachine> ASTRAL_OSMIUM_COMPRESSOR = MACHINES
+            .register("astral_osmium_compressor", AstralMekanismBlockTypes.ASTRAL_OSMIUM_COMPRESSOR,
+                    BEAstralOsmiumCompressor.class, BEAstralOsmiumCompressor::new);
+
+    public static final MachineRegistryObject<BEAstralPurificationChamber, BlockTypeMachine<BEAstralPurificationChamber>, BlockTileModel<BEAstralPurificationChamber, BlockTypeMachine<BEAstralPurificationChamber>>, MekanismTileContainer<BEAstralPurificationChamber>, ItemBlockMachine> ASTRAL_PURIFICATION_CHAMBER = MACHINES
+            .register("astral_purification_chamber", AstralMekanismBlockTypes.ASTRAL_PURIFICATION_CHAMBER,
+                    BEAstralPurificationChamber.class, BEAstralPurificationChamber::new);
 
 }

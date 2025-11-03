@@ -2,6 +2,7 @@ package astral_mekanism.registries;
 
 import astral_mekanism.AstralMekanismID;
 import astral_mekanism.recipes.Irecipe.AstralCraftingIRecipe;
+import astral_mekanism.recipes.Irecipe.CompressingAMIRecipe;
 import astral_mekanism.recipes.Irecipe.FluidInfuserIRecipe;
 import astral_mekanism.recipes.Irecipe.FormulizedSawingIRecipe;
 import astral_mekanism.recipes.Irecipe.GreenHouseIRecipe;
@@ -62,6 +63,9 @@ public class AstralMekanismRecipeSerializers {
 
     public static final RecipeSerializerRegistryObject<ItemStackGasToItemStackRecipe> AM_PURIFYING = RECIPE_SERIALIZERS
             .register("am_purifying", () -> new ItemStackGasToItemStackRecipeSerializer<>(PurifyingAMIRecipe::new));
+
+    public static final RecipeSerializerRegistryObject<ItemStackGasToItemStackRecipe> AM_COMPRESSING = RECIPE_SERIALIZERS
+            .register("am_compressing", () -> new ItemStackGasToItemStackRecipeSerializer<>(CompressingAMIRecipe::new));
 
     public static final RecipeSerializerRegistryObject<AstralCraftingRecipe> ASTRAL_CRAFTING = RECIPE_SERIALIZERS
             .register("astral_crafting", () -> new AstralCraftingRecipeSerializer<>(AstralCraftingIRecipe::new));
