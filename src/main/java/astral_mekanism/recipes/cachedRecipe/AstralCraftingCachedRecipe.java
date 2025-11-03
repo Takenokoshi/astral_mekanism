@@ -77,11 +77,6 @@ public class AstralCraftingCachedRecipe extends CachedRecipe<AstralCraftingRecip
         FluidStackIngredient inputFluid = recipe.getInputFluid();
         GasStackIngredient inputGas = recipe.getInputGas();
 
-        itemsRecipeInput = null;
-        fluidRecipeInput = null;
-        gasRecipeInput = null;
-        recipeOutput = null;
-
         AMCachedRecipeHelper.astralCraftingInputCalculateOperationsThisTick(
                 tracker,
                 itemInputHandlers,
