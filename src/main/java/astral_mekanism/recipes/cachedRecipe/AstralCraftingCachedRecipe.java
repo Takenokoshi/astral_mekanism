@@ -43,6 +43,8 @@ public class AstralCraftingCachedRecipe extends CachedRecipe<AstralCraftingRecip
         this.fluidInputHandler = fluidInputHandler;
         this.gasInputHandler = gasInputHandler;
         this.outputHandler = outputHandler;
+
+        itemsRecipeInput = new ItemStack[25];
     }
 
     @Override
