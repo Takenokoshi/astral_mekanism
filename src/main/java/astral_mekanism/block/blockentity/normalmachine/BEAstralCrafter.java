@@ -42,6 +42,7 @@ import mekanism.common.inventory.slot.FluidInventorySlot;
 import mekanism.common.inventory.slot.InputInventorySlot;
 import mekanism.common.inventory.slot.OutputInventorySlot;
 import mekanism.common.inventory.slot.chemical.GasInventorySlot;
+import mekanism.common.inventory.warning.WarningTracker.WarningType;
 import mekanism.common.lib.transmitter.TransmissionType;
 import mekanism.common.recipe.IMekanismRecipeTypeProvider;
 import mekanism.common.tile.component.TileComponentConfig;
@@ -69,7 +70,6 @@ public class BEAstralCrafter extends TileEntityProgressMachine<AstralCraftingRec
     };
     public static final RecipeError NOT_ENOUGH_FLUID = RecipeError.create();
     public static final RecipeError NOT_ENOUGH_GAS = RecipeError.create();
-
 
     public static final List<RecipeError> TRACKED_ERROR_TYPES = List.of(
             RecipeError.NOT_ENOUGH_ENERGY,
@@ -155,9 +155,13 @@ public class BEAstralCrafter extends TileEntityProgressMachine<AstralCraftingRec
                             fluidTank.getFluid(), gasTank.getStack()),
                     stack -> containsInputItem(level, stack, i),
                     recipeCacheListener,
-                    44 + (i % 5) * 18, 18 + (i / 5) * 18));
+                    44 + (i % 5) * 18, 18 + (i / 5) * 18))
+                    .tracksWarnings(slot -> slot.warning(
+                            WarningType.NO_MATCHING_RECIPE, getWarningCheck(NOT_ENOUGH_ITEMS[i])));
         }
-        builder.addSlot(outputSlot = OutputInventorySlot.at(recipeCacheListener, 170, 54));
+        builder.addSlot(outputSlot = OutputInventorySlot.at(recipeCacheListener, 170, 54))
+        .tracksWarnings(slot->slot.warning(
+            WarningType.NO_SPACE_IN_OUTPUT, getWarningCheck(RecipeError.NOT_ENOUGH_OUTPUT_SPACE)));
         return builder.build();
     }
 

@@ -37,11 +37,11 @@ public class GuiAstralCrafter extends GuiConfigurableTile<BEAstralCrafter, Conta
                 .warning(WarningType.NOT_ENOUGH_ENERGY,
                         tile.getWarningCheck(RecipeError.NOT_ENOUGH_ENERGY)));
         addRenderableWidget(new GuiFluidGauge(tile::getFluidTank, () -> tile.getFluidTanks(null),
-                GaugeType.STANDARD, this, 8, 32));
+                GaugeType.STANDARD, this, 6, 30));
         addRenderableWidget(new GuiGasGauge(tile::getGasTank, () -> tile.getGasTanks(null),
-                GaugeType.STANDARD, this, 26, 32));
+                GaugeType.STANDARD, this, 24, 30));
         addRenderableWidget(
-                new GuiProgress(tile::getScaledProgress, ProgressType.RIGHT, this, 134, 56).jeiCategory(tile)
+                new GuiProgress(tile::getScaledProgress, ProgressType.RIGHT, this, 134, 60).jeiCategory(tile)
                         .warning(WarningType.INPUT_DOESNT_PRODUCE_OUTPUT,
                                 tile.getWarningCheck(RecipeError.INPUT_DOESNT_PRODUCE_OUTPUT)));
     }

@@ -78,6 +78,7 @@ public abstract class BEAstralAdvancedMachine
         this.configComponent.setupItemIOExtraConfig(inputInventorySlot, outputInventorySlot, gasInventorySlot,
                 energyInventorySlot);
         this.configComponent.setupInputConfig(TransmissionType.GAS, gasTank);
+        configComponent.setupInputConfig(TransmissionType.ENERGY, energyContainer);
         this.ejectorComponent = new TileComponentEjector(this);
         ejectorComponent.setOutputData(configComponent, TransmissionType.ITEM);
 
