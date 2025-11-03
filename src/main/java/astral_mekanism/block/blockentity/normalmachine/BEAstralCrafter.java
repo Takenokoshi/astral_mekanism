@@ -185,7 +185,7 @@ public class BEAstralCrafter extends TileEntityProgressMachine<AstralCraftingRec
         ChemicalTankHelper<Gas, GasStack, IGasTank> builder = ChemicalTankHelper
                 .forSideGasWithConfig(this::getDirection, this::getConfig);
         builder.addTank(gasTank = ChemicalTankBuilder.GAS.input(10000,
-                gas -> containsInputGasOther(gas.getStack(1),
+                gas -> containsInputGasOther(gas,
                         Arrays.stream(inputSlots).map(IInventorySlot::getStack).toArray(ItemStack[]::new),
                         fluidTank.getFluid()),
                 this::containsInputGas, recipeCacheListener));
