@@ -16,61 +16,36 @@ import mekanism.common.recipe.lookup.cache.type.ItemInputCache;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraftforge.fluids.FluidStack;
-
 public class AstralCraftingRecipeCache extends AbstractInputRecipeCache<AstralCraftingRecipe> {
 
+    private static final int SLOT_COUNT = 25;
+
     @SuppressWarnings("unchecked")
-    private final Set<AstralCraftingRecipe>[] complexIngredientItems = new Set[] {
-            new HashSet<AstralCraftingRecipe>(),
-            new HashSet<AstralCraftingRecipe>(),
-            new HashSet<AstralCraftingRecipe>(),
-            new HashSet<AstralCraftingRecipe>(),
-            new HashSet<AstralCraftingRecipe>(),
-            new HashSet<AstralCraftingRecipe>(),
-            new HashSet<AstralCraftingRecipe>(),
-            new HashSet<AstralCraftingRecipe>(),
-            new HashSet<AstralCraftingRecipe>(),
-            new HashSet<AstralCraftingRecipe>(),
-            new HashSet<AstralCraftingRecipe>(),
-            new HashSet<AstralCraftingRecipe>(),
-            new HashSet<AstralCraftingRecipe>(),
-            new HashSet<AstralCraftingRecipe>(),
-            new HashSet<AstralCraftingRecipe>(),
-            new HashSet<AstralCraftingRecipe>(),
-            new HashSet<AstralCraftingRecipe>(),
-            new HashSet<AstralCraftingRecipe>(),
-            new HashSet<AstralCraftingRecipe>(),
-            new HashSet<AstralCraftingRecipe>(),
-            new HashSet<AstralCraftingRecipe>(),
-            new HashSet<AstralCraftingRecipe>(),
-            new HashSet<AstralCraftingRecipe>(),
-            new HashSet<AstralCraftingRecipe>(),
-            new HashSet<AstralCraftingRecipe>()
-    };
+    private final Set<AstralCraftingRecipe>[] complexIngredientItems = new Set[SLOT_COUNT];
 
     private final Set<AstralCraftingRecipe> complexIngredientFluid = new HashSet<>();
     private final Set<AstralCraftingRecipe> complexIngredientGas = new HashSet<>();
     private final Set<AstralCraftingRecipe> complexRecipes = new HashSet<>();
-    private final ItemInputCache<AstralCraftingRecipe>[] cacheItems;
-    private final FluidInputCache<AstralCraftingRecipe> cacheFluid;
-    private final ChemicalInputCache<Gas, GasStack, AstralCraftingRecipe> cacheGas;
 
     @SuppressWarnings("unchecked")
-    public AstralCraftingRecipeCache(
-            MekanismRecipeType<AstralCraftingRecipe, ?> recipeType) {
+    private final ItemInputCache<AstralCraftingRecipe>[] cacheItems = new ItemInputCache[SLOT_COUNT];
+
+    private final FluidInputCache<AstralCraftingRecipe> cacheFluid = new FluidInputCache<>();
+    private final ChemicalInputCache<Gas, GasStack, AstralCraftingRecipe> cacheGas = new ChemicalInputCache<>();
+
+    public AstralCraftingRecipeCache(MekanismRecipeType<AstralCraftingRecipe, ?> recipeType) {
         super(recipeType);
-        this.cacheItems = new ItemInputCache[25];
-        for (int i = 0; i < 25; i++) {
-            this.cacheItems[i] = new ItemInputCache<AstralCraftingRecipe>();
+
+        for (int i = 0; i < SLOT_COUNT; i++) {
+            cacheItems[i] = new ItemInputCache<>();
+            complexIngredientItems[i] = new HashSet<>();
         }
-        this.cacheFluid = new FluidInputCache<AstralCraftingRecipe>();
-        this.cacheGas = new ChemicalInputCache<Gas, GasStack, AstralCraftingRecipe>();
     }
 
     @Override
     public void clear() {
         super.clear();
-        for (int i = 0; i < 25; i++) {
+        for (int i = 0; i < SLOT_COUNT; i++) {
             cacheItems[i].clear();
             complexIngredientItems[i].clear();
         }
@@ -82,115 +57,130 @@ public class AstralCraftingRecipeCache extends AbstractInputRecipeCache<AstralCr
     }
 
     public boolean containsInputItem(@Nullable Level world, ItemStack input, int index) {
-        return containsInput(world, input, r -> r.getInputItem(index % 25), cacheItems[index % 25],
-                complexIngredientItems[index % 25]);
+        if (index < 0 || index >= SLOT_COUNT) {
+            return false;
+        }
+        return containsInput(world, input, r -> r.getInputItem(index), cacheItems[index], complexIngredientItems[index]);
     }
 
     public boolean containsInputFluid(@Nullable Level world, FluidStack input) {
-        return containsInput(world, input, r -> r.getInputFluid(), cacheFluid, complexIngredientFluid);
+        return containsInput(world, input, AstralCraftingRecipe::getInputFluid, cacheFluid, complexIngredientFluid);
     }
 
     public boolean containsInputGas(@Nullable Level world, GasStack input) {
-        return containsInput(world, input, r -> r.getInputGas(), cacheGas, complexIngredientGas);
+        return containsInput(world, input, AstralCraftingRecipe::getInputGas, cacheGas, complexIngredientGas);
     }
 
     public boolean containsInputGas(@Nullable Level world, Gas input) {
-        return containsInput(world, input.getStack(1), r -> r.getInputGas(), cacheGas, complexIngredientGas);
+        return containsInput(world, input.getStack(1), AstralCraftingRecipe::getInputGas, cacheGas, complexIngredientGas);
     }
 
     public boolean containsInputItemOther(@Nullable Level world, ItemStack input, int index,
-            ItemStack[] inputItems, FluidStack inputFluid, GasStack inputGas) {
-        if (inputItems.length != 25 || index > 25) {
+                                          ItemStack[] inputItems, FluidStack inputFluid, GasStack inputGas) {
+        if (index < 0 || index >= SLOT_COUNT || inputItems.length != SLOT_COUNT) {
             return false;
         }
         initCacheIfNeeded(world);
+
         return cacheItems[index].contains(input, r -> {
-            boolean boo = cacheFluid.isEmpty(inputFluid) || r.getInputFluid().testType(inputFluid);
-            boo &= cacheGas.isEmpty(inputGas) || r.getInputGas().testType(inputGas);
-            int i = 0;
-            while (boo && i < 25) {
-                boo &= i == index || cacheItems[i].isEmpty(inputItems[i]) || r.getInputItem(i).testType(inputItems[i]);
-                i++;
+            // type match only, not amounts
+            if (!cacheFluid.isEmpty(inputFluid) && !r.getInputFluid().testType(inputFluid)) return false;
+            if (!cacheGas.isEmpty(inputGas) && !r.getInputGas().testType(inputGas)) return false;
+
+            for (int i = 0; i < SLOT_COUNT; i++) {
+                if (i == index) continue;
+                if (!cacheItems[i].isEmpty(inputItems[i]) && !r.getInputItem(i).testType(inputItems[i])) {
+                    return false;
+                }
             }
-            return boo;
+            return true;
         });
     }
 
     public boolean containsInputFluidOther(@Nullable Level world, FluidStack input,
-            ItemStack[] inputItems, GasStack inputGas) {
-        if (inputItems.length != 25) {
+                                           ItemStack[] inputItems, GasStack inputGas) {
+        if (inputItems.length != SLOT_COUNT) {
             return false;
         }
         initCacheIfNeeded(world);
+
         return cacheFluid.contains(input, r -> {
-            boolean boo = cacheGas.isEmpty(inputGas) || r.getInputGas().testType(inputGas);
-            int i = 0;
-            while (boo && i < 25) {
-                boo &= cacheItems[i].isEmpty(inputItems[i]) || r.getInputItem(i).testType(inputItems[i]);
-                i++;
+            if (!cacheGas.isEmpty(inputGas) && !r.getInputGas().testType(inputGas)) return false;
+            for (int i = 0; i < SLOT_COUNT; i++) {
+                if (!cacheItems[i].isEmpty(inputItems[i]) && !r.getInputItem(i).testType(inputItems[i])) {
+                    return false;
+                }
             }
-            return boo;
+            return true;
         });
     }
 
     public boolean containsInputGasOther(@Nullable Level world, GasStack input,
-            ItemStack[] inputItems, FluidStack inputFluid) {
-        if (inputItems.length != 25) {
+                                         ItemStack[] inputItems, FluidStack inputFluid) {
+        if (inputItems.length != SLOT_COUNT) {
             return false;
         }
         initCacheIfNeeded(world);
+
         return cacheGas.contains(input, r -> {
-            boolean boo = cacheFluid.isEmpty(inputFluid) || r.getInputFluid().testType(inputFluid);
-            int i = 0;
-            while (boo && i < 25) {
-                boo &= cacheItems[i].isEmpty(inputItems[i]) || r.getInputItem(i).testType(inputItems[i]);
-                i++;
+            if (!cacheFluid.isEmpty(inputFluid) && !r.getInputFluid().testType(inputFluid)) return false;
+            for (int i = 0; i < SLOT_COUNT; i++) {
+                if (!cacheItems[i].isEmpty(inputItems[i]) && !r.getInputItem(i).testType(inputItems[i])) {
+                    return false;
+                }
             }
-            return boo;
+            return true;
         });
     }
 
     @Nullable
-    public AstralCraftingRecipe findFirstRecipe(@Nullable Level world, ItemStack[] inputItems, FluidStack inputFluid,
-            GasStack inputGas) {
-        boolean returnNull = inputItems.length != 25 || cacheFluid.isEmpty(inputFluid);
-        int i = 0;
-        while (!returnNull && i < 25) {
-            returnNull |= cacheItems[i].isEmpty(inputItems[i]);
-            i++;
-        }
-        if (returnNull) {
+    public AstralCraftingRecipe findFirstRecipe(@Nullable Level world, ItemStack[] inputItems,
+                                                FluidStack inputFluid, GasStack inputGas) {
+        if (inputItems.length != SLOT_COUNT || cacheFluid.isEmpty(inputFluid)) {
             return null;
         }
+
+        for (int i = 0; i < SLOT_COUNT; i++) {
+            if (cacheItems[i].isEmpty(inputItems[i])) {
+                return null;
+            }
+        }
+
         initCacheIfNeeded(world);
-        AstralCraftingRecipe recipe = cacheItems[0].findFirstRecipe(inputItems[0],
-                r -> r.test(inputItems, inputFluid, inputGas));
-        return recipe == null ? findFirstRecipe(complexRecipes, r -> r.test(inputItems, inputFluid, inputGas)) : recipe;
+
+        // Use slot 0 as primary
+        AstralCraftingRecipe recipe = cacheItems[0].findFirstRecipe(
+                inputItems[0],
+                r -> r.test(inputItems, inputFluid, inputGas)
+        );
+
+        return recipe != null
+                ? recipe
+                : findFirstRecipe(complexRecipes, r -> r.test(inputItems, inputFluid, inputGas));
     }
 
     @Override
     protected void initCache(List<AstralCraftingRecipe> recipes) {
         for (AstralCraftingRecipe recipe : recipes) {
-            boolean toAdd = false;
-            for (int i = 0; i < 25; i++) {
+            boolean complex = false;
+
+            for (int i = 0; i < SLOT_COUNT; i++) {
                 boolean complexItem = cacheItems[i].mapInputs(recipe, recipe.getInputItem(i));
                 if (complexItem) {
                     complexIngredientItems[i].add(recipe);
                 }
-                toAdd |= complexItem;
+                complex |= complexItem;
             }
+
             boolean complexFluid = cacheFluid.mapInputs(recipe, recipe.getInputFluid());
             boolean complexGas = cacheGas.mapInputs(recipe, recipe.getInputGas());
-            if (complexFluid) {
-                complexIngredientFluid.add(recipe);
-            }
-            if (complexGas) {
-                complexIngredientGas.add(recipe);
-            }
-            if (toAdd || complexFluid || complexGas) {
+
+            if (complexFluid) complexIngredientFluid.add(recipe);
+            if (complexGas) complexIngredientGas.add(recipe);
+
+            if (complex || complexFluid || complexGas) {
                 complexRecipes.add(recipe);
             }
         }
     }
-
 }
