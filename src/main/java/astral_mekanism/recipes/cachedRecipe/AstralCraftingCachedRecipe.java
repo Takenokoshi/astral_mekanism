@@ -54,11 +54,11 @@ public class AstralCraftingCachedRecipe extends CachedRecipe<AstralCraftingRecip
             return;
         }
         for (int i = 0; i < 25; i++) {
-            itemsRecipeInput[i] = itemInputHandlers[i].getInput();
+            itemsRecipeInput[i] = itemInputHandlers[i].getRecipeInput(recipe.getInputItem(i));
         }
 
-        fluidRecipeInput = fluidInputHandler.getInput();
-        gasRecipeInput = gasInputHandler.getInput();
+        fluidRecipeInput = fluidInputHandler.getRecipeInput(recipe.getInputFluid());
+        gasRecipeInput = gasInputHandler.getRecipeInput(recipe.getInputGas());
         recipeOutput = recipe.getOutput(itemsRecipeInput, fluidRecipeInput, gasRecipeInput);
         if (fluidRecipeInput.isEmpty() || gasRecipeInput.isEmpty()) {
             tracker.mismatchedRecipe();
