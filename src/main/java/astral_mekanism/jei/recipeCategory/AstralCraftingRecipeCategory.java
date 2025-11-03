@@ -37,14 +37,14 @@ public class AstralCraftingRecipeCategory extends BaseRecipeCategory<AstralCraft
         for (int i = 0; i < 25; i++) {
             inputItems[i] = this.addSlot(SlotType.INPUT, 44 + (i % 5) * 18, 18 + (i / 5) * 18);
         }
-        this.inputFluid = this.addElement(GuiFluidGauge.getDummy(GaugeType.STANDARD.with(DataType.INPUT), this, 6, 30));
-        this.inputGas = this.addElement(GuiGasGauge.getDummy(GaugeType.STANDARD.with(DataType.INPUT), this, 24, 30));
+        this.inputFluid = this.addElement(GuiFluidGauge.getDummy(GaugeType.STANDARD.with(DataType.INPUT), this, 7, 29));
+        this.inputGas = this.addElement(GuiGasGauge.getDummy(GaugeType.STANDARD.with(DataType.INPUT), this, 25, 29));
         this.output = this.addSlot(SlotType.OUTPUT, 170, 54);
         this.addSlot(SlotType.INPUT_2, 8, 90).with(SlotOverlay.MINUS);
         this.addSlot(SlotType.INPUT_2, 26, 90).with(SlotOverlay.MINUS);
         this.addSlot(SlotType.POWER, 170, 18).with(SlotOverlay.POWER);
         this.addElement(new GuiVerticalPowerBar(this, FULL_BAR, 188, 16));
-        this.addSimpleProgress(ProgressType.RIGHT, 134, 60);
+        this.addSimpleProgress(ProgressType.RIGHT, 134, 58);
     }
 
     @Override
