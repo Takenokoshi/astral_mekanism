@@ -128,7 +128,7 @@ public class MekanismRecipeTypeMixin2 {
                         recipe.getId(), recipe.getItemInput(), IngredientCreatorAccess.gas().createMulti(
                                 recipe.getChemicalInput().getRepresentations().stream()
                                         .map(stack -> IngredientCreatorAccess.gas()
-                                                .from(new GasStack(stack, (stack.getAmount() + 9) / 10)))
+                                                .from(new GasStack(stack, stack.getAmount() * 20)))
                                         .toArray(GasStackIngredient[]::new)),
                         recipe.getOutputDefinition().get(0)));
             }
@@ -144,7 +144,7 @@ public class MekanismRecipeTypeMixin2 {
                         recipe.getId(), recipe.getItemInput(), IngredientCreatorAccess.gas().createMulti(
                                 recipe.getChemicalInput().getRepresentations().stream()
                                         .map(stack -> IngredientCreatorAccess.gas()
-                                                .from(new GasStack(stack, (stack.getAmount() + 9) / 10)))
+                                                .from(new GasStack(stack, stack.getAmount() * 20)))
                                         .toArray(GasStackIngredient[]::new)),
                         recipe.getOutputDefinition().get(0)));
             }
