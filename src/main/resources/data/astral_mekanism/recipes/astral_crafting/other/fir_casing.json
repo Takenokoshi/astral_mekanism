@@ -1,0 +1,165 @@
+{
+    "type": "astral_mekanism:astral_crafting",
+    "itemInputA1": {
+        "amount": 1,
+        "ingredient": {
+            "item": "minecraft:glass"
+        }
+    },
+    "itemInputA2": {
+        "amount": 1,
+        "ingredient": {
+            "item": "minecraft:glass"
+        }
+    },
+    "itemInputA3": {
+        "amount": 64,
+        "ingredient": {
+            "tag": "forge:ingots/steel"
+        }
+    },
+    "itemInputA4": {
+        "amount": 1,
+        "ingredient": {
+            "item": "minecraft:glass"
+        }
+    },
+    "itemInputA5": {
+        "amount": 1,
+        "ingredient": {
+            "item": "minecraft:glass"
+        }
+    },
+    "itemInputB1": {
+        "amount": 64,
+        "ingredient": {
+            "tag": "forge:ingots/lead"
+        }
+    },
+    "itemInputB2": {
+        "amount": 64,
+        "ingredient": {
+            "item": "minecraft:redstone"
+        }
+    },
+    "itemInputB3": {
+        "amount": 64,
+        "ingredient": {
+            "tag": "forge:ingots/osmium"
+        }
+    },
+    "itemInputB4": {
+        "amount": 64,
+        "ingredient": {
+            "item": "minecraft:redstone"
+        }
+    },
+    "itemInputB5": {
+        "amount": 64,
+        "ingredient": {
+            "tag": "forge:ingots/lead"
+        }
+    },
+    "itemInputC1": {
+        "amount": 64,
+        "ingredient": {
+            "tag": "forge:ingots/lead"
+        }
+    },
+    "itemInputC2": {
+        "amount": 64,
+        "ingredient": {
+            "tag": "forge:ingots/osmium"
+        }
+    },
+    "itemInputC3": {
+        "amount": 1,
+        "ingredient": {
+            "item": "minecraft:glass"
+        }
+    },
+    "itemInputC4": {
+        "amount": 64,
+        "ingredient": {
+            "tag": "forge:ingots/osmium"
+        }
+    },
+    "itemInputC5": {
+        "amount": 64,
+        "ingredient": {
+            "tag": "forge:ingots/lead"
+        }
+    },
+    "itemInputD1": {
+        "amount": 64,
+        "ingredient": {
+            "tag": "forge:ingots/lead"
+        }
+    },
+    "itemInputD2": {
+        "amount": 64,
+        "ingredient": {
+            "item": "minecraft:redstone"
+        }
+    },
+    "itemInputD3": {
+        "amount": 64,
+        "ingredient": {
+            "tag": "forge:ingots/osmium"
+        }
+    },
+    "itemInputD4": {
+        "amount": 64,
+        "ingredient": {
+            "item": "minecraft:redstone"
+        }
+    },
+    "itemInputD5": {
+        "amount": 64,
+        "ingredient": {
+            "tag": "forge:ingots/lead"
+        }
+    },
+    "itemInputE1": {
+        "amount": 1,
+        "ingredient": {
+            "item": "minecraft:glass"
+        }
+    },
+    "itemInputE2": {
+        "amount": 1,
+        "ingredient": {
+            "item": "minecraft:glass"
+        }
+    },
+    "itemInputE3": {
+        "amount": 64,
+        "ingredient": {
+            "tag": "forge:ingots/steel"
+        }
+    },
+    "itemInputE4": {
+        "amount": 1,
+        "ingredient": {
+            "item": "minecraft:glass"
+        }
+    },
+    "itemInputE5": {
+        "amount": 1,
+        "ingredient": {
+            "item": "minecraft:glass"
+        }
+    },
+    "fluidInput": {
+        "tag": "minecraft:water",
+        "amount": 1000
+    },
+    "gasInput": {
+        "gas": "mekanism:hydrogen",
+        "amount": 1000
+    },
+    "output": {
+        "item": "mekanismgenerators:fission_reactor_casing",
+        "count": 64
+    }
+}
