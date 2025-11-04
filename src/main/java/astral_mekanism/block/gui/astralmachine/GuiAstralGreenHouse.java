@@ -36,7 +36,7 @@ public class GuiAstralGreenHouse
                 .warning(WarningType.NO_MATCHING_RECIPE, tile.getWarningCheck(
                         BEAstralGreenHouse.NOT_ENOUGH_FLUID_INPUT_ERROR));
         addRenderableWidget(new GuiProgress(tile::getActive, ProgressType.RIGHT, this, 77, 38))
-                .jeiCategories(AstralMekanismJEIRecipeType.Greenhouse_recipe)
+                .jeiCategories(AstralMekanismJEIRecipeType.GREENHOUSE_RECIPE)
                 .warning(WarningType.INPUT_DOESNT_PRODUCE_OUTPUT, tile.getWarningCheck(
                         RecipeError.INPUT_DOESNT_PRODUCE_OUTPUT));
 		addRenderableWidget(new GuiVerticalPowerBar(this, tile.getEnergyContainer(), 163, 16)

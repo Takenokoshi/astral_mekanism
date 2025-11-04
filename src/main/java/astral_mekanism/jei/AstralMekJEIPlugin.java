@@ -37,8 +37,8 @@ public class AstralMekJEIPlugin implements IModPlugin {
         IGuiHelper guiHelper = registry.getJeiHelpers().getGuiHelper();
         registry.addRecipeCategories(
                 new IRecipeCategory[] {
-                        new GreenHouseRecipeCategory(guiHelper, AstralMekanismJEIRecipeType.Greenhouse_recipe),
-                        new MelterRecipeCategory(guiHelper, AstralMekanismJEIRecipeType.Melter_recipe),
+                        new GreenHouseRecipeCategory(guiHelper, AstralMekanismJEIRecipeType.GREENHOUSE_RECIPE),
+                        new MelterRecipeCategory(guiHelper, AstralMekanismJEIRecipeType.MELTER_RECIPE),
                         new FluidInfuserRecipeCategory(guiHelper, AstralMekanismJEIRecipeType.FLUID_INFUSER_RECIPE),
                         new ItemStackToItemStackRecipeCategory(guiHelper,
                                 AstralMekanismJEIRecipeType.MEKANICAL_CHARGER_RECIPE,
@@ -52,9 +52,9 @@ public class AstralMekJEIPlugin implements IModPlugin {
 
     @Override
     public void registerRecipes(IRecipeRegistration registry) {
-        RecipeRegistryHelper.register(registry, AstralMekanismJEIRecipeType.Greenhouse_recipe,
+        RecipeRegistryHelper.register(registry, AstralMekanismJEIRecipeType.GREENHOUSE_RECIPE,
                 AstralMekanismRecipeTypes.Greenhouse_recipe);
-        RecipeRegistryHelper.register(registry, AstralMekanismJEIRecipeType.Melter_recipe,
+        RecipeRegistryHelper.register(registry, AstralMekanismJEIRecipeType.MELTER_RECIPE,
                 AstralMekanismRecipeTypes.Melter_recipe);
         RecipeRegistryHelper.register(registry, AstralMekanismJEIRecipeType.FLUID_INFUSER_RECIPE,
                 AstralMekanismRecipeTypes.FLUID_INFUSER_RECIPE);
@@ -68,9 +68,13 @@ public class AstralMekJEIPlugin implements IModPlugin {
 
     @Override
     public void registerRecipeCatalysts(IRecipeCatalystRegistration registry) {
-        CatalystRegistryHelper.register(registry, AstralMekanismJEIRecipeType.Greenhouse_recipe,
+        registry.addRecipeCatalyst(AstralMekanismMachines.MEKANICAL_CHARGER,
+                new RecipeType[] { ChargerCategory.RECIPE_TYPE });
+        registry.addRecipeCatalyst(AstralMekanismMachines.ASTRAL_MEKANICAL_CHARGER,
+                new RecipeType[] { ChargerCategory.RECIPE_TYPE });
+        CatalystRegistryHelper.register(registry, AstralMekanismJEIRecipeType.GREENHOUSE_RECIPE,
                 AstralMekanismMachines.GREENHOUSE);
-        CatalystRegistryHelper.register(registry, AstralMekanismJEIRecipeType.Melter_recipe,
+        CatalystRegistryHelper.register(registry, AstralMekanismJEIRecipeType.MELTER_RECIPE,
                 AstralMekanismMachines.MELTER);
         CatalystRegistryHelper.register(registry, MekanismJEIRecipeType.ACTIVATING,
                 AstralMekanismMachines.GLOWSTONE_NEUTRON_ACTIVATOR);
@@ -78,8 +82,6 @@ public class AstralMekJEIPlugin implements IModPlugin {
                 AstralMekanismMachines.COMPACT_TEP);
         CatalystRegistryHelper.register(registry, AstralMekanismJEIRecipeType.FLUID_INFUSER_RECIPE,
                 AstralMekanismMachines.FLUID_INFUSER);
-        registry.addRecipeCatalyst(AstralMekanismMachines.MEKANICAL_CHARGER,
-                new RecipeType[] { ChargerCategory.RECIPE_TYPE });
         CatalystRegistryHelper.register(registry, AstralMekanismJEIRecipeType.MEKANICAL_CHARGER_RECIPE,
                 AstralMekanismMachines.MEKANICAL_CHARGER);
         CatalystRegistryHelper.register(registry, AstralMekanismJEIRecipeType.ASTRAL_CRAFTING,

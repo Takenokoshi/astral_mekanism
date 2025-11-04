@@ -41,7 +41,7 @@ public class GuiGreenHouse
 				.warning(WarningType.NOT_ENOUGH_ENERGY,
 						tile.getWarningCheck(RecipeError.NOT_ENOUGH_ENERGY)));
 		addRenderableWidget(new GuiProgress(tile::getScaledProgress, ProgressType.RIGHT, this, 77, 38))
-				.jeiCategories(AstralMekanismJEIRecipeType.Greenhouse_recipe)
+				.jeiCategories(AstralMekanismJEIRecipeType.GREENHOUSE_RECIPE)
 				.warning(WarningType.INPUT_DOESNT_PRODUCE_OUTPUT,
 						tile.getWarningCheck(RecipeError.INPUT_DOESNT_PRODUCE_OUTPUT));
 	}

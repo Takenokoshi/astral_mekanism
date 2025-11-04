@@ -10,9 +10,9 @@ import mekanism.api.recipes.ItemStackToItemStackRecipe;
 import mekanism.client.jei.MekanismJEIRecipeType;
 
 public class AstralMekanismJEIRecipeType {
-    public static final MekanismJEIRecipeType<GreenHouseRecipe> Greenhouse_recipe = new MekanismJEIRecipeType<>(
+    public static final MekanismJEIRecipeType<GreenHouseRecipe> GREENHOUSE_RECIPE = new MekanismJEIRecipeType<>(
             AstralMekanismMachines.GREENHOUSE, GreenHouseRecipe.class);
-    public static final MekanismJEIRecipeType<ItemStackToFluidRecipe> Melter_recipe = new MekanismJEIRecipeType<>(
+    public static final MekanismJEIRecipeType<ItemStackToFluidRecipe> MELTER_RECIPE = new MekanismJEIRecipeType<>(
             AstralMekanismMachines.MELTER, ItemStackToFluidRecipe.class);
     public static final MekanismJEIRecipeType<FluidFluidToFluidRecipe> FLUID_INFUSER_RECIPE = new MekanismJEIRecipeType<>(
             AstralMekanismMachines.FLUID_INFUSER, FluidFluidToFluidRecipe.class);

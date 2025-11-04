@@ -58,7 +58,7 @@ public class GuiMelter
 						MekanismUtils.getTemperatureDisplay(tile.getLastEnvironmentLoss(),
 								TemperatureUnit.KELVIN, false)))));
 		addRenderableWidget(new GuiProgress(tile::getScaledProgress, ProgressType.RIGHT, this, 77, 38))
-				.jeiCategories(AstralMekanismJEIRecipeType.Melter_recipe)
+				.jeiCategories(AstralMekanismJEIRecipeType.MELTER_RECIPE)
 				.warning(WarningType.INPUT_DOESNT_PRODUCE_OUTPUT,
 						tile.getWarningCheck(RecipeError.INPUT_DOESNT_PRODUCE_OUTPUT));
 	}
