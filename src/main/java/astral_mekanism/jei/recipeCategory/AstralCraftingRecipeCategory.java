@@ -32,7 +32,7 @@ public class AstralCraftingRecipeCategory extends BaseRecipeCategory<AstralCraft
 
     public AstralCraftingRecipeCategory(IGuiHelper helper, MekanismJEIRecipeType<AstralCraftingRecipe> recipeType,
             IBlockProvider mekanismBlock) {
-        super(helper, recipeType, mekanismBlock, 3, 1, 212, 90);
+        super(helper, recipeType, mekanismBlock, 3, 10, 212, 90);
         inputItems = new GuiSlot[25];
         for (int i = 0; i < 25; i++) {
             inputItems[i] = this.addSlot(SlotType.INPUT, 44 + (i % 5) * 18, 10 + (i / 5) * 18);
