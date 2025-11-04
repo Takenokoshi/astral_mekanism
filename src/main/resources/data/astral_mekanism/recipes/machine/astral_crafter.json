@@ -2,7 +2,7 @@
     "type": "minecraft:crafting_shaped",
     "key": {
         "X": {
-            "item": "mekanism:crusher"
+            "item": "mekanism:steel_casing"
         },
         "A": {
             "item": "astral_mekanism:alloy_stardust"
@@ -11,7 +11,7 @@
             "item": "astral_mekanism:illusion_control_circuit"
         },
         "I": {
-            "item": "astral_mekanism:spacetime_modulation_core"
+            "item": "minecraft:crafting_table"
         }
     },
     "pattern": [
@@ -20,7 +20,7 @@
         "ACA"
     ],
     "result": {
-        "item": "astral_mekanism:astral_crusher",
+        "item": "astral_mekanism:astral_crafter",
         "count": 1
     }
 }

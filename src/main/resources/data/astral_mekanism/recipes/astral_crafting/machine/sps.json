@@ -1,0 +1,165 @@
+{
+    "type": "astral_mekanism:astral_crafting",
+    "itemInputA1": {
+        "amount": 64,
+        "ingredient": {
+            "item": "astral_mekanism:alloy_elastic"
+        }
+    },
+    "itemInputA2": {
+        "amount": 64,
+        "ingredient": {
+            "tag": "forge:ingots/steel"
+        }
+    },
+    "itemInputA3": {
+        "amount": 64,
+        "ingredient": {
+            "item": "minecraft:glass"
+        }
+    },
+    "itemInputA4": {
+        "amount": 64,
+        "ingredient": {
+            "tag": "forge:ingots/steel"
+        }
+    },
+    "itemInputA5": {
+        "amount": 64,
+        "ingredient": {
+            "item": "astral_mekanism:alloy_elastic"
+        }
+    },
+    "itemInputB1": {
+        "amount": 64,
+        "ingredient": {
+            "tag": "forge:ingots/bronze"
+        }
+    },
+    "itemInputB2": {
+        "amount": 1,
+        "ingredient": {
+            "item": "astral_mekanism:alloy_stardust"
+        }
+    },
+    "itemInputB3": {
+        "amount": 1,
+        "ingredient": {
+            "item": "astral_mekanism:illusion_control_circuit"
+        }
+    },
+    "itemInputB4": {
+        "amount": 1,
+        "ingredient": {
+            "item": "astral_mekanism:alloy_stardust"
+        }
+    },
+    "itemInputB5": {
+        "amount": 64,
+        "ingredient": {
+            "tag": "forge:ingots/bronze"
+        }
+    },
+    "itemInputC1": {
+        "amount": 64,
+        "ingredient": {
+            "item": "minecraft:glass"
+        }
+    },
+    "itemInputC2": {
+        "amount": 1,
+        "ingredient": {
+            "item": "astral_mekanism:spacetime_modulation_core"
+        }
+    },
+    "itemInputC3": {
+        "amount": 1,
+        "ingredient": {
+            "item": "astral_mekanism:compact_sps"
+        }
+    },
+    "itemInputC4": {
+        "amount": 1,
+        "ingredient": {
+            "item": "astral_mekanism:spacetime_modulation_core"
+        }
+    },
+    "itemInputC5": {
+        "amount": 64,
+        "ingredient": {
+            "item": "minecraft:glass"
+        }
+    },
+    "itemInputD1": {
+        "amount": 64,
+        "ingredient": {
+            "tag": "forge:ingots/bronze"
+        }
+    },
+    "itemInputD2": {
+        "amount": 1,
+        "ingredient": {
+            "item": "astral_mekanism:alloy_stardust"
+        }
+    },
+    "itemInputD3": {
+        "amount": 1,
+        "ingredient": {
+            "item": "astral_mekanism:illusion_control_circuit"
+        }
+    },
+    "itemInputD4": {
+        "amount": 1,
+        "ingredient": {
+            "item": "astral_mekanism:alloy_stardust"
+        }
+    },
+    "itemInputD5": {
+        "amount": 64,
+        "ingredient": {
+            "tag": "forge:ingots/bronze"
+        }
+    },
+    "itemInputE1": {
+        "amount": 64,
+        "ingredient": {
+            "item": "astral_mekanism:alloy_elastic"
+        }
+    },
+    "itemInputE2": {
+        "amount": 64,
+        "ingredient": {
+            "tag": "forge:ingots/steel"
+        }
+    },
+    "itemInputE3": {
+        "amount": 64,
+        "ingredient": {
+            "item": "minecraft:glass"
+        }
+    },
+    "itemInputE4": {
+        "amount": 64,
+        "ingredient": {
+            "tag": "forge:ingots/steel"
+        }
+    },
+    "itemInputE5": {
+        "amount": 64,
+        "ingredient": {
+            "item": "astral_mekanism:alloy_elastic"
+        }
+    },
+    "fluidInput": {
+        "fluid": "minecraft:lava",
+        "amount": 10000
+    },
+    "gasInput": {
+        "gas": "astral_mekanism:astral_ether",
+        "amount": 10000
+    },
+    "output": {
+        "item": "astral_mekanism:astral_sps",
+        "count": 1
+    }
+}

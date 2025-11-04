@@ -1,0 +1,11 @@
+{
+  "parent": "block/cube",
+  "textures": {
+    "up": "astral_mekanism:block/normal_machine/astral_crafter/top",
+    "down": "astral_mekanism:block/normal_machine/astral_crafter/other",
+    "north": "astral_mekanism:block/normal_machine/astral_crafter/front",
+    "south": "astral_mekanism:block/normal_machine/astral_crafter/other",
+    "east": "astral_mekanism:block/normal_machine/astral_crafter/side",
+    "west": "astral_mekanism:block/normal_machine/astral_crafter/side"
+  }
+}
