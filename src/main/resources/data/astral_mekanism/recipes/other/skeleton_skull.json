@@ -1,8 +1,18 @@
 {
-    "type": "mekanism:purifying",
-    "chemicalInput": {
-        "amount": 10,
-        "gas": "mekanism:sodium"
+    "type": "mekanism:reaction",
+    "duration": 400,
+    "energyRequired": 200,
+    "fluidInput": {
+        "fluid": "minecraft:lava",
+        "amount": 1000
+    },
+    "gasInput": {
+        "amount": 1000,
+        "gas": "mekanism:spent_nuclear_waste"
+    },
+    "gasOutput": {
+        "amount": 1000,
+        "gas": "astral_mekanism:utility_gas"
     },
     "itemInput": {
         "ingredient": {
@@ -10,7 +20,8 @@
         },
         "amount": 64
     },
-    "output": {
+    "itemOutput": {
+        "count": 1,
         "item": "minecraft:skeleton_skull"
     }
 }
