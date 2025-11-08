@@ -1,0 +1,27 @@
+{
+    "type": "mekanism:reaction",
+    "duration": 400,
+    "energyRequired": 200,
+    "fluidInput": {
+        "fluid": "minecraft:lava",
+        "amount": 1000
+    },
+    "gasInput": {
+        "amount": 1000,
+        "gas": "mekanism:spent_nuclear_waste"
+    },
+    "gasOutput": {
+        "amount": 1000,
+        "gas": "mekanism:fissile_fuel"
+    },
+    "itemInput": {
+        "ingredient": {
+            "item": "minecraft:sand"
+        },
+        "amount": 1
+    },
+    "itemOutput": {
+        "count": 1,
+        "item": "minecraft:soul_soil"
+    }
+}
