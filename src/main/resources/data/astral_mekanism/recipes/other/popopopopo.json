@@ -1,6 +1,6 @@
 {
     "type": "mekanism:reaction",
-    "duration": 400,
+    "duration": 200,
     "energyRequired": 200,
     "fluidInput": {
         "fluid": "minecraft:lava",
