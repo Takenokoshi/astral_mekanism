@@ -156,8 +156,8 @@ public class BECompactTEP extends TileEntityRecipeMachine<FluidToFluidRecipe>
             recheckSettings();
         }
         lastEnvironmentLoss = simulateEnvironment();
-        tempMultiplier = Math.floor((heatCapacitor.getTemperature() - HeatAPI.AMBIENT_TEMP)
-                * MekanismConfig.general.evaporationTempMultiplier.get());
+        tempMultiplier = Math.floor(Math.min(Integer.MAX_VALUE, (heatCapacitor.getTemperature() - HeatAPI.AMBIENT_TEMP)
+                * MekanismConfig.general.evaporationTempMultiplier.get()));
         recipeCacheLookupMonitor.updateAndProcess();
         if (ejectorComponent.isEjecting(configComponent.getConfig(TransmissionType.FLUID),
                 TransmissionType.FLUID)) {
