@@ -22,9 +22,9 @@ import net.minecraft.world.level.block.state.BlockState;
 
 public class BEUniversalStorage extends BEAbstractStorage {
 
-    private static final FloatingLong energyCapacity = FloatingLong.create(2000000);
-    private static final int fluidTankCapacity = 200000;
-    private static final long chemicalTankCapacity = 200000l;
+    private static final FloatingLong energyCapacity = FloatingLong.MAX_VALUE;
+    private static final int fluidTankCapacity = Integer.MAX_VALUE;
+    private static final long chemicalTankCapacity = Long.MAX_VALUE;
 
     BasicInventorySlot[] inventorySlotsA;
     BasicInventorySlot[] inventorySlotsB;
