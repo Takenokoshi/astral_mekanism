@@ -125,6 +125,7 @@ dependencies {
     implementation fg.deobf("curse.maven:mekanism-tools-268567:6552915")
 	implementation fg.deobf("curse.maven:mekanism-generators-268566:6552914")
     implementation fg.deobf("curse.maven:applied-energistics-2-223794:6852919")
+    implementation fg.deobf("curse.maven:applied-mekanistics-574300:4842281")
     // Mixinの注釈処理
     annotationProcessor "org.spongepowered:mixin:0.8.5:processor"
     compileOnly "org.spongepowered:mixin:0.8.5"
