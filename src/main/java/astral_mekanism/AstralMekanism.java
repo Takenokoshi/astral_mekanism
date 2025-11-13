@@ -3,6 +3,7 @@ package astral_mekanism;
 import com.mojang.logging.LogUtils;
 
 import astral_mekanism.registries.AstralMekanismBlocks;
+import astral_mekanism.registries.AstralMekanismCableParts;
 import astral_mekanism.registries.AstralMekanismCreativeTab;
 import astral_mekanism.registries.AstralMekanismFluids;
 import astral_mekanism.registries.AstralMekanismGases;
@@ -43,6 +44,7 @@ public class AstralMekanism {
 		AstralMekanismFluids.FLUIDS.register(modEventBus);
 		AstralMekanismItems.ITEMS.register(modEventBus);
 		AstralMekanismTileEntityTypes.TILE_ENTITY_TYPES.register(modEventBus);
+        AstralMekanismCableParts.CABLE_PARTS.register(modEventBus);
 		AstralMekanismRecipeSerializers.RECIPE_SERIALIZERS.register(modEventBus);
 		AstralMekanismRecipeTypes.RECIPE_TYPES.register(modEventBus);
 		AstralMekanismCreativeTab.CREATIVE_TABS.register(modEventBus);
