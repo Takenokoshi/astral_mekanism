@@ -101,6 +101,12 @@ description='''${mod_description}'''
     versionRange="[10.4.0,)"
     ordering="NONE"
     side="BOTH"
+[[dependencies.${mod_id}]]
+    modId="appmek"
+    mandatory=true
+    versionRange="[1.4.2,)"
+    ordering="NONE"
+    side="BOTH"
 
 [[mixin]]
     config = "astral_mekanism.mixins.json"
