@@ -32,11 +32,6 @@ public class HeatP2PTunnelPart extends CapabilityP2PTunnelPart<HeatP2PTunnelPart
 
     @Override
     public void onContentsChanged() {
-        IHeatHandler input = getInputCapability().get();
-        IHeatHandler[] outputs = getOutputStream().map(h -> h.outputHandler).toArray(IHeatHandler[]::new);
-        IHeatHandler[] used = Arrays.copyOf(outputs, outputs.length + 1);
-        used[outputs.length] = input;
-        AMHeatUtils.averagingTemp(used);
         IPartHost host = getHost();
         if (host != null) {
             host.markForSave();
@@ -51,7 +46,7 @@ public class HeatP2PTunnelPart extends CapabilityP2PTunnelPart<HeatP2PTunnelPart
 
     private abstract static class P2PHeatHandler implements IHeatHandler {
 
-        protected final IHeatCapacitor heatCapacitor;
+        public final IHeatCapacitor heatCapacitor;
 
         public P2PHeatHandler(IContentsListener listener) {
             this.heatCapacitor = BasicHeatCapacitor.create(10000d, () -> 300d, listener);
@@ -101,6 +96,12 @@ public class HeatP2PTunnelPart extends CapabilityP2PTunnelPart<HeatP2PTunnelPart
 
         @Override
         public void handleHeat(int arg0, double arg1) {
+            IHeatCapacitor input = ((P2PHeatHandler) (getInputCapability().get())).heatCapacitor;
+            IHeatCapacitor[] outputs = getOutputStream()
+                    .map(p2p -> ((P2PHeatHandler) (p2p.outputHandler)).heatCapacitor).toArray(IHeatCapacitor[]::new);
+            IHeatCapacitor[] used = Arrays.copyOf(outputs, outputs.length + 1);
+            used[outputs.length] = input;
+            AMHeatUtils.averagingTemp(used);
             if ((arg1 > 0) != (heatCapacitor.getTemperature() > 300d)) {
                 heatCapacitor.handleHeat(arg1);
             }
