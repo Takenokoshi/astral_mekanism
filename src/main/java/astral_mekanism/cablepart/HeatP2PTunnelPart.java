@@ -45,7 +45,7 @@ public class HeatP2PTunnelPart extends CapabilityP2PTunnelPart<HeatP2PTunnelPart
         private final IHeatCapacitor heatCapacitor;
 
         public P2PHeatHandler(IContentsListener listener) {
-            this.heatCapacitor = BasicHeatCapacitor.create(1000000d, () -> 300d, listener);
+            this.heatCapacitor = BasicHeatCapacitor.create(10000d, () -> 300d, listener);
         }
 
         @Override
