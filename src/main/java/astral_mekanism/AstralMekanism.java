@@ -2,6 +2,7 @@ package astral_mekanism;
 
 import com.mojang.logging.LogUtils;
 
+import appeng.api.features.P2PTunnelAttunement;
 import astral_mekanism.registries.AstralMekanismBlocks;
 import astral_mekanism.registries.AstralMekanismCableParts;
 import astral_mekanism.registries.AstralMekanismCreativeTab;
@@ -24,55 +25,68 @@ import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+
 import org.slf4j.Logger;
 
-// The value here should match an entry in the META-INF/mods.toml file
 @Mod(AstralMekanism.MODID)
 public class AstralMekanism {
-	public static final String MODID = AstralMekanismID.MODID;
-	private static final Logger LOGGER = LogUtils.getLogger();
+    public static final String MODID = AstralMekanismID.MODID;
+    private static final Logger LOGGER = LogUtils.getLogger();
 
-	public AstralMekanism(FMLJavaModLoadingContext context) {
-		IEventBus modEventBus = context.getModEventBus();
-		modEventBus.addListener(this::commonSetup);
+    public AstralMekanism(FMLJavaModLoadingContext context) {
+        IEventBus modEventBus = context.getModEventBus();
+        modEventBus.addListener(this::commonSetup);
 
-		AstralMekanismMachines.MACHINES.register(modEventBus);
-		AstralMekanismGases.GASES.register(modEventBus);
-		AstralMekanismInfuseTypes.INFUSE_TYPES.register(modEventBus);
-		AstralMekanismSlurries.SLURRIES.register(modEventBus);
-		AstralMekanismBlocks.BLOCKS.register(modEventBus);
-		AstralMekanismFluids.FLUIDS.register(modEventBus);
-		AstralMekanismItems.ITEMS.register(modEventBus);
-		AstralMekanismTileEntityTypes.TILE_ENTITY_TYPES.register(modEventBus);
+        AstralMekanismMachines.MACHINES.register(modEventBus);
+        AstralMekanismGases.GASES.register(modEventBus);
+        AstralMekanismInfuseTypes.INFUSE_TYPES.register(modEventBus);
+        AstralMekanismSlurries.SLURRIES.register(modEventBus);
+        AstralMekanismBlocks.BLOCKS.register(modEventBus);
+        AstralMekanismFluids.FLUIDS.register(modEventBus);
+        AstralMekanismItems.ITEMS.register(modEventBus);
+        AstralMekanismTileEntityTypes.TILE_ENTITY_TYPES.register(modEventBus);
         AstralMekanismCableParts.CABLE_PARTS.register(modEventBus);
-		AstralMekanismRecipeSerializers.RECIPE_SERIALIZERS.register(modEventBus);
-		AstralMekanismRecipeTypes.RECIPE_TYPES.register(modEventBus);
-		AstralMekanismCreativeTab.CREATIVE_TABS.register(modEventBus);
+        AstralMekanismRecipeSerializers.RECIPE_SERIALIZERS.register(modEventBus);
+        AstralMekanismRecipeTypes.RECIPE_TYPES.register(modEventBus);
+        AstralMekanismCreativeTab.CREATIVE_TABS.register(modEventBus);
 
-		// Register ourselves for server and other game events we are interested in
-		MinecraftForge.EVENT_BUS.register(this);
+        /*MinecraftForge.EVENT_BUS.addGenericListener(BlockEntity.class,
+        (AttachCapabilitiesEvent<BlockEntity> event) -> {
 
-		// Register our mod's ForgeConfigSpec so that Forge can create and load the
-		// config file for us
-		context.registerConfig(ModConfig.Type.COMMON, AstralMekanismConfig.SPEC);
-	}
+            var BlockEntity = event.getObject();
+            event.addCapability(AstralMekanismID.rl("generic_inv_wrapper"), new ICapabilityProvider() {
 
-	private void commonSetup(final FMLCommonSetupEvent event) {
-		LOGGER.info(MODID);
-	}
+                @Override
+                public <T> @NotNull LazyOptional<T> getCapability(@NotNull Capability<T> cap,
+                        @Nullable Direction side) {
+                    if (cap == mekanism.common.capabilities.Capabilities.HEAT_HANDLER) {
+                        return BlockEntity.getCapability(appeng.capabilities.Capabilities.GENERIC_INTERNAL_INV, side)
+                                .lazyMap(null).cast();
+                    }
+                    return LazyOptional.empty();
+                }
+            });
+        });*/
+        MinecraftForge.EVENT_BUS.register(this);
+        context.registerConfig(ModConfig.Type.COMMON, AstralMekanismConfig.SPEC);
+    }
 
-	// You can use SubscribeEvent and let the Event Bus discover methods to call
-	@SubscribeEvent
-	public void onServerStarting(ServerStartingEvent event) {
-	}
+    private void commonSetup(final FMLCommonSetupEvent event) {
+        LOGGER.info(MODID);
+        event.enqueueWork(() -> {
+            P2PTunnelAttunement.registerAttunementTag(AstralMekanismCableParts.HEAT_P2P.asItem());
+        });
+    }
 
-	// You can use EventBusSubscriber to automatically register all static methods
-	// in the class annotated with @SubscribeEvent
-	@Mod.EventBusSubscriber(modid = MODID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
-	public static class ClientModEvents {
-		@SubscribeEvent
-		public static void onClientSetup(FMLClientSetupEvent event) {
-		}
-	}
+    @SubscribeEvent
+    public void onServerStarting(ServerStartingEvent event) {
+    }
+
+    @Mod.EventBusSubscriber(modid = MODID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
+    public static class ClientModEvents {
+        @SubscribeEvent
+        public static void onClientSetup(FMLClientSetupEvent event) {
+        }
+    }
 
 }
