@@ -1,5 +1,7 @@
 package astral_mekanism.cablepart;
 
+import java.util.Arrays;
+
 import appeng.api.parts.IPartHost;
 import appeng.api.parts.IPartItem;
 import appeng.api.parts.IPartModel;
@@ -18,18 +20,23 @@ public class HeatP2PTunnelPart extends CapabilityP2PTunnelPart<HeatP2PTunnelPart
         implements IContentsListener {
 
     public static final Capability<IHeatHandler> HEAT_CAPABILITY = Capabilities.HEAT_HANDLER;
+    private static final IHeatHandler NULL_HANDLER = new P2PEmptyHeatHandler(null);
     private static final P2PModels MODELS = new P2PModels(AppEng.makeId("part/p2p/p2p_tunnel_fe"));
 
     public HeatP2PTunnelPart(IPartItem<?> partItem) {
         super(partItem, HEAT_CAPABILITY);
         inputHandler = new P2PInputHeatHandler(this);
         outputHandler = new P2POutputHeatHandler(this);
-        emptyHandler = new P2PEmptyHeatHandler(this);
+        emptyHandler = NULL_HANDLER;
     }
 
     @Override
     public void onContentsChanged() {
-        AMHeatUtils.averagingTemp(inputHandler, outputHandler);
+        IHeatHandler input = getInputCapability().get();
+        IHeatHandler[] outputs = getOutputStream().map(h -> h.outputHandler).toArray(IHeatHandler[]::new);
+        IHeatHandler[] used = Arrays.copyOf(outputs, outputs.length + 1);
+        used[outputs.length] = input;
+        AMHeatUtils.averagingTemp(used);
         IPartHost host = getHost();
         if (host != null) {
             host.markForSave();
@@ -42,7 +49,7 @@ public class HeatP2PTunnelPart extends CapabilityP2PTunnelPart<HeatP2PTunnelPart
         return MODELS.getModel(this.isPowered(), this.isActive());
     }
 
-    private abstract class P2PHeatHandler implements IHeatHandler {
+    private abstract static class P2PHeatHandler implements IHeatHandler {
 
         protected final IHeatCapacitor heatCapacitor;
 
@@ -100,7 +107,7 @@ public class HeatP2PTunnelPart extends CapabilityP2PTunnelPart<HeatP2PTunnelPart
         }
     }
 
-    private class P2PEmptyHeatHandler extends P2PHeatHandler {
+    private static class P2PEmptyHeatHandler extends P2PHeatHandler {
 
         public P2PEmptyHeatHandler(IContentsListener listener) {
             super(listener);

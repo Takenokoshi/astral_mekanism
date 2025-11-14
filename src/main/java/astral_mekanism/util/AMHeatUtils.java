@@ -4,24 +4,42 @@ import mekanism.api.heat.IHeatHandler;
 
 public class AMHeatUtils {
 
-    public static void averagingTemp(IHeatHandler a, IHeatHandler b) {
-        if (a == null || b == null || a == b || a.getHeatCapacitorCount() != 1 || b.getHeatCapacitorCount() != 1) {
+    public static void averagingTemp(IHeatHandler... handlers) {
+        final int length = handlers.length;
+        if (length < 2) {
             return;
         }
-        double c1 = a.getHeatCapacity(0);
-        double c2 = b.getHeatCapacity(0);
-        if (c1 <= 0 || c2 <= 0) {
+        for (IHeatHandler handler : handlers) {
+            if (handler == null || handler.getHeatCapacitorCount() != 1) {
+                return;
+            }
+        }
+        double[] c = new double[length];
+        double totalc = 0d;
+        for (int i = 0; i < length; i++) {
+            c[i] = handlers[i].getHeatCapacity(0);
+            if (c[i] <= 0) {
+                return;
+            }
+            totalc += c[i];
+        }
+        double[] t = new double[length];
+        double avt = 0d;
+        for (int i = 0; i < length; i++) {
+            t[i] = handlers[i].getTemperature(0);
+            avt += (c[i] / totalc) * t[i];
+        }
+        double[] d = new double[length];
+        boolean cancel = true;
+        for (int i = 0; i < length; i++) {
+            d[i] = c[i] * (avt - t[i]);
+            cancel &= Math.abs(d[i]) < 1e-12;
+        }
+        if (cancel) {
             return;
         }
-        double t1 = a.getTemperature(0);
-        double t2 = b.getTemperature(0);
-        double te = t1 * c1 / (c1 + c2) + t2 * c2 / (c1 + c2);
-        double dq1 = c1 * (te - t1);
-        double dq2 = -dq1;
-        if (Math.abs(dq1) < 1e-12 && Math.abs(dq2) < 1e-12) {
-            return;
+        for (int i = 0; i < length; i++) {
+            handlers[i].handleHeat(d[i]);
         }
-        a.handleHeat(dq1);
-        b.handleHeat(dq2);
     }
 }
