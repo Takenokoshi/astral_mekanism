@@ -6,6 +6,7 @@ import appeng.api.parts.IPartModel;
 import appeng.core.AppEng;
 import appeng.parts.p2p.CapabilityP2PTunnelPart;
 import appeng.parts.p2p.P2PModels;
+import astral_mekanism.util.AMHeatUtils;
 import mekanism.api.IContentsListener;
 import mekanism.api.heat.IHeatCapacitor;
 import mekanism.api.heat.IHeatHandler;
@@ -21,13 +22,14 @@ public class HeatP2PTunnelPart extends CapabilityP2PTunnelPart<HeatP2PTunnelPart
 
     public HeatP2PTunnelPart(IPartItem<?> partItem) {
         super(partItem, HEAT_CAPABILITY);
-        inputHandler = new P2PHeatHandler(this);
-        outputHandler = new P2PHeatHandler(this);
-        emptyHandler = new P2PHeatHandler(null);
+        inputHandler = new P2PInputHeatHandler(this);
+        outputHandler = new P2POutputHeatHandler(this);
+        emptyHandler = new P2PEmptyHeatHandler(this);
     }
 
     @Override
     public void onContentsChanged() {
+        AMHeatUtils.averagingTemp(inputHandler, outputHandler);
         IPartHost host = getHost();
         if (host != null) {
             host.markForSave();
@@ -40,9 +42,9 @@ public class HeatP2PTunnelPart extends CapabilityP2PTunnelPart<HeatP2PTunnelPart
         return MODELS.getModel(this.isPowered(), this.isActive());
     }
 
-    private static class P2PHeatHandler implements IHeatHandler {
+    private abstract class P2PHeatHandler implements IHeatHandler {
 
-        private final IHeatCapacitor heatCapacitor;
+        protected final IHeatCapacitor heatCapacitor;
 
         public P2PHeatHandler(IContentsListener listener) {
             this.heatCapacitor = BasicHeatCapacitor.create(10000d, () -> 300d, listener);
@@ -68,11 +70,45 @@ public class HeatP2PTunnelPart extends CapabilityP2PTunnelPart<HeatP2PTunnelPart
             return heatCapacitor.getTemperature();
         }
 
-        @Override
-        public void handleHeat(int arg0, double arg1) {
-            heatCapacitor.handleHeat(arg1);
+    }
+
+    private class P2PInputHeatHandler extends P2PHeatHandler {
+
+        public P2PInputHeatHandler(IContentsListener listener) {
+            super(listener);
         }
 
+        @Override
+        public void handleHeat(int arg0, double arg1) {
+            if ((arg1 > 0) == (heatCapacitor.getTemperature() > 300d)) {
+                heatCapacitor.handleHeat(arg1);
+            }
+        }
+    }
+
+    private class P2POutputHeatHandler extends P2PHeatHandler {
+
+        public P2POutputHeatHandler(IContentsListener listener) {
+            super(listener);
+        }
+
+        @Override
+        public void handleHeat(int arg0, double arg1) {
+            if ((arg1 > 0) != (heatCapacitor.getTemperature() > 300d)) {
+                heatCapacitor.handleHeat(arg1);
+            }
+        }
+    }
+
+    private class P2PEmptyHeatHandler extends P2PHeatHandler {
+
+        public P2PEmptyHeatHandler(IContentsListener listener) {
+            super(listener);
+        }
+
+        @Override
+        public void handleHeat(int arg0, double arg1) {
+        }
     }
 
 }
