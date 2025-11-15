@@ -1,8 +1,6 @@
 package astral_mekanism.cablepart;
 
 import java.util.Arrays;
-import java.util.stream.Stream;
-
 import appeng.api.parts.IPartHost;
 import appeng.api.parts.IPartItem;
 import appeng.api.parts.IPartModel;
@@ -108,16 +106,17 @@ public class HeatP2PTunnelPart extends CapabilityP2PTunnelPart<HeatP2PTunnelPart
                 IHeatHandler[] output = getOutputStream().map(p2p -> p2p.outputHandler).toArray(IHeatHandler[]::new);
                 IHeatHandler[] handlers = Arrays.copyOf(output, output.length + 1);
                 handlers[output.length] = input;
-                Stream<IHeatHandler> stream = Arrays.stream(handlers);
-                double avtemp = stream.map(ha -> ha.getTemperature(0) / handlers.length).reduce(0d, (a, b) -> a + b);
-                stream.forEach(ha -> {
-                    if (ha == this) {
+                double avtemp = Arrays.stream(handlers).map(ha -> ha.getTemperature(0) / handlers.length).reduce(0d,
+                        (a, b) -> a + b);
+                for (IHeatHandler handler : handlers) {
+                    if (handler == this) {
                         heatCapacitor.handleHeat(
-                                heatCapacitor.getHeatCapacity() * (heatCapacitor.getTemperature() - avtemp));
+                                heatCapacitor.getHeatCapacity() * (avtemp - heatCapacitor.getTemperature()));
                     } else {
-                        ha.handleHeat(-1, ha.getHeatCapacity(0) * (ha.getTemperature(0) - avtemp));
+                        handler.handleHeat(-1,
+                                handler.getHeatCapacity(0) * (avtemp - handler.getTemperature(0)));
                     }
-                });
+                }
                 heatCapacitor.handleHeat(arg1);
             }
         }
