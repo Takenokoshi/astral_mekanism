@@ -1,6 +1,7 @@
 package astral_mekanism.cablepart;
 
 import java.util.Arrays;
+import java.util.stream.Stream;
 
 import appeng.api.parts.IPartHost;
 import appeng.api.parts.IPartItem;
@@ -8,7 +9,6 @@ import appeng.api.parts.IPartModel;
 import appeng.core.AppEng;
 import appeng.parts.p2p.CapabilityP2PTunnelPart;
 import appeng.parts.p2p.P2PModels;
-import astral_mekanism.util.AMHeatUtils;
 import mekanism.api.IContentsListener;
 import mekanism.api.heat.IHeatCapacitor;
 import mekanism.api.heat.IHeatHandler;
@@ -82,7 +82,9 @@ public class HeatP2PTunnelPart extends CapabilityP2PTunnelPart<HeatP2PTunnelPart
 
         @Override
         public void handleHeat(int arg0, double arg1) {
-            if ((arg1 > 0) == (heatCapacitor.getTemperature() > 300d)) {
+            if (arg0 == -1) {
+                heatCapacitor.handleHeat(arg1);
+            } else if ((arg1 > 0) == (heatCapacitor.getTemperature() > 300d)) {
                 heatCapacitor.handleHeat(arg1);
             }
         }
@@ -96,13 +98,26 @@ public class HeatP2PTunnelPart extends CapabilityP2PTunnelPart<HeatP2PTunnelPart
 
         @Override
         public void handleHeat(int arg0, double arg1) {
-            IHeatCapacitor input = ((P2PHeatHandler) (getInputCapability().get())).heatCapacitor;
-            IHeatCapacitor[] outputs = getOutputStream()
-                    .map(p2p -> ((P2PHeatHandler) (p2p.outputHandler)).heatCapacitor).toArray(IHeatCapacitor[]::new);
-            IHeatCapacitor[] used = Arrays.copyOf(outputs, outputs.length + 1);
-            used[outputs.length] = input;
-            AMHeatUtils.averagingTemp(used);
-            if ((arg1 > 0) != (heatCapacitor.getTemperature() > 300d)) {
+            if (arg0 == -1) {
+                heatCapacitor.handleHeat(arg1);
+            } else if ((arg1 > 0) != (heatCapacitor.getTemperature() > 300d)) {
+                IHeatHandler input = getInputCapability().get();
+                if (input == null) {
+                    return;
+                }
+                IHeatHandler[] output = getOutputStream().map(p2p -> p2p.outputHandler).toArray(IHeatHandler[]::new);
+                IHeatHandler[] handlers = Arrays.copyOf(output, output.length + 1);
+                handlers[output.length] = input;
+                Stream<IHeatHandler> stream = Arrays.stream(handlers);
+                double avtemp = stream.map(ha -> ha.getTemperature(0) / handlers.length).reduce(0d, (a, b) -> a + b);
+                stream.forEach(ha -> {
+                    if (ha == this) {
+                        heatCapacitor.handleHeat(
+                                heatCapacitor.getHeatCapacity() * (heatCapacitor.getTemperature() - avtemp));
+                    } else {
+                        ha.handleHeat(-1, ha.getHeatCapacity(0) * (ha.getTemperature(0) - avtemp));
+                    }
+                });
                 heatCapacitor.handleHeat(arg1);
             }
         }
