@@ -80,9 +80,7 @@ public class HeatP2PTunnelPart extends CapabilityP2PTunnelPart<HeatP2PTunnelPart
 
         @Override
         public void handleHeat(int arg0, double arg1) {
-            if (arg0 == -1) {
-                heatCapacitor.handleHeat(arg1);
-            } else if ((arg1 > 0) == (heatCapacitor.getTemperature() > 300d)) {
+            if ((arg1 > 0) == (heatCapacitor.getTemperature() > 300d)) {
                 heatCapacitor.handleHeat(arg1);
             }
         }
