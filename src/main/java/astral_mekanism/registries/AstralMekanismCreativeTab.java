@@ -13,7 +13,6 @@ public class AstralMekanismCreativeTab {
             AstralMekanismLang.ITEM_GROUP, AstralMekanismItems.ASTRAL_DIAMOND,
             builder -> builder.displayItems((displayParameters, output) -> {
                 CreativeTabDeferredRegister.addToDisplay(AstralMekanismMachines.MACHINES.blockRegister, output);
-                CreativeTabDeferredRegister.addToDisplay(AstralMekanismCableParts.CABLE_PARTS.itemRegister, output);
                 CreativeTabDeferredRegister.addToDisplay(AstralMekanismItems.ITEMS, output);
                 CreativeTabDeferredRegister.addToDisplay(AstralMekanismBlocks.BLOCKS, output);
             }));
