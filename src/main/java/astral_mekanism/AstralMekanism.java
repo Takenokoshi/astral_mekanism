@@ -2,9 +2,7 @@ package astral_mekanism;
 
 import com.mojang.logging.LogUtils;
 
-import appeng.api.features.P2PTunnelAttunement;
 import astral_mekanism.registries.AstralMekanismBlocks;
-import astral_mekanism.registries.AstralMekanismCableParts;
 import astral_mekanism.registries.AstralMekanismCreativeTab;
 import astral_mekanism.registries.AstralMekanismFluids;
 import astral_mekanism.registries.AstralMekanismGases;
@@ -15,7 +13,6 @@ import astral_mekanism.registries.AstralMekanismRecipeSerializers;
 import astral_mekanism.registries.AstralMekanismRecipeTypes;
 import astral_mekanism.registries.AstralMekanismSlurries;
 import astral_mekanism.registries.AstralMekanismTileEntityTypes;
-import net.minecraft.network.chat.Component;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.server.ServerStartingEvent;
@@ -46,7 +43,6 @@ public class AstralMekanism {
         AstralMekanismFluids.FLUIDS.register(modEventBus);
         AstralMekanismItems.ITEMS.register(modEventBus);
         AstralMekanismTileEntityTypes.TILE_ENTITY_TYPES.register(modEventBus);
-        AstralMekanismCableParts.CABLE_PARTS.register(modEventBus);
         AstralMekanismRecipeSerializers.RECIPE_SERIALIZERS.register(modEventBus);
         AstralMekanismRecipeTypes.RECIPE_TYPES.register(modEventBus);
         AstralMekanismCreativeTab.CREATIVE_TABS.register(modEventBus);
@@ -56,13 +52,6 @@ public class AstralMekanism {
 
     private void commonSetup(final FMLCommonSetupEvent event) {
         LOGGER.info(MODID);
-        event.enqueueWork(() -> {
-            P2PTunnelAttunement.registerAttunementTag(AstralMekanismCableParts.HEAT_P2P);
-            P2PTunnelAttunement.registerAttunementApi(
-                    AstralMekanismCableParts.HEAT_P2P,
-                    mekanism.common.capabilities.Capabilities.HEAT_HANDLER,
-                    Component.nullToEmpty("heat"));
-        });
     }
 
     @SubscribeEvent
