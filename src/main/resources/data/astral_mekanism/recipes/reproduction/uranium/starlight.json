@@ -1,0 +1,23 @@
+{
+    "type": "mekanism:reaction",
+    "duration": 100,
+    "energyRequired": 200,
+    "fluidInput": {
+        "fluid": "minecraft:lava",
+        "amount": 1000
+    },
+    "gasInput": {
+        "amount": 1,
+        "gas": "mekanism:astral_ether"
+    },
+    "itemInput": {
+        "ingredient": {
+            "tag": "forge:dusts/uranium"
+        },
+        "amount": 1
+    },
+    "itemOutput": {
+        "count": 1,
+        "item": "astral_mekanism:starlight_uranium"
+    }
+}

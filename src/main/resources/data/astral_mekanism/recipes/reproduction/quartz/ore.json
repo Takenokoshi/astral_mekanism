@@ -1,27 +1,18 @@
 {
-    "type": "mekanism:reaction",
-    "duration": 400,
-    "energyRequired": 200,
-    "fluidInput": {
-        "amount": 1000,
-        "fluid": "astral_mekanism:lava_quartz"
-    },
-    "gasInput": {
-        "amount": 100,
-        "gas": "astral_mekanism:diluted_astral_ether"
-    },
-    "gasOutput": {
-        "amount": 100,
-        "gas": "astral_mekanism:utility_gas"
-    },
-    "itemInput": {
-        "amount": 1,
+    "type": "mekanism:combining",
+    "extraInput": {
         "ingredient": {
-            "item": "minecraft:netherrack"
+            "tag": "forge:cobblestone/normal"
         }
     },
-    "itemOutput": {
-        "count": 1,
-        "item": "minecraft:nether_quartz_ore"
+    "mainInput": {
+        "amount": 1,
+        "ingredient": {
+            "item": "astral_mekanism:starlight_quartz"
+        }
+    },
+    "output": {
+        "item": "minecraft:nether_quartz_ore",
+        "count": 64
     }
 }
