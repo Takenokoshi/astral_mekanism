@@ -8,7 +8,7 @@
     },
     "gasInput": {
         "amount": 1,
-        "gas": "mekanism:astral_ether"
+        "gas": "astral_mekanism:astral_ether"
     },
     "itemInput": {
         "ingredient": {
