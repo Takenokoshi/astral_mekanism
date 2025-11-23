@@ -99,17 +99,17 @@ public abstract class BETripleItemToItemMachine extends TileEntityProgressMachin
         InventorySlotHelper builder = InventorySlotHelper.forSideWithConfig(this::getDirection, this::getConfig);
         builder.addSlot(inputSlotA = InputInventorySlot.at(
                 stack -> containsRecipeABC(stack, inputSlotB.getStack(), inputSlotC.getStack()), this::containsRecipeA,
-                recipeCacheListener, 46, 35))
+                recipeCacheListener, 28, 35))
                 .tracksWarnings(slot -> slot.warning(WarningType.NO_MATCHING_RECIPE,
                         getWarningCheck(RecipeError.NOT_ENOUGH_INPUT)));
         builder.addSlot(inputSlotB = InputInventorySlot.at(
                 stack -> containsRecipeBAC(inputSlotA.getStack(), stack, inputSlotC.getStack()), this::containsRecipeB,
-                recipeCacheListener, 64, 35))
+                recipeCacheListener, 46, 35))
                 .tracksWarnings(slot -> slot.warning(WarningType.NO_MATCHING_RECIPE,
                         getWarningCheck(RecipeError.NOT_ENOUGH_SECONDARY_INPUT)));
         builder.addSlot(inputSlotC = InputInventorySlot.at(
                 stack -> containsRecipeCAB(inputSlotA.getStack(), inputSlotB.getStack(), stack), this::containsRecipeC,
-                recipeCacheListener, 82, 35))
+                recipeCacheListener, 64, 35))
                 .tracksWarnings(slot -> slot.warning(WarningType.NO_MATCHING_RECIPE,
                         getWarningCheck(NOT_ENOUGH_THERD_INPUT)));
         builder.addSlot(outputSlot = OutputInventorySlot.at(listener, 134, 35))

@@ -32,7 +32,7 @@ public class GuiTripleItemToItemMachine<BE extends BETripleItemToItemMachine>
                 .warning(WarningType.NOT_ENOUGH_ENERGY, tile.getWarningCheck(RecipeError.NOT_ENOUGH_ENERGY))
                 .warning(WarningType.NOT_ENOUGH_ENERGY_REDUCED_RATE,
                         tile.getWarningCheck(RecipeError.NOT_ENOUGH_ENERGY_REDUCED_RATE));
-        addRenderableWidget(new GuiProgress(tile::getScaledProgress, ProgressType.LARGE_RIGHT, this, 100, 39)
+        addRenderableWidget(new GuiProgress(tile::getScaledProgress, ProgressType.LARGE_RIGHT, this, 82, 39)
                 .jeiCategories(MekanismJEIRecipeType.findType(new ResourceLocation(tile.getJEI()))))
                 .warning(WarningType.INPUT_DOESNT_PRODUCE_OUTPUT,
                         tile.getWarningCheck(RecipeError.INPUT_DOESNT_PRODUCE_OUTPUT));

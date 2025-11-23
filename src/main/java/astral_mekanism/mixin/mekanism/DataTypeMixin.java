@@ -61,7 +61,7 @@ public class DataTypeMixin {
                 EnumColor.BRIGHT_GREEN);
         AstralMekDataType.INPUT2_OUTPUT = createNew("INPUT2_OUTPUT", AstralMekanismLang.SIDE_DATA_INPUT2_OUTPUT,
                 EnumColor.BROWN);
-        AstralMekDataType.INPUT3_OUTPUT = createNew("INPUT3_OUTPUT", AstralMekanismLang.SIDE_DATA_INPUT3,
+        AstralMekDataType.INPUT3_OUTPUT = createNew("INPUT3_OUTPUT", AstralMekanismLang.SIDE_DATA_INPUT3_OUTPUT,
                 EnumColor.BRIGHT_PINK);
 
         AstralMekDataType.INPUT_OUTPUT1 = createNew("INPUT_OUTPUT1", AstralMekanismLang.SIDE_DATA_INPUT_OUTPUT1,

@@ -26,6 +26,7 @@ public enum AstralMekanismLang implements ILangEntry {
 	SIDE_DATA_INPUT2_OUTPUT2("side_data", "input2_output2"),
 	SIDE_DATA_INPUT1_OUTPUT("side_data", "input1_output"),
 	SIDE_DATA_INPUT2_OUTPUT("side_data", "input2_output"),
+	SIDE_DATA_INPUT3_OUTPUT("side_data", "input3_output"),
 	SIDE_DATA_INPUT_OUTPUT1("side_data", "input_output1"),
 	SIDE_DATA_INPUT_OUTPUT2("side_data", "input_output2"),
 	SIDE_DATA_INPUT_OUTPUTleft("side_data", "input_output_left"),
