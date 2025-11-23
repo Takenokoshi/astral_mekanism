@@ -24,7 +24,7 @@ public class CatalystHelper {
 
             @Override
             public ItemStack getRecipeCatalyst(InputIngredient<ItemStack> ingredient) {
-                return getCatalyst().isEmpty() ? ingredient.getMatchingInstance(getCatalyst()) : ItemStack.EMPTY;
+                return getCatalyst().isEmpty() ? ItemStack.EMPTY : ingredient.getMatchingInstance(getCatalyst());
             }
 
         };

@@ -103,12 +103,12 @@ public abstract class BETripleItemToItemMachine extends TileEntityProgressMachin
                 .tracksWarnings(slot -> slot.warning(WarningType.NO_MATCHING_RECIPE,
                         getWarningCheck(RecipeError.NOT_ENOUGH_INPUT)));
         builder.addSlot(inputSlotB = InputInventorySlot.at(
-                stack -> containsRecipeBAC(stack, inputSlotA.getStack(), inputSlotC.getStack()), this::containsRecipeB,
+                stack -> containsRecipeBAC(inputSlotA.getStack(), stack, inputSlotC.getStack()), this::containsRecipeB,
                 recipeCacheListener, 64, 35))
                 .tracksWarnings(slot -> slot.warning(WarningType.NO_MATCHING_RECIPE,
                         getWarningCheck(RecipeError.NOT_ENOUGH_SECONDARY_INPUT)));
         builder.addSlot(inputSlotC = InputInventorySlot.at(
-                stack -> containsRecipeCAB(stack, inputSlotA.getStack(), inputSlotB.getStack()), this::containsRecipeC,
+                stack -> containsRecipeCAB(inputSlotA.getStack(), inputSlotB.getStack(), stack), this::containsRecipeC,
                 recipeCacheListener, 82, 35))
                 .tracksWarnings(slot -> slot.warning(WarningType.NO_MATCHING_RECIPE,
                         getWarningCheck(NOT_ENOUGH_THERD_INPUT)));
