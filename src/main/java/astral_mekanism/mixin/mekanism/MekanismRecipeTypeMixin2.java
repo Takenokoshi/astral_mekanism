@@ -11,10 +11,14 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 import appeng.recipes.AERecipeTypes;
 import appeng.recipes.handlers.ChargerRecipe;
-import astral_mekanism.recipes.Irecipe.FormulizedSawingIRecipe;
-import astral_mekanism.recipes.Irecipe.InjectingAMIRecipe;
-import astral_mekanism.recipes.Irecipe.MekanicalChagerIRecipe;
-import astral_mekanism.recipes.Irecipe.PurifyingAMIRecipe;
+import appeng.recipes.handlers.InscriberProcessType;
+import appeng.recipes.handlers.InscriberRecipe;
+import astral_mekanism.recipes.irecipe.FormulizedSawingIRecipe;
+import astral_mekanism.recipes.irecipe.InjectingAMIRecipe;
+import astral_mekanism.recipes.irecipe.MekanicalChagerIRecipe;
+import astral_mekanism.recipes.irecipe.MekanicalInscriberIRecipe;
+import astral_mekanism.recipes.irecipe.MekanicalPresserIRecipe;
+import astral_mekanism.recipes.irecipe.PurifyingAMIRecipe;
 import astral_mekanism.registries.AstralMekanismRecipeTypes;
 import mekanism.api.chemical.gas.GasStack;
 import mekanism.api.recipes.ItemStackGasToItemStackRecipe;
@@ -163,6 +167,39 @@ public class MekanismRecipeTypeMixin2 {
                                                 .from(new GasStack(stack, stack.getAmount() * 200)))
                                         .toArray(GasStackIngredient[]::new)),
                         recipe.getOutputDefinition().get(0)));
+            }
+            cir.setReturnValue(recipes);
+            return;
+        }
+
+        if (Objects.equals(type.getRegistryName(),
+                AstralMekanismRecipeTypes.MEKANICAL_PRESSER.get().getRegistryName())) {
+            for (InscriberRecipe recipe : recipeManager.getAllRecipesFor(AERecipeTypes.INSCRIBER)) {
+                Ingredient top = recipe.getTopOptional();
+                Ingredient bottom = recipe.getBottomOptional();
+                if (recipe.getProcessType() == InscriberProcessType.PRESS && !top.isEmpty() && !bottom.isEmpty()) {
+                    recipes.add((RECIPE) new MekanicalPresserIRecipe(recipe.getId(),
+                            IngredientCreatorAccess.item().from(top),
+                            IngredientCreatorAccess.item().from(recipe.getMiddleInput()),
+                            IngredientCreatorAccess.item().from(bottom),
+                            recipe.getResultItem()));
+                }
+            }
+            cir.setReturnValue(recipes);
+            return;
+        }
+
+        if (Objects.equals(type.getRegistryName(),
+                AstralMekanismRecipeTypes.MEKANICAL_INSCRIBER.get().getRegistryName())) {
+            for (InscriberRecipe recipe : recipeManager.getAllRecipesFor(AERecipeTypes.INSCRIBER)) {
+                Ingredient top = recipe.getTopOptional();
+                Ingredient bottom = recipe.getBottomOptional();
+                if (recipe.getProcessType() == InscriberProcessType.INSCRIBE && !top.isEmpty() && bottom.isEmpty()) {
+                    recipes.add((RECIPE) new MekanicalInscriberIRecipe(recipe.getId(),
+                            IngredientCreatorAccess.item().from(recipe.getMiddleInput()),
+                            IngredientCreatorAccess.item().from(top),
+                            recipe.getResultItem()));
+                }
             }
             cir.setReturnValue(recipes);
             return;

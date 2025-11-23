@@ -1,4 +1,4 @@
-package astral_mekanism.recipes.Irecipe;
+package astral_mekanism.recipes.irecipe;
 
 import astral_mekanism.registries.AstralMekanismRecipeSerializers;
 import astral_mekanism.registries.AstralMekanismRecipeTypes;

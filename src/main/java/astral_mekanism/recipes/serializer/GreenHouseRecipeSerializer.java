@@ -6,13 +6,13 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonSyntaxException;
 
+import astral_mekanism.AstralMekanism;
 import astral_mekanism.recipes.recipe.GreenHouseRecipe;
 import mekanism.api.SerializerHelper;
 import mekanism.api.math.FloatingLong;
 import mekanism.api.recipes.ingredients.FluidStackIngredient;
 import mekanism.api.recipes.ingredients.ItemStackIngredient;
 import mekanism.api.recipes.ingredients.creator.IngredientCreatorAccess;
-import mekanism.common.Mekanism;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.GsonHelper;
@@ -77,7 +77,7 @@ public class GreenHouseRecipeSerializer<RECIPE extends GreenHouseRecipe> impleme
             ItemStack outputItemB = buffer.readItem();
             return this.factory.create(recipeId, inputitem, inputFluid, energyRequired, duration, outputItemA, outputItemB);
         } catch (Exception e) {
-            Mekanism.logger.error("Error reading greenhouse recipe from packet.", e);
+            AstralMekanism.LOGGER.error("Error reading greenhouse recipe from packet.", e);
             throw e;
         }
     }
@@ -95,7 +95,7 @@ public class GreenHouseRecipeSerializer<RECIPE extends GreenHouseRecipe> impleme
         try {
             recipe.write(buffer);
         } catch (Exception e) {
-            Mekanism.logger.error("Error writing greenhouse recipe to packet.", e);
+            AstralMekanism.LOGGER.error("Error writing greenhouse recipe to packet.", e);
             throw e;
         }
     }

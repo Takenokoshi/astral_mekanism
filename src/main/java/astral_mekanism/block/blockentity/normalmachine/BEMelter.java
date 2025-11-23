@@ -46,126 +46,128 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.fluids.FluidStack;
 
 public class BEMelter extends TileEntityProgressMachine<ItemStackToFluidRecipe>
-		implements ItemRecipeLookupHandler<ItemStackToFluidRecipe> {
+        implements ItemRecipeLookupHandler<ItemStackToFluidRecipe> {
 
-	public static final RecipeError NOT_ENOUGH_ITEM_INPUT_ERROR = RecipeError.create();
-	public static final RecipeError NOT_ENOUGH_SPACE_FLUID_OUTPUT_ERROR = RecipeError.create();
-	public static final List<RecipeError> TRACKED_ERROR_TYPES = List.of(
-			NOT_ENOUGH_ITEM_INPUT_ERROR,
-			NOT_ENOUGH_SPACE_FLUID_OUTPUT_ERROR,
-			RecipeError.INPUT_DOESNT_PRODUCE_OUTPUT);
+    public static final RecipeError NOT_ENOUGH_ITEM_INPUT_ERROR = RecipeError.create();
+    public static final RecipeError NOT_ENOUGH_SPACE_FLUID_OUTPUT_ERROR = RecipeError.create();
+    public static final List<RecipeError> TRACKED_ERROR_TYPES = List.of(
+            NOT_ENOUGH_ITEM_INPUT_ERROR,
+            NOT_ENOUGH_SPACE_FLUID_OUTPUT_ERROR,
+            RecipeError.INPUT_DOESNT_PRODUCE_OUTPUT);
 
-	InputInventorySlot inputSlot;
-	public BasicFluidTank outputFluidTank;
-	FluidInventorySlot fluidSlot;
-	public BasicHeatCapacitor heatCapacitor;
-	private final IInputHandler<@NotNull ItemStack> itemInputHandler;
-	private final IOutputHandler<FluidStack> outputHandler;
-	private double lastEnvironmentLoss;
+    InputInventorySlot inputSlot;
+    public BasicFluidTank outputFluidTank;
+    FluidInventorySlot fluidSlot;
+    public BasicHeatCapacitor heatCapacitor;
+    private final IInputHandler<@NotNull ItemStack> itemInputHandler;
+    private final IOutputHandler<FluidStack> outputHandler;
+    private double lastEnvironmentLoss;
 
-	public BEMelter(IBlockProvider blockProvider, BlockPos pos, BlockState state) {
-		super(blockProvider, pos, state, TRACKED_ERROR_TYPES, 100);
-		this.configComponent = new TileComponentConfig(this, TransmissionType.ITEM, TransmissionType.FLUID,
-				TransmissionType.HEAT);
-		this.configComponent.setupInputConfig(TransmissionType.ITEM, inputSlot);
-		this.configComponent.setupInputConfig(TransmissionType.HEAT, heatCapacitor);
-		this.configComponent.setupOutputConfig(TransmissionType.FLUID, outputFluidTank, RelativeSide.BOTTOM);
-		this.ejectorComponent = new TileComponentEjector(this, () -> Long.MAX_VALUE, () -> 2147483647,
-				() -> FloatingLong.MAX_VALUE);
-		this.ejectorComponent.setOutputData(configComponent, TransmissionType.FLUID);
-		itemInputHandler = InputHelper.getInputHandler(inputSlot, NOT_ENOUGH_ITEM_INPUT_ERROR);
-		outputHandler = OutputHelper.getOutputHandler(outputFluidTank, NOT_ENOUGH_SPACE_FLUID_OUTPUT_ERROR);
-	}
+    public BEMelter(IBlockProvider blockProvider, BlockPos pos, BlockState state) {
+        super(blockProvider, pos, state, TRACKED_ERROR_TYPES, 100);
+        this.configComponent = new TileComponentConfig(this, TransmissionType.ITEM, TransmissionType.FLUID,
+                TransmissionType.HEAT);
+        this.configComponent.setupInputConfig(TransmissionType.ITEM, inputSlot);
+        this.configComponent.setupInputConfig(TransmissionType.HEAT, heatCapacitor);
+        this.configComponent.setupOutputConfig(TransmissionType.FLUID, outputFluidTank, RelativeSide.BOTTOM);
+        this.ejectorComponent = new TileComponentEjector(this, () -> Long.MAX_VALUE, () -> 2147483647,
+                () -> FloatingLong.MAX_VALUE);
+        this.ejectorComponent.setOutputData(configComponent, TransmissionType.FLUID);
+        itemInputHandler = InputHelper.getInputHandler(inputSlot, NOT_ENOUGH_ITEM_INPUT_ERROR);
+        outputHandler = OutputHelper.getOutputHandler(outputFluidTank, NOT_ENOUGH_SPACE_FLUID_OUTPUT_ERROR);
+    }
 
-	@NotNull
-	@Override
-	protected IInventorySlotHolder getInitialInventory(IContentsListener listener,
-			IContentsListener recipeCacheListener) {
-		InventorySlotHelper builder = InventorySlotHelper.forSideWithConfig(this::getDirection,
-				this::getConfig);
-		builder.addSlot(inputSlot = InputInventorySlot.at(item -> containsRecipe(item), this::containsRecipe,
-				recipeCacheListener, 54, 40));
-		builder.addSlot(this.fluidSlot = FluidInventorySlot.drain(this.outputFluidTank, listener, 115, 10));
-		return builder.build();
-	}
+    @NotNull
+    @Override
+    protected IInventorySlotHolder getInitialInventory(IContentsListener listener,
+            IContentsListener recipeCacheListener) {
+        InventorySlotHelper builder = InventorySlotHelper.forSideWithConfig(this::getDirection,
+                this::getConfig);
+        builder.addSlot(inputSlot = InputInventorySlot.at(item -> containsRecipe(item), this::containsRecipe,
+                recipeCacheListener, 54, 40));
+        builder.addSlot(this.fluidSlot = FluidInventorySlot.drain(this.outputFluidTank, listener, 115, 10));
+        return builder.build();
+    }
 
-	@NotNull
-	@Override
-	protected IFluidTankHolder getInitialFluidTanks(IContentsListener listener,
-			IContentsListener recipeCacheListener) {
-		FluidTankHelper builder = FluidTankHelper.forSideWithConfig(this::getDirection, this::getConfig);
-		builder.addTank(outputFluidTank = BasicFluidTank.output(2147483647, recipeCacheListener));
-		return builder.build();
-	}
+    @NotNull
+    @Override
+    protected IFluidTankHolder getInitialFluidTanks(IContentsListener listener,
+            IContentsListener recipeCacheListener) {
+        FluidTankHelper builder = FluidTankHelper.forSideWithConfig(this::getDirection, this::getConfig);
+        builder.addTank(outputFluidTank = BasicFluidTank.output(2147483647, recipeCacheListener));
+        return builder.build();
+    }
 
-	@NotNull
-	@Override
-	protected IHeatCapacitorHolder getInitialHeatCapacitors(IContentsListener listener,
-			IContentsListener recipeCacheListener, CachedAmbientTemperature ambientTemperature) {
-		HeatCapacitorHelper builder = HeatCapacitorHelper.forSide(this::getDirection);
-		builder.addCapacitor(
-				heatCapacitor = BasicHeatCapacitor.create(100, 5, 100, ambientTemperature, listener));
-		return builder.build();
-	}
+    @NotNull
+    @Override
+    protected IHeatCapacitorHolder getInitialHeatCapacitors(IContentsListener listener,
+            IContentsListener recipeCacheListener, CachedAmbientTemperature ambientTemperature) {
+        HeatCapacitorHelper builder = HeatCapacitorHelper.forSide(this::getDirection);
+        builder.addCapacitor(
+                heatCapacitor = BasicHeatCapacitor.create(100, 5, 100, ambientTemperature, listener));
+        return builder.build();
+    }
 
-	public void onCachedRecipeChanged(@Nullable CachedRecipe<ItemStackToFluidRecipe> cachedRecipe, int cacheIndex) {
-		super.onCachedRecipeChanged(cachedRecipe, cacheIndex);
-		int recipeDuration = 100;
-		boolean update = this.baseTicksRequired != recipeDuration;
-		this.baseTicksRequired = recipeDuration;
-		if (update) {
-			this.recalculateUpgrades(Upgrade.SPEED);
-		}
-	}
+    public void onCachedRecipeChanged(@Nullable CachedRecipe<ItemStackToFluidRecipe> cachedRecipe, int cacheIndex) {
+        super.onCachedRecipeChanged(cachedRecipe, cacheIndex);
+        int recipeDuration = 100;
+        boolean update = this.baseTicksRequired != recipeDuration;
+        this.baseTicksRequired = recipeDuration;
+        if (update) {
+            this.recalculateUpgrades(Upgrade.SPEED);
+        }
+    }
 
-	@Override
-	public @NotNull CachedRecipe<ItemStackToFluidRecipe> createNewCachedRecipe(
-			@NotNull ItemStackToFluidRecipe recipe,
-			int cacheIndex) {
-		CachedRecipe<ItemStackToFluidRecipe> cachedRecipe = OneInputCachedRecipe.itemToFluid(
-				recipe, recheckAllRecipeErrors, itemInputHandler, outputHandler)
-				.setErrorsChanged((arg0) -> this.onErrorsChanged(arg0))
-				.setCanHolderFunction(() -> {
-					return MekanismUtils.canFunction(this);
-				})
-				.setActive(this::setActive);
-		return cachedRecipe
-				.setRequiredTicks(this::getTicksRequired)
-				.setOnFinish(this::markForSave)
-				.setOperatingTicksChanged((arg1) -> {
-					this.setOperatingTicks(arg1);
-				});
-	}
+    @Override
+    public @NotNull CachedRecipe<ItemStackToFluidRecipe> createNewCachedRecipe(
+            @NotNull ItemStackToFluidRecipe recipe,
+            int cacheIndex) {
+        return OneInputCachedRecipe.itemToFluid(
+                recipe, recheckAllRecipeErrors, itemInputHandler, outputHandler)
+                .setErrorsChanged(this::onErrorsChanged)
+                .setCanHolderFunction(() -> {
+                    return MekanismUtils.canFunction(this);
+                })
+                .setActive(this::setActive)
+                .setRequiredTicks(this::getTicksRequired)
+                .setBaselineMaxOperations(this::caluculateMaxOprartions)
+                .setOnFinish(this::markForSave)
+                .setOperatingTicksChanged(this::setOperatingTicks);
+    }
 
-	protected void onUpdateServer() {
-		super.onUpdateServer();
-		this.fluidSlot.drainTank(fluidSlot);
-		if (this.heatCapacitor.getTemperature() >= 10000) {
-			this.recipeCacheLookupMonitor.updateAndProcess();
-		}
-		HeatTransfer transfer = simulate();
-		lastEnvironmentLoss = transfer.environmentTransfer();
-	}
+    private int caluculateMaxOprartions() {
+        return (int) ((heatCapacitor.getTemperature() - 300) / 10000);
+    }
 
-	@Override
-	public void addContainerTrackers(MekanismContainer container) {
-		super.addContainerTrackers(container);
-		container.track(SyncableDouble.create(this::getLastEnvironmentLoss,
-				value -> lastEnvironmentLoss = value));
-	}
+    protected void onUpdateServer() {
+        super.onUpdateServer();
+        this.fluidSlot.drainTank(fluidSlot);
+        if (this.heatCapacitor.getTemperature() >= 10000) {
+            this.recipeCacheLookupMonitor.updateAndProcess();
+        }
+        HeatTransfer transfer = simulate();
+        lastEnvironmentLoss = transfer.environmentTransfer();
+    }
 
-	@Override
-	public @Nullable ItemStackToFluidRecipe getRecipe(int arg0) {
-		return (ItemStackToFluidRecipe) this.findFirstRecipe(this.itemInputHandler);
-	}
+    @Override
+    public void addContainerTrackers(MekanismContainer container) {
+        super.addContainerTrackers(container);
+        container.track(SyncableDouble.create(this::getLastEnvironmentLoss,
+                value -> lastEnvironmentLoss = value));
+    }
 
-	@Override
-	public @NotNull IMekanismRecipeTypeProvider<ItemStackToFluidRecipe, SingleItem<ItemStackToFluidRecipe>> getRecipeType() {
-		return AstralMekanismRecipeTypes.Melter_recipe;
-	}
+    @Override
+    public @Nullable ItemStackToFluidRecipe getRecipe(int arg0) {
+        return (ItemStackToFluidRecipe) this.findFirstRecipe(this.itemInputHandler);
+    }
 
-	public double getLastEnvironmentLoss() {
-		return lastEnvironmentLoss;
-	}
+    @Override
+    public @NotNull IMekanismRecipeTypeProvider<ItemStackToFluidRecipe, SingleItem<ItemStackToFluidRecipe>> getRecipeType() {
+        return AstralMekanismRecipeTypes.Melter_recipe;
+    }
+
+    public double getLastEnvironmentLoss() {
+        return lastEnvironmentLoss;
+    }
 
 }

@@ -8,12 +8,15 @@ import astral_mekanism.recipes.inputRecipeCache.AMInputRecipeCache;
 import astral_mekanism.recipes.inputRecipeCache.AstralCraftingRecipeCache;
 import astral_mekanism.recipes.inputRecipeCache.AMInputRecipeCache.FluidFluid;
 import astral_mekanism.recipes.inputRecipeCache.AMInputRecipeCache.ItemFluid;
+import astral_mekanism.recipes.inputRecipeCache.AMInputRecipeCache.TripleItem;
 import astral_mekanism.recipes.recipe.AstralCraftingRecipe;
 import astral_mekanism.recipes.recipe.FluidFluidToFluidRecipe;
 import astral_mekanism.recipes.recipe.GreenHouseRecipe;
+import astral_mekanism.recipes.recipe.TripleItemToItemRecipe;
 import astral_mekanism.recipes.recipe.ItemToItemItemRecipe;
 import mekanism.api.chemical.gas.Gas;
 import mekanism.api.chemical.gas.GasStack;
+import mekanism.api.recipes.CombinerRecipe;
 import mekanism.api.recipes.GasToGasRecipe;
 import mekanism.api.recipes.ItemStackGasToItemStackRecipe;
 import mekanism.api.recipes.ItemStackToFluidRecipe;
@@ -22,6 +25,7 @@ import mekanism.api.recipes.MekanismRecipe;
 import mekanism.common.recipe.MekanismRecipeType;
 import mekanism.common.recipe.lookup.cache.IInputRecipeCache;
 import mekanism.common.recipe.lookup.cache.InputRecipeCache;
+import mekanism.common.recipe.lookup.cache.InputRecipeCache.DoubleItem;
 import mekanism.common.recipe.lookup.cache.InputRecipeCache.ItemChemical;
 import mekanism.common.recipe.lookup.cache.InputRecipeCache.SingleChemical;
 import mekanism.common.recipe.lookup.cache.InputRecipeCache.SingleItem;
@@ -88,4 +92,15 @@ public class AstralMekanismRecipeTypes {
 
     public static final RecipeTypeRegistryObject<AstralCraftingRecipe, AstralCraftingRecipeCache> ASTRAL_CRAFTING = register(
             "astral_crafting", AstralCraftingRecipeCache::new);
+
+    public static final RecipeTypeRegistryObject<TripleItemToItemRecipe, TripleItem<TripleItemToItemRecipe>> MEKANICAL_PRESSER = register(
+            "mekanical_presser",
+            rt -> new AMInputRecipeCache.TripleItem<>(rt,
+                    TripleItemToItemRecipe::getInputItemA,
+                    TripleItemToItemRecipe::getInputItemB,
+                    TripleItemToItemRecipe::getInputItemC));
+
+    public static final RecipeTypeRegistryObject<CombinerRecipe, DoubleItem<CombinerRecipe>> MEKANICAL_INSCRIBER = register(
+            "mekanical_inscriber",
+            rt -> new DoubleItem<>(rt, CombinerRecipe::getMainInput, CombinerRecipe::getExtraInput));
 }

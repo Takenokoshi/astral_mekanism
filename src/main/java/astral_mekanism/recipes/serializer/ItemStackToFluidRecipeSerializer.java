@@ -4,11 +4,12 @@ import org.jetbrains.annotations.Nullable;
 
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+
+import astral_mekanism.AstralMekanism;
 import mekanism.api.SerializerHelper;
 import mekanism.api.recipes.ItemStackToFluidRecipe;
 import mekanism.api.recipes.ingredients.ItemStackIngredient;
 import mekanism.api.recipes.ingredients.creator.IngredientCreatorAccess;
-import mekanism.common.Mekanism;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.GsonHelper;
@@ -45,7 +46,7 @@ public class ItemStackToFluidRecipeSerializer<RECIPE extends ItemStackToFluidRec
 			FluidStack outputFluid = buffer.readFluidStack();
 			return this.factory.create(recipeId, inputItem, outputFluid);
 		} catch (Exception e) {
-            Mekanism.logger.error("Error reading 'itemstack to fluid' recipe from packet.", e);
+           AstralMekanism.LOGGER.error("Error reading 'itemstack to fluid' recipe from packet.", e);
             throw e;
 		}
 	}
@@ -55,7 +56,7 @@ public class ItemStackToFluidRecipeSerializer<RECIPE extends ItemStackToFluidRec
 		try {
 			recipe.write(buffer);
 		} catch (Exception e) {
-            Mekanism.logger.error("Error writing 'itemstack to fluid' recipe to packet.", e);
+            AstralMekanism.LOGGER.error("Error writing 'itemstack to fluid' recipe to packet.", e);
             throw e;
 		}
 	}

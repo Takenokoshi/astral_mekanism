@@ -28,6 +28,8 @@ import astral_mekanism.block.blockentity.normalmachine.BEFluidInfuser;
 import astral_mekanism.block.blockentity.normalmachine.BEGlowstoneNeutronActivator;
 import astral_mekanism.block.blockentity.normalmachine.BEGreenHouse;
 import astral_mekanism.block.blockentity.normalmachine.BEMekanicalCharger;
+import astral_mekanism.block.blockentity.normalmachine.BEMekanicalInscriber;
+import astral_mekanism.block.blockentity.normalmachine.BEMekanicalPresser;
 import astral_mekanism.block.blockentity.normalmachine.BEMelter;
 import astral_mekanism.block.blockentity.other.BEItemSortableStorage;
 import astral_mekanism.block.blockentity.other.BEUniversalStorage;
@@ -109,8 +111,15 @@ public class AstralMekanismMachines {
 
     public static final MachineRegistryObject<BEMekanicalCharger, BlockTypeMachine<BEMekanicalCharger>, BlockTileModel<BEMekanicalCharger, BlockTypeMachine<BEMekanicalCharger>>, MekanismTileContainer<BEMekanicalCharger>, ItemBlockMachine> MEKANICAL_CHARGER = MACHINES
             .register("mekanical_charger", AstralMekanismBlockTypes.MEKANICAL_CHARGER,
-                    BEMekanicalCharger.class,
-                    BEMekanicalCharger::new);
+                    BEMekanicalCharger.class, BEMekanicalCharger::new);
+
+    public static final MachineRegistryObject<BEMekanicalInscriber, BlockTypeMachine<BEMekanicalInscriber>, BlockTileModel<BEMekanicalInscriber, BlockTypeMachine<BEMekanicalInscriber>>, MekanismTileContainer<BEMekanicalInscriber>, ItemBlockMachine> MEKANICAL_INSCRIBER = MACHINES
+            .register("mekanical_inscriber", AstralMekanismBlockTypes.MEKANICAL_INSCRIBER,
+                    BEMekanicalInscriber.class, BEMekanicalInscriber::new);
+
+    public static final MachineRegistryObject<BEMekanicalPresser, BlockTypeMachine<BEMekanicalPresser>, BlockTileModel<BEMekanicalPresser, BlockTypeMachine<BEMekanicalPresser>>, MekanismTileContainer<BEMekanicalPresser>, ItemBlockMachine> MEKANICAL_PRESSER = MACHINES
+            .register("mekanical_presser", AstralMekanismBlockTypes.MEKANICAL_PRESSER,
+                    BEMekanicalPresser.class, BEMekanicalPresser::new);
 
     public static final MachineRegistryObject<BEAstralCrafter, BlockTypeMachine<BEAstralCrafter>, BlockTileModel<BEAstralCrafter, BlockTypeMachine<BEAstralCrafter>>, ContainerAstralCrafter, ItemBlockMachine> ASTRAL_CRAFTER = MACHINES
             .register("astral_crafter", AstralMekanismBlockTypes.ASTRAL_CRAFTER,

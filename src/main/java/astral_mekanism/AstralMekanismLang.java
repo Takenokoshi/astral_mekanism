@@ -16,6 +16,7 @@ public enum AstralMekanismLang implements ILangEntry {
 	DESCRIPTION_FLUID_INFUSER("description", "fluid_infuser"),
 	DESCRIPTION_MEKANICAL_CHARGER("block.ae2.charger"),
 	SIDE_DATA_OUTPUTleft("side_data", "output_left"),
+	SIDE_DATA_INPUT3("side_data", "input3"),
 	SIDE_DATA_OUTPUT1low("side_data", "output1_low"),
 	SIDE_DATA_OUTPUT2low("side_data", "output2_low"),
 	SIDE_DATA_OUTPUTleftlow("side_data", "output_left_low"),

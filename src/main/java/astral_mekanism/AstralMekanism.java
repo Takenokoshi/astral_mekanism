@@ -29,7 +29,7 @@ import org.slf4j.Logger;
 @Mod(AstralMekanism.MODID)
 public class AstralMekanism {
     public static final String MODID = AstralMekanismID.MODID;
-    private static final Logger LOGGER = LogUtils.getLogger();
+    public static final Logger LOGGER = LogUtils.getLogger();
 
     public AstralMekanism(FMLJavaModLoadingContext context) {
         IEventBus modEventBus = context.getModEventBus();

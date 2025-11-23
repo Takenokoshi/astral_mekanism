@@ -12,7 +12,7 @@ import org.jetbrains.annotations.Nullable;
 import astral_mekanism.AstralMekanismID;
 import astral_mekanism.recipes.cachedRecipe.GreenHouseCachedRecipe;
 import astral_mekanism.recipes.inputRecipeCache.AMInputRecipeCache.ItemFluid;
-import astral_mekanism.recipes.lookup.AMIDoubleRecipeLookUpHandler.ItemFluidRecipeLookupHandler;
+import astral_mekanism.recipes.lookup.AMIRecipeLookUpHandler.ItemFluidRecipeLookupHandler;
 import astral_mekanism.recipes.output.AMOutputHelper;
 import astral_mekanism.recipes.output.DoubleItemStackOutput;
 import mekanism.api.Action;

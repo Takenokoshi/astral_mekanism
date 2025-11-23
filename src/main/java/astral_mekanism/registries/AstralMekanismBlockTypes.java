@@ -28,6 +28,8 @@ import astral_mekanism.block.blockentity.normalmachine.BEFluidInfuser;
 import astral_mekanism.block.blockentity.normalmachine.BEGlowstoneNeutronActivator;
 import astral_mekanism.block.blockentity.normalmachine.BEGreenHouse;
 import astral_mekanism.block.blockentity.normalmachine.BEMekanicalCharger;
+import astral_mekanism.block.blockentity.normalmachine.BEMekanicalInscriber;
+import astral_mekanism.block.blockentity.normalmachine.BEMekanicalPresser;
 import astral_mekanism.block.blockentity.normalmachine.BEMelter;
 import astral_mekanism.block.blockentity.other.BEItemSortableStorage;
 import astral_mekanism.block.blockentity.other.BEUniversalStorage;
@@ -143,6 +145,20 @@ public class AstralMekanismBlockTypes {
                     () -> FloatingLong.create(100000 * AstralMekanismConfig.energyRate))
             .withGui(() -> AstralMekanismMachines.MEKANICAL_CHARGER.getContainerRO())
             .withCustomShape(AMBlockShapes.MEKANICAL_CHARGER)
+            .build();
+
+    public static final BlockTypeMachine<BEMekanicalInscriber> MEKANICAL_INSCRIBER = BlockMachineBuilder
+            .createMachine(() -> AstralMekanismMachines.MEKANICAL_INSCRIBER.getTileRO(), null)
+            .withEnergyConfig(() -> FloatingLong.create(4 * AstralMekanismConfig.energyRate),
+                    () -> FloatingLong.create(100000 * AstralMekanismConfig.energyRate))
+            .withGui(() -> AstralMekanismMachines.MEKANICAL_INSCRIBER.getContainerRO())
+            .build();
+
+    public static final BlockTypeMachine<BEMekanicalPresser> MEKANICAL_PRESSER = BlockMachineBuilder
+            .createMachine(() -> AstralMekanismMachines.MEKANICAL_PRESSER.getTileRO(), null)
+            .withEnergyConfig(() -> FloatingLong.create(4 * AstralMekanismConfig.energyRate),
+                    () -> FloatingLong.create(100000 * AstralMekanismConfig.energyRate))
+            .withGui(() -> AstralMekanismMachines.MEKANICAL_PRESSER.getContainerRO())
             .build();
 
     public static final BlockTypeMachine<BEAstralCrafter> ASTRAL_CRAFTER = BlockMachineBuilder

@@ -5,6 +5,7 @@ import mekanism.common.tile.component.config.DataType;
 public class AstralMekDataType {
 	public static DataType INPUT_OUTPUT_astral;
 
+    public static DataType INPUT3;
 	public static DataType OUTPUTleft;
 	public static DataType OUTPUT1low;
 	public static DataType OUTPUT2low;
@@ -15,6 +16,7 @@ public class AstralMekDataType {
 	public static DataType INPUT2_OUTPUT2;
 	public static DataType INPUT1_OUTPUT;
 	public static DataType INPUT2_OUTPUT;
+    public static DataType INPUT3_OUTPUT;
 	public static DataType INPUT_OUTPUT1;
 	public static DataType INPUT_OUTPUT2;
 	public static DataType INPUT_OUTPUTleft;
