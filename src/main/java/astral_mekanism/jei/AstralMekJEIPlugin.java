@@ -5,7 +5,9 @@ import astral_mekanism.AstralMekanismID;
 import astral_mekanism.jei.recipeCategory.AstralCraftingRecipeCategory;
 import astral_mekanism.jei.recipeCategory.FluidInfuserRecipeCategory;
 import astral_mekanism.jei.recipeCategory.GreenHouseRecipeCategory;
+import astral_mekanism.jei.recipeCategory.MekanicalInscriberRecipeCategory;
 import astral_mekanism.jei.recipeCategory.MelterRecipeCategory;
+import astral_mekanism.jei.recipeCategory.TripleItemToItemRecipeCategory;
 import astral_mekanism.registries.AstralMekanismMachines;
 import astral_mekanism.registries.AstralMekanismRecipeTypes;
 import mekanism.client.jei.CatalystRegistryHelper;
@@ -46,7 +48,12 @@ public class AstralMekJEIPlugin implements IModPlugin {
                         new GasToGasRecipeCategory(guiHelper, AstralMekanismJEIRecipeType.SPS_RECIPE,
                                 AstralMekanismMachines.COMPACT_SPS),
                         new AstralCraftingRecipeCategory(guiHelper, AstralMekanismJEIRecipeType.ASTRAL_CRAFTING,
-                                AstralMekanismMachines.ASTRAL_CRAFTER)
+                                AstralMekanismMachines.ASTRAL_CRAFTER),
+                        new MekanicalInscriberRecipeCategory(guiHelper,
+                                AstralMekanismJEIRecipeType.MEKANICAL_INSCRIBER_RECIPE),
+                        new TripleItemToItemRecipeCategory(guiHelper,
+                                AstralMekanismJEIRecipeType.MEKANICAL_PRESSER_RECIPE,
+                                AstralMekanismMachines.MEKANICAL_PRESSER),
                 });
     }
 
@@ -64,6 +71,10 @@ public class AstralMekJEIPlugin implements IModPlugin {
                 AstralMekanismRecipeTypes.SPS_RECIPE);
         RecipeRegistryHelper.register(registry, AstralMekanismJEIRecipeType.ASTRAL_CRAFTING,
                 AstralMekanismRecipeTypes.ASTRAL_CRAFTING);
+        RecipeRegistryHelper.register(registry, AstralMekanismJEIRecipeType.MEKANICAL_INSCRIBER_RECIPE,
+                AstralMekanismRecipeTypes.MEKANICAL_INSCRIBER_RECIPE);
+        RecipeRegistryHelper.register(registry, AstralMekanismJEIRecipeType.MEKANICAL_PRESSER_RECIPE,
+                AstralMekanismRecipeTypes.MEKANICAL_PRESSER_RECIPE);
     }
 
     @Override
@@ -86,6 +97,10 @@ public class AstralMekJEIPlugin implements IModPlugin {
                 AstralMekanismMachines.MEKANICAL_CHARGER);
         CatalystRegistryHelper.register(registry, AstralMekanismJEIRecipeType.ASTRAL_CRAFTING,
                 AstralMekanismMachines.ASTRAL_CRAFTER);
+        CatalystRegistryHelper.register(registry, AstralMekanismJEIRecipeType.MEKANICAL_INSCRIBER_RECIPE,
+                AstralMekanismMachines.MEKANICAL_INSCRIBER);
+        CatalystRegistryHelper.register(registry, AstralMekanismJEIRecipeType.MEKANICAL_PRESSER_RECIPE,
+                AstralMekanismMachines.MEKANICAL_PRESSER);
         CatalystRegistryHelper.register(registry, MekanismJEIRecipeType.CRUSHING,
                 AstralMekanismMachines.ASTRAL_CRUSHER);
         CatalystRegistryHelper.register(registry, MekanismJEIRecipeType.SMELTING,

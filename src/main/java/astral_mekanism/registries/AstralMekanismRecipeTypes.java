@@ -93,14 +93,14 @@ public class AstralMekanismRecipeTypes {
     public static final RecipeTypeRegistryObject<AstralCraftingRecipe, AstralCraftingRecipeCache> ASTRAL_CRAFTING = register(
             "astral_crafting", AstralCraftingRecipeCache::new);
 
-    public static final RecipeTypeRegistryObject<TripleItemToItemRecipe, TripleItem<TripleItemToItemRecipe>> MEKANICAL_PRESSER = register(
+    public static final RecipeTypeRegistryObject<TripleItemToItemRecipe, TripleItem<TripleItemToItemRecipe>> MEKANICAL_PRESSER_RECIPE = register(
             "mekanical_presser",
             rt -> new AMInputRecipeCache.TripleItem<>(rt,
                     TripleItemToItemRecipe::getInputItemA,
                     TripleItemToItemRecipe::getInputItemB,
                     TripleItemToItemRecipe::getInputItemC));
 
-    public static final RecipeTypeRegistryObject<CombinerRecipe, DoubleItem<CombinerRecipe>> MEKANICAL_INSCRIBER = register(
+    public static final RecipeTypeRegistryObject<CombinerRecipe, DoubleItem<CombinerRecipe>> MEKANICAL_INSCRIBER_RECIPE = register(
             "mekanical_inscriber",
             rt -> new DoubleItem<>(rt, CombinerRecipe::getMainInput, CombinerRecipe::getExtraInput));
 }

@@ -19,12 +19,12 @@ public class BEMekanicalPresser extends BETripleItemToItemMachine {
 
     @Override
     public @NotNull IMekanismRecipeTypeProvider<TripleItemToItemRecipe, TripleItem<TripleItemToItemRecipe>> getRecipeType() {
-        return AstralMekanismRecipeTypes.MEKANICAL_PRESSER;
+        return AstralMekanismRecipeTypes.MEKANICAL_PRESSER_RECIPE;
     }
 
     @Override
     public String getJEI() {
-        return "null";
+        return "astral_mekanism:mekanical_presser";
     }
 
 }

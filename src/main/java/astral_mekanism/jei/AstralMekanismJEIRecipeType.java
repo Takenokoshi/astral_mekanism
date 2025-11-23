@@ -3,7 +3,9 @@ package astral_mekanism.jei;
 import astral_mekanism.recipes.recipe.AstralCraftingRecipe;
 import astral_mekanism.recipes.recipe.FluidFluidToFluidRecipe;
 import astral_mekanism.recipes.recipe.GreenHouseRecipe;
+import astral_mekanism.recipes.recipe.TripleItemToItemRecipe;
 import astral_mekanism.registries.AstralMekanismMachines;
+import mekanism.api.recipes.CombinerRecipe;
 import mekanism.api.recipes.GasToGasRecipe;
 import mekanism.api.recipes.ItemStackToFluidRecipe;
 import mekanism.api.recipes.ItemStackToItemStackRecipe;
@@ -22,4 +24,8 @@ public class AstralMekanismJEIRecipeType {
             AstralMekanismMachines.COMPACT_SPS, GasToGasRecipe.class);
     public static final MekanismJEIRecipeType<AstralCraftingRecipe> ASTRAL_CRAFTING = new MekanismJEIRecipeType<>(
             AstralMekanismMachines.ASTRAL_CRAFTER, AstralCraftingRecipe.class);
+    public static final MekanismJEIRecipeType<CombinerRecipe> MEKANICAL_INSCRIBER_RECIPE = new MekanismJEIRecipeType<>(
+            AstralMekanismMachines.MEKANICAL_INSCRIBER, CombinerRecipe.class);
+    public static final MekanismJEIRecipeType<TripleItemToItemRecipe> MEKANICAL_PRESSER_RECIPE = new MekanismJEIRecipeType<>(
+            AstralMekanismMachines.MEKANICAL_PRESSER, TripleItemToItemRecipe.class);
 }

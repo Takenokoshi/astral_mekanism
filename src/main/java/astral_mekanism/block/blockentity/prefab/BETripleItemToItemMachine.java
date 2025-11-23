@@ -99,20 +99,20 @@ public abstract class BETripleItemToItemMachine extends TileEntityProgressMachin
         InventorySlotHelper builder = InventorySlotHelper.forSideWithConfig(this::getDirection, this::getConfig);
         builder.addSlot(inputSlotA = InputInventorySlot.at(
                 stack -> containsRecipeABC(stack, inputSlotB.getStack(), inputSlotC.getStack()), this::containsRecipeA,
-                recipeCacheListener, 46, 17))
+                recipeCacheListener, 46, 35))
                 .tracksWarnings(slot -> slot.warning(WarningType.NO_MATCHING_RECIPE,
                         getWarningCheck(RecipeError.NOT_ENOUGH_INPUT)));
         builder.addSlot(inputSlotB = InputInventorySlot.at(
                 stack -> containsRecipeBAC(stack, inputSlotA.getStack(), inputSlotC.getStack()), this::containsRecipeB,
-                recipeCacheListener, 64, 17))
+                recipeCacheListener, 64, 35))
                 .tracksWarnings(slot -> slot.warning(WarningType.NO_MATCHING_RECIPE,
                         getWarningCheck(RecipeError.NOT_ENOUGH_SECONDARY_INPUT)));
         builder.addSlot(inputSlotC = InputInventorySlot.at(
                 stack -> containsRecipeCAB(stack, inputSlotA.getStack(), inputSlotB.getStack()), this::containsRecipeC,
-                recipeCacheListener, 82, 17))
+                recipeCacheListener, 82, 35))
                 .tracksWarnings(slot -> slot.warning(WarningType.NO_MATCHING_RECIPE,
                         getWarningCheck(NOT_ENOUGH_THERD_INPUT)));
-        builder.addSlot(outputSlot = OutputInventorySlot.at(listener, 134, 17))
+        builder.addSlot(outputSlot = OutputInventorySlot.at(listener, 134, 35))
                 .tracksWarnings(slot -> slot.warning(WarningType.NO_SPACE_IN_OUTPUT,
                         getWarningCheck(RecipeError.NOT_ENOUGH_OUTPUT_SPACE)));
         builder.addSlot(

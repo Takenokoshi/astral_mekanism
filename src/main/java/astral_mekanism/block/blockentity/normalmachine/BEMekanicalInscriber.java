@@ -126,7 +126,7 @@ public class BEMekanicalInscriber extends TileEntityProgressMachine<CombinerReci
     @NotNull
     @Override
     public IMekanismRecipeTypeProvider<CombinerRecipe, DoubleItem<CombinerRecipe>> getRecipeType() {
-        return AstralMekanismRecipeTypes.MEKANICAL_INSCRIBER;
+        return AstralMekanismRecipeTypes.MEKANICAL_INSCRIBER_RECIPE;
     }
 
     @Nullable

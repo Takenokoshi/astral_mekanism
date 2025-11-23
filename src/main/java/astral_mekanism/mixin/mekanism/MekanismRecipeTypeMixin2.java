@@ -173,7 +173,7 @@ public class MekanismRecipeTypeMixin2 {
         }
 
         if (Objects.equals(type.getRegistryName(),
-                AstralMekanismRecipeTypes.MEKANICAL_PRESSER.get().getRegistryName())) {
+                AstralMekanismRecipeTypes.MEKANICAL_PRESSER_RECIPE.get().getRegistryName())) {
             for (InscriberRecipe recipe : recipeManager.getAllRecipesFor(AERecipeTypes.INSCRIBER)) {
                 Ingredient top = recipe.getTopOptional();
                 Ingredient bottom = recipe.getBottomOptional();
@@ -190,7 +190,7 @@ public class MekanismRecipeTypeMixin2 {
         }
 
         if (Objects.equals(type.getRegistryName(),
-                AstralMekanismRecipeTypes.MEKANICAL_INSCRIBER.get().getRegistryName())) {
+                AstralMekanismRecipeTypes.MEKANICAL_INSCRIBER_RECIPE.get().getRegistryName())) {
             for (InscriberRecipe recipe : recipeManager.getAllRecipesFor(AERecipeTypes.INSCRIBER)) {
                 Ingredient top = recipe.getTopOptional();
                 Ingredient bottom = recipe.getBottomOptional();

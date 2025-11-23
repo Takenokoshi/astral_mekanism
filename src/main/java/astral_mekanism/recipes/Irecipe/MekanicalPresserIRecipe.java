@@ -23,7 +23,7 @@ public class MekanicalPresserIRecipe extends TripleItemToItemRecipe {
 
     @Override
     public RecipeType<?> getType() {
-        return AstralMekanismRecipeTypes.MEKANICAL_PRESSER.get();
+        return AstralMekanismRecipeTypes.MEKANICAL_PRESSER_RECIPE.get();
     }
     
 }

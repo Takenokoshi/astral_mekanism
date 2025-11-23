@@ -23,7 +23,7 @@ public class MekanicalInscriberIRecipe extends CombinerRecipe {
 
     @Override
     public RecipeType<?> getType() {
-        return AstralMekanismRecipeTypes.MEKANICAL_INSCRIBER.get();
+        return AstralMekanismRecipeTypes.MEKANICAL_INSCRIBER_RECIPE.get();
     }
     
 }
