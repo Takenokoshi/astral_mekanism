@@ -1,25 +1,11 @@
 {
-	"format_version": "1.9.0",
-	"credit": "Made with Blockbench",
-	"textures": {
-		"0": "ae2:block/inscriber",
-		"1": "mekanism:block/base/base_bottom",
-		"2": "mekanism:block/combiner/right",
-		"3": "mekanism:block/enrichment_chamber/back",
-		"particle": "ae2:block/inscriber"
-	},
-	"elements": [
-		{
-			"from": [0, 0, 0],
-			"to": [16, 16, 16],
-			"faces": {
-				"north": {"uv": [0, 0, 16, 16], "texture": "#0"},
-				"east": {"uv": [0, 0, 16, 16], "texture": "#2"},
-				"south": {"uv": [0, 0, 16, 16], "texture": "#3"},
-				"west": {"uv": [0, 0, 16, 16], "texture": "#2"},
-				"up": {"uv": [0, 0, 16, 16], "texture": "#0"},
-				"down": {"uv": [0, 0, 16, 16], "texture": "#1"}
-			}
-		}
-	]
+  "parent": "block/cube",
+  "textures": {
+    "up": "ae2:block/inscriber",
+    "down": "mekanism:block/base/base_bottom",
+    "north": "ae2:block/inscriber",
+    "south": "mekanism:block/enrichment_chamber/back",
+    "east": "mekanism:block/combiner/right",
+    "west": "mekanism:block/combiner/right"
+  }
 }
