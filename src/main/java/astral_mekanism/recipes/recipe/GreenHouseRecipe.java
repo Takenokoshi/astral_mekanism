@@ -2,92 +2,77 @@ package astral_mekanism.recipes.recipe;
 
 import java.util.Collections;
 import java.util.List;
-import java.util.Objects;
-import java.util.function.BiPredicate;
-
-import org.jetbrains.annotations.NotNull;
-
-import astral_mekanism.recipes.output.DoubleItemStackOutput;
-import mekanism.api.math.FloatingLong;
+import astral_mekanism.recipes.output.TripleItemOutput;
 import mekanism.api.recipes.MekanismRecipe;
 import mekanism.api.recipes.ingredients.FluidStackIngredient;
 import mekanism.api.recipes.ingredients.ItemStackIngredient;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
+import net.minecraftforge.common.util.TriPredicate;
 import net.minecraftforge.fluids.FluidStack;
 
-public abstract class GreenHouseRecipe extends MekanismRecipe implements BiPredicate<@NotNull ItemStack, @NotNull FluidStack> {
+public abstract class GreenhouseRecipe extends MekanismRecipe
+        implements TriPredicate<ItemStack, ItemStack, FluidStack> {
 
-    protected GreenHouseRecipe(ResourceLocation id, ItemStackIngredient inputItem, FluidStackIngredient inputFluid,
-            FloatingLong energyRequired, int duration, ItemStack outputItemA, ItemStack outputItemB) {
+    protected final ItemStackIngredient inputSeed;
+    protected final ItemStackIngredient farmland;
+    protected final FluidStackIngredient inputFluid;
+    protected final TripleItemOutput output;
+
+    protected GreenhouseRecipe(ResourceLocation id, ItemStackIngredient inputSeed, ItemStackIngredient farmland,
+            FluidStackIngredient inputFluid,
+            TripleItemOutput output) {
         super(id);
-        this.inputItem = Objects.requireNonNull(inputItem, "");
-        this.inputFluid = Objects.requireNonNull(inputFluid, "");
-        this.energyRequired = Objects.requireNonNull(energyRequired, "").copyAsConst();
-        if (duration <= 0) {
-            throw new IllegalArgumentException("Duration must be positive.");
-        }
-        this.duration = Objects.requireNonNull(duration, "");
-        this.outputItemA = Objects.requireNonNull(outputItemA.copy(), "");
-        this.outputItemB = Objects.requireNonNull(outputItemB.copy(), "");
+        this.inputSeed = inputSeed;
+        this.farmland = farmland;
+        this.inputFluid = inputFluid;
+        this.output = output;
     }
 
-    private final ItemStackIngredient inputItem;
-    private final FluidStackIngredient inputFluid;
-    private final FloatingLong energyRequired;
-    private final int duration;
-    private final ItemStack outputItemA;
-    private final ItemStack outputItemB;
+    public ItemStackIngredient getInputSeed(){
+        return inputSeed;
+    }
 
+    public ItemStackIngredient getFarmland(){
+        return farmland;
+    }
 
-    public DoubleItemStackOutput getOutput(ItemStack item,FluidStack fluid){
-        return new DoubleItemStackOutput(this.outputItemA.copy(), this.outputItemB.copy());
+    public FluidStackIngredient getInputFluid(){
+        return inputFluid;
     }
 
     @Override
-    public boolean test(@NotNull ItemStack t, @NotNull FluidStack u) {
-        return this.inputItem.test(t) && this.inputFluid.test(u);
+    public boolean test(ItemStack seed, ItemStack far, FluidStack fluid) {
+        return inputSeed.test(seed) && farmland.test(far) && inputFluid.test(fluid);
+    }
+
+    public TripleItemOutput getOutput() {
+        return output.copy();
     }
 
     @Override
     public boolean isIncomplete() {
-        return inputItem.hasNoMatchingInstances() || inputFluid.hasNoMatchingInstances();
+        return inputSeed.hasNoMatchingInstances() || farmland.hasNoMatchingInstances()
+                || inputFluid.hasNoMatchingInstances();
     }
 
     @Override
     public void logMissingTags() {
-        inputItem.logMissingTags();
+        inputSeed.logMissingTags();
+        farmland.logMissingTags();
         inputFluid.logMissingTags();
     }
 
     @Override
     public void write(FriendlyByteBuf buffer) {
-        inputItem.write(buffer);
+        inputSeed.write(buffer);
+        farmland.write(buffer);
         inputFluid.write(buffer);
-        energyRequired.writeToBuffer(buffer);
-        buffer.writeVarInt(duration);
-        buffer.writeItem(outputItemA);
-        buffer.writeItem(outputItemB);
+        output.write(buffer);
     }
 
-    public ItemStackIngredient getInputItem(){
-        return inputItem;
+    public List<TripleItemOutput> getOutputDefinition() {
+        return Collections.singletonList(output);
     }
-    public FluidStackIngredient getInputFluid(){
-        return inputFluid;
-    }
-
-    public int getDuration(){
-        return duration;
-    }
-
-    public FloatingLong getEnergyRequired(){
-        return energyRequired;
-    }
-
-    public List<DoubleItemStackOutput> getOutputDefinition() {
-        return Collections.singletonList(new DoubleItemStackOutput(outputItemA, outputItemB));
-    }
-
 }

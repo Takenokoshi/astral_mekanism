@@ -4,6 +4,7 @@ import java.util.function.BiPredicate;
 
 import astral_mekanism.recipes.inputRecipeCache.AMInputRecipeCache.FluidFluid;
 import astral_mekanism.recipes.inputRecipeCache.AMInputRecipeCache.ItemFluid;
+import astral_mekanism.recipes.inputRecipeCache.AMInputRecipeCache.ItemItemFluid;
 import astral_mekanism.recipes.inputRecipeCache.AMInputRecipeCache.TripleItem;
 import mekanism.api.recipes.MekanismRecipe;
 import mekanism.common.recipe.lookup.IDoubleRecipeLookupHandler;
@@ -25,6 +26,10 @@ public class AMIRecipeLookUpHandler {
     public static interface TripleItemRecipeLookUpHandler<RECIPE extends MekanismRecipe & TriPredicate<ItemStack, ItemStack, ItemStack>>
             extends ITripleRecipeLookupHandler<ItemStack, ItemStack, ItemStack, RECIPE, TripleItem<RECIPE>> {
 
+    }
+
+    public static interface ItemItemFluidRecipeLookUpHandler<RECIPE extends MekanismRecipe & TriPredicate<ItemStack, ItemStack, FluidStack>>
+            extends ITripleRecipeLookupHandler<ItemStack, ItemStack, FluidStack, RECIPE, ItemItemFluid<RECIPE>> {
     }
 
 }

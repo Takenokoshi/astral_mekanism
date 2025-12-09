@@ -6,7 +6,6 @@ import astral_mekanism.AstralMekanismConfig;
 import astral_mekanism.AstralMekanismLang;
 import astral_mekanism.block.blockentity.astralmachine.BEAstralElectrolyticSeparator;
 import astral_mekanism.block.blockentity.astralmachine.BEAstralGNA;
-import astral_mekanism.block.blockentity.astralmachine.BEAstralGreenHouse;
 import astral_mekanism.block.blockentity.astralmachine.BEAstralPRC;
 import astral_mekanism.block.blockentity.astralmachine.BEAstralPrecisionSawmill;
 import astral_mekanism.block.blockentity.astralmachine.BEAstralSPS;
@@ -26,7 +25,6 @@ import astral_mekanism.block.blockentity.generator.BEHeatGenerator;
 import astral_mekanism.block.blockentity.normalmachine.BEAstralCrafter;
 import astral_mekanism.block.blockentity.normalmachine.BEFluidInfuser;
 import astral_mekanism.block.blockentity.normalmachine.BEGlowstoneNeutronActivator;
-import astral_mekanism.block.blockentity.normalmachine.BEGreenHouse;
 import astral_mekanism.block.blockentity.normalmachine.BEMekanicalCharger;
 import astral_mekanism.block.blockentity.normalmachine.BEMekanicalInscriber;
 import astral_mekanism.block.blockentity.normalmachine.BEMekanicalPresser;
@@ -105,15 +103,6 @@ public class AstralMekanismBlockTypes {
             .withGui(() -> AstralMekanismMachines.GLOWSTONE_NEUTRON_ACTIVATOR.getContainerRO())
             .withCustomShape(AMBlockShapes.GLOWSTONE_NEUTRON_ACTIVATOR)
             .with(new AttributeStateFacing())
-            .build();
-
-    public static final BlockTypeMachine<BEGreenHouse> GREENHOUSE = BlockMachineBuilder
-            .createMachine(() -> AstralMekanismMachines.GREENHOUSE.getTileRO(),
-                    AstralMekanismLang.DESCRIPTION_GREENHOUSE)
-            .withEnergyConfig(() -> FloatingLong.create(1000 * AstralMekanismConfig.energyRate),
-                    () -> FloatingLong.create(10000000))
-            .withGui(() -> AstralMekanismMachines.GREENHOUSE.getContainerRO())
-            .withCustomShape(AMBlockShapes.GREENHOUSE)
             .build();
 
     public static final BlockTypeTile<BEMelter> MELTER = BlockTileBuilder
@@ -266,15 +255,6 @@ public class AstralMekanismBlockTypes {
             .withEnergyConfig(MekanismConfig.usage.pressurizedReactionBase, () -> FloatingLong.MAX_VALUE)
             .withSound(MekanismSounds.PRESSURIZED_REACTION_CHAMBER)
             .withCustomShape(AMBlockShapes.ASTRAL_PRC)
-            .build();
-
-    public static final BlockTypeMachine<BEAstralGreenHouse> ASTRAL_GREENHOUSE = BlockMachineBuilder
-            .createMachine(() -> AstralMekanismMachines.ASTRAL_GREENHOUSE.getTileRO(),
-                    AstralMekanismLang.DESCRIPTION_GREENHOUSE)
-            .withGui(() -> AstralMekanismMachines.ASTRAL_GREENHOUSE.getContainerRO())
-            .withEnergyConfig(() -> FloatingLong.create(1000 * AstralMekanismConfig.energyRate),
-                    () -> FloatingLong.MAX_VALUE)
-            .withCustomShape(AMBlockShapes.ASTRAL_GREENHOUSE)
             .build();
 
     public static final BlockTypeMachine<BEAstralElectrolyticSeparator> ASTRAL_ELECTROLYTIC_SEPARATOR = BlockMachineBuilder

@@ -7,15 +7,16 @@ import astral_mekanism.mixin.mekanism.MekanismRecipeTypeMixin;
 import astral_mekanism.recipes.inputRecipeCache.AMInputRecipeCache;
 import astral_mekanism.recipes.inputRecipeCache.AstralCraftingRecipeCache;
 import astral_mekanism.recipes.inputRecipeCache.AMInputRecipeCache.FluidFluid;
-import astral_mekanism.recipes.inputRecipeCache.AMInputRecipeCache.ItemFluid;
+import astral_mekanism.recipes.inputRecipeCache.AMInputRecipeCache.ItemItemFluid;
 import astral_mekanism.recipes.inputRecipeCache.AMInputRecipeCache.TripleItem;
 import astral_mekanism.recipes.recipe.AstralCraftingRecipe;
 import astral_mekanism.recipes.recipe.FluidFluidToFluidRecipe;
-import astral_mekanism.recipes.recipe.GreenHouseRecipe;
+import astral_mekanism.recipes.recipe.GreenhouseRecipe;
 import astral_mekanism.recipes.recipe.TripleItemToItemRecipe;
 import astral_mekanism.recipes.recipe.ItemToItemItemRecipe;
 import mekanism.api.chemical.gas.Gas;
 import mekanism.api.chemical.gas.GasStack;
+import mekanism.api.recipes.ChemicalDissolutionRecipe;
 import mekanism.api.recipes.CombinerRecipe;
 import mekanism.api.recipes.GasToGasRecipe;
 import mekanism.api.recipes.ItemStackGasToItemStackRecipe;
@@ -53,10 +54,11 @@ public class AstralMekanismRecipeTypes {
     public static final RecipeTypeRegistryObject<ItemToItemItemRecipe, SingleItem<ItemToItemItemRecipe>> FORMULIZED_SAWING_RECIPE = register(
             "sawing", rT -> new InputRecipeCache.SingleItem<>(rT, ItemToItemItemRecipe::getInput));
 
-    public static final RecipeTypeRegistryObject<GreenHouseRecipe, ItemFluid<GreenHouseRecipe>> Greenhouse_recipe = register(
-            "greenhouse",
-            recipeType -> new AMInputRecipeCache.ItemFluid<>(recipeType, GreenHouseRecipe::getInputItem,
-                    GreenHouseRecipe::getInputFluid));
+    public static final RecipeTypeRegistryObject<GreenhouseRecipe,ItemItemFluid<GreenhouseRecipe>> GREENHOUSE_RECIPE = register(
+        "greenhouse", rt->new ItemItemFluid<>(rt,
+            GreenhouseRecipe::getInputSeed,
+            GreenhouseRecipe::getFarmland,
+            GreenhouseRecipe::getInputFluid));
 
     public static final RecipeTypeRegistryObject<ItemStackToFluidRecipe, SingleItem<ItemStackToFluidRecipe>> Melter_recipe = register(
             "melter",
@@ -103,4 +105,8 @@ public class AstralMekanismRecipeTypes {
     public static final RecipeTypeRegistryObject<CombinerRecipe, DoubleItem<CombinerRecipe>> MEKANICAL_INSCRIBER_RECIPE = register(
             "mekanical_inscriber",
             rt -> new DoubleItem<>(rt, CombinerRecipe::getMainInput, CombinerRecipe::getExtraInput));
+
+    public static final RecipeTypeRegistryObject<ChemicalDissolutionRecipe, ItemChemical<Gas, GasStack, ChemicalDissolutionRecipe>> AM_DISSOLUTION = register(
+            "am_dissolution", rt -> new ItemChemical<>(rt, ChemicalDissolutionRecipe::getItemInput,
+                    ChemicalDissolutionRecipe::getGasInput));
 }

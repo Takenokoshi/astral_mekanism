@@ -4,7 +4,6 @@ import appeng.integration.modules.jei.ChargerCategory;
 import astral_mekanism.AstralMekanismID;
 import astral_mekanism.jei.recipeCategory.AstralCraftingRecipeCategory;
 import astral_mekanism.jei.recipeCategory.FluidInfuserRecipeCategory;
-import astral_mekanism.jei.recipeCategory.GreenHouseRecipeCategory;
 import astral_mekanism.jei.recipeCategory.MekanicalInscriberRecipeCategory;
 import astral_mekanism.jei.recipeCategory.MelterRecipeCategory;
 import astral_mekanism.jei.recipeCategory.TripleItemToItemRecipeCategory;
@@ -39,7 +38,6 @@ public class AstralMekJEIPlugin implements IModPlugin {
         IGuiHelper guiHelper = registry.getJeiHelpers().getGuiHelper();
         registry.addRecipeCategories(
                 new IRecipeCategory[] {
-                        new GreenHouseRecipeCategory(guiHelper, AstralMekanismJEIRecipeType.GREENHOUSE_RECIPE),
                         new MelterRecipeCategory(guiHelper, AstralMekanismJEIRecipeType.MELTER_RECIPE),
                         new FluidInfuserRecipeCategory(guiHelper, AstralMekanismJEIRecipeType.FLUID_INFUSER_RECIPE),
                         new ItemStackToItemStackRecipeCategory(guiHelper,
@@ -59,8 +57,6 @@ public class AstralMekJEIPlugin implements IModPlugin {
 
     @Override
     public void registerRecipes(IRecipeRegistration registry) {
-        RecipeRegistryHelper.register(registry, AstralMekanismJEIRecipeType.GREENHOUSE_RECIPE,
-                AstralMekanismRecipeTypes.Greenhouse_recipe);
         RecipeRegistryHelper.register(registry, AstralMekanismJEIRecipeType.MELTER_RECIPE,
                 AstralMekanismRecipeTypes.Melter_recipe);
         RecipeRegistryHelper.register(registry, AstralMekanismJEIRecipeType.FLUID_INFUSER_RECIPE,
@@ -83,8 +79,6 @@ public class AstralMekJEIPlugin implements IModPlugin {
                 new RecipeType[] { ChargerCategory.RECIPE_TYPE });
         registry.addRecipeCatalyst(AstralMekanismMachines.ASTRAL_MEKANICAL_CHARGER,
                 new RecipeType[] { ChargerCategory.RECIPE_TYPE });
-        CatalystRegistryHelper.register(registry, AstralMekanismJEIRecipeType.GREENHOUSE_RECIPE,
-                AstralMekanismMachines.GREENHOUSE);
         CatalystRegistryHelper.register(registry, AstralMekanismJEIRecipeType.MELTER_RECIPE,
                 AstralMekanismMachines.MELTER);
         CatalystRegistryHelper.register(registry, MekanismJEIRecipeType.ACTIVATING,

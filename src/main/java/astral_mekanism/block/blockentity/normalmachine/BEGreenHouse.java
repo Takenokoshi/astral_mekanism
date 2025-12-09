@@ -1,21 +1,20 @@
 package astral_mekanism.block.blockentity.normalmachine;
 
 import java.util.List;
-import java.util.Objects;
 
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-import astral_mekanism.recipes.cachedRecipe.GreenHouseCachedRecipe;
-import astral_mekanism.recipes.inputRecipeCache.AMInputRecipeCache.ItemFluid;
-import astral_mekanism.recipes.lookup.AMIRecipeLookUpHandler.ItemFluidRecipeLookupHandler;
+import astral_mekanism.block.blockentity.interf.IGreenhouse;
+import astral_mekanism.recipes.cachedRecipe.GreenhouseCachedRecipe;
+import astral_mekanism.recipes.handler.CatalystHelper;
+import astral_mekanism.recipes.handler.ICatalystHandler;
+import astral_mekanism.recipes.inputRecipeCache.AMInputRecipeCache.ItemItemFluid;
 import astral_mekanism.recipes.output.AMOutputHelper;
-import astral_mekanism.recipes.output.DoubleItemStackOutput;
-import astral_mekanism.recipes.recipe.GreenHouseRecipe;
+import astral_mekanism.recipes.output.TripleItemOutput;
+import astral_mekanism.recipes.recipe.GreenhouseRecipe;
 import astral_mekanism.registries.AstralMekanismRecipeTypes;
 import mekanism.api.IContentsListener;
-import mekanism.api.Upgrade;
-import mekanism.api.math.FloatingLong;
 import mekanism.api.providers.IBlockProvider;
 import mekanism.api.recipes.cache.CachedRecipe;
 import mekanism.api.recipes.cache.CachedRecipe.OperationTracker.RecipeError;
@@ -34,11 +33,9 @@ import mekanism.common.inventory.slot.EnergyInventorySlot;
 import mekanism.common.inventory.slot.FluidInventorySlot;
 import mekanism.common.inventory.slot.InputInventorySlot;
 import mekanism.common.inventory.slot.OutputInventorySlot;
-import mekanism.common.inventory.warning.WarningTracker.WarningType;
 import mekanism.common.lib.transmitter.TransmissionType;
 import mekanism.common.recipe.IMekanismRecipeTypeProvider;
 import mekanism.common.tile.component.TileComponentConfig;
-import mekanism.common.tile.component.TileComponentEjector;
 import mekanism.common.tile.component.config.ConfigInfo;
 import mekanism.common.tile.component.config.DataType;
 import mekanism.common.tile.component.config.slot.InventorySlotInfo;
@@ -49,55 +46,57 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.fluids.FluidStack;
 
-public class BEGreenHouse extends TileEntityProgressMachine<GreenHouseRecipe>
-        implements ItemFluidRecipeLookupHandler<GreenHouseRecipe> {
+public class BEGreenhouse extends TileEntityProgressMachine<GreenhouseRecipe> implements IGreenhouse<BEGreenhouse> {
 
-    public static final RecipeError NOT_ENOUGH_ITEM_INPUT_ERROR = RecipeError.create();
-    public static final RecipeError NOT_ENOUGH_FLUID_INPUT_ERROR = RecipeError.create();
-    public static final RecipeError NOT_ENOUGH_SPACE_ITEMA_OUTPUT_ERROR = RecipeError.create();
-    public static final RecipeError NOT_ENOUGH_SPACE_ITEMB_OUTPUT_ERROR = RecipeError.create();
+    public static final RecipeError NOT_ENOUGH_SEED = RecipeError.create();
+    public static final RecipeError NOT_ENOUGH_FARMLAND = RecipeError.create();
+    public static final RecipeError NOT_ENOUGH_FLUID = RecipeError.create();
+    public static final RecipeError NOT_ENOUGH_SPACE_MAIN_OUTPUT = RecipeError.create();
+    public static final RecipeError NOT_ENOUGH_SPACE_SEED_OUTPUT = RecipeError.create();
+    public static final RecipeError NOT_ENOUGH_SPACE_EXTRA_OUTPUT = RecipeError.create();
     public static final List<RecipeError> TRACKED_ERROR_TYPES = List.of(
             RecipeError.NOT_ENOUGH_ENERGY,
-            NOT_ENOUGH_FLUID_INPUT_ERROR,
-            NOT_ENOUGH_FLUID_INPUT_ERROR,
-            NOT_ENOUGH_SPACE_ITEMA_OUTPUT_ERROR,
-            NOT_ENOUGH_SPACE_ITEMB_OUTPUT_ERROR,
+            RecipeError.NOT_ENOUGH_ENERGY_REDUCED_RATE,
+            NOT_ENOUGH_SEED, NOT_ENOUGH_FARMLAND, NOT_ENOUGH_FLUID,
             RecipeError.INPUT_DOESNT_PRODUCE_OUTPUT);
 
-    public BasicFluidTank inputFluidTank;
-    InputInventorySlot inputSlot;
-    OutputInventorySlot outputSlotA;
-    OutputInventorySlot outputSlotB;
-    MachineEnergyContainer<BEGreenHouse> energyContainer;
-    EnergyInventorySlot energySlot;
-    FluidInventorySlot fluidSlot;
+    private InputInventorySlot seedInputSlot;
+    private InputInventorySlot farmlandSlot;
+    private OutputInventorySlot mainOutputSlot;
+    private OutputInventorySlot seedOutputSlot;
+    private OutputInventorySlot extraOutputSlot;
 
-    private FloatingLong recipeEnergyRequired = FloatingLong.ZERO;
-    private final IOutputHandler<DoubleItemStackOutput> outputHandler;
-    private final IInputHandler<@NotNull ItemStack> itemInputHandler;
-    private final IInputHandler<@NotNull FluidStack> fluidInputHandler;
+    private EnergyInventorySlot energySlot;
+    private FluidInventorySlot fluidSlot;
 
-    public BEGreenHouse(IBlockProvider blockProvider, BlockPos pos, BlockState state) {
-        super(blockProvider, pos, state, TRACKED_ERROR_TYPES, 100);
-        this.recipeEnergyRequired = FloatingLong.ZERO;
-        this.configComponent = new TileComponentConfig(this, TransmissionType.ENERGY, TransmissionType.FLUID,
-                TransmissionType.ITEM);
-        this.configComponent.setupInputConfig(TransmissionType.FLUID, inputFluidTank);
-        this.configComponent.setupInputConfig(TransmissionType.ENERGY, energyContainer);
-        ConfigInfo itemConfig = this.configComponent.getConfig(TransmissionType.ITEM);
-        if (itemConfig != null) {
-            itemConfig.addSlotInfo(DataType.INPUT, new InventorySlotInfo(true, false, inputSlot));
-            itemConfig.addSlotInfo(DataType.OUTPUT_1, new InventorySlotInfo(false, true, outputSlotA));
-            itemConfig.addSlotInfo(DataType.OUTPUT_2, new InventorySlotInfo(false, true, outputSlotB));
-            itemConfig.setEjecting(true);
-        }
-        this.ejectorComponent = new TileComponentEjector(this);
-        this.ejectorComponent.setOutputData(configComponent, TransmissionType.ITEM);
-        itemInputHandler = InputHelper.getInputHandler(inputSlot, NOT_ENOUGH_ITEM_INPUT_ERROR);
-        fluidInputHandler = InputHelper.getInputHandler(inputFluidTank, NOT_ENOUGH_FLUID_INPUT_ERROR);
-        outputHandler = AMOutputHelper.getOutputHandler(outputSlotA, NOT_ENOUGH_SPACE_ITEMA_OUTPUT_ERROR,
-                outputSlotB,
-                NOT_ENOUGH_SPACE_ITEMB_OUTPUT_ERROR);
+    private MachineEnergyContainer<BEGreenhouse> energyContainer;
+    private BasicFluidTank fluidTank;
+
+    private final ICatalystHandler<ItemStack> seedHandler;
+    private final ICatalystHandler<ItemStack> farmlandHandler;
+    private final IInputHandler<FluidStack> fluidHandler;
+    private final IOutputHandler<TripleItemOutput> outputHandler;
+
+    public BEGreenhouse(IBlockProvider blockProvider, BlockPos pos, BlockState state) {
+        super(blockProvider, pos, state, TRACKED_ERROR_TYPES, 1000);
+        configComponent = new TileComponentConfig(this,
+                TransmissionType.ENERGY, TransmissionType.ITEM, TransmissionType.FLUID);
+        configComponent.setupInputConfig(TransmissionType.ENERGY, energyContainer);
+        ConfigInfo info = configComponent.getConfig(TransmissionType.ITEM);
+        info.addSlotInfo(DataType.INPUT_1, new InventorySlotInfo(true, false, seedInputSlot));
+        info.addSlotInfo(DataType.INPUT_2, new InventorySlotInfo(true, true, farmlandSlot));
+        info.addSlotInfo(DataType.OUTPUT_1, new InventorySlotInfo(false, true, mainOutputSlot));
+        info.addSlotInfo(DataType.OUTPUT_2, new InventorySlotInfo(false, true, seedOutputSlot, extraOutputSlot));
+        info.addSlotInfo(DataType.OUTPUT,
+                new InventorySlotInfo(false, true, mainOutputSlot, seedOutputSlot, extraOutputSlot));
+        configComponent.setupInputConfig(TransmissionType.FLUID, fluidTank);
+        seedHandler = CatalystHelper.getCatalystHandler(seedInputSlot, NOT_ENOUGH_SEED);
+        farmlandHandler = CatalystHelper.getCatalystHandler(farmlandSlot, NOT_ENOUGH_FARMLAND);
+        fluidHandler = InputHelper.getInputHandler(fluidTank, NOT_ENOUGH_FLUID);
+        outputHandler = AMOutputHelper.getOutputhandler(
+                mainOutputSlot, NOT_ENOUGH_SPACE_MAIN_OUTPUT,
+                seedOutputSlot, NOT_ENOUGH_SPACE_SEED_OUTPUT,
+                extraOutputSlot, NOT_ENOUGH_SPACE_EXTRA_OUTPUT);
     }
 
     @NotNull
@@ -106,21 +105,27 @@ public class BEGreenHouse extends TileEntityProgressMachine<GreenHouseRecipe>
             IContentsListener recipeCacheListener) {
         InventorySlotHelper builder = InventorySlotHelper.forSideWithConfig(this::getDirection,
                 this::getConfig);
-        builder.addSlot(inputSlot = InputInventorySlot.at(
-                item -> containsRecipeAB(item, inputFluidTank.getFluid()),
-                this::containsRecipeA, recipeCacheListener, 54, 40))
-                .tracksWarnings(slot -> slot.warning(WarningType.NO_MATCHING_RECIPE,
-                        getWarningCheck(NOT_ENOUGH_ITEM_INPUT_ERROR)));
-        builder.addSlot(outputSlotA = OutputInventorySlot.at(recipeCacheListener, 116, 40))
-                .tracksWarnings(slot -> slot.warning(WarningType.NO_SPACE_IN_OUTPUT,
-                        getWarningCheck(NOT_ENOUGH_SPACE_ITEMA_OUTPUT_ERROR)));
-        builder.addSlot(outputSlotB = OutputInventorySlot.at(recipeCacheListener, 116, 60))
-                .tracksWarnings(slot -> slot.warning(WarningType.NO_SPACE_IN_OUTPUT,
-                        getWarningCheck(NOT_ENOUGH_SPACE_ITEMB_OUTPUT_ERROR)));
-        builder.addSlot(this.energySlot = EnergyInventorySlot.fillOrConvert(this.energyContainer,
-                this::getLevel,
-                listener, 141, 17));
-        builder.addSlot(this.fluidSlot = FluidInventorySlot.fill(this.inputFluidTank, listener, 34, 17));
+        builder.addSlot(seedInputSlot = InputInventorySlot.at(
+                s -> containsRecipeABC(s, farmlandSlot.getStack(), fluidTank.getFluid()),
+                this::containsRecipeA, recipeCacheListener, 64, 17));
+        builder.addSlot(farmlandSlot = InputInventorySlot.at(
+                f -> containsRecipeBAC(seedInputSlot.getStack(), f, fluidTank.getFluid()),
+                this::containsRecipeA, recipeCacheListener, 64, 53));
+        builder.addSlot(mainOutputSlot = OutputInventorySlot.at(recipeCacheListener, 116, 17));
+        builder.addSlot(seedOutputSlot = OutputInventorySlot.at(recipeCacheListener, 116, 35));
+        builder.addSlot(extraOutputSlot = OutputInventorySlot.at(recipeCacheListener, 116, 53));
+        builder.addSlot(energySlot = EnergyInventorySlot.fillOrConvert(energyContainer,
+                this::getLevel, recipeCacheListener, 155, 14));
+        builder.addSlot(fluidSlot = FluidInventorySlot.fill(fluidTank, recipeCacheListener, 0, 0));
+        return builder.build();
+    }
+
+    @NotNull
+    @Override
+    protected IEnergyContainerHolder getInitialEnergyContainers(IContentsListener listener,
+            IContentsListener recipeCacheListener) {
+        EnergyContainerHelper builder = EnergyContainerHelper.forSideWithConfig(this::getDirection, this::getConfig);
+        builder.addContainer(energyContainer = MachineEnergyContainer.input(this, listener));
         return builder.build();
     }
 
@@ -129,107 +134,56 @@ public class BEGreenHouse extends TileEntityProgressMachine<GreenHouseRecipe>
     protected IFluidTankHolder getInitialFluidTanks(IContentsListener listener,
             IContentsListener recipeCacheListener) {
         FluidTankHelper builder = FluidTankHelper.forSideWithConfig(this::getDirection, this::getConfig);
-        builder.addTank(inputFluidTank = BasicFluidTank.input(100000,
-                fluid -> containsRecipeBA(inputSlot.getStack(), fluid), this::containsRecipeB,
-                recipeCacheListener));
-        return builder.build();
-    }
-
-    @NotNull
-    @Override
-    protected IEnergyContainerHolder getInitialEnergyContainers(IContentsListener listener,
-            IContentsListener recipeCacheListener) {
-        EnergyContainerHelper builder = EnergyContainerHelper.forSideWithConfig(this::getDirection,
-                this::getConfig);
-        builder.addContainer(energyContainer = MachineEnergyContainer.input(this, listener));
+        builder.addTank(fluidTank = BasicFluidTank.input(10000,
+                stack -> containsRecipeCAB(seedInputSlot.getStack(), farmlandSlot.getStack(), stack),
+                this::containsRecipeC, recipeCacheListener));
         return builder.build();
     }
 
     @Override
-    public @Nullable GreenHouseRecipe getRecipe(int arg0) {
-        return (GreenHouseRecipe) this.findFirstRecipe(this.itemInputHandler, this.fluidInputHandler);
+    public @NotNull IMekanismRecipeTypeProvider<GreenhouseRecipe, ItemItemFluid<GreenhouseRecipe>> getRecipeType() {
+        return AstralMekanismRecipeTypes.GREENHOUSE_RECIPE;
     }
 
     @Override
-    public @NotNull IMekanismRecipeTypeProvider<GreenHouseRecipe, ItemFluid<GreenHouseRecipe>> getRecipeType() {
-        return AstralMekanismRecipeTypes.Greenhouse_recipe;
+    public @NotNull CachedRecipe<GreenhouseRecipe> createNewCachedRecipe(@NotNull GreenhouseRecipe recipe, int index) {
+        return new GreenhouseCachedRecipe(recipe, recheckAllRecipeErrors,
+                seedHandler, farmlandHandler, fluidHandler, outputHandler)
+                .setErrorsChanged(this::onErrorsChanged)
+                .setCanHolderFunction(() -> MekanismUtils.canFunction(this))
+                .setActive(this::setActive)
+                .setOnFinish(this::markForSave)
+                .setEnergyRequirements(energyContainer::getEnergyPerTick, energyContainer)
+                .setRequiredTicks(this::getTicksRequired)
+                .setOperatingTicksChanged(this::setOperatingTicks);
     }
 
-    public void onCachedRecipeChanged(@Nullable CachedRecipe<GreenHouseRecipe> cachedRecipe, int cacheIndex) {
-        super.onCachedRecipeChanged(cachedRecipe, cacheIndex);
-        int recipeDuration;
-        if (cachedRecipe == null) {
-            recipeDuration = 100;
-            this.recipeEnergyRequired = FloatingLong.ZERO;
-        } else {
-            GreenHouseRecipe recipe = cachedRecipe.getRecipe();
-            recipeDuration = recipe.getDuration();
-            this.recipeEnergyRequired = recipe.getEnergyRequired();
-        }
-        boolean update = this.baseTicksRequired != recipeDuration;
-        this.baseTicksRequired = recipeDuration;
-        if (update) {
-            this.recalculateUpgrades(Upgrade.SPEED);
-        }
-        this.energyContainer.updateEnergyPerTick();
-    }
-
+    @Override
     protected void onUpdateServer() {
         super.onUpdateServer();
-        this.energySlot.fillContainerOrConvert();
-        this.fluidSlot.fillTank();
-        this.recipeCacheLookupMonitor.updateAndProcess();
-        ItemStack inputItem = inputSlot.getStack();
-        ItemStack outputItemB = outputSlotB.getStack();
-        if (!outputItemB.isEmpty() && containsRecipeA(outputItemB)) {
-            if (inputItem.isEmpty()) {
-                inputSlot.setStack(outputItemB);
-                outputSlotB.setEmpty();
-            } else if (ItemStack.isSameItem(inputItem, outputItemB)) {
-                int maxStackSize = inputItem.getMaxStackSize();
-                long sumStackSize = (long) inputItem.getCount() + outputItemB.getCount();
-                if (maxStackSize < sumStackSize) {
-                    inputItem.setCount(maxStackSize);
-                    inputSlot.setStack(inputItem);
-                    inputItem.setCount((int) (sumStackSize - maxStackSize));
-                    outputSlotB.setStack(inputItem);
-                } else {
-                    inputItem.setCount((int) sumStackSize);
-                    inputSlot.setStack(inputItem);
-                    outputSlotB.setEmpty();
-                }
-            }
-        }
-    }
-
-    public FloatingLong getRecipeEnergyRequired() {
-        return this.recipeEnergyRequired;
-    }
-
-    FloatingLong getEnergyUsage() {
-        return this.getActive() ? this.energyContainer.getEnergyPerTick() : FloatingLong.ZERO;
-    }
-
-    public MachineEnergyContainer<BEGreenHouse> getEnergyContainer() {
-        return this.energyContainer;
+        energySlot.fillContainerOrConvert();
+        fluidSlot.fillTank();
+        recipeCacheLookupMonitor.updateAndProcess();
     }
 
     @Override
-    public @NotNull CachedRecipe<GreenHouseRecipe> createNewCachedRecipe(@NotNull GreenHouseRecipe recipe,
-            int cacheIndex) {
-        CachedRecipe<GreenHouseRecipe> cachedRecipe = new GreenHouseCachedRecipe(recipe, recheckAllRecipeErrors,
-                itemInputHandler,
-                fluidInputHandler, outputHandler).setErrorsChanged((x$0) -> {
-                    this.onErrorsChanged(x$0);
-                }).setCanHolderFunction(() -> {
-                    return MekanismUtils.canFunction(this);
-                }).setActive(this::setActive);
-        MachineEnergyContainer<BEGreenHouse> energyContainer = this.energyContainer;
-        Objects.requireNonNull(energyContainer);
-        return cachedRecipe.setEnergyRequirements(energyContainer::getEnergyPerTick, this.energyContainer)
-                .setRequiredTicks(this::getTicksRequired).setOnFinish(this::markForSave)
-                .setOperatingTicksChanged(x$0 -> {
-                    this.setOperatingTicks(x$0);
-                });
+    public @Nullable GreenhouseRecipe getRecipe(int arg0) {
+        return findFirstRecipe(seedHandler, farmlandHandler, fluidHandler);
     }
+
+    @Override
+    public BasicFluidTank getFluidTank() {
+        return fluidTank;
+    }
+
+    @Override
+    public MachineEnergyContainer<BEGreenhouse> getEnergyContainer() {
+        return energyContainer;
+    }
+
+    @Override
+    public double getProgressScaled() {
+        return getScaledProgress();
+    }
+
 }

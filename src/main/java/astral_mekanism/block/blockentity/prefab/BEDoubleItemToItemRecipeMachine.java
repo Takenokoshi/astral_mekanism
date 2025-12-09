@@ -1,81 +1,80 @@
-package astral_mekanism.block.blockentity.astralmachine;
+package astral_mekanism.block.blockentity.prefab;
 
-import java.util.Collections;
 import java.util.List;
 
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-import astral_mekanism.recipes.cachedRecipe.ItemToItemItemCachedRecipe;
-import astral_mekanism.recipes.output.AMOutputHelper;
-import astral_mekanism.recipes.output.DoubleItemOutput;
-import astral_mekanism.recipes.recipe.ItemToItemItemRecipe;
-import astral_mekanism.registries.AstralMekanismRecipeTypes;
 import mekanism.api.IContentsListener;
+import mekanism.api.inventory.IInventorySlot;
 import mekanism.api.math.FloatingLong;
 import mekanism.api.providers.IBlockProvider;
+import mekanism.api.recipes.CombinerRecipe;
 import mekanism.api.recipes.cache.CachedRecipe;
 import mekanism.api.recipes.cache.CachedRecipe.OperationTracker.RecipeError;
+import mekanism.api.recipes.cache.TwoInputCachedRecipe;
 import mekanism.api.recipes.inputs.IInputHandler;
-import mekanism.api.recipes.inputs.InputHelper;
 import mekanism.api.recipes.outputs.IOutputHandler;
+import mekanism.api.recipes.outputs.OutputHelper;
 import mekanism.common.capabilities.energy.MachineEnergyContainer;
 import mekanism.common.capabilities.holder.energy.EnergyContainerHelper;
 import mekanism.common.capabilities.holder.energy.IEnergyContainerHolder;
 import mekanism.common.capabilities.holder.slot.IInventorySlotHolder;
 import mekanism.common.capabilities.holder.slot.InventorySlotHelper;
+import mekanism.common.inventory.container.slot.ContainerSlotType;
 import mekanism.common.inventory.slot.EnergyInventorySlot;
 import mekanism.common.inventory.slot.InputInventorySlot;
 import mekanism.common.inventory.slot.OutputInventorySlot;
 import mekanism.common.inventory.warning.WarningTracker.WarningType;
 import mekanism.common.lib.transmitter.TransmissionType;
-import mekanism.common.recipe.IMekanismRecipeTypeProvider;
-import mekanism.common.recipe.lookup.ISingleRecipeLookupHandler.ItemRecipeLookupHandler;
-import mekanism.common.recipe.lookup.cache.InputRecipeCache.SingleItem;
+import mekanism.common.recipe.lookup.IDoubleRecipeLookupHandler.DoubleItemRecipeLookupHandler;
 import mekanism.common.tile.component.TileComponentConfig;
 import mekanism.common.tile.component.TileComponentEjector;
 import mekanism.common.tile.prefab.TileEntityRecipeMachine;
-import mekanism.common.upgrade.SawmillUpgradeData;
+import mekanism.common.upgrade.CombinerUpgradeData;
 import mekanism.common.util.MekanismUtils;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 
-public class BEAstralPrecisionSawmill extends TileEntityRecipeMachine<ItemToItemItemRecipe>
-        implements ItemRecipeLookupHandler<ItemToItemItemRecipe> {
+public abstract class BEDoubleItemToItemRecipeMachine extends TileEntityRecipeMachine<CombinerRecipe>
+        implements DoubleItemRecipeLookupHandler<CombinerRecipe> {
 
-    public static final RecipeError NOT_ENOUGH_SPACE_SECONDARY_OUTPUT_ERROR = RecipeError.create();
-    private static final List<RecipeError> TRACKED_ERROR_TYPES = List.of(
+    protected static final List<RecipeError> TRACKED_ERROR_TYPES = List.of(
             RecipeError.NOT_ENOUGH_ENERGY,
             RecipeError.NOT_ENOUGH_INPUT,
+            RecipeError.NOT_ENOUGH_SECONDARY_INPUT,
             RecipeError.NOT_ENOUGH_OUTPUT_SPACE,
-            NOT_ENOUGH_SPACE_SECONDARY_OUTPUT_ERROR,
             RecipeError.INPUT_DOESNT_PRODUCE_OUTPUT);
-
-    private final IOutputHandler<@NotNull DoubleItemOutput> outputHandler;
+    private final IOutputHandler<@NotNull ItemStack> outputHandler;
     private final IInputHandler<@NotNull ItemStack> inputHandler;
+    private final IInputHandler<@NotNull ItemStack> extraInputHandler;
 
-    private MachineEnergyContainer<BEAstralPrecisionSawmill> energyContainer;
-    InputInventorySlot inputSlot;
-    OutputInventorySlot outputSlot;
-    OutputInventorySlot secondaryOutputSlot;
-    EnergyInventorySlot energySlot;
+    protected MachineEnergyContainer<BEDoubleItemToItemRecipeMachine> energyContainer;
+    protected InputInventorySlot mainInputSlot;
+    protected InputInventorySlot extraInputSlot;
+    protected OutputInventorySlot outputSlot;
+    protected EnergyInventorySlot energySlot;
 
-    public BEAstralPrecisionSawmill(IBlockProvider blockProvider, BlockPos pos, BlockState state) {
+    protected BEDoubleItemToItemRecipeMachine(IBlockProvider blockProvider, BlockPos pos, BlockState state) {
         super(blockProvider, pos, state, TRACKED_ERROR_TYPES);
         configComponent = new TileComponentConfig(this, TransmissionType.ITEM, TransmissionType.ENERGY);
-        configComponent.setupItemIOConfig(Collections.singletonList(inputSlot),
-                List.of(outputSlot, secondaryOutputSlot), energySlot, false);
+        configComponent.setupItemIOExtraConfig(mainInputSlot, outputSlot, extraInputSlot, energySlot);
         configComponent.setupInputConfig(TransmissionType.ENERGY, energyContainer);
 
         ejectorComponent = new TileComponentEjector(this);
         ejectorComponent.setOutputData(configComponent, TransmissionType.ITEM);
 
-        inputHandler = InputHelper.getInputHandler(inputSlot, RecipeError.NOT_ENOUGH_INPUT);
-        outputHandler = AMOutputHelper.getOutputHandler(outputSlot, RecipeError.NOT_ENOUGH_OUTPUT_SPACE,
-                secondaryOutputSlot, NOT_ENOUGH_SPACE_SECONDARY_OUTPUT_ERROR);
+        inputHandler = createMainInputHandler(mainInputSlot, RecipeError.NOT_ENOUGH_INPUT);
+        extraInputHandler = createExtraInputHandler(extraInputSlot, RecipeError.NOT_ENOUGH_SECONDARY_INPUT);
+        outputHandler = OutputHelper.getOutputHandler(outputSlot, RecipeError.NOT_ENOUGH_OUTPUT_SPACE);
     }
+
+    protected abstract IInputHandler<ItemStack> createMainInputHandler(IInventorySlot slot, RecipeError notEnoughError);
+
+    protected abstract IInputHandler<ItemStack> createExtraInputHandler(IInventorySlot slot,
+            RecipeError notEnoughError);
 
     @NotNull
     @Override
@@ -91,15 +90,26 @@ public class BEAstralPrecisionSawmill extends TileEntityRecipeMachine<ItemToItem
     protected IInventorySlotHolder getInitialInventory(IContentsListener listener,
             IContentsListener recipeCacheListener) {
         InventorySlotHelper builder = InventorySlotHelper.forSideWithConfig(this::getDirection, this::getConfig);
-        builder.addSlot(inputSlot = InputInventorySlot.at(this::containsRecipe, recipeCacheListener, 56, 17))
+        builder.addSlot(mainInputSlot = InputInventorySlot.at(item -> containsRecipeAB(item, extraInputSlot.getStack()),
+                this::containsRecipeA, recipeCacheListener,
+                64, 17))
                 .tracksWarnings(slot -> slot.warning(WarningType.NO_MATCHING_RECIPE,
                         getWarningCheck(RecipeError.NOT_ENOUGH_INPUT)));
-        builder.addSlot(outputSlot = OutputInventorySlot.at(listener, 116, 35));
-        builder.addSlot(secondaryOutputSlot = OutputInventorySlot.at(listener, 132, 35));
+        builder.addSlot(extraInputSlot = InputInventorySlot.at(item -> containsRecipeBA(mainInputSlot.getStack(), item),
+                this::containsRecipeB, recipeCacheListener,
+                64, 53))
+                .tracksWarnings(slot -> slot.warning(WarningType.NO_MATCHING_RECIPE,
+                        getWarningCheck(RecipeError.NOT_ENOUGH_SECONDARY_INPUT)));
+        builder.addSlot(outputSlot = OutputInventorySlot.at(listener, 116, 35))
+                .tracksWarnings(slot -> slot.warning(WarningType.NO_SPACE_IN_OUTPUT,
+                        getWarningCheck(RecipeError.NOT_ENOUGH_OUTPUT_SPACE)));
         builder.addSlot(
-                energySlot = EnergyInventorySlot.fillOrConvert(energyContainer, this::getLevel, listener, 56, 53));
+                energySlot = EnergyInventorySlot.fillOrConvert(energyContainer, this::getLevel, listener, 39, 35));
+        extraInputSlot.setSlotType(ContainerSlotType.EXTRA);
         return builder.build();
     }
+
+    protected abstract int getBaselineMaxOperations();
 
     @Override
     protected void onUpdateServer() {
@@ -108,40 +118,33 @@ public class BEAstralPrecisionSawmill extends TileEntityRecipeMachine<ItemToItem
         recipeCacheLookupMonitor.updateAndProcess();
     }
 
-    @Override
-    @NotNull
-    public IMekanismRecipeTypeProvider<ItemToItemItemRecipe, SingleItem<ItemToItemItemRecipe>> getRecipeType() {
-        return AstralMekanismRecipeTypes.FORMULIZED_SAWING_RECIPE;
-    }
-
     @Nullable
     @Override
-    public ItemToItemItemRecipe getRecipe(int cacheIndex) {
-        return findFirstRecipe(inputHandler);
+    public CombinerRecipe getRecipe(int cacheIndex) {
+        return findFirstRecipe(inputHandler, extraInputHandler);
     }
 
     @NotNull
     @Override
-    public CachedRecipe<ItemToItemItemRecipe> createNewCachedRecipe(@NotNull ItemToItemItemRecipe recipe, int cacheIndex) {
-        return new ItemToItemItemCachedRecipe(recipe, recheckAllRecipeErrors, inputHandler, outputHandler)
+    public CachedRecipe<CombinerRecipe> createNewCachedRecipe(@NotNull CombinerRecipe recipe, int cacheIndex) {
+        return TwoInputCachedRecipe
+                .combiner(recipe, recheckAllRecipeErrors, inputHandler, extraInputHandler, outputHandler)
                 .setErrorsChanged(this::onErrorsChanged)
                 .setCanHolderFunction(() -> MekanismUtils.canFunction(this))
                 .setActive(this::setActive)
                 .setEnergyRequirements(energyContainer::getEnergyPerTick, energyContainer)
-                .setRequiredTicks(() -> 1)
-                .setOnFinish(this::markForSave)
-                .setBaselineMaxOperations(() -> Integer.MAX_VALUE);
+                .setBaselineMaxOperations(this::getBaselineMaxOperations)
+                .setOnFinish(this::markForSave);
     }
 
     @NotNull
     @Override
-    public SawmillUpgradeData getUpgradeData() {
-        return new SawmillUpgradeData(redstone, getControlType(), getEnergyContainer(), 1, energySlot, inputSlot,
-                outputSlot, secondaryOutputSlot,
-                getComponents());
+    public CombinerUpgradeData getUpgradeData() {
+        return new CombinerUpgradeData(redstone, getControlType(), getEnergyContainer(), 0,
+                energySlot, extraInputSlot, mainInputSlot, outputSlot, getComponents());
     }
 
-    public MachineEnergyContainer<BEAstralPrecisionSawmill> getEnergyContainer() {
+    public MachineEnergyContainer<BEDoubleItemToItemRecipeMachine> getEnergyContainer() {
         return energyContainer;
     }
 
@@ -151,7 +154,10 @@ public class BEAstralPrecisionSawmill extends TileEntityRecipeMachine<ItemToItem
                 || MekanismUtils.isSameTypeFactory(getBlockType(), tileType);
     }
 
-    FloatingLong getEnergyUsage() {
+    public FloatingLong getEnergyUsage() {
         return getActive() ? energyContainer.getEnergyPerTick() : FloatingLong.ZERO;
     }
+
+    public abstract String getJEI();
+
 }

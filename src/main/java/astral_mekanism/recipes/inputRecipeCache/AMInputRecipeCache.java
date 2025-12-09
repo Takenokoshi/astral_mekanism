@@ -54,4 +54,20 @@ public class AMInputRecipeCache {
         }
 
     }
+
+    public static class ItemItemFluid<RECIPE extends MekanismRecipe & TriPredicate<ItemStack, ItemStack, FluidStack>>
+            extends
+            TripleInputRecipeCache<ItemStack, ItemStackIngredient, ItemStack, ItemStackIngredient, FluidStack, FluidStackIngredient, RECIPE, ItemInputCache<RECIPE>, ItemInputCache<RECIPE>, FluidInputCache<RECIPE>> {
+
+        public ItemItemFluid(MekanismRecipeType<RECIPE, ?> recipeType,
+                Function<RECIPE, ItemStackIngredient> inputAExtractor,
+                Function<RECIPE, ItemStackIngredient> inputBExtractor,
+                Function<RECIPE, FluidStackIngredient> inputCExtractor) {
+            super(recipeType,
+                    inputAExtractor, new ItemInputCache<>(),
+                    inputBExtractor, new ItemInputCache<>(),
+                    inputCExtractor, new FluidInputCache<>());
+        }
+
+    }
 }

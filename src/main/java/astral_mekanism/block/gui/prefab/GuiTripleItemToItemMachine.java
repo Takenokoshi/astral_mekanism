@@ -2,7 +2,7 @@ package astral_mekanism.block.gui.prefab;
 
 import org.jetbrains.annotations.NotNull;
 
-import astral_mekanism.block.blockentity.prefab.BETripleItemToItemMachine;
+import astral_mekanism.block.blockentity.prefab.BETripleItemToItemProgressMachine;
 import mekanism.api.recipes.cache.CachedRecipe.OperationTracker.RecipeError;
 import mekanism.client.gui.GuiConfigurableTile;
 import mekanism.client.gui.element.bar.GuiHorizontalPowerBar;
@@ -17,7 +17,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Inventory;
 
-public class GuiTripleItemToItemMachine<BE extends BETripleItemToItemMachine>
+public class GuiTripleItemToItemMachine<BE extends BETripleItemToItemProgressMachine>
         extends GuiConfigurableTile<BE, MekanismTileContainer<BE>> {
 
     public GuiTripleItemToItemMachine(MekanismTileContainer<BE> container, Inventory inv, Component title) {

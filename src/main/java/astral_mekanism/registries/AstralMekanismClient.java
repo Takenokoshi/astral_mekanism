@@ -22,7 +22,6 @@ import astral_mekanism.block.container.prefab.ContainerAbstractStorage;
 import astral_mekanism.block.gui.astralmachine.GuiAstralAdvancedMachine;
 import astral_mekanism.block.gui.astralmachine.GuiAstralElectricMachine;
 import astral_mekanism.block.gui.astralmachine.GuiAstralElectrolyticSeparator;
-import astral_mekanism.block.gui.astralmachine.GuiAstralGreenHouse;
 import astral_mekanism.block.gui.astralmachine.GuiAstralPRC;
 import astral_mekanism.block.gui.astralmachine.GuiAstralPrecisionSawmill;
 import astral_mekanism.block.gui.compact.GuiCompactFissionReactor;
@@ -31,7 +30,6 @@ import astral_mekanism.block.gui.generator.GuiGasBurningGenerator;
 import astral_mekanism.block.gui.generator.GuiHeatGenerator;
 import astral_mekanism.block.gui.normalmachine.GuiAstralCrafter;
 import astral_mekanism.block.gui.normalmachine.GuiFluidInfuser;
-import astral_mekanism.block.gui.normalmachine.GuiGreenHouse;
 import astral_mekanism.block.gui.normalmachine.GuiMekanicalInscriber;
 import astral_mekanism.block.gui.normalmachine.GuiMelter;
 import astral_mekanism.block.gui.prefab.GuiAbstractStorage;
@@ -75,7 +73,6 @@ public class AstralMekanismClient {
             regScreen(AstralMekanismMachines.WATER_SUPPLY_DEVICE, GuiWaterSupplyDevice::new);
             regScreen(AstralMekanismMachines.GLOWSTONE_NEUTRON_ACTIVATOR,
                     GuiGasToGasBlock<BEGlowstoneNeutronActivator>::new);
-            regScreen(AstralMekanismMachines.GREENHOUSE, GuiGreenHouse::new);
             regScreen(AstralMekanismMachines.MELTER, GuiMelter::new);
             regScreen(AstralMekanismMachines.COMPACT_TEP, GuiCompactTEP::new);
             regScreen(AstralMekanismMachines.FLUID_INFUSER, GuiFluidInfuser::new);
@@ -89,7 +86,6 @@ public class AstralMekanismClient {
             regScreen(AstralMekanismMachines.ASTRAL_GNA, GuiGasToGasBlock<BEAstralGNA>::new);
             regScreen(AstralMekanismMachines.ASTRAL_SPS, GuiGasToGasMachine<BEAstralSPS>::new);
             regScreen(AstralMekanismMachines.ASTRAL_PRC, GuiAstralPRC::new);
-            regScreen(AstralMekanismMachines.ASTRAL_GREENHOUSE, GuiAstralGreenHouse::new);
             regScreen(AstralMekanismMachines.ASTRAL_ELECTROLYTIC_SEPARATOR, GuiAstralElectrolyticSeparator::new);
             regScreen(AstralMekanismMachines.ASTRAL_PRECISION_SAWMILL, GuiAstralPrecisionSawmill::new);
             regScreen(AstralMekanismMachines.ASTRAL_CRUSHER, GuiAstralElectricMachine<BEAstralCrusher>::new);

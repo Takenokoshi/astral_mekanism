@@ -1,73 +1,86 @@
 package astral_mekanism.recipes.cachedRecipe;
 
-import java.util.Objects;
 import java.util.function.BooleanSupplier;
 
-import javax.annotation.Nullable;
+import org.jetbrains.annotations.Nullable;
 
-import org.jetbrains.annotations.NotNull;
-
-import astral_mekanism.recipes.output.DoubleItemStackOutput;
-import astral_mekanism.recipes.recipe.GreenHouseRecipe;
+import astral_mekanism.recipes.output.TripleItemOutput;
+import astral_mekanism.recipes.recipe.GreenhouseRecipe;
 import mekanism.api.recipes.cache.CachedRecipe;
 import mekanism.api.recipes.inputs.IInputHandler;
 import mekanism.api.recipes.outputs.IOutputHandler;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.fluids.FluidStack;
 
-public class GreenHouseCachedRecipe extends CachedRecipe<GreenHouseRecipe> {
+public class GreenhouseCachedRecipe extends CachedRecipe<GreenhouseRecipe> {
 
-    private final IOutputHandler<DoubleItemStackOutput> outputHandler;
-    private final IInputHandler<@NotNull ItemStack> itemInputHandler;
-    private final IInputHandler<@NotNull FluidStack> fluidInputHandler;
-    private ItemStack recipeItem;
-    private FluidStack recipeFluid;
+    private final IInputHandler<ItemStack> seedInputHandler;
+    private final IInputHandler<ItemStack> farmlandHandler;
+    private final IInputHandler<FluidStack> fluidHandler;
+    private final IOutputHandler<TripleItemOutput> outputHandler;
+
     @Nullable
-    private DoubleItemStackOutput output;
+    private ItemStack seedRecipeInput;
+    @Nullable
+    private ItemStack farmlandRecipeInput;
+    @Nullable
+    private FluidStack fluidRecipeInput;
+    @Nullable
+    private TripleItemOutput recipeOutput;
 
-    public GreenHouseCachedRecipe(GreenHouseRecipe recipe, BooleanSupplier recheckAllErrors,
-            IInputHandler<@NotNull ItemStack> itemInputHandler, IInputHandler<@NotNull FluidStack> fluidInputHandler,
-            IOutputHandler<DoubleItemStackOutput> outputHandler) {
+    public GreenhouseCachedRecipe(GreenhouseRecipe recipe,
+            BooleanSupplier recheckAllErrors,
+            IInputHandler<ItemStack> seedInputHandler,
+            IInputHandler<ItemStack> farmlandHandler,
+            IInputHandler<FluidStack> fluidHandler,
+            IOutputHandler<TripleItemOutput> outputHandler) {
         super(recipe, recheckAllErrors);
-        this.recipeItem = ItemStack.EMPTY;
-        this.recipeFluid = FluidStack.EMPTY;
-        this.itemInputHandler = Objects.requireNonNull(itemInputHandler);
-        this.fluidInputHandler = Objects.requireNonNull(fluidInputHandler);
-        this.outputHandler = Objects.requireNonNull(outputHandler);
+        this.seedInputHandler = seedInputHandler;
+        this.farmlandHandler = farmlandHandler;
+        this.fluidHandler = fluidHandler;
+        this.outputHandler = outputHandler;
     }
 
-    protected void calculateOperationsThisTick(CachedRecipe.OperationTracker tracker) {
+    @Override
+    protected void calculateOperationsThisTick(OperationTracker tracker) {
         super.calculateOperationsThisTick(tracker);
         if (tracker.shouldContinueChecking()) {
-            this.recipeItem = this.itemInputHandler.getRecipeInput(this.recipe.getInputItem());
-            this.recipeFluid = this.fluidInputHandler.getRecipeInput(this.recipe.getInputFluid());
-            if (recipeItem.isEmpty() || recipeFluid.isEmpty()) {
+            seedRecipeInput = seedInputHandler.getRecipeInput(recipe.getInputSeed());
+            farmlandRecipeInput = farmlandHandler.getRecipeInput(recipe.getFarmland());
+            fluidRecipeInput = fluidHandler.getRecipeInput(recipe.getInputFluid());
+            recipeOutput = recipe.getOutput();
+            if (seedRecipeInput.isEmpty()
+                    || farmlandRecipeInput.isEmpty()
+                    || fluidRecipeInput.isEmpty()
+                    || recipeOutput.isEmpty()) {
                 tracker.mismatchedRecipe();
-            } else {
-                this.itemInputHandler.calculateOperationsCanSupport(tracker, recipeItem);
-                this.fluidInputHandler.calculateOperationsCanSupport(tracker, recipeFluid);
-                if (tracker.shouldContinueChecking()) {
-                    this.output = this.recipe.getOutput(recipeItem, recipeFluid);
-                    this.outputHandler.calculateOperationsCanSupport(tracker, output);
-                }
+                return;
             }
+            seedInputHandler.calculateOperationsCanSupport(tracker, seedRecipeInput);
+            farmlandHandler.calculateOperationsCanSupport(tracker, farmlandRecipeInput);
+            fluidHandler.calculateOperationsCanSupport(tracker, fluidRecipeInput);
+            outputHandler.calculateOperationsCanSupport(tracker, recipeOutput);
         }
     }
 
     @Override
-    protected void finishProcessing(int operations) {
-        if (this.output != null && !this.recipeItem.isEmpty() && !this.recipeFluid.isEmpty()) {
-            this.itemInputHandler.use(recipeItem, operations);
-            this.fluidInputHandler.use(recipeFluid, operations);
-            this.outputHandler.handleOutput(output, operations);
+    protected void finishProcessing(int arg0) {
+        if (seedRecipeInput == null || farmlandRecipeInput == null || fluidRecipeInput == null || recipeOutput == null
+                || recipeOutput.isEmpty()) {
+            return;
         }
+        seedInputHandler.use(seedRecipeInput, arg0);
+        farmlandHandler.use(farmlandRecipeInput, arg0);
+        fluidHandler.use(fluidRecipeInput, arg0);
+        outputHandler.handleOutput(recipeOutput, arg0);
     }
 
     @Override
     public boolean isInputValid() {
-        ItemStack item = (ItemStack) this.itemInputHandler.getInput();
-        FluidStack fluid = (FluidStack) this.fluidInputHandler.getInput();
-        return !item.isEmpty() && !fluid.isEmpty() && ((GreenHouseRecipe) this.recipe).test(item, fluid);
+        return !seedInputHandler.getInput().isEmpty()
+                && !farmlandHandler.getInput().isEmpty()
+                && !fluidHandler.getInput().isEmpty()
+                && recipe.test(seedInputHandler.getInput(), farmlandHandler.getInput(), fluidHandler.getInput());
     }
 
 }

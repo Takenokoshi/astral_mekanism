@@ -6,7 +6,7 @@ import java.util.function.Predicate;
 
 import org.jetbrains.annotations.NotNull;
 
-import astral_mekanism.recipes.output.DoubleItemStackOutput;
+import astral_mekanism.recipes.output.DoubleItemOutput;
 import mekanism.api.recipes.MekanismRecipe;
 import mekanism.api.recipes.ingredients.ItemStackIngredient;
 import net.minecraft.network.FriendlyByteBuf;
@@ -27,8 +27,8 @@ public abstract class ItemToItemItemRecipe extends MekanismRecipe implements Pre
         this.outputItemB = outputB.copy();
     }
 
-    public DoubleItemStackOutput getOutput(ItemStack input){
-        return new DoubleItemStackOutput(outputItemA.copy(), outputItemB.copy());
+    public DoubleItemOutput getOutput(ItemStack input){
+        return new DoubleItemOutput(outputItemA.copy(), outputItemB.copy());
     }
 
     public ItemStackIngredient getInput(){
@@ -57,8 +57,8 @@ public abstract class ItemToItemItemRecipe extends MekanismRecipe implements Pre
         buffer.writeItem(outputItemB);
     }
 
-    public List<DoubleItemStackOutput> getOutputDefinition(){
-        return Collections.singletonList(new DoubleItemStackOutput(outputItemA, outputItemB));
+    public List<DoubleItemOutput> getOutputDefinition(){
+        return Collections.singletonList(new DoubleItemOutput(outputItemA, outputItemB));
     }
 
 }

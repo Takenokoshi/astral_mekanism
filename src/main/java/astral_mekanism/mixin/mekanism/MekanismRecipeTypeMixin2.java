@@ -1,6 +1,7 @@
 package astral_mekanism.mixin.mekanism;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
@@ -13,33 +14,52 @@ import appeng.recipes.AERecipeTypes;
 import appeng.recipes.handlers.ChargerRecipe;
 import appeng.recipes.handlers.InscriberProcessType;
 import appeng.recipes.handlers.InscriberRecipe;
+import astral_mekanism.botanypots.FakeRandom;
+import astral_mekanism.recipes.irecipe.DissolutionAMIrecipe;
 import astral_mekanism.recipes.irecipe.FormulizedSawingIRecipe;
+import astral_mekanism.recipes.irecipe.GreenhouseIRecipe;
 import astral_mekanism.recipes.irecipe.InjectingAMIRecipe;
 import astral_mekanism.recipes.irecipe.MekanicalChagerIRecipe;
 import astral_mekanism.recipes.irecipe.MekanicalInscriberIRecipe;
 import astral_mekanism.recipes.irecipe.MekanicalPresserIRecipe;
 import astral_mekanism.recipes.irecipe.PurifyingAMIRecipe;
+import astral_mekanism.recipes.output.TripleItemOutput;
 import astral_mekanism.registries.AstralMekanismRecipeTypes;
+import astral_mekanism.util.ItemStackUtils;
 import mekanism.api.chemical.gas.GasStack;
+import mekanism.api.recipes.ChemicalDissolutionRecipe;
 import mekanism.api.recipes.ItemStackGasToItemStackRecipe;
 import mekanism.api.recipes.MekanismRecipe;
 import mekanism.api.recipes.PressurizedReactionRecipe;
 import mekanism.api.recipes.SawmillRecipe;
+import mekanism.api.recipes.ingredients.FluidStackIngredient;
 import mekanism.api.recipes.ingredients.ItemStackIngredient;
 import mekanism.api.recipes.ingredients.ChemicalStackIngredient.GasStackIngredient;
 import mekanism.api.recipes.ingredients.creator.IItemStackIngredientCreator;
 import mekanism.api.recipes.ingredients.creator.IngredientCreatorAccess;
 import mekanism.common.Mekanism;
 import mekanism.common.recipe.MekanismRecipeType;
+import mekanism.common.registries.MekanismFluids;
 import mekanism.common.registries.MekanismItems;
+import net.darkhax.botanypots.BotanyPotHelper;
+import net.darkhax.botanypots.data.recipes.crop.BasicCrop;
+import net.darkhax.botanypots.data.recipes.soil.BasicSoil;
 import net.minecraft.core.NonNullList;
 import net.minecraft.core.RegistryAccess;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.RecipeManager;
+import net.minecraft.world.level.material.Fluids;
+import net.minecraftforge.fluids.FluidStack;
 
 @Mixin(value = MekanismRecipeType.class, remap = false)
 public class MekanismRecipeTypeMixin2 {
+
+    private static final FluidStackIngredient WATER = IngredientCreatorAccess.fluid()
+            .from(new FluidStack(Fluids.WATER, 10000));
+    private static final FluidStackIngredient PASTE = IngredientCreatorAccess.fluid()
+            .from(MekanismFluids.NUTRITIONAL_PASTE, 100);
 
     @SuppressWarnings("unchecked")
     @Inject(method = "getRecipesUncached", at = @At("RETURN"), cancellable = true)
@@ -203,6 +223,59 @@ public class MekanismRecipeTypeMixin2 {
             }
             cir.setReturnValue(recipes);
             return;
+        }
+
+        if (Objects.equals(type.getRegistryName(), AstralMekanismRecipeTypes.AM_DISSOLUTION.get().getRegistryName())) {
+            for (ChemicalDissolutionRecipe recipe : recipeManager
+                    .getAllRecipesFor(MekanismRecipeType.DISSOLUTION.get())) {
+                recipes.add((RECIPE) (new DissolutionAMIrecipe(recipe.getId(),
+                        recipe.getItemInput(),
+                        IngredientCreatorAccess.gas().createMulti(
+                                recipe.getGasInput().getRepresentations().stream()
+                                        .map(stack -> IngredientCreatorAccess.gas()
+                                                .from(new GasStack(stack, stack.getAmount() * 100)))
+                                        .toArray(GasStackIngredient[]::new)),
+                        recipe.getOutputDefinition().get(0).getChemicalStack())));
+            }
+            cir.setReturnValue(recipes);
+            return;
+        }
+
+        if (Objects.equals(type.getRegistryName(),
+                AstralMekanismRecipeTypes.GREENHOUSE_RECIPE.get().getRegistryName())) {
+            List<BasicCrop> crops = recipeManager.getAllRecipesFor(BotanyPotHelper.CROP_TYPE.get()).stream()
+                    .filter(c -> {
+                        if (c instanceof BasicCrop) {
+                            return true;
+                        }
+                        return false;
+                    }).map(c -> (BasicCrop) c).toList();
+            List<BasicSoil> soils = recipeManager.getAllRecipesFor(BotanyPotHelper.SOIL_TYPE.get()).stream()
+                    .filter(s -> {
+                        if (s instanceof BasicSoil) {
+                            return true;
+                        }
+                        return false;
+                    }).map(s -> (BasicSoil) s).toList();
+            for (BasicCrop crop : crops) {
+                ItemStackIngredient seedIngredient = IngredientCreatorAccess.item()
+                        .createMulti(crop.getIngredients().stream().map(i -> IngredientCreatorAccess.item().from(i))
+                                .toArray(ItemStackIngredient[]::new));
+                ItemStackIngredient soilIngredient = IngredientCreatorAccess.item()
+                        .createMulti(soils.stream()
+                                .filter(s -> Collections.disjoint(s.getCategories(), crop.getSoilCategories()))
+                                .map(s -> IngredientCreatorAccess.item().from(s.getIngredient()))
+                                .toArray(ItemStackIngredient[]::new));
+                List<ItemStack> stacks = crop.generateDrops(new FakeRandom(), null, null, null);
+                TripleItemOutput output = new TripleItemOutput(ItemStackUtils.copyWithMultiply(stacks.get(0), 2),
+                        stacks.size() >= 2 ? stacks.get(1) : ItemStack.EMPTY,
+                        stacks.size() >= 3 ? stacks.get(2) : ItemStack.EMPTY);
+                recipes.add((RECIPE) new GreenhouseIRecipe(crop.getId(), seedIngredient, soilIngredient, WATER,
+                        output));
+                recipes.add((RECIPE) new GreenhouseIRecipe(
+                        new ResourceLocation(crop.getId().getNamespace(), crop.getId().getPath() + "_plus"),
+                        seedIngredient, soilIngredient, PASTE, ItemStackUtils.copyWithMultiply(output, 3)));
+            }
         }
     }
 }

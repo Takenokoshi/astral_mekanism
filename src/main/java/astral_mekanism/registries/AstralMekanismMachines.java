@@ -6,7 +6,6 @@ import java.util.function.UnaryOperator;
 import astral_mekanism.AstralMekanismID;
 import astral_mekanism.block.blockentity.astralmachine.BEAstralElectrolyticSeparator;
 import astral_mekanism.block.blockentity.astralmachine.BEAstralGNA;
-import astral_mekanism.block.blockentity.astralmachine.BEAstralGreenHouse;
 import astral_mekanism.block.blockentity.astralmachine.BEAstralPRC;
 import astral_mekanism.block.blockentity.astralmachine.BEAstralPrecisionSawmill;
 import astral_mekanism.block.blockentity.astralmachine.BEAstralSPS;
@@ -26,7 +25,6 @@ import astral_mekanism.block.blockentity.generator.BEHeatGenerator;
 import astral_mekanism.block.blockentity.normalmachine.BEAstralCrafter;
 import astral_mekanism.block.blockentity.normalmachine.BEFluidInfuser;
 import astral_mekanism.block.blockentity.normalmachine.BEGlowstoneNeutronActivator;
-import astral_mekanism.block.blockentity.normalmachine.BEGreenHouse;
 import astral_mekanism.block.blockentity.normalmachine.BEMekanicalCharger;
 import astral_mekanism.block.blockentity.normalmachine.BEMekanicalInscriber;
 import astral_mekanism.block.blockentity.normalmachine.BEMekanicalPresser;
@@ -94,10 +92,6 @@ public class AstralMekanismMachines {
             .register("glowstone_neutron_activator", AstralMekanismBlockTypes.GLOWSTONE_NEUTRON_ACTIVATOR,
                     BEGlowstoneNeutronActivator::new, BEGlowstoneNeutronActivator.class);
 
-    public static final MachineRegistryObject<BEGreenHouse, BlockTypeMachine<BEGreenHouse>, BlockTileModel<BEGreenHouse, BlockTypeMachine<BEGreenHouse>>, MekanismTileContainer<BEGreenHouse>, ItemBlockMachine> GREENHOUSE = MACHINES
-            .register("greenhouse", AstralMekanismBlockTypes.GREENHOUSE, BEGreenHouse.class,
-                    BEGreenHouse::new);
-
     public static final MachineRegistryObject<BEMelter, BlockTypeTile<BEMelter>, BlockTileModel<BEMelter, BlockTypeTile<BEMelter>>, MekanismTileContainer<BEMelter>, ItemBlockMachine> MELTER = MACHINES
             .register("melter", AstralMekanismBlockTypes.MELTER, BEMelter::new, BEMelter.class);
 
@@ -145,10 +139,6 @@ public class AstralMekanismMachines {
     public static final MachineRegistryObject<BEAstralPRC, BlockTypeMachine<BEAstralPRC>, BlockTileModel<BEAstralPRC, BlockTypeMachine<BEAstralPRC>>, MekanismTileContainer<BEAstralPRC>, ItemBlockMachine> ASTRAL_PRC = MACHINES
             .register("astral_prc", AstralMekanismBlockTypes.ASTRAL_PRC, BEAstralPRC.class,
                     BEAstralPRC::new);
-
-    public static final MachineRegistryObject<BEAstralGreenHouse, BlockTypeMachine<BEAstralGreenHouse>, BlockTileModel<BEAstralGreenHouse, BlockTypeMachine<BEAstralGreenHouse>>, MekanismTileContainer<BEAstralGreenHouse>, ItemBlockMachine> ASTRAL_GREENHOUSE = MACHINES
-            .register("astral_greenhouse", AstralMekanismBlockTypes.ASTRAL_GREENHOUSE,
-                    BEAstralGreenHouse.class, BEAstralGreenHouse::new);
 
     public static final MachineRegistryObject<BEAstralElectrolyticSeparator, BlockTypeMachine<BEAstralElectrolyticSeparator>, BlockTileModel<BEAstralElectrolyticSeparator, BlockTypeMachine<BEAstralElectrolyticSeparator>>, MekanismTileContainer<BEAstralElectrolyticSeparator>, ItemBlockMachine> ASTRAL_ELECTROLYTIC_SEPARATOR = MACHINES
             .register("astral_electrolytic_separator",

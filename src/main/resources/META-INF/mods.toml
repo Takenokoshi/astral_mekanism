@@ -107,6 +107,12 @@ description='''${mod_description}'''
     versionRange="[1.4.2,)"
     ordering="NONE"
     side="BOTH"
+[[dependencies.${mod_id}]]
+    modId="botanypots"
+    mandatory=true
+    versionRange="[13.0.41,)"
+    ordering="NONE"
+    side="BOTH"
 
 [[mixin]]
     config = "astral_mekanism.mixins.json"

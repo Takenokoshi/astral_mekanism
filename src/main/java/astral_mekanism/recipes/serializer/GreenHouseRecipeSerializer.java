@@ -1,102 +1,64 @@
 package astral_mekanism.recipes.serializer;
 
-import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
-import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import com.google.gson.JsonSyntaxException;
-
-import astral_mekanism.AstralMekanism;
-import astral_mekanism.recipes.recipe.GreenHouseRecipe;
+import astral_mekanism.recipes.output.TripleItemOutput;
+import astral_mekanism.recipes.recipe.GreenhouseRecipe;
+import astral_mekanism.util.AMJsonUtils;
 import mekanism.api.SerializerHelper;
-import mekanism.api.math.FloatingLong;
 import mekanism.api.recipes.ingredients.FluidStackIngredient;
 import mekanism.api.recipes.ingredients.ItemStackIngredient;
 import mekanism.api.recipes.ingredients.creator.IngredientCreatorAccess;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.util.GsonHelper;
-import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 
-public class GreenHouseRecipeSerializer<RECIPE extends GreenHouseRecipe> implements RecipeSerializer<RECIPE> {
+public class GreenHouseRecipeSerializer<RECIPE extends GreenhouseRecipe> implements RecipeSerializer<RECIPE> {
+
+    private static final String ISEED = "inputSeed";
+    private static final String FARMLAND = "farmland";
+    private static final String FLUID = "inputFluid";
+    private static final String HARVEST = "harvest";
+    private static final String OSEED = "outputSeed";
+    private static final String EXTRA = "extra";
 
     private final IFactory<RECIPE> factory;
 
-    public GreenHouseRecipeSerializer(IFactory<RECIPE> factory){
+    public GreenHouseRecipeSerializer(IFactory<RECIPE> factory) {
         this.factory = factory;
     }
 
-    private static final String itemInputJsonKey = "itemInput";
-    private static final String fluidInputJsonKey = "fluidInput";
-    private static final String energyRequiredJsonKey = "energyRequired";
-    private static final String durationJsonKey = "duration";
-    private static final String itemOutputAJsonKey = "itemOutputA";
-    private static final String itemOutputBJsonKey = "itemOutputB";
-
-    @NotNull
     @Override
-    public RECIPE fromJson(@NotNull ResourceLocation id, @NotNull JsonObject json) {
-        JsonElement itemInput = GsonHelper.isArrayNode(json, itemInputJsonKey)
-                ? GsonHelper.getAsJsonArray(json, itemInputJsonKey)
-                : GsonHelper.getAsJsonObject(json, itemInputJsonKey);
-        ItemStackIngredient itemIngredient = IngredientCreatorAccess.item().deserialize(itemInput);
-
-        JsonElement fluidInput = GsonHelper.isArrayNode(json, fluidInputJsonKey)
-                ? GsonHelper.getAsJsonArray(json, fluidInputJsonKey)
-                : GsonHelper.getAsJsonObject(json, fluidInputJsonKey);
-        FluidStackIngredient fluidIngredient = IngredientCreatorAccess.fluid().deserialize(fluidInput);
-        FloatingLong energyRequired = FloatingLong.ZERO;
-        if (json.has(energyRequiredJsonKey)) {
-            energyRequired = SerializerHelper.getFloatingLong(json, energyRequiredJsonKey);
-        }
-
-        JsonElement ticks = json.get(durationJsonKey);
-        if (!GsonHelper.isNumberValue(ticks)) {
-            throw new JsonSyntaxException("Expected duration to be a number greater than zero.");
-        }
-        int duration = ticks.getAsJsonPrimitive().getAsInt();
-        if (duration <= 0) {
-            throw new JsonSyntaxException("Expected duration to be a number greater than zero.");
-        }
-
-        ItemStack itemOutputA = SerializerHelper.getItemStack(json, itemOutputAJsonKey);
-        ItemStack itemOutputB = SerializerHelper.getItemStack(json, itemOutputBJsonKey);
-        return this.factory.create(id, itemIngredient, fluidIngredient, energyRequired, duration, itemOutputA,
-                itemOutputB);
+    public RECIPE fromJson(ResourceLocation id, JsonObject json) {
+        return factory.create(id,
+                IngredientCreatorAccess.item().deserialize(AMJsonUtils.read(json, ISEED)),
+                IngredientCreatorAccess.item().deserialize(AMJsonUtils.read(json, FARMLAND)),
+                IngredientCreatorAccess.fluid().deserialize(AMJsonUtils.read(json, FLUID)),
+                new TripleItemOutput(
+                        SerializerHelper.getItemStack(json, HARVEST),
+                        SerializerHelper.getItemStack(json, OSEED),
+                        SerializerHelper.getItemStack(json, EXTRA)));
     }
-    
+
     @Override
-    public RECIPE fromNetwork(@NotNull ResourceLocation recipeId, @NotNull FriendlyByteBuf buffer) {
-        try {
-            ItemStackIngredient inputitem = IngredientCreatorAccess.item().read(buffer);
-            FluidStackIngredient inputFluid = IngredientCreatorAccess.fluid().read(buffer);
-            FloatingLong energyRequired = FloatingLong.readFromBuffer(buffer);
-            int duration = buffer.readVarInt();
-            ItemStack outputItemA = buffer.readItem();
-            ItemStack outputItemB = buffer.readItem();
-            return this.factory.create(recipeId, inputitem, inputFluid, energyRequired, duration, outputItemA, outputItemB);
-        } catch (Exception e) {
-            AstralMekanism.LOGGER.error("Error reading greenhouse recipe from packet.", e);
-            throw e;
-        }
+    public @Nullable RECIPE fromNetwork(ResourceLocation id, FriendlyByteBuf buffer) {
+        return factory.create(id,
+                IngredientCreatorAccess.item().read(buffer),
+                IngredientCreatorAccess.item().read(buffer),
+                IngredientCreatorAccess.fluid().read(buffer),
+                TripleItemOutput.readFromBuf(buffer));
+    }
+
+    @Override
+    public void toNetwork(FriendlyByteBuf buf, RECIPE recipe) {
+        recipe.write(buf);
     }
 
     @FunctionalInterface
-    public interface IFactory<RECIPE extends GreenHouseRecipe> {
-
-        RECIPE create(ResourceLocation id, ItemStackIngredient itemInput, FluidStackIngredient fluidInput,
-                FloatingLong energyRequired, int duration,
-                ItemStack outputItemA, ItemStack outputItemB);
-    }
-
-    @Override
-    public void toNetwork(@NotNull FriendlyByteBuf buffer, @NotNull RECIPE recipe) {
-        try {
-            recipe.write(buffer);
-        } catch (Exception e) {
-            AstralMekanism.LOGGER.error("Error writing greenhouse recipe to packet.", e);
-            throw e;
-        }
+    public interface IFactory<RECIPE extends GreenhouseRecipe> {
+        RECIPE create(ResourceLocation id, ItemStackIngredient inputSeed, ItemStackIngredient farmland,
+                FluidStackIngredient water,
+                TripleItemOutput output);
     }
 }

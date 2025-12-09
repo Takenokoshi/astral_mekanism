@@ -2,7 +2,6 @@ package astral_mekanism.jei;
 
 import astral_mekanism.recipes.recipe.AstralCraftingRecipe;
 import astral_mekanism.recipes.recipe.FluidFluidToFluidRecipe;
-import astral_mekanism.recipes.recipe.GreenHouseRecipe;
 import astral_mekanism.recipes.recipe.TripleItemToItemRecipe;
 import astral_mekanism.registries.AstralMekanismMachines;
 import mekanism.api.recipes.CombinerRecipe;
@@ -12,8 +11,6 @@ import mekanism.api.recipes.ItemStackToItemStackRecipe;
 import mekanism.client.jei.MekanismJEIRecipeType;
 
 public class AstralMekanismJEIRecipeType {
-    public static final MekanismJEIRecipeType<GreenHouseRecipe> GREENHOUSE_RECIPE = new MekanismJEIRecipeType<>(
-            AstralMekanismMachines.GREENHOUSE, GreenHouseRecipe.class);
     public static final MekanismJEIRecipeType<ItemStackToFluidRecipe> MELTER_RECIPE = new MekanismJEIRecipeType<>(
             AstralMekanismMachines.MELTER, ItemStackToFluidRecipe.class);
     public static final MekanismJEIRecipeType<FluidFluidToFluidRecipe> FLUID_INFUSER_RECIPE = new MekanismJEIRecipeType<>(

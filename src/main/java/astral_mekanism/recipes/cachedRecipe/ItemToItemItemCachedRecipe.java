@@ -4,7 +4,7 @@ import java.util.function.BooleanSupplier;
 
 import org.jetbrains.annotations.Nullable;
 
-import astral_mekanism.recipes.output.DoubleItemStackOutput;
+import astral_mekanism.recipes.output.DoubleItemOutput;
 import astral_mekanism.recipes.recipe.ItemToItemItemRecipe;
 import mekanism.api.recipes.cache.CachedRecipe;
 import mekanism.api.recipes.cache.CachedRecipeHelper;
@@ -16,14 +16,14 @@ import net.minecraft.world.item.ItemStack;
 public class ItemToItemItemCachedRecipe extends CachedRecipe<ItemToItemItemRecipe> {
 
     private final IInputHandler<ItemStack> inputHandler;
-    private final IOutputHandler<DoubleItemStackOutput> outputHandler;
+    private final IOutputHandler<DoubleItemOutput> outputHandler;
     @Nullable
     private ItemStack recipeInput;
     @Nullable
-    private DoubleItemStackOutput recipeOutput;
+    private DoubleItemOutput recipeOutput;
 
     public ItemToItemItemCachedRecipe(ItemToItemItemRecipe recipe, BooleanSupplier recheckAllErrors,
-            IInputHandler<ItemStack> inputHandler, IOutputHandler<DoubleItemStackOutput> outputHandler) {
+            IInputHandler<ItemStack> inputHandler, IOutputHandler<DoubleItemOutput> outputHandler) {
         super(recipe, recheckAllErrors);
         this.inputHandler = inputHandler;
         this.outputHandler = outputHandler;

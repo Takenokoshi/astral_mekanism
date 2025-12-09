@@ -4,6 +4,6 @@ import org.jetbrains.annotations.NotNull;
 
 import net.minecraft.world.item.ItemStack;
 
-public record DoubleItemStackOutput(@NotNull ItemStack itemA, @NotNull ItemStack itemB) {
-    public DoubleItemStackOutput{}
+public record DoubleItemOutput(@NotNull ItemStack itemA, @NotNull ItemStack itemB) {
+    public DoubleItemOutput{}
 }

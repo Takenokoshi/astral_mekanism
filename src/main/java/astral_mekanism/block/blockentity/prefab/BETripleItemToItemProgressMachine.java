@@ -40,7 +40,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.state.BlockState;
 
-public abstract class BETripleItemToItemMachine extends TileEntityProgressMachine<TripleItemToItemRecipe>
+public abstract class BETripleItemToItemProgressMachine extends TileEntityProgressMachine<TripleItemToItemRecipe>
         implements TripleItemRecipeLookUpHandler<TripleItemToItemRecipe> {
 
     public static final RecipeError NOT_ENOUGH_THERD_INPUT = RecipeError.create();
@@ -52,7 +52,7 @@ public abstract class BETripleItemToItemMachine extends TileEntityProgressMachin
             RecipeError.NOT_ENOUGH_OUTPUT_SPACE,
             RecipeError.INPUT_DOESNT_PRODUCE_OUTPUT);
 
-    protected MachineEnergyContainer<? extends BETripleItemToItemMachine> energyContainer;
+    protected MachineEnergyContainer<? extends BETripleItemToItemProgressMachine> energyContainer;
     protected InputInventorySlot inputSlotA;
     protected InputInventorySlot inputSlotB;
     protected InputInventorySlot inputSlotC;
@@ -63,7 +63,7 @@ public abstract class BETripleItemToItemMachine extends TileEntityProgressMachin
     protected final IInputHandler<ItemStack> inputHandlerC;
     protected final IOutputHandler<ItemStack> outputHandler;
 
-    protected BETripleItemToItemMachine(IBlockProvider blockProvider, BlockPos pos, BlockState state) {
+    protected BETripleItemToItemProgressMachine(IBlockProvider blockProvider, BlockPos pos, BlockState state) {
         super(blockProvider, pos, state, TRACKED_ERROR_TYPES, 200);
         configComponent = new TileComponentConfig(this, TransmissionType.ENERGY, TransmissionType.ITEM);
         configComponent.setupInputConfig(TransmissionType.ENERGY, energyContainer);
@@ -152,7 +152,7 @@ public abstract class BETripleItemToItemMachine extends TileEntityProgressMachin
                 .setOperatingTicksChanged(this::setOperatingTicks);
     }
 
-    public MachineEnergyContainer<? extends BETripleItemToItemMachine> getEnergyContainer() {
+    public MachineEnergyContainer<? extends BETripleItemToItemProgressMachine> getEnergyContainer() {
         return energyContainer;
     }
 

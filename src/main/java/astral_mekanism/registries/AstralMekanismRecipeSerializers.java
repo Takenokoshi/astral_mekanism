@@ -3,9 +3,10 @@ package astral_mekanism.registries;
 import astral_mekanism.AstralMekanismID;
 import astral_mekanism.recipes.irecipe.AstralCraftingIRecipe;
 import astral_mekanism.recipes.irecipe.CompressingAMIRecipe;
+import astral_mekanism.recipes.irecipe.DissolutionAMIrecipe;
 import astral_mekanism.recipes.irecipe.FluidInfuserIRecipe;
 import astral_mekanism.recipes.irecipe.FormulizedSawingIRecipe;
-import astral_mekanism.recipes.irecipe.GreenHouseIRecipe;
+import astral_mekanism.recipes.irecipe.GreenhouseIRecipe;
 import astral_mekanism.recipes.irecipe.InjectingAMIRecipe;
 import astral_mekanism.recipes.irecipe.MekanicalChagerIRecipe;
 import astral_mekanism.recipes.irecipe.MekanicalInscriberIRecipe;
@@ -15,7 +16,7 @@ import astral_mekanism.recipes.irecipe.PurifyingAMIRecipe;
 import astral_mekanism.recipes.irecipe.SPSIRecipe;
 import astral_mekanism.recipes.recipe.AstralCraftingRecipe;
 import astral_mekanism.recipes.recipe.FluidFluidToFluidRecipe;
-import astral_mekanism.recipes.recipe.GreenHouseRecipe;
+import astral_mekanism.recipes.recipe.GreenhouseRecipe;
 import astral_mekanism.recipes.recipe.TripleItemToItemRecipe;
 import astral_mekanism.recipes.recipe.ItemToItemItemRecipe;
 import astral_mekanism.recipes.serializer.AstralCraftingRecipeSerializer;
@@ -24,11 +25,13 @@ import astral_mekanism.recipes.serializer.GreenHouseRecipeSerializer;
 import astral_mekanism.recipes.serializer.TripleItemToItemRecipeSerializer;
 import astral_mekanism.recipes.serializer.ItemStackToFluidRecipeSerializer;
 import astral_mekanism.recipes.serializer.ItemToItemItemRecipeSerializer;
+import mekanism.api.recipes.ChemicalDissolutionRecipe;
 import mekanism.api.recipes.CombinerRecipe;
 import mekanism.api.recipes.GasToGasRecipe;
 import mekanism.api.recipes.ItemStackGasToItemStackRecipe;
 import mekanism.api.recipes.ItemStackToFluidRecipe;
 import mekanism.api.recipes.ItemStackToItemStackRecipe;
+import mekanism.common.recipe.serializer.ChemicalDissolutionRecipeSerializer;
 import mekanism.common.recipe.serializer.CombinerRecipeSerializer;
 import mekanism.common.recipe.serializer.GasToGasRecipeSerializer;
 import mekanism.common.recipe.serializer.ItemStackGasToItemStackRecipeSerializer;
@@ -47,8 +50,8 @@ public class AstralMekanismRecipeSerializers {
     public static final RecipeSerializerRegistryObject<ItemToItemItemRecipe> FORMULIZED_SAWING_RECIPE = RECIPE_SERIALIZERS
             .register("sawing", () -> new ItemToItemItemRecipeSerializer<>(FormulizedSawingIRecipe::new));
 
-    public static final RecipeSerializerRegistryObject<GreenHouseRecipe> Greenhouse_recipe = RECIPE_SERIALIZERS
-            .register("greenhouse", () -> new GreenHouseRecipeSerializer<>(GreenHouseIRecipe::new));
+    public static final RecipeSerializerRegistryObject<GreenhouseRecipe> GREENHOUSE_RECIPE = RECIPE_SERIALIZERS
+            .register("greenhouse", () -> new GreenHouseRecipeSerializer<>(GreenhouseIRecipe::new));
 
     public static final RecipeSerializerRegistryObject<ItemStackToFluidRecipe> Melter_recipe = RECIPE_SERIALIZERS
             .register("melter", () -> new ItemStackToFluidRecipeSerializer<>(MelterIRecipe::new));
@@ -83,4 +86,7 @@ public class AstralMekanismRecipeSerializers {
     public static final RecipeSerializerRegistryObject<CombinerRecipe> MEKANICAL_INSCRIBER = RECIPE_SERIALIZERS
             .register("mekanical_inscriber",
                     () -> new CombinerRecipeSerializer<>(MekanicalInscriberIRecipe::new));
+
+    public static final RecipeSerializerRegistryObject<ChemicalDissolutionRecipe> AM_DISSOLUTION = RECIPE_SERIALIZERS
+            .register("am_dissolution", () -> new ChemicalDissolutionRecipeSerializer<>(DissolutionAMIrecipe::new));
 }
