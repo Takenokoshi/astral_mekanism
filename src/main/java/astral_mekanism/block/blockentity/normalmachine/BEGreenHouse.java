@@ -134,7 +134,7 @@ public class BEGreenhouse extends TileEntityProgressMachine<GreenhouseRecipe> im
     protected IFluidTankHolder getInitialFluidTanks(IContentsListener listener,
             IContentsListener recipeCacheListener) {
         FluidTankHelper builder = FluidTankHelper.forSideWithConfig(this::getDirection, this::getConfig);
-        builder.addTank(fluidTank = BasicFluidTank.input(10000,
+        builder.addTank(fluidTank = BasicFluidTank.input(100000,
                 stack -> containsRecipeCAB(seedInputSlot.getStack(), farmlandSlot.getStack(), stack),
                 this::containsRecipeC, recipeCacheListener));
         return builder.build();
