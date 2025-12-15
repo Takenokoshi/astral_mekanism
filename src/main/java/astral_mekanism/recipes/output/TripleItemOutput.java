@@ -10,7 +10,7 @@ public record TripleItemOutput(@NotNull ItemStack itemA, @NotNull ItemStack item
     };
 
     public TripleItemOutput copy() {
-        return new TripleItemOutput(this.itemA, this.itemB, this.itemC);
+        return new TripleItemOutput(itemA.copy(), itemB.copy(), itemC.copy());
     }
 
     public void write(FriendlyByteBuf buf) {

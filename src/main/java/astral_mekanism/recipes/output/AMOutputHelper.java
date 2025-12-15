@@ -5,12 +5,15 @@ import java.util.Objects;
 import mekanism.api.Action;
 import mekanism.api.AutomationType;
 import mekanism.api.annotations.NothingNullByDefault;
+import mekanism.api.fluid.IExtendedFluidTank;
 import mekanism.api.inventory.IInventorySlot;
 import mekanism.api.recipes.cache.CachedRecipe;
 import mekanism.api.recipes.cache.CachedRecipe.OperationTracker;
 import mekanism.api.recipes.cache.CachedRecipe.OperationTracker.RecipeError;
 import mekanism.api.recipes.outputs.IOutputHandler;
+import mekanism.common.capabilities.fluid.BasicFluidTank;
 import net.minecraft.world.item.ItemStack;
+import net.minecraftforge.fluids.FluidStack;
 
 @NothingNullByDefault
 public class AMOutputHelper {
@@ -59,6 +62,26 @@ public class AMOutputHelper {
         };
     }
 
+    public static IOutputHandler<ItemFluidOutput> getOutputHandler(
+            IInventorySlot slot, RecipeError errorA,
+            BasicFluidTank tank, RecipeError errorB) {
+        return new IOutputHandler<ItemFluidOutput>() {
+
+            @Override
+            public void calculateOperationsCanSupport(OperationTracker tracker, ItemFluidOutput output) {
+                AMOutputHelper.calculateOperationsCanSupport(tracker, errorA, slot, output.item());
+                AMOutputHelper.calculateOperationsCanSupport(tracker, errorB, tank, output.fluid());
+            }
+
+            @Override
+            public void handleOutput(ItemFluidOutput output, int operations) {
+                AMOutputHelper.handleOutput(slot, output.item(), operations);
+                AMOutputHelper.handleOutput(tank, output.fluid(), operations);
+            }
+
+        };
+    }
+
     private static void handleOutput(IInventorySlot inventorySlot, ItemStack toOutput, int operations) {
         if (operations != 0 && !toOutput.isEmpty()) {
             ItemStack output = toOutput.copy();
@@ -68,6 +91,15 @@ public class AMOutputHelper {
 
             inventorySlot.insertItem(output, Action.EXECUTE, AutomationType.INTERNAL);
         }
+    }
+
+    private static void handleOutput(IExtendedFluidTank fluidTank, FluidStack toOutput, int operations) {
+        if (operations == 0) {
+            // This should not happen
+            return;
+        }
+        fluidTank.insert(new FluidStack(toOutput, toOutput.getAmount() * operations), Action.EXECUTE,
+                AutomationType.INTERNAL);
     }
 
     private static void calculateOperationsCanSupport(CachedRecipe.OperationTracker tracker,
@@ -87,6 +119,24 @@ public class AMOutputHelper {
             }
         }
 
+    }
+
+    private static void calculateOperationsCanSupport(OperationTracker tracker, RecipeError notEnoughSpace,
+            IExtendedFluidTank tank, FluidStack toOutput) {
+        if (!toOutput.isEmpty()) {
+            FluidStack maxOutput = new FluidStack(toOutput, Integer.MAX_VALUE);
+            FluidStack remainder = tank.insert(maxOutput, Action.SIMULATE, AutomationType.INTERNAL);
+            int amountUsed = maxOutput.getAmount() - remainder.getAmount();
+            int operations = amountUsed / toOutput.getAmount();
+            tracker.updateOperations(operations);
+            if (operations == 0) {
+                if (amountUsed == 0 && tank.getNeeded() > 0) {
+                    tracker.addError(RecipeError.INPUT_DOESNT_PRODUCE_OUTPUT);
+                } else {
+                    tracker.addError(notEnoughSpace);
+                }
+            }
+        }
     }
 
 }

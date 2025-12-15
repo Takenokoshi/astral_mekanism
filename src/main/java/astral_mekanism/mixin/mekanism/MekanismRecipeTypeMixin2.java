@@ -14,6 +14,7 @@ import appeng.recipes.AERecipeTypes;
 import appeng.recipes.handlers.ChargerRecipe;
 import appeng.recipes.handlers.InscriberProcessType;
 import appeng.recipes.handlers.InscriberRecipe;
+import appeng.recipes.transform.TransformRecipe;
 import astral_mekanism.botanypots.FakeRandom;
 import astral_mekanism.recipes.irecipe.DissolutionAMIrecipe;
 import astral_mekanism.recipes.irecipe.FormulizedSawingIRecipe;
@@ -23,6 +24,8 @@ import astral_mekanism.recipes.irecipe.MekanicalChagerIRecipe;
 import astral_mekanism.recipes.irecipe.MekanicalInscriberIRecipe;
 import astral_mekanism.recipes.irecipe.MekanicalPresserIRecipe;
 import astral_mekanism.recipes.irecipe.PurifyingAMIRecipe;
+import astral_mekanism.recipes.irecipe.TransitionIRecipe;
+import astral_mekanism.recipes.output.ItemFluidOutput;
 import astral_mekanism.recipes.output.TripleItemOutput;
 import astral_mekanism.registries.AstralMekanismRecipeTypes;
 import astral_mekanism.util.ItemStackUtils;
@@ -276,6 +279,44 @@ public class MekanismRecipeTypeMixin2 {
                         new ResourceLocation(crop.getId().getNamespace(), crop.getId().getPath() + "_plus"),
                         seedIngredient, soilIngredient, PASTE, ItemStackUtils.copyWithMultiply(output, 3)));
             }
+        }
+
+        if (Objects.equals(type.getRegistryName(), AstralMekanismRecipeTypes.TRANSITION.get().getRegistryName())) {
+            for (TransformRecipe recipe : recipeManager.getAllRecipesFor(AERecipeTypes.TRANSFORM)) {
+                if (recipe.circumstance.isFluid()) {
+                    ItemStackIngredient bucket = IngredientCreatorAccess.item().createMulti(
+                            recipe.circumstance.getFluidsForRendering().stream()
+                                    .map(f -> IngredientCreatorAccess.item().from(f.getBucket()))
+                                    .toArray(ItemStackIngredient[]::new));
+                    List<Ingredient> ingredients = recipe.getIngredients();
+                    int size = ingredients.size();
+                    if (size == 1) {
+                        ItemStackIngredient ingredient = IngredientCreatorAccess.item().from(ingredients.get(0));
+                        recipes.add((RECIPE) new TransitionIRecipe(recipe.getId(),
+                                ingredient, ingredient, ingredient, bucket,
+                                new ItemFluidOutput(ItemStackUtils.copyWithMultiply(recipe.getResultItem(), 3),
+                                        FluidStack.EMPTY),
+                                false, false, false, true));
+                    } else if (size == 2) {
+                        recipes.add((RECIPE) new TransitionIRecipe(recipe.getId(),
+                                IngredientCreatorAccess.item().from(ingredients.get(0)),
+                                IngredientCreatorAccess.item().from(ingredients.get(1)),
+                                bucket, bucket,
+                                new ItemFluidOutput(recipe.getResultItem(), FluidStack.EMPTY),
+                                false, false, true, true));
+                    } else if (size == 3) {
+                        recipes.add((RECIPE) new TransitionIRecipe(recipe.getId(),
+                                IngredientCreatorAccess.item().from(ingredients.get(0)),
+                                IngredientCreatorAccess.item().from(ingredients.get(1)),
+                                IngredientCreatorAccess.item().from(ingredients.get(2)),
+                                bucket,
+                                new ItemFluidOutput(recipe.getResultItem(), FluidStack.EMPTY),
+                                false, false, false, true));
+                    }
+                }
+            }
+            cir.setReturnValue(recipes);
+            return;
         }
     }
 }

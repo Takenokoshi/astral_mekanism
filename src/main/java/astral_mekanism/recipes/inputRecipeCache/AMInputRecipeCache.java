@@ -3,6 +3,7 @@ package astral_mekanism.recipes.inputRecipeCache;
 import java.util.function.BiPredicate;
 import java.util.function.Function;
 
+import astral_mekanism.util.AMInterface.QuadPredicate;
 import mekanism.api.recipes.MekanismRecipe;
 import mekanism.api.recipes.ingredients.FluidStackIngredient;
 import mekanism.api.recipes.ingredients.ItemStackIngredient;
@@ -67,6 +68,21 @@ public class AMInputRecipeCache {
                     inputAExtractor, new ItemInputCache<>(),
                     inputBExtractor, new ItemInputCache<>(),
                     inputCExtractor, new FluidInputCache<>());
+        }
+
+    }
+
+    public static class QuadItem<RECIPE extends MekanismRecipe & QuadPredicate<ItemStack, ItemStack, ItemStack, ItemStack>>
+            extends
+            QuadInputRecipeCache<ItemStack, ItemStackIngredient, ItemStack, ItemStackIngredient, ItemStack, ItemStackIngredient, ItemStack, ItemStackIngredient, RECIPE, ItemInputCache<RECIPE>, ItemInputCache<RECIPE>, ItemInputCache<RECIPE>, ItemInputCache<RECIPE>> {
+
+        public QuadItem(MekanismRecipeType<RECIPE, ?> recipeType,
+                Function<RECIPE, ItemStackIngredient> inputAExtractor,
+                Function<RECIPE, ItemStackIngredient> inputBExtractor,
+                Function<RECIPE, ItemStackIngredient> inputCExtractor,
+                Function<RECIPE, ItemStackIngredient> inputDExtractor) {
+            super(recipeType, inputAExtractor, inputBExtractor, inputCExtractor, inputDExtractor,
+                    new ItemInputCache<>(), new ItemInputCache<>(), new ItemInputCache<>(), new ItemInputCache<>());
         }
 
     }
