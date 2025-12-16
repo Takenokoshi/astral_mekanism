@@ -108,4 +108,8 @@ public class BEInfuseSynthesizer extends TileEntityRecipeMachine<ItemStackToInfu
         return findFirstRecipe(inputHandler);
     }
 
+    public IInfusionTank getInfusionTank(){
+        return infusionTank;
+    }
+
 }
