@@ -31,8 +31,6 @@ import astral_mekanism.block.blockentity.normalmachine.BEMekanicalPresser;
 import astral_mekanism.block.blockentity.normalmachine.BEMelter;
 import astral_mekanism.block.blockentity.other.BEItemSortableStorage;
 import astral_mekanism.block.blockentity.other.BEUniversalStorage;
-import astral_mekanism.block.blockentity.supplydevice.BECobblestoneSupplyDevice;
-import astral_mekanism.block.blockentity.supplydevice.BEWaterSupplyDevice;
 import astral_mekanism.block.shape.AMBlockShapes;
 import astral_mekanism.registration.BlockTypeMachine;
 import astral_mekanism.registration.BlockTypeTileUtils;
@@ -79,21 +77,6 @@ public class AstralMekanismBlockTypes {
             .createBlock(() -> AstralMekanismMachines.ITEM_SORTABLE_STORAGE.getTileRO(),
                     AstralMekanismLang.DESCRIPTION_UNIVERSAL_STORAGE)
             .withGui(() -> AstralMekanismMachines.ITEM_SORTABLE_STORAGE.getContainerRO())
-            .with(new AttributeStateFacing())
-            .build();
-
-    public static final BlockTypeTile<BECobblestoneSupplyDevice> COBBLESTONE_SUPPLY_DEVICE = BlockTileBuilder
-            .createBlock(() -> AstralMekanismMachines.COBBLESTONE_SUPPLY_DEVICE.getTileRO(),
-                    AstralMekanismLang.DESCRIPTION_COBBLESTONE_SUPPLY_DEVICE)
-            .withGui(() -> AstralMekanismMachines.COBBLESTONE_SUPPLY_DEVICE.getContainerRO())
-            .with(new AttributeStateFacing())
-            .build();
-
-    public static final BlockTypeTile<BEWaterSupplyDevice> WATER_SUPPLY_DEVICE = BlockTileBuilder
-            .createBlock(() -> AstralMekanismMachines.WATER_SUPPLY_DEVICE.getTileRO(),
-                    AstralMekanismLang.DESCRIPTION_WATER_SUPPLY_DEVICE)
-            .withGui(() -> AstralMekanismMachines.WATER_SUPPLY_DEVICE.getContainerRO())
-            .withSupportedUpgrades(Set.of(Upgrade.FILTER))
             .with(new AttributeStateFacing())
             .build();
 

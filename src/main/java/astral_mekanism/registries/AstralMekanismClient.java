@@ -36,8 +36,6 @@ import astral_mekanism.block.gui.prefab.GuiAbstractStorage;
 import astral_mekanism.block.gui.prefab.GuiGasToGasBlock;
 import astral_mekanism.block.gui.prefab.GuiGasToGasMachine;
 import astral_mekanism.block.gui.prefab.GuiTripleItemToItemMachine;
-import astral_mekanism.block.gui.supplydevice.GuiCobblestoneSupplyDevice;
-import astral_mekanism.block.gui.supplydevice.GuiWaterSupplyDevice;
 import astral_mekanism.registration.MachineRegistryObject;
 import mekanism.client.ClientRegistrationUtil;
 import mekanism.client.gui.machine.GuiElectricMachine;
@@ -69,8 +67,6 @@ public class AstralMekanismClient {
                     GuiAbstractStorage<BEUniversalStorage, ContainerAbstractStorage<BEUniversalStorage>>::new);
             regScreen(AstralMekanismMachines.ITEM_SORTABLE_STORAGE,
                     GuiAbstractStorage<BEItemSortableStorage, ContainerItemSortableStorage<BEItemSortableStorage>>::new);
-            regScreen(AstralMekanismMachines.COBBLESTONE_SUPPLY_DEVICE, GuiCobblestoneSupplyDevice::new);
-            regScreen(AstralMekanismMachines.WATER_SUPPLY_DEVICE, GuiWaterSupplyDevice::new);
             regScreen(AstralMekanismMachines.GLOWSTONE_NEUTRON_ACTIVATOR,
                     GuiGasToGasBlock<BEGlowstoneNeutronActivator>::new);
             regScreen(AstralMekanismMachines.MELTER, GuiMelter::new);
