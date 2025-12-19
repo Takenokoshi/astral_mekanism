@@ -4,18 +4,8 @@ import java.util.Map;
 import java.util.Set;
 import astral_mekanism.AstralMekanismConfig;
 import astral_mekanism.AstralMekanismLang;
-import astral_mekanism.block.blockentity.astralmachine.BEAstralElectrolyticSeparator;
-import astral_mekanism.block.blockentity.astralmachine.BEAstralGNA;
-import astral_mekanism.block.blockentity.astralmachine.BEAstralPRC;
 import astral_mekanism.block.blockentity.astralmachine.BEAstralPrecisionSawmill;
 import astral_mekanism.block.blockentity.astralmachine.BEAstralSPS;
-import astral_mekanism.block.blockentity.astralmachine.advanced.BEAstralChemicalInjectionChamber;
-import astral_mekanism.block.blockentity.astralmachine.advanced.BEAstralOsmiumCompressor;
-import astral_mekanism.block.blockentity.astralmachine.advanced.BEAstralPurificationChamber;
-import astral_mekanism.block.blockentity.astralmachine.electric.BEAstralCrusher;
-import astral_mekanism.block.blockentity.astralmachine.electric.BEAstralEnergizedSmelter;
-import astral_mekanism.block.blockentity.astralmachine.electric.BEAstralEnrichmentChamber;
-import astral_mekanism.block.blockentity.astralmachine.electric.BEAstralMekanicalCharger;
 import astral_mekanism.block.blockentity.compact.BECompactFIR;
 import astral_mekanism.block.blockentity.compact.BECompactSPS;
 import astral_mekanism.block.blockentity.compact.BECompactTEP;
@@ -43,12 +33,26 @@ import mekanism.common.block.attribute.AttributeTier;
 import mekanism.common.config.MekanismConfig;
 import mekanism.common.content.blocktype.BlockTypeTile;
 import mekanism.common.content.blocktype.BlockTypeTile.BlockTileBuilder;
-import mekanism.common.registries.MekanismSounds;
 import mekanism.generators.common.GeneratorsLang;
 
 public class AstralMekanismBlockTypes {
     private AstralMekanismBlockTypes() {
     }
+
+    public static final BlockTypeMachine<BEAstralSPS> ASTRAL_SPS = BlockMachineBuilder
+            .createMachine(() -> AstralMekanismMachines.ASTRAL_SPS.getTileRO(), MekanismLang.DESCRIPTION_SPS_CASING)
+            .withGui(() -> AstralMekanismMachines.ASTRAL_SPS.getContainerRO())
+            .withEnergyConfig(() -> FloatingLong.create(1000000000), () -> FloatingLong.MAX_VALUE)
+            .withSupportedUpgrades(Set.of(Upgrade.MUFFLING))
+            .build();
+
+    public static final BlockTypeMachine<BEAstralPrecisionSawmill> ASTRAL_PRECISION_SAWMILL = BlockMachineBuilder
+            .createMachine(() -> AstralMekanismMachines.ASTRAL_PRECISION_SAWMILL.getTileRO(),
+                    MekanismLang.DESCRIPTION_PRECISION_SAWMILL)
+            .withGui(() -> AstralMekanismMachines.ASTRAL_PRECISION_SAWMILL.getContainerRO())
+            .withEnergyConfig(MekanismConfig.usage.precisionSawmill, () -> FloatingLong.MAX_VALUE)
+            .withCustomShape(AMBlockShapes.ASTRAL_MACHINE_BASIC)
+            .build();
 
     public static final Map<AstralMekGeneratorTier, BlockTypeTile<BEGasBurningGenerator>> GAS_BURNING_GENERATORS = BlockTypeTileUtils
             .buildMap(AstralMekGeneratorTier.class,
@@ -152,108 +156,5 @@ public class AstralMekanismBlockTypes {
             .withGui(() -> AstralMekanismMachines.COMPACT_SPS.getContainerRO())
             .withEnergyConfig(() -> FloatingLong.create(1000000000), () -> FloatingLong.create(10000000000l))
             .withSupportedUpgrades(Set.of(Upgrade.MUFFLING))
-            .build();
-
-    public static final BlockTypeMachine<BEAstralCrusher> ASTRAL_CRUSHER = BlockMachineBuilder
-            .createMachine(() -> AstralMekanismMachines.ASTRAL_CRUSHER.getTileRO(), MekanismLang.DESCRIPTION_CRUSHER)
-            .withEnergyConfig(() -> FloatingLong.create(10000 * AstralMekanismConfig.energyRate),
-                    () -> FloatingLong.MAX_VALUE)
-            .withGui(() -> AstralMekanismMachines.ASTRAL_CRUSHER.getContainerRO())
-            .withSound(MekanismSounds.CRUSHER)
-            .build();
-
-    public static final BlockTypeMachine<BEAstralEnergizedSmelter> ASTRAL_ENERGIZED_SMELTER = BlockMachineBuilder
-            .createMachine(() -> AstralMekanismMachines.ASTRAL_ENERGIZED_SMELTER.getTileRO(),
-                    MekanismLang.DESCRIPTION_ENERGIZED_SMELTER)
-            .withEnergyConfig(() -> FloatingLong.create(10000 * AstralMekanismConfig.energyRate),
-                    () -> FloatingLong.MAX_VALUE)
-            .withGui(() -> AstralMekanismMachines.ASTRAL_ENERGIZED_SMELTER.getContainerRO())
-            .withSound(MekanismSounds.ENERGIZED_SMELTER)
-            .build();
-
-    public static final BlockTypeMachine<BEAstralEnrichmentChamber> ASTRAL_ENRICHMENT_CHAMBER = BlockMachineBuilder
-            .createMachine(() -> AstralMekanismMachines.ASTRAL_ENRICHMENT_CHAMBER.getTileRO(),
-                    MekanismLang.DESCRIPTION_ENRICHMENT_CHAMBER)
-            .withEnergyConfig(() -> FloatingLong.create(10000 * AstralMekanismConfig.energyRate),
-                    () -> FloatingLong.MAX_VALUE)
-            .withGui(() -> AstralMekanismMachines.ASTRAL_ENRICHMENT_CHAMBER.getContainerRO())
-            .withSound(MekanismSounds.ENRICHMENT_CHAMBER)
-            .build();
-
-    public static final BlockTypeMachine<BEAstralMekanicalCharger> ASTRAL_MEKANICAL_CHARGER = BlockMachineBuilder
-            .createMachine(() -> AstralMekanismMachines.ASTRAL_MEKANICAL_CHARGER.getTileRO(),
-                    AstralMekanismLang.DESCRIPTION_MEKANICAL_CHARGER)
-            .withEnergyConfig(() -> FloatingLong.create(800 * AstralMekanismConfig.energyRate),
-                    () -> FloatingLong.MAX_VALUE)
-            .withGui(() -> AstralMekanismMachines.ASTRAL_MEKANICAL_CHARGER.getContainerRO())
-            .withCustomShape(AMBlockShapes.MEKANICAL_CHARGER)
-            .build();
-
-    public static final BlockTypeMachine<BEAstralChemicalInjectionChamber> ASTRAL_CHEMICAL_INJECTION_CHAMBER = BlockMachineBuilder
-            .createMachine(() -> AstralMekanismMachines.ASTRAL_CHEMICAL_INJECTION_CHAMBER.getTileRO(),
-                    MekanismLang.DESCRIPTION_CHEMICAL_INJECTION_CHAMBER)
-            .withEnergyConfig(() -> FloatingLong.create(20000 * AstralMekanismConfig.energyRate),
-                    () -> FloatingLong.MAX_VALUE)
-            .withGui(() -> AstralMekanismMachines.ASTRAL_CHEMICAL_INJECTION_CHAMBER.getContainerRO())
-            .withSound(MekanismSounds.CHEMICAL_INJECTION_CHAMBER)
-            .build();
-
-    public static final BlockTypeMachine<BEAstralOsmiumCompressor> ASTRAL_OSMIUM_COMPRESSOR = BlockMachineBuilder
-            .createMachine(() -> AstralMekanismMachines.ASTRAL_OSMIUM_COMPRESSOR.getTileRO(),
-                    MekanismLang.DESCRIPTION_OSMIUM_COMPRESSOR)
-            .withEnergyConfig(() -> FloatingLong.create(10000 * AstralMekanismConfig.energyRate),
-                    () -> FloatingLong.MAX_VALUE)
-            .withGui(() -> AstralMekanismMachines.ASTRAL_OSMIUM_COMPRESSOR.getContainerRO())
-            .withSound(MekanismSounds.OSMIUM_COMPRESSOR)
-            .build();
-
-    public static final BlockTypeMachine<BEAstralPurificationChamber> ASTRAL_PURIFICATION_CHAMBER = BlockMachineBuilder
-            .createMachine(() -> AstralMekanismMachines.ASTRAL_PURIFICATION_CHAMBER.getTileRO(),
-                    MekanismLang.DESCRIPTION_PURIFICATION_CHAMBER)
-            .withEnergyConfig(() -> FloatingLong.create(10000 * AstralMekanismConfig.energyRate),
-                    () -> FloatingLong.MAX_VALUE)
-            .withGui(() -> AstralMekanismMachines.ASTRAL_PURIFICATION_CHAMBER.getContainerRO())
-            .withSound(MekanismSounds.PURIFICATION_CHAMBER)
-            .build();
-
-    public static final BlockTypeTile<BEAstralGNA> ASTRAL_GNA = BlockTileBuilder
-            .createBlock(() -> AstralMekanismMachines.ASTRAL_GNA.getTileRO(),
-                    AstralMekanismLang.DESCRIPTION_GLOWSTONE_NEUTRON_ACTIVATOR)
-            .withGui(() -> AstralMekanismMachines.ASTRAL_GNA.getContainerRO())
-            .withCustomShape(AMBlockShapes.GLOWSTONE_NEUTRON_ACTIVATOR)
-            .with(new AttributeStateFacing())
-            .build();
-
-    public static final BlockTypeMachine<BEAstralSPS> ASTRAL_SPS = BlockMachineBuilder
-            .createMachine(() -> AstralMekanismMachines.ASTRAL_SPS.getTileRO(), MekanismLang.DESCRIPTION_SPS_CASING)
-            .withGui(() -> AstralMekanismMachines.ASTRAL_SPS.getContainerRO())
-            .withEnergyConfig(() -> FloatingLong.create(1000000000), () -> FloatingLong.MAX_VALUE)
-            .withSupportedUpgrades(Set.of(Upgrade.MUFFLING))
-            .build();
-
-    public static final BlockTypeMachine<BEAstralPRC> ASTRAL_PRC = BlockMachineBuilder
-            .createMachine(() -> AstralMekanismMachines.ASTRAL_PRC.getTileRO(),
-                    MekanismLang.DESCRIPTION_PRESSURIZED_REACTION_CHAMBER)
-            .withGui(() -> AstralMekanismMachines.ASTRAL_PRC.getContainerRO())
-            .withEnergyConfig(MekanismConfig.usage.pressurizedReactionBase, () -> FloatingLong.MAX_VALUE)
-            .withSound(MekanismSounds.PRESSURIZED_REACTION_CHAMBER)
-            .withCustomShape(AMBlockShapes.ASTRAL_PRC)
-            .build();
-
-    public static final BlockTypeMachine<BEAstralElectrolyticSeparator> ASTRAL_ELECTROLYTIC_SEPARATOR = BlockMachineBuilder
-            .createMachine(() -> AstralMekanismMachines.ASTRAL_ELECTROLYTIC_SEPARATOR.getTileRO(),
-                    MekanismLang.DESCRIPTION_ELECTROLYTIC_SEPARATOR)
-            .withGui(() -> AstralMekanismMachines.ASTRAL_ELECTROLYTIC_SEPARATOR.getContainerRO())
-            .withEnergyConfig(() -> MekanismConfig.general.FROM_H2.get().multiply(2),
-                    () -> FloatingLong.MAX_VALUE)
-            .withCustomShape(mekanism.common.content.blocktype.BlockShapes.ELECTROLYTIC_SEPARATOR)
-            .build();
-
-    public static final BlockTypeMachine<BEAstralPrecisionSawmill> ASTRAL_PRECISION_SAWMILL = BlockMachineBuilder
-            .createMachine(() -> AstralMekanismMachines.ASTRAL_PRECISION_SAWMILL.getTileRO(),
-                    MekanismLang.DESCRIPTION_PRECISION_SAWMILL)
-            .withGui(() -> AstralMekanismMachines.ASTRAL_PRECISION_SAWMILL.getContainerRO())
-            .withEnergyConfig(MekanismConfig.usage.precisionSawmill, () -> FloatingLong.MAX_VALUE)
-            .withCustomShape(AMBlockShapes.ASTRAL_MACHINE_BASIC)
             .build();
 }
