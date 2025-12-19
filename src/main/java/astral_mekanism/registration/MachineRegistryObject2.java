@@ -26,7 +26,7 @@ public class MachineRegistryObject2<BE extends TileEntityMekanism, BLOCK extends
     private final BlockRegistryObject<BLOCK, ITEM> blockRegistryObject;
     private final TileEntityTypeRegistryObject<BE> tileRegistryObject;
     private final ExtendedContainerRegistryObject<CONTAINER> containerRegistryObject;
-    private final BlockTypeMachine<BE> blocktype;
+    private final BlockTypeMachine<BE> blockType;
 
     public MachineRegistryObject2(
             String name,
@@ -40,10 +40,10 @@ public class MachineRegistryObject2<BE extends TileEntityMekanism, BLOCK extends
             ContainerConstructor<BE, CONTAINER> contConstructor,
             ILangEntry entry,
             UnaryOperator<BlockMachineBuilder<BlockTypeMachine<BE>, BE>> operator) {
-        blocktype = operator.apply(BlockMachineBuilder.createMachine(this::getTile, entry))
+        blockType = operator.apply(BlockMachineBuilder.createMachine(this::getTile, entry))
                 .withGui(this::getContainer)
                 .build();
-        blockRegistryObject = blockRegister.register(name, () -> blockCreator.apply(blocktype), itemCreator);
+        blockRegistryObject = blockRegister.register(name, () -> blockCreator.apply(blockType), itemCreator);
         tileRegistryObject = tileRegister.register(blockRegistryObject,
                 (p, s) -> beConstructor.create(blockRegistryObject, p, s),
                 BE::tickServer, BE::tickClient);
