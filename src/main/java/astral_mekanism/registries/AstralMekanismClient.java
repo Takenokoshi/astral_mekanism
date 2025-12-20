@@ -36,7 +36,6 @@ import astral_mekanism.block.gui.prefab.GuiGasToGasBlock;
 import astral_mekanism.block.gui.prefab.GuiGasToGasMachine;
 import astral_mekanism.block.gui.prefab.GuiTripleItemToItemMachine;
 import astral_mekanism.registration.MachineRegistryObject;
-import astral_mekanism.registration.MachineRegistryObject2;
 import mekanism.client.ClientRegistrationUtil;
 import mekanism.client.gui.machine.GuiElectricMachine;
 import mekanism.common.inventory.container.tile.MekanismTileContainer;
@@ -100,13 +99,7 @@ public class AstralMekanismClient {
     }
 
     private static <BE extends TileEntityMekanism, CONTAINER extends MekanismTileContainer<BE>, U extends Screen & MenuAccess<CONTAINER>> void regScreen(
-            MachineRegistryObject<BE, ?, ?, CONTAINER, ?> registryObject,
-            ScreenConstructor<CONTAINER, U> constructor) {
-        ClientRegistrationUtil.registerScreen(registryObject.getContainerRO(), constructor);
-    }
-
-    private static <BE extends TileEntityMekanism, CONTAINER extends MekanismTileContainer<BE>, U extends Screen & MenuAccess<CONTAINER>> void regScreen(
-            MachineRegistryObject2<BE, ?, CONTAINER, ?> registryObject,
+            MachineRegistryObject<BE, ?, CONTAINER, ?> registryObject,
             ScreenConstructor<CONTAINER, U> constructor) {
         ClientRegistrationUtil.registerScreen(registryObject.getContainer(), constructor);
     }
