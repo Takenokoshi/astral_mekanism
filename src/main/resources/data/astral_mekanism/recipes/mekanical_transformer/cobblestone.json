@@ -1,0 +1,35 @@
+{
+    "type": "astral_mekanism:mekanical_transform",
+    "itemInputA": {
+        "ingredient": {
+            "item": "minecraft:lava_bucket"
+        },
+        "amount": 1
+    },
+    "itemInputB": {
+        "ingredient": {
+            "tag": "forge:tools/pickaxes"
+        },
+        "amount": 1
+    },
+    "itemInputC": {
+        "ingredient": {
+            "tag": "forge:tools/pickaxes"
+        },
+        "amount": 1
+    },
+    "itemInputD": {
+        "ingredient": {
+            "item": "minecraft:water_bucket"
+        },
+        "amount": 1
+    },
+    "outputItem": {
+        "item": "minecraft:cobblestone",
+        "amount": 2
+    },
+    "isCatalystA": true,
+    "isCatalystB": true,
+    "isCatalystC": true,
+    "isCatalystD": true
+}

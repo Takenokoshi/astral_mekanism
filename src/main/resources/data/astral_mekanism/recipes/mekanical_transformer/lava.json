@@ -1,0 +1,48 @@
+{
+    "type": "astral_mekanism:mekanical_transform",
+    "itemInputA": {
+        "ingredient": {
+            "item": "minecraft:lava_bucket"
+        },
+        "amount": 1
+    },
+    "itemInputB": {
+        "ingredient": {
+            "tags": [
+                "minecraft:base_stone_overworld",
+                "minecraft:logs",
+                "minecraft:planks",
+                "forge:stone",
+                "forge:glass"
+            ],
+            "items": [
+                "minecraft:obsidian",
+                "minecraft:iron_block",
+                "minecraft:copper_block",
+                "minecraft:bricks",
+                "minecraft:smooth_basalt"
+            ]
+        },
+        "amount": 1
+    },
+    "itemInputC": {
+        "ingredient": {
+            "item": "minecraft:pointed_dripstone"
+        },
+        "amount": 1
+    },
+    "itemInputD": {
+        "ingredient": {
+            "item": "minecraft:cauldron"
+        },
+        "amount": 1
+    },
+    "outputFluid": {
+        "fluid": "minecraft:lava",
+        "amount": 50
+    },
+    "isCatalystA": true,
+    "isCatalystB": true,
+    "isCatalystC": true,
+    "isCatalystD": true
+}
