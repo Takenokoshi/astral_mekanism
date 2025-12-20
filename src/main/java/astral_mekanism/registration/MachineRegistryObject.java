@@ -62,6 +62,10 @@ public class MachineRegistryObject<BE extends TileEntityMekanism, BLOCK extends 
         return containerRegistryObject;
     }
 
+    public BlockTypeMachine<BE> getBlockType(){
+        return blockType;
+    }
+
     @Override
     public Item asItem() {
         return blockRegistryObject.asItem();
