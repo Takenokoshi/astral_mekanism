@@ -15,7 +15,7 @@ import astral_mekanism.recipes.recipe.FluidFluidToFluidRecipe;
 import astral_mekanism.recipes.recipe.GreenhouseRecipe;
 import astral_mekanism.recipes.recipe.TripleItemToItemRecipe;
 import astral_mekanism.recipes.recipe.ItemToItemItemRecipe;
-import astral_mekanism.recipes.recipe.TransitionRecipe;
+import astral_mekanism.recipes.recipe.MekanicalTransformRecipe;
 import mekanism.api.chemical.gas.Gas;
 import mekanism.api.chemical.gas.GasStack;
 import mekanism.api.recipes.ChemicalDissolutionRecipe;
@@ -112,10 +112,10 @@ public class AstralMekanismRecipeTypes {
             "am_dissolution", rt -> new ItemChemical<>(rt, ChemicalDissolutionRecipe::getItemInput,
                     ChemicalDissolutionRecipe::getGasInput));
 
-    public static final RecipeTypeRegistryObject<TransitionRecipe, QuadItem<TransitionRecipe>> TRANSITION = register(
-            "transition", rt -> new QuadItem<>(rt,
-                    TransitionRecipe::getInputItemA,
-                    TransitionRecipe::getInputItemB,
-                    TransitionRecipe::getInputItemC,
-                    TransitionRecipe::getInputItemD));
+    public static final RecipeTypeRegistryObject<MekanicalTransformRecipe, QuadItem<MekanicalTransformRecipe>> TRANSITION = register(
+            "mekanical_transform", rt -> new QuadItem<>(rt,
+                    MekanicalTransformRecipe::getInputItemA,
+                    MekanicalTransformRecipe::getInputItemB,
+                    MekanicalTransformRecipe::getInputItemC,
+                    MekanicalTransformRecipe::getInputItemD));
 }

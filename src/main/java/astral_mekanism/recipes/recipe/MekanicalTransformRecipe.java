@@ -11,7 +11,7 @@ import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 
-public abstract class TransitionRecipe extends MekanismRecipe
+public abstract class MekanicalTransformRecipe extends MekanismRecipe
         implements QuadPredicate<ItemStack, ItemStack, ItemStack, ItemStack> {
 
     private final ItemStackIngredient inputItemA;
@@ -25,7 +25,7 @@ public abstract class TransitionRecipe extends MekanismRecipe
     private final boolean itemCIsCatalyst;
     private final boolean itemDIsCatalyst;
 
-    protected TransitionRecipe(ResourceLocation id,
+    protected MekanicalTransformRecipe(ResourceLocation id,
             ItemStackIngredient inputItemA,
             ItemStackIngredient inputItemB,
             ItemStackIngredient inputItemC,

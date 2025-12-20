@@ -14,20 +14,20 @@ import astral_mekanism.recipes.irecipe.MekanicalPresserIRecipe;
 import astral_mekanism.recipes.irecipe.MelterIRecipe;
 import astral_mekanism.recipes.irecipe.PurifyingAMIRecipe;
 import astral_mekanism.recipes.irecipe.SPSIRecipe;
-import astral_mekanism.recipes.irecipe.TransitionIRecipe;
+import astral_mekanism.recipes.irecipe.MekanicalTransformIRecipe;
 import astral_mekanism.recipes.recipe.AstralCraftingRecipe;
 import astral_mekanism.recipes.recipe.FluidFluidToFluidRecipe;
 import astral_mekanism.recipes.recipe.GreenhouseRecipe;
 import astral_mekanism.recipes.recipe.TripleItemToItemRecipe;
 import astral_mekanism.recipes.recipe.ItemToItemItemRecipe;
-import astral_mekanism.recipes.recipe.TransitionRecipe;
+import astral_mekanism.recipes.recipe.MekanicalTransformRecipe;
 import astral_mekanism.recipes.serializer.AstralCraftingRecipeSerializer;
 import astral_mekanism.recipes.serializer.FluidFluidToFluidRecipeSerializer;
 import astral_mekanism.recipes.serializer.GreenHouseRecipeSerializer;
 import astral_mekanism.recipes.serializer.TripleItemToItemRecipeSerializer;
 import astral_mekanism.recipes.serializer.ItemStackToFluidRecipeSerializer;
 import astral_mekanism.recipes.serializer.ItemToItemItemRecipeSerializer;
-import astral_mekanism.recipes.serializer.TransitionRecipeSerializer;
+import astral_mekanism.recipes.serializer.MekanicalTransformRecipeSerializer;
 import mekanism.api.recipes.ChemicalDissolutionRecipe;
 import mekanism.api.recipes.CombinerRecipe;
 import mekanism.api.recipes.GasToGasRecipe;
@@ -93,6 +93,6 @@ public class AstralMekanismRecipeSerializers {
     public static final RecipeSerializerRegistryObject<ChemicalDissolutionRecipe> AM_DISSOLUTION = RECIPE_SERIALIZERS
             .register("am_dissolution", () -> new ChemicalDissolutionRecipeSerializer<>(DissolutionAMIrecipe::new));
 
-    public static final RecipeSerializerRegistryObject<TransitionRecipe> TRANSITION = RECIPE_SERIALIZERS
-    .register("transition", ()->new TransitionRecipeSerializer<>(TransitionIRecipe::new));
+    public static final RecipeSerializerRegistryObject<MekanicalTransformRecipe> TRANSITION = RECIPE_SERIALIZERS
+            .register("mekanical_transform", () -> new MekanicalTransformRecipeSerializer<>(MekanicalTransformIRecipe::new));
 }

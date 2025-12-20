@@ -24,7 +24,7 @@ import astral_mekanism.recipes.irecipe.MekanicalChagerIRecipe;
 import astral_mekanism.recipes.irecipe.MekanicalInscriberIRecipe;
 import astral_mekanism.recipes.irecipe.MekanicalPresserIRecipe;
 import astral_mekanism.recipes.irecipe.PurifyingAMIRecipe;
-import astral_mekanism.recipes.irecipe.TransitionIRecipe;
+import astral_mekanism.recipes.irecipe.MekanicalTransformIRecipe;
 import astral_mekanism.recipes.output.ItemFluidOutput;
 import astral_mekanism.recipes.output.TripleItemOutput;
 import astral_mekanism.registries.AstralMekanismRecipeTypes;
@@ -292,20 +292,20 @@ public class MekanismRecipeTypeMixin2 {
                     int size = ingredients.size();
                     if (size == 1) {
                         ItemStackIngredient ingredient = IngredientCreatorAccess.item().from(ingredients.get(0));
-                        recipes.add((RECIPE) new TransitionIRecipe(recipe.getId(),
+                        recipes.add((RECIPE) new MekanicalTransformIRecipe(recipe.getId(),
                                 ingredient, ingredient, ingredient, bucket,
                                 new ItemFluidOutput(ItemStackUtils.copyWithMultiply(recipe.getResultItem(), 3),
                                         FluidStack.EMPTY),
                                 false, false, false, true));
                     } else if (size == 2) {
-                        recipes.add((RECIPE) new TransitionIRecipe(recipe.getId(),
+                        recipes.add((RECIPE) new MekanicalTransformIRecipe(recipe.getId(),
                                 IngredientCreatorAccess.item().from(ingredients.get(0)),
                                 IngredientCreatorAccess.item().from(ingredients.get(1)),
                                 bucket, bucket,
                                 new ItemFluidOutput(recipe.getResultItem(), FluidStack.EMPTY),
                                 false, false, true, true));
                     } else if (size == 3) {
-                        recipes.add((RECIPE) new TransitionIRecipe(recipe.getId(),
+                        recipes.add((RECIPE) new MekanicalTransformIRecipe(recipe.getId(),
                                 IngredientCreatorAccess.item().from(ingredients.get(0)),
                                 IngredientCreatorAccess.item().from(ingredients.get(1)),
                                 IngredientCreatorAccess.item().from(ingredients.get(2)),

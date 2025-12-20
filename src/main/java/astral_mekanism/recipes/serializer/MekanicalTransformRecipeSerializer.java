@@ -5,7 +5,7 @@ import org.jetbrains.annotations.Nullable;
 import com.google.gson.JsonObject;
 
 import astral_mekanism.recipes.output.ItemFluidOutput;
-import astral_mekanism.recipes.recipe.TransitionRecipe;
+import astral_mekanism.recipes.recipe.MekanicalTransformRecipe;
 import astral_mekanism.util.AMJsonUtils;
 import mekanism.api.SerializerHelper;
 import mekanism.api.recipes.ingredients.ItemStackIngredient;
@@ -15,11 +15,11 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.GsonHelper;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 
-public class TransitionRecipeSerializer<RECIPE extends TransitionRecipe> implements RecipeSerializer<RECIPE> {
+public class MekanicalTransformRecipeSerializer<RECIPE extends MekanicalTransformRecipe> implements RecipeSerializer<RECIPE> {
 
     private final IFactory<RECIPE> factory;
 
-    public TransitionRecipeSerializer(IFactory<RECIPE> factory) {
+    public MekanicalTransformRecipeSerializer(IFactory<RECIPE> factory) {
         this.factory = factory;
     }
 
@@ -57,7 +57,7 @@ public class TransitionRecipeSerializer<RECIPE extends TransitionRecipe> impleme
     }
 
     @FunctionalInterface
-    public interface IFactory<RECIPE extends TransitionRecipe> {
+    public interface IFactory<RECIPE extends MekanicalTransformRecipe> {
         RECIPE create(ResourceLocation id,
                 ItemStackIngredient inputItemA,
                 ItemStackIngredient inputItemB,

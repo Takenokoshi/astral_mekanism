@@ -5,13 +5,13 @@ import java.util.function.BooleanSupplier;
 import org.jetbrains.annotations.Nullable;
 
 import astral_mekanism.recipes.output.ItemFluidOutput;
-import astral_mekanism.recipes.recipe.TransitionRecipe;
+import astral_mekanism.recipes.recipe.MekanicalTransformRecipe;
 import mekanism.api.recipes.cache.CachedRecipe;
 import mekanism.api.recipes.inputs.IInputHandler;
 import mekanism.api.recipes.outputs.IOutputHandler;
 import net.minecraft.world.item.ItemStack;
 
-public class TransitionCachedRecipe extends CachedRecipe<TransitionRecipe> {
+public class MekanicalTransformCachedRecipe extends CachedRecipe<MekanicalTransformRecipe> {
 
     private final IInputHandler<ItemStack> itemAInputHandler;
     private final IInputHandler<ItemStack> itemBInputHandler;
@@ -30,7 +30,7 @@ public class TransitionCachedRecipe extends CachedRecipe<TransitionRecipe> {
     @Nullable
     private ItemFluidOutput recipeOutput;
 
-    public TransitionCachedRecipe(TransitionRecipe recipe,
+    public MekanicalTransformCachedRecipe(MekanicalTransformRecipe recipe,
             BooleanSupplier recheckAllErrors,
             IInputHandler<ItemStack> itemAInputHandler,
             IInputHandler<ItemStack> itemBInputHandler,
