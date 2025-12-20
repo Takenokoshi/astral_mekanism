@@ -31,7 +31,6 @@ import astral_mekanism.block.gui.generator.GuiHeatGenerator;
 import astral_mekanism.block.gui.normalmachine.GuiAstralCrafter;
 import astral_mekanism.block.gui.normalmachine.GuiFluidInfuser;
 import astral_mekanism.block.gui.normalmachine.GuiMekanicalInscriber;
-import astral_mekanism.block.gui.normalmachine.GuiMelter;
 import astral_mekanism.block.gui.prefab.GuiAbstractStorage;
 import astral_mekanism.block.gui.prefab.GuiGasToGasBlock;
 import astral_mekanism.block.gui.prefab.GuiGasToGasMachine;
@@ -70,7 +69,6 @@ public class AstralMekanismClient {
                     GuiAbstractStorage<BEItemSortableStorage, ContainerItemSortableStorage<BEItemSortableStorage>>::new);
             regScreen(AstralMekanismMachines.GLOWSTONE_NEUTRON_ACTIVATOR,
                     GuiGasToGasBlock<BEGlowstoneNeutronActivator>::new);
-            regScreen(AstralMekanismMachines.MELTER, GuiMelter::new);
             regScreen(AstralMekanismMachines.COMPACT_TEP, GuiCompactTEP::new);
             regScreen(AstralMekanismMachines.FLUID_INFUSER, GuiFluidInfuser::new);
             regScreen(AstralMekanismMachines.MEKANICAL_CHARGER,

@@ -69,5 +69,10 @@ public class BlockTypeMachine<TILE extends TileEntityMekanism> extends BlockType
                 ILangEntry description, FactoryType factoryType) {
             return new BlockMachineBuilder<>(new FactoryMachine<>(tileEntityRegistrar, description, factoryType));
         }
+
+        public BlockMachineBuilder<MACHINE, TILE> removeAttributeUpgrade() {
+            this.without(AttributeUpgradeSupport.class);
+            return this;
+        }
     }
 }

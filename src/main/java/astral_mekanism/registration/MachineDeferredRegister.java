@@ -204,14 +204,14 @@ public class MachineDeferredRegister {
                 MekanismTileContainer<BE>::new, entry, operator);
     }
 
-    public <KEY extends Enum<KEY>, BE extends TileEntityMekanism> Map<KEY, MachineRegistryObject2<BE, BlockTileModel<BE, BlockTypeMachine<BE>>, MekanismTileContainer<BE>, ItemBlockMachine>> regSimpleMap(
+    public <KEY extends Enum<KEY>, BE extends TileEntityMekanism> EnumMap<KEY, MachineRegistryObject2<BE, BlockTileModel<BE, BlockTypeMachine<BE>>, MekanismTileContainer<BE>, ItemBlockMachine>> regSimpleMap(
             Function<KEY, String> nameFunction,
             BlockEntityConstructor<BE, BlockTypeMachine<BE>, BlockTileModel<BE, BlockTypeMachine<BE>>> beConstructor,
             Class<BE> beClass,
             ILangEntry entry,
             BiFunction<KEY, BlockMachineBuilder<BlockTypeMachine<BE>, BE>, BlockMachineBuilder<BlockTypeMachine<BE>, BE>> biFunction,
             Class<KEY> keyClass) {
-        Map<KEY, MachineRegistryObject2<BE, BlockTileModel<BE, BlockTypeMachine<BE>>, MekanismTileContainer<BE>, ItemBlockMachine>> map = new EnumMap<>(
+        EnumMap<KEY, MachineRegistryObject2<BE, BlockTileModel<BE, BlockTypeMachine<BE>>, MekanismTileContainer<BE>, ItemBlockMachine>> map = new EnumMap<>(
                 keyClass);
         for (KEY key : keyClass.getEnumConstants()) {
             map.put(key, regSimple(nameFunction.apply(key), beConstructor, beClass, entry,

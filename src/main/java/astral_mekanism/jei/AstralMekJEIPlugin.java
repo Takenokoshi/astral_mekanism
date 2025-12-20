@@ -5,7 +5,6 @@ import astral_mekanism.AstralMekanismID;
 import astral_mekanism.jei.recipeCategory.AstralCraftingRecipeCategory;
 import astral_mekanism.jei.recipeCategory.FluidInfuserRecipeCategory;
 import astral_mekanism.jei.recipeCategory.MekanicalInscriberRecipeCategory;
-import astral_mekanism.jei.recipeCategory.MelterRecipeCategory;
 import astral_mekanism.jei.recipeCategory.TripleItemToItemRecipeCategory;
 import astral_mekanism.registries.AstralMekanismMachines;
 import astral_mekanism.registries.AstralMekanismRecipeTypes;
@@ -38,7 +37,6 @@ public class AstralMekJEIPlugin implements IModPlugin {
         IGuiHelper guiHelper = registry.getJeiHelpers().getGuiHelper();
         registry.addRecipeCategories(
                 new IRecipeCategory[] {
-                        new MelterRecipeCategory(guiHelper, AstralMekanismJEIRecipeType.MELTER_RECIPE),
                         new FluidInfuserRecipeCategory(guiHelper, AstralMekanismJEIRecipeType.FLUID_INFUSER_RECIPE),
                         new ItemStackToItemStackRecipeCategory(guiHelper,
                                 AstralMekanismJEIRecipeType.MEKANICAL_CHARGER_RECIPE,
@@ -57,8 +55,6 @@ public class AstralMekJEIPlugin implements IModPlugin {
 
     @Override
     public void registerRecipes(IRecipeRegistration registry) {
-        RecipeRegistryHelper.register(registry, AstralMekanismJEIRecipeType.MELTER_RECIPE,
-                AstralMekanismRecipeTypes.Melter_recipe);
         RecipeRegistryHelper.register(registry, AstralMekanismJEIRecipeType.FLUID_INFUSER_RECIPE,
                 AstralMekanismRecipeTypes.FLUID_INFUSER_RECIPE);
         RecipeRegistryHelper.register(registry, AstralMekanismJEIRecipeType.MEKANICAL_CHARGER_RECIPE,
@@ -79,8 +75,6 @@ public class AstralMekJEIPlugin implements IModPlugin {
                 new RecipeType[] { ChargerCategory.RECIPE_TYPE });
         registry.addRecipeCatalyst(AstralMekanismMachines.ASTRAL_MEKANICAL_CHARGER,
                 new RecipeType[] { ChargerCategory.RECIPE_TYPE });
-        CatalystRegistryHelper.register(registry, AstralMekanismJEIRecipeType.MELTER_RECIPE,
-                AstralMekanismMachines.MELTER);
         CatalystRegistryHelper.register(registry, MekanismJEIRecipeType.ACTIVATING,
                 AstralMekanismMachines.GLOWSTONE_NEUTRON_ACTIVATOR);
         CatalystRegistryHelper.register(registry, MekanismJEIRecipeType.EVAPORATING,

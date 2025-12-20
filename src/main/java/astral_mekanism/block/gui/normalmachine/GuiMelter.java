@@ -6,7 +6,7 @@ import java.util.List;
 import org.jetbrains.annotations.NotNull;
 
 import astral_mekanism.block.blockentity.normalmachine.BEMelter;
-import astral_mekanism.jei.AstralMekanismJEIRecipeType;
+//import astral_mekanism.jei.AstralMekanismJEIRecipeType;
 import mekanism.api.recipes.cache.CachedRecipe.OperationTracker.RecipeError;
 import mekanism.client.gui.GuiConfigurableTile;
 import mekanism.client.gui.element.bar.GuiBar.IBarInfoHandler;
@@ -58,7 +58,7 @@ public class GuiMelter
 						MekanismUtils.getTemperatureDisplay(tile.getLastEnvironmentLoss(),
 								TemperatureUnit.KELVIN, false)))));
 		addRenderableWidget(new GuiProgress(tile::getScaledProgress, ProgressType.RIGHT, this, 77, 38))
-				.jeiCategories(AstralMekanismJEIRecipeType.MELTER_RECIPE)
+				//.jeiCategories(AstralMekanismJEIRecipeType.MELTER_RECIPE)
 				.warning(WarningType.INPUT_DOESNT_PRODUCE_OUTPUT,
 						tile.getWarningCheck(RecipeError.INPUT_DOESNT_PRODUCE_OUTPUT));
 	}
