@@ -14,19 +14,19 @@
     },
     "itemInputC": {
         "ingredient": {
-            "tag": "forge:tools/pickaxes"
+            "item": "minecraft:soul_soil"
         },
         "amount": 1
     },
     "itemInputD": {
         "ingredient": {
-            "item": "minecraft:water_bucket"
+            "item": "minecraft:blue_ice"
         },
         "amount": 1
     },
     "outputItem": {
-        "item": "minecraft:cobblestone",
-        "count": 2
+        "item": "minecraft:basalt",
+        "count": 1
     },
     "isCatalystA": true,
     "isCatalystB": true,
