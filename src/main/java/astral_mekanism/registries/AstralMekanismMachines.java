@@ -18,6 +18,7 @@ import astral_mekanism.block.blockentity.astralmachine.BEAstralGNA;
 import astral_mekanism.block.blockentity.astralmachine.BEAstralGreenhouse;
 import astral_mekanism.block.blockentity.astralmachine.BEAstralIsotopicCentrifuge;
 import astral_mekanism.block.blockentity.astralmachine.BEAstralMekanicalInscriber;
+import astral_mekanism.block.blockentity.astralmachine.BEAstralMekanicalPresser;
 import astral_mekanism.block.blockentity.astralmachine.BEAstralMekanicalTransformer;
 import astral_mekanism.block.blockentity.astralmachine.BEAstralMetallurgicInfuser;
 import astral_mekanism.block.blockentity.astralmachine.BEAstralPRC;
@@ -252,6 +253,15 @@ public class AstralMekanismMachines {
                             () -> FloatingLong.create(10000 * AstralMekanismConfig.energyRate),
                             () -> FloatingLong.MAX_VALUE));
 
+    public static final MachineRegistryObject<BEAstralMekanicalPresser, BlockTileModel<BEAstralMekanicalPresser, BlockTypeMachine<BEAstralMekanicalPresser>>, MekanismTileContainer<BEAstralMekanicalPresser>, ItemBlockMachine> ASTRAL_MEKANICAL_PRESSER = MACHINES
+            .regSimple("astral_mekanical_presser",
+                    BEAstralMekanicalPresser::new,
+                    BEAstralMekanicalPresser.class,
+                    MekanismLang.DESCRIPTION_CHEMICAL_CRYSTALLIZER,
+                    builder -> builder.withEnergyConfig(
+                            () -> FloatingLong.create(10000 * AstralMekanismConfig.energyRate),
+                            () -> FloatingLong.MAX_VALUE));
+
     public static final MachineRegistryObject<BEAstralMekanicalTransformer, BlockTileModel<BEAstralMekanicalTransformer, BlockTypeMachine<BEAstralMekanicalTransformer>>, MekanismTileContainer<BEAstralMekanicalTransformer>, ItemBlockMachine> ASTRAL_MEKANICAL_TRANSFOMER = MACHINES
             .regSimple("astral_mekanical_transformer",
                     BEAstralMekanicalTransformer::new,
@@ -452,7 +462,7 @@ public class AstralMekanismMachines {
                     AstralMekanismLang.DESCRIPTION_UNIVERSAL_STORAGE,
                     builder -> builder.removeAttributeUpgrade());
 
-    public static final MachineRegistryObject<BEItemSortableStorage,BlockTileModel<BEItemSortableStorage,BlockTypeMachine<BEItemSortableStorage>>,ContainerItemSortableStorage<BEItemSortableStorage>,ItemBlockMachine> ITEM_SORTABLE_STORAGE = MACHINES
+    public static final MachineRegistryObject<BEItemSortableStorage, BlockTileModel<BEItemSortableStorage, BlockTypeMachine<BEItemSortableStorage>>, ContainerItemSortableStorage<BEItemSortableStorage>, ItemBlockMachine> ITEM_SORTABLE_STORAGE = MACHINES
             .registerDefaultBlockItem("item_sortable_storage",
                     BEItemSortableStorage::new,
                     BEItemSortableStorage.class,

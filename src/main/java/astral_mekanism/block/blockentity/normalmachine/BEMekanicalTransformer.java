@@ -134,11 +134,12 @@ public class BEMekanicalTransformer extends TileEntityProgressMachine<MekanicalT
                 this::containsRecipeA, recipeCacheListener, 46, 35))
                 .tracksWarnings(
                         slot -> slot.warning(WarningType.NO_MATCHING_RECIPE, getWarningCheck(NOT_ENOUGH_INPUT_C)));
-        builder.addSlot(inputSlotA = InputInventorySlot.at(
+        builder.addSlot(inputSlotD = InputInventorySlot.at(
                 stack -> containsRecipeDABC(inputSlotA.getStack(), inputSlotB.getStack(), inputSlotC.getStack(), stack),
                 this::containsRecipeA, recipeCacheListener, 64, 35))
                 .tracksWarnings(
-                        slot -> slot.warning(WarningType.NO_MATCHING_RECIPE, getWarningCheck(NOT_ENOUGH_INPUT_A)));
+                        slot -> slot.warning(WarningType.NO_MATCHING_RECIPE, getWarningCheck(NOT_ENOUGH_INPUT_D)));
+        builder.addSlot(outputSlot = OutputInventorySlot.at(recipeCacheListener, 116, 35));
         builder.addSlot(
                 energySlot = EnergyInventorySlot.fillOrConvert(energyContainer, this::getLevel, listener, 155, 14));
         builder.addSlot(fluidSlot = FluidInventorySlot.drain(fluidTank, listener, 10, 53));
@@ -163,7 +164,7 @@ public class BEMekanicalTransformer extends TileEntityProgressMachine<MekanicalT
 
     @Override
     public @NotNull IMekanismRecipeTypeProvider<MekanicalTransformRecipe, QuadItem<MekanicalTransformRecipe>> getRecipeType() {
-        return AstralMekanismRecipeTypes.TRANSITION;
+        return AstralMekanismRecipeTypes.MEKANICAL_TRANSFORM;
     }
 
     @Override

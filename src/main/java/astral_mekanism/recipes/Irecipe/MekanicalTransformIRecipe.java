@@ -21,12 +21,12 @@ public class MekanicalTransformIRecipe extends MekanicalTransformRecipe {
 
     @Override
     public RecipeSerializer<?> getSerializer() {
-        return AstralMekanismRecipeSerializers.TRANSITION.get();
+        return AstralMekanismRecipeSerializers.MEKANICAL_TRANSFORM.get();
     }
 
     @Override
     public RecipeType<?> getType() {
-        return AstralMekanismRecipeTypes.TRANSITION.get();
+        return AstralMekanismRecipeTypes.MEKANICAL_TRANSFORM.get();
     }
 
 }

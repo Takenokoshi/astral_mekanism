@@ -116,7 +116,7 @@ public class BEGreenhouse extends TileEntityProgressMachine<GreenhouseRecipe> im
         builder.addSlot(extraOutputSlot = OutputInventorySlot.at(recipeCacheListener, 116, 53));
         builder.addSlot(energySlot = EnergyInventorySlot.fillOrConvert(energyContainer,
                 this::getLevel, recipeCacheListener, 155, 14));
-        builder.addSlot(fluidSlot = FluidInventorySlot.fill(fluidTank, recipeCacheListener, 0, 0));
+        builder.addSlot(fluidSlot = FluidInventorySlot.fill(fluidTank, recipeCacheListener, 10, 53));
         return builder.build();
     }
 

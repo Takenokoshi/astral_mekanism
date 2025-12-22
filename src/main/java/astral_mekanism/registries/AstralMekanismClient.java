@@ -49,13 +49,13 @@ public class AstralMekanismClient {
     @SubscribeEvent(priority = EventPriority.LOW)
     public static void registerContiners(RegisterEvent event) {
         event.register(Registries.MENU, helper -> {
-            regScreen(AstralMekanismMachines.ASTRAL_CHEMICAL_INJECTION_CHAMBER,GuiAstralAdvancedMachine::new);
-            regScreen(AstralMekanismMachines.ASTRAL_OSMIUM_COMPRESSOR,GuiAstralAdvancedMachine::new);
-            regScreen(AstralMekanismMachines.ASTRAL_PURIFICATION_CHAMBER,GuiAstralAdvancedMachine::new);
+            regScreen(AstralMekanismMachines.ASTRAL_CHEMICAL_INJECTION_CHAMBER, GuiAstralAdvancedMachine::new);
+            regScreen(AstralMekanismMachines.ASTRAL_OSMIUM_COMPRESSOR, GuiAstralAdvancedMachine::new);
+            regScreen(AstralMekanismMachines.ASTRAL_PURIFICATION_CHAMBER, GuiAstralAdvancedMachine::new);
             regScreen(AstralMekanismMachines.ASTRAL_CRUSHER, GuiAstralElectricMachine::new);
-            regScreen(AstralMekanismMachines.ASTRAL_ENERGIZED_SMELTER,GuiAstralElectricMachine::new);
-            regScreen(AstralMekanismMachines.ASTRAL_ENRICHMENT_CHAMBER,GuiAstralElectricMachine::new);
-            regScreen(AstralMekanismMachines.ASTRAL_MEKANICAL_CHARGER,GuiAstralElectricMachine::new);
+            regScreen(AstralMekanismMachines.ASTRAL_ENERGIZED_SMELTER, GuiAstralElectricMachine::new);
+            regScreen(AstralMekanismMachines.ASTRAL_ENRICHMENT_CHAMBER, GuiAstralElectricMachine::new);
+            regScreen(AstralMekanismMachines.ASTRAL_MEKANICAL_CHARGER, GuiAstralElectricMachine::new);
             regScreen(AstralMekanismMachines.ASTRAL_CHEMICAL_INFUSER, GuiAstralChemicalInfuser::new);
             regScreen(AstralMekanismMachines.ASTRAL_CHEMICAL_OXIDIZER, GuiAstralChemicalOxider::new);
             regScreen(AstralMekanismMachines.ASTRAL_CHEMICAL_WASHER, GuiAstralChemicalWasher::new);
@@ -65,9 +65,10 @@ public class AstralMekanismClient {
             regScreen(AstralMekanismMachines.ASTRAL_ELECTROLYTIC_SEPARATOR, GuiAstralElectrolyticSeparator::new);
             regScreen(AstralMekanismMachines.ASTRAL_GNA, GuiGasToGasBlock::new);
             regScreen(AstralMekanismMachines.ASTRAL_GREENHOUSE, GuiGreenhouse::new);
-            regScreen(AstralMekanismMachines.ASTRAL_ISOTOPIC_CENTRIFUGE,GuiGasToGasMachine::new);
-            regScreen(AstralMekanismMachines.ASTRAL_MEKANICAL_INSCRIBER,GuiDoubleItemToItemRecipeMachine::new);
-            regScreen(AstralMekanismMachines.ASTRAL_MEKANICAL_TRANSFOMER,GuiMekanicalTransformer::new);
+            regScreen(AstralMekanismMachines.ASTRAL_ISOTOPIC_CENTRIFUGE, GuiGasToGasMachine::new);
+            regScreen(AstralMekanismMachines.ASTRAL_MEKANICAL_INSCRIBER, GuiDoubleItemToItemRecipeMachine::new);
+            regScreen(AstralMekanismMachines.ASTRAL_MEKANICAL_PRESSER, GuiTripleItemToItemMachine::new);
+            regScreen(AstralMekanismMachines.ASTRAL_MEKANICAL_TRANSFOMER, GuiMekanicalTransformer::new);
             regScreen(AstralMekanismMachines.ASTRAL_METALLURGIC_INFUSER, GuiAstralMetallurgicInfuser::new);
             regScreen(AstralMekanismMachines.ASTRAL_PRC, GuiAstralPRC::new);
             regScreen(AstralMekanismMachines.ASTRAL_PRECISION_SAWMILL, GuiAstralPrecisionSawmill::new);
@@ -84,15 +85,15 @@ public class AstralMekanismClient {
             }
             regScreen(AstralMekanismMachines.ASTRAL_CRAFTER, GuiAstralCrafter::new);
             regScreen(AstralMekanismMachines.FLUID_INFUSER, GuiFluidInfuser::new);
-            regScreen(AstralMekanismMachines.GLOWSTONE_NEUTRON_ACTIVATOR,GuiGasToGasBlock::new);
+            regScreen(AstralMekanismMachines.GLOWSTONE_NEUTRON_ACTIVATOR, GuiGasToGasBlock::new);
             regScreen(AstralMekanismMachines.GREENHOUSE, GuiGreenhouse::new);
             regScreen(AstralMekanismMachines.INFUSE_SYNTHESIZER, GuiInfuseSynthesizer::new);
-            regScreen(AstralMekanismMachines.MEKANICAL_CHARGER,GuiElectricMachine::new);
+            regScreen(AstralMekanismMachines.MEKANICAL_CHARGER, GuiElectricMachine::new);
             regScreen(AstralMekanismMachines.MEKANICAL_INSCRIBER, GuiMekanicalInscriber::new);
             regScreen(AstralMekanismMachines.MEKANICAL_PRESSER, GuiTripleItemToItemMachine::new);
-            regScreen(AstralMekanismMachines.MEKANICAL_TRANSFORMER,GuiMekanicalTransformer::new);
-            regScreen(AstralMekanismMachines.UNIVERSAL_STORAGE,GuiAbstractStorage::new);
-            regScreen(AstralMekanismMachines.ITEM_SORTABLE_STORAGE,GuiAbstractStorage::new);
+            regScreen(AstralMekanismMachines.MEKANICAL_TRANSFORMER, GuiMekanicalTransformer::new);
+            regScreen(AstralMekanismMachines.UNIVERSAL_STORAGE, GuiAbstractStorage::new);
+            regScreen(AstralMekanismMachines.ITEM_SORTABLE_STORAGE, GuiAbstractStorage::new);
         });
     }
 

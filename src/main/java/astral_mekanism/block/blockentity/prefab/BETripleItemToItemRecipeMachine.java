@@ -34,13 +34,14 @@ import mekanism.common.tile.component.TileComponentEjector;
 import mekanism.common.tile.component.config.ConfigInfo;
 import mekanism.common.tile.component.config.DataType;
 import mekanism.common.tile.component.config.slot.InventorySlotInfo;
-import mekanism.common.tile.prefab.TileEntityProgressMachine;
+import mekanism.common.tile.prefab.TileEntityRecipeMachine;
 import mekanism.common.util.MekanismUtils;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.state.BlockState;
 
-public abstract class BETripleItemToItemProgressMachine<BE extends BETripleItemToItemProgressMachine<BE>> extends TileEntityProgressMachine<TripleItemToItemRecipe>
+public abstract class BETripleItemToItemRecipeMachine<BE extends BETripleItemToItemRecipeMachine<BE>>
+        extends TileEntityRecipeMachine<TripleItemToItemRecipe>
         implements ITripleItemToItemMachine<BE> {
 
     public static final RecipeError NOT_ENOUGH_THERD_INPUT = RecipeError.create();
@@ -63,8 +64,8 @@ public abstract class BETripleItemToItemProgressMachine<BE extends BETripleItemT
     protected final IInputHandler<ItemStack> inputHandlerC;
     protected final IOutputHandler<ItemStack> outputHandler;
 
-    protected BETripleItemToItemProgressMachine(IBlockProvider blockProvider, BlockPos pos, BlockState state) {
-        super(blockProvider, pos, state, TRACKED_ERROR_TYPES, 200);
+    protected BETripleItemToItemRecipeMachine(IBlockProvider blockProvider, BlockPos pos, BlockState state) {
+        super(blockProvider, pos, state, TRACKED_ERROR_TYPES);
         configComponent = new TileComponentConfig(this, TransmissionType.ENERGY, TransmissionType.ITEM);
         configComponent.setupInputConfig(TransmissionType.ENERGY, energyContainer);
         ConfigInfo itemInfo = configComponent.getConfig(TransmissionType.ITEM);
@@ -89,7 +90,7 @@ public abstract class BETripleItemToItemProgressMachine<BE extends BETripleItemT
     protected IEnergyContainerHolder getInitialEnergyContainers(IContentsListener listener,
             IContentsListener recipeCacheListener) {
         EnergyContainerHelper builder = EnergyContainerHelper.forSideWithConfig(this::getDirection, this::getConfig);
-        builder.addContainer(energyContainer = MachineEnergyContainer.input((BE)this, listener));
+        builder.addContainer(energyContainer = MachineEnergyContainer.input((BE) this, listener));
         return builder.build();
     }
 
@@ -148,9 +149,8 @@ public abstract class BETripleItemToItemProgressMachine<BE extends BETripleItemT
                 .setCanHolderFunction(() -> MekanismUtils.canFunction(this))
                 .setActive(this::setActive)
                 .setEnergyRequirements(energyContainer::getEnergyPerTick, energyContainer)
-                .setRequiredTicks(this::getTicksRequired)
-                .setOnFinish(this::markForSave)
-                .setOperatingTicksChanged(this::setOperatingTicks);
+                .setBaselineMaxOperations(this::getBaselineMaxOperations)
+                .setOnFinish(this::markForSave);
     }
 
     public MachineEnergyContainer<BE> getEnergyContainer() {
@@ -161,8 +161,10 @@ public abstract class BETripleItemToItemProgressMachine<BE extends BETripleItemT
         return getActive() ? energyContainer.getEnergyPerTick() : FloatingLong.ZERO;
     }
 
-    public double getProgressScaled(){
-        return getScaledProgress();
+    public double getProgressScaled() {
+        return getActive() ? 1 : 0;
     }
+
+    public abstract int getBaselineMaxOperations();
 
 }

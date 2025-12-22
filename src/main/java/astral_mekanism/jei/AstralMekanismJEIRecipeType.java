@@ -2,6 +2,8 @@ package astral_mekanism.jei;
 
 import astral_mekanism.recipes.recipe.AstralCraftingRecipe;
 import astral_mekanism.recipes.recipe.FluidFluidToFluidRecipe;
+import astral_mekanism.recipes.recipe.GreenhouseRecipe;
+import astral_mekanism.recipes.recipe.MekanicalTransformRecipe;
 import astral_mekanism.recipes.recipe.TripleItemToItemRecipe;
 import astral_mekanism.registries.AstralMekanismMachines;
 import mekanism.api.recipes.CombinerRecipe;
@@ -9,7 +11,7 @@ import mekanism.api.recipes.GasToGasRecipe;
 import mekanism.api.recipes.ItemStackToItemStackRecipe;
 import mekanism.client.jei.MekanismJEIRecipeType;
 
-public class AstralMekanismJEIRecipeType {
+public final class AstralMekanismJEIRecipeType {
     public static final MekanismJEIRecipeType<FluidFluidToFluidRecipe> FLUID_INFUSER_RECIPE = new MekanismJEIRecipeType<>(
             AstralMekanismMachines.FLUID_INFUSER, FluidFluidToFluidRecipe.class);
     public static final MekanismJEIRecipeType<ItemStackToItemStackRecipe> MEKANICAL_CHARGER_RECIPE = new MekanismJEIRecipeType<>(
@@ -22,4 +24,8 @@ public class AstralMekanismJEIRecipeType {
             AstralMekanismMachines.MEKANICAL_INSCRIBER, CombinerRecipe.class);
     public static final MekanismJEIRecipeType<TripleItemToItemRecipe> MEKANICAL_PRESSER_RECIPE = new MekanismJEIRecipeType<>(
             AstralMekanismMachines.MEKANICAL_PRESSER, TripleItemToItemRecipe.class);
+    public static final MekanismJEIRecipeType<MekanicalTransformRecipe> MEKANICAL_TRANSFORM = new MekanismJEIRecipeType<>(
+            AstralMekanismMachines.MEKANICAL_TRANSFORMER, MekanicalTransformRecipe.class);
+    public static final MekanismJEIRecipeType<GreenhouseRecipe> GREENHOUSE_RECIPE = new MekanismJEIRecipeType<>(
+            AstralMekanismMachines.GREENHOUSE, GreenhouseRecipe.class);
 }

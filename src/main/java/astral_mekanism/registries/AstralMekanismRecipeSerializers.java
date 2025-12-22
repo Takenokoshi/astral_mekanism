@@ -93,6 +93,6 @@ public class AstralMekanismRecipeSerializers {
     public static final RecipeSerializerRegistryObject<ChemicalDissolutionRecipe> AM_DISSOLUTION = RECIPE_SERIALIZERS
             .register("am_dissolution", () -> new ChemicalDissolutionRecipeSerializer<>(DissolutionAMIrecipe::new));
 
-    public static final RecipeSerializerRegistryObject<MekanicalTransformRecipe> TRANSITION = RECIPE_SERIALIZERS
+    public static final RecipeSerializerRegistryObject<MekanicalTransformRecipe> MEKANICAL_TRANSFORM = RECIPE_SERIALIZERS
             .register("mekanical_transform", () -> new MekanicalTransformRecipeSerializer<>(MekanicalTransformIRecipe::new));
 }

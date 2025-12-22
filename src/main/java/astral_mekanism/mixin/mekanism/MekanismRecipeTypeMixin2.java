@@ -281,7 +281,7 @@ public class MekanismRecipeTypeMixin2 {
             }
         }
 
-        if (Objects.equals(type.getRegistryName(), AstralMekanismRecipeTypes.TRANSITION.get().getRegistryName())) {
+        if (Objects.equals(type.getRegistryName(), AstralMekanismRecipeTypes.MEKANICAL_TRANSFORM.get().getRegistryName())) {
             for (TransformRecipe recipe : recipeManager.getAllRecipesFor(AERecipeTypes.TRANSFORM)) {
                 if (recipe.circumstance.isFluid()) {
                     ItemStackIngredient bucket = IngredientCreatorAccess.item().createMulti(

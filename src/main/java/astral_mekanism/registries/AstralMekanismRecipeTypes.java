@@ -112,7 +112,7 @@ public class AstralMekanismRecipeTypes {
             "am_dissolution", rt -> new ItemChemical<>(rt, ChemicalDissolutionRecipe::getItemInput,
                     ChemicalDissolutionRecipe::getGasInput));
 
-    public static final RecipeTypeRegistryObject<MekanicalTransformRecipe, QuadItem<MekanicalTransformRecipe>> TRANSITION = register(
+    public static final RecipeTypeRegistryObject<MekanicalTransformRecipe, QuadItem<MekanicalTransformRecipe>> MEKANICAL_TRANSFORM = register(
             "mekanical_transform", rt -> new QuadItem<>(rt,
                     MekanicalTransformRecipe::getInputItemA,
                     MekanicalTransformRecipe::getInputItemB,
