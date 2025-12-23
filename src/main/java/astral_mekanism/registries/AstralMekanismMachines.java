@@ -77,7 +77,7 @@ public class AstralMekanismMachines {
             .strength(1.5f, 6.0f).sound(SoundType.STONE).mapColor(MapColor.STONE);
 
     public static final MachineRegistryObject<BEAstralChemicalInjectionChamber, BlockTileModel<BEAstralChemicalInjectionChamber, BlockTypeMachine<BEAstralChemicalInjectionChamber>>, MekanismTileContainer<BEAstralChemicalInjectionChamber>, ItemBlockMachine> ASTRAL_CHEMICAL_INJECTION_CHAMBER = MACHINES
-            .regSimple("astral_chemical_injection_chamber",
+            .registerSimple("astral_chemical_injection_chamber",
                     BEAstralChemicalInjectionChamber::new,
                     BEAstralChemicalInjectionChamber.class,
                     MekanismLang.DESCRIPTION_CHEMICAL_INJECTION_CHAMBER,
@@ -87,7 +87,7 @@ public class AstralMekanismMachines {
                             .withSound(MekanismSounds.CHEMICAL_INJECTION_CHAMBER));
 
     public static final MachineRegistryObject<BEAstralOsmiumCompressor, BlockTileModel<BEAstralOsmiumCompressor, BlockTypeMachine<BEAstralOsmiumCompressor>>, MekanismTileContainer<BEAstralOsmiumCompressor>, ItemBlockMachine> ASTRAL_OSMIUM_COMPRESSOR = MACHINES
-            .regSimple("astral_osmium_compressor",
+            .registerSimple("astral_osmium_compressor",
                     BEAstralOsmiumCompressor::new,
                     BEAstralOsmiumCompressor.class,
                     MekanismLang.DESCRIPTION_OSMIUM_COMPRESSOR,
@@ -97,7 +97,7 @@ public class AstralMekanismMachines {
                             .withSound(MekanismSounds.OSMIUM_COMPRESSOR));
 
     public static final MachineRegistryObject<BEAstralPurificationChamber, BlockTileModel<BEAstralPurificationChamber, BlockTypeMachine<BEAstralPurificationChamber>>, MekanismTileContainer<BEAstralPurificationChamber>, ItemBlockMachine> ASTRAL_PURIFICATION_CHAMBER = MACHINES
-            .regSimple("astral_purification_chamber",
+            .registerSimple("astral_purification_chamber",
                     BEAstralPurificationChamber::new,
                     BEAstralPurificationChamber.class,
                     MekanismLang.DESCRIPTION_PURIFICATION_CHAMBER,
@@ -107,7 +107,7 @@ public class AstralMekanismMachines {
                             .withSound(MekanismSounds.PURIFICATION_CHAMBER));
 
     public static final MachineRegistryObject<BEAstralCrusher, BlockTileModel<BEAstralCrusher, BlockTypeMachine<BEAstralCrusher>>, MekanismTileContainer<BEAstralCrusher>, ItemBlockMachine> ASTRAL_CRUSHER = MACHINES
-            .regSimple("astral_crusher",
+            .registerSimple("astral_crusher",
                     BEAstralCrusher::new,
                     BEAstralCrusher.class,
                     MekanismLang.DESCRIPTION_CRUSHER,
@@ -117,7 +117,7 @@ public class AstralMekanismMachines {
                             .withSound(MekanismSounds.CRUSHER));
 
     public static final MachineRegistryObject<BEAstralEnergizedSmelter, BlockTileModel<BEAstralEnergizedSmelter, BlockTypeMachine<BEAstralEnergizedSmelter>>, MekanismTileContainer<BEAstralEnergizedSmelter>, ItemBlockMachine> ASTRAL_ENERGIZED_SMELTER = MACHINES
-            .regSimple("astral_energized_smelter",
+            .registerSimple("astral_energized_smelter",
                     BEAstralEnergizedSmelter::new,
                     BEAstralEnergizedSmelter.class,
                     MekanismLang.DESCRIPTION_ENERGIZED_SMELTER,
@@ -127,7 +127,7 @@ public class AstralMekanismMachines {
                             .withSound(MekanismSounds.ENERGIZED_SMELTER));
 
     public static final MachineRegistryObject<BEAstralEnrichmentChamber, BlockTileModel<BEAstralEnrichmentChamber, BlockTypeMachine<BEAstralEnrichmentChamber>>, MekanismTileContainer<BEAstralEnrichmentChamber>, ItemBlockMachine> ASTRAL_ENRICHMENT_CHAMBER = MACHINES
-            .regSimple("astral_enrichment_chamber",
+            .registerSimple("astral_enrichment_chamber",
                     BEAstralEnrichmentChamber::new,
                     BEAstralEnrichmentChamber.class,
                     MekanismLang.DESCRIPTION_ENRICHMENT_CHAMBER,
@@ -137,7 +137,7 @@ public class AstralMekanismMachines {
                             .withSound(MekanismSounds.ENRICHMENT_CHAMBER));
 
     public static final MachineRegistryObject<BEAstralMekanicalCharger, BlockTileModel<BEAstralMekanicalCharger, BlockTypeMachine<BEAstralMekanicalCharger>>, MekanismTileContainer<BEAstralMekanicalCharger>, ItemBlockMachine> ASTRAL_MEKANICAL_CHARGER = MACHINES
-            .regSimple("astral_mekanical_charger",
+            .registerSimple("astral_mekanical_charger",
                     BEAstralMekanicalCharger::new,
                     BEAstralMekanicalCharger.class,
                     AstralMekanismLang.DESCRIPTION_MEKANICAL_CHARGER,
@@ -147,7 +147,7 @@ public class AstralMekanismMachines {
                             .withCustomShape(AMBlockShapes.MEKANICAL_CHARGER));
 
     public static final MachineRegistryObject<BEAstralChemicalInfuser, BlockTileModel<BEAstralChemicalInfuser, BlockTypeMachine<BEAstralChemicalInfuser>>, MekanismTileContainer<BEAstralChemicalInfuser>, ItemBlockMachine> ASTRAL_CHEMICAL_INFUSER = MACHINES
-            .regSimple("astral_chemical_infuser",
+            .registerSimple("astral_chemical_infuser",
                     BEAstralChemicalInfuser::new,
                     BEAstralChemicalInfuser.class,
                     MekanismLang.DESCRIPTION_CHEMICAL_INFUSER,
@@ -157,7 +157,7 @@ public class AstralMekanismMachines {
                             .withSound(MekanismSounds.CHEMICAL_INFUSER));
 
     public static final MachineRegistryObject<BEAstralChemicalOxidizer, BlockTileModel<BEAstralChemicalOxidizer, BlockTypeMachine<BEAstralChemicalOxidizer>>, MekanismTileContainer<BEAstralChemicalOxidizer>, ItemBlockMachine> ASTRAL_CHEMICAL_OXIDIZER = MACHINES
-            .regSimple("astral_chemical_oxidizer",
+            .registerSimple("astral_chemical_oxidizer",
                     BEAstralChemicalOxidizer::new,
                     BEAstralChemicalOxidizer.class,
                     MekanismLang.DESCRIPTION_CHEMICAL_OXIDIZER,
@@ -167,7 +167,7 @@ public class AstralMekanismMachines {
                             .withSound(MekanismSounds.CHEMICAL_OXIDIZER));
 
     public static final MachineRegistryObject<BEAstralChemicalWasher, BlockTileModel<BEAstralChemicalWasher, BlockTypeMachine<BEAstralChemicalWasher>>, MekanismTileContainer<BEAstralChemicalWasher>, ItemBlockMachine> ASTRAL_CHEMICAL_WASHER = MACHINES
-            .regSimple("astral_chemical_washer",
+            .registerSimple("astral_chemical_washer",
                     BEAstralChemicalWasher::new,
                     BEAstralChemicalWasher.class,
                     MekanismLang.DESCRIPTION_CHEMICAL_WASHER,
@@ -177,7 +177,7 @@ public class AstralMekanismMachines {
                             .withSound(MekanismSounds.CHEMICAL_WASHER));
 
     public static final MachineRegistryObject<BEAstralCombiner, BlockTileModel<BEAstralCombiner, BlockTypeMachine<BEAstralCombiner>>, MekanismTileContainer<BEAstralCombiner>, ItemBlockMachine> ASTRAL_COMBINER = MACHINES
-            .regSimple("astral_combiner",
+            .registerSimple("astral_combiner",
                     BEAstralCombiner::new,
                     BEAstralCombiner.class,
                     MekanismLang.DESCRIPTION_COMBINER,
@@ -187,7 +187,7 @@ public class AstralMekanismMachines {
                             .withSound(MekanismSounds.COMBINER));
 
     public static final MachineRegistryObject<BEAstralCrystallizer, BlockTileModel<BEAstralCrystallizer, BlockTypeMachine<BEAstralCrystallizer>>, MekanismTileContainer<BEAstralCrystallizer>, ItemBlockMachine> ASTRAL_CRYSTALLIZER = MACHINES
-            .regSimple("astral_crystallizer",
+            .registerSimple("astral_crystallizer",
                     BEAstralCrystallizer::new,
                     BEAstralCrystallizer.class,
                     MekanismLang.DESCRIPTION_CHEMICAL_CRYSTALLIZER,
@@ -197,7 +197,7 @@ public class AstralMekanismMachines {
                             .withSound(MekanismSounds.CHEMICAL_CRYSTALLIZER));
 
     public static final MachineRegistryObject<BEAstralDissolutionChamber, BlockTileModel<BEAstralDissolutionChamber, BlockTypeMachine<BEAstralDissolutionChamber>>, MekanismTileContainer<BEAstralDissolutionChamber>, ItemBlockMachine> ASTRAL_DISSOLUTION_CHAMBER = MACHINES
-            .regSimple("astral_dissolution_chamber",
+            .registerSimple("astral_dissolution_chamber",
                     BEAstralDissolutionChamber::new,
                     BEAstralDissolutionChamber.class,
                     MekanismLang.DESCRIPTION_CHEMICAL_DISSOLUTION_CHAMBER,
@@ -207,7 +207,7 @@ public class AstralMekanismMachines {
                             .withSound(MekanismSounds.CHEMICAL_DISSOLUTION_CHAMBER));
 
     public static final MachineRegistryObject<BEAstralElectrolyticSeparator, BlockTileModel<BEAstralElectrolyticSeparator, BlockTypeMachine<BEAstralElectrolyticSeparator>>, MekanismTileContainer<BEAstralElectrolyticSeparator>, ItemBlockMachine> ASTRAL_ELECTROLYTIC_SEPARATOR = MACHINES
-            .regSimple("astral_electrolytic_separator",
+            .registerSimple("astral_electrolytic_separator",
                     BEAstralElectrolyticSeparator::new,
                     BEAstralElectrolyticSeparator.class,
                     MekanismLang.DESCRIPTION_ELECTROLYTIC_SEPARATOR,
@@ -218,7 +218,7 @@ public class AstralMekanismMachines {
                             .withSound(MekanismSounds.ELECTROLYTIC_SEPARATOR));
 
     public static final MachineRegistryObject<BEAstralGNA, BlockTileModel<BEAstralGNA, BlockTypeMachine<BEAstralGNA>>, MekanismTileContainer<BEAstralGNA>, ItemBlockMachine> ASTRAL_GNA = MACHINES
-            .regSimple("astral_gna",
+            .registerSimple("astral_gna",
                     BEAstralGNA::new,
                     BEAstralGNA.class,
                     MekanismLang.DESCRIPTION_CHEMICAL_DISSOLUTION_CHAMBER,
@@ -226,7 +226,7 @@ public class AstralMekanismMachines {
                             .withCustomShape(AMBlockShapes.GLOWSTONE_NEUTRON_ACTIVATOR));
 
     public static final MachineRegistryObject<BEAstralGreenhouse, BlockTileModel<BEAstralGreenhouse, BlockTypeMachine<BEAstralGreenhouse>>, MekanismTileContainer<BEAstralGreenhouse>, ItemBlockMachine> ASTRAL_GREENHOUSE = MACHINES
-            .regSimple("astral_greenhouse",
+            .registerSimple("astral_greenhouse",
                     BEAstralGreenhouse::new,
                     BEAstralGreenhouse.class,
                     AstralMekanismLang.DESCRIPTION_GREENHOUSE,
@@ -235,7 +235,7 @@ public class AstralMekanismMachines {
                             () -> FloatingLong.MAX_VALUE));
 
     public static final MachineRegistryObject<BEAstralIsotopicCentrifuge, BlockTileModel<BEAstralIsotopicCentrifuge, BlockTypeMachine<BEAstralIsotopicCentrifuge>>, MekanismTileContainer<BEAstralIsotopicCentrifuge>, ItemBlockMachine> ASTRAL_ISOTOPIC_CENTRIFUGE = MACHINES
-            .regSimple("astral_isotopic_centrifuge",
+            .registerSimple("astral_isotopic_centrifuge",
                     BEAstralIsotopicCentrifuge::new,
                     BEAstralIsotopicCentrifuge.class,
                     MekanismLang.DESCRIPTION_ISOTOPIC_CENTRIFUGE,
@@ -245,7 +245,7 @@ public class AstralMekanismMachines {
                             .withSound(MekanismSounds.ISOTOPIC_CENTRIFUGE));
 
     public static final MachineRegistryObject<BEAstralMekanicalInscriber, BlockTileModel<BEAstralMekanicalInscriber, BlockTypeMachine<BEAstralMekanicalInscriber>>, MekanismTileContainer<BEAstralMekanicalInscriber>, ItemBlockMachine> ASTRAL_MEKANICAL_INSCRIBER = MACHINES
-            .regSimple("astral_mekanical_inscriber",
+            .registerSimple("astral_mekanical_inscriber",
                     BEAstralMekanicalInscriber::new,
                     BEAstralMekanicalInscriber.class,
                     MekanismLang.DESCRIPTION_CHEMICAL_CRYSTALLIZER,
@@ -254,7 +254,7 @@ public class AstralMekanismMachines {
                             () -> FloatingLong.MAX_VALUE));
 
     public static final MachineRegistryObject<BEAstralMekanicalPresser, BlockTileModel<BEAstralMekanicalPresser, BlockTypeMachine<BEAstralMekanicalPresser>>, MekanismTileContainer<BEAstralMekanicalPresser>, ItemBlockMachine> ASTRAL_MEKANICAL_PRESSER = MACHINES
-            .regSimple("astral_mekanical_presser",
+            .registerSimple("astral_mekanical_presser",
                     BEAstralMekanicalPresser::new,
                     BEAstralMekanicalPresser.class,
                     MekanismLang.DESCRIPTION_CHEMICAL_CRYSTALLIZER,
@@ -263,7 +263,7 @@ public class AstralMekanismMachines {
                             () -> FloatingLong.MAX_VALUE));
 
     public static final MachineRegistryObject<BEAstralMekanicalTransformer, BlockTileModel<BEAstralMekanicalTransformer, BlockTypeMachine<BEAstralMekanicalTransformer>>, MekanismTileContainer<BEAstralMekanicalTransformer>, ItemBlockMachine> ASTRAL_MEKANICAL_TRANSFOMER = MACHINES
-            .regSimple("astral_mekanical_transformer",
+            .registerSimple("astral_mekanical_transformer",
                     BEAstralMekanicalTransformer::new,
                     BEAstralMekanicalTransformer.class,
                     MekanismLang.DESCRIPTION_CHEMICAL_CRYSTALLIZER,
@@ -272,7 +272,7 @@ public class AstralMekanismMachines {
                             () -> FloatingLong.MAX_VALUE));
 
     public static final MachineRegistryObject<BEAstralMetallurgicInfuser, BlockTileModel<BEAstralMetallurgicInfuser, BlockTypeMachine<BEAstralMetallurgicInfuser>>, MekanismTileContainer<BEAstralMetallurgicInfuser>, ItemBlockMachine> ASTRAL_METALLURGIC_INFUSER = MACHINES
-            .regSimple("astral_metallurgic_infuser",
+            .registerSimple("astral_metallurgic_infuser",
                     BEAstralMetallurgicInfuser::new,
                     BEAstralMetallurgicInfuser.class,
                     MekanismLang.DESCRIPTION_CHEMICAL_CRYSTALLIZER,
@@ -282,7 +282,7 @@ public class AstralMekanismMachines {
                             .withSound(MekanismSounds.METALLURGIC_INFUSER));
 
     public static final MachineRegistryObject<BEAstralPRC, BlockTileModel<BEAstralPRC, BlockTypeMachine<BEAstralPRC>>, MekanismTileContainer<BEAstralPRC>, ItemBlockMachine> ASTRAL_PRC = MACHINES
-            .regSimple("astral_prc",
+            .registerSimple("astral_prc",
                     BEAstralPRC::new,
                     BEAstralPRC.class,
                     MekanismLang.DESCRIPTION_PRESSURIZED_REACTION_CHAMBER,
@@ -293,7 +293,7 @@ public class AstralMekanismMachines {
                             .withCustomShape(AMBlockShapes.ASTRAL_PRC));
 
     public static final MachineRegistryObject<BEAstralPrecisionSawmill, BlockTileModel<BEAstralPrecisionSawmill, BlockTypeMachine<BEAstralPrecisionSawmill>>, MekanismTileContainer<BEAstralPrecisionSawmill>, ItemBlockMachine> ASTRAL_PRECISION_SAWMILL = MACHINES
-            .regSimple("astral_precision_sawmill",
+            .registerSimple("astral_precision_sawmill",
                     BEAstralPrecisionSawmill::new,
                     BEAstralPrecisionSawmill.class,
                     MekanismLang.DESCRIPTION_CHEMICAL_CRYSTALLIZER,
@@ -303,7 +303,7 @@ public class AstralMekanismMachines {
                             .withSound(MekanismSounds.PRECISION_SAWMILL));
 
     public static final MachineRegistryObject<BEAstralRotaryCondensentrator, BlockTileModel<BEAstralRotaryCondensentrator, BlockTypeMachine<BEAstralRotaryCondensentrator>>, MekanismTileContainer<BEAstralRotaryCondensentrator>, ItemBlockMachine> ASTRAL_ROTARY_CONDENSENTRATOR = MACHINES
-            .regSimple("astral_rotary_condensentrator",
+            .registerSimple("astral_rotary_condensentrator",
                     BEAstralRotaryCondensentrator::new,
                     BEAstralRotaryCondensentrator.class,
                     MekanismLang.DESCRIPTION_CHEMICAL_CRYSTALLIZER,
@@ -313,7 +313,7 @@ public class AstralMekanismMachines {
                             .withSound(MekanismSounds.ROTARY_CONDENSENTRATOR));
 
     public static final MachineRegistryObject<BEAstralSPS, BlockTileModel<BEAstralSPS, BlockTypeMachine<BEAstralSPS>>, MekanismTileContainer<BEAstralSPS>, ItemBlockMachine> ASTRAL_SPS = MACHINES
-            .regSimple("astral_sps",
+            .registerSimple("astral_sps",
                     BEAstralSPS::new,
                     BEAstralSPS.class,
                     MekanismLang.SPS,
@@ -325,14 +325,14 @@ public class AstralMekanismMachines {
                             .withSupportedUpgrades(EnumSet.of(Upgrade.MUFFLING)));
 
     public static final MachineRegistryObject<BECompactFIR, BlockTileModel<BECompactFIR, BlockTypeMachine<BECompactFIR>>, MekanismTileContainer<BECompactFIR>, ItemBlockMachine> COMPACT_FIR = MACHINES
-            .regSimple("compact_fir",
+            .registerSimple("compact_fir",
                     BECompactFIR::new,
                     BECompactFIR.class,
                     GeneratorsLang.FUSION_REACTOR,
                     builder -> builder);
 
     public static final MachineRegistryObject<BECompactSPS, BlockTileModel<BECompactSPS, BlockTypeMachine<BECompactSPS>>, MekanismTileContainer<BECompactSPS>, ItemBlockMachine> COMPACT_SPS = MACHINES
-            .regSimple("compact_sps",
+            .registerSimple("compact_sps",
                     BECompactSPS::new,
                     BECompactSPS.class,
                     MekanismLang.SPS,
@@ -344,14 +344,14 @@ public class AstralMekanismMachines {
                             .withSupportedUpgrades(EnumSet.of(Upgrade.MUFFLING)));
 
     public static final MachineRegistryObject<BECompactTEP, BlockTileModel<BECompactTEP, BlockTypeMachine<BECompactTEP>>, MekanismTileContainer<BECompactTEP>, ItemBlockMachine> COMPACT_TEP = MACHINES
-            .regSimple("compact_tep",
+            .registerSimple("compact_tep",
                     BECompactTEP::new,
                     BECompactTEP.class,
                     MekanismLang.EVAPORATION_PLANT,
                     builder -> builder.removeAttributeUpgrade());
 
     public static final EnumMap<AstralMekGeneratorTier, MachineRegistryObject<BEGasBurningGenerator, BlockTileModel<BEGasBurningGenerator, BlockTypeMachine<BEGasBurningGenerator>>, MekanismTileContainer<BEGasBurningGenerator>, ItemBlockMachine>> GAS_BURNING_GENERATORS = MACHINES
-            .regSimpleMap(k -> k.name + "_gas_burning_generator",
+            .registerSimpleMap(k -> k.name + "_gas_burning_generator",
                     BEGasBurningGenerator::new,
                     BEGasBurningGenerator.class,
                     GeneratorsLang.DESCRIPTION_GAS_BURNING_GENERATOR,
@@ -362,7 +362,7 @@ public class AstralMekanismMachines {
                     AstralMekGeneratorTier.class);
 
     public static final EnumMap<AstralMekGeneratorTier, MachineRegistryObject<BEHeatGenerator, BlockTileModel<BEHeatGenerator, BlockTypeMachine<BEHeatGenerator>>, MekanismTileContainer<BEHeatGenerator>, ItemBlockMachine>> HEAT_GENERATORS = MACHINES
-            .regSimpleMap(k -> k.name + "_heat_generator",
+            .registerSimpleMap(k -> k.name + "_heat_generator",
                     BEHeatGenerator::new,
                     BEHeatGenerator.class,
                     GeneratorsLang.DESCRIPTION_HEAT_GENERATOR,
@@ -383,7 +383,7 @@ public class AstralMekanismMachines {
                             () -> FloatingLong.create(10000000 * AstralMekanismConfig.energyRate)));
 
     public static final MachineRegistryObject<BEFluidInfuser, BlockTileModel<BEFluidInfuser, BlockTypeMachine<BEFluidInfuser>>, MekanismTileContainer<BEFluidInfuser>, ItemBlockMachine> FLUID_INFUSER = MACHINES
-            .regSimple("fluid_infuser",
+            .registerSimple("fluid_infuser",
                     BEFluidInfuser::new,
                     BEFluidInfuser.class,
                     AstralMekanismLang.DESCRIPTION_FLUID_INFUSER,
@@ -393,7 +393,7 @@ public class AstralMekanismMachines {
                             .withCustomShape(AMBlockShapes.FLUID_INFUSER));
 
     public static final MachineRegistryObject<BEGlowstoneNeutronActivator, BlockTileModel<BEGlowstoneNeutronActivator, BlockTypeMachine<BEGlowstoneNeutronActivator>>, MekanismTileContainer<BEGlowstoneNeutronActivator>, ItemBlockMachine> GLOWSTONE_NEUTRON_ACTIVATOR = MACHINES
-            .regSimple("glowstone_neutron_activator",
+            .registerSimple("glowstone_neutron_activator",
                     BEGlowstoneNeutronActivator::new,
                     BEGlowstoneNeutronActivator.class,
                     AstralMekanismLang.DESCRIPTION_GLOWSTONE_NEUTRON_ACTIVATOR,
@@ -402,7 +402,7 @@ public class AstralMekanismMachines {
                             .removeAttributeUpgrade());
 
     public static final MachineRegistryObject<BEGreenhouse, BlockTileModel<BEGreenhouse, BlockTypeMachine<BEGreenhouse>>, MekanismTileContainer<BEGreenhouse>, ItemBlockMachine> GREENHOUSE = MACHINES
-            .regSimple("greenhouse",
+            .registerSimple("greenhouse",
                     BEGreenhouse::new,
                     BEGreenhouse.class,
                     AstralMekanismLang.DESCRIPTION_GREENHOUSE,
@@ -411,14 +411,14 @@ public class AstralMekanismMachines {
                             () -> FloatingLong.create(1000000l * AstralMekanismConfig.energyRate)));
 
     public static final MachineRegistryObject<BEInfuseSynthesizer, BlockTileModel<BEInfuseSynthesizer, BlockTypeMachine<BEInfuseSynthesizer>>, MekanismTileContainer<BEInfuseSynthesizer>, ItemBlockMachine> INFUSE_SYNTHESIZER = MACHINES
-            .regSimple("infuse_synthesizer",
+            .registerSimple("infuse_synthesizer",
                     BEInfuseSynthesizer::new,
                     BEInfuseSynthesizer.class,
                     MekanismLang.EVAPORATION_PLANT,
                     builder -> builder.removeAttributeUpgrade());
 
     public static final MachineRegistryObject<BEMekanicalCharger, BlockTileModel<BEMekanicalCharger, BlockTypeMachine<BEMekanicalCharger>>, MekanismTileContainer<BEMekanicalCharger>, ItemBlockMachine> MEKANICAL_CHARGER = MACHINES
-            .regSimple("mekanical_charger",
+            .registerSimple("mekanical_charger",
                     BEMekanicalCharger::new,
                     BEMekanicalCharger.class,
                     AstralMekanismLang.DESCRIPTION_MEKANICAL_CHARGER,
@@ -428,7 +428,7 @@ public class AstralMekanismMachines {
                             .withCustomShape(AMBlockShapes.MEKANICAL_CHARGER));
 
     public static final MachineRegistryObject<BEMekanicalInscriber, BlockTileModel<BEMekanicalInscriber, BlockTypeMachine<BEMekanicalInscriber>>, MekanismTileContainer<BEMekanicalInscriber>, ItemBlockMachine> MEKANICAL_INSCRIBER = MACHINES
-            .regSimple("mekanical_inscriber",
+            .registerSimple("mekanical_inscriber",
                     BEMekanicalInscriber::new,
                     BEMekanicalInscriber.class,
                     AstralMekanismLang.DESCRIPTION_MEKANICAL_CHARGER,
@@ -437,7 +437,7 @@ public class AstralMekanismMachines {
                             () -> FloatingLong.create(100000l * AstralMekanismConfig.energyRate)));
 
     public static final MachineRegistryObject<BEMekanicalPresser, BlockTileModel<BEMekanicalPresser, BlockTypeMachine<BEMekanicalPresser>>, MekanismTileContainer<BEMekanicalPresser>, ItemBlockMachine> MEKANICAL_PRESSER = MACHINES
-            .regSimple("mekanical_presser",
+            .registerSimple("mekanical_presser",
                     BEMekanicalPresser::new,
                     BEMekanicalPresser.class,
                     AstralMekanismLang.DESCRIPTION_MEKANICAL_CHARGER,
@@ -446,7 +446,7 @@ public class AstralMekanismMachines {
                             () -> FloatingLong.create(100000l * AstralMekanismConfig.energyRate)));
 
     public static final MachineRegistryObject<BEMekanicalTransformer, BlockTileModel<BEMekanicalTransformer, BlockTypeMachine<BEMekanicalTransformer>>, MekanismTileContainer<BEMekanicalTransformer>, ItemBlockMachine> MEKANICAL_TRANSFORMER = MACHINES
-            .regSimple("mekanical_transformer",
+            .registerSimple("mekanical_transformer",
                     BEMekanicalTransformer::new,
                     BEMekanicalTransformer.class,
                     AstralMekanismLang.DESCRIPTION_MEKANICAL_CHARGER,
