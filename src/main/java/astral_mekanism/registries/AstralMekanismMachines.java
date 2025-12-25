@@ -205,7 +205,6 @@ public class AstralMekanismMachines {
                     builder -> builder.withEnergyConfig(
                             () -> MekanismConfig.general.FROM_H2.get().multiply(2),
                             () -> FloatingLong.MAX_VALUE)
-                            .withCustomShape(mekanism.common.content.blocktype.BlockShapes.ELECTROLYTIC_SEPARATOR)
                             .withSound(MekanismSounds.ELECTROLYTIC_SEPARATOR));
 
     public static final MachineRegistryObject<BEAstralGNA, BlockTileModel<BEAstralGNA, BlockTypeMachine<BEAstralGNA>>, MekanismTileContainer<BEAstralGNA>, ItemBlockMachine> ASTRAL_GNA = MACHINES
@@ -213,8 +212,7 @@ public class AstralMekanismMachines {
                     BEAstralGNA::new,
                     BEAstralGNA.class,
                     MekanismLang.DESCRIPTION_CHEMICAL_DISSOLUTION_CHAMBER,
-                    builder -> builder
-                            .withCustomShape(AMBlockShapes.GLOWSTONE_NEUTRON_ACTIVATOR));
+                    builder -> builder);
 
     public static final MachineRegistryObject<BEAstralGreenhouse, BlockTileModel<BEAstralGreenhouse, BlockTypeMachine<BEAstralGreenhouse>>, MekanismTileContainer<BEAstralGreenhouse>, ItemBlockMachine> ASTRAL_GREENHOUSE = MACHINES
             .registerSimple("astral_greenhouse",
@@ -223,7 +221,7 @@ public class AstralMekanismMachines {
                     AstralMekanismLang.DESCRIPTION_GREENHOUSE,
                     builder -> builder.withEnergyConfig(
                             () -> FloatingLong.create(10000 * AstralMekanismConfig.energyRate),
-                            () -> FloatingLong.MAX_VALUE));
+                            () -> FloatingLong.MAX_VALUE));//here
 
     public static final MachineRegistryObject<BEAstralIsotopicCentrifuge, BlockTileModel<BEAstralIsotopicCentrifuge, BlockTypeMachine<BEAstralIsotopicCentrifuge>>, MekanismTileContainer<BEAstralIsotopicCentrifuge>, ItemBlockMachine> ASTRAL_ISOTOPIC_CENTRIFUGE = MACHINES
             .registerSimple("astral_isotopic_centrifuge",
