@@ -1,1 +1,8 @@
-{"variants":{"facing=north,active=false":{"model":"mekanism:block/osmium_compressor"},"facing=south,active=false":{"model":"mekanism:block/osmium_compressor","y":180},"facing=east,active=false":{"model":"mekanism:block/osmium_compressor","y":90},"facing=west,active=false":{"model":"mekanism:block/osmium_compressor","y":-90},"facing=north,active=true":{"model":"mekanism:block/osmium_compressor_active"},"facing=south,active=true":{"model":"mekanism:block/osmium_compressor_active","y":180},"facing=east,active=true":{"model":"mekanism:block/osmium_compressor_active","y":90},"facing=west,active=true":{"model":"mekanism:block/osmium_compressor_active","y":-90}}}
+{
+  "variants": {
+    "facing=north":  { "model": "astral_mekanism:block/astral_machine/osmium_compressor", "y": 0 },
+    "facing=south":  { "model": "astral_mekanism:block/astral_machine/osmium_compressor", "y": 180 },
+    "facing=west":   { "model": "astral_mekanism:block/astral_machine/osmium_compressor", "y": 270 },
+    "facing=east":   { "model": "astral_mekanism:block/astral_machine/osmium_compressor", "y": 90 }
+  }
+}

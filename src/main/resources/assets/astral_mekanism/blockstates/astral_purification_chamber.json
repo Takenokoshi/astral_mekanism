@@ -1,1 +1,8 @@
-{"variants":{"facing=north,active=false":{"model":"mekanism:block/purification_chamber"},"facing=south,active=false":{"model":"mekanism:block/purification_chamber","y":180},"facing=east,active=false":{"model":"mekanism:block/purification_chamber","y":90},"facing=west,active=false":{"model":"mekanism:block/purification_chamber","y":-90},"facing=north,active=true":{"model":"mekanism:block/purification_chamber_active"},"facing=south,active=true":{"model":"mekanism:block/purification_chamber_active","y":180},"facing=east,active=true":{"model":"mekanism:block/purification_chamber_active","y":90},"facing=west,active=true":{"model":"mekanism:block/purification_chamber_active","y":-90}}}
+{
+  "variants": {
+    "facing=north":  { "model": "astral_mekanism:block/astral_machine/purification_chamber", "y": 0 },
+    "facing=south":  { "model": "astral_mekanism:block/astral_machine/purification_chamber", "y": 180 },
+    "facing=west":   { "model": "astral_mekanism:block/astral_machine/purification_chamber", "y": 270 },
+    "facing=east":   { "model": "astral_mekanism:block/astral_machine/purification_chamber", "y": 90 }
+  }
+}

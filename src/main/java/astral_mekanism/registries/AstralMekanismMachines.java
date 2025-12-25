@@ -2,8 +2,6 @@ package astral_mekanism.registries;
 
 import java.util.EnumMap;
 import java.util.EnumSet;
-import java.util.function.UnaryOperator;
-
 import astral_mekanism.AstralMekanismConfig;
 import astral_mekanism.AstralMekanismID;
 import astral_mekanism.AstralMekanismLang;
@@ -66,15 +64,9 @@ import mekanism.common.inventory.container.tile.MekanismTileContainer;
 import mekanism.common.item.block.machine.ItemBlockMachine;
 import mekanism.common.registries.MekanismSounds;
 import mekanism.generators.common.GeneratorsLang;
-import net.minecraft.world.level.block.SoundType;
-import net.minecraft.world.level.block.state.BlockBehaviour.Properties;
-import net.minecraft.world.level.material.MapColor;
 
 public class AstralMekanismMachines {
     public static final MachineDeferredRegister MACHINES = new MachineDeferredRegister(AstralMekanismID.MODID);
-
-    private static final UnaryOperator<Properties> normalOperator = p -> p
-            .strength(1.5f, 6.0f).sound(SoundType.STONE).mapColor(MapColor.STONE);
 
     public static final MachineRegistryObject<BEAstralChemicalInjectionChamber, BlockTileModel<BEAstralChemicalInjectionChamber, BlockTypeMachine<BEAstralChemicalInjectionChamber>>, MekanismTileContainer<BEAstralChemicalInjectionChamber>, ItemBlockMachine> ASTRAL_CHEMICAL_INJECTION_CHAMBER = MACHINES
             .registerSimple("astral_chemical_injection_chamber",
@@ -143,8 +135,7 @@ public class AstralMekanismMachines {
                     AstralMekanismLang.DESCRIPTION_MEKANICAL_CHARGER,
                     builder -> builder.withEnergyConfig(
                             () -> FloatingLong.create(800 * AstralMekanismConfig.energyRate),
-                            () -> FloatingLong.MAX_VALUE)
-                            .withCustomShape(AMBlockShapes.MEKANICAL_CHARGER));
+                            () -> FloatingLong.MAX_VALUE));
 
     public static final MachineRegistryObject<BEAstralChemicalInfuser, BlockTileModel<BEAstralChemicalInfuser, BlockTypeMachine<BEAstralChemicalInfuser>>, MekanismTileContainer<BEAstralChemicalInfuser>, ItemBlockMachine> ASTRAL_CHEMICAL_INFUSER = MACHINES
             .registerSimple("astral_chemical_infuser",
