@@ -19,7 +19,6 @@ plugins {
 }
 apply plugin: 'org.spongepowered.mixin'
 
-
 version = mod_version
 group = mod_group_id
 
@@ -45,7 +44,7 @@ sourceSets {
 
 println "Java: ${System.getProperty 'java.version'}, JVM: ${System.getProperty 'java.vm.version'} (${System.getProperty 'java.vendor'}), Arch: ${System.getProperty 'os.arch'}"
 minecraft {
-    mappings channel: mapping_channel, version: mapping_version
+    mappings channel: 'official', version: minecraft_version
     copyIdeResources = true
     runs {
         configureEach {
@@ -90,36 +89,53 @@ mixin {
 }
 sourceSets.main.resources { srcDir 'src/generated/resources' }
 
-
 repositories {
-    maven{
+    maven {
+        name = "Forge"
+        url = "https://maven.minecraftforge.net"
+    }
+
+    maven {
+        name = "Modmaven"
+        url = "https://modmaven.dev/"
+        content {
+            includeGroup("mekanism")
+        }
+    }
+
+    maven {
+        url "https://www.cursemaven.com"
+        content {
+            includeGroup "curse.maven"
+        }
+    }
+
+    maven {
         url 'https://repo.spongepowered.org/maven'
     }
+
     maven {
-        url "https://cursemaven.com"
-    }
-    maven { // JEI API (for Forge)
         name = "Progwml6 maven"
         url = "https://maven.blamejared.com/"
     }
+
+    mavenCentral()
 }
+
 
 dependencies {
     minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
-    implementation fg.deobf("curse.maven:mekanism-268560:6552911")
-    implementation fg.deobf("curse.maven:mekanism-tools-268567:6552915")
-	implementation fg.deobf("curse.maven:mekanism-generators-268566:6552914")
+    implementation fg.deobf("mekanism:Mekanism:1.20.1-10.4.16.80")
+    implementation fg.deobf("curse.maven:mekanism-generators-268566:6552914")
     implementation fg.deobf("curse.maven:applied-energistics-2-223794:6852919")
     implementation fg.deobf("curse.maven:applied-mekanistics-574300:4842281")
     implementation fg.deobf("curse.maven:botany-pots-353928:6348581")
     implementation fg.deobf("curse.maven:bookshelf-228525:5423987")
-    // Mixinの注釈処理
     annotationProcessor "org.spongepowered:mixin:0.8.5:processor"
     compileOnly "org.spongepowered:mixin:0.8.5"
     compileOnly fg.deobf("curse.maven:jei-238222:6075247")
-
-
     runtimeOnly fg.deobf("curse.maven:jei-238222:6075247")
+
 }
 tasks.named('processResources', ProcessResources).configure {
     var replaceProperties = [

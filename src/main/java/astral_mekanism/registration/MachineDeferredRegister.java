@@ -1,6 +1,8 @@
 package astral_mekanism.registration;
 
+import java.util.ArrayList;
 import java.util.EnumMap;
+import java.util.List;
 import java.util.function.BiFunction;
 import java.util.function.Function;
 import java.util.function.UnaryOperator;
@@ -25,12 +27,16 @@ public class MachineDeferredRegister {
     private final TileEntityTypeDeferredRegister tileRegister;
     private final ExtendedContainerDeferredRegister containerRegister;
 
+    private final List<MachineRegistryObject<?, ?, ?, ?>> list;
+
     public MachineDeferredRegister(String modId) {
         this.modId = modId;
         this.blockRegister = new BlockDeferredRegister(this.modId);
         this.tileRegister = new TileEntityTypeDeferredRegister(this.modId);
         this.containerRegister = new ExtendedContainerDeferredRegister(this.modId);
+        list = new ArrayList<MachineRegistryObject<?, ?, ?, ?>>();
     }
+
     public <BE extends TileEntityMekanism, BLOCK extends BlockTileModel<BE, BlockTypeMachine<BE>>, CONTAINER extends MekanismTileContainer<BE>, ITEM extends ItemBlockMachine> MachineRegistryObject<BE, BLOCK, CONTAINER, ITEM> registerFull(
             String name,
             Function<BlockTypeMachine<BE>, BLOCK> blockCreator,
@@ -40,8 +46,11 @@ public class MachineDeferredRegister {
             ContainerConstructor<BE, CONTAINER> contConstructor,
             ILangEntry entry,
             UnaryOperator<BlockMachineBuilder<BlockTypeMachine<BE>, BE>> operator) {
-        return new MachineRegistryObject<>(name, blockRegister, tileRegister, containerRegister, blockCreator,
+        MachineRegistryObject<BE, BLOCK, CONTAINER, ITEM> object = new MachineRegistryObject<>(name, blockRegister,
+                tileRegister, containerRegister, blockCreator,
                 itemCreator, beConstructor, beClass, contConstructor, entry, operator);
+        list.add(object);
+        return object;
     }
 
     public <BE extends TileEntityMekanism, BLOCK extends BlockTileModel<BE, BlockTypeMachine<BE>>, ITEM extends ItemBlockMachine> MachineRegistryObject<BE, BLOCK, MekanismTileContainer<BE>, ITEM> registerDefaultContainer(
@@ -156,5 +165,9 @@ public class MachineDeferredRegister {
         blockRegister.register(bus);
         tileRegister.register(bus);
         containerRegister.register(bus);
+    }
+
+    public List<MachineRegistryObject<?,?,?,?>> getMachines(){
+        return list;
     }
 }
