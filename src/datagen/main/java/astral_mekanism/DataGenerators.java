@@ -17,7 +17,5 @@ public class DataGenerators {
         DataGenerator gen = event.getGenerator();
         PackOutput output = gen.getPackOutput();
         ExistingFileHelper helper = event.getExistingFileHelper();
-
-        // provider は後で追加する
     }
 }
