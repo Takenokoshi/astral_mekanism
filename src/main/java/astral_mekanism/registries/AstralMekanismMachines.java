@@ -54,6 +54,7 @@ import astral_mekanism.block.shape.AMBlockShapes;
 import astral_mekanism.registration.BlockTypeMachine;
 import astral_mekanism.registration.MachineDeferredRegister;
 import astral_mekanism.registration.MachineRegistryObject;
+import astral_mekanism.registration.BlockTypeMachine.BlockMachineBuilder;
 import mekanism.api.Upgrade;
 import mekanism.api.math.FloatingLong;
 import mekanism.common.MekanismLang;
@@ -221,7 +222,7 @@ public class AstralMekanismMachines {
                     AstralMekanismLang.DESCRIPTION_GREENHOUSE,
                     builder -> builder.withEnergyConfig(
                             () -> FloatingLong.create(10000 * AstralMekanismConfig.energyRate),
-                            () -> FloatingLong.MAX_VALUE));//here
+                            () -> FloatingLong.MAX_VALUE));
 
     public static final MachineRegistryObject<BEAstralIsotopicCentrifuge, BlockTileModel<BEAstralIsotopicCentrifuge, BlockTypeMachine<BEAstralIsotopicCentrifuge>>, MekanismTileContainer<BEAstralIsotopicCentrifuge>, ItemBlockMachine> ASTRAL_ISOTOPIC_CENTRIFUGE = MACHINES
             .registerSimple("astral_isotopic_centrifuge",
@@ -278,8 +279,7 @@ public class AstralMekanismMachines {
                     builder -> builder
                             .withEnergyConfig(MekanismConfig.usage.pressurizedReactionBase,
                                     () -> FloatingLong.MAX_VALUE)
-                            .withSound(MekanismSounds.PRESSURIZED_REACTION_CHAMBER)
-                            .withCustomShape(AMBlockShapes.ASTRAL_PRC));
+                            .withSound(MekanismSounds.PRESSURIZED_REACTION_CHAMBER));
 
     public static final MachineRegistryObject<BEAstralPrecisionSawmill, BlockTileModel<BEAstralPrecisionSawmill, BlockTypeMachine<BEAstralPrecisionSawmill>>, MekanismTileContainer<BEAstralPrecisionSawmill>, ItemBlockMachine> ASTRAL_PRECISION_SAWMILL = MACHINES
             .registerSimple("astral_precision_sawmill",
@@ -378,17 +378,14 @@ public class AstralMekanismMachines {
                     AstralMekanismLang.DESCRIPTION_FLUID_INFUSER,
                     builder -> builder.withEnergyConfig(
                             () -> FloatingLong.create(1000 * AstralMekanismConfig.energyRate),
-                            () -> FloatingLong.create(10000000))
-                            .withCustomShape(AMBlockShapes.FLUID_INFUSER));
+                            () -> FloatingLong.create(10000000)));
 
     public static final MachineRegistryObject<BEGlowstoneNeutronActivator, BlockTileModel<BEGlowstoneNeutronActivator, BlockTypeMachine<BEGlowstoneNeutronActivator>>, MekanismTileContainer<BEGlowstoneNeutronActivator>, ItemBlockMachine> GLOWSTONE_NEUTRON_ACTIVATOR = MACHINES
             .registerSimple("glowstone_neutron_activator",
                     BEGlowstoneNeutronActivator::new,
                     BEGlowstoneNeutronActivator.class,
                     AstralMekanismLang.DESCRIPTION_GLOWSTONE_NEUTRON_ACTIVATOR,
-                    builder -> builder
-                            .withCustomShape(AMBlockShapes.GLOWSTONE_NEUTRON_ACTIVATOR)
-                            .removeAttributeUpgrade());
+                    BlockMachineBuilder::removeAttributeUpgrade);
 
     public static final MachineRegistryObject<BEGreenhouse, BlockTileModel<BEGreenhouse, BlockTypeMachine<BEGreenhouse>>, MekanismTileContainer<BEGreenhouse>, ItemBlockMachine> GREENHOUSE = MACHINES
             .registerSimple("greenhouse",
@@ -404,7 +401,7 @@ public class AstralMekanismMachines {
                     BEInfuseSynthesizer::new,
                     BEInfuseSynthesizer.class,
                     MekanismLang.EVAPORATION_PLANT,
-                    builder -> builder.removeAttributeUpgrade());
+                    BlockMachineBuilder::removeAttributeUpgrade);
 
     public static final MachineRegistryObject<BEMekanicalCharger, BlockTileModel<BEMekanicalCharger, BlockTypeMachine<BEMekanicalCharger>>, MekanismTileContainer<BEMekanicalCharger>, ItemBlockMachine> MEKANICAL_CHARGER = MACHINES
             .registerSimple("mekanical_charger",
@@ -413,8 +410,7 @@ public class AstralMekanismMachines {
                     AstralMekanismLang.DESCRIPTION_MEKANICAL_CHARGER,
                     builder -> builder.withEnergyConfig(
                             () -> FloatingLong.create(1000 * AstralMekanismConfig.energyRate),
-                            () -> FloatingLong.create(100000l * AstralMekanismConfig.energyRate))
-                            .withCustomShape(AMBlockShapes.MEKANICAL_CHARGER));
+                            () -> FloatingLong.create(100000l * AstralMekanismConfig.energyRate)));
 
     public static final MachineRegistryObject<BEMekanicalInscriber, BlockTileModel<BEMekanicalInscriber, BlockTypeMachine<BEMekanicalInscriber>>, MekanismTileContainer<BEMekanicalInscriber>, ItemBlockMachine> MEKANICAL_INSCRIBER = MACHINES
             .registerSimple("mekanical_inscriber",

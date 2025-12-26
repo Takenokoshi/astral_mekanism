@@ -1,7 +1,7 @@
 {
     "parent": "astral_mekanism:block/machine_base",
     "textures": {
-        "front": "astral_mekanism:block/astral_machine/precision_sawmill_front",
+        "front": "astral_mekanism:block/astral_machine/mekanical_inscriber_front",
         "top": "astral_mekanism:block/machine_base/up_astral"
     }
 }
