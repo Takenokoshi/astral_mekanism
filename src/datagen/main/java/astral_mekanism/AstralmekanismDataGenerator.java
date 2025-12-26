@@ -1,11 +1,11 @@
 package astral_mekanism;
 
-import astral_mekanism.AstralMekanismID;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.PackOutput;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.common.data.ExistingFileHelper;
+import net.minecraftforge.data.event.GatherDataEvent;
 
 @Mod.EventBusSubscriber(
     modid = AstralMekanismID.MODID,
