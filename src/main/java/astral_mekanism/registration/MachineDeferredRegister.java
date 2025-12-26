@@ -27,14 +27,14 @@ public class MachineDeferredRegister {
     private final TileEntityTypeDeferredRegister tileRegister;
     private final ExtendedContainerDeferredRegister containerRegister;
 
-    private final List<MachineRegistryObject<?, ?, ?, ?>> list;
+    private final List<MachineRegistryObject<?, ?, ?, ?>> machines;
 
     public MachineDeferredRegister(String modId) {
         this.modId = modId;
         this.blockRegister = new BlockDeferredRegister(this.modId);
         this.tileRegister = new TileEntityTypeDeferredRegister(this.modId);
         this.containerRegister = new ExtendedContainerDeferredRegister(this.modId);
-        list = new ArrayList<MachineRegistryObject<?, ?, ?, ?>>();
+        machines = new ArrayList<MachineRegistryObject<?, ?, ?, ?>>();
     }
 
     public <BE extends TileEntityMekanism, BLOCK extends BlockTileModel<BE, BlockTypeMachine<BE>>, CONTAINER extends MekanismTileContainer<BE>, ITEM extends ItemBlockMachine> MachineRegistryObject<BE, BLOCK, CONTAINER, ITEM> registerFull(
@@ -49,7 +49,7 @@ public class MachineDeferredRegister {
         MachineRegistryObject<BE, BLOCK, CONTAINER, ITEM> object = new MachineRegistryObject<>(name, blockRegister,
                 tileRegister, containerRegister, blockCreator,
                 itemCreator, beConstructor, beClass, contConstructor, entry, operator);
-        list.add(object);
+        machines.add(object);
         return object;
     }
 
@@ -167,7 +167,7 @@ public class MachineDeferredRegister {
         containerRegister.register(bus);
     }
 
-    public List<MachineRegistryObject<?,?,?,?>> getMachines(){
-        return list;
+    public List<MachineRegistryObject<?,?,?,?>> getAllMachines(){
+        return machines;
     }
 }
