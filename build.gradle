@@ -86,16 +86,6 @@ minecraft {
             // Specify the modid for data generation, where to output the resulting resource, and where to look for existing resources.
             args '--mod', mod_id, '--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources/')
         }
-        datagen {
-            workingDirectory project.file("run")
-            taskName "data"
-            args "--mod", "astral_mekanism", "--all", "--output", file("src/generated/resources/")
-            mods {
-                astral_mekanism {
-                    source sourceSets.main
-                }
-            }
-        }
     }
 }
 mixin {
