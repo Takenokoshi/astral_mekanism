@@ -1,3 +1,5 @@
+package astral_mekanism;
+
 import astral_mekanism.AstralMekanismID;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraft.data.DataGenerator;
