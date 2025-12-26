@@ -1,1 +1,3 @@
-{"parent":"mekanism:block/purification_chamber"}
+{
+    "parent": "astral_mekanism:block/astral_machine/purification_chamber"
+}

@@ -1,1 +1,3 @@
-{"parent":"mekanism:block/crusher"}
+{
+    "parent": "astral_mekanism:block/astral_machine/crusher"
+}

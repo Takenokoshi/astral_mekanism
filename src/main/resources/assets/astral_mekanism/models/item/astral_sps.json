@@ -1,3 +1,3 @@
 {
-  "parent": "astral_mekanism:block/compact/compact_sps"
+    "parent": "astral_mekanism:block/astral_machine/sps"
 }

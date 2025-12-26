@@ -1,1 +1,3 @@
-{"parent":"mekanism:block/enrichment_chamber"}
+{
+    "parent": "astral_mekanism:block/astral_machine/enrichment_chamber"
+}

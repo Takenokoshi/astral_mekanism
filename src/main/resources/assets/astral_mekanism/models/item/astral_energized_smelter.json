@@ -1,1 +1,3 @@
-{"parent":"mekanism:block/energized_smelter"}
+{
+    "parent": "astral_mekanism:block/astral_machine/energized_smelter"
+}
