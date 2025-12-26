@@ -11,7 +11,7 @@ import net.minecraftforge.common.data.ExistingFileHelper;
     modid = AstralMekanismID.MODID,
     bus = Mod.EventBusSubscriber.Bus.MOD
 )
-public class DataGenerators {
+public class AstralmekanismDataGenerator {
 
     @SubscribeEvent
     public static void gatherData(GatherDataEvent event) {
