@@ -262,11 +262,14 @@ public class MekanismRecipeTypeMixin2 {
                 ItemStackIngredient seedIngredient = IngredientCreatorAccess.item()
                         .createMulti(crop.getIngredients().stream().map(IngredientCreatorAccess.item()::from)
                                 .toArray(ItemStackIngredient[]::new));
-                ItemStackIngredient soilIngredient = IngredientCreatorAccess.item()
-                        .createMulti(soils.stream()
-                                .filter(s -> crop.canGrowInSoil(null, null, null, s))
-                                .map(s -> IngredientCreatorAccess.item().from(s.getIngredient()))
-                                .toArray(ItemStackIngredient[]::new));
+                ItemStackIngredient[] soilsoil = soils.stream()
+                        .filter(s -> crop.canGrowInSoil(null, null, null, s))
+                        .map(s -> IngredientCreatorAccess.item().from(s.getIngredient()))
+                        .toArray(ItemStackIngredient[]::new);
+                if (soilsoil.length == 0) {
+                    continue;
+                }
+                ItemStackIngredient soilIngredient = IngredientCreatorAccess.item().createMulti(soilsoil);
                 List<ItemStack> stacks = crop.generateDrops(new FakeRandom(), null, null, null);
                 TripleItemOutput output = new TripleItemOutput(ItemStackUtils.copyWithMultiply(stacks.get(0), 2),
                         stacks.size() >= 2 ? stacks.get(1) : ItemStack.EMPTY,
