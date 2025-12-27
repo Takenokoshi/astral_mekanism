@@ -120,7 +120,7 @@ public class BEAstralGreenhouse extends TileEntityRecipeMachine<GreenhouseRecipe
         builder.addSlot(extraOutputSlot = OutputInventorySlot.at(recipeCacheListener, 116, 53));
         builder.addSlot(energySlot = EnergyInventorySlot.fillOrConvert(energyContainer,
                 this::getLevel, recipeCacheListener, 155, 14));
-        builder.addSlot(fluidSlot = FluidInventorySlot.fill(fluidTank, recipeCacheListener, 46, 45));
+        builder.addSlot(fluidSlot = FluidInventorySlot.fill(fluidTank, recipeCacheListener, 28, 45));
         return builder.build();
     }
 

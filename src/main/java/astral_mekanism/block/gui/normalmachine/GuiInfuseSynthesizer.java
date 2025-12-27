@@ -29,9 +29,9 @@ public class GuiInfuseSynthesizer
     protected void addGuiElements() {
         super.addGuiElements();
         addRenderableWidget(new GuiInfusionGauge(tile::getInfusionTank, () -> tile.getInfusionTanks(null),
-                GaugeType.SMALL, this, 114, 23))
+                GaugeType.STANDARD, this, 131, 13))
                 .warning(WarningType.NO_SPACE_IN_OUTPUT, tile.getWarningCheck(RecipeError.NOT_ENOUGH_OUTPUT_SPACE));
-        addRenderableWidget(new GuiProgress(tile::getActive, ProgressType.SMALL_RIGHT, this, 82, 39))
+        addRenderableWidget(new GuiProgress(tile::getActive, ProgressType.LARGE_RIGHT, this, 64, 40))
                 .jeiCategories(MekanismJEIRecipeType.INFUSION_CONVERSION)
                 .warning(WarningType.NO_MATCHING_RECIPE, tile.getWarningCheck(RecipeError.INPUT_DOESNT_PRODUCE_OUTPUT));
     }

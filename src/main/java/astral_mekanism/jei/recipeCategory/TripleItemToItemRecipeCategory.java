@@ -2,7 +2,7 @@ package astral_mekanism.jei.recipeCategory;
 
 import astral_mekanism.recipes.recipe.TripleItemToItemRecipe;
 import mekanism.api.providers.IItemProvider;
-import mekanism.client.gui.element.bar.GuiVerticalPowerBar;
+import mekanism.client.gui.element.bar.GuiHorizontalPowerBar;
 import mekanism.client.gui.element.progress.ProgressType;
 import mekanism.client.gui.element.slot.GuiSlot;
 import mekanism.client.gui.element.slot.SlotType;
@@ -22,13 +22,13 @@ public class TripleItemToItemRecipeCategory extends BaseRecipeCategory<TripleIte
     public TripleItemToItemRecipeCategory(IGuiHelper helper,
             MekanismJEIRecipeType<TripleItemToItemRecipe> recipeType, IItemProvider provider) {
         super(helper, recipeType, provider, 3, 10, 170, 60);
-        inputItemA = addSlot(SlotType.INPUT, 46, 35);
-        inputItemB = addSlot(SlotType.INPUT, 64, 35);
-        inputItemC = addSlot(SlotType.INPUT, 82, 35);
+        inputItemA = addSlot(SlotType.INPUT, 28, 35);
+        inputItemB = addSlot(SlotType.INPUT, 46, 35);
+        inputItemC = addSlot(SlotType.INPUT, 64, 35);
         outputItem = addSlot(SlotType.OUTPUT, 134, 35);
         addSlot(SlotType.POWER, 155, 14);
-        addElement(new GuiVerticalPowerBar(this, FULL_BAR, 164, 15));
-        this.addSimpleProgress(ProgressType.RIGHT, 100, 39);
+        addElement(new GuiHorizontalPowerBar(this, FULL_BAR, 115, 75));
+        this.addSimpleProgress(ProgressType.LARGE_RIGHT, 100, 39);
     }
 
     @Override

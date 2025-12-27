@@ -139,9 +139,9 @@ public class BEMekanicalTransformer extends TileEntityProgressMachine<MekanicalT
                 this::containsRecipeD, recipeCacheListener, 64, 35))
                 .tracksWarnings(
                         slot -> slot.warning(WarningType.NO_MATCHING_RECIPE, getWarningCheck(NOT_ENOUGH_INPUT_D)));
-        builder.addSlot(outputSlot = OutputInventorySlot.at(recipeCacheListener, 116, 35));
+        builder.addSlot(outputSlot = OutputInventorySlot.at(recipeCacheListener, 110, 35));
         builder.addSlot(
-                energySlot = EnergyInventorySlot.fillOrConvert(energyContainer, this::getLevel, listener, 155, 14));
+                energySlot = EnergyInventorySlot.fillOrConvert(energyContainer, this::getLevel, listener, 28, 35));
         builder.addSlot(fluidSlot = FluidInventorySlot.drain(fluidTank, listener, 134, 53));
         return builder.build();
     }
