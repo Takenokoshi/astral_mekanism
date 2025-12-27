@@ -114,7 +114,7 @@ public class BEAstralGreenhouse extends TileEntityRecipeMachine<GreenhouseRecipe
                 this::containsRecipeA, recipeCacheListener, 64, 17));
         builder.addSlot(farmlandSlot = InputInventorySlot.at(
                 f -> containsRecipeBAC(seedInputSlot.getStack(), f, fluidTank.getFluid()),
-                this::containsRecipeA, recipeCacheListener, 64, 53));
+                this::containsRecipeB, recipeCacheListener, 64, 53));
         builder.addSlot(mainOutputSlot = OutputInventorySlot.at(recipeCacheListener, 116, 17));
         builder.addSlot(seedOutputSlot = OutputInventorySlot.at(recipeCacheListener, 116, 35));
         builder.addSlot(extraOutputSlot = OutputInventorySlot.at(recipeCacheListener, 116, 53));

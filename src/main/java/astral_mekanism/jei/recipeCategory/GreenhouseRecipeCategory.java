@@ -35,9 +35,9 @@ public class GreenhouseRecipeCategory extends BaseRecipeCategory<GreenhouseRecip
         outputMain = addSlot(SlotType.OUTPUT, 116, 17);
         outputSeed = addSlot(SlotType.OUTPUT, 64, 35);
         outputExtra = addSlot(SlotType.OUTPUT, 64, 53);
-        fluidGauge = addElement(GuiFluidGauge.getDummy(GaugeType.STANDARD.with(DataType.INPUT), this, 7, 29));
+        fluidGauge = addElement(GuiFluidGauge.getDummy(GaugeType.SMALL.with(DataType.INPUT), this, 46, 17));
         addSlot(SlotType.POWER, 155, 14);
-        addSlot(SlotType.EXTRA, 10, 53);
+        addSlot(SlotType.EXTRA, 46, 45);
         addElement(new GuiVerticalPowerBar(this, FULL_BAR, 164, 15));
         addSimpleProgress(ProgressType.BAR, 86, 38);
     }
