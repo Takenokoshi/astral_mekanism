@@ -99,6 +99,13 @@ public class BEInfuseSynthesizer extends TileEntityRecipeMachine<ItemStackToInfu
     }
 
     @Override
+    protected void onUpdateServer() {
+        super.onUpdateServer();
+        infusionSlot.drainTank();
+        recipeCacheLookupMonitor.updateAndProcess();
+    }
+
+    @Override
     public @NotNull IMekanismRecipeTypeProvider<ItemStackToInfuseTypeRecipe, SingleItem<ItemStackToInfuseTypeRecipe>> getRecipeType() {
         return MekanismRecipeType.INFUSION_CONVERSION;
     }
