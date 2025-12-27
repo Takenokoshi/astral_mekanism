@@ -33,8 +33,8 @@ public class GreenhouseRecipeCategory extends BaseRecipeCategory<GreenhouseRecip
         inputSeed = addSlot(SlotType.INPUT, 64, 17);
         farmland = addSlot(SlotType.INPUT, 64, 53);
         outputMain = addSlot(SlotType.OUTPUT, 116, 17);
-        outputSeed = addSlot(SlotType.OUTPUT, 64, 35);
-        outputExtra = addSlot(SlotType.OUTPUT, 64, 53);
+        outputSeed = addSlot(SlotType.OUTPUT, 116, 35);
+        outputExtra = addSlot(SlotType.OUTPUT, 116, 53);
         fluidGauge = addElement(GuiFluidGauge.getDummy(GaugeType.SMALL.with(DataType.INPUT), this, 46, 17));
         addSlot(SlotType.POWER, 155, 14);
         addSlot(SlotType.EXTRA, 46, 45);
