@@ -76,6 +76,14 @@ minecraft {
             property 'forge.enabledGameTestNamespaces', mod_id
         }
         data {
+
+            mods {
+    astral_mekanism {
+        source sourceSets.main
+        source sourceSets.datagen
+    }
+}
+
             workingDirectory project.file("run")
 
             source sourceSets.datagen
