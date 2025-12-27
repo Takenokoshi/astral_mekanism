@@ -1,5 +1,6 @@
 {
 	"format_version": "1.9.0",
+    "parent": "block/block",
 	"credit": "Made with Blockbench",
 	"textures": {
 		"front": "astral_mekanism:block/machine_base/front",
