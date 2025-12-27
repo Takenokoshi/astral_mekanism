@@ -30,14 +30,14 @@ public class GreenhouseRecipeCategory extends BaseRecipeCategory<GreenhouseRecip
     public GreenhouseRecipeCategory(IGuiHelper helper, MekanismJEIRecipeType<GreenhouseRecipe> recipeType,
             IItemProvider provider) {
         super(helper, recipeType, provider, 28, 16, 144, 54);
-        inputSeed = addSlot(SlotType.INPUT, 64, 17);
-        farmland = addSlot(SlotType.INPUT, 64, 53);
+        inputSeed = addSlot(SlotType.INPUT, 64, 26);
+        farmland = addSlot(SlotType.INPUT, 64, 44);
         outputMain = addSlot(SlotType.OUTPUT, 116, 17);
         outputSeed = addSlot(SlotType.OUTPUT, 116, 35);
         outputExtra = addSlot(SlotType.OUTPUT, 116, 53);
-        fluidGauge = addElement(GuiFluidGauge.getDummy(GaugeType.SMALL.with(DataType.INPUT), this, 26, 15));
-        addSlot(SlotType.POWER, 155, 14);
-        addSlot(SlotType.EXTRA, 46, 45);
+        fluidGauge = addElement(GuiFluidGauge.getDummy(GaugeType.SMALL.with(DataType.INPUT), this, 27, 15));
+        addSlot(SlotType.POWER, 147, 14);
+        addSlot(SlotType.EXTRA, 28, 45);
         addElement(new GuiVerticalPowerBar(this, FULL_BAR, 164, 15));
         addSimpleProgress(ProgressType.BAR, 86, 38);
     }

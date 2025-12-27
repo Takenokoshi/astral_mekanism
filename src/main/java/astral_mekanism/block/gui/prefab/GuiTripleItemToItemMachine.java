@@ -30,7 +30,7 @@ public class GuiTripleItemToItemMachine<BE extends TileEntityRecipeMachine<Tripl
     @Override
     protected void addGuiElements() {
         super.addGuiElements();
-        addRenderableWidget(new GuiHorizontalPowerBar(this, tile.getEnergyContainer(), 115, 75))
+        addRenderableWidget(new GuiHorizontalPowerBar(this, tile.getEnergyContainer(), 115, 57))
                 .warning(WarningType.NOT_ENOUGH_ENERGY, tile.getWarningCheck(RecipeError.NOT_ENOUGH_ENERGY))
                 .warning(WarningType.NOT_ENOUGH_ENERGY_REDUCED_RATE,
                         tile.getWarningCheck(RecipeError.NOT_ENOUGH_ENERGY_REDUCED_RATE));

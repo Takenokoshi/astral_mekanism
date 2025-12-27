@@ -29,6 +29,7 @@ import mekanism.common.capabilities.holder.fluid.FluidTankHelper;
 import mekanism.common.capabilities.holder.fluid.IFluidTankHolder;
 import mekanism.common.capabilities.holder.slot.IInventorySlotHolder;
 import mekanism.common.capabilities.holder.slot.InventorySlotHelper;
+import mekanism.common.inventory.container.slot.SlotOverlay;
 import mekanism.common.inventory.slot.EnergyInventorySlot;
 import mekanism.common.inventory.slot.FluidInventorySlot;
 import mekanism.common.inventory.slot.InputInventorySlot;
@@ -111,16 +112,17 @@ public class BEAstralGreenhouse extends TileEntityRecipeMachine<GreenhouseRecipe
                 this::getConfig);
         builder.addSlot(seedInputSlot = InputInventorySlot.at(
                 s -> containsRecipeABC(s, farmlandSlot.getStack(), fluidTank.getFluid()),
-                this::containsRecipeA, recipeCacheListener, 64, 17));
+                this::containsRecipeA, recipeCacheListener, 64, 26));
         builder.addSlot(farmlandSlot = InputInventorySlot.at(
                 f -> containsRecipeBAC(seedInputSlot.getStack(), f, fluidTank.getFluid()),
-                this::containsRecipeB, recipeCacheListener, 64, 53));
+                this::containsRecipeB, recipeCacheListener, 64, 44));
         builder.addSlot(mainOutputSlot = OutputInventorySlot.at(recipeCacheListener, 116, 17));
         builder.addSlot(seedOutputSlot = OutputInventorySlot.at(recipeCacheListener, 116, 35));
         builder.addSlot(extraOutputSlot = OutputInventorySlot.at(recipeCacheListener, 116, 53));
         builder.addSlot(energySlot = EnergyInventorySlot.fillOrConvert(energyContainer,
-                this::getLevel, recipeCacheListener, 155, 14));
+                this::getLevel, recipeCacheListener, 147, 14));
         builder.addSlot(fluidSlot = FluidInventorySlot.fill(fluidTank, recipeCacheListener, 28, 45));
+        fluidSlot.setSlotOverlay(SlotOverlay.MINUS);
         return builder.build();
     }
 

@@ -25,6 +25,7 @@ import mekanism.common.capabilities.holder.chemical.ChemicalTankHelper;
 import mekanism.common.capabilities.holder.chemical.IChemicalTankHolder;
 import mekanism.common.capabilities.holder.slot.IInventorySlotHolder;
 import mekanism.common.capabilities.holder.slot.InventorySlotHelper;
+import mekanism.common.inventory.container.slot.SlotOverlay;
 import mekanism.common.inventory.slot.InputInventorySlot;
 import mekanism.common.inventory.slot.chemical.ChemicalInventorySlot;
 import mekanism.common.lib.transmitter.TransmissionType;
@@ -73,7 +74,8 @@ public class BEInfuseSynthesizer extends TileEntityRecipeMachine<ItemStackToInfu
             IContentsListener recipeCacheListener) {
         InventorySlotHelper builder = InventorySlotHelper.forSideWithConfig(this::getDirection, this::getConfig);
         builder.addSlot(inputSlot = InputInventorySlot.at(this::containsRecipe, recipeCacheListener, 26, 36));
-        builder.addSlot(infusionSlot = new DrainInfusionSlot(infusionTank, recipeCacheListener, 102, 52));
+        builder.addSlot(infusionSlot = new DrainInfusionSlot(infusionTank, recipeCacheListener, 112, 56));
+        infusionSlot.setSlotOverlay(SlotOverlay.PLUS);
         return builder.build();
     }
 

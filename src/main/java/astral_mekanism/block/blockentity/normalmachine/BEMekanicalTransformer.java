@@ -30,6 +30,7 @@ import mekanism.common.capabilities.holder.fluid.FluidTankHelper;
 import mekanism.common.capabilities.holder.fluid.IFluidTankHolder;
 import mekanism.common.capabilities.holder.slot.IInventorySlotHolder;
 import mekanism.common.capabilities.holder.slot.InventorySlotHelper;
+import mekanism.common.inventory.container.slot.SlotOverlay;
 import mekanism.common.inventory.slot.EnergyInventorySlot;
 import mekanism.common.inventory.slot.FluidInventorySlot;
 import mekanism.common.inventory.slot.InputInventorySlot;
@@ -141,8 +142,9 @@ public class BEMekanicalTransformer extends TileEntityProgressMachine<MekanicalT
                         slot -> slot.warning(WarningType.NO_MATCHING_RECIPE, getWarningCheck(NOT_ENOUGH_INPUT_D)));
         builder.addSlot(outputSlot = OutputInventorySlot.at(recipeCacheListener, 110, 35));
         builder.addSlot(
-                energySlot = EnergyInventorySlot.fillOrConvert(energyContainer, this::getLevel, listener, 28, 35));
+                energySlot = EnergyInventorySlot.fillOrConvert(energyContainer, this::getLevel, listener, 10, 53));
         builder.addSlot(fluidSlot = FluidInventorySlot.drain(fluidTank, listener, 134, 53));
+        fluidSlot.setSlotOverlay(SlotOverlay.PLUS);
         return builder.build();
     }
 

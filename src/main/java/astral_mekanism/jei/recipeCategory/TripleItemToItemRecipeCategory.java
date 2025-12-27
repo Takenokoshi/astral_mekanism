@@ -27,8 +27,8 @@ public class TripleItemToItemRecipeCategory extends BaseRecipeCategory<TripleIte
         inputItemC = addSlot(SlotType.INPUT, 64, 35);
         outputItem = addSlot(SlotType.OUTPUT, 134, 35);
         addSlot(SlotType.POWER, 155, 14);
-        addElement(new GuiHorizontalPowerBar(this, FULL_BAR, 115, 75));
-        this.addSimpleProgress(ProgressType.LARGE_RIGHT, 100, 39);
+        addElement(new GuiHorizontalPowerBar(this, FULL_BAR, 115, 57));
+        this.addSimpleProgress(ProgressType.LARGE_RIGHT, 82, 39);
     }
 
     @Override
