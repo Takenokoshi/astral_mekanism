@@ -36,6 +36,7 @@ import mekanism.common.inventory.slot.OutputInventorySlot;
 import mekanism.common.lib.transmitter.TransmissionType;
 import mekanism.common.recipe.IMekanismRecipeTypeProvider;
 import mekanism.common.tile.component.TileComponentConfig;
+import mekanism.common.tile.component.TileComponentEjector;
 import mekanism.common.tile.component.config.ConfigInfo;
 import mekanism.common.tile.component.config.DataType;
 import mekanism.common.tile.component.config.slot.InventorySlotInfo;
@@ -89,6 +90,8 @@ public class BEGreenhouse extends TileEntityProgressMachine<GreenhouseRecipe> im
         info.addSlotInfo(DataType.OUTPUT_2, new InventorySlotInfo(false, true, seedOutputSlot, extraOutputSlot));
         info.addSlotInfo(DataType.OUTPUT,
                 new InventorySlotInfo(false, true, mainOutputSlot, seedOutputSlot, extraOutputSlot));
+        ejectorComponent = new TileComponentEjector(this);
+        ejectorComponent.setOutputData(configComponent, TransmissionType.ITEM);
         configComponent.setupInputConfig(TransmissionType.FLUID, fluidTank);
         seedHandler = CatalystHelper.getCatalystHandler(seedInputSlot, NOT_ENOUGH_SEED);
         farmlandHandler = CatalystHelper.getCatalystHandler(farmlandSlot, NOT_ENOUGH_FARMLAND);
