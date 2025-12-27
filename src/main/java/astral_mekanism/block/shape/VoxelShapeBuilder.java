@@ -39,7 +39,7 @@ public class VoxelShapeBuilder {
 
     public VoxelShape[] build4() {
         VoxelShape[] result = new VoxelShape[4];
-        VoxelShapeUtils.setShape(shape, result);
+        VoxelShapeUtils.setShape(shape.optimize(), result);
         return result;
     }
 }

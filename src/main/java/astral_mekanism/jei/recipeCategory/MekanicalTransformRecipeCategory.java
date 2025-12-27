@@ -30,7 +30,7 @@ public class MekanicalTransformRecipeCategory extends BaseRecipeCategory<Mekanic
 
     public MekanicalTransformRecipeCategory(IGuiHelper helper,
             MekanismJEIRecipeType<MekanicalTransformRecipe> recipeType, IItemProvider provider) {
-        super(helper, recipeType, provider, 28, 16, 144, 54);
+        super(helper, recipeType, provider, 3, 10, 170, 60);
         inputA = addSlot(SlotType.INPUT, 10, 35);
         inputB = addSlot(SlotType.INPUT, 28, 35);
         inputC = addSlot(SlotType.INPUT, 46, 35);
