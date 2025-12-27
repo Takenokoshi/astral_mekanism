@@ -2,6 +2,6 @@
     "parent": "astral_mekanism:block/machine_base",
     "textures": {
         "front": "astral_mekanism:block/astral_machine/mekanical_transformer_front",
-        "top": "astral_mekanism:block/machine_base/up_astral"
+        "up": "astral_mekanism:block/machine_base/up_astral"
     }
 }
