@@ -269,9 +269,10 @@ public class MekanismRecipeTypeMixin2 {
                 }
                 ItemStackIngredient soilIngredient = IngredientCreatorAccess.item().createMulti(soilsoil);
                 List<ItemStack> stacks = crop.generateDrops(new FakeRandom(), null, null, null);
+                int size = stacks.size();
                 TripleItemOutput output = new TripleItemOutput(ItemStackUtils.copyWithMultiply(stacks.get(0), 2),
-                        stacks.size() >= 2 ? stacks.get(1) : ItemStack.EMPTY,
-                        stacks.size() >= 3 ? stacks.get(2) : ItemStack.EMPTY);
+                        size >= 2 ? stacks.get(size - 1) : ItemStack.EMPTY,
+                        size >= 3 ? stacks.get(size - 2) : ItemStack.EMPTY);
                 recipes.add((RECIPE) new GreenhouseIRecipe(crop.getId(), seedIngredient, soilIngredient,
                         IngredientCreatorAccess.fluid().from(new FluidStack(Fluids.WATER, 10000)),
                         output));

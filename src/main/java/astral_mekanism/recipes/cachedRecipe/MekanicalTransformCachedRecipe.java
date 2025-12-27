@@ -97,6 +97,7 @@ public class MekanicalTransformCachedRecipe extends CachedRecipe<MekanicalTransf
         if (!recipe.isDCatalyst()) {
             itemDInputHandler.use(itemDRecipeInput, arg0);
         }
+        outputHandler.handleOutput(recipeOutput, arg0);
 
     }
 
