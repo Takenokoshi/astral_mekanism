@@ -1,5 +1,6 @@
 package astral_mekanism.jei.recipeCategory;
 
+import astral_mekanism.recipes.output.ItemFluidOutput;
 import astral_mekanism.recipes.recipe.MekanicalTransformRecipe;
 import mekanism.api.providers.IItemProvider;
 import mekanism.client.gui.element.bar.GuiVerticalPowerBar;
@@ -57,8 +58,10 @@ public class MekanicalTransformRecipeCategory extends BaseRecipeCategory<Mekanic
         initItem(builder,
                 recipe.isDCatalyst() ? RecipeIngredientRole.CATALYST : RecipeIngredientRole.INPUT,
                 inputD, recipe.getInputItemD().getRepresentations());
+        initItem(builder, RecipeIngredientRole.OUTPUT, output,
+                recipe.getOutputDefinition().stream().map(ItemFluidOutput::item).toList());
         initFluid(builder, RecipeIngredientRole.OUTPUT, outputGauge,
-                recipe.getOutputDefinition().stream().map(output -> output.fluid()).toList());
+                recipe.getOutputDefinition().stream().map(ItemFluidOutput::fluid).toList());
     }
 
 }

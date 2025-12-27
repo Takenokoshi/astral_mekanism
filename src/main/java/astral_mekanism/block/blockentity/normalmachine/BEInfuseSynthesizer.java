@@ -72,8 +72,8 @@ public class BEInfuseSynthesizer extends TileEntityRecipeMachine<ItemStackToInfu
     public IInventorySlotHolder getInitialInventory(IContentsListener listener,
             IContentsListener recipeCacheListener) {
         InventorySlotHelper builder = InventorySlotHelper.forSideWithConfig(this::getDirection, this::getConfig);
-        builder.addSlot(inputSlot = InputInventorySlot.at(recipeCacheListener, 8, 18));
-        builder.addSlot(infusionSlot = new DrainInfusionSlot(infusionTank, recipeCacheListener, 26, 28));
+        builder.addSlot(inputSlot = InputInventorySlot.at(recipeCacheListener, 64, 35));
+        builder.addSlot(infusionSlot = new DrainInfusionSlot(infusionTank, recipeCacheListener, 116, 53));
         return builder.build();
     }
 
