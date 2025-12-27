@@ -34,7 +34,7 @@ public class AMIRecipeLookUpHandler {
             extends ITripleRecipeLookupHandler<ItemStack, ItemStack, FluidStack, RECIPE, ItemItemFluid<RECIPE>> {
     }
 
-    public static interface QuadItemRecipeLookUpHandler<RECIPE extends MekanismRecipe & QuadPredicate<ItemStack, ItemStack, ItemStack, ItemStack>>
+    public static interface QuadrupleItemRecipeLookUpHandler<RECIPE extends MekanismRecipe & QuadPredicate<ItemStack, ItemStack, ItemStack, ItemStack>>
             extends IQuadrupleRecipeLookUpHandler<ItemStack, ItemStack, ItemStack, ItemStack, RECIPE, QuadItem<RECIPE>> {
     }
 

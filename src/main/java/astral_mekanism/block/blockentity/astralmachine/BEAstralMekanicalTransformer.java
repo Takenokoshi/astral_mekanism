@@ -131,18 +131,18 @@ public class BEAstralMekanicalTransformer extends TileEntityRecipeMachine<Mekani
                         slot -> slot.warning(WarningType.NO_MATCHING_RECIPE, getWarningCheck(NOT_ENOUGH_INPUT_B)));
         builder.addSlot(inputSlotC = InputInventorySlot.at(
                 stack -> containsRecipeCABD(inputSlotA.getStack(), inputSlotB.getStack(), stack, inputSlotD.getStack()),
-                this::containsRecipeA, recipeCacheListener, 46, 35))
+                this::containsRecipeC, recipeCacheListener, 46, 35))
                 .tracksWarnings(
                         slot -> slot.warning(WarningType.NO_MATCHING_RECIPE, getWarningCheck(NOT_ENOUGH_INPUT_C)));
         builder.addSlot(inputSlotD = InputInventorySlot.at(
                 stack -> containsRecipeDABC(inputSlotA.getStack(), inputSlotB.getStack(), inputSlotC.getStack(), stack),
-                this::containsRecipeA, recipeCacheListener, 64, 35))
+                this::containsRecipeD, recipeCacheListener, 64, 35))
                 .tracksWarnings(
                         slot -> slot.warning(WarningType.NO_MATCHING_RECIPE, getWarningCheck(NOT_ENOUGH_INPUT_D)));
         builder.addSlot(outputSlot = OutputInventorySlot.at(recipeCacheListener, 116, 35));
         builder.addSlot(
                 energySlot = EnergyInventorySlot.fillOrConvert(energyContainer, this::getLevel, listener, 155, 14));
-        builder.addSlot(fluidSlot = FluidInventorySlot.drain(fluidTank, listener, 10, 53));
+        builder.addSlot(fluidSlot = FluidInventorySlot.drain(fluidTank, listener, 134, 53));
         return builder.build();
     }
 
