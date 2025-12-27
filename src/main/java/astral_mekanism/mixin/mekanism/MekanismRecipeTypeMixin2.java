@@ -1,7 +1,6 @@
 package astral_mekanism.mixin.mekanism;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
@@ -261,11 +260,11 @@ public class MekanismRecipeTypeMixin2 {
                     }).map(s -> (BasicSoil) s).toList();
             for (BasicCrop crop : crops) {
                 ItemStackIngredient seedIngredient = IngredientCreatorAccess.item()
-                        .createMulti(crop.getIngredients().stream().map(i -> IngredientCreatorAccess.item().from(i))
+                        .createMulti(crop.getIngredients().stream().map(IngredientCreatorAccess.item()::from)
                                 .toArray(ItemStackIngredient[]::new));
                 ItemStackIngredient soilIngredient = IngredientCreatorAccess.item()
                         .createMulti(soils.stream()
-                                .filter(s -> !Collections.disjoint(s.getCategories(), crop.getSoilCategories()))
+                                .filter(s -> crop.canGrowInSoil(null, null, null, s))
                                 .map(s -> IngredientCreatorAccess.item().from(s.getIngredient()))
                                 .toArray(ItemStackIngredient[]::new));
                 List<ItemStack> stacks = crop.generateDrops(new FakeRandom(), null, null, null);
@@ -282,6 +281,7 @@ public class MekanismRecipeTypeMixin2 {
                         ItemStackUtils.copyWithMultiply(output, 3)));
             }
             cir.setReturnValue(recipes);
+            return;
         }
 
         if (Objects.equals(type.getRegistryName(),
