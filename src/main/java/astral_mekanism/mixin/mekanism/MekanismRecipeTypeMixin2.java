@@ -259,9 +259,7 @@ public class MekanismRecipeTypeMixin2 {
                         return false;
                     }).map(s -> (BasicSoil) s).toList();
             for (BasicCrop crop : crops) {
-                ItemStackIngredient seedIngredient = IngredientCreatorAccess.item()
-                        .createMulti(crop.getIngredients().stream().map(IngredientCreatorAccess.item()::from)
-                                .toArray(ItemStackIngredient[]::new));
+                ItemStackIngredient seedIngredient = IngredientCreatorAccess.item().from(crop.getSeed());
                 ItemStackIngredient[] soilsoil = soils.stream()
                         .filter(s -> crop.canGrowInSoil(null, null, null, s))
                         .map(s -> IngredientCreatorAccess.item().from(s.getIngredient()))
