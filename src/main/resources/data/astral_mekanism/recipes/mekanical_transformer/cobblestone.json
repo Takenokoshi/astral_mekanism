@@ -8,13 +8,13 @@
     },
     "itemInputB": {
         "ingredient": {
-            "tag": "forge:tools/pickaxes"
+            "item": "minecraft:iron_pickaxe"
         },
         "amount": 1
     },
     "itemInputC": {
         "ingredient": {
-            "tag": "forge:tools/pickaxes"
+            "item": "minecraft:iron_pickaxe"
         },
         "amount": 1
     },

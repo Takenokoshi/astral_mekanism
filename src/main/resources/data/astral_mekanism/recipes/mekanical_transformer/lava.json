@@ -8,20 +8,7 @@
     },
     "itemInputB": {
         "ingredient": {
-            "tags": [
-                "minecraft:base_stone_overworld",
-                "minecraft:logs",
-                "minecraft:planks",
-                "forge:stone",
-                "forge:glass"
-            ],
-            "items": [
-                "minecraft:obsidian",
-                "minecraft:iron_block",
-                "minecraft:copper_block",
-                "minecraft:bricks",
-                "minecraft:smooth_basalt"
-            ]
+            "item":"minecraft:glass"
         },
         "amount": 1
     },
