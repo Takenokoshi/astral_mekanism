@@ -138,7 +138,7 @@ public class BEAstralGreenhouse extends TileEntityRecipeMachine<GreenhouseRecipe
     protected IFluidTankHolder getInitialFluidTanks(IContentsListener listener,
             IContentsListener recipeCacheListener) {
         FluidTankHelper builder = FluidTankHelper.forSideWithConfig(this::getDirection, this::getConfig);
-        builder.addTank(fluidTank = BasicFluidTank.input(100000,
+        builder.addTank(fluidTank = BasicFluidTank.input(0x7fffffff,
                 stack -> containsRecipeCAB(seedInputSlot.getStack(), farmlandSlot.getStack(), stack),
                 this::containsRecipeC, recipeCacheListener));
         return builder.build();
