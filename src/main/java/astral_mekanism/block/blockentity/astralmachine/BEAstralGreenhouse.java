@@ -120,7 +120,7 @@ public class BEAstralGreenhouse extends TileEntityRecipeMachine<GreenhouseRecipe
         builder.addSlot(extraOutputSlot = OutputInventorySlot.at(recipeCacheListener, 116, 53));
         builder.addSlot(energySlot = EnergyInventorySlot.fillOrConvert(energyContainer,
                 this::getLevel, recipeCacheListener, 155, 14));
-        builder.addSlot(fluidSlot = FluidInventorySlot.fill(fluidTank, recipeCacheListener, 10, 53));
+        builder.addSlot(fluidSlot = FluidInventorySlot.fill(fluidTank, recipeCacheListener, 46, 45));
         return builder.build();
     }
 
@@ -187,6 +187,11 @@ public class BEAstralGreenhouse extends TileEntityRecipeMachine<GreenhouseRecipe
     @Override
     public double getProgressScaled() {
         return getActive() ? 1 : 0;
+    }
+
+    @Override
+    public RecipeError notEnoughFluid() {
+        return NOT_ENOUGH_FLUID;
     }
 
 }

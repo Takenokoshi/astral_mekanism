@@ -32,7 +32,8 @@ public class GuiGreenhouse<BE extends TileEntityRecipeMachine<GreenhouseRecipe> 
     protected void addGuiElements() {
         super.addGuiElements();
         addRenderableWidget(new GuiFluidGauge(tile::getFluidTank, () -> tile.getFluidTanks(null),
-                GaugeType.STANDARD, this, 7, 29));
+                GaugeType.SMALL, this, 46, 17))
+                .warning(WarningType.INPUT_DOESNT_PRODUCE_OUTPUT, tile.getWarningCheck(tile.notEnoughFluid()));
         addRenderableWidget(new GuiVerticalPowerBar(this, tile.getEnergyContainer(), 164, 15))
                 .warning(WarningType.NOT_ENOUGH_ENERGY, tile.getWarningCheck(RecipeError.NOT_ENOUGH_ENERGY));
         addRenderableWidget(new GuiEnergyTab(this, tile.getEnergyContainer(), tile::getActive));
