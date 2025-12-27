@@ -1,0 +1,907 @@
+[2712月2025 09:01:06.342] [main/INFO] [cpw.mods.modlauncher.Launcher/MODLAUNCHER]: ModLauncher running: args [--launchTarget, forgedatauserdev, --assetIndex, 5, --assetsDir, C:\Users\user\.gradle\caches\forge_gradle\assets, --gameDir, ., --fml.forgeVersion, 47.4.0, --fml.mcVersion, 1.20.1, --fml.forgeGroup, net.minecraftforge, --fml.mcpVersion, 20230612.114412, --mod, astral_mekanism, --all, --output, C:\Users\user\Documents\TR\astral_mekanism\astral_mekanism\src\generated\resources, --existing, C:\Users\user\Documents\TR\astral_mekanism\astral_mekanism\src\main\resources, --mixin.config, astral_mekanism.mixins.json]
+[2712月2025 09:01:06.351] [main/INFO] [cpw.mods.modlauncher.Launcher/MODLAUNCHER]: ModLauncher 10.0.9+10.0.9+main.dcd20f30 starting: java version 17.0.16 by Eclipse Adoptium; OS Windows 11 arch amd64 version 10.0
+[2712月2025 09:01:06.408] [main/DEBUG] [cpw.mods.modlauncher.LaunchServiceHandler/MODLAUNCHER]: Found launch services [fmlclientdev,forgeclient,minecraft,forgegametestserverdev,fmlserveruserdev,fmlclient,fmldatauserdev,forgeserverdev,forgeserveruserdev,forgeclientdev,forgeclientuserdev,forgeserver,forgedatadev,fmlserver,fmlclientuserdev,fmlserverdev,forgedatauserdev,testharness,forgegametestserveruserdev]
+[2712月2025 09:01:06.436] [main/DEBUG] [cpw.mods.modlauncher.NameMappingServiceHandler/MODLAUNCHER]: Found naming services : [srgtomcp]
+[2712月2025 09:01:06.465] [main/DEBUG] [cpw.mods.modlauncher.LaunchPluginHandler/MODLAUNCHER]: Found launch plugins: [mixin,eventbus,slf4jfixer,object_holder_definalize,runtime_enum_extender,capability_token_subclass,accesstransformer,runtimedistcleaner]
+[2712月2025 09:01:06.484] [main/DEBUG] [cpw.mods.modlauncher.TransformationServicesHandler/MODLAUNCHER]: Discovering transformation services
+[2712月2025 09:01:06.497] [main/DEBUG] [net.minecraftforge.fml.loading.FMLPaths/CORE]: Path GAMEDIR is C:\Users\user\Documents\TR\astral_mekanism\astral_mekanism\run-data
+[2712月2025 09:01:06.497] [main/DEBUG] [net.minecraftforge.fml.loading.FMLPaths/CORE]: Path MODSDIR is C:\Users\user\Documents\TR\astral_mekanism\astral_mekanism\run-data\mods
+[2712月2025 09:01:06.498] [main/DEBUG] [net.minecraftforge.fml.loading.FMLPaths/CORE]: Path CONFIGDIR is C:\Users\user\Documents\TR\astral_mekanism\astral_mekanism\run-data\config
+[2712月2025 09:01:06.499] [main/DEBUG] [net.minecraftforge.fml.loading.FMLPaths/CORE]: Path FMLCONFIG is C:\Users\user\Documents\TR\astral_mekanism\astral_mekanism\run-data\config\fml.toml
+[2712月2025 09:01:06.586] [main/DEBUG] [cpw.mods.modlauncher.TransformationServicesHandler/MODLAUNCHER]: Found additional transformation services from discovery services: 
+[2712月2025 09:01:06.595] [main/INFO] [net.minecraftforge.fml.loading.ImmediateWindowHandler/]: ImmediateWindowProvider not loading because launch target is forgedatauserdev
+[2712月2025 09:01:06.609] [main/DEBUG] [cpw.mods.modlauncher.TransformationServicesHandler/MODLAUNCHER]: Found transformer services : [mixin,fml]
+[2712月2025 09:01:06.610] [main/DEBUG] [cpw.mods.modlauncher.TransformationServicesHandler/MODLAUNCHER]: Transformation services loading
+[2712月2025 09:01:06.611] [main/DEBUG] [cpw.mods.modlauncher.TransformationServiceDecorator/MODLAUNCHER]: Loading service mixin
+[2712月2025 09:01:06.611] [main/DEBUG] [cpw.mods.modlauncher.TransformationServiceDecorator/MODLAUNCHER]: Loaded service mixin
+[2712月2025 09:01:06.612] [main/DEBUG] [cpw.mods.modlauncher.TransformationServiceDecorator/MODLAUNCHER]: Loading service fml
+[2712月2025 09:01:06.614] [main/DEBUG] [net.minecraftforge.fml.loading.LauncherVersion/CORE]: Found FMLLauncher version 1.0
+[2712月2025 09:01:06.614] [main/DEBUG] [net.minecraftforge.fml.loading.FMLLoader/CORE]: FML 1.0 loading
+[2712月2025 09:01:06.614] [main/DEBUG] [net.minecraftforge.fml.loading.FMLLoader/CORE]: FML found ModLauncher version : 10.0.9+10.0.9+main.dcd20f30
+[2712月2025 09:01:06.615] [main/DEBUG] [net.minecraftforge.fml.loading.FMLLoader/CORE]: Requesting CoreMods to not apply the fix for ASMAPI.findFirstInstructionBefore by default
+[2712月2025 09:01:06.617] [main/DEBUG] [net.minecraftforge.fml.loading.FMLLoader/CORE]: FML found AccessTransformer version : 8.0.4+66+master.c09db6d7
+[2712月2025 09:01:06.617] [main/DEBUG] [net.minecraftforge.fml.loading.FMLLoader/CORE]: FML found EventBus version : 6.0.5+6.0.5+master.eb8e549b
+[2712月2025 09:01:06.618] [main/DEBUG] [net.minecraftforge.fml.loading.FMLLoader/CORE]: Found Runtime Dist Cleaner
+[2712月2025 09:01:06.620] [main/DEBUG] [net.minecraftforge.coremod.CoreModEngine/]: CoreMods will preserve legacy behavior of ASMAPI.findFirstInstructionBefore for backwards-compatibility
+[2712月2025 09:01:06.621] [main/DEBUG] [net.minecraftforge.fml.loading.FMLLoader/CORE]: FML found CoreMod version : 5.2.4
+[2712月2025 09:01:06.621] [main/DEBUG] [net.minecraftforge.fml.loading.FMLLoader/CORE]: Found ForgeSPI package implementation version 7.0.1+7.0.1+master.d2b38bf6
+[2712月2025 09:01:06.622] [main/DEBUG] [net.minecraftforge.fml.loading.FMLLoader/CORE]: Found ForgeSPI package specification 5
+[2712月2025 09:01:06.622] [main/DEBUG] [cpw.mods.modlauncher.TransformationServiceDecorator/MODLAUNCHER]: Loaded service fml
+[2712月2025 09:01:06.623] [main/DEBUG] [cpw.mods.modlauncher.TransformationServicesHandler/MODLAUNCHER]: Configuring option handling for services
+[2712月2025 09:01:06.632] [main/DEBUG] [cpw.mods.modlauncher.TransformationServicesHandler/MODLAUNCHER]: Transformation services initializing
+[2712月2025 09:01:06.633] [main/DEBUG] [cpw.mods.modlauncher.TransformationServiceDecorator/MODLAUNCHER]: Initializing transformation service mixin
+[2712月2025 09:01:06.658] [main/DEBUG] [mixin/]: MixinService [ModLauncher] was successfully booted in cpw.mods.cl.ModuleClassLoader@64cd705f
+[2712月2025 09:01:06.682] [main/INFO] [mixin/]: SpongePowered MIXIN Subsystem Version=0.8.5 Source=union:/C:/Users/user/.gradle/caches/modules-2/files-2.1/org.spongepowered/mixin/0.8.5/9d1c0c3a304ae6697ecd477218fa61b850bf57fc/mixin-0.8.5.jar%23132!/ Service=ModLauncher Env=CLIENT
+[2712月2025 09:01:06.689] [main/DEBUG] [mixin/]: Initialising Mixin Platform Manager
+[2712月2025 09:01:06.690] [main/DEBUG] [mixin/]: Adding mixin platform agents for container ModLauncher Root Container(ModLauncher:4f56a0a2)
+[2712月2025 09:01:06.691] [main/DEBUG] [mixin/]: Instancing new MixinPlatformAgentMinecraftForge for ModLauncher Root Container(ModLauncher:4f56a0a2)
+[2712月2025 09:01:06.692] [main/DEBUG] [mixin/]: MixinPlatformAgentMinecraftForge rejected container ModLauncher Root Container(ModLauncher:4f56a0a2)
+[2712月2025 09:01:06.693] [main/DEBUG] [mixin/]: Instancing new MixinPlatformAgentDefault for ModLauncher Root Container(ModLauncher:4f56a0a2)
+[2712月2025 09:01:06.694] [main/DEBUG] [mixin/]: MixinPlatformAgentDefault accepted container ModLauncher Root Container(ModLauncher:4f56a0a2)
+[2712月2025 09:01:06.701] [main/DEBUG] [cpw.mods.modlauncher.TransformationServiceDecorator/MODLAUNCHER]: Initialized transformation service mixin
+[2712月2025 09:01:06.701] [main/DEBUG] [cpw.mods.modlauncher.TransformationServiceDecorator/MODLAUNCHER]: Initializing transformation service fml
+[2712月2025 09:01:06.702] [main/DEBUG] [net.minecraftforge.fml.loading.FMLServiceProvider/CORE]: Setting up basic FML game directories
+[2712月2025 09:01:06.703] [main/DEBUG] [net.minecraftforge.fml.loading.FMLPaths/CORE]: Path GAMEDIR is C:\Users\user\Documents\TR\astral_mekanism\astral_mekanism\run-data
+[2712月2025 09:01:06.704] [main/DEBUG] [net.minecraftforge.fml.loading.FMLPaths/CORE]: Path MODSDIR is C:\Users\user\Documents\TR\astral_mekanism\astral_mekanism\run-data\mods
+[2712月2025 09:01:06.705] [main/DEBUG] [net.minecraftforge.fml.loading.FMLPaths/CORE]: Path CONFIGDIR is C:\Users\user\Documents\TR\astral_mekanism\astral_mekanism\run-data\config
+[2712月2025 09:01:06.705] [main/DEBUG] [net.minecraftforge.fml.loading.FMLPaths/CORE]: Path FMLCONFIG is C:\Users\user\Documents\TR\astral_mekanism\astral_mekanism\run-data\config\fml.toml
+[2712月2025 09:01:06.706] [main/DEBUG] [net.minecraftforge.fml.loading.FMLServiceProvider/CORE]: Loading configuration
+[2712月2025 09:01:06.713] [main/DEBUG] [net.minecraftforge.fml.loading.FMLServiceProvider/CORE]: Preparing ModFile
+[2712月2025 09:01:06.717] [main/DEBUG] [net.minecraftforge.fml.loading.FMLServiceProvider/CORE]: Preparing launch handler
+[2712月2025 09:01:06.718] [main/DEBUG] [net.minecraftforge.fml.loading.FMLLoader/CORE]: Using forgedatauserdev as launch service
+[2712月2025 09:01:06.739] [main/DEBUG] [net.minecraftforge.fml.loading.FMLLoader/CORE]: Received command line version data  : VersionInfo[forgeVersion=47.4.0, mcVersion=1.20.1, mcpVersion=20230612.114412, forgeGroup=net.minecraftforge]
+[2712月2025 09:01:06.743] [main/DEBUG] [cpw.mods.modlauncher.TransformationServiceDecorator/MODLAUNCHER]: Initialized transformation service fml
+[2712月2025 09:01:06.744] [main/DEBUG] [cpw.mods.modlauncher.NameMappingServiceHandler/MODLAUNCHER]: Current naming domain is 'mcp'
+[2712月2025 09:01:06.746] [main/DEBUG] [cpw.mods.modlauncher.NameMappingServiceHandler/MODLAUNCHER]: Identified name mapping providers {srg=srgtomcp:1234}
+[2712月2025 09:01:06.747] [main/DEBUG] [cpw.mods.modlauncher.TransformationServicesHandler/MODLAUNCHER]: Transformation services begin scanning
+[2712月2025 09:01:06.748] [main/DEBUG] [cpw.mods.modlauncher.TransformationServiceDecorator/MODLAUNCHER]: Beginning scan trigger - transformation service mixin
+[2712月2025 09:01:06.749] [main/DEBUG] [cpw.mods.modlauncher.TransformationServiceDecorator/MODLAUNCHER]: End scan trigger - transformation service mixin
+[2712月2025 09:01:06.749] [main/DEBUG] [cpw.mods.modlauncher.TransformationServiceDecorator/MODLAUNCHER]: Beginning scan trigger - transformation service fml
+[2712月2025 09:01:06.750] [main/DEBUG] [net.minecraftforge.fml.loading.FMLServiceProvider/CORE]: Initiating mod scan
+[2712月2025 09:01:06.770] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModListHandler/CORE]: Found mod coordinates from lists: []
+[2712月2025 09:01:06.777] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModDiscoverer/CORE]: Found Mod Locators : (mods folder:null),(maven libs:null),(exploded directory:null),(minecraft:null),(userdev classpath:null)
+[2712月2025 09:01:06.779] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModDiscoverer/CORE]: Found Dependency Locators : (JarInJar:null)
+[2712月2025 09:01:06.795] [main/DEBUG] [net.minecraftforge.fml.loading.targets.CommonLaunchHandler/CORE]: Got mod coordinates astral_mekanism%%C:\Users\user\Documents\TR\astral_mekanism\astral_mekanism\build\resources\main;astral_mekanism%%C:\Users\user\Documents\TR\astral_mekanism\astral_mekanism\build\classes\java\main from env
+[2712月2025 09:01:06.801] [main/DEBUG] [net.minecraftforge.fml.loading.targets.CommonLaunchHandler/CORE]: Found supplied mod coordinates [{astral_mekanism=[C:\Users\user\Documents\TR\astral_mekanism\astral_mekanism\build\resources\main, C:\Users\user\Documents\TR\astral_mekanism\astral_mekanism\build\classes\java\main]}]
+[2712月2025 09:01:07.393] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFileInfo/LOADING]: Found valid mod file forge-1.20.1-47.4.0_mapped_official_1.20.1-recomp.jar with {minecraft} mods - versions {1.20.1}
+[2712月2025 09:01:07.402] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Considering mod file candidate C:\Users\user\.gradle\caches\modules-2\files-2.1\net.minecraftforge\javafmllanguage\1.20.1-47.4.0\f0c0b352173d0a378cbdcec9cfc4ba65899a721\javafmllanguage-1.20.1-47.4.0.jar
+[2712月2025 09:01:07.402] [main/WARN] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Mod file C:\Users\user\.gradle\caches\modules-2\files-2.1\net.minecraftforge\javafmllanguage\1.20.1-47.4.0\f0c0b352173d0a378cbdcec9cfc4ba65899a721\javafmllanguage-1.20.1-47.4.0.jar is missing mods.toml file
+[2712月2025 09:01:07.408] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Considering mod file candidate C:\Users\user\.gradle\caches\modules-2\files-2.1\net.minecraftforge\lowcodelanguage\1.20.1-47.4.0\e862740d8c84d08dbfedea412bef88fe42e727c5\lowcodelanguage-1.20.1-47.4.0.jar
+[2712月2025 09:01:07.409] [main/WARN] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Mod file C:\Users\user\.gradle\caches\modules-2\files-2.1\net.minecraftforge\lowcodelanguage\1.20.1-47.4.0\e862740d8c84d08dbfedea412bef88fe42e727c5\lowcodelanguage-1.20.1-47.4.0.jar is missing mods.toml file
+[2712月2025 09:01:07.416] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Considering mod file candidate C:\Users\user\.gradle\caches\modules-2\files-2.1\net.minecraftforge\mclanguage\1.20.1-47.4.0\5719b3a297a33f877ed5dde4cb4bd75c859096af\mclanguage-1.20.1-47.4.0.jar
+[2712月2025 09:01:07.416] [main/WARN] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Mod file C:\Users\user\.gradle\caches\modules-2\files-2.1\net.minecraftforge\mclanguage\1.20.1-47.4.0\5719b3a297a33f877ed5dde4cb4bd75c859096af\mclanguage-1.20.1-47.4.0.jar is missing mods.toml file
+[2712月2025 09:01:07.423] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Considering mod file candidate C:\Users\user\.gradle\caches\modules-2\files-2.1\net.minecraftforge\fmlcore\1.20.1-47.4.0\235975dafa4309945b59c56b53f31dc5b65a6051\fmlcore-1.20.1-47.4.0.jar
+[2712月2025 09:01:07.423] [main/WARN] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Mod file C:\Users\user\.gradle\caches\modules-2\files-2.1\net.minecraftforge\fmlcore\1.20.1-47.4.0\235975dafa4309945b59c56b53f31dc5b65a6051\fmlcore-1.20.1-47.4.0.jar is missing mods.toml file
+[2712月2025 09:01:07.430] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Considering mod file candidate C:\Users\user\Documents\TR\astral_mekanism\astral_mekanism\build\resources\main
+[2712月2025 09:01:07.466] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFileInfo/LOADING]: Found valid mod file main with {astral_mekanism} mods - versions {1.0.0}
+[2712月2025 09:01:07.472] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Considering mod file candidate /
+[2712月2025 09:01:07.477] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFileInfo/LOADING]: Found valid mod file  with {forge} mods - versions {47.4.0}
+[2712月2025 09:01:07.543] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Considering mod file candidate C:\Users\user\.gradle\caches\forge_gradle\deobf_dependencies\mekanism\Mekanism\1.20.1-10.4.16.80_mapped_official_1.20.1\Mekanism-1.20.1-10.4.16.80_mapped_official_1.20.1.jar
+[2712月2025 09:01:07.549] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFileInfo/LOADING]: Found valid mod file Mekanism-1.20.1-10.4.16.80_mapped_official_1.20.1.jar with {mekanism} mods - versions {10.4.16}
+[2712月2025 09:01:07.557] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Considering mod file candidate C:\Users\user\.gradle\caches\forge_gradle\deobf_dependencies\curse\maven\mekanism-generators-268566\6552914_mapped_official_1.20.1\mekanism-generators-268566-6552914_mapped_official_1.20.1.jar
+[2712月2025 09:01:07.561] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFileInfo/LOADING]: Found valid mod file mekanism-generators-268566-6552914_mapped_official_1.20.1.jar with {mekanismgenerators} mods - versions {10.4.16}
+[2712月2025 09:01:07.567] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Considering mod file candidate C:\Users\user\.gradle\caches\forge_gradle\deobf_dependencies\curse\maven\mekanism-tools-268567\6552915_mapped_official_1.20.1\mekanism-tools-268567-6552915_mapped_official_1.20.1.jar
+[2712月2025 09:01:07.570] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFileInfo/LOADING]: Found valid mod file mekanism-tools-268567-6552915_mapped_official_1.20.1.jar with {mekanismtools} mods - versions {10.4.16}
+[2712月2025 09:01:07.579] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Considering mod file candidate C:\Users\user\.gradle\caches\forge_gradle\deobf_dependencies\curse\maven\guideme-1173950\7127447_mapped_official_1.20.1\guideme-1173950-7127447_mapped_official_1.20.1.jar
+[2712月2025 09:01:07.581] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFileInfo/LOADING]: Found valid mod file guideme-1173950-7127447_mapped_official_1.20.1.jar with {guideme} mods - versions {20.1.14}
+[2712月2025 09:01:07.590] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Considering mod file candidate C:\Users\user\.gradle\caches\forge_gradle\deobf_dependencies\curse\maven\applied-energistics-2-223794\6852919_mapped_official_1.20.1\applied-energistics-2-223794-6852919_mapped_official_1.20.1.jar
+[2712月2025 09:01:07.593] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFileInfo/LOADING]: Found valid mod file applied-energistics-2-223794-6852919_mapped_official_1.20.1.jar with {ae2} mods - versions {15.4.8}
+[2712月2025 09:01:07.601] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Considering mod file candidate C:\Users\user\.gradle\caches\forge_gradle\deobf_dependencies\curse\maven\applied-mekanistics-574300\4842281_mapped_official_1.20.1\applied-mekanistics-574300-4842281_mapped_official_1.20.1.jar
+[2712月2025 09:01:07.604] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFileInfo/LOADING]: Found valid mod file applied-mekanistics-574300-4842281_mapped_official_1.20.1.jar with {appmek} mods - versions {1.4.2}
+[2712月2025 09:01:07.614] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Considering mod file candidate C:\Users\user\.gradle\caches\forge_gradle\deobf_dependencies\curse\maven\botany-pots-353928\6348581_mapped_official_1.20.1\botany-pots-353928-6348581_mapped_official_1.20.1.jar
+[2712月2025 09:01:07.617] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFileInfo/LOADING]: Found valid mod file botany-pots-353928-6348581_mapped_official_1.20.1.jar with {botanypots} mods - versions {13.0.41}
+[2712月2025 09:01:07.626] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Considering mod file candidate C:\Users\user\.gradle\caches\forge_gradle\deobf_dependencies\curse\maven\bookshelf-228525\5423987_mapped_official_1.20.1\bookshelf-228525-5423987_mapped_official_1.20.1.jar
+[2712月2025 09:01:07.629] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFileInfo/LOADING]: Found valid mod file bookshelf-228525-5423987_mapped_official_1.20.1.jar with {bookshelf} mods - versions {20.2.13}
+[2712月2025 09:01:07.635] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Considering mod file candidate C:\Users\user\.gradle\caches\forge_gradle\deobf_dependencies\curse\maven\jei-238222\6075247_mapped_official_1.20.1\jei-238222-6075247_mapped_official_1.20.1.jar
+[2712月2025 09:01:07.643] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFileInfo/LOADING]: Found valid mod file jei-238222-6075247_mapped_official_1.20.1.jar with {jei} mods - versions {15.20.0.106}
+[2712月2025 09:01:07.664] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Considering mod file candidate C:\Users\user\.gradle\caches\forge_gradle\deobf_dependencies\mekanism\Mekanism\1.20.1-10.4.16.80_mapped_official_1.20.1\Mekanism-1.20.1-10.4.16.80_mapped_official_1.20.1.jar
+[2712月2025 09:01:07.666] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFileInfo/LOADING]: Found valid mod file Mekanism-1.20.1-10.4.16.80_mapped_official_1.20.1.jar with {mekanism} mods - versions {10.4.16}
+[2712月2025 09:01:07.675] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Considering mod file candidate C:\Users\user\.gradle\caches\forge_gradle\deobf_dependencies\curse\maven\mekanism-generators-268566\6552914_mapped_official_1.20.1\mekanism-generators-268566-6552914_mapped_official_1.20.1.jar
+[2712月2025 09:01:07.677] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFileInfo/LOADING]: Found valid mod file mekanism-generators-268566-6552914_mapped_official_1.20.1.jar with {mekanismgenerators} mods - versions {10.4.16}
+[2712月2025 09:01:07.683] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Considering mod file candidate C:\Users\user\.gradle\caches\forge_gradle\deobf_dependencies\curse\maven\mekanism-tools-268567\6552915_mapped_official_1.20.1\mekanism-tools-268567-6552915_mapped_official_1.20.1.jar
+[2712月2025 09:01:07.685] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFileInfo/LOADING]: Found valid mod file mekanism-tools-268567-6552915_mapped_official_1.20.1.jar with {mekanismtools} mods - versions {10.4.16}
+[2712月2025 09:01:07.699] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Considering mod file candidate C:\Users\user\.gradle\caches\forge_gradle\deobf_dependencies\curse\maven\guideme-1173950\7127447_mapped_official_1.20.1\guideme-1173950-7127447_mapped_official_1.20.1.jar
+[2712月2025 09:01:07.700] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFileInfo/LOADING]: Found valid mod file guideme-1173950-7127447_mapped_official_1.20.1.jar with {guideme} mods - versions {20.1.14}
+[2712月2025 09:01:07.711] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Considering mod file candidate C:\Users\user\.gradle\caches\forge_gradle\deobf_dependencies\curse\maven\applied-energistics-2-223794\6852919_mapped_official_1.20.1\applied-energistics-2-223794-6852919_mapped_official_1.20.1.jar
+[2712月2025 09:01:07.713] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFileInfo/LOADING]: Found valid mod file applied-energistics-2-223794-6852919_mapped_official_1.20.1.jar with {ae2} mods - versions {15.4.8}
+[2712月2025 09:01:07.721] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Considering mod file candidate C:\Users\user\.gradle\caches\forge_gradle\deobf_dependencies\curse\maven\applied-mekanistics-574300\4842281_mapped_official_1.20.1\applied-mekanistics-574300-4842281_mapped_official_1.20.1.jar
+[2712月2025 09:01:07.723] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFileInfo/LOADING]: Found valid mod file applied-mekanistics-574300-4842281_mapped_official_1.20.1.jar with {appmek} mods - versions {1.4.2}
+[2712月2025 09:01:07.733] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Considering mod file candidate C:\Users\user\.gradle\caches\forge_gradle\deobf_dependencies\curse\maven\botany-pots-353928\6348581_mapped_official_1.20.1\botany-pots-353928-6348581_mapped_official_1.20.1.jar
+[2712月2025 09:01:07.735] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFileInfo/LOADING]: Found valid mod file botany-pots-353928-6348581_mapped_official_1.20.1.jar with {botanypots} mods - versions {13.0.41}
+[2712月2025 09:01:07.742] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Considering mod file candidate C:\Users\user\.gradle\caches\forge_gradle\deobf_dependencies\curse\maven\bookshelf-228525\5423987_mapped_official_1.20.1\bookshelf-228525-5423987_mapped_official_1.20.1.jar
+[2712月2025 09:01:07.744] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFileInfo/LOADING]: Found valid mod file bookshelf-228525-5423987_mapped_official_1.20.1.jar with {bookshelf} mods - versions {20.2.13}
+[2712月2025 09:01:07.751] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Considering mod file candidate C:\Users\user\.gradle\caches\forge_gradle\deobf_dependencies\curse\maven\jei-238222\6075247_mapped_official_1.20.1\jei-238222-6075247_mapped_official_1.20.1.jar
+[2712月2025 09:01:07.752] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFileInfo/LOADING]: Found valid mod file jei-238222-6075247_mapped_official_1.20.1.jar with {jei} mods - versions {15.20.0.106}
+[2712月2025 09:01:07.763] [main/DEBUG] [net.minecraftforge.fml.loading.UniqueModListBuilder/]: Found 2 mods for first modid botanypots, selecting most recent based on version data
+[2712月2025 09:01:07.764] [main/DEBUG] [net.minecraftforge.fml.loading.UniqueModListBuilder/]: Selected file botany-pots-353928-6348581_mapped_official_1.20.1.jar for modid botanypots with version 13.0.41
+[2712月2025 09:01:07.764] [main/DEBUG] [net.minecraftforge.fml.loading.UniqueModListBuilder/]: Found 2 mods for first modid bookshelf, selecting most recent based on version data
+[2712月2025 09:01:07.764] [main/DEBUG] [net.minecraftforge.fml.loading.UniqueModListBuilder/]: Selected file bookshelf-228525-5423987_mapped_official_1.20.1.jar for modid bookshelf with version 20.2.13
+[2712月2025 09:01:07.765] [main/DEBUG] [net.minecraftforge.fml.loading.UniqueModListBuilder/]: Found 2 mods for first modid mekanism, selecting most recent based on version data
+[2712月2025 09:01:07.765] [main/DEBUG] [net.minecraftforge.fml.loading.UniqueModListBuilder/]: Selected file Mekanism-1.20.1-10.4.16.80_mapped_official_1.20.1.jar for modid mekanism with version 10.4.16
+[2712月2025 09:01:07.765] [main/DEBUG] [net.minecraftforge.fml.loading.UniqueModListBuilder/]: Found 2 mods for first modid appmek, selecting most recent based on version data
+[2712月2025 09:01:07.766] [main/DEBUG] [net.minecraftforge.fml.loading.UniqueModListBuilder/]: Selected file applied-mekanistics-574300-4842281_mapped_official_1.20.1.jar for modid appmek with version 1.4.2
+[2712月2025 09:01:07.766] [main/DEBUG] [net.minecraftforge.fml.loading.UniqueModListBuilder/]: Found 2 mods for first modid mekanismtools, selecting most recent based on version data
+[2712月2025 09:01:07.766] [main/DEBUG] [net.minecraftforge.fml.loading.UniqueModListBuilder/]: Selected file mekanism-tools-268567-6552915_mapped_official_1.20.1.jar for modid mekanismtools with version 10.4.16
+[2712月2025 09:01:07.766] [main/DEBUG] [net.minecraftforge.fml.loading.UniqueModListBuilder/]: Found 2 mods for first modid guideme, selecting most recent based on version data
+[2712月2025 09:01:07.767] [main/DEBUG] [net.minecraftforge.fml.loading.UniqueModListBuilder/]: Selected file guideme-1173950-7127447_mapped_official_1.20.1.jar for modid guideme with version 20.1.14
+[2712月2025 09:01:07.767] [main/DEBUG] [net.minecraftforge.fml.loading.UniqueModListBuilder/]: Found 2 mods for first modid mekanismgenerators, selecting most recent based on version data
+[2712月2025 09:01:07.767] [main/DEBUG] [net.minecraftforge.fml.loading.UniqueModListBuilder/]: Selected file mekanism-generators-268566-6552914_mapped_official_1.20.1.jar for modid mekanismgenerators with version 10.4.16
+[2712月2025 09:01:07.768] [main/DEBUG] [net.minecraftforge.fml.loading.UniqueModListBuilder/]: Found 2 mods for first modid jei, selecting most recent based on version data
+[2712月2025 09:01:07.768] [main/DEBUG] [net.minecraftforge.fml.loading.UniqueModListBuilder/]: Selected file jei-238222-6075247_mapped_official_1.20.1.jar for modid jei with version 15.20.0.106
+[2712月2025 09:01:07.768] [main/DEBUG] [net.minecraftforge.fml.loading.UniqueModListBuilder/]: Found 2 mods for first modid ae2, selecting most recent based on version data
+[2712月2025 09:01:07.769] [main/DEBUG] [net.minecraftforge.fml.loading.UniqueModListBuilder/]: Selected file applied-energistics-2-223794-6852919_mapped_official_1.20.1.jar for modid ae2 with version 15.4.8
+[2712月2025 09:01:07.780] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.AbstractJarFileDependencyLocator/]: Failed to load resource META-INF\jarjar\metadata.json from forge-1.20.1-47.4.0_mapped_official_1.20.1-recomp.jar, it does not contain dependency information.
+[2712月2025 09:01:07.780] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.AbstractJarFileDependencyLocator/]: Failed to load resource META-INF\jarjar\metadata.json from botany-pots-353928-6348581_mapped_official_1.20.1.jar, it does not contain dependency information.
+[2712月2025 09:01:07.780] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.AbstractJarFileDependencyLocator/]: Failed to load resource META-INF\jarjar\metadata.json from bookshelf-228525-5423987_mapped_official_1.20.1.jar, it does not contain dependency information.
+[2712月2025 09:01:07.781] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.AbstractJarFileDependencyLocator/]: Failed to load resource META-INF\jarjar\metadata.json from Mekanism-1.20.1-10.4.16.80_mapped_official_1.20.1.jar, it does not contain dependency information.
+[2712月2025 09:01:07.781] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.AbstractJarFileDependencyLocator/]: Failed to load resource META-INF\jarjar\metadata.json from applied-mekanistics-574300-4842281_mapped_official_1.20.1.jar, it does not contain dependency information.
+[2712月2025 09:01:07.781] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.AbstractJarFileDependencyLocator/]: Failed to load resource META-INF\jarjar\metadata.json from , it does not contain dependency information.
+[2712月2025 09:01:07.781] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.AbstractJarFileDependencyLocator/]: Failed to load resource META-INF\jarjar\metadata.json from mekanism-tools-268567-6552915_mapped_official_1.20.1.jar, it does not contain dependency information.
+[2712月2025 09:01:07.782] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.AbstractJarFileDependencyLocator/]: Failed to load resource META-INF\jarjar\metadata.json from main, it does not contain dependency information.
+[2712月2025 09:01:07.783] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.AbstractJarFileDependencyLocator/]: Failed to load resource META-INF\jarjar\metadata.json from guideme-1173950-7127447_mapped_official_1.20.1.jar, it does not contain dependency information.
+[2712月2025 09:01:07.783] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.AbstractJarFileDependencyLocator/]: Failed to load resource META-INF\jarjar\metadata.json from mekanism-generators-268566-6552914_mapped_official_1.20.1.jar, it does not contain dependency information.
+[2712月2025 09:01:07.783] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.AbstractJarFileDependencyLocator/]: Failed to load resource META-INF\jarjar\metadata.json from jei-238222-6075247_mapped_official_1.20.1.jar, it does not contain dependency information.
+[2712月2025 09:01:07.783] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.AbstractJarFileDependencyLocator/]: Failed to load resource META-INF\jarjar\metadata.json from applied-energistics-2-223794-6852919_mapped_official_1.20.1.jar, it does not contain dependency information.
+[2712月2025 09:01:07.783] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.AbstractJarFileDependencyLocator/]: Failed to load resource META-INF\jarjar\metadata.json from mclanguage-1.20.1-47.4.0.jar, it does not contain dependency information.
+[2712月2025 09:01:07.784] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.AbstractJarFileDependencyLocator/]: Failed to load resource META-INF\jarjar\metadata.json from javafmllanguage-1.20.1-47.4.0.jar, it does not contain dependency information.
+[2712月2025 09:01:07.784] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.AbstractJarFileDependencyLocator/]: Failed to load resource META-INF\jarjar\metadata.json from fmlcore-1.20.1-47.4.0.jar, it does not contain dependency information.
+[2712月2025 09:01:07.784] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.AbstractJarFileDependencyLocator/]: Failed to load resource META-INF\jarjar\metadata.json from lowcodelanguage-1.20.1-47.4.0.jar, it does not contain dependency information.
+[2712月2025 09:01:07.822] [main/INFO] [net.minecraftforge.fml.loading.moddiscovery.JarInJarDependencyLocator/]: No dependencies to load found. Skipping!
+[2712月2025 09:01:07.826] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFileInfo/LOADING]: Found valid mod file forge-1.20.1-47.4.0_mapped_official_1.20.1-recomp.jar with {minecraft} mods - versions {1.20.1}
+[2712月2025 09:01:07.829] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFile/LOADING]: Loading mod file C:\Users\user\Documents\TR\astral_mekanism\astral_mekanism\build\fg_cache\net\minecraftforge\forge\1.20.1-47.4.0_mapped_official_1.20.1\forge-1.20.1-47.4.0_mapped_official_1.20.1-recomp.jar with languages [LanguageSpec[languageName=minecraft, acceptedVersions=1]]
+[2712月2025 09:01:07.830] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Considering mod file candidate C:\Users\user\.gradle\caches\forge_gradle\deobf_dependencies\curse\maven\botany-pots-353928\6348581_mapped_official_1.20.1\botany-pots-353928-6348581_mapped_official_1.20.1.jar
+[2712月2025 09:01:07.831] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFileInfo/LOADING]: Found valid mod file botany-pots-353928-6348581_mapped_official_1.20.1.jar with {botanypots} mods - versions {13.0.41}
+[2712月2025 09:01:07.831] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFile/LOADING]: Loading mod file C:\Users\user\.gradle\caches\forge_gradle\deobf_dependencies\curse\maven\botany-pots-353928\6348581_mapped_official_1.20.1\botany-pots-353928-6348581_mapped_official_1.20.1.jar with languages [LanguageSpec[languageName=javafml, acceptedVersions=[47,)]]
+[2712月2025 09:01:07.832] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Considering mod file candidate C:\Users\user\.gradle\caches\forge_gradle\deobf_dependencies\mekanism\Mekanism\1.20.1-10.4.16.80_mapped_official_1.20.1\Mekanism-1.20.1-10.4.16.80_mapped_official_1.20.1.jar
+[2712月2025 09:01:07.833] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFileInfo/LOADING]: Found valid mod file Mekanism-1.20.1-10.4.16.80_mapped_official_1.20.1.jar with {mekanism} mods - versions {10.4.16}
+[2712月2025 09:01:07.833] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFile/LOADING]: Loading mod file C:\Users\user\.gradle\caches\forge_gradle\deobf_dependencies\mekanism\Mekanism\1.20.1-10.4.16.80_mapped_official_1.20.1\Mekanism-1.20.1-10.4.16.80_mapped_official_1.20.1.jar with languages [LanguageSpec[languageName=javafml, acceptedVersions=[47,)]]
+[2712月2025 09:01:07.833] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Considering mod file candidate C:\Users\user\.gradle\caches\forge_gradle\deobf_dependencies\curse\maven\bookshelf-228525\5423987_mapped_official_1.20.1\bookshelf-228525-5423987_mapped_official_1.20.1.jar
+[2712月2025 09:01:07.834] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFileInfo/LOADING]: Found valid mod file bookshelf-228525-5423987_mapped_official_1.20.1.jar with {bookshelf} mods - versions {20.2.13}
+[2712月2025 09:01:07.834] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFile/LOADING]: Loading mod file C:\Users\user\.gradle\caches\forge_gradle\deobf_dependencies\curse\maven\bookshelf-228525\5423987_mapped_official_1.20.1\bookshelf-228525-5423987_mapped_official_1.20.1.jar with languages [LanguageSpec[languageName=javafml, acceptedVersions=[47,)]]
+[2712月2025 09:01:07.835] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Considering mod file candidate /
+[2712月2025 09:01:07.836] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFileInfo/LOADING]: Found valid mod file  with {forge} mods - versions {47.4.0}
+[2712月2025 09:01:07.836] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFile/LOADING]: Loading mod file / with languages [LanguageSpec[languageName=javafml, acceptedVersions=[24,]]]
+[2712月2025 09:01:07.899] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Found coremod field_to_method with Javascript path coremods/field_to_method.js
+[2712月2025 09:01:07.900] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Found coremod field_to_instanceof with Javascript path coremods/field_to_instanceof.js
+[2712月2025 09:01:07.900] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Found coremod add_bouncer_method with Javascript path coremods/add_bouncer_method.js
+[2712月2025 09:01:07.901] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Found coremod method_redirector with Javascript path coremods/method_redirector.js
+[2712月2025 09:01:07.901] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFile/LOADING]: Found coremod coremods/field_to_method.js
+[2712月2025 09:01:07.901] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFile/LOADING]: Found coremod coremods/field_to_instanceof.js
+[2712月2025 09:01:07.902] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFile/LOADING]: Found coremod coremods/add_bouncer_method.js
+[2712月2025 09:01:07.902] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFile/LOADING]: Found coremod coremods/method_redirector.js
+[2712月2025 09:01:07.902] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Considering mod file candidate C:\Users\user\.gradle\caches\forge_gradle\deobf_dependencies\curse\maven\applied-mekanistics-574300\4842281_mapped_official_1.20.1\applied-mekanistics-574300-4842281_mapped_official_1.20.1.jar
+[2712月2025 09:01:07.904] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFileInfo/LOADING]: Found valid mod file applied-mekanistics-574300-4842281_mapped_official_1.20.1.jar with {appmek} mods - versions {1.4.2}
+[2712月2025 09:01:07.904] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFile/LOADING]: Loading mod file C:\Users\user\.gradle\caches\forge_gradle\deobf_dependencies\curse\maven\applied-mekanistics-574300\4842281_mapped_official_1.20.1\applied-mekanistics-574300-4842281_mapped_official_1.20.1.jar with languages [LanguageSpec[languageName=javafml, acceptedVersions=[43,)]]
+[2712月2025 09:01:07.905] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Considering mod file candidate C:\Users\user\Documents\TR\astral_mekanism\astral_mekanism\build\resources\main
+[2712月2025 09:01:07.912] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFileInfo/LOADING]: Found valid mod file main with {astral_mekanism} mods - versions {1.0.0}
+[2712月2025 09:01:07.913] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFile/LOADING]: Loading mod file C:\Users\user\Documents\TR\astral_mekanism\astral_mekanism\build\resources\main with languages [LanguageSpec[languageName=javafml, acceptedVersions=[47,)]]
+[2712月2025 09:01:07.914] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Considering mod file candidate C:\Users\user\.gradle\caches\forge_gradle\deobf_dependencies\curse\maven\mekanism-tools-268567\6552915_mapped_official_1.20.1\mekanism-tools-268567-6552915_mapped_official_1.20.1.jar
+[2712月2025 09:01:07.916] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFileInfo/LOADING]: Found valid mod file mekanism-tools-268567-6552915_mapped_official_1.20.1.jar with {mekanismtools} mods - versions {10.4.16}
+[2712月2025 09:01:07.916] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFile/LOADING]: Loading mod file C:\Users\user\.gradle\caches\forge_gradle\deobf_dependencies\curse\maven\mekanism-tools-268567\6552915_mapped_official_1.20.1\mekanism-tools-268567-6552915_mapped_official_1.20.1.jar with languages [LanguageSpec[languageName=javafml, acceptedVersions=[47,)]]
+[2712月2025 09:01:07.917] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Considering mod file candidate C:\Users\user\.gradle\caches\forge_gradle\deobf_dependencies\curse\maven\guideme-1173950\7127447_mapped_official_1.20.1\guideme-1173950-7127447_mapped_official_1.20.1.jar
+[2712月2025 09:01:07.918] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFileInfo/LOADING]: Found valid mod file guideme-1173950-7127447_mapped_official_1.20.1.jar with {guideme} mods - versions {20.1.14}
+[2712月2025 09:01:07.918] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFile/LOADING]: Loading mod file C:\Users\user\.gradle\caches\forge_gradle\deobf_dependencies\curse\maven\guideme-1173950\7127447_mapped_official_1.20.1\guideme-1173950-7127447_mapped_official_1.20.1.jar with languages [LanguageSpec[languageName=javafml, acceptedVersions=*]]
+[2712月2025 09:01:07.920] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Considering mod file candidate C:\Users\user\.gradle\caches\forge_gradle\deobf_dependencies\curse\maven\mekanism-generators-268566\6552914_mapped_official_1.20.1\mekanism-generators-268566-6552914_mapped_official_1.20.1.jar
+[2712月2025 09:01:07.923] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFileInfo/LOADING]: Found valid mod file mekanism-generators-268566-6552914_mapped_official_1.20.1.jar with {mekanismgenerators} mods - versions {10.4.16}
+[2712月2025 09:01:07.924] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFile/LOADING]: Loading mod file C:\Users\user\.gradle\caches\forge_gradle\deobf_dependencies\curse\maven\mekanism-generators-268566\6552914_mapped_official_1.20.1\mekanism-generators-268566-6552914_mapped_official_1.20.1.jar with languages [LanguageSpec[languageName=javafml, acceptedVersions=[47,)]]
+[2712月2025 09:01:07.924] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Considering mod file candidate C:\Users\user\.gradle\caches\forge_gradle\deobf_dependencies\curse\maven\applied-energistics-2-223794\6852919_mapped_official_1.20.1\applied-energistics-2-223794-6852919_mapped_official_1.20.1.jar
+[2712月2025 09:01:07.926] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFileInfo/LOADING]: Found valid mod file applied-energistics-2-223794-6852919_mapped_official_1.20.1.jar with {ae2} mods - versions {15.4.8}
+[2712月2025 09:01:07.927] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFile/LOADING]: Loading mod file C:\Users\user\.gradle\caches\forge_gradle\deobf_dependencies\curse\maven\applied-energistics-2-223794\6852919_mapped_official_1.20.1\applied-energistics-2-223794-6852919_mapped_official_1.20.1.jar with languages [LanguageSpec[languageName=javafml, acceptedVersions=[44,)]]
+[2712月2025 09:01:07.930] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Considering mod file candidate C:\Users\user\.gradle\caches\forge_gradle\deobf_dependencies\curse\maven\jei-238222\6075247_mapped_official_1.20.1\jei-238222-6075247_mapped_official_1.20.1.jar
+[2712月2025 09:01:07.933] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFileInfo/LOADING]: Found valid mod file jei-238222-6075247_mapped_official_1.20.1.jar with {jei} mods - versions {15.20.0.106}
+[2712月2025 09:01:07.934] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFile/LOADING]: Loading mod file C:\Users\user\.gradle\caches\forge_gradle\deobf_dependencies\curse\maven\jei-238222\6075247_mapped_official_1.20.1\jei-238222-6075247_mapped_official_1.20.1.jar with languages [LanguageSpec[languageName=javafml, acceptedVersions=[47,)]]
+[2712月2025 09:01:07.936] [main/DEBUG] [cpw.mods.modlauncher.TransformationServiceDecorator/MODLAUNCHER]: End scan trigger - transformation service fml
+[2712月2025 09:01:07.956] [main/DEBUG] [net.minecraftforge.fml.loading.LanguageLoadingProvider/CORE]: Found 3 language providers
+[2712月2025 09:01:07.958] [main/DEBUG] [net.minecraftforge.fml.loading.LanguageLoadingProvider/CORE]: Found language provider minecraft, version 1.0
+[2712月2025 09:01:07.959] [main/DEBUG] [net.minecraftforge.fml.loading.LanguageLoadingProvider/CORE]: Found language provider lowcodefml, version 47
+[2712月2025 09:01:07.960] [main/DEBUG] [net.minecraftforge.fml.loading.LanguageLoadingProvider/CORE]: Found language provider javafml, version 47
+[2712月2025 09:01:07.970] [main/DEBUG] [net.minecraftforge.fml.loading.ModSorter/]: Configured system mods: [minecraft, forge]
+[2712月2025 09:01:07.970] [main/DEBUG] [net.minecraftforge.fml.loading.ModSorter/]: Found system mod: minecraft
+[2712月2025 09:01:07.970] [main/DEBUG] [net.minecraftforge.fml.loading.ModSorter/]: Found system mod: forge
+[2712月2025 09:01:07.975] [main/DEBUG] [net.minecraftforge.fml.loading.ModSorter/LOADING]: Found 35 mod requirements (25 mandatory, 10 optional)
+[2712月2025 09:01:07.977] [main/DEBUG] [net.minecraftforge.fml.loading.ModSorter/LOADING]: Found 0 mod requirements missing (0 mandatory, 0 optional)
+[2712月2025 09:01:08.725] [main/DEBUG] [net.minecraftforge.fml.loading.MCPNamingService/CORE]: Loaded 33222 method mappings from methods.csv
+[2712月2025 09:01:08.782] [main/DEBUG] [net.minecraftforge.fml.loading.MCPNamingService/CORE]: Loaded 31003 field mappings from fields.csv
+[2712月2025 09:01:08.919] [main/DEBUG] [cpw.mods.modlauncher.TransformationServicesHandler/MODLAUNCHER]: Transformation services loading transformers
+[2712月2025 09:01:08.920] [main/DEBUG] [cpw.mods.modlauncher.TransformationServiceDecorator/MODLAUNCHER]: Initializing transformers for transformation service mixin
+[2712月2025 09:01:08.921] [main/DEBUG] [cpw.mods.modlauncher.TransformationServiceDecorator/MODLAUNCHER]: Initialized transformers for transformation service mixin
+[2712月2025 09:01:08.921] [main/DEBUG] [cpw.mods.modlauncher.TransformationServiceDecorator/MODLAUNCHER]: Initializing transformers for transformation service fml
+[2712月2025 09:01:08.921] [main/DEBUG] [net.minecraftforge.fml.loading.FMLServiceProvider/CORE]: Loading coremod transformers
+[2712月2025 09:01:08.922] [main/DEBUG] [net.minecraftforge.coremod.CoreModEngine/COREMOD]: Loading CoreMod from coremods/field_to_method.js
+[2712月2025 09:01:09.238] [main/DEBUG] [net.minecraftforge.coremod.CoreModEngine/COREMOD]: CoreMod loaded successfully
+[2712月2025 09:01:09.238] [main/DEBUG] [net.minecraftforge.coremod.CoreModEngine/COREMOD]: Loading CoreMod from coremods/field_to_instanceof.js
+[2712月2025 09:01:09.361] [main/DEBUG] [net.minecraftforge.coremod.CoreModEngine/COREMOD]: CoreMod loaded successfully
+[2712月2025 09:01:09.361] [main/DEBUG] [net.minecraftforge.coremod.CoreModEngine/COREMOD]: Loading CoreMod from coremods/add_bouncer_method.js
+[2712月2025 09:01:09.431] [main/DEBUG] [net.minecraftforge.coremod.CoreModEngine/COREMOD]: CoreMod loaded successfully
+[2712月2025 09:01:09.431] [main/DEBUG] [net.minecraftforge.coremod.CoreModEngine/COREMOD]: Loading CoreMod from coremods/method_redirector.js
+[2712月2025 09:01:09.528] [main/DEBUG] [net.minecraftforge.coremod.CoreModEngine/COREMOD]: CoreMod loaded successfully
+[2712月2025 09:01:09.553] [main/DEBUG] [cpw.mods.modlauncher.TransformStore/MODLAUNCHER]: Adding transformer net.minecraftforge.coremod.transformer.CoreModClassTransformer@df921b1 to Target : CLASS {Lnet/minecraft/world/level/biome/Biome;} {} {V}
+[2712月2025 09:01:09.556] [main/DEBUG] [cpw.mods.modlauncher.TransformStore/MODLAUNCHER]: Adding transformer net.minecraftforge.coremod.transformer.CoreModClassTransformer@1db7157f to Target : CLASS {Lnet/minecraft/world/level/levelgen/structure/Structure;} {} {V}
+[2712月2025 09:01:09.556] [main/DEBUG] [cpw.mods.modlauncher.TransformStore/MODLAUNCHER]: Adding transformer net.minecraftforge.coremod.transformer.CoreModClassTransformer@75e27856 to Target : CLASS {Lnet/minecraft/world/effect/MobEffectInstance;} {} {V}
+[2712月2025 09:01:09.557] [main/DEBUG] [cpw.mods.modlauncher.TransformStore/MODLAUNCHER]: Adding transformer net.minecraftforge.coremod.transformer.CoreModClassTransformer@6bccd036 to Target : CLASS {Lnet/minecraft/world/level/block/LiquidBlock;} {} {V}
+[2712月2025 09:01:09.558] [main/DEBUG] [cpw.mods.modlauncher.TransformStore/MODLAUNCHER]: Adding transformer net.minecraftforge.coremod.transformer.CoreModClassTransformer@4f4c88f9 to Target : CLASS {Lnet/minecraft/world/item/BucketItem;} {} {V}
+[2712月2025 09:01:09.558] [main/DEBUG] [cpw.mods.modlauncher.TransformStore/MODLAUNCHER]: Adding transformer net.minecraftforge.coremod.transformer.CoreModClassTransformer@6a756082 to Target : CLASS {Lnet/minecraft/world/level/block/StairBlock;} {} {V}
+[2712月2025 09:01:09.559] [main/DEBUG] [cpw.mods.modlauncher.TransformStore/MODLAUNCHER]: Adding transformer net.minecraftforge.coremod.transformer.CoreModClassTransformer@cb39552 to Target : CLASS {Lnet/minecraft/world/level/block/FlowerPotBlock;} {} {V}
+[2712月2025 09:01:09.559] [main/DEBUG] [cpw.mods.modlauncher.TransformStore/MODLAUNCHER]: Adding transformer net.minecraftforge.coremod.transformer.CoreModClassTransformer@1f3b992 to Target : CLASS {Lnet/minecraft/world/item/ItemStack;} {} {V}
+[2712月2025 09:01:09.560] [main/DEBUG] [cpw.mods.modlauncher.TransformStore/MODLAUNCHER]: Adding transformer net.minecraftforge.coremod.transformer.CoreModClassTransformer@2a53f215 to Target : CLASS {Lnet/minecraft/network/play/client/CClientSettingsPacket;} {} {V}
+[2712月2025 09:01:09.560] [main/DEBUG] [cpw.mods.modlauncher.TransformStore/MODLAUNCHER]: Adding transformer net.minecraftforge.coremod.transformer.CoreModClassTransformer@6b63e6ad to Target : CLASS {Lnet/minecraft/world/level/levelgen/structure/structures/OceanRuinPieces$OceanRuinPiece;} {} {V}
+[2712月2025 09:01:09.560] [main/DEBUG] [cpw.mods.modlauncher.TransformStore/MODLAUNCHER]: Adding transformer net.minecraftforge.coremod.transformer.CoreModClassTransformer@6b63e6ad to Target : CLASS {Lnet/minecraft/world/entity/EntityType;} {} {V}
+[2712月2025 09:01:09.561] [main/DEBUG] [cpw.mods.modlauncher.TransformStore/MODLAUNCHER]: Adding transformer net.minecraftforge.coremod.transformer.CoreModClassTransformer@6b63e6ad to Target : CLASS {Lnet/minecraft/world/entity/animal/frog/Tadpole;} {} {V}
+[2712月2025 09:01:09.561] [main/DEBUG] [cpw.mods.modlauncher.TransformStore/MODLAUNCHER]: Adding transformer net.minecraftforge.coremod.transformer.CoreModClassTransformer@6b63e6ad to Target : CLASS {Lnet/minecraft/world/entity/animal/horse/SkeletonTrapGoal;} {} {V}
+[2712月2025 09:01:09.561] [main/DEBUG] [cpw.mods.modlauncher.TransformStore/MODLAUNCHER]: Adding transformer net.minecraftforge.coremod.transformer.CoreModClassTransformer@6b63e6ad to Target : CLASS {Lnet/minecraft/world/entity/monster/Evoker$EvokerSummonSpellGoal;} {} {V}
+[2712月2025 09:01:09.561] [main/DEBUG] [cpw.mods.modlauncher.TransformStore/MODLAUNCHER]: Adding transformer net.minecraftforge.coremod.transformer.CoreModClassTransformer@6b63e6ad to Target : CLASS {Lnet/minecraft/world/level/levelgen/structure/structures/OceanMonumentPieces$OceanMonumentPiece;} {} {V}
+[2712月2025 09:01:09.562] [main/DEBUG] [cpw.mods.modlauncher.TransformStore/MODLAUNCHER]: Adding transformer net.minecraftforge.coremod.transformer.CoreModClassTransformer@6b63e6ad to Target : CLASS {Lnet/minecraft/world/level/levelgen/PatrolSpawner;} {} {V}
+[2712月2025 09:01:09.562] [main/DEBUG] [cpw.mods.modlauncher.TransformStore/MODLAUNCHER]: Adding transformer net.minecraftforge.coremod.transformer.CoreModClassTransformer@6b63e6ad to Target : CLASS {Lnet/minecraft/world/level/levelgen/PhantomSpawner;} {} {V}
+[2712月2025 09:01:09.562] [main/DEBUG] [cpw.mods.modlauncher.TransformStore/MODLAUNCHER]: Adding transformer net.minecraftforge.coremod.transformer.CoreModClassTransformer@6b63e6ad to Target : CLASS {Lnet/minecraft/world/level/levelgen/structure/structures/SwampHutPiece;} {} {V}
+[2712月2025 09:01:09.562] [main/DEBUG] [cpw.mods.modlauncher.TransformStore/MODLAUNCHER]: Adding transformer net.minecraftforge.coremod.transformer.CoreModClassTransformer@6b63e6ad to Target : CLASS {Lnet/minecraft/world/level/NaturalSpawner;} {} {V}
+[2712月2025 09:01:09.562] [main/DEBUG] [cpw.mods.modlauncher.TransformStore/MODLAUNCHER]: Adding transformer net.minecraftforge.coremod.transformer.CoreModClassTransformer@6b63e6ad to Target : CLASS {Lnet/minecraft/world/entity/monster/Zombie;} {} {V}
+[2712月2025 09:01:09.563] [main/DEBUG] [cpw.mods.modlauncher.TransformStore/MODLAUNCHER]: Adding transformer net.minecraftforge.coremod.transformer.CoreModClassTransformer@6b63e6ad to Target : CLASS {Lnet/minecraft/world/entity/npc/Villager;} {} {V}
+[2712月2025 09:01:09.563] [main/DEBUG] [cpw.mods.modlauncher.TransformStore/MODLAUNCHER]: Adding transformer net.minecraftforge.coremod.transformer.CoreModClassTransformer@6b63e6ad to Target : CLASS {Lnet/minecraft/server/commands/RaidCommand;} {} {V}
+[2712月2025 09:01:09.563] [main/DEBUG] [cpw.mods.modlauncher.TransformStore/MODLAUNCHER]: Adding transformer net.minecraftforge.coremod.transformer.CoreModClassTransformer@6b63e6ad to Target : CLASS {Lnet/minecraft/world/entity/monster/Spider;} {} {V}
+[2712月2025 09:01:09.563] [main/DEBUG] [cpw.mods.modlauncher.TransformStore/MODLAUNCHER]: Adding transformer net.minecraftforge.coremod.transformer.CoreModClassTransformer@6b63e6ad to Target : CLASS {Lnet/minecraft/world/entity/ai/village/VillageSiege;} {} {V}
+[2712月2025 09:01:09.564] [main/DEBUG] [cpw.mods.modlauncher.TransformStore/MODLAUNCHER]: Adding transformer net.minecraftforge.coremod.transformer.CoreModClassTransformer@6b63e6ad to Target : CLASS {Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate;} {} {V}
+[2712月2025 09:01:09.564] [main/DEBUG] [cpw.mods.modlauncher.TransformStore/MODLAUNCHER]: Adding transformer net.minecraftforge.coremod.transformer.CoreModClassTransformer@6b63e6ad to Target : CLASS {Lnet/minecraft/server/commands/SummonCommand;} {} {V}
+[2712月2025 09:01:09.564] [main/DEBUG] [cpw.mods.modlauncher.TransformStore/MODLAUNCHER]: Adding transformer net.minecraftforge.coremod.transformer.CoreModClassTransformer@6b63e6ad to Target : CLASS {Lnet/minecraft/world/level/levelgen/structure/structures/WoodlandMansionPieces$WoodlandMansionPiece;} {} {V}
+[2712月2025 09:01:09.564] [main/DEBUG] [cpw.mods.modlauncher.TransformStore/MODLAUNCHER]: Adding transformer net.minecraftforge.coremod.transformer.CoreModClassTransformer@6b63e6ad to Target : CLASS {Lnet/minecraft/world/entity/raid/Raid;} {} {V}
+[2712月2025 09:01:09.565] [main/DEBUG] [cpw.mods.modlauncher.TransformStore/MODLAUNCHER]: Adding transformer net.minecraftforge.coremod.transformer.CoreModClassTransformer@6b63e6ad to Target : CLASS {Lnet/minecraft/world/entity/monster/Strider;} {} {V}
+[2712月2025 09:01:09.565] [main/DEBUG] [cpw.mods.modlauncher.TransformStore/MODLAUNCHER]: Adding transformer net.minecraftforge.coremod.transformer.CoreModClassTransformer@6b63e6ad to Target : CLASS {Lnet/minecraft/world/entity/monster/ZombieVillager;} {} {V}
+[2712月2025 09:01:09.565] [main/DEBUG] [cpw.mods.modlauncher.TransformStore/MODLAUNCHER]: Adding transformer net.minecraftforge.coremod.transformer.CoreModClassTransformer@6b63e6ad to Target : CLASS {Lnet/minecraft/world/entity/npc/CatSpawner;} {} {V}
+[2712月2025 09:01:09.565] [main/DEBUG] [cpw.mods.modlauncher.TransformationServiceDecorator/MODLAUNCHER]: Initialized transformers for transformation service fml
+[2712月2025 09:01:13.594] [main/DEBUG] [mixin/]: Processing prepare() for PlatformAgent[MixinPlatformAgentDefault:ModLauncher Root Container(ModLauncher:4f56a0a2)]
+[2712月2025 09:01:13.594] [main/DEBUG] [mixin/]: Registering mixin config: astral_mekanism.mixins.json
+[2712月2025 09:01:13.634] [main/DEBUG] [mixin/]: Compatibility level JAVA_17 specified by astral_mekanism.mixins.json is higher than the maximum level supported by this version of mixin (JAVA_13).
+[2712月2025 09:01:13.639] [main/INFO] [mixin/]: Compatibility level set to JAVA_17
+[2712月2025 09:01:13.640] [main/DEBUG] [mixin/]: Processing launch tasks for PlatformAgent[MixinPlatformAgentDefault:ModLauncher Root Container(ModLauncher:4f56a0a2)]
+[2712月2025 09:01:13.640] [main/DEBUG] [mixin/]: Adding mixin platform agents for container SecureJarResource(minecraft)
+[2712月2025 09:01:13.641] [main/DEBUG] [mixin/]: Instancing new MixinPlatformAgentMinecraftForge for SecureJarResource(minecraft)
+[2712月2025 09:01:13.641] [main/DEBUG] [mixin/]: MixinPlatformAgentMinecraftForge rejected container SecureJarResource(minecraft)
+[2712月2025 09:01:13.641] [main/DEBUG] [mixin/]: Instancing new MixinPlatformAgentDefault for SecureJarResource(minecraft)
+[2712月2025 09:01:13.641] [main/DEBUG] [mixin/]: MixinPlatformAgentDefault accepted container SecureJarResource(minecraft)
+[2712月2025 09:01:13.641] [main/DEBUG] [mixin/]: Processing prepare() for PlatformAgent[MixinPlatformAgentDefault:SecureJarResource(minecraft)]
+[2712月2025 09:01:13.642] [main/DEBUG] [mixin/]: Adding mixin platform agents for container SecureJarResource(botanypots)
+[2712月2025 09:01:13.642] [main/DEBUG] [mixin/]: Instancing new MixinPlatformAgentMinecraftForge for SecureJarResource(botanypots)
+[2712月2025 09:01:13.642] [main/DEBUG] [mixin/]: MixinPlatformAgentMinecraftForge rejected container SecureJarResource(botanypots)
+[2712月2025 09:01:13.642] [main/DEBUG] [mixin/]: Instancing new MixinPlatformAgentDefault for SecureJarResource(botanypots)
+[2712月2025 09:01:13.642] [main/DEBUG] [mixin/]: MixinPlatformAgentDefault accepted container SecureJarResource(botanypots)
+[2712月2025 09:01:13.643] [main/DEBUG] [mixin/]: Processing prepare() for PlatformAgent[MixinPlatformAgentDefault:SecureJarResource(botanypots)]
+[2712月2025 09:01:13.643] [main/DEBUG] [mixin/]: Adding mixin platform agents for container SecureJarResource(bookshelf)
+[2712月2025 09:01:13.643] [main/DEBUG] [mixin/]: Instancing new MixinPlatformAgentMinecraftForge for SecureJarResource(bookshelf)
+[2712月2025 09:01:13.644] [main/DEBUG] [mixin/]: MixinPlatformAgentMinecraftForge rejected container SecureJarResource(bookshelf)
+[2712月2025 09:01:13.644] [main/DEBUG] [mixin/]: Instancing new MixinPlatformAgentDefault for SecureJarResource(bookshelf)
+[2712月2025 09:01:13.644] [main/DEBUG] [mixin/]: MixinPlatformAgentDefault accepted container SecureJarResource(bookshelf)
+[2712月2025 09:01:13.644] [main/DEBUG] [mixin/]: Processing prepare() for PlatformAgent[MixinPlatformAgentDefault:SecureJarResource(bookshelf)]
+[2712月2025 09:01:13.645] [main/DEBUG] [mixin/]: Registering mixin config: bookshelf.common.mixins.json
+[2712月2025 09:01:13.648] [main/DEBUG] [mixin/]: Registering mixin config: bookshelf.forge.mixins.json
+[2712月2025 09:01:13.651] [main/DEBUG] [mixin/]: Adding mixin platform agents for container SecureJarResource(forge)
+[2712月2025 09:01:13.651] [main/DEBUG] [mixin/]: Instancing new MixinPlatformAgentMinecraftForge for SecureJarResource(forge)
+[2712月2025 09:01:13.651] [main/DEBUG] [mixin/]: MixinPlatformAgentMinecraftForge rejected container SecureJarResource(forge)
+[2712月2025 09:01:13.652] [main/DEBUG] [mixin/]: Instancing new MixinPlatformAgentDefault for SecureJarResource(forge)
+[2712月2025 09:01:13.652] [main/DEBUG] [mixin/]: MixinPlatformAgentDefault accepted container SecureJarResource(forge)
+[2712月2025 09:01:13.652] [main/DEBUG] [mixin/]: Processing prepare() for PlatformAgent[MixinPlatformAgentDefault:SecureJarResource(forge)]
+[2712月2025 09:01:13.652] [main/DEBUG] [mixin/]: Adding mixin platform agents for container SecureJarResource(astral_mekanism)
+[2712月2025 09:01:13.652] [main/DEBUG] [mixin/]: Instancing new MixinPlatformAgentMinecraftForge for SecureJarResource(astral_mekanism)
+[2712月2025 09:01:13.652] [main/DEBUG] [mixin/]: MixinPlatformAgentMinecraftForge rejected container SecureJarResource(astral_mekanism)
+[2712月2025 09:01:13.652] [main/DEBUG] [mixin/]: Instancing new MixinPlatformAgentDefault for SecureJarResource(astral_mekanism)
+[2712月2025 09:01:13.653] [main/DEBUG] [mixin/]: MixinPlatformAgentDefault accepted container SecureJarResource(astral_mekanism)
+[2712月2025 09:01:13.653] [main/DEBUG] [mixin/]: Processing prepare() for PlatformAgent[MixinPlatformAgentDefault:SecureJarResource(astral_mekanism)]
+[2712月2025 09:01:13.655] [main/DEBUG] [mixin/]: Adding mixin platform agents for container SecureJarResource(guideme)
+[2712月2025 09:01:13.655] [main/DEBUG] [mixin/]: Instancing new MixinPlatformAgentMinecraftForge for SecureJarResource(guideme)
+[2712月2025 09:01:13.655] [main/DEBUG] [mixin/]: MixinPlatformAgentMinecraftForge rejected container SecureJarResource(guideme)
+[2712月2025 09:01:13.655] [main/DEBUG] [mixin/]: Instancing new MixinPlatformAgentDefault for SecureJarResource(guideme)
+[2712月2025 09:01:13.655] [main/DEBUG] [mixin/]: MixinPlatformAgentDefault accepted container SecureJarResource(guideme)
+[2712月2025 09:01:13.656] [main/DEBUG] [mixin/]: Processing prepare() for PlatformAgent[MixinPlatformAgentDefault:SecureJarResource(guideme)]
+[2712月2025 09:01:13.656] [main/DEBUG] [mixin/]: Adding mixin platform agents for container SecureJarResource(jei)
+[2712月2025 09:01:13.657] [main/DEBUG] [mixin/]: Instancing new MixinPlatformAgentMinecraftForge for SecureJarResource(jei)
+[2712月2025 09:01:13.657] [main/DEBUG] [mixin/]: MixinPlatformAgentMinecraftForge rejected container SecureJarResource(jei)
+[2712月2025 09:01:13.657] [main/DEBUG] [mixin/]: Instancing new MixinPlatformAgentDefault for SecureJarResource(jei)
+[2712月2025 09:01:13.658] [main/DEBUG] [mixin/]: MixinPlatformAgentDefault accepted container SecureJarResource(jei)
+[2712月2025 09:01:13.658] [main/DEBUG] [mixin/]: Processing prepare() for PlatformAgent[MixinPlatformAgentDefault:SecureJarResource(jei)]
+[2712月2025 09:01:13.658] [main/DEBUG] [mixin/]: Adding mixin platform agents for container SecureJarResource(mekanism)
+[2712月2025 09:01:13.658] [main/DEBUG] [mixin/]: Instancing new MixinPlatformAgentMinecraftForge for SecureJarResource(mekanism)
+[2712月2025 09:01:13.658] [main/DEBUG] [mixin/]: MixinPlatformAgentMinecraftForge rejected container SecureJarResource(mekanism)
+[2712月2025 09:01:13.659] [main/DEBUG] [mixin/]: Instancing new MixinPlatformAgentDefault for SecureJarResource(mekanism)
+[2712月2025 09:01:13.659] [main/DEBUG] [mixin/]: MixinPlatformAgentDefault accepted container SecureJarResource(mekanism)
+[2712月2025 09:01:13.659] [main/DEBUG] [mixin/]: Processing prepare() for PlatformAgent[MixinPlatformAgentDefault:SecureJarResource(mekanism)]
+[2712月2025 09:01:13.659] [main/DEBUG] [mixin/]: Adding mixin platform agents for container SecureJarResource(mekanismtools)
+[2712月2025 09:01:13.659] [main/DEBUG] [mixin/]: Instancing new MixinPlatformAgentMinecraftForge for SecureJarResource(mekanismtools)
+[2712月2025 09:01:13.659] [main/DEBUG] [mixin/]: MixinPlatformAgentMinecraftForge rejected container SecureJarResource(mekanismtools)
+[2712月2025 09:01:13.660] [main/DEBUG] [mixin/]: Instancing new MixinPlatformAgentDefault for SecureJarResource(mekanismtools)
+[2712月2025 09:01:13.660] [main/DEBUG] [mixin/]: MixinPlatformAgentDefault accepted container SecureJarResource(mekanismtools)
+[2712月2025 09:01:13.660] [main/DEBUG] [mixin/]: Processing prepare() for PlatformAgent[MixinPlatformAgentDefault:SecureJarResource(mekanismtools)]
+[2712月2025 09:01:13.660] [main/DEBUG] [mixin/]: Adding mixin platform agents for container SecureJarResource(mekanismgenerators)
+[2712月2025 09:01:13.661] [main/DEBUG] [mixin/]: Instancing new MixinPlatformAgentMinecraftForge for SecureJarResource(mekanismgenerators)
+[2712月2025 09:01:13.661] [main/DEBUG] [mixin/]: MixinPlatformAgentMinecraftForge rejected container SecureJarResource(mekanismgenerators)
+[2712月2025 09:01:13.661] [main/DEBUG] [mixin/]: Instancing new MixinPlatformAgentDefault for SecureJarResource(mekanismgenerators)
+[2712月2025 09:01:13.661] [main/DEBUG] [mixin/]: MixinPlatformAgentDefault accepted container SecureJarResource(mekanismgenerators)
+[2712月2025 09:01:13.661] [main/DEBUG] [mixin/]: Processing prepare() for PlatformAgent[MixinPlatformAgentDefault:SecureJarResource(mekanismgenerators)]
+[2712月2025 09:01:13.661] [main/DEBUG] [mixin/]: Adding mixin platform agents for container SecureJarResource(ae2)
+[2712月2025 09:01:13.662] [main/DEBUG] [mixin/]: Instancing new MixinPlatformAgentMinecraftForge for SecureJarResource(ae2)
+[2712月2025 09:01:13.662] [main/DEBUG] [mixin/]: MixinPlatformAgentMinecraftForge rejected container SecureJarResource(ae2)
+[2712月2025 09:01:13.662] [main/DEBUG] [mixin/]: Instancing new MixinPlatformAgentDefault for SecureJarResource(ae2)
+[2712月2025 09:01:13.662] [main/DEBUG] [mixin/]: MixinPlatformAgentDefault accepted container SecureJarResource(ae2)
+[2712月2025 09:01:13.662] [main/DEBUG] [mixin/]: Processing prepare() for PlatformAgent[MixinPlatformAgentDefault:SecureJarResource(ae2)]
+[2712月2025 09:01:13.663] [main/DEBUG] [mixin/]: Registering mixin config: ae2.mixins.json
+[2712月2025 09:01:13.666] [main/DEBUG] [mixin/]: Compatibility level JAVA_11 specified by ae2.mixins.json is lower than the default level supported by the current mixin service (JAVA_16).
+[2712月2025 09:01:13.666] [main/DEBUG] [mixin/]: Adding mixin platform agents for container SecureJarResource(appmek)
+[2712月2025 09:01:13.666] [main/DEBUG] [mixin/]: Instancing new MixinPlatformAgentMinecraftForge for SecureJarResource(appmek)
+[2712月2025 09:01:13.667] [main/DEBUG] [mixin/]: MixinPlatformAgentMinecraftForge rejected container SecureJarResource(appmek)
+[2712月2025 09:01:13.667] [main/DEBUG] [mixin/]: Instancing new MixinPlatformAgentDefault for SecureJarResource(appmek)
+[2712月2025 09:01:13.667] [main/DEBUG] [mixin/]: MixinPlatformAgentDefault accepted container SecureJarResource(appmek)
+[2712月2025 09:01:13.667] [main/DEBUG] [mixin/]: Processing prepare() for PlatformAgent[MixinPlatformAgentDefault:SecureJarResource(appmek)]
+[2712月2025 09:01:13.667] [main/DEBUG] [mixin/]: inject() running with 13 agents
+[2712月2025 09:01:13.667] [main/DEBUG] [mixin/]: Processing inject() for PlatformAgent[MixinPlatformAgentDefault:ModLauncher Root Container(ModLauncher:4f56a0a2)]
+[2712月2025 09:01:13.668] [main/DEBUG] [mixin/]: Processing inject() for PlatformAgent[MixinPlatformAgentDefault:SecureJarResource(minecraft)]
+[2712月2025 09:01:13.668] [main/DEBUG] [mixin/]: Processing inject() for PlatformAgent[MixinPlatformAgentDefault:SecureJarResource(botanypots)]
+[2712月2025 09:01:13.668] [main/DEBUG] [mixin/]: Processing inject() for PlatformAgent[MixinPlatformAgentDefault:SecureJarResource(bookshelf)]
+[2712月2025 09:01:13.668] [main/DEBUG] [mixin/]: Processing inject() for PlatformAgent[MixinPlatformAgentDefault:SecureJarResource(forge)]
+[2712月2025 09:01:13.668] [main/DEBUG] [mixin/]: Processing inject() for PlatformAgent[MixinPlatformAgentDefault:SecureJarResource(astral_mekanism)]
+[2712月2025 09:01:13.669] [main/DEBUG] [mixin/]: Processing inject() for PlatformAgent[MixinPlatformAgentDefault:SecureJarResource(guideme)]
+[2712月2025 09:01:13.669] [main/DEBUG] [mixin/]: Processing inject() for PlatformAgent[MixinPlatformAgentDefault:SecureJarResource(jei)]
+[2712月2025 09:01:13.669] [main/DEBUG] [mixin/]: Processing inject() for PlatformAgent[MixinPlatformAgentDefault:SecureJarResource(mekanism)]
+[2712月2025 09:01:13.669] [main/DEBUG] [mixin/]: Processing inject() for PlatformAgent[MixinPlatformAgentDefault:SecureJarResource(mekanismtools)]
+[2712月2025 09:01:13.669] [main/DEBUG] [mixin/]: Processing inject() for PlatformAgent[MixinPlatformAgentDefault:SecureJarResource(mekanismgenerators)]
+[2712月2025 09:01:13.669] [main/DEBUG] [mixin/]: Processing inject() for PlatformAgent[MixinPlatformAgentDefault:SecureJarResource(ae2)]
+[2712月2025 09:01:13.670] [main/DEBUG] [mixin/]: Processing inject() for PlatformAgent[MixinPlatformAgentDefault:SecureJarResource(appmek)]
+[2712月2025 09:01:13.670] [main/INFO] [cpw.mods.modlauncher.LaunchServiceHandler/MODLAUNCHER]: Launching target 'forgedatauserdev' with arguments [--gameDir, ., --assetsDir, C:\Users\user\.gradle\caches\forge_gradle\assets, --assetIndex, 5, --mod, astral_mekanism, --all, --output, C:\Users\user\Documents\TR\astral_mekanism\astral_mekanism\src\generated\resources, --existing, C:\Users\user\Documents\TR\astral_mekanism\astral_mekanism\src\main\resources]
+[2712月2025 09:01:13.827] [main/DEBUG] [mixin/]: Error cleaning class output directory: .mixin.out
+[2712月2025 09:01:13.830] [main/DEBUG] [mixin/]: Preparing mixins for MixinEnvironment[DEFAULT]
+[2712月2025 09:01:13.831] [main/DEBUG] [mixin/]: Selecting config astral_mekanism.mixins.json
+[2712月2025 09:01:13.836] [main/WARN] [mixin/]: Reference map 'astral_mekanism.refmap.json' for astral_mekanism.mixins.json could not be read. If this is a development environment you can ignore this message
+[2712月2025 09:01:13.837] [main/DEBUG] [mixin/]: Selecting config bookshelf.common.mixins.json
+[2712月2025 09:01:14.319] [main/INFO] [mixin/]: Remapping refMap bookshelf.refmap.json using C:\Users\user\Documents\TR\astral_mekanism\astral_mekanism\build\createSrgToMcp\output.srg
+[2712月2025 09:01:14.319] [main/DEBUG] [mixin/]: Selecting config bookshelf.forge.mixins.json
+[2712月2025 09:01:14.319] [main/INFO] [mixin/]: Remapping refMap bookshelf.refmap.json using C:\Users\user\Documents\TR\astral_mekanism\astral_mekanism\build\createSrgToMcp\output.srg
+[2712月2025 09:01:14.319] [main/DEBUG] [mixin/]: Selecting config ae2.mixins.json
+[2712月2025 09:01:14.334] [main/INFO] [mixin/]: Remapping refMap ae2.mixins.refmap.json using C:\Users\user\Documents\TR\astral_mekanism\astral_mekanism\build\createSrgToMcp\output.srg
+[2712月2025 09:01:14.334] [main/DEBUG] [mixin/]: Preparing astral_mekanism.mixins.json (9)
+[2712月2025 09:01:14.460] [main/DEBUG] [mixin/]: Preparing bookshelf.common.mixins.json (23)
+[2712月2025 09:01:14.536] [main/DEBUG] [net.minecraftforge.coremod.transformer.CoreModBaseTransformer/COREMOD]: Transforming net/minecraft/world/effect/MobEffectInstance
+[2712月2025 09:01:14.770] [main/DEBUG] [mixin/]: Preparing bookshelf.forge.mixins.json (1)
+[2712月2025 09:01:14.772] [main/DEBUG] [mixin/]: Preparing ae2.mixins.json (18)
+[2712月2025 09:01:14.844] [main/DEBUG] [net.minecraftforge.coremod.transformer.CoreModBaseTransformer/COREMOD]: Transforming net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate
+[2712月2025 09:01:15.470] [main/DEBUG] [mixin/]: Registering new injector for @Inject with org.spongepowered.asm.mixin.injection.struct.CallbackInjectionInfo
+[2712月2025 09:01:15.474] [main/DEBUG] [mixin/]: Registering new injector for @ModifyArg with org.spongepowered.asm.mixin.injection.struct.ModifyArgInjectionInfo
+[2712月2025 09:01:15.476] [main/DEBUG] [mixin/]: Registering new injector for @ModifyArgs with org.spongepowered.asm.mixin.injection.struct.ModifyArgsInjectionInfo
+[2712月2025 09:01:15.479] [main/DEBUG] [mixin/]: Registering new injector for @Redirect with org.spongepowered.asm.mixin.injection.struct.RedirectInjectionInfo
+[2712月2025 09:01:15.482] [main/DEBUG] [mixin/]: Registering new injector for @ModifyVariable with org.spongepowered.asm.mixin.injection.struct.ModifyVariableInjectionInfo
+[2712月2025 09:01:15.484] [main/DEBUG] [mixin/]: Registering new injector for @ModifyConstant with org.spongepowered.asm.mixin.injection.struct.ModifyConstantInjectionInfo
+[2712月2025 09:01:15.537] [main/DEBUG] [mixin/]: Prepared 50 mixins in 1.702 sec (34.0ms avg) (0ms load, 0ms transform, 0ms plugin)
+[2712月2025 09:01:15.850] [main/DEBUG] [io.netty.util.internal.logging.InternalLoggerFactory/]: Using SLF4J as the default logging framework
+[2712月2025 09:01:15.854] [main/DEBUG] [io.netty.util.ResourceLeakDetector/]: -Dio.netty.leakDetection.level: simple
+[2712月2025 09:01:15.854] [main/DEBUG] [io.netty.util.ResourceLeakDetector/]: -Dio.netty.leakDetection.targetRecords: 4
+[2712月2025 09:01:16.081] [main/INFO] [net.minecraftforge.data.loading.DatagenModLoader/]: Initializing Data Gatherer for mods [astral_mekanism]
+[2712月2025 09:01:16.090] [main/DEBUG] [mixin/]: Mixing EarlyStartupMixin from ae2.mixins.json into net.minecraft.server.Bootstrap
+[2712月2025 09:01:16.095] [main/DEBUG] [mixin/]: ae2.mixins.json:EarlyStartupMixin: Class version 61 required is higher than the class version supported by the current version of Mixin (JAVA_11 supports class version 55)
+[2712月2025 09:01:16.440] [main/DEBUG] [mixin/]: Mixing accessors.entity.AccessorEntity from bookshelf.common.mixins.json into net.minecraft.world.entity.Entity
+[2712月2025 09:01:16.598] [main/DEBUG] [mixin/]: Mixing accessors.entity.AccessorLivingEntity from bookshelf.common.mixins.json into net.minecraft.world.entity.LivingEntity
+[2712月2025 09:01:16.682] [main/DEBUG] [mixin/]: Mixing patches.entity.MixinLivingEntity from bookshelf.common.mixins.json into net.minecraft.world.entity.LivingEntity
+[2712月2025 09:01:16.751] [main/DEBUG] [net.minecraftforge.coremod.transformer.CoreModBaseTransformer/COREMOD]: Transforming net/minecraft/world/item/ItemStack
+[2712月2025 09:01:16.801] [main/DEBUG] [net.minecraftforge.coremod.transformer.CoreModBaseTransformer/COREMOD]: Transforming net/minecraft/world/entity/EntityType
+[2712月2025 09:01:17.095] [main/DEBUG] [mixin/]: Mixing ItemEntityMixin from ae2.mixins.json into net.minecraft.world.entity.item.ItemEntity
+[2712月2025 09:01:17.095] [main/DEBUG] [mixin/]: ae2.mixins.json:ItemEntityMixin: Class version 61 required is higher than the class version supported by the current version of Mixin (JAVA_11 supports class version 55)
+[2712月2025 09:01:17.100] [main/DEBUG] [mixin/]: Renaming synthetic method lambda$handleEntityTransform$0(Lnet/minecraft/world/level/material/FluidState;Lappeng/recipes/transform/TransformCircumstance;)Z to md97f440$lambda$handleEntityTransform$0$0 in ae2.mixins.json:ItemEntityMixin
+[2712月2025 09:01:17.329] [main/DEBUG] [mixin/]: Mixing accessors.item.AccessorItem from bookshelf.common.mixins.json into net.minecraft.world.item.Item
+[2712月2025 09:01:17.366] [main/DEBUG] [net.minecraftforge.coremod.transformer.CoreModBaseTransformer/COREMOD]: Transforming net/minecraft/world/entity/EntityType
+[2712月2025 09:01:17.921] [main/DEBUG] [net.minecraftforge.coremod.transformer.CoreModBaseTransformer/COREMOD]: Transforming net/minecraft/world/level/block/LiquidBlock
+[2712月2025 09:01:17.985] [main/DEBUG] [net.minecraftforge.coremod.transformer.CoreModBaseTransformer/COREMOD]: Transforming net/minecraft/world/level/block/StairBlock
+[2712月2025 09:01:18.108] [main/DEBUG] [net.minecraftforge.coremod.transformer.CoreModBaseTransformer/COREMOD]: Transforming net/minecraft/world/level/block/FlowerPotBlock
+[2712月2025 09:01:18.554] [main/DEBUG] [mixin/]: Mixing patches.block.entity.MixinBaseContainerBlockEntity from bookshelf.forge.mixins.json into net.minecraft.world.level.block.entity.BaseContainerBlockEntity
+[2712月2025 09:01:19.129] [main/DEBUG] [mixin/]: Mixing accessors.inventory.AccessorCraftingMenu from bookshelf.common.mixins.json into net.minecraft.world.inventory.CraftingMenu
+[2712月2025 09:01:19.154] [main/DEBUG] [mixin/]: Mixing accessors.block.entity.AccessorSignBlockEntity from bookshelf.common.mixins.json into net.minecraft.world.level.block.entity.SignBlockEntity
+[2712月2025 09:01:19.283] [main/DEBUG] [mixin/]: Mixing accessors.entity.AccessorMob from bookshelf.common.mixins.json into net.minecraft.world.entity.Mob
+[2712月2025 09:01:19.453] [main/DEBUG] [net.minecraftforge.coremod.transformer.CoreModBaseTransformer/COREMOD]: Transforming net/minecraft/world/item/ItemStack
+[2712月2025 09:01:19.607] [main/DEBUG] [mixin/]: Mixing AnvilMenuMixin from ae2.mixins.json into net.minecraft.world.inventory.AnvilMenu
+[2712月2025 09:01:19.609] [main/DEBUG] [mixin/]: ae2.mixins.json:AnvilMenuMixin: Class version 61 required is higher than the class version supported by the current version of Mixin (JAVA_11 supports class version 55)
+[2712月2025 09:01:20.381] [main/DEBUG] [mixin/]: Mixing patches.entity.MixinLightningBolt from bookshelf.common.mixins.json into net.minecraft.world.entity.LightningBolt
+[2712月2025 09:01:20.523] [main/DEBUG] [net.minecraftforge.coremod.transformer.CoreModBaseTransformer/COREMOD]: Transforming net/minecraft/world/entity/animal/frog/Tadpole
+[2712月2025 09:01:20.594] [main/DEBUG] [net.minecraftforge.coremod.transformer.CoreModBaseTransformer/COREMOD]: Transforming net/minecraft/world/item/BucketItem
+[2712月2025 09:01:21.798] [main/DEBUG] [net.minecraftforge.coremod.transformer.CoreModBaseTransformer/COREMOD]: Transforming net/minecraft/world/entity/monster/Spider
+[2712月2025 09:01:21.887] [main/DEBUG] [net.minecraftforge.coremod.transformer.CoreModBaseTransformer/COREMOD]: Transforming net/minecraft/world/entity/monster/Zombie
+[2712月2025 09:01:21.962] [main/DEBUG] [net.minecraftforge.coremod.transformer.CoreModBaseTransformer/COREMOD]: Transforming net/minecraft/world/entity/monster/ZombieVillager
+[2712月2025 09:01:22.070] [main/DEBUG] [net.minecraftforge.coremod.transformer.CoreModBaseTransformer/COREMOD]: Transforming net/minecraft/world/entity/monster/Evoker$EvokerSummonSpellGoal
+[2712月2025 09:01:22.323] [main/DEBUG] [net.minecraftforge.coremod.transformer.CoreModBaseTransformer/COREMOD]: Transforming net/minecraft/world/entity/animal/horse/SkeletonTrapGoal
+[2712月2025 09:01:22.360] [main/DEBUG] [net.minecraftforge.coremod.transformer.CoreModBaseTransformer/COREMOD]: Transforming net/minecraft/world/entity/monster/Strider
+[2712月2025 09:01:22.564] [main/DEBUG] [net.minecraftforge.coremod.transformer.CoreModBaseTransformer/COREMOD]: Transforming net/minecraft/world/entity/npc/Villager
+[2712月2025 09:01:22.808] [main/DEBUG] [net.minecraftforge.coremod.transformer.CoreModBaseTransformer/COREMOD]: Transforming net/minecraft/world/effect/MobEffectInstance
+[2712月2025 09:01:22.809] [main/DEBUG] [mixin/]: Mixing accessors.effect.AccessorMobEffectInstance from bookshelf.common.mixins.json into net.minecraft.world.effect.MobEffectInstance
+[2712月2025 09:01:23.027] [main/DEBUG] [mixin/]: Mixing UnbreakingMixin from ae2.mixins.json into net.minecraft.world.item.enchantment.DigDurabilityEnchantment
+[2712月2025 09:01:23.028] [main/DEBUG] [mixin/]: ae2.mixins.json:UnbreakingMixin: Class version 61 required is higher than the class version supported by the current version of Mixin (JAVA_11 supports class version 55)
+[2712月2025 09:01:23.238] [main/DEBUG] [mixin/]: Mixing accessors.item.crafting.AccessorShapedRecipe from bookshelf.common.mixins.json into net.minecraft.world.item.crafting.ShapedRecipe
+[2712月2025 09:01:23.238] [main/DEBUG] [mixin/]: Renaming @Invoker method bookshelf$keyFromJson(Lcom/google/gson/JsonObject;)Ljava/util/Map; to bookshelf$keyFromJson_$md$97f440$0 in bookshelf.common.mixins.json:accessors.item.crafting.AccessorShapedRecipe
+[2712月2025 09:01:23.244] [main/DEBUG] [mixin/]: Renaming @Invoker method bookshelf$shrink([Ljava/lang/String;)[Ljava/lang/String; to bookshelf$shrink_$md$97f440$1 in bookshelf.common.mixins.json:accessors.item.crafting.AccessorShapedRecipe
+[2712月2025 09:01:23.250] [main/DEBUG] [mixin/]: Renaming @Invoker method bookshelf$patternFromJson(Lcom/google/gson/JsonArray;)[Ljava/lang/String; to bookshelf$patternFromJson_$md$97f440$2 in bookshelf.common.mixins.json:accessors.item.crafting.AccessorShapedRecipe
+[2712月2025 09:01:23.255] [main/DEBUG] [mixin/]: Renaming @Invoker method bookshelf$dissolvePattern([Ljava/lang/String;Ljava/util/Map;II)Lnet/minecraft/core/NonNullList; to bookshelf$dissolvePattern_$md$97f440$3 in bookshelf.common.mixins.json:accessors.item.crafting.AccessorShapedRecipe
+[2712月2025 09:01:23.538] [main/DEBUG] [mixin/]: Mixing accessors.util.random.AccessorWeightedRandomList from bookshelf.common.mixins.json into net.minecraft.util.random.WeightedRandomList
+[2712月2025 09:01:23.965] [main/DEBUG] [net.minecraftforge.coremod.transformer.CoreModBaseTransformer/COREMOD]: Transforming net/minecraft/world/level/levelgen/structure/Structure
+[2712月2025 09:01:24.075] [main/DEBUG] [net.minecraftforge.coremod.transformer.CoreModBaseTransformer/COREMOD]: Transforming net/minecraft/world/level/levelgen/structure/structures/OceanRuinPieces$OceanRuinPiece
+[2712月2025 09:01:24.103] [main/DEBUG] [net.minecraftforge.coremod.transformer.CoreModBaseTransformer/COREMOD]: Transforming net/minecraft/world/level/levelgen/structure/structures/SwampHutPiece
+[2712月2025 09:01:24.125] [main/DEBUG] [net.minecraftforge.coremod.transformer.CoreModBaseTransformer/COREMOD]: Transforming net/minecraft/world/level/levelgen/structure/structures/OceanMonumentPieces$OceanMonumentPiece
+[2712月2025 09:01:24.169] [main/DEBUG] [net.minecraftforge.coremod.transformer.CoreModBaseTransformer/COREMOD]: Transforming net/minecraft/world/level/levelgen/structure/structures/WoodlandMansionPieces$WoodlandMansionPiece
+[2712月2025 09:01:24.233] [main/DEBUG] [mixin/]: Mixing accessors.world.AccessorStructureTemplatePool from bookshelf.common.mixins.json into net.minecraft.world.level.levelgen.structure.pools.StructureTemplatePool
+[2712月2025 09:01:24.392] [main/DEBUG] [net.minecraftforge.coremod.transformer.CoreModBaseTransformer/COREMOD]: Transforming net/minecraft/world/level/biome/Biome
+[2712月2025 09:01:24.698] [main/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Creating vanilla freeze snapshot
+[2712月2025 09:01:24.701] [main/DEBUG] [net.minecraftforge.registries.ForgeRegistry/REGISTRIES]: Registry minecraft:block Sync: VANILLA -> ACTIVE
+[2712月2025 09:01:24.729] [main/DEBUG] [net.minecraftforge.registries.ForgeRegistry/REGISTRIES]: Registry minecraft:fluid Sync: VANILLA -> ACTIVE
+[2712月2025 09:01:24.729] [main/DEBUG] [net.minecraftforge.registries.ForgeRegistry/REGISTRIES]: Registry minecraft:item Sync: VANILLA -> ACTIVE
+[2712月2025 09:01:24.754] [main/DEBUG] [net.minecraftforge.registries.ForgeRegistry/REGISTRIES]: Registry minecraft:mob_effect Sync: VANILLA -> ACTIVE
+[2712月2025 09:01:24.755] [main/DEBUG] [net.minecraftforge.registries.ForgeRegistry/REGISTRIES]: Registry minecraft:sound_event Sync: VANILLA -> ACTIVE
+[2712月2025 09:01:24.777] [main/DEBUG] [net.minecraftforge.registries.ForgeRegistry/REGISTRIES]: Registry minecraft:potion Sync: VANILLA -> ACTIVE
+[2712月2025 09:01:24.778] [main/DEBUG] [net.minecraftforge.registries.ForgeRegistry/REGISTRIES]: Registry minecraft:enchantment Sync: VANILLA -> ACTIVE
+[2712月2025 09:01:24.778] [main/DEBUG] [net.minecraftforge.registries.ForgeRegistry/REGISTRIES]: Registry minecraft:entity_type Sync: VANILLA -> ACTIVE
+[2712月2025 09:01:24.780] [main/DEBUG] [net.minecraftforge.registries.ForgeRegistry/REGISTRIES]: Registry minecraft:block_entity_type Sync: VANILLA -> ACTIVE
+[2712月2025 09:01:24.781] [main/DEBUG] [net.minecraftforge.registries.ForgeRegistry/REGISTRIES]: Registry minecraft:particle_type Sync: VANILLA -> ACTIVE
+[2712月2025 09:01:24.782] [main/DEBUG] [net.minecraftforge.registries.ForgeRegistry/REGISTRIES]: Registry minecraft:menu Sync: VANILLA -> ACTIVE
+[2712月2025 09:01:24.782] [main/DEBUG] [net.minecraftforge.registries.ForgeRegistry/REGISTRIES]: Registry minecraft:painting_variant Sync: VANILLA -> ACTIVE
+[2712月2025 09:01:24.783] [main/DEBUG] [net.minecraftforge.registries.ForgeRegistry/REGISTRIES]: Registry minecraft:recipe_type Sync: VANILLA -> ACTIVE
+[2712月2025 09:01:24.783] [main/DEBUG] [net.minecraftforge.registries.ForgeRegistry/REGISTRIES]: Registry minecraft:recipe_serializer Sync: VANILLA -> ACTIVE
+[2712月2025 09:01:24.784] [main/DEBUG] [net.minecraftforge.registries.ForgeRegistry/REGISTRIES]: Registry minecraft:attribute Sync: VANILLA -> ACTIVE
+[2712月2025 09:01:24.785] [main/DEBUG] [net.minecraftforge.registries.ForgeRegistry/REGISTRIES]: Registry minecraft:stat_type Sync: VANILLA -> ACTIVE
+[2712月2025 09:01:24.785] [main/DEBUG] [net.minecraftforge.registries.ForgeRegistry/REGISTRIES]: Registry minecraft:command_argument_type Sync: VANILLA -> ACTIVE
+[2712月2025 09:01:24.786] [main/DEBUG] [net.minecraftforge.registries.ForgeRegistry/REGISTRIES]: Registry minecraft:villager_profession Sync: VANILLA -> ACTIVE
+[2712月2025 09:01:24.787] [main/DEBUG] [net.minecraftforge.registries.ForgeRegistry/REGISTRIES]: Registry minecraft:point_of_interest_type Sync: VANILLA -> ACTIVE
+[2712月2025 09:01:24.791] [main/DEBUG] [net.minecraftforge.registries.ForgeRegistry/REGISTRIES]: Registry minecraft:memory_module_type Sync: VANILLA -> ACTIVE
+[2712月2025 09:01:24.793] [main/DEBUG] [net.minecraftforge.registries.ForgeRegistry/REGISTRIES]: Registry minecraft:sensor_type Sync: VANILLA -> ACTIVE
+[2712月2025 09:01:24.793] [main/DEBUG] [net.minecraftforge.registries.ForgeRegistry/REGISTRIES]: Registry minecraft:schedule Sync: VANILLA -> ACTIVE
+[2712月2025 09:01:24.793] [main/DEBUG] [net.minecraftforge.registries.ForgeRegistry/REGISTRIES]: Registry minecraft:activity Sync: VANILLA -> ACTIVE
+[2712月2025 09:01:24.794] [main/DEBUG] [net.minecraftforge.registries.ForgeRegistry/REGISTRIES]: Registry minecraft:worldgen/carver Sync: VANILLA -> ACTIVE
+[2712月2025 09:01:24.794] [main/DEBUG] [net.minecraftforge.registries.ForgeRegistry/REGISTRIES]: Registry minecraft:worldgen/feature Sync: VANILLA -> ACTIVE
+[2712月2025 09:01:24.795] [main/DEBUG] [net.minecraftforge.registries.ForgeRegistry/REGISTRIES]: Registry minecraft:chunk_status Sync: VANILLA -> ACTIVE
+[2712月2025 09:01:24.795] [main/DEBUG] [net.minecraftforge.registries.ForgeRegistry/REGISTRIES]: Registry minecraft:worldgen/block_state_provider_type Sync: VANILLA -> ACTIVE
+[2712月2025 09:01:24.796] [main/DEBUG] [net.minecraftforge.registries.ForgeRegistry/REGISTRIES]: Registry minecraft:worldgen/foliage_placer_type Sync: VANILLA -> ACTIVE
+[2712月2025 09:01:24.796] [main/DEBUG] [net.minecraftforge.registries.ForgeRegistry/REGISTRIES]: Registry minecraft:worldgen/tree_decorator_type Sync: VANILLA -> ACTIVE
+[2712月2025 09:01:24.796] [main/DEBUG] [net.minecraftforge.registries.ForgeRegistry/REGISTRIES]: Registry minecraft:worldgen/biome Sync: VANILLA -> ACTIVE
+[2712月2025 09:01:24.807] [main/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Vanilla freeze snapshot created
+[2712月2025 09:01:24.843] [main/WARN] [AE2:C/]: Unable to find class com.simibubi.create.foundation.ponder.PonderWorld. Integration with PonderJS disabled.
+[2712月2025 09:01:25.494] [main/DEBUG] [mixin/]: Mixing ae2.AppEngInternalInventoryMixin from astral_mekanism.mixins.json into appeng.util.inv.AppEngInternalInventory
+[2712月2025 09:01:25.578] [main/DEBUG] [io.netty.util.internal.PlatformDependent0/]: -Dio.netty.noUnsafe: false
+[2712月2025 09:01:25.578] [main/DEBUG] [io.netty.util.internal.PlatformDependent0/]: Java version: 17
+[2712月2025 09:01:25.579] [main/DEBUG] [io.netty.util.internal.PlatformDependent0/]: sun.misc.Unsafe.theUnsafe: available
+[2712月2025 09:01:25.580] [main/DEBUG] [io.netty.util.internal.PlatformDependent0/]: sun.misc.Unsafe.copyMemory: available
+[2712月2025 09:01:25.580] [main/DEBUG] [io.netty.util.internal.PlatformDependent0/]: sun.misc.Unsafe.storeFence: available
+[2712月2025 09:01:25.580] [main/DEBUG] [io.netty.util.internal.PlatformDependent0/]: java.nio.Buffer.address: available
+[2712月2025 09:01:25.581] [main/DEBUG] [io.netty.util.internal.PlatformDependent0/]: direct buffer constructor: unavailable
+java.lang.UnsupportedOperationException: Reflective setAccessible(true) disabled
+	at io.netty.util.internal.ReflectionUtil.trySetAccessible(ReflectionUtil.java:31) ~[netty-common-4.1.82.Final.jar:4.1.82.Final]
+	at io.netty.util.internal.PlatformDependent0$5.run(PlatformDependent0.java:288) ~[netty-common-4.1.82.Final.jar:4.1.82.Final]
+	at java.security.AccessController.doPrivileged(AccessController.java:318) ~[?:?]
+	at io.netty.util.internal.PlatformDependent0.<clinit>(PlatformDependent0.java:282) ~[netty-common-4.1.82.Final.jar:4.1.82.Final]
+	at io.netty.util.internal.PlatformDependent.isAndroid(PlatformDependent.java:333) ~[netty-common-4.1.82.Final.jar:4.1.82.Final]
+	at io.netty.util.internal.PlatformDependent.<clinit>(PlatformDependent.java:88) ~[netty-common-4.1.82.Final.jar:4.1.82.Final]
+	at io.netty.util.ConstantPool.<init>(ConstantPool.java:34) ~[netty-common-4.1.82.Final.jar:4.1.82.Final]
+	at io.netty.util.AttributeKey$1.<init>(AttributeKey.java:27) ~[netty-common-4.1.82.Final.jar:4.1.82.Final]
+	at io.netty.util.AttributeKey.<clinit>(AttributeKey.java:27) ~[netty-common-4.1.82.Final.jar:4.1.82.Final]
+	at net.minecraftforge.network.NetworkConstants.<clinit>(NetworkConstants.java:34) ~[forge-1.20.1-47.4.0_mapped_official_1.20.1-recomp.jar:?]
+	at net.minecraftforge.network.NetworkHooks.init(NetworkHooks.java:52) ~[forge-1.20.1-47.4.0_mapped_official_1.20.1-recomp.jar:?]
+	at net.minecraft.server.Bootstrap.bootStrap(Bootstrap.java:62) ~[forge-1.20.1-47.4.0_mapped_official_1.20.1-recomp.jar:?]
+	at net.minecraftforge.data.loading.DatagenModLoader.begin(DatagenModLoader.java:42) ~[forge-1.20.1-47.4.0_mapped_official_1.20.1-recomp.jar:?]
+	at net.minecraft.data.Main.main(Main.java:90) ~[forge-1.20.1-47.4.0_mapped_official_1.20.1-recomp.jar:?]
+	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:?]
+	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[?:?]
+	at jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:?]
+	at java.lang.reflect.Method.invoke(Method.java:569) ~[?:?]
+	at net.minecraftforge.fml.loading.targets.CommonLaunchHandler.runTarget(CommonLaunchHandler.java:111) ~[fmlloader-1.20.1-47.4.0.jar:?]
+	at net.minecraftforge.fml.loading.targets.CommonLaunchHandler.dataService(CommonLaunchHandler.java:107) ~[fmlloader-1.20.1-47.4.0.jar:?]
+	at net.minecraftforge.fml.loading.targets.ForgeDataUserdevLaunchHandler.devService(ForgeDataUserdevLaunchHandler.java:22) ~[fmlloader-1.20.1-47.4.0.jar:?]
+	at net.minecraftforge.fml.loading.targets.CommonDevLaunchHandler.lambda$makeService$7(CommonDevLaunchHandler.java:135) ~[fmlloader-1.20.1-47.4.0.jar:?]
+	at cpw.mods.modlauncher.LaunchServiceHandlerDecorator.launch(LaunchServiceHandlerDecorator.java:30) ~[modlauncher-10.0.9.jar:?]
+	at cpw.mods.modlauncher.LaunchServiceHandler.launch(LaunchServiceHandler.java:53) ~[modlauncher-10.0.9.jar:?]
+	at cpw.mods.modlauncher.LaunchServiceHandler.launch(LaunchServiceHandler.java:71) ~[modlauncher-10.0.9.jar:?]
+	at cpw.mods.modlauncher.Launcher.run(Launcher.java:108) ~[modlauncher-10.0.9.jar:?]
+	at cpw.mods.modlauncher.Launcher.main(Launcher.java:78) ~[modlauncher-10.0.9.jar:?]
+	at cpw.mods.modlauncher.BootstrapLaunchConsumer.accept(BootstrapLaunchConsumer.java:26) ~[modlauncher-10.0.9.jar:?]
+	at cpw.mods.modlauncher.BootstrapLaunchConsumer.accept(BootstrapLaunchConsumer.java:23) ~[modlauncher-10.0.9.jar:?]
+	at cpw.mods.bootstraplauncher.BootstrapLauncher.main(BootstrapLauncher.java:141) ~[bootstraplauncher-1.1.2.jar:?]
+[2712月2025 09:01:25.626] [main/DEBUG] [io.netty.util.internal.PlatformDependent0/]: java.nio.Bits.unaligned: available, true
+[2712月2025 09:01:25.628] [main/DEBUG] [io.netty.util.internal.PlatformDependent0/]: jdk.internal.misc.Unsafe.allocateUninitializedArray(int): unavailable
+java.lang.IllegalAccessException: class io.netty.util.internal.PlatformDependent0$7 (in module io.netty.common) cannot access class jdk.internal.misc.Unsafe (in module java.base) because module java.base does not export jdk.internal.misc to module io.netty.common
+	at jdk.internal.reflect.Reflection.newIllegalAccessException(Reflection.java:392) ~[?:?]
+	at java.lang.reflect.AccessibleObject.checkAccess(AccessibleObject.java:674) ~[?:?]
+	at java.lang.reflect.Method.invoke(Method.java:561) ~[?:?]
+	at io.netty.util.internal.PlatformDependent0$7.run(PlatformDependent0.java:410) ~[netty-common-4.1.82.Final.jar:4.1.82.Final]
+	at java.security.AccessController.doPrivileged(AccessController.java:318) ~[?:?]
+	at io.netty.util.internal.PlatformDependent0.<clinit>(PlatformDependent0.java:401) ~[netty-common-4.1.82.Final.jar:4.1.82.Final]
+	at io.netty.util.internal.PlatformDependent.isAndroid(PlatformDependent.java:333) ~[netty-common-4.1.82.Final.jar:4.1.82.Final]
+	at io.netty.util.internal.PlatformDependent.<clinit>(PlatformDependent.java:88) ~[netty-common-4.1.82.Final.jar:4.1.82.Final]
+	at io.netty.util.ConstantPool.<init>(ConstantPool.java:34) ~[netty-common-4.1.82.Final.jar:4.1.82.Final]
+	at io.netty.util.AttributeKey$1.<init>(AttributeKey.java:27) ~[netty-common-4.1.82.Final.jar:4.1.82.Final]
+	at io.netty.util.AttributeKey.<clinit>(AttributeKey.java:27) ~[netty-common-4.1.82.Final.jar:4.1.82.Final]
+	at net.minecraftforge.network.NetworkConstants.<clinit>(NetworkConstants.java:34) ~[forge-1.20.1-47.4.0_mapped_official_1.20.1-recomp.jar:?]
+	at net.minecraftforge.network.NetworkHooks.init(NetworkHooks.java:52) ~[forge-1.20.1-47.4.0_mapped_official_1.20.1-recomp.jar:?]
+	at net.minecraft.server.Bootstrap.bootStrap(Bootstrap.java:62) ~[forge-1.20.1-47.4.0_mapped_official_1.20.1-recomp.jar:?]
+	at net.minecraftforge.data.loading.DatagenModLoader.begin(DatagenModLoader.java:42) ~[forge-1.20.1-47.4.0_mapped_official_1.20.1-recomp.jar:?]
+	at net.minecraft.data.Main.main(Main.java:90) ~[forge-1.20.1-47.4.0_mapped_official_1.20.1-recomp.jar:?]
+	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:?]
+	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[?:?]
+	at jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:?]
+	at java.lang.reflect.Method.invoke(Method.java:569) ~[?:?]
+	at net.minecraftforge.fml.loading.targets.CommonLaunchHandler.runTarget(CommonLaunchHandler.java:111) ~[fmlloader-1.20.1-47.4.0.jar:?]
+	at net.minecraftforge.fml.loading.targets.CommonLaunchHandler.dataService(CommonLaunchHandler.java:107) ~[fmlloader-1.20.1-47.4.0.jar:?]
+	at net.minecraftforge.fml.loading.targets.ForgeDataUserdevLaunchHandler.devService(ForgeDataUserdevLaunchHandler.java:22) ~[fmlloader-1.20.1-47.4.0.jar:?]
+	at net.minecraftforge.fml.loading.targets.CommonDevLaunchHandler.lambda$makeService$7(CommonDevLaunchHandler.java:135) ~[fmlloader-1.20.1-47.4.0.jar:?]
+	at cpw.mods.modlauncher.LaunchServiceHandlerDecorator.launch(LaunchServiceHandlerDecorator.java:30) ~[modlauncher-10.0.9.jar:?]
+	at cpw.mods.modlauncher.LaunchServiceHandler.launch(LaunchServiceHandler.java:53) ~[modlauncher-10.0.9.jar:?]
+	at cpw.mods.modlauncher.LaunchServiceHandler.launch(LaunchServiceHandler.java:71) ~[modlauncher-10.0.9.jar:?]
+	at cpw.mods.modlauncher.Launcher.run(Launcher.java:108) ~[modlauncher-10.0.9.jar:?]
+	at cpw.mods.modlauncher.Launcher.main(Launcher.java:78) ~[modlauncher-10.0.9.jar:?]
+	at cpw.mods.modlauncher.BootstrapLaunchConsumer.accept(BootstrapLaunchConsumer.java:26) ~[modlauncher-10.0.9.jar:?]
+	at cpw.mods.modlauncher.BootstrapLaunchConsumer.accept(BootstrapLaunchConsumer.java:23) ~[modlauncher-10.0.9.jar:?]
+	at cpw.mods.bootstraplauncher.BootstrapLauncher.main(BootstrapLauncher.java:141) ~[bootstraplauncher-1.1.2.jar:?]
+[2712月2025 09:01:25.633] [main/DEBUG] [io.netty.util.internal.PlatformDependent0/]: java.nio.DirectByteBuffer.<init>(long, int): unavailable
+[2712月2025 09:01:25.634] [main/DEBUG] [io.netty.util.internal.PlatformDependent/]: sun.misc.Unsafe: available
+[2712月2025 09:01:25.635] [main/DEBUG] [io.netty.util.internal.PlatformDependent/]: maxDirectMemory: 4271898624 bytes (maybe)
+[2712月2025 09:01:25.635] [main/DEBUG] [io.netty.util.internal.PlatformDependent/]: -Dio.netty.tmpdir: C:\Users\user\AppData\Local\Temp (java.io.tmpdir)
+[2712月2025 09:01:25.636] [main/DEBUG] [io.netty.util.internal.PlatformDependent/]: -Dio.netty.bitMode: 64 (sun.arch.data.model)
+[2712月2025 09:01:25.637] [main/DEBUG] [io.netty.util.internal.PlatformDependent/]: Platform: Windows
+[2712月2025 09:01:25.640] [main/DEBUG] [io.netty.util.internal.PlatformDependent/]: -Dio.netty.maxDirectMemory: -1 bytes
+[2712月2025 09:01:25.640] [main/DEBUG] [io.netty.util.internal.PlatformDependent/]: -Dio.netty.uninitializedArrayAllocationThreshold: -1
+[2712月2025 09:01:25.642] [main/DEBUG] [io.netty.util.internal.CleanerJava9/]: java.nio.ByteBuffer.cleaner(): available
+[2712月2025 09:01:25.642] [main/DEBUG] [io.netty.util.internal.PlatformDependent/]: -Dio.netty.noPreferDirect: false
+[2712月2025 09:01:25.773] [main/DEBUG] [net.minecraftforge.network.NetworkHooks/]: Loading Network data for FML net version: FML3
+[2712月2025 09:01:25.805] [main/DEBUG] [net.minecraftforge.fml.ModWorkManager/LOADING]: Using 8 threads for parallel mod-loading
+[2712月2025 09:01:25.817] [main/DEBUG] [net.minecraftforge.fml.javafmlmod.FMLJavaModLanguageProvider/LOADING]: Loading FMLModContainer from classloader cpw.mods.modlauncher.TransformingClassLoader@dd2856e - got cpw.mods.cl.ModuleClassLoader@60723d6a
+[2712月2025 09:01:25.819] [main/DEBUG] [net.minecraftforge.fml.javafmlmod.FMLModContainer/LOADING]: Creating FMLModContainer instance for net.darkhax.botanypots.BotanyPotsForge
+[2712月2025 09:01:25.822] [main/DEBUG] [net.minecraftforge.fml.javafmlmod.FMLJavaModLanguageProvider/LOADING]: Loading FMLModContainer from classloader cpw.mods.modlauncher.TransformingClassLoader@dd2856e - got cpw.mods.cl.ModuleClassLoader@60723d6a
+[2712月2025 09:01:25.822] [main/DEBUG] [net.minecraftforge.fml.javafmlmod.FMLModContainer/LOADING]: Creating FMLModContainer instance for net.darkhax.bookshelf.BookshelfForge
+[2712月2025 09:01:25.824] [main/DEBUG] [net.minecraftforge.fml.javafmlmod.FMLJavaModLanguageProvider/LOADING]: Loading FMLModContainer from classloader cpw.mods.modlauncher.TransformingClassLoader@dd2856e - got cpw.mods.cl.ModuleClassLoader@60723d6a
+[2712月2025 09:01:25.824] [main/DEBUG] [net.minecraftforge.fml.javafmlmod.FMLModContainer/LOADING]: Creating FMLModContainer instance for net.minecraftforge.common.ForgeMod
+[2712月2025 09:01:25.827] [main/DEBUG] [net.minecraftforge.fml.javafmlmod.FMLJavaModLanguageProvider/LOADING]: Loading FMLModContainer from classloader cpw.mods.modlauncher.TransformingClassLoader@dd2856e - got cpw.mods.cl.ModuleClassLoader@60723d6a
+[2712月2025 09:01:25.827] [main/DEBUG] [net.minecraftforge.fml.javafmlmod.FMLModContainer/LOADING]: Creating FMLModContainer instance for astral_mekanism.AstralMekanism
+[2712月2025 09:01:25.829] [main/DEBUG] [net.minecraftforge.fml.javafmlmod.FMLJavaModLanguageProvider/LOADING]: Loading FMLModContainer from classloader cpw.mods.modlauncher.TransformingClassLoader@dd2856e - got cpw.mods.cl.ModuleClassLoader@60723d6a
+[2712月2025 09:01:25.829] [main/DEBUG] [net.minecraftforge.fml.javafmlmod.FMLModContainer/LOADING]: Creating FMLModContainer instance for guideme.internal.GuideME
+[2712月2025 09:01:25.831] [main/DEBUG] [net.minecraftforge.fml.javafmlmod.FMLJavaModLanguageProvider/LOADING]: Loading FMLModContainer from classloader cpw.mods.modlauncher.TransformingClassLoader@dd2856e - got cpw.mods.cl.ModuleClassLoader@60723d6a
+[2712月2025 09:01:25.831] [main/DEBUG] [net.minecraftforge.fml.javafmlmod.FMLModContainer/LOADING]: Creating FMLModContainer instance for mezz.jei.forge.JustEnoughItems
+[2712月2025 09:01:25.832] [main/DEBUG] [net.minecraftforge.fml.javafmlmod.FMLJavaModLanguageProvider/LOADING]: Loading FMLModContainer from classloader cpw.mods.modlauncher.TransformingClassLoader@dd2856e - got cpw.mods.cl.ModuleClassLoader@60723d6a
+[2712月2025 09:01:25.832] [main/DEBUG] [net.minecraftforge.fml.javafmlmod.FMLModContainer/LOADING]: Creating FMLModContainer instance for mekanism.common.Mekanism
+[2712月2025 09:01:25.835] [main/DEBUG] [net.minecraftforge.fml.javafmlmod.FMLJavaModLanguageProvider/LOADING]: Loading FMLModContainer from classloader cpw.mods.modlauncher.TransformingClassLoader@dd2856e - got cpw.mods.cl.ModuleClassLoader@60723d6a
+[2712月2025 09:01:25.836] [main/DEBUG] [net.minecraftforge.fml.javafmlmod.FMLModContainer/LOADING]: Creating FMLModContainer instance for mekanism.tools.common.MekanismTools
+[2712月2025 09:01:25.838] [main/DEBUG] [net.minecraftforge.fml.javafmlmod.FMLJavaModLanguageProvider/LOADING]: Loading FMLModContainer from classloader cpw.mods.modlauncher.TransformingClassLoader@dd2856e - got cpw.mods.cl.ModuleClassLoader@60723d6a
+[2712月2025 09:01:25.839] [main/DEBUG] [net.minecraftforge.fml.javafmlmod.FMLModContainer/LOADING]: Creating FMLModContainer instance for mekanism.generators.common.MekanismGenerators
+[2712月2025 09:01:25.840] [main/DEBUG] [net.minecraftforge.fml.javafmlmod.FMLJavaModLanguageProvider/LOADING]: Loading FMLModContainer from classloader cpw.mods.modlauncher.TransformingClassLoader@dd2856e - got cpw.mods.cl.ModuleClassLoader@60723d6a
+[2712月2025 09:01:25.840] [main/DEBUG] [net.minecraftforge.fml.javafmlmod.FMLModContainer/LOADING]: Creating FMLModContainer instance for appeng.core.AppEngBootstrap
+[2712月2025 09:01:25.841] [main/DEBUG] [net.minecraftforge.fml.javafmlmod.FMLJavaModLanguageProvider/LOADING]: Loading FMLModContainer from classloader cpw.mods.modlauncher.TransformingClassLoader@dd2856e - got cpw.mods.cl.ModuleClassLoader@60723d6a
+[2712月2025 09:01:25.841] [main/DEBUG] [net.minecraftforge.fml.javafmlmod.FMLModContainer/LOADING]: Creating FMLModContainer instance for me.ramidzkh.mekae2.AppliedMekanistics
+[2712月2025 09:01:25.878] [modloading-worker-0/DEBUG] [Bookshelf/]: Loaded net.darkhax.bookshelf.impl.util.PlatformHelperForge@3d073038 for service interface net.darkhax.bookshelf.api.util.IPlatformHelper.
+[2712月2025 09:01:25.888] [modloading-worker-0/DEBUG] [Bookshelf/]: Loaded net.darkhax.bookshelf.impl.event.EventHelperForge@1ab0e3e7 for service interface net.darkhax.bookshelf.api.event.IEventHelper.
+[2712月2025 09:01:25.899] [modloading-worker-0/DEBUG] [Bookshelf/]: Loaded net.darkhax.bookshelf.impl.registry.ContentLoaderForge@14bdd282 for service interface net.darkhax.bookshelf.api.registry.IContentLoader.
+[2712月2025 09:01:25.907] [modloading-worker-0/DEBUG] [Bookshelf/]: Loaded net.darkhax.bookshelf.impl.data.TagHelperForge@7eb3749c for service interface net.darkhax.bookshelf.api.data.ITagHelper.
+[2712月2025 09:01:25.916] [modloading-worker-0/DEBUG] [Bookshelf/]: Loaded net.darkhax.bookshelf.impl.util.InventoryHelperForge@3e1af04f for service interface net.darkhax.bookshelf.api.util.IInventoryHelper.
+[2712月2025 09:01:25.922] [modloading-worker-0/DEBUG] [Bookshelf/]: Loaded net.darkhax.bookshelf.impl.util.ConstructHelperForge@3f8cccbe for service interface net.darkhax.bookshelf.api.util.IConstructHelper.
+[2712月2025 09:01:25.931] [modloading-worker-0/DEBUG] [net.minecraftforge.versions.forge.ForgeVersion/CORE]: Forge Version package package net.minecraftforge.versions.forge, Forge, version 47.4 from cpw.mods.modlauncher.TransformingClassLoader@dd2856e
+[2712月2025 09:01:25.932] [modloading-worker-0/DEBUG] [net.minecraftforge.versions.forge.ForgeVersion/CORE]: Found Forge version 47.4.0
+[2712月2025 09:01:25.932] [modloading-worker-0/DEBUG] [net.minecraftforge.versions.forge.ForgeVersion/CORE]: Found Forge spec 47.4
+[2712月2025 09:01:25.932] [modloading-worker-0/DEBUG] [net.minecraftforge.versions.forge.ForgeVersion/CORE]: Found Forge group net.minecraftforge
+[2712月2025 09:01:25.935] [modloading-worker-0/DEBUG] [net.minecraftforge.versions.mcp.MCPVersion/CORE]: MCP Version package package net.minecraftforge.versions.mcp, Minecraft, version 1.20.1 from cpw.mods.modlauncher.TransformingClassLoader@dd2856e
+[2712月2025 09:01:25.935] [modloading-worker-0/DEBUG] [net.minecraftforge.versions.mcp.MCPVersion/CORE]: Found MC version information 1.20.1
+[2712月2025 09:01:25.935] [modloading-worker-0/DEBUG] [net.minecraftforge.versions.mcp.MCPVersion/CORE]: Found MCP version information 20230612.114412
+[2712月2025 09:01:25.935] [modloading-worker-0/INFO] [net.minecraftforge.common.ForgeMod/FORGEMOD]: Forge mod loading, version 47.4.0, for MC 1.20.1 with MCP 20230612.114412
+[2712月2025 09:01:25.941] [modloading-worker-0/INFO] [net.minecraftforge.common.MinecraftForge/FORGE]: MinecraftForge v47.4.0 Initialized
+[2712月2025 09:01:25.951] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.config.ConfigTracker/CONFIG]: Config file jei-server.toml for jei tracking
+[2712月2025 09:01:26.055] [modloading-worker-0/INFO] [Bookshelf/]: Fixing MC-151457. Crafting remainder for minecraft:pufferfish_bucket is now minecraft:bucket.
+[2712月2025 09:01:26.056] [modloading-worker-0/INFO] [Bookshelf/]: Fixing MC-151457. Crafting remainder for minecraft:salmon_bucket is now minecraft:bucket.
+[2712月2025 09:01:26.057] [modloading-worker-0/INFO] [Bookshelf/]: Fixing MC-151457. Crafting remainder for minecraft:cod_bucket is now minecraft:bucket.
+[2712月2025 09:01:26.057] [modloading-worker-0/INFO] [Bookshelf/]: Fixing MC-151457. Crafting remainder for minecraft:tropical_fish_bucket is now minecraft:bucket.
+[2712月2025 09:01:26.057] [modloading-worker-0/INFO] [Bookshelf/]: Fixing MC-151457. Crafting remainder for minecraft:axolotl_bucket is now minecraft:bucket.
+[2712月2025 09:01:26.057] [modloading-worker-0/INFO] [Bookshelf/]: Fixing MC-151457. Crafting remainder for minecraft:powder_snow_bucket is now minecraft:bucket.
+[2712月2025 09:01:26.057] [modloading-worker-0/INFO] [Bookshelf/]: Fixing MC-151457. Crafting remainder for minecraft:tadpole_bucket is now minecraft:bucket.
+[2712月2025 09:01:26.061] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.javafmlmod.AutomaticEventSubscriber/LOADING]: Attempting to inject @EventBusSubscriber classes into the eventbus for botanypots
+[2712月2025 09:01:26.083] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.javafmlmod.AutomaticEventSubscriber/LOADING]: Attempting to inject @EventBusSubscriber classes into the eventbus for bookshelf
+[2712月2025 09:01:26.094] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.javafmlmod.AutomaticEventSubscriber/LOADING]: Auto-subscribing net.darkhax.botanypots.BotanyPotsForgeClient to MOD
+[2712月2025 09:01:26.094] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.javafmlmod.AutomaticEventSubscriber/LOADING]: Auto-subscribing net.darkhax.bookshelf.impl.gametest.BookshelfForgeGameTests to MOD
+[2712月2025 09:01:26.148] [modloading-worker-0/DEBUG] [mixin/]: Mixing spatial.MinecraftServerMixin from ae2.mixins.json into net.minecraft.server.MinecraftServer
+[2712月2025 09:01:26.151] [modloading-worker-0/DEBUG] [mixin/]: ae2.mixins.json:spatial.MinecraftServerMixin: Class version 61 required is higher than the class version supported by the current version of Mixin (JAVA_11 supports class version 55)
+[2712月2025 09:01:26.263] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.config.ConfigTracker/CONFIG]: Config file Mekanism/tools.toml for mekanismtools tracking
+[2712月2025 09:01:26.264] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.config.ConfigTracker/CONFIG]: Config file Mekanism/tools-client.toml for mekanismtools tracking
+[2712月2025 09:01:26.265] [modloading-worker-0/DEBUG] [mezz.jei.common.platform.Services/]: Loaded mezz.jei.forge.platform.PlatformHelper@a79a977 for service interface mezz.jei.common.platform.IPlatformHelper
+[2712月2025 09:01:26.347] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.config.ConfigTracker/CONFIG]: Config file forge-client.toml for forge tracking
+[2712月2025 09:01:26.347] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.config.ConfigTracker/CONFIG]: Config file forge-server.toml for forge tracking
+[2712月2025 09:01:26.347] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.ModLoadingContext/]: Attempted to register an empty config for type COMMON on mod forge
+[2712月2025 09:01:26.386] [modloading-worker-0/DEBUG] [mixin/]: Mixing accessors.client.AccessorMinecraft from bookshelf.common.mixins.json into net.minecraft.client.Minecraft
+[2712月2025 09:01:26.392] [modloading-worker-0/DEBUG] [mixin/]: Mixing PickColorMixin from ae2.mixins.json into net.minecraft.client.Minecraft
+[2712月2025 09:01:26.393] [modloading-worker-0/DEBUG] [mixin/]: ae2.mixins.json:PickColorMixin: Class version 61 required is higher than the class version supported by the current version of Mixin (JAVA_11 supports class version 55)
+[2712月2025 09:01:26.406] [modloading-worker-0/DEBUG] [mixin/]: Mixing patches.packs.resources.MixinSimpleJsonResourceReloadListener from bookshelf.common.mixins.json into net.minecraft.server.packs.resources.SimpleJsonResourceReloadListener
+[2712月2025 09:01:26.408] [modloading-worker-0/DEBUG] [mixin/]: Renaming synthetic method lambda$prepare$0(Ljava/util/Map$Entry;)Z to md97f440$lambda$prepare$0$0 in bookshelf.common.mixins.json:patches.packs.resources.MixinSimpleJsonResourceReloadListener
+[2712月2025 09:01:26.484] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.javafmlmod.AutomaticEventSubscriber/LOADING]: Attempting to inject @EventBusSubscriber classes into the eventbus for forge
+[2712月2025 09:01:26.485] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.javafmlmod.AutomaticEventSubscriber/LOADING]: Auto-subscribing net.minecraftforge.common.ForgeSpawnEggItem$CommonHandler to MOD
+[2712月2025 09:01:26.491] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.javafmlmod.AutomaticEventSubscriber/LOADING]: Auto-subscribing net.minecraftforge.common.ForgeSpawnEggItem$ColorRegisterHandler to MOD
+[2712月2025 09:01:26.495] [modloading-worker-0/DEBUG] [mixin/]: Mixing mekanism.BaseTierMixin from astral_mekanism.mixins.json into mekanism.api.tier.BaseTier
+[2712月2025 09:01:26.497] [modloading-worker-0/DEBUG] [mixin/]: Renaming @Invoker method involeNew(Ljava/lang/String;ILjava/lang/String;[ILnet/minecraft/world/level/material/MapColor;)Lmekanism/api/tier/BaseTier; to involeNew_$md$97f440$0 in astral_mekanism.mixins.json:mekanism.BaseTierMixin
+[2712月2025 09:01:26.512] [modloading-worker-0/DEBUG] [mixin/]: Mixing WrappedGenericStackTooltipModIdMixin from ae2.mixins.json into net.minecraft.client.gui.screens.Screen
+[2712月2025 09:01:26.513] [modloading-worker-0/DEBUG] [mixin/]: ae2.mixins.json:WrappedGenericStackTooltipModIdMixin: Class version 61 required is higher than the class version supported by the current version of Mixin (JAVA_11 supports class version 55)
+[2712月2025 09:01:26.543] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.javafmlmod.AutomaticEventSubscriber/LOADING]: Auto-subscribing net.minecraftforge.client.model.data.ModelDataManager to FORGE
+[2712月2025 09:01:26.549] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.javafmlmod.AutomaticEventSubscriber/LOADING]: Auto-subscribing net.minecraftforge.client.ForgeHooksClient$ClientEvents to MOD
+[2712月2025 09:01:26.597] [modloading-worker-0/DEBUG] [mixin/]: Mixing TextureAtlasMixin from ae2.mixins.json into net.minecraft.client.renderer.texture.TextureAtlas
+[2712月2025 09:01:26.599] [modloading-worker-0/DEBUG] [mixin/]: ae2.mixins.json:TextureAtlasMixin: Class version 61 required is higher than the class version supported by the current version of Mixin (JAVA_11 supports class version 55)
+[2712月2025 09:01:26.600] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.javafmlmod.AutomaticEventSubscriber/LOADING]: Attempting to inject @EventBusSubscriber classes into the eventbus for mekanismtools
+[2712月2025 09:01:26.600] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.javafmlmod.AutomaticEventSubscriber/LOADING]: Auto-subscribing mekanism.tools.client.ToolsClientRegistration to MOD
+[2712月2025 09:01:26.641] [modloading-worker-0/DEBUG] [mixin/]: Mixing accessors.inventory.AccessorInventoryMenu from bookshelf.common.mixins.json into net.minecraft.world.inventory.InventoryMenu
+[2712月2025 09:01:26.670] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.javafmlmod.AutomaticEventSubscriber/LOADING]: Auto-subscribing net.minecraftforge.client.ClientForgeMod to MOD
+[2712月2025 09:01:26.679] [modloading-worker-0/DEBUG] [mixin/]: Mixing AbstractContainerScreenMixin from ae2.mixins.json into net.minecraft.client.gui.screens.inventory.AbstractContainerScreen
+[2712月2025 09:01:26.681] [modloading-worker-0/DEBUG] [mixin/]: ae2.mixins.json:AbstractContainerScreenMixin: Class version 61 required is higher than the class version supported by the current version of Mixin (JAVA_11 supports class version 55)
+[2712月2025 09:01:26.682] [modloading-worker-0/DEBUG] [mixin/]: Mixing ResizableSlotHighlightMixin from ae2.mixins.json into net.minecraft.client.gui.screens.inventory.AbstractContainerScreen
+[2712月2025 09:01:26.683] [modloading-worker-0/DEBUG] [mixin/]: ae2.mixins.json:ResizableSlotHighlightMixin: Class version 61 required is higher than the class version supported by the current version of Mixin (JAVA_11 supports class version 55)
+[2712月2025 09:01:26.713] [modloading-worker-0/DEBUG] [mixin/]: Mixing mekanism.CableTierMixin from astral_mekanism.mixins.json into mekanism.common.tier.CableTier
+[2712月2025 09:01:26.713] [modloading-worker-0/DEBUG] [mixin/]: Renaming @Invoker method invokeNew(Ljava/lang/String;ILmekanism/api/tier/BaseTier;Lmekanism/api/math/FloatingLong;)Lmekanism/common/tier/CableTier; to invokeNew_$md$97f440$0 in astral_mekanism.mixins.json:mekanism.CableTierMixin
+[2712月2025 09:01:26.898] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.javafmlmod.AutomaticEventSubscriber/LOADING]: Attempting to inject @EventBusSubscriber classes into the eventbus for appmek
+[2712月2025 09:01:26.912] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.config.ConfigTracker/CONFIG]: Config file Mekanism/client.toml for mekanism tracking
+[2712月2025 09:01:26.912] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.config.ConfigTracker/CONFIG]: Config file Mekanism/common.toml for mekanism tracking
+[2712月2025 09:01:26.912] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.config.ConfigTracker/CONFIG]: Config file Mekanism/general.toml for mekanism tracking
+[2712月2025 09:01:26.913] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.config.ConfigTracker/CONFIG]: Config file Mekanism/gear.toml for mekanism tracking
+[2712月2025 09:01:26.913] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.config.ConfigTracker/CONFIG]: Config file Mekanism/machine-storage.toml for mekanism tracking
+[2712月2025 09:01:26.913] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.config.ConfigTracker/CONFIG]: Config file Mekanism/tiers.toml for mekanism tracking
+[2712月2025 09:01:26.913] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.config.ConfigTracker/CONFIG]: Config file Mekanism/machine-usage.toml for mekanism tracking
+[2712月2025 09:01:26.913] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.config.ConfigTracker/CONFIG]: Config file Mekanism/world.toml for mekanism tracking
+[2712月2025 09:01:26.988] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.config.ConfigTracker/CONFIG]: Config file Mekanism/generators.toml for mekanismgenerators tracking
+[2712月2025 09:01:26.988] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.config.ConfigTracker/CONFIG]: Config file Mekanism/generators-gear.toml for mekanismgenerators tracking
+[2712月2025 09:01:26.988] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.config.ConfigTracker/CONFIG]: Config file Mekanism/generator-storage.toml for mekanismgenerators tracking
+[2712月2025 09:01:26.995] [modloading-worker-0/DEBUG] [mezz.jei.common.config.file.ConfigSerializer/]: Loading config file: C:\Users\user\Documents\TR\astral_mekanism\astral_mekanism\run-data\config\jei\jei-debug.ini
+[2712月2025 09:01:27.006] [modloading-worker-0/DEBUG] [mezz.jei.common.config.file.ConfigSerializer/]: Saving config file: C:\Users\user\Documents\TR\astral_mekanism\astral_mekanism\run-data\config\jei\jei-debug.ini
+[2712月2025 09:01:27.033] [modloading-worker-0/DEBUG] [mezz.jei.common.config.file.ConfigSerializer/]: Loading config file: C:\Users\user\Documents\TR\astral_mekanism\astral_mekanism\run-data\config\jei\jei-mod-id-format.ini
+[2712月2025 09:01:27.041] [modloading-worker-0/DEBUG] [mezz.jei.common.config.file.ConfigSerializer/]: Saving config file: C:\Users\user\Documents\TR\astral_mekanism\astral_mekanism\run-data\config\jei\jei-mod-id-format.ini
+[2712月2025 09:01:27.065] [modloading-worker-0/DEBUG] [mezz.jei.common.config.file.ConfigSerializer/]: Loading config file: C:\Users\user\Documents\TR\astral_mekanism\astral_mekanism\run-data\config\jei\jei-colors.ini
+[2712月2025 09:01:27.074] [modloading-worker-0/DEBUG] [mezz.jei.common.config.file.ConfigSerializer/]: Saving config file: C:\Users\user\Documents\TR\astral_mekanism\astral_mekanism\run-data\config\jei\jei-colors.ini
+[2712月2025 09:01:27.116] [modloading-worker-0/DEBUG] [mezz.jei.common.config.file.ConfigSerializer/]: Loading config file: C:\Users\user\Documents\TR\astral_mekanism\astral_mekanism\run-data\config\jei\jei-client.ini
+[2712月2025 09:01:27.130] [modloading-worker-0/DEBUG] [mezz.jei.common.config.file.ConfigSerializer/]: Saving config file: C:\Users\user\Documents\TR\astral_mekanism\astral_mekanism\run-data\config\jei\jei-client.ini
+[2712月2025 09:01:27.168] [modloading-worker-0/INFO] [mezz.jei.library.load.PluginCaller/]: Sending ConfigManager...
+[2712月2025 09:01:27.178] [modloading-worker-0/DEBUG] [mezz.jei.library.load.PluginCallerTimerRunnable/]: Sending ConfigManager: jei:minecraft...
+[2712月2025 09:01:27.178] [modloading-worker-0/DEBUG] [mezz.jei.library.load.PluginCallerTimerRunnable/]: Sending ConfigManager: botanypots:jei_support...
+[2712月2025 09:01:27.178] [modloading-worker-0/DEBUG] [mezz.jei.library.load.PluginCallerTimerRunnable/]: Sending ConfigManager: astral_mekanism:jei_plugin...
+[2712月2025 09:01:27.179] [modloading-worker-0/DEBUG] [mezz.jei.library.load.PluginCallerTimerRunnable/]: Sending ConfigManager: jei:debug...
+[2712月2025 09:01:27.179] [modloading-worker-0/DEBUG] [mezz.jei.library.load.PluginCallerTimerRunnable/]: Sending ConfigManager: jei:gui...
+[2712月2025 09:01:27.179] [modloading-worker-0/DEBUG] [mezz.jei.library.load.PluginCallerTimerRunnable/]: Sending ConfigManager: jei:forge_gui...
+[2712月2025 09:01:27.179] [modloading-worker-0/DEBUG] [mezz.jei.library.load.PluginCallerTimerRunnable/]: Sending ConfigManager: mekanism:jei_plugin...
+[2712月2025 09:01:27.179] [modloading-worker-0/DEBUG] [mezz.jei.library.load.PluginCallerTimerRunnable/]: Sending ConfigManager: mekanismtools:jei_plugin...
+[2712月2025 09:01:27.179] [modloading-worker-0/DEBUG] [mezz.jei.library.load.PluginCallerTimerRunnable/]: Sending ConfigManager: mekanismgenerators:jei_plugin...
+[2712月2025 09:01:27.179] [modloading-worker-0/DEBUG] [mezz.jei.library.load.PluginCallerTimerRunnable/]: Sending ConfigManager: ae2:core...
+[2712月2025 09:01:27.179] [modloading-worker-0/DEBUG] [mezz.jei.library.load.PluginCallerTimerRunnable/]: Sending ConfigManager: appmek:jei...
+[2712月2025 09:01:27.179] [modloading-worker-0/DEBUG] [mezz.jei.library.load.PluginCallerTimerRunnable/]: Sending ConfigManager: jei:internal...
+[2712月2025 09:01:27.183] [modloading-worker-0/INFO] [mezz.jei.library.load.PluginCaller/]: Sending ConfigManager took 10.86 ms
+[2712月2025 09:01:27.200] [modloading-worker-0/DEBUG] [mixin/]: Mixing accessors.world.AccessorRecipeManager from bookshelf.common.mixins.json into net.minecraft.world.item.crafting.RecipeManager
+[2712月2025 09:01:27.232] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.javafmlmod.AutomaticEventSubscriber/LOADING]: Attempting to inject @EventBusSubscriber classes into the eventbus for jei
+[2712月2025 09:01:27.465] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.javafmlmod.AutomaticEventSubscriber/LOADING]: Attempting to inject @EventBusSubscriber classes into the eventbus for ae2
+[2712月2025 09:01:27.466] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.javafmlmod.AutomaticEventSubscriber/LOADING]: Auto-subscribing appeng.datagen.AE2DataGenerators to MOD
+[2712月2025 09:01:27.494] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.config.ConfigTracker/CONFIG]: Config file guideme.toml for guideme tracking
+[2712月2025 09:01:27.516] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.javafmlmod.AutomaticEventSubscriber/LOADING]: Attempting to inject @EventBusSubscriber classes into the eventbus for guideme
+[2712月2025 09:01:27.612] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.javafmlmod.AutomaticEventSubscriber/LOADING]: Attempting to inject @EventBusSubscriber classes into the eventbus for mekanismgenerators
+[2712月2025 09:01:27.612] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.javafmlmod.AutomaticEventSubscriber/LOADING]: Auto-subscribing mekanism.generators.client.GeneratorsClientRegistration to MOD
+[2712月2025 09:01:27.986] [modloading-worker-0/DEBUG] [mixin/]: Mixing mekanism.BasicInventorySlotMixin from astral_mekanism.mixins.json into mekanism.common.inventory.slot.BasicInventorySlot
+[2712月2025 09:01:28.119] [modloading-worker-0/DEBUG] [mixin/]: Mixing mekanism.MekanismRecipeTypeMixin from astral_mekanism.mixins.json into mekanism.common.recipe.MekanismRecipeType
+[2712月2025 09:01:28.119] [modloading-worker-0/DEBUG] [mixin/]: Renaming @Invoker method invokeNew(Ljava/lang/String;Ljava/util/function/Function;)Lmekanism/common/recipe/MekanismRecipeType; to invokeNew_$md$97f440$0 in astral_mekanism.mixins.json:mekanism.MekanismRecipeTypeMixin
+[2712月2025 09:01:28.120] [modloading-worker-0/DEBUG] [mixin/]: Mixing mekanism.MekanismRecipeTypeMixin2 from astral_mekanism.mixins.json into mekanism.common.recipe.MekanismRecipeType
+[2712月2025 09:01:28.121] [modloading-worker-0/DEBUG] [mixin/]: Renaming synthetic method lambda$injectGetRecipesUncached$20(I)[Lmekanism/api/recipes/ingredients/ItemStackIngredient; to md97f440$lambda$injectGetRecipesUncached$20$1 in astral_mekanism.mixins.json:mekanism.MekanismRecipeTypeMixin2
+[2712月2025 09:01:28.121] [modloading-worker-0/DEBUG] [mixin/]: Renaming synthetic method lambda$injectGetRecipesUncached$19(Lnet/minecraft/world/level/material/Fluid;)Lmekanism/api/recipes/ingredients/ItemStackIngredient; to md97f440$lambda$injectGetRecipesUncached$19$2 in astral_mekanism.mixins.json:mekanism.MekanismRecipeTypeMixin2
+[2712月2025 09:01:28.122] [modloading-worker-0/DEBUG] [mixin/]: Renaming synthetic method lambda$injectGetRecipesUncached$18(I)[Lmekanism/api/recipes/ingredients/ItemStackIngredient; to md97f440$lambda$injectGetRecipesUncached$18$3 in astral_mekanism.mixins.json:mekanism.MekanismRecipeTypeMixin2
+[2712月2025 09:01:28.122] [modloading-worker-0/DEBUG] [mixin/]: Renaming synthetic method lambda$injectGetRecipesUncached$17(Lnet/darkhax/botanypots/data/recipes/soil/BasicSoil;)Lmekanism/api/recipes/ingredients/ItemStackIngredient; to md97f440$lambda$injectGetRecipesUncached$17$4 in astral_mekanism.mixins.json:mekanism.MekanismRecipeTypeMixin2
+[2712月2025 09:01:28.122] [modloading-worker-0/DEBUG] [mixin/]: Renaming synthetic method lambda$injectGetRecipesUncached$16(Lnet/darkhax/botanypots/data/recipes/crop/BasicCrop;Lnet/darkhax/botanypots/data/recipes/soil/BasicSoil;)Z to md97f440$lambda$injectGetRecipesUncached$16$5 in astral_mekanism.mixins.json:mekanism.MekanismRecipeTypeMixin2
+[2712月2025 09:01:28.122] [modloading-worker-0/DEBUG] [mixin/]: Renaming synthetic method lambda$injectGetRecipesUncached$15(I)[Lmekanism/api/recipes/ingredients/ItemStackIngredient; to md97f440$lambda$injectGetRecipesUncached$15$6 in astral_mekanism.mixins.json:mekanism.MekanismRecipeTypeMixin2
+[2712月2025 09:01:28.123] [modloading-worker-0/DEBUG] [mixin/]: Renaming synthetic method lambda$injectGetRecipesUncached$14(Lnet/minecraft/world/item/crafting/Ingredient;)Lmekanism/api/recipes/ingredients/ItemStackIngredient; to md97f440$lambda$injectGetRecipesUncached$14$7 in astral_mekanism.mixins.json:mekanism.MekanismRecipeTypeMixin2
+[2712月2025 09:01:28.123] [modloading-worker-0/DEBUG] [mixin/]: Renaming synthetic method lambda$injectGetRecipesUncached$13(Lnet/darkhax/botanypots/data/recipes/soil/Soil;)Lnet/darkhax/botanypots/data/recipes/soil/BasicSoil; to md97f440$lambda$injectGetRecipesUncached$13$8 in astral_mekanism.mixins.json:mekanism.MekanismRecipeTypeMixin2
+[2712月2025 09:01:28.123] [modloading-worker-0/DEBUG] [mixin/]: Renaming synthetic method lambda$injectGetRecipesUncached$12(Lnet/darkhax/botanypots/data/recipes/soil/Soil;)Z to md97f440$lambda$injectGetRecipesUncached$12$9 in astral_mekanism.mixins.json:mekanism.MekanismRecipeTypeMixin2
+[2712月2025 09:01:28.124] [modloading-worker-0/DEBUG] [mixin/]: Renaming synthetic method lambda$injectGetRecipesUncached$11(Lnet/darkhax/botanypots/data/recipes/crop/Crop;)Lnet/darkhax/botanypots/data/recipes/crop/BasicCrop; to md97f440$lambda$injectGetRecipesUncached$11$a in astral_mekanism.mixins.json:mekanism.MekanismRecipeTypeMixin2
+[2712月2025 09:01:28.124] [modloading-worker-0/DEBUG] [mixin/]: Renaming synthetic method lambda$injectGetRecipesUncached$10(Lnet/darkhax/botanypots/data/recipes/crop/Crop;)Z to md97f440$lambda$injectGetRecipesUncached$10$b in astral_mekanism.mixins.json:mekanism.MekanismRecipeTypeMixin2
+[2712月2025 09:01:28.124] [modloading-worker-0/DEBUG] [mixin/]: Renaming synthetic method lambda$injectGetRecipesUncached$9(I)[Lmekanism/api/recipes/ingredients/ChemicalStackIngredient$GasStackIngredient; to md97f440$lambda$injectGetRecipesUncached$9$c in astral_mekanism.mixins.json:mekanism.MekanismRecipeTypeMixin2
+[2712月2025 09:01:28.124] [modloading-worker-0/DEBUG] [mixin/]: Renaming synthetic method lambda$injectGetRecipesUncached$8(Lmekanism/api/chemical/gas/GasStack;)Lmekanism/api/recipes/ingredients/ChemicalStackIngredient$GasStackIngredient; to md97f440$lambda$injectGetRecipesUncached$8$d in astral_mekanism.mixins.json:mekanism.MekanismRecipeTypeMixin2
+[2712月2025 09:01:28.124] [modloading-worker-0/DEBUG] [mixin/]: Renaming synthetic method lambda$injectGetRecipesUncached$7(I)[Lmekanism/api/recipes/ingredients/ChemicalStackIngredient$GasStackIngredient; to md97f440$lambda$injectGetRecipesUncached$7$e in astral_mekanism.mixins.json:mekanism.MekanismRecipeTypeMixin2
+[2712月2025 09:01:28.125] [modloading-worker-0/DEBUG] [mixin/]: Renaming synthetic method lambda$injectGetRecipesUncached$6(Lmekanism/api/chemical/gas/GasStack;)Lmekanism/api/recipes/ingredients/ChemicalStackIngredient$GasStackIngredient; to md97f440$lambda$injectGetRecipesUncached$6$f in astral_mekanism.mixins.json:mekanism.MekanismRecipeTypeMixin2
+[2712月2025 09:01:28.125] [modloading-worker-0/DEBUG] [mixin/]: Renaming synthetic method lambda$injectGetRecipesUncached$5(I)[Lmekanism/api/recipes/ingredients/ChemicalStackIngredient$GasStackIngredient; to md97f440$lambda$injectGetRecipesUncached$5$10 in astral_mekanism.mixins.json:mekanism.MekanismRecipeTypeMixin2
+[2712月2025 09:01:28.125] [modloading-worker-0/DEBUG] [mixin/]: Renaming synthetic method lambda$injectGetRecipesUncached$4(Lmekanism/api/chemical/gas/GasStack;)Lmekanism/api/recipes/ingredients/ChemicalStackIngredient$GasStackIngredient; to md97f440$lambda$injectGetRecipesUncached$4$11 in astral_mekanism.mixins.json:mekanism.MekanismRecipeTypeMixin2
+[2712月2025 09:01:28.125] [modloading-worker-0/DEBUG] [mixin/]: Renaming synthetic method lambda$injectGetRecipesUncached$3(I)[Lmekanism/api/recipes/ingredients/ChemicalStackIngredient$GasStackIngredient; to md97f440$lambda$injectGetRecipesUncached$3$12 in astral_mekanism.mixins.json:mekanism.MekanismRecipeTypeMixin2
+[2712月2025 09:01:28.125] [modloading-worker-0/DEBUG] [mixin/]: Renaming synthetic method lambda$injectGetRecipesUncached$2(Lmekanism/api/chemical/gas/GasStack;)Lmekanism/api/recipes/ingredients/ChemicalStackIngredient$GasStackIngredient; to md97f440$lambda$injectGetRecipesUncached$2$13 in astral_mekanism.mixins.json:mekanism.MekanismRecipeTypeMixin2
+[2712月2025 09:01:28.126] [modloading-worker-0/DEBUG] [mixin/]: Renaming synthetic method lambda$injectGetRecipesUncached$1(I)[Lmekanism/api/recipes/ingredients/ItemStackIngredient; to md97f440$lambda$injectGetRecipesUncached$1$14 in astral_mekanism.mixins.json:mekanism.MekanismRecipeTypeMixin2
+[2712月2025 09:01:28.126] [modloading-worker-0/DEBUG] [mixin/]: Renaming synthetic method lambda$injectGetRecipesUncached$0(ILnet/minecraft/world/item/ItemStack;)Lmekanism/api/recipes/ingredients/ItemStackIngredient; to md97f440$lambda$injectGetRecipesUncached$0$15 in astral_mekanism.mixins.json:mekanism.MekanismRecipeTypeMixin2
+[2712月2025 09:01:28.318] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.config.ConfigTracker/CONFIG]: Config file astral_mekanism-common.toml for astral_mekanism tracking
+[2712月2025 09:01:28.318] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.javafmlmod.AutomaticEventSubscriber/LOADING]: Attempting to inject @EventBusSubscriber classes into the eventbus for astral_mekanism
+[2712月2025 09:01:28.319] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.javafmlmod.AutomaticEventSubscriber/LOADING]: Auto-subscribing astral_mekanism.AstralMekanism$ClientModEvents to MOD
+[2712月2025 09:01:28.322] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.javafmlmod.AutomaticEventSubscriber/LOADING]: Auto-subscribing astral_mekanism.AstralMekanismConfig to MOD
+[2712月2025 09:01:28.323] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.javafmlmod.AutomaticEventSubscriber/LOADING]: Auto-subscribing astral_mekanism.registries.AstralMekanismClient to MOD
+[2712月2025 09:01:28.669] [modloading-worker-0/DEBUG] [mixin/]: Mixing mekanism.DataTypeMixin from astral_mekanism.mixins.json into mekanism.common.tile.component.config.DataType
+[2712月2025 09:01:28.669] [modloading-worker-0/DEBUG] [mixin/]: Renaming @Invoker method invokeNew(Ljava/lang/String;ILmekanism/api/text/ILangEntry;Lmekanism/api/text/EnumColor;)Lmekanism/common/tile/component/config/DataType; to invokeNew_$md$97f440$0 in astral_mekanism.mixins.json:mekanism.DataTypeMixin
+[2712月2025 09:01:28.759] [modloading-worker-0/DEBUG] [mixin/]: Mixing mekanism.TileEntityAdvancedElectricMachineMixin from astral_mekanism.mixins.json into mekanism.common.tile.prefab.TileEntityAdvancedElectricMachine
+[2712月2025 09:01:29.200] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.javafmlmod.AutomaticEventSubscriber/LOADING]: Attempting to inject @EventBusSubscriber classes into the eventbus for mekanism
+[2712月2025 09:01:29.201] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.javafmlmod.AutomaticEventSubscriber/LOADING]: Auto-subscribing mekanism.common.recipe.MekanismRecipeType to FORGE
+[2712月2025 09:01:29.204] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.javafmlmod.AutomaticEventSubscriber/LOADING]: Auto-subscribing mekanism.client.sound.SoundHandler to MOD
+[2712月2025 09:01:29.220] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.javafmlmod.AutomaticEventSubscriber/LOADING]: Auto-subscribing mekanism.client.render.MekanismShaders to MOD
+[2712月2025 09:01:29.222] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.javafmlmod.AutomaticEventSubscriber/LOADING]: Auto-subscribing mekanism.client.render.MekanismRenderer to MOD
+[2712月2025 09:01:29.228] [modloading-worker-0/DEBUG] [mixin/]: Mixing GuiGraphicsMixin from ae2.mixins.json into net.minecraft.client.gui.GuiGraphics
+[2712月2025 09:01:29.229] [modloading-worker-0/DEBUG] [mixin/]: ae2.mixins.json:GuiGraphicsMixin: Class version 61 required is higher than the class version supported by the current version of Mixin (JAVA_11 supports class version 55)
+[2712月2025 09:01:29.253] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.javafmlmod.AutomaticEventSubscriber/LOADING]: Auto-subscribing mekanism.client.ClientRegistration to MOD
+[2712月2025 09:01:29.286] [modloading-worker-0/DEBUG] [mixin/]: Mixing ModelBakeryMixin from ae2.mixins.json into net.minecraft.client.resources.model.ModelBakery
+[2712月2025 09:01:29.287] [modloading-worker-0/DEBUG] [mixin/]: ae2.mixins.json:ModelBakeryMixin: Class version 61 required is higher than the class version supported by the current version of Mixin (JAVA_11 supports class version 55)
+[2712月2025 09:01:29.362] [main/DEBUG] [net.minecraftforge.registries.ObjectHolderRegistry/REGISTRIES]: Processing ObjectHolder annotations
+[2712月2025 09:01:29.404] [main/DEBUG] [net.minecraftforge.registries.ObjectHolderRegistry/REGISTRIES]: Found 5465 ObjectHolder annotations
+[2712月2025 09:01:29.408] [main/DEBUG] [net.minecraftforge.common.capabilities.CapabilityManager/CAPABILITIES]: Attempting to automatically register: Lappeng/api/networking/IInWorldGridNodeHost;
+[2712月2025 09:01:29.409] [main/DEBUG] [net.minecraftforge.common.capabilities.CapabilityManager/CAPABILITIES]: Attempting to automatically register: Lmekanism/api/IAlloyInteraction;
+[2712月2025 09:01:29.409] [main/DEBUG] [net.minecraftforge.common.capabilities.CapabilityManager/CAPABILITIES]: Attempting to automatically register: Lmekanism/api/IConfigCardAccess;
+[2712月2025 09:01:29.409] [main/DEBUG] [net.minecraftforge.common.capabilities.CapabilityManager/CAPABILITIES]: Attempting to automatically register: Lmekanism/api/IConfigurable;
+[2712月2025 09:01:29.409] [main/DEBUG] [net.minecraftforge.common.capabilities.CapabilityManager/CAPABILITIES]: Attempting to automatically register: Lmekanism/api/IEvaporationSolar;
+[2712月2025 09:01:29.409] [main/DEBUG] [net.minecraftforge.common.capabilities.CapabilityManager/CAPABILITIES]: Attempting to automatically register: Lmekanism/api/chemical/gas/IGasHandler;
+[2712月2025 09:01:29.409] [main/DEBUG] [net.minecraftforge.common.capabilities.CapabilityManager/CAPABILITIES]: Attempting to automatically register: Lmekanism/api/chemical/infuse/IInfusionHandler;
+[2712月2025 09:01:29.409] [main/DEBUG] [net.minecraftforge.common.capabilities.CapabilityManager/CAPABILITIES]: Attempting to automatically register: Lmekanism/api/chemical/pigment/IPigmentHandler;
+[2712月2025 09:01:29.410] [main/DEBUG] [net.minecraftforge.common.capabilities.CapabilityManager/CAPABILITIES]: Attempting to automatically register: Lmekanism/api/chemical/slurry/ISlurryHandler;
+[2712月2025 09:01:29.410] [main/DEBUG] [net.minecraftforge.common.capabilities.CapabilityManager/CAPABILITIES]: Attempting to automatically register: Lmekanism/api/energy/IStrictEnergyHandler;
+[2712月2025 09:01:29.410] [main/DEBUG] [net.minecraftforge.common.capabilities.CapabilityManager/CAPABILITIES]: Attempting to automatically register: Lmekanism/api/heat/IHeatHandler;
+[2712月2025 09:01:29.410] [main/DEBUG] [net.minecraftforge.common.capabilities.CapabilityManager/CAPABILITIES]: Attempting to automatically register: Lmekanism/api/lasers/ILaserDissipation;
+[2712月2025 09:01:29.410] [main/DEBUG] [net.minecraftforge.common.capabilities.CapabilityManager/CAPABILITIES]: Attempting to automatically register: Lmekanism/api/lasers/ILaserReceptor;
+[2712月2025 09:01:29.410] [main/DEBUG] [net.minecraftforge.common.capabilities.CapabilityManager/CAPABILITIES]: Attempting to automatically register: Lmekanism/api/radiation/capability/IRadiationEntity;
+[2712月2025 09:01:29.411] [main/DEBUG] [net.minecraftforge.common.capabilities.CapabilityManager/CAPABILITIES]: Attempting to automatically register: Lmekanism/api/radiation/capability/IRadiationShielding;
+[2712月2025 09:01:29.411] [main/DEBUG] [net.minecraftforge.common.capabilities.CapabilityManager/CAPABILITIES]: Attempting to automatically register: Lmekanism/api/security/IOwnerObject;
+[2712月2025 09:01:29.411] [main/DEBUG] [net.minecraftforge.common.capabilities.CapabilityManager/CAPABILITIES]: Attempting to automatically register: Lmekanism/api/security/ISecurityObject;
+[2712月2025 09:01:29.411] [main/DEBUG] [net.minecraftforge.common.capabilities.CapabilityManager/CAPABILITIES]: Attempting to automatically register: Lnet/minecraftforge/energy/IEnergyStorage;
+[2712月2025 09:01:29.411] [main/DEBUG] [net.minecraftforge.common.capabilities.CapabilityManager/CAPABILITIES]: Attempting to automatically register: Lnet/minecraftforge/fluids/capability/IFluidHandler;
+[2712月2025 09:01:29.411] [main/DEBUG] [net.minecraftforge.common.capabilities.CapabilityManager/CAPABILITIES]: Attempting to automatically register: Lnet/minecraftforge/fluids/capability/IFluidHandlerItem;
+[2712月2025 09:01:29.411] [main/DEBUG] [net.minecraftforge.common.capabilities.CapabilityManager/CAPABILITIES]: Attempting to automatically register: Lnet/minecraftforge/items/IItemHandler;
+[2712月2025 09:01:29.412] [main/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Unfreezing vanilla registries
+[2712月2025 09:01:29.424] [main/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Applying holder lookups: minecraft:sound_event
+[2712月2025 09:01:29.431] [main/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Holder lookups applied: minecraft:sound_event
+[2712月2025 09:01:29.442] [main/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Applying holder lookups: minecraft:fluid
+[2712月2025 09:01:29.444] [main/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Holder lookups applied: minecraft:fluid
+[2712月2025 09:01:29.777] [main/DEBUG] [botanypots/]: Built 98 minecraft:block entries. Took 330.87ms.
+[2712月2025 09:01:30.211] [main/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Applying holder lookups: minecraft:block
+[2712月2025 09:01:30.214] [main/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Holder lookups applied: minecraft:block
+[2712月2025 09:01:30.214] [main/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Applying holder lookups: minecraft:attribute
+[2712月2025 09:01:30.215] [main/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Holder lookups applied: minecraft:attribute
+[2712月2025 09:01:30.216] [main/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Applying holder lookups: minecraft:mob_effect
+[2712月2025 09:01:30.217] [main/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Holder lookups applied: minecraft:mob_effect
+[2712月2025 09:01:30.221] [main/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Applying holder lookups: minecraft:particle_type
+[2712月2025 09:01:30.222] [main/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Holder lookups applied: minecraft:particle_type
+[2712月2025 09:01:30.224] [main/DEBUG] [botanypots/]: Built 98 minecraft:item entries. Took 2.29ms.
+[2712月2025 09:01:30.273] [main/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Applying holder lookups: minecraft:item
+[2712月2025 09:01:30.275] [main/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Holder lookups applied: minecraft:item
+[2712月2025 09:01:30.276] [main/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Applying holder lookups: minecraft:entity_type
+[2712月2025 09:01:30.276] [main/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Holder lookups applied: minecraft:entity_type
+[2712月2025 09:01:30.277] [main/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Applying holder lookups: minecraft:sensor_type
+[2712月2025 09:01:30.277] [main/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Holder lookups applied: minecraft:sensor_type
+[2712月2025 09:01:30.278] [main/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Applying holder lookups: minecraft:memory_module_type
+[2712月2025 09:01:30.278] [main/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Holder lookups applied: minecraft:memory_module_type
+[2712月2025 09:01:30.279] [main/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Applying holder lookups: minecraft:potion
+[2712月2025 09:01:30.280] [main/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Holder lookups applied: minecraft:potion
+[2712月2025 09:01:30.281] [main/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Applying holder lookups: minecraft:game_event
+[2712月2025 09:01:30.282] [main/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Holder lookups applied: minecraft:game_event
+[2712月2025 09:01:30.282] [main/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Applying holder lookups: minecraft:enchantment
+[2712月2025 09:01:30.283] [main/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Holder lookups applied: minecraft:enchantment
+[2712月2025 09:01:30.285] [main/DEBUG] [botanypots/]: Built 1 minecraft:block_entity_type entries. Took 1.77ms.
+[2712月2025 09:01:30.288] [main/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Applying holder lookups: minecraft:block_entity_type
+[2712月2025 09:01:30.289] [main/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Holder lookups applied: minecraft:block_entity_type
+[2712月2025 09:01:30.289] [main/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Applying holder lookups: minecraft:painting_variant
+[2712月2025 09:01:30.290] [main/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Holder lookups applied: minecraft:painting_variant
+[2712月2025 09:01:30.291] [main/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Applying holder lookups: minecraft:stat_type
+[2712月2025 09:01:30.292] [main/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Holder lookups applied: minecraft:stat_type
+[2712月2025 09:01:30.292] [main/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Applying holder lookups: minecraft:custom_stat
+[2712月2025 09:01:30.293] [main/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Holder lookups applied: minecraft:custom_stat
+[2712月2025 09:01:30.293] [main/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Applying holder lookups: minecraft:chunk_status
+[2712月2025 09:01:30.294] [main/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Holder lookups applied: minecraft:chunk_status
+[2712月2025 09:01:30.294] [main/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Applying holder lookups: minecraft:rule_test
+[2712月2025 09:01:30.295] [main/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Holder lookups applied: minecraft:rule_test
+[2712月2025 09:01:30.296] [main/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Applying holder lookups: minecraft:rule_block_entity_modifier
+[2712月2025 09:01:30.297] [main/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Holder lookups applied: minecraft:rule_block_entity_modifier
+[2712月2025 09:01:30.298] [main/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Applying holder lookups: minecraft:pos_rule_test
+[2712月2025 09:01:30.299] [main/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Holder lookups applied: minecraft:pos_rule_test
+[2712月2025 09:01:30.304] [main/DEBUG] [botanypots/]: Built 1 minecraft:menu entries. Took 4.35ms.
+[2712月2025 09:01:30.623] [main/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Applying holder lookups: minecraft:menu
+[2712月2025 09:01:30.624] [main/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Holder lookups applied: minecraft:menu
+[2712月2025 09:01:30.625] [main/DEBUG] [botanypots/]: Built 4 minecraft:recipe_type entries. Took 0.58ms.
+[2712月2025 09:01:30.646] [main/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Applying holder lookups: minecraft:recipe_type
+[2712月2025 09:01:30.647] [main/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Holder lookups applied: minecraft:recipe_type
+[2712月2025 09:01:30.649] [main/DEBUG] [botanypots/]: Built 4 minecraft:recipe_serializer entries. Took 1.87ms.
+[2712月2025 09:01:30.652] [main/DEBUG] [bookshelf/]: Built 2 minecraft:recipe_serializer entries. Took 2.18ms.
+[2712月2025 09:01:30.760] [main/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Applying holder lookups: minecraft:recipe_serializer
+[2712月2025 09:01:30.761] [main/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Holder lookups applied: minecraft:recipe_serializer
+[2712月2025 09:01:30.761] [main/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Applying holder lookups: minecraft:position_source_type
+[2712月2025 09:01:30.762] [main/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Holder lookups applied: minecraft:position_source_type
+[2712月2025 09:01:30.766] [main/DEBUG] [bookshelf/]: Built 2 minecraft:command_argument_type entries. Took 4.18ms.
+[2712月2025 09:01:30.771] [main/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Applying holder lookups: minecraft:command_argument_type
+[2712月2025 09:01:30.772] [main/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Holder lookups applied: minecraft:command_argument_type
+[2712月2025 09:01:30.772] [main/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Applying holder lookups: minecraft:villager_type
+[2712月2025 09:01:30.772] [main/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Holder lookups applied: minecraft:villager_type
+[2712月2025 09:01:30.773] [main/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Applying holder lookups: minecraft:villager_profession
+[2712月2025 09:01:30.773] [main/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Holder lookups applied: minecraft:villager_profession
+[2712月2025 09:01:30.773] [main/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Applying holder lookups: minecraft:point_of_interest_type
+[2712月2025 09:01:30.774] [main/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Holder lookups applied: minecraft:point_of_interest_type
+[2712月2025 09:01:30.774] [main/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Applying holder lookups: minecraft:schedule
+[2712月2025 09:01:30.775] [main/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Holder lookups applied: minecraft:schedule
+[2712月2025 09:01:30.775] [main/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Applying holder lookups: minecraft:activity
+[2712月2025 09:01:30.775] [main/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Holder lookups applied: minecraft:activity
+[2712月2025 09:01:30.776] [main/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Applying holder lookups: minecraft:loot_pool_entry_type
+[2712月2025 09:01:30.776] [main/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Holder lookups applied: minecraft:loot_pool_entry_type
+[2712月2025 09:01:30.777] [main/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Applying holder lookups: minecraft:loot_function_type
+[2712月2025 09:01:30.778] [main/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Holder lookups applied: minecraft:loot_function_type
+[2712月2025 09:01:30.782] [main/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Applying holder lookups: minecraft:loot_condition_type
+[2712月2025 09:01:30.783] [main/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Holder lookups applied: minecraft:loot_condition_type
+[2712月2025 09:01:30.783] [main/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Applying holder lookups: minecraft:loot_number_provider_type
+[2712月2025 09:01:30.783] [main/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Holder lookups applied: minecraft:loot_number_provider_type
+[2712月2025 09:01:30.784] [main/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Applying holder lookups: minecraft:loot_nbt_provider_type
+[2712月2025 09:01:30.784] [main/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Holder lookups applied: minecraft:loot_nbt_provider_type
+[2712月2025 09:01:30.784] [main/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Applying holder lookups: minecraft:loot_score_provider_type
+[2712月2025 09:01:30.785] [main/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Holder lookups applied: minecraft:loot_score_provider_type
+[2712月2025 09:01:30.785] [main/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Applying holder lookups: minecraft:float_provider_type
+[2712月2025 09:01:30.786] [main/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Holder lookups applied: minecraft:float_provider_type
+[2712月2025 09:01:30.787] [main/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Applying holder lookups: minecraft:int_provider_type
+[2712月2025 09:01:30.788] [main/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Holder lookups applied: minecraft:int_provider_type
+[2712月2025 09:01:30.788] [main/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Applying holder lookups: minecraft:height_provider_type
+[2712月2025 09:01:30.789] [main/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Holder lookups applied: minecraft:height_provider_type
+[2712月2025 09:01:30.789] [main/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Applying holder lookups: minecraft:block_predicate_type
+[2712月2025 09:01:30.790] [main/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Holder lookups applied: minecraft:block_predicate_type
+[2712月2025 09:01:30.790] [main/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Applying holder lookups: minecraft:worldgen/carver
+[2712月2025 09:01:30.791] [main/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Holder lookups applied: minecraft:worldgen/carver
+[2712月2025 09:01:30.795] [main/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Applying holder lookups: minecraft:worldgen/feature
+[2712月2025 09:01:30.796] [main/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Holder lookups applied: minecraft:worldgen/feature
+[2712月2025 09:01:30.796] [main/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Applying holder lookups: minecraft:worldgen/structure_processor
+[2712月2025 09:01:30.796] [main/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Holder lookups applied: minecraft:worldgen/structure_processor
+[2712月2025 09:01:30.797] [main/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Applying holder lookups: minecraft:worldgen/structure_placement
+[2712月2025 09:01:30.797] [main/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Holder lookups applied: minecraft:worldgen/structure_placement
+[2712月2025 09:01:30.797] [main/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Applying holder lookups: minecraft:worldgen/structure_piece
+[2712月2025 09:01:30.798] [main/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Holder lookups applied: minecraft:worldgen/structure_piece
+[2712月2025 09:01:30.798] [main/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Applying holder lookups: minecraft:worldgen/structure_type
+[2712月2025 09:01:30.799] [main/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Holder lookups applied: minecraft:worldgen/structure_type
+[2712月2025 09:01:30.799] [main/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Applying holder lookups: minecraft:worldgen/placement_modifier_type
+[2712月2025 09:01:30.800] [main/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Holder lookups applied: minecraft:worldgen/placement_modifier_type
+[2712月2025 09:01:30.800] [main/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Applying holder lookups: minecraft:worldgen/block_state_provider_type
+[2712月2025 09:01:30.801] [main/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Holder lookups applied: minecraft:worldgen/block_state_provider_type
+[2712月2025 09:01:30.801] [main/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Applying holder lookups: minecraft:worldgen/foliage_placer_type
+[2712月2025 09:01:30.802] [main/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Holder lookups applied: minecraft:worldgen/foliage_placer_type
+[2712月2025 09:01:30.803] [main/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Applying holder lookups: minecraft:worldgen/trunk_placer_type
+[2712月2025 09:01:30.804] [main/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Holder lookups applied: minecraft:worldgen/trunk_placer_type
+[2712月2025 09:01:30.804] [main/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Applying holder lookups: minecraft:worldgen/root_placer_type
+[2712月2025 09:01:30.805] [main/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Holder lookups applied: minecraft:worldgen/root_placer_type
+[2712月2025 09:01:30.805] [main/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Applying holder lookups: minecraft:worldgen/tree_decorator_type
+[2712月2025 09:01:30.806] [main/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Holder lookups applied: minecraft:worldgen/tree_decorator_type
+[2712月2025 09:01:30.806] [main/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Applying holder lookups: minecraft:worldgen/feature_size_type
+[2712月2025 09:01:30.807] [main/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Holder lookups applied: minecraft:worldgen/feature_size_type
+[2712月2025 09:01:30.807] [main/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Applying holder lookups: minecraft:worldgen/biome_source
+[2712月2025 09:01:30.808] [main/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Holder lookups applied: minecraft:worldgen/biome_source
+[2712月2025 09:01:30.808] [main/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Applying holder lookups: minecraft:worldgen/chunk_generator
+[2712月2025 09:01:30.809] [main/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Holder lookups applied: minecraft:worldgen/chunk_generator
+[2712月2025 09:01:30.809] [main/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Applying holder lookups: minecraft:worldgen/material_condition
+[2712月2025 09:01:30.810] [main/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Holder lookups applied: minecraft:worldgen/material_condition
+[2712月2025 09:01:30.810] [main/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Applying holder lookups: minecraft:worldgen/material_rule
+[2712月2025 09:01:30.811] [main/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Holder lookups applied: minecraft:worldgen/material_rule
+[2712月2025 09:01:30.811] [main/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Applying holder lookups: minecraft:worldgen/density_function_type
+[2712月2025 09:01:30.812] [main/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Holder lookups applied: minecraft:worldgen/density_function_type
+[2712月2025 09:01:30.812] [main/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Applying holder lookups: minecraft:worldgen/structure_pool_element
+[2712月2025 09:01:30.813] [main/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Holder lookups applied: minecraft:worldgen/structure_pool_element
+[2712月2025 09:01:30.813] [main/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Applying holder lookups: minecraft:cat_variant
+[2712月2025 09:01:30.814] [main/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Holder lookups applied: minecraft:cat_variant
+[2712月2025 09:01:30.814] [main/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Applying holder lookups: minecraft:frog_variant
+[2712月2025 09:01:30.815] [main/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Holder lookups applied: minecraft:frog_variant
+[2712月2025 09:01:30.815] [main/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Applying holder lookups: minecraft:banner_pattern
+[2712月2025 09:01:30.815] [main/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Holder lookups applied: minecraft:banner_pattern
+[2712月2025 09:01:30.816] [main/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Applying holder lookups: minecraft:instrument
+[2712月2025 09:01:30.816] [main/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Holder lookups applied: minecraft:instrument
+[2712月2025 09:01:30.817] [main/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Applying holder lookups: minecraft:decorated_pot_patterns
+[2712月2025 09:01:30.817] [main/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Holder lookups applied: minecraft:decorated_pot_patterns
+[2712月2025 09:01:30.823] [main/DEBUG] [botanypots/]: Built 1 Creative Tabs entries. Took 4.87ms.
+[2712月2025 09:01:30.828] [main/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Applying holder lookups: minecraft:creative_mode_tab
+[2712月2025 09:01:30.829] [main/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Holder lookups applied: minecraft:creative_mode_tab
+[2712月2025 09:01:30.829] [main/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Applying holder lookups: ae2:keytypes
+[2712月2025 09:01:30.830] [main/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Holder lookups applied: ae2:keytypes
+[2712月2025 09:01:30.840] [main/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Applying holder lookups: forge:biome_modifier_serializers
+[2712月2025 09:01:30.841] [main/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Holder lookups applied: forge:biome_modifier_serializers
+[2712月2025 09:01:30.842] [main/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Applying holder lookups: forge:display_contexts
+[2712月2025 09:01:30.842] [main/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Holder lookups applied: forge:display_contexts
+[2712月2025 09:01:30.843] [main/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Applying holder lookups: forge:entity_data_serializers
+[2712月2025 09:01:30.843] [main/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Holder lookups applied: forge:entity_data_serializers
+[2712月2025 09:01:30.845] [main/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Applying holder lookups: forge:fluid_type
+[2712月2025 09:01:30.846] [main/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Holder lookups applied: forge:fluid_type
+[2712月2025 09:01:30.846] [main/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Applying holder lookups: forge:global_loot_modifier_serializers
+[2712月2025 09:01:30.847] [main/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Holder lookups applied: forge:global_loot_modifier_serializers
+[2712月2025 09:01:30.853] [main/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Applying holder lookups: forge:holder_set_type
+[2712月2025 09:01:30.855] [main/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Holder lookups applied: forge:holder_set_type
+[2712月2025 09:01:30.856] [main/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Applying holder lookups: forge:structure_modifier_serializers
+[2712月2025 09:01:30.857] [main/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Holder lookups applied: forge:structure_modifier_serializers
+[2712月2025 09:01:30.858] [main/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Applying holder lookups: mekanism:gas
+[2712月2025 09:01:30.860] [main/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Holder lookups applied: mekanism:gas
+[2712月2025 09:01:30.865] [main/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Applying holder lookups: mekanism:infuse_type
+[2712月2025 09:01:30.866] [main/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Holder lookups applied: mekanism:infuse_type
+[2712月2025 09:01:30.867] [main/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Applying holder lookups: mekanism:module
+[2712月2025 09:01:30.868] [main/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Holder lookups applied: mekanism:module
+[2712月2025 09:01:30.869] [main/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Applying holder lookups: mekanism:pigment
+[2712月2025 09:01:30.870] [main/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Holder lookups applied: mekanism:pigment
+[2712月2025 09:01:30.871] [main/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Applying holder lookups: mekanism:robit_skin_serializer
+[2712月2025 09:01:30.872] [main/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Holder lookups applied: mekanism:robit_skin_serializer
+[2712月2025 09:01:30.876] [main/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Applying holder lookups: mekanism:slurry
+[2712月2025 09:01:30.878] [main/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Holder lookups applied: mekanism:slurry
+[2712月2025 09:01:30.878] [main/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Applying holder lookups: minecraft:worldgen/biome
+[2712月2025 09:01:30.879] [main/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Holder lookups applied: minecraft:worldgen/biome
+[2712月2025 09:01:31.098] [main/WARN] [net.minecraft.server.packs.VanillaPackResourcesBuilder/]: Assets URL 'union:/C:/Users/user/Documents/TR/astral_mekanism/astral_mekanism/build/fg_cache/net/minecraftforge/forge/1.20.1-47.4.0_mapped_official_1.20.1/forge-1.20.1-47.4.0_mapped_official_1.20.1-recomp.jar%23191!/assets/.mcassetsroot' uses unexpected schema
+[2712月2025 09:01:31.099] [main/WARN] [net.minecraft.server.packs.VanillaPackResourcesBuilder/]: Assets URL 'union:/C:/Users/user/Documents/TR/astral_mekanism/astral_mekanism/build/fg_cache/net/minecraftforge/forge/1.20.1-47.4.0_mapped_official_1.20.1/forge-1.20.1-47.4.0_mapped_official_1.20.1-recomp.jar%23191!/data/.mcassetsroot' uses unexpected schema
+[2712月2025 09:01:31.518] [main/INFO] [net.minecraft.data.DataGenerator/]: All providers took: 0 ms
+[2712月2025 09:01:31.526] [main/INFO] [net.minecraft.data.HashCache/]: Caching: total files: 0, old count: 0, new count: 1, removed stale: 0, written: 0

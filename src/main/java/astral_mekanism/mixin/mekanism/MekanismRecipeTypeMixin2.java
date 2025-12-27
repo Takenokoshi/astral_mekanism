@@ -35,7 +35,6 @@ import mekanism.api.recipes.ItemStackGasToItemStackRecipe;
 import mekanism.api.recipes.MekanismRecipe;
 import mekanism.api.recipes.PressurizedReactionRecipe;
 import mekanism.api.recipes.SawmillRecipe;
-import mekanism.api.recipes.ingredients.FluidStackIngredient;
 import mekanism.api.recipes.ingredients.ItemStackIngredient;
 import mekanism.api.recipes.ingredients.ChemicalStackIngredient.GasStackIngredient;
 import mekanism.api.recipes.ingredients.creator.IItemStackIngredientCreator;
@@ -54,15 +53,11 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.RecipeManager;
 import net.minecraft.world.level.material.Fluids;
+import net.minecraftforge.data.loading.DatagenModLoader;
 import net.minecraftforge.fluids.FluidStack;
 
 @Mixin(value = MekanismRecipeType.class, remap = false)
 public class MekanismRecipeTypeMixin2 {
-
-    private static final FluidStackIngredient WATER = IngredientCreatorAccess.fluid()
-            .from(new FluidStack(Fluids.WATER, 10000));
-    private static final FluidStackIngredient PASTE = IngredientCreatorAccess.fluid()
-            .from(MekanismFluids.NUTRITIONAL_PASTE, 100);
 
     @SuppressWarnings("unchecked")
     @Inject(method = "getRecipesUncached", at = @At("RETURN"), cancellable = true)
@@ -70,6 +65,10 @@ public class MekanismRecipeTypeMixin2 {
             RecipeManager recipeManager,
             RegistryAccess registryAccess,
             CallbackInfoReturnable<List<RECIPE>> cir) {
+
+        if (DatagenModLoader.isRunningDataGen()) {
+            return;
+        }
 
         MekanismRecipeType<?, ?> type = (MekanismRecipeType<?, ?>) (Object) this;
         List<RECIPE> recipes = new ArrayList<>(cir.getReturnValue());
@@ -273,15 +272,19 @@ public class MekanismRecipeTypeMixin2 {
                 TripleItemOutput output = new TripleItemOutput(ItemStackUtils.copyWithMultiply(stacks.get(0), 2),
                         stacks.size() >= 2 ? stacks.get(1) : ItemStack.EMPTY,
                         stacks.size() >= 3 ? stacks.get(2) : ItemStack.EMPTY);
-                recipes.add((RECIPE) new GreenhouseIRecipe(crop.getId(), seedIngredient, soilIngredient, WATER,
+                recipes.add((RECIPE) new GreenhouseIRecipe(crop.getId(), seedIngredient, soilIngredient,
+                        IngredientCreatorAccess.fluid().from(new FluidStack(Fluids.WATER, 10000)),
                         output));
                 recipes.add((RECIPE) new GreenhouseIRecipe(
                         new ResourceLocation(crop.getId().getNamespace(), crop.getId().getPath() + "_plus"),
-                        seedIngredient, soilIngredient, PASTE, ItemStackUtils.copyWithMultiply(output, 3)));
+                        seedIngredient, soilIngredient,
+                        IngredientCreatorAccess.fluid().from(MekanismFluids.NUTRITIONAL_PASTE, 100),
+                        ItemStackUtils.copyWithMultiply(output, 3)));
             }
         }
 
-        if (Objects.equals(type.getRegistryName(), AstralMekanismRecipeTypes.MEKANICAL_TRANSFORM.get().getRegistryName())) {
+        if (Objects.equals(type.getRegistryName(),
+                AstralMekanismRecipeTypes.MEKANICAL_TRANSFORM.get().getRegistryName())) {
             for (TransformRecipe recipe : recipeManager.getAllRecipesFor(AERecipeTypes.TRANSFORM)) {
                 if (recipe.circumstance.isFluid()) {
                     ItemStackIngredient bucket = IngredientCreatorAccess.item().createMulti(
