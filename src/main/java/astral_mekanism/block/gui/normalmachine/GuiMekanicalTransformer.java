@@ -32,7 +32,7 @@ public class GuiMekanicalTransformer<BE extends TileEntityRecipeMachine<Mekanica
     protected void addGuiElements() {
         super.addGuiElements();
         addRenderableWidget(new GuiFluidGauge(tile::getFluidTank, () -> tile.getFluidTanks(null),
-                GaugeType.STANDARD, this, 7, 29));
+                GaugeType.SMALL, this, 133, 18));
         addRenderableWidget(new GuiVerticalPowerBar(this, tile.getEnergyContainer(), 164, 15))
                 .warning(WarningType.NOT_ENOUGH_ENERGY, tile.getWarningCheck(RecipeError.NOT_ENOUGH_ENERGY));
         addRenderableWidget(new GuiEnergyTab(this, tile.getEnergyContainer(), tile::getActive));

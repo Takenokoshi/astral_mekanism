@@ -265,7 +265,7 @@ public class MekanismRecipeTypeMixin2 {
                                 .toArray(ItemStackIngredient[]::new));
                 ItemStackIngredient soilIngredient = IngredientCreatorAccess.item()
                         .createMulti(soils.stream()
-                                .filter(s -> Collections.disjoint(s.getCategories(), crop.getSoilCategories()))
+                                .filter(s -> !Collections.disjoint(s.getCategories(), crop.getSoilCategories()))
                                 .map(s -> IngredientCreatorAccess.item().from(s.getIngredient()))
                                 .toArray(ItemStackIngredient[]::new));
                 List<ItemStack> stacks = crop.generateDrops(new FakeRandom(), null, null, null);
@@ -281,6 +281,7 @@ public class MekanismRecipeTypeMixin2 {
                         IngredientCreatorAccess.fluid().from(MekanismFluids.NUTRITIONAL_PASTE, 100),
                         ItemStackUtils.copyWithMultiply(output, 3)));
             }
+            cir.setReturnValue(recipes);
         }
 
         if (Objects.equals(type.getRegistryName(),
