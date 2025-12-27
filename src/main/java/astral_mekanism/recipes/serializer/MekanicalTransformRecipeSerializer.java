@@ -13,9 +13,12 @@ import mekanism.api.recipes.ingredients.creator.IngredientCreatorAccess;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.GsonHelper;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.RecipeSerializer;
+import net.minecraftforge.fluids.FluidStack;
 
-public class MekanicalTransformRecipeSerializer<RECIPE extends MekanicalTransformRecipe> implements RecipeSerializer<RECIPE> {
+public class MekanicalTransformRecipeSerializer<RECIPE extends MekanicalTransformRecipe>
+        implements RecipeSerializer<RECIPE> {
 
     private final IFactory<RECIPE> factory;
 
@@ -30,7 +33,10 @@ public class MekanicalTransformRecipeSerializer<RECIPE extends MekanicalTransfor
                 IngredientCreatorAccess.item().deserialize(AMJsonUtils.read(json, "itemInputB")),
                 IngredientCreatorAccess.item().deserialize(AMJsonUtils.read(json, "itemInputC")),
                 IngredientCreatorAccess.item().deserialize(AMJsonUtils.read(json, "itemInputD")),
-                new ItemFluidOutput(SerializerHelper.getItemStack(json, "outputItem"),SerializerHelper.getFluidStack(json, "outputFluid")),
+                new ItemFluidOutput(
+                        json.has("outputItem") ? SerializerHelper.getItemStack(json, "outputItem") : ItemStack.EMPTY,
+                        json.has("outputFluid") ? SerializerHelper.getFluidStack(json, "outputFluid")
+                                : FluidStack.EMPTY),
                 GsonHelper.getAsBoolean(json, "isCatalystA"),
                 GsonHelper.getAsBoolean(json, "isCatalystB"),
                 GsonHelper.getAsBoolean(json, "isCatalystC"),

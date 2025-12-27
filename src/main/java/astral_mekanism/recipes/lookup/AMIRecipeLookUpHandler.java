@@ -35,7 +35,7 @@ public class AMIRecipeLookUpHandler {
     }
 
     public static interface QuadItemRecipeLookUpHandler<RECIPE extends MekanismRecipe & QuadPredicate<ItemStack, ItemStack, ItemStack, ItemStack>>
-            extends IQuadRecipeLookUpHandler<ItemStack, ItemStack, ItemStack, ItemStack, RECIPE, QuadItem<RECIPE>> {
+            extends IQuadrupleRecipeLookUpHandler<ItemStack, ItemStack, ItemStack, ItemStack, RECIPE, QuadItem<RECIPE>> {
     }
 
 }

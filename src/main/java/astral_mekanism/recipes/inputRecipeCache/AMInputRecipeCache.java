@@ -74,7 +74,7 @@ public class AMInputRecipeCache {
 
     public static class QuadItem<RECIPE extends MekanismRecipe & QuadPredicate<ItemStack, ItemStack, ItemStack, ItemStack>>
             extends
-            QuadInputRecipeCache<ItemStack, ItemStackIngredient, ItemStack, ItemStackIngredient, ItemStack, ItemStackIngredient, ItemStack, ItemStackIngredient, RECIPE, ItemInputCache<RECIPE>, ItemInputCache<RECIPE>, ItemInputCache<RECIPE>, ItemInputCache<RECIPE>> {
+            QuadrupleInputRecipeCache<ItemStack, ItemStackIngredient, ItemStack, ItemStackIngredient, ItemStack, ItemStackIngredient, ItemStack, ItemStackIngredient, RECIPE, ItemInputCache<RECIPE>, ItemInputCache<RECIPE>, ItemInputCache<RECIPE>, ItemInputCache<RECIPE>> {
 
         public QuadItem(MekanismRecipeType<RECIPE, ?> recipeType,
                 Function<RECIPE, ItemStackIngredient> inputAExtractor,

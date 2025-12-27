@@ -16,7 +16,7 @@ import mekanism.common.recipe.lookup.cache.AbstractInputRecipeCache;
 import mekanism.common.recipe.lookup.cache.type.IInputCache;
 import net.minecraft.world.level.Level;
 
-public abstract class QuadInputRecipeCache<INPUT_A, INGREDIENT_A extends InputIngredient<INPUT_A>, INPUT_B, INGREDIENT_B extends InputIngredient<INPUT_B>, INPUT_C, INGREDIENT_C extends InputIngredient<INPUT_C>, INPUT_D, INGREDIENT_D extends InputIngredient<INPUT_D>, RECIPE extends MekanismRecipe & QuadPredicate<INPUT_A, INPUT_B, INPUT_C, INPUT_D>, CACHE_A extends IInputCache<INPUT_A, INGREDIENT_A, RECIPE>, CACHE_B extends IInputCache<INPUT_B, INGREDIENT_B, RECIPE>, CACHE_C extends IInputCache<INPUT_C, INGREDIENT_C, RECIPE>, CACHE_D extends IInputCache<INPUT_D, INGREDIENT_D, RECIPE>>
+public abstract class QuadrupleInputRecipeCache<INPUT_A, INGREDIENT_A extends InputIngredient<INPUT_A>, INPUT_B, INGREDIENT_B extends InputIngredient<INPUT_B>, INPUT_C, INGREDIENT_C extends InputIngredient<INPUT_C>, INPUT_D, INGREDIENT_D extends InputIngredient<INPUT_D>, RECIPE extends MekanismRecipe & QuadPredicate<INPUT_A, INPUT_B, INPUT_C, INPUT_D>, CACHE_A extends IInputCache<INPUT_A, INGREDIENT_A, RECIPE>, CACHE_B extends IInputCache<INPUT_B, INGREDIENT_B, RECIPE>, CACHE_C extends IInputCache<INPUT_C, INGREDIENT_C, RECIPE>, CACHE_D extends IInputCache<INPUT_D, INGREDIENT_D, RECIPE>>
         extends AbstractInputRecipeCache<RECIPE> {
     private final Set<RECIPE> complexIngredientA = new HashSet<>();
     private final Set<RECIPE> complexIngredientB = new HashSet<>();
@@ -32,7 +32,7 @@ public abstract class QuadInputRecipeCache<INPUT_A, INGREDIENT_A extends InputIn
     private final CACHE_C cacheC;
     private final CACHE_D cacheD;
 
-    protected QuadInputRecipeCache(MekanismRecipeType<RECIPE, ?> recipeType,
+    protected QuadrupleInputRecipeCache(MekanismRecipeType<RECIPE, ?> recipeType,
             Function<RECIPE, INGREDIENT_A> inputAExtractor,
             Function<RECIPE, INGREDIENT_B> inputBExtractor,
             Function<RECIPE, INGREDIENT_C> inputCExtractor,

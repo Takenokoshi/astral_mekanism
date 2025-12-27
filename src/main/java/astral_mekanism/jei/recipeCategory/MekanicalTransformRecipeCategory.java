@@ -36,10 +36,10 @@ public class MekanicalTransformRecipeCategory extends BaseRecipeCategory<Mekanic
         inputC = addSlot(SlotType.INPUT, 46, 35);
         inputD = addSlot(SlotType.INPUT, 64, 35);
         output = addSlot(SlotType.OUTPUT, 116, 35);
-        this.outputGauge = this.addElement(GuiFluidGauge.getDummy(GaugeType.STANDARD.with(DataType.OUTPUT),
-                this, 7, 29));
+        this.outputGauge = this.addElement(GuiFluidGauge.getDummy(GaugeType.SMALL.with(DataType.OUTPUT),
+                this, 133, 18));
         addSlot(SlotType.POWER, 155, 14);
-        addSlot(SlotType.EXTRA, 10, 53);
+        addSlot(SlotType.EXTRA, 134, 45);
         addElement(new GuiVerticalPowerBar(this, FULL_BAR, 164, 15));
         addSimpleProgress(ProgressType.BAR, 86, 38);
     }

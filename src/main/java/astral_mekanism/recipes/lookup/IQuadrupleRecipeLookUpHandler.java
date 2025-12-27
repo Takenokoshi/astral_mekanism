@@ -2,30 +2,30 @@ package astral_mekanism.recipes.lookup;
 
 import org.jetbrains.annotations.Nullable;
 
-import astral_mekanism.recipes.inputRecipeCache.QuadInputRecipeCache;
+import astral_mekanism.recipes.inputRecipeCache.QuadrupleInputRecipeCache;
 import astral_mekanism.util.AMInterface.QuadPredicate;
 import mekanism.api.recipes.MekanismRecipe;
 import mekanism.api.recipes.inputs.IInputHandler;
 import mekanism.common.recipe.lookup.IRecipeLookupHandler;
 
-public interface IQuadRecipeLookUpHandler<INPUT_A, INPUT_B, INPUT_C, INPUT_D, //
+public interface IQuadrupleRecipeLookUpHandler<INPUT_A, INPUT_B, INPUT_C, INPUT_D, //
         RECIPE extends MekanismRecipe & QuadPredicate<INPUT_A, INPUT_B, INPUT_C, INPUT_D>, //
-        INPUT_CACHE extends QuadInputRecipeCache<INPUT_A, ?, INPUT_B, ?, INPUT_C, ?, INPUT_D, ?, RECIPE, ?, ?, ?, ?>> //
+        INPUT_CACHE extends QuadrupleInputRecipeCache<INPUT_A, ?, INPUT_B, ?, INPUT_C, ?, INPUT_D, ?, RECIPE, ?, ?, ?, ?>> //
         extends IRecipeLookupHandler.IRecipeTypedLookupHandler<RECIPE, INPUT_CACHE> {
     default boolean containsRecipeABCD(INPUT_A inputA, INPUT_B inputB, INPUT_C inputC, INPUT_D inputD) {
         return getRecipeType().getInputCache().containsInputABCD(getHandlerWorld(), inputA, inputB, inputC, inputD);
     }
 
     default boolean containsRecipeBACD(INPUT_A inputA, INPUT_B inputB, INPUT_C inputC, INPUT_D inputD) {
-        return getRecipeType().getInputCache().containsInputABCD(getHandlerWorld(), inputA, inputB, inputC, inputD);
+        return getRecipeType().getInputCache().containsInputBACD(getHandlerWorld(), inputA, inputB, inputC, inputD);
     }
 
     default boolean containsRecipeCABD(INPUT_A inputA, INPUT_B inputB, INPUT_C inputC, INPUT_D inputD) {
-        return getRecipeType().getInputCache().containsInputABCD(getHandlerWorld(), inputA, inputB, inputC, inputD);
+        return getRecipeType().getInputCache().containsInputCABD(getHandlerWorld(), inputA, inputB, inputC, inputD);
     }
 
     default boolean containsRecipeDABC(INPUT_A inputA, INPUT_B inputB, INPUT_C inputC, INPUT_D inputD) {
-        return getRecipeType().getInputCache().containsInputABCD(getHandlerWorld(), inputA, inputB, inputC, inputD);
+        return getRecipeType().getInputCache().containsInputDABC(getHandlerWorld(), inputA, inputB, inputC, inputD);
     }
 
     default boolean containsRecipeA(INPUT_A input) {
