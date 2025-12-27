@@ -76,7 +76,7 @@ minecraft {
             property 'forge.enabledGameTestNamespaces', mod_id
         }
         data {
-            workingDirectory project.file("run-data")
+            workingDirectory project.file("run")
 
             source sourceSets.datagen
 

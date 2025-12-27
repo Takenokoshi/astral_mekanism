@@ -8,11 +8,10 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.data.event.GatherDataEvent;
 
-@Mod.EventBusSubscriber(
-    modid = AstralMekanismID.MODID,
-    bus = Mod.EventBusSubscriber.Bus.MOD
-)
+@Mod.EventBusSubscriber(modid = AstralMekanismID.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class AstralMekanismDataGenerator {
+
+    private AstralMekanismDataGenerator(){}
 
     @SuppressWarnings("unused")
     @SubscribeEvent
@@ -25,5 +24,6 @@ public class AstralMekanismDataGenerator {
         if (event.includeServer()) {
             gen.addProvider(true, new AstralMekanismLootTableProvider(output));
         }
+        System.out.println("### AstralMekanism GatherDataEvent fired ###");
     }
 }
