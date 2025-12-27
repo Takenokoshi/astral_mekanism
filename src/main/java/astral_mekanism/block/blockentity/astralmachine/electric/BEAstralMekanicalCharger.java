@@ -13,7 +13,7 @@ import net.minecraft.world.level.block.state.BlockState;
 public class BEAstralMekanicalCharger extends BEAstralElectricMachine {
 
     public BEAstralMekanicalCharger(IBlockProvider blockProvider, BlockPos pos, BlockState state) {
-        super(blockProvider, pos, state,"astral_nekanism:mekanical_charger");
+        super(blockProvider, pos, state,"astral_mekanism:mekanical_charger");
     }
 
     @Override
