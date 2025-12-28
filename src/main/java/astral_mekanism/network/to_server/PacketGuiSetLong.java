@@ -2,7 +2,6 @@ package astral_mekanism.network.to_server;
 
 import astral_mekanism.block.blockentity.interf.IPacketReceiverSetLong;
 import mekanism.common.network.IMekanismPacket;
-import mekanism.common.tile.base.TileEntityMekanism;
 import mekanism.common.util.WorldUtils;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.FriendlyByteBuf;
@@ -27,8 +26,7 @@ public class PacketGuiSetLong implements IMekanismPacket {
         if (player == null) {
             return;
         }
-        if (WorldUtils.getTileEntity(TileEntityMekanism.class, player.level(),
-                pos) instanceof IPacketReceiverSetLong be) {
+        if (WorldUtils.getTileEntity(player.level(), pos) instanceof IPacketReceiverSetLong be) {
             be.receive(num, value);
         }
     }

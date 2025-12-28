@@ -45,8 +45,10 @@ import mekanism.common.tile.component.config.slot.ChemicalSlotInfo.GasSlotInfo;
 import mekanism.common.tile.prefab.TileEntityConfigurableMachine;
 import mekanism.common.util.HeatUtils;
 import mekanism.common.util.MekanismUtils;
+import mekanism.common.util.NBTUtils;
 import mekanism.generators.common.config.MekanismGeneratorsConfig;
 import net.minecraft.core.BlockPos;
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.Fluids;
 import net.minecraftforge.fluids.FluidStack;
@@ -160,7 +162,8 @@ public class BECompactFIR extends TileEntityConfigurableMachine implements IPack
 
     @Override
     protected void onUpdateServer() {
-        //efficiency = countSlot.getCount();
+        super.onUpdateServer();
+        // efficiency = countSlot.getCount();
         fissionFuelSlot.fillTank();
         nuclearWasteSlot.drainTank();
         fluidCoolantSlot.fillTank();
@@ -182,7 +185,6 @@ public class BECompactFIR extends TileEntityConfigurableMachine implements IPack
         BlockEntityUtils.gasEject(this,
                 List.of(AstralMekDataType.HEATED_GAS_COOLANT, AstralMekDataType.DOUBLE_GAS_COOLANT),
                 heatedGasCoolantGasTank);
-        super.onUpdateServer();
     }
 
     private void fission() {
@@ -296,4 +298,15 @@ public class BECompactFIR extends TileEntityConfigurableMachine implements IPack
         markForSave();
     }
 
+    @Override
+    public void load(@NotNull CompoundTag nbt) {
+        super.load(nbt);
+        NBTUtils.setLongIfPresent(nbt, "efficiency", value -> efficiency = value);
+    }
+
+    @Override
+    public void saveAdditional(@NotNull CompoundTag nbtTags) {
+        super.saveAdditional(nbtTags);
+        nbtTags.putLong("efficiency", efficiency);
+    }
 }
