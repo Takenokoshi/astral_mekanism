@@ -229,7 +229,8 @@ public class BECompactFIR extends TileEntityConfigurableMachine implements IPack
         }
         coolantGasTank.getStack().ifAttributePresent(CooledCoolant.class, cooledCoolant -> {
             if ((!heatedGasCoolantGasTank.isEmpty())
-                    && !Objects.equals(heatedFluidCoolantGasTank.getType() , cooledCoolant.getHeatedGas())) {
+                    && !Objects.equals(heatedFluidCoolantGasTank.getType().getRegistryName(),
+                            cooledCoolant.getHeatedGas().getRegistryName())) {
                 return;
             }
             long coolantCanUse = Math.min(coolantGasTank.getStored(), heatedGasCoolantGasTank.getNeeded());
