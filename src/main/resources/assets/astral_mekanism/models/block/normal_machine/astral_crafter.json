@@ -1,6 +1,7 @@
 {
     "parent": "astral_mekanism:block/machine_base",
     "textures": {
-        "front": "astral_mekanism:block/normal_machine/astral_crafter_front"
+        "front": "astral_mekanism:block/normal_machine/astral_crafter_front",
+        "up":"astral_mekanism:block/normal_machine/astral_crafter_up"
     }
 }
