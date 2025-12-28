@@ -1,0 +1,26 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "key": {
+        "A": {
+            "item": "astral_mekanism:alloy_elastic"
+        },
+        "G": {
+            "tag": "forge:glass"
+        },
+        "H": {
+            "item": "ae2:condenser"
+        },
+        "O": {
+            "item": "ae2:cell_component_256k"
+        }
+    },
+    "pattern": [
+        " O ",
+        "AHA",
+        " G "
+    ],
+    "result": {
+        "item": "astral_mekanism:singularity_upgrade",
+        "count": 1
+    }
+}

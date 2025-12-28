@@ -5,8 +5,8 @@ import mekanism.api.tier.BaseTier;
 import mekanism.api.tier.ITier;
 
 public enum AstralMekGeneratorTier implements ITier {
-    ESSENTIAL("essential", FloatingLong.create(200000)),
-    COSMIC("cosmic", FloatingLong.create(2000000000000l)),
+    ESSENTIAL("essential", FloatingLong.createConst(200000)),
+    COSMIC("cosmic", FloatingLong.createConst(2000000000000l)),
     ASTRAL("astral", FloatingLong.MAX_VALUE);
 
     private AstralMekGeneratorTier(String name, FloatingLong energyCapacity) {

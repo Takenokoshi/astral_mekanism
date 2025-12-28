@@ -17,7 +17,7 @@
         " G "
     ],
     "result": {
-        "item": "astral_mekanism:item_insert_upgrade",
+        "item": "astral_mekanism:insert_upgrade",
         "count": 1
     }
 }

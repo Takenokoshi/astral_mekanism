@@ -32,7 +32,6 @@ import mekanism.common.inventory.container.MekanismContainer;
 import mekanism.common.inventory.container.slot.SlotOverlay;
 import mekanism.common.inventory.container.sync.SyncableDouble;
 import mekanism.common.inventory.container.sync.SyncableLong;
-import mekanism.common.inventory.slot.BasicInventorySlot;
 import mekanism.common.inventory.slot.FluidInventorySlot;
 import mekanism.common.inventory.slot.chemical.GasInventorySlot;
 import mekanism.common.lib.transmitter.TransmissionType;
@@ -74,8 +73,6 @@ public class BECompactFIR extends TileEntityConfigurableMachine implements IPack
     GasInventorySlot gasCoolantSlot;
     GasInventorySlot heatedFluidSlot;
     GasInventorySlot heatedGasSlot;
-
-    BasicInventorySlot countSlot;
 
     public BECompactFIR(IBlockProvider blockProvider, BlockPos pos, BlockState state) {
         super(blockProvider, pos, state);
@@ -149,21 +146,18 @@ public class BECompactFIR extends TileEntityConfigurableMachine implements IPack
         builder.addSlot(gasCoolantSlot = GasInventorySlot.fill(coolantGasTank, listener, 44, 64));
         builder.addSlot(heatedFluidSlot = GasInventorySlot.drain(heatedFluidCoolantGasTank, listener, 134, 64));
         builder.addSlot(heatedGasSlot = GasInventorySlot.drain(heatedGasCoolantGasTank, listener, 116, 64));
-        builder.addSlot(countSlot = BasicInventorySlot.at(listener, 80, 64));
         fissionFuelSlot.setSlotOverlay(SlotOverlay.MINUS);
         nuclearWasteSlot.setSlotOverlay(SlotOverlay.PLUS);
         fluidCoolantSlot.setSlotOverlay(SlotOverlay.MINUS);
         gasCoolantSlot.setSlotOverlay(SlotOverlay.MINUS);
         heatedFluidSlot.setSlotOverlay(SlotOverlay.PLUS);
         heatedGasSlot.setSlotOverlay(SlotOverlay.PLUS);
-        countSlot.setSlotOverlay(SlotOverlay.SELECT);
         return builder.build();
     }
 
     @Override
     protected void onUpdateServer() {
         super.onUpdateServer();
-        // efficiency = countSlot.getCount();
         fissionFuelSlot.fillTank();
         nuclearWasteSlot.drainTank();
         fluidCoolantSlot.fillTank();

@@ -39,11 +39,9 @@ public class AstralMekanismItems {
             GlintItem::new);
     public static final ItemRegistryObject<GlintItem> CRYSTAL_ANTIMATTER = ITEMS.register("crystal_antimatter",
             GlintItem::new);
-    public static final ItemRegistryObject<Item> ITEM_INSERT_UPGRADE = ITEMS.register("item_insert_upgrade");
     public static final ItemRegistryObject<Item> INSERT_UPGRADE = ITEMS.register("insert_upgrade");
     public static final ItemRegistryObject<ItemSingularityUpgrade> SINGULARITY_UPGRADE = ITEMS
             .register("singularity_upgrade", ItemSingularityUpgrade::new);
-    public static final ItemRegistryObject<Item> DUST_BOX = ITEMS.register("dust_box");
     public static final ItemRegistryObject<Item> SUMMARIZED_THERMAL_EVAPORTION_BLOCK = ITEMS
             .register("summarized_thermal_evaporation_block");
     public static final ItemRegistryObject<Item> SUMMARIZED_THERMAL_EVAPORTION_VALVE = ITEMS
