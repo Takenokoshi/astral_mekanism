@@ -145,13 +145,13 @@ public class BECompactFIR extends TileEntityConfigurableMachine {
     @Override
     protected IInventorySlotHolder getInitialInventory(IContentsListener listener) {
         InventorySlotHelper builder = InventorySlotHelper.forSideWithConfig(this::getDirection, this::getConfig);
-        builder.addSlot(fissionFuelSlot = GasInventorySlot.fill(fissionFuelTank, listener, 8, 62));
-        builder.addSlot(nuclearWasteSlot = GasInventorySlot.drain(nuclearWasteTank, listener, 152, 62));
-        builder.addSlot(fluidCoolantSlot = FluidInventorySlot.fill(coolantFluidTank, listener, 26, 62));
-        builder.addSlot(gasCoolantSlot = GasInventorySlot.fill(coolantGasTank, listener, 44, 62));
-        builder.addSlot(heatedFluidSlot = GasInventorySlot.drain(heatedFluidCoolantGasTank, listener, 134, 62));
-        builder.addSlot(heatedGasSlot = GasInventorySlot.drain(heatedGasCoolantGasTank, listener, 116, 62));
-        builder.addSlot(countSlot = BasicInventorySlot.at(listener, 80, 62));
+        builder.addSlot(fissionFuelSlot = GasInventorySlot.fill(fissionFuelTank, listener, 8, 64));
+        builder.addSlot(nuclearWasteSlot = GasInventorySlot.drain(nuclearWasteTank, listener, 152, 64));
+        builder.addSlot(fluidCoolantSlot = FluidInventorySlot.fill(coolantFluidTank, listener, 26, 64));
+        builder.addSlot(gasCoolantSlot = GasInventorySlot.fill(coolantGasTank, listener, 44, 64));
+        builder.addSlot(heatedFluidSlot = GasInventorySlot.drain(heatedFluidCoolantGasTank, listener, 134, 64));
+        builder.addSlot(heatedGasSlot = GasInventorySlot.drain(heatedGasCoolantGasTank, listener, 116, 64));
+        builder.addSlot(countSlot = BasicInventorySlot.at(listener, 80, 64));
         fissionFuelSlot.setSlotOverlay(SlotOverlay.MINUS);
         nuclearWasteSlot.setSlotOverlay(SlotOverlay.PLUS);
         fluidCoolantSlot.setSlotOverlay(SlotOverlay.MINUS);

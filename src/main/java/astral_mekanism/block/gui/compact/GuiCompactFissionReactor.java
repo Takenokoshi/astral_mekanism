@@ -13,6 +13,7 @@ import mekanism.common.MekanismLang;
 import mekanism.common.inventory.container.tile.MekanismTileContainer;
 import mekanism.common.util.MekanismUtils;
 import mekanism.common.util.UnitDisplayUtils.TemperatureUnit;
+import mekanism.generators.client.jei.GeneratorsJEIRecipeType;
 import mekanism.generators.common.GeneratorsLang;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.player.Inventory;
@@ -30,26 +31,26 @@ public class GuiCompactFissionReactor
     protected void addGuiElements() {
         super.addGuiElements();
         addRenderableWidget(
-                new GuiGasGauge(() -> tile.getFuelTank(), () -> tile.getGasTanks(),
-                        GaugeType.STANDARD, this, 8, 4));
+                new GuiGasGauge(tile::getFuelTank, () -> tile.getGasTanks(),
+                        GaugeType.STANDARD, this, 7, 4));
         addRenderableWidget(
-                new GuiFluidGauge(() -> tile.getFluidCoolantTank(), () -> List.of(tile.getFluidCoolantTank()),
-                        GaugeType.SMALL, this, 26, 34));
+                new GuiFluidGauge(tile::getFluidCoolantTank, () -> List.of(tile.getFluidCoolantTank()),
+                        GaugeType.SMALL, this, 25, 34));
         addRenderableWidget(
-                new GuiGasGauge(() -> tile.getGasCoolantTank(), () -> tile.getGasTanks(),
-                        GaugeType.SMALL, this, 44, 34));
+                new GuiGasGauge(tile::getGasCoolantTank, () -> tile.getGasTanks(),
+                        GaugeType.SMALL, this, 43, 34));
         addRenderableWidget(
-                new GuiGasGauge(() -> tile.getHeatedGasTank(), () -> tile.getGasTanks(),
-                        GaugeType.SMALL, this, 116, 34));
+                new GuiGasGauge(tile::getHeatedGasTank, () -> tile.getGasTanks(),
+                        GaugeType.SMALL, this, 115, 34));
         addRenderableWidget(
-                new GuiGasGauge(() -> tile.getHeatedFluidTank(), () -> tile.getGasTanks(),
-                        GaugeType.SMALL, this, 134, 34));
+                new GuiGasGauge(tile::getHeatedFluidTank, () -> tile.getGasTanks(),
+                        GaugeType.SMALL, this, 133, 34));
         addRenderableWidget(
-                new GuiGasGauge(() -> tile.getWasteTank(), () -> tile.getGasTanks(),
-                        GaugeType.STANDARD, this, 152, 4));
-        addRenderableWidget(new GuiInnerScreen(this, 26, 4, 126, 30, () -> {
+                new GuiGasGauge(tile::getWasteTank, () -> tile.getGasTanks(),
+                        GaugeType.STANDARD, this, 151, 4));
+        addRenderableWidget(new GuiInnerScreen(this, 25, 4, 126, 30, () -> {
             return List.of(this.title, GeneratorsLang.GAS_BURN_RATE.translate(this.tile.getEfficiency()));
-        }));
+        })).jeiCategories(GeneratorsJEIRecipeType.FISSION);
         addRenderableWidget(new GuiHeatTab(this, () -> {
             Component temp = MekanismUtils.getTemperatureDisplay(tile.heatCapacitor.getTemperature(),
                     TemperatureUnit.KELVIN, true);
