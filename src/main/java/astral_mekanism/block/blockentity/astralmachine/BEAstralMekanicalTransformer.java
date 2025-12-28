@@ -161,6 +161,7 @@ public class BEAstralMekanicalTransformer extends TileEntityRecipeMachine<Mekani
     protected void onUpdateServer() {
         super.onUpdateServer();
         energySlot.fillContainerOrConvert();
+        fluidSlot.drainTank(fluidSlot);
         recipeCacheLookupMonitor.updateAndProcess();
     }
 

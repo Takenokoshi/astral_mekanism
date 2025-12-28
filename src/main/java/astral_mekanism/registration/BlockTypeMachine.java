@@ -74,5 +74,11 @@ public class BlockTypeMachine<TILE extends TileEntityMekanism> extends BlockType
             this.without(AttributeUpgradeSupport.class);
             return this;
         }
+
+        public BlockMachineBuilder<MACHINE, TILE> changeAttributeUpgrade(EnumSet<Upgrade> upgrades) {
+            this.without(AttributeUpgradeSupport.class);
+            this.withSupportedUpgrades(upgrades);
+            return this;
+        }
     }
 }

@@ -65,6 +65,7 @@ import mekanism.common.inventory.container.tile.MekanismTileContainer;
 import mekanism.common.item.block.machine.ItemBlockMachine;
 import mekanism.common.registries.MekanismSounds;
 import mekanism.generators.common.GeneratorsLang;
+import mekanism.generators.common.registries.GeneratorsSounds;
 
 public class AstralMekanismMachines {
     public static final MachineDeferredRegister MACHINES = new MachineDeferredRegister(AstralMekanismID.MODID);
@@ -77,6 +78,7 @@ public class AstralMekanismMachines {
                     builder -> builder.withEnergyConfig(
                             () -> FloatingLong.create(20000 * AstralMekanismConfig.energyRate),
                             () -> FloatingLong.MAX_VALUE)
+                            .changeAttributeUpgrade(EnumSet.of(Upgrade.MUFFLING, Upgrade.ENERGY))
                             .withSound(MekanismSounds.CHEMICAL_INJECTION_CHAMBER));
 
     public static final MachineRegistryObject<BEAstralOsmiumCompressor, BlockTileModel<BEAstralOsmiumCompressor, BlockTypeMachine<BEAstralOsmiumCompressor>>, MekanismTileContainer<BEAstralOsmiumCompressor>, ItemBlockMachine> ASTRAL_OSMIUM_COMPRESSOR = MACHINES
@@ -87,6 +89,7 @@ public class AstralMekanismMachines {
                     builder -> builder.withEnergyConfig(
                             () -> FloatingLong.create(10000 * AstralMekanismConfig.energyRate),
                             () -> FloatingLong.MAX_VALUE)
+                            .changeAttributeUpgrade(EnumSet.of(Upgrade.MUFFLING, Upgrade.ENERGY))
                             .withSound(MekanismSounds.OSMIUM_COMPRESSOR));
 
     public static final MachineRegistryObject<BEAstralPurificationChamber, BlockTileModel<BEAstralPurificationChamber, BlockTypeMachine<BEAstralPurificationChamber>>, MekanismTileContainer<BEAstralPurificationChamber>, ItemBlockMachine> ASTRAL_PURIFICATION_CHAMBER = MACHINES
@@ -97,6 +100,7 @@ public class AstralMekanismMachines {
                     builder -> builder.withEnergyConfig(
                             () -> FloatingLong.create(10000 * AstralMekanismConfig.energyRate),
                             () -> FloatingLong.MAX_VALUE)
+                            .changeAttributeUpgrade(EnumSet.of(Upgrade.MUFFLING, Upgrade.ENERGY))
                             .withSound(MekanismSounds.PURIFICATION_CHAMBER));
 
     public static final MachineRegistryObject<BEAstralCrusher, BlockTileModel<BEAstralCrusher, BlockTypeMachine<BEAstralCrusher>>, MekanismTileContainer<BEAstralCrusher>, ItemBlockMachine> ASTRAL_CRUSHER = MACHINES
@@ -107,6 +111,7 @@ public class AstralMekanismMachines {
                     builder -> builder.withEnergyConfig(
                             () -> FloatingLong.create(10000 * AstralMekanismConfig.energyRate),
                             () -> FloatingLong.MAX_VALUE)
+                            .changeAttributeUpgrade(EnumSet.of(Upgrade.MUFFLING, Upgrade.ENERGY))
                             .withSound(MekanismSounds.CRUSHER));
 
     public static final MachineRegistryObject<BEAstralEnergizedSmelter, BlockTileModel<BEAstralEnergizedSmelter, BlockTypeMachine<BEAstralEnergizedSmelter>>, MekanismTileContainer<BEAstralEnergizedSmelter>, ItemBlockMachine> ASTRAL_ENERGIZED_SMELTER = MACHINES
@@ -117,6 +122,7 @@ public class AstralMekanismMachines {
                     builder -> builder.withEnergyConfig(
                             () -> FloatingLong.create(10000 * AstralMekanismConfig.energyRate),
                             () -> FloatingLong.MAX_VALUE)
+                            .changeAttributeUpgrade(EnumSet.of(Upgrade.MUFFLING, Upgrade.ENERGY))
                             .withSound(MekanismSounds.ENERGIZED_SMELTER));
 
     public static final MachineRegistryObject<BEAstralEnrichmentChamber, BlockTileModel<BEAstralEnrichmentChamber, BlockTypeMachine<BEAstralEnrichmentChamber>>, MekanismTileContainer<BEAstralEnrichmentChamber>, ItemBlockMachine> ASTRAL_ENRICHMENT_CHAMBER = MACHINES
@@ -127,6 +133,7 @@ public class AstralMekanismMachines {
                     builder -> builder.withEnergyConfig(
                             () -> FloatingLong.create(10000 * AstralMekanismConfig.energyRate),
                             () -> FloatingLong.MAX_VALUE)
+                            .changeAttributeUpgrade(EnumSet.of(Upgrade.MUFFLING, Upgrade.ENERGY))
                             .withSound(MekanismSounds.ENRICHMENT_CHAMBER));
 
     public static final MachineRegistryObject<BEAstralMekanicalCharger, BlockTileModel<BEAstralMekanicalCharger, BlockTypeMachine<BEAstralMekanicalCharger>>, MekanismTileContainer<BEAstralMekanicalCharger>, ItemBlockMachine> ASTRAL_MEKANICAL_CHARGER = MACHINES
@@ -136,7 +143,8 @@ public class AstralMekanismMachines {
                     AstralMekanismLang.DESCRIPTION_MEKANICAL_CHARGER,
                     builder -> builder.withEnergyConfig(
                             () -> FloatingLong.create(800 * AstralMekanismConfig.energyRate),
-                            () -> FloatingLong.MAX_VALUE));
+                            () -> FloatingLong.MAX_VALUE)
+                            .changeAttributeUpgrade(EnumSet.of(Upgrade.MUFFLING, Upgrade.ENERGY)));
 
     public static final MachineRegistryObject<BEAstralChemicalInfuser, BlockTileModel<BEAstralChemicalInfuser, BlockTypeMachine<BEAstralChemicalInfuser>>, MekanismTileContainer<BEAstralChemicalInfuser>, ItemBlockMachine> ASTRAL_CHEMICAL_INFUSER = MACHINES
             .registerSimple("astral_chemical_infuser",
@@ -146,6 +154,7 @@ public class AstralMekanismMachines {
                     builder -> builder.withEnergyConfig(
                             () -> FloatingLong.create(10000 * AstralMekanismConfig.energyRate),
                             () -> FloatingLong.MAX_VALUE)
+                            .changeAttributeUpgrade(EnumSet.of(Upgrade.MUFFLING, Upgrade.ENERGY))
                             .withSound(MekanismSounds.CHEMICAL_INFUSER));
 
     public static final MachineRegistryObject<BEAstralChemicalOxidizer, BlockTileModel<BEAstralChemicalOxidizer, BlockTypeMachine<BEAstralChemicalOxidizer>>, MekanismTileContainer<BEAstralChemicalOxidizer>, ItemBlockMachine> ASTRAL_CHEMICAL_OXIDIZER = MACHINES
@@ -156,6 +165,7 @@ public class AstralMekanismMachines {
                     builder -> builder.withEnergyConfig(
                             () -> FloatingLong.create(10000 * AstralMekanismConfig.energyRate),
                             () -> FloatingLong.MAX_VALUE)
+                            .changeAttributeUpgrade(EnumSet.of(Upgrade.MUFFLING, Upgrade.ENERGY))
                             .withSound(MekanismSounds.CHEMICAL_OXIDIZER));
 
     public static final MachineRegistryObject<BEAstralChemicalWasher, BlockTileModel<BEAstralChemicalWasher, BlockTypeMachine<BEAstralChemicalWasher>>, MekanismTileContainer<BEAstralChemicalWasher>, ItemBlockMachine> ASTRAL_CHEMICAL_WASHER = MACHINES
@@ -166,6 +176,7 @@ public class AstralMekanismMachines {
                     builder -> builder.withEnergyConfig(
                             () -> FloatingLong.create(10000 * AstralMekanismConfig.energyRate),
                             () -> FloatingLong.MAX_VALUE)
+                            .changeAttributeUpgrade(EnumSet.of(Upgrade.MUFFLING, Upgrade.ENERGY))
                             .withSound(MekanismSounds.CHEMICAL_WASHER));
 
     public static final MachineRegistryObject<BEAstralCombiner, BlockTileModel<BEAstralCombiner, BlockTypeMachine<BEAstralCombiner>>, MekanismTileContainer<BEAstralCombiner>, ItemBlockMachine> ASTRAL_COMBINER = MACHINES
@@ -176,6 +187,7 @@ public class AstralMekanismMachines {
                     builder -> builder.withEnergyConfig(
                             () -> FloatingLong.create(10000 * AstralMekanismConfig.energyRate),
                             () -> FloatingLong.MAX_VALUE)
+                            .changeAttributeUpgrade(EnumSet.of(Upgrade.MUFFLING, Upgrade.ENERGY))
                             .withSound(MekanismSounds.COMBINER));
 
     public static final MachineRegistryObject<BEAstralCrystallizer, BlockTileModel<BEAstralCrystallizer, BlockTypeMachine<BEAstralCrystallizer>>, MekanismTileContainer<BEAstralCrystallizer>, ItemBlockMachine> ASTRAL_CRYSTALLIZER = MACHINES
@@ -186,6 +198,7 @@ public class AstralMekanismMachines {
                     builder -> builder.withEnergyConfig(
                             () -> FloatingLong.create(10000 * AstralMekanismConfig.energyRate),
                             () -> FloatingLong.MAX_VALUE)
+                            .changeAttributeUpgrade(EnumSet.of(Upgrade.MUFFLING, Upgrade.ENERGY))
                             .withSound(MekanismSounds.CHEMICAL_CRYSTALLIZER));
 
     public static final MachineRegistryObject<BEAstralDissolutionChamber, BlockTileModel<BEAstralDissolutionChamber, BlockTypeMachine<BEAstralDissolutionChamber>>, MekanismTileContainer<BEAstralDissolutionChamber>, ItemBlockMachine> ASTRAL_DISSOLUTION_CHAMBER = MACHINES
@@ -196,6 +209,7 @@ public class AstralMekanismMachines {
                     builder -> builder.withEnergyConfig(
                             () -> FloatingLong.create(10000 * AstralMekanismConfig.energyRate),
                             () -> FloatingLong.MAX_VALUE)
+                            .changeAttributeUpgrade(EnumSet.of(Upgrade.MUFFLING, Upgrade.ENERGY))
                             .withSound(MekanismSounds.CHEMICAL_DISSOLUTION_CHAMBER));
 
     public static final MachineRegistryObject<BEAstralElectrolyticSeparator, BlockTileModel<BEAstralElectrolyticSeparator, BlockTypeMachine<BEAstralElectrolyticSeparator>>, MekanismTileContainer<BEAstralElectrolyticSeparator>, ItemBlockMachine> ASTRAL_ELECTROLYTIC_SEPARATOR = MACHINES
@@ -206,6 +220,7 @@ public class AstralMekanismMachines {
                     builder -> builder.withEnergyConfig(
                             () -> MekanismConfig.general.FROM_H2.get().multiply(2),
                             () -> FloatingLong.MAX_VALUE)
+                            .changeAttributeUpgrade(EnumSet.of(Upgrade.MUFFLING, Upgrade.ENERGY))
                             .withSound(MekanismSounds.ELECTROLYTIC_SEPARATOR));
 
     public static final MachineRegistryObject<BEAstralGNA, BlockTileModel<BEAstralGNA, BlockTypeMachine<BEAstralGNA>>, MekanismTileContainer<BEAstralGNA>, ItemBlockMachine> ASTRAL_GNA = MACHINES
@@ -213,7 +228,7 @@ public class AstralMekanismMachines {
                     BEAstralGNA::new,
                     BEAstralGNA.class,
                     MekanismLang.DESCRIPTION_CHEMICAL_DISSOLUTION_CHAMBER,
-                    builder -> builder);
+                    BlockMachineBuilder::removeAttributeUpgrade);
 
     public static final MachineRegistryObject<BEAstralGreenhouse, BlockTileModel<BEAstralGreenhouse, BlockTypeMachine<BEAstralGreenhouse>>, MekanismTileContainer<BEAstralGreenhouse>, ItemBlockMachine> ASTRAL_GREENHOUSE = MACHINES
             .registerSimple("astral_greenhouse",
@@ -222,7 +237,8 @@ public class AstralMekanismMachines {
                     AstralMekanismLang.DESCRIPTION_GREENHOUSE,
                     builder -> builder.withEnergyConfig(
                             () -> FloatingLong.create(10000 * AstralMekanismConfig.energyRate),
-                            () -> FloatingLong.MAX_VALUE));
+                            () -> FloatingLong.MAX_VALUE)
+                            .changeAttributeUpgrade(EnumSet.of(Upgrade.MUFFLING, Upgrade.ENERGY)));
 
     public static final MachineRegistryObject<BEAstralIsotopicCentrifuge, BlockTileModel<BEAstralIsotopicCentrifuge, BlockTypeMachine<BEAstralIsotopicCentrifuge>>, MekanismTileContainer<BEAstralIsotopicCentrifuge>, ItemBlockMachine> ASTRAL_ISOTOPIC_CENTRIFUGE = MACHINES
             .registerSimple("astral_isotopic_centrifuge",
@@ -232,6 +248,7 @@ public class AstralMekanismMachines {
                     builder -> builder.withEnergyConfig(
                             () -> FloatingLong.create(10000 * AstralMekanismConfig.energyRate),
                             () -> FloatingLong.MAX_VALUE)
+                            .changeAttributeUpgrade(EnumSet.of(Upgrade.MUFFLING, Upgrade.ENERGY))
                             .withSound(MekanismSounds.ISOTOPIC_CENTRIFUGE));
 
     public static final MachineRegistryObject<BEAstralMekanicalInscriber, BlockTileModel<BEAstralMekanicalInscriber, BlockTypeMachine<BEAstralMekanicalInscriber>>, MekanismTileContainer<BEAstralMekanicalInscriber>, ItemBlockMachine> ASTRAL_MEKANICAL_INSCRIBER = MACHINES
@@ -241,7 +258,8 @@ public class AstralMekanismMachines {
                     MekanismLang.DESCRIPTION_CHEMICAL_CRYSTALLIZER,
                     builder -> builder.withEnergyConfig(
                             () -> FloatingLong.create(10000 * AstralMekanismConfig.energyRate),
-                            () -> FloatingLong.MAX_VALUE));
+                            () -> FloatingLong.MAX_VALUE)
+                            .changeAttributeUpgrade(EnumSet.of(Upgrade.MUFFLING, Upgrade.ENERGY)));
 
     public static final MachineRegistryObject<BEAstralMekanicalPresser, BlockTileModel<BEAstralMekanicalPresser, BlockTypeMachine<BEAstralMekanicalPresser>>, MekanismTileContainer<BEAstralMekanicalPresser>, ItemBlockMachine> ASTRAL_MEKANICAL_PRESSER = MACHINES
             .registerSimple("astral_mekanical_presser",
@@ -250,7 +268,8 @@ public class AstralMekanismMachines {
                     MekanismLang.DESCRIPTION_CHEMICAL_CRYSTALLIZER,
                     builder -> builder.withEnergyConfig(
                             () -> FloatingLong.create(10000 * AstralMekanismConfig.energyRate),
-                            () -> FloatingLong.MAX_VALUE));
+                            () -> FloatingLong.MAX_VALUE)
+                            .changeAttributeUpgrade(EnumSet.of(Upgrade.MUFFLING, Upgrade.ENERGY)));
 
     public static final MachineRegistryObject<BEAstralMekanicalTransformer, BlockTileModel<BEAstralMekanicalTransformer, BlockTypeMachine<BEAstralMekanicalTransformer>>, MekanismTileContainer<BEAstralMekanicalTransformer>, ItemBlockMachine> ASTRAL_MEKANICAL_TRANSFOMER = MACHINES
             .registerSimple("astral_mekanical_transformer",
@@ -259,7 +278,8 @@ public class AstralMekanismMachines {
                     MekanismLang.DESCRIPTION_CHEMICAL_CRYSTALLIZER,
                     builder -> builder.withEnergyConfig(
                             () -> FloatingLong.create(10000 * AstralMekanismConfig.energyRate),
-                            () -> FloatingLong.MAX_VALUE));
+                            () -> FloatingLong.MAX_VALUE)
+                            .changeAttributeUpgrade(EnumSet.of(Upgrade.MUFFLING, Upgrade.ENERGY)));
 
     public static final MachineRegistryObject<BEAstralMetallurgicInfuser, BlockTileModel<BEAstralMetallurgicInfuser, BlockTypeMachine<BEAstralMetallurgicInfuser>>, MekanismTileContainer<BEAstralMetallurgicInfuser>, ItemBlockMachine> ASTRAL_METALLURGIC_INFUSER = MACHINES
             .registerSimple("astral_metallurgic_infuser",
@@ -269,6 +289,7 @@ public class AstralMekanismMachines {
                     builder -> builder.withEnergyConfig(
                             () -> FloatingLong.create(10000 * AstralMekanismConfig.energyRate),
                             () -> FloatingLong.MAX_VALUE)
+                            .changeAttributeUpgrade(EnumSet.of(Upgrade.MUFFLING, Upgrade.ENERGY))
                             .withSound(MekanismSounds.METALLURGIC_INFUSER));
 
     public static final MachineRegistryObject<BEAstralPRC, BlockTileModel<BEAstralPRC, BlockTypeMachine<BEAstralPRC>>, MekanismTileContainer<BEAstralPRC>, ItemBlockMachine> ASTRAL_PRC = MACHINES
@@ -279,6 +300,7 @@ public class AstralMekanismMachines {
                     builder -> builder
                             .withEnergyConfig(MekanismConfig.usage.pressurizedReactionBase,
                                     () -> FloatingLong.MAX_VALUE)
+                            .changeAttributeUpgrade(EnumSet.of(Upgrade.MUFFLING, Upgrade.ENERGY))
                             .withSound(MekanismSounds.PRESSURIZED_REACTION_CHAMBER));
 
     public static final MachineRegistryObject<BEAstralPrecisionSawmill, BlockTileModel<BEAstralPrecisionSawmill, BlockTypeMachine<BEAstralPrecisionSawmill>>, MekanismTileContainer<BEAstralPrecisionSawmill>, ItemBlockMachine> ASTRAL_PRECISION_SAWMILL = MACHINES
@@ -289,6 +311,7 @@ public class AstralMekanismMachines {
                     builder -> builder.withEnergyConfig(
                             () -> FloatingLong.create(10000 * AstralMekanismConfig.energyRate),
                             () -> FloatingLong.MAX_VALUE)
+                            .changeAttributeUpgrade(EnumSet.of(Upgrade.MUFFLING, Upgrade.ENERGY))
                             .withSound(MekanismSounds.PRECISION_SAWMILL));
 
     public static final MachineRegistryObject<BEAstralRotaryCondensentrator, BlockTileModel<BEAstralRotaryCondensentrator, BlockTypeMachine<BEAstralRotaryCondensentrator>>, MekanismTileContainer<BEAstralRotaryCondensentrator>, ItemBlockMachine> ASTRAL_ROTARY_CONDENSENTRATOR = MACHINES
@@ -299,6 +322,7 @@ public class AstralMekanismMachines {
                     builder -> builder.withEnergyConfig(
                             () -> FloatingLong.create(10000 * AstralMekanismConfig.energyRate),
                             () -> FloatingLong.MAX_VALUE)
+                            .changeAttributeUpgrade(EnumSet.of(Upgrade.MUFFLING, Upgrade.ENERGY))
                             .withSound(MekanismSounds.ROTARY_CONDENSENTRATOR));
 
     public static final MachineRegistryObject<BEAstralSPS, BlockTileModel<BEAstralSPS, BlockTypeMachine<BEAstralSPS>>, MekanismTileContainer<BEAstralSPS>, ItemBlockMachine> ASTRAL_SPS = MACHINES
@@ -318,7 +342,7 @@ public class AstralMekanismMachines {
                     BECompactFIR::new,
                     BECompactFIR.class,
                     GeneratorsLang.FUSION_REACTOR,
-                    builder -> builder);
+                    BlockMachineBuilder::removeAttributeUpgrade);
 
     public static final MachineRegistryObject<BECompactSPS, BlockTileModel<BECompactSPS, BlockTypeMachine<BECompactSPS>>, MekanismTileContainer<BECompactSPS>, ItemBlockMachine> COMPACT_SPS = MACHINES
             .registerSimple("compact_sps",
@@ -346,6 +370,7 @@ public class AstralMekanismMachines {
                     GeneratorsLang.DESCRIPTION_GAS_BURNING_GENERATOR,
                     (key, btm) -> btm.with(new AttributeTier<>(key))
                             .withCustomShape(AMBlockShapes.GAS_BURNING_GENERATOR)
+                            .withSound(GeneratorsSounds.GAS_BURNING_GENERATOR)
                             .removeAttributeUpgrade()
                             .withSupportedUpgrades(EnumSet.of(Upgrade.MUFFLING)),
                     AstralMekGeneratorTier.class);
@@ -357,8 +382,7 @@ public class AstralMekanismMachines {
                     GeneratorsLang.DESCRIPTION_HEAT_GENERATOR,
                     (key, btm) -> btm.with(new AttributeTier<>(key))
                             .withCustomShape(AMBlockShapes.HEAT_GENERATOR)
-                            .removeAttributeUpgrade()
-                            .withSupportedUpgrades(EnumSet.of(Upgrade.MUFFLING)),
+                            .removeAttributeUpgrade(),
                     AstralMekGeneratorTier.class);
 
     public static final MachineRegistryObject<BEAstralCrafter, BlockTileModel<BEAstralCrafter, BlockTypeMachine<BEAstralCrafter>>, ContainerAstralCrafter, ItemBlockMachine> ASTRAL_CRAFTER = MACHINES

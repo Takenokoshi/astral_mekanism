@@ -74,7 +74,7 @@ public class BEInfuseSynthesizer extends TileEntityRecipeMachine<ItemStackToInfu
             IContentsListener recipeCacheListener) {
         InventorySlotHelper builder = InventorySlotHelper.forSideWithConfig(this::getDirection, this::getConfig);
         builder.addSlot(inputSlot = InputInventorySlot.at(this::containsRecipe, recipeCacheListener, 26, 36));
-        builder.addSlot(infusionSlot = new DrainInfusionSlot(infusionTank, recipeCacheListener, 112, 56));
+        builder.addSlot(infusionSlot = new DrainInfusionSlot(infusionTank, listener, 112, 56));
         infusionSlot.setSlotOverlay(SlotOverlay.PLUS);
         return builder.build();
     }
@@ -85,7 +85,7 @@ public class BEInfuseSynthesizer extends TileEntityRecipeMachine<ItemStackToInfu
             IContentsListener listener, IContentsListener recipeCacheListener) {
         ChemicalTankHelper<InfuseType, InfusionStack, IInfusionTank> builder = ChemicalTankHelper
                 .forSideInfusionWithConfig(this::getDirection, this::getConfig);
-        builder.addTank(infusionTank = ChemicalTankBuilder.INFUSION.create(Long.MAX_VALUE, recipeCacheListener));
+        builder.addTank(infusionTank = ChemicalTankBuilder.INFUSION.create(Long.MAX_VALUE, listener));
         return builder.build();
     }
 

@@ -104,12 +104,14 @@ public class BEGasBurningGenerator extends TileEntityConfigurableMachine {
         if (gas.isEmpty()) {
             lastProduced = FloatingLong.ZERO;
             gasBurnRate = 0;
+            setActive(false);
             return;
         }
         Fuel fuel = gas.get(Fuel.class);
         if (fuel == null) {
             lastProduced = FloatingLong.ZERO;
             gasBurnRate = 0;
+            setActive(false);
             return;
         }
         FloatingLong energyPer1mB = fuel.getEnergyPerTick().multiply(fuel.getBurnTicks());
@@ -118,6 +120,7 @@ public class BEGasBurningGenerator extends TileEntityConfigurableMachine {
         energyContainer.insert(lastProduced = energyPer1mB.multiply(burnGasAmount), Action.EXECUTE,
                 AutomationType.INTERNAL);
         fuelTank.extract(gasBurnRate = burnGasAmount, Action.EXECUTE, AutomationType.INTERNAL).getAmount();
+        setActive(true);
         return;
     }
 

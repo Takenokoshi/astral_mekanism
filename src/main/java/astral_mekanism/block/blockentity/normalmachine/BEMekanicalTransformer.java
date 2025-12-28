@@ -161,6 +161,7 @@ public class BEMekanicalTransformer extends TileEntityProgressMachine<MekanicalT
     protected void onUpdateServer() {
         super.onUpdateServer();
         energySlot.fillContainerOrConvert();
+        fluidSlot.drainTank(fluidSlot);
         recipeCacheLookupMonitor.updateAndProcess();
     }
 
