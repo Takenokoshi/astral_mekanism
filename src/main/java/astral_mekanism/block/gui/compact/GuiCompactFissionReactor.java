@@ -39,27 +39,27 @@ public class GuiCompactFissionReactor
     protected void addGuiElements() {
         super.addGuiElements();
         addRenderableWidget(
-                new GuiGasGauge(tile::getFuelTank, () -> tile.getGasTanks(),
+                new GuiGasGauge(tile::getFuelTank, tile::getGasTanks,
                         GaugeType.STANDARD, this, 7, 4))
                 .setLabel(GeneratorsLang.FISSION_FUEL_TANK.translateColored(EnumColor.DARK_GREEN));
         addRenderableWidget(
-                new GuiFluidGauge(tile::getFluidCoolantTank, () -> List.of(tile.getFluidCoolantTank()),
+                new GuiFluidGauge(tile::getFluidCoolantTank, () -> tile.getFluidTanks(null),
                         GaugeType.SMALL, this, 25, 34))
                 .setLabel(AstralMekanismLang.LABEL_FLUID_COOLANT.translateColored(EnumColor.DARK_BLUE));
         addRenderableWidget(
-                new GuiGasGauge(tile::getGasCoolantTank, () -> tile.getGasTanks(),
+                new GuiGasGauge(tile::getGasCoolantTank, tile::getGasTanks,
                         GaugeType.SMALL, this, 43, 34))
                 .setLabel(AstralMekanismLang.LABEL_GAS_COOLANT.translateColored(EnumColor.INDIGO));
         addRenderableWidget(
-                new GuiGasGauge(tile::getHeatedGasTank, () -> tile.getGasTanks(),
+                new GuiGasGauge(tile::getHeatedGasTank, tile::getGasTanks,
                         GaugeType.SMALL, this, 115, 34))
                 .setLabel(AstralMekanismLang.LABEL_HEATED_GAS_COOLANT.translateColored(EnumColor.RED));
         addRenderableWidget(
-                new GuiGasGauge(tile::getHeatedFluidTank, () -> tile.getGasTanks(),
+                new GuiGasGauge(tile::getHeatedFluidTank, tile::getGasTanks,
                         GaugeType.SMALL, this, 133, 34))
                 .setLabel(AstralMekanismLang.LABEL_FLUID_COOLANT.translateColored(EnumColor.DARK_RED));
         addRenderableWidget(
-                new GuiGasGauge(tile::getWasteTank, () -> tile.getGasTanks(),
+                new GuiGasGauge(tile::getWasteTank, tile::getGasTanks,
                         GaugeType.STANDARD, this, 151, 4))
                 .setLabel(GeneratorsLang.FISSION_WASTE_TANK.translateColored(EnumColor.BROWN));
         addRenderableWidget(new GuiInnerScreen(this, 25, 4, 126, 30, () -> {
@@ -76,7 +76,7 @@ public class GuiCompactFissionReactor
                     MekanismLang.DISSIPATED_RATE.translate(environment));
         }));
 
-        field = addRenderableWidget(new GuiTextField(this, 50, 51, 76, 12));
+        field = addRenderableWidget(new GuiTextField(this, 70, 30, 76, 12));
         field.setMaxLength(32);
         field.setInputValidator(InputValidator.DIGIT).configureDigitalInput(this::setEfficiency);
         field.setFocused(true);
@@ -87,8 +87,9 @@ public class GuiCompactFissionReactor
             try {
                 AstralMekanism.packetHandler()
                         .sendToServer(new PacketGuiSetLong(0, Long.getLong(field.getText()), tile.getBlockPos()));
-            } catch (Exception e) {
+            } catch (NumberFormatException ignored) {
             }
+            field.setText("");
         }
     }
 }
