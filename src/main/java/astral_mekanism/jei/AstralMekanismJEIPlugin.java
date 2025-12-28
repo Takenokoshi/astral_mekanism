@@ -141,20 +141,22 @@ public class AstralMekanismJEIPlugin implements IModPlugin {
                 AstralMekanismMachines.INFUSE_SYNTHESIZER);
 
         // astral_mekanism
+        CatalystRegistryHelper.register(registry, AstralMekanismJEIRecipeType.ASTRAL_CRAFTING,
+                AstralMekanismMachines.ASTRAL_CRAFTER);
         CatalystRegistryHelper.register(registry, AstralMekanismJEIRecipeType.FLUID_INFUSER_RECIPE,
                 AstralMekanismMachines.FLUID_INFUSER);
         CatalystRegistryHelper.register(registry, AstralMekanismJEIRecipeType.MEKANICAL_CHARGER_RECIPE,
+                AstralMekanismMachines.ASTRAL_MEKANICAL_CHARGER,
                 AstralMekanismMachines.MEKANICAL_CHARGER);
-        CatalystRegistryHelper.register(registry, AstralMekanismJEIRecipeType.ASTRAL_CRAFTING,
-                AstralMekanismMachines.ASTRAL_CRAFTER);
         CatalystRegistryHelper.register(registry, AstralMekanismJEIRecipeType.MEKANICAL_INSCRIBER_RECIPE,
+                AstralMekanismMachines.ASTRAL_MEKANICAL_INSCRIBER,
                 AstralMekanismMachines.MEKANICAL_INSCRIBER);
         CatalystRegistryHelper.register(registry, AstralMekanismJEIRecipeType.MEKANICAL_PRESSER_RECIPE,
+                AstralMekanismMachines.ASTRAL_MEKANICAL_PRESSER,
                 AstralMekanismMachines.MEKANICAL_PRESSER);
-        CatalystRegistryHelper.register(registry, AstralMekanismJEIRecipeType.MEKANICAL_CHARGER_RECIPE,
-                AstralMekanismMachines.ASTRAL_MEKANICAL_CHARGER);
         CatalystRegistryHelper.register(registry, AstralMekanismJEIRecipeType.MEKANICAL_TRANSFORM,
-                AstralMekanismMachines.ASTRAL_MEKANICAL_TRANSFOMER);
+                AstralMekanismMachines.ASTRAL_MEKANICAL_TRANSFOMER,
+                AstralMekanismMachines.MEKANICAL_TRANSFORMER);
         CatalystRegistryHelper.register(registry, AstralMekanismJEIRecipeType.GREENHOUSE_RECIPE,
                 AstralMekanismMachines.GREENHOUSE,
                 AstralMekanismMachines.ASTRAL_GREENHOUSE);
