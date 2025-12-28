@@ -76,7 +76,7 @@ public class GuiCompactFissionReactor
                     MekanismLang.DISSIPATED_RATE.translate(environment));
         }));
 
-        field = addRenderableWidget(new GuiTextField(this, 70, 30, 76, 12));
+        field = addRenderableWidget(new GuiTextField(this, 70, 20, 76, 12));
         field.setMaxLength(32);
         field.setInputValidator(InputValidator.DIGIT).configureDigitalInput(this::setEfficiency);
         field.setFocused(true);
@@ -86,7 +86,7 @@ public class GuiCompactFissionReactor
         if (!field.getText().isEmpty()) {
             try {
                 AstralMekanism.packetHandler()
-                        .sendToServer(new PacketGuiSetLong(0, Long.getLong(field.getText()), tile.getBlockPos()));
+                        .sendToServer(new PacketGuiSetLong(0, Long.parseLong(field.getText()), tile.getBlockPos()));
             } catch (NumberFormatException ignored) {
             }
             field.setText("");
