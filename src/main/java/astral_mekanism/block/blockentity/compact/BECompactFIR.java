@@ -1,6 +1,7 @@
 package astral_mekanism.block.blockentity.compact;
 
 import java.util.List;
+import java.util.Objects;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -171,9 +172,9 @@ public class BECompactFIR extends TileEntityConfigurableMachine implements IPack
             if (heatCapacitor.getTemperature() < Double.MAX_VALUE / 4) {
                 fission();
             }
-            heatFluid();
-            heatGas();
         }
+        heatFluid();
+        heatGas();
         BlockEntityUtils.gasEject(this, List.of(AstralMekDataType.NUCLEAR_WASTE), nuclearWasteTank);
         BlockEntityUtils.gasEject(this, List.of(AstralMekDataType.HEATED_FLUID_COOLANT), heatedFluidCoolantGasTank);
         BlockEntityUtils.gasEject(this,
@@ -228,7 +229,7 @@ public class BECompactFIR extends TileEntityConfigurableMachine implements IPack
         }
         coolantGasTank.getStack().ifAttributePresent(CooledCoolant.class, cooledCoolant -> {
             if ((!heatedGasCoolantGasTank.isEmpty())
-                    && heatedFluidCoolantGasTank.getType() != cooledCoolant.getHeatedGas()) {
+                    && Objects.equals(heatedFluidCoolantGasTank.getType() , cooledCoolant.getHeatedGas())) {
                 return;
             }
             long coolantCanUse = Math.min(coolantGasTank.getStored(), heatedGasCoolantGasTank.getNeeded());
