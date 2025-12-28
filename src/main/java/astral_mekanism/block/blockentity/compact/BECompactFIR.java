@@ -160,7 +160,7 @@ public class BECompactFIR extends TileEntityConfigurableMachine implements IPack
 
     @Override
     protected void onUpdateServer() {
-        efficiency = countSlot.getCount();
+        //efficiency = countSlot.getCount();
         fissionFuelSlot.fillTank();
         nuclearWasteSlot.drainTank();
         fluidCoolantSlot.fillTank();
