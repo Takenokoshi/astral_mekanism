@@ -75,8 +75,9 @@ public class GuiCompactFissionReactor
             return List.of(MekanismLang.TEMPERATURE.translate(temp), MekanismLang.TRANSFERRED_RATE.translate(transfer),
                     MekanismLang.DISSIPATED_RATE.translate(environment));
         }));
+        addRenderableWidget(new GuiInnerScreen(this, 61, 34, 54, 12));
 
-        field = addRenderableWidget(new GuiTextField(this, 70, 20, 76, 12));
+        field = addRenderableWidget(new GuiTextField(this, 61, 34, 54, 12));
         field.setMaxLength(32);
         field.setInputValidator(InputValidator.DIGIT).configureDigitalInput(this::setEfficiency);
         field.setFocused(true);
