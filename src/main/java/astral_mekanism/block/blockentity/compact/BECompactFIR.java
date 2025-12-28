@@ -6,6 +6,7 @@ import org.jetbrains.annotations.NotNull;
 
 import astral_mekanism.block.blockentity.core.BlockEntityUtils;
 import astral_mekanism.block.blockentity.elements.AstralMekDataType;
+import astral_mekanism.block.blockentity.interf.IPacketReceiverSetLong;
 import mekanism.api.Action;
 import mekanism.api.AutomationType;
 import mekanism.api.IContentsListener;
@@ -50,7 +51,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.Fluids;
 import net.minecraftforge.fluids.FluidStack;
 
-public class BECompactFIR extends TileEntityConfigurableMachine {
+public class BECompactFIR extends TileEntityConfigurableMachine implements IPacketReceiverSetLong {
 
     public BasicHeatCapacitor heatCapacitor;
     private double lastEnvironmentLoss;
@@ -117,16 +118,11 @@ public class BECompactFIR extends TileEntityConfigurableMachine {
     public IChemicalTankHolder<Gas, GasStack, IGasTank> getInitialGasTanks(IContentsListener listener) {
         ChemicalTankHelper<Gas, GasStack, IGasTank> builder = ChemicalTankHelper
                 .forSideGasWithConfig(this::getDirection, this::getConfig);
-        builder.addTank(fissionFuelTank = ChemicalTankBuilder.GAS.input(Long.MAX_VALUE, (gas) -> {
-            if (gas == MekanismGases.FISSILE_FUEL.get()) {
-                return true;
-            } else {
-                return false;
-            }
-        }, listener));
+        builder.addTank(fissionFuelTank = ChemicalTankBuilder.GAS.input(Long.MAX_VALUE,
+                gas -> gas == MekanismGases.FISSILE_FUEL.get(), listener));
         builder.addTank(nuclearWasteTank = ChemicalTankBuilder.GAS.output(Long.MAX_VALUE, listener));
         builder.addTank(coolantGasTank = ChemicalTankBuilder.GAS.input(Long.MAX_VALUE,
-                (gas) -> gas.has(CooledCoolant.class), listener));
+                gas -> gas.has(CooledCoolant.class), listener));
         builder.addTank(heatedFluidCoolantGasTank = ChemicalTankBuilder.GAS.output(Long.MAX_VALUE, listener));
         builder.addTank(heatedGasCoolantGasTank = ChemicalTankBuilder.GAS.output(Long.MAX_VALUE, listener));
         return builder.build();
@@ -245,15 +241,6 @@ public class BECompactFIR extends TileEntityConfigurableMachine {
         });
     }
 
-    public void setEfficiency(long toSet) {
-        if (toSet >= 0l && toSet <= 200000l) {
-            this.efficiency = toSet;
-        } else {
-            this.efficiency = 0l;
-        }
-        markForSave();
-    }
-
     public long getEfficiency() {
         return efficiency;
     }
@@ -301,6 +288,12 @@ public class BECompactFIR extends TileEntityConfigurableMachine {
     public List<IGasTank> getGasTanks() {
         return List.of(fissionFuelTank, nuclearWasteTank, coolantGasTank, heatedFluidCoolantGasTank,
                 heatedGasCoolantGasTank);
+    }
+
+    @Override
+    public void receive(int num, long value) {
+        efficiency = value;
+        markForSave();
     }
 
 }

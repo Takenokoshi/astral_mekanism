@@ -2,6 +2,7 @@ package astral_mekanism;
 
 import com.mojang.logging.LogUtils;
 
+import astral_mekanism.network.AstralMekanismPacketHandler;
 import astral_mekanism.registries.AstralMekanismBlocks;
 import astral_mekanism.registries.AstralMekanismCreativeTab;
 import astral_mekanism.registries.AstralMekanismGases;
@@ -30,7 +31,12 @@ public class AstralMekanism {
     public static final String MODID = AstralMekanismID.MODID;
     public static final Logger LOGGER = LogUtils.getLogger();
 
+    public static AstralMekanism instance;
+
+    private final AstralMekanismPacketHandler packetHandler;
+
     public AstralMekanism(FMLJavaModLoadingContext context) {
+        instance = this;
         IEventBus modEventBus = context.getModEventBus();
         modEventBus.addListener(this::commonSetup);
 
@@ -47,10 +53,12 @@ public class AstralMekanism {
         AstralMekanismCreativeTab.CREATIVE_TABS.register(modEventBus);
         MinecraftForge.EVENT_BUS.register(this);
         context.registerConfig(ModConfig.Type.COMMON, AstralMekanismConfig.SPEC);
+        this.packetHandler = new AstralMekanismPacketHandler();
     }
 
     private void commonSetup(final FMLCommonSetupEvent event) {
         LOGGER.info(MODID);
+        packetHandler.initialize();
     }
 
     @SubscribeEvent
@@ -62,6 +70,10 @@ public class AstralMekanism {
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event) {
         }
+    }
+
+    public static AstralMekanismPacketHandler packetHandler(){
+        return instance.packetHandler;
     }
 
 }
