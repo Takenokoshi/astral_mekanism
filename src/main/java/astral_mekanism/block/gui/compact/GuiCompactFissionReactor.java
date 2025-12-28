@@ -57,7 +57,7 @@ public class GuiCompactFissionReactor
         addRenderableWidget(
                 new GuiGasGauge(tile::getHeatedFluidTank, tile::getGasTanks,
                         GaugeType.SMALL, this, 133, 34))
-                .setLabel(AstralMekanismLang.LABEL_FLUID_COOLANT.translateColored(EnumColor.DARK_RED));
+                .setLabel(AstralMekanismLang.LABEL_HEATED_FLUID_COOLANT.translateColored(EnumColor.DARK_RED));
         addRenderableWidget(
                 new GuiGasGauge(tile::getWasteTank, tile::getGasTanks,
                         GaugeType.STANDARD, this, 151, 4))

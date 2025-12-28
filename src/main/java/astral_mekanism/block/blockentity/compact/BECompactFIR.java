@@ -1,8 +1,6 @@
 package astral_mekanism.block.blockentity.compact;
 
 import java.util.List;
-import java.util.Objects;
-
 import org.jetbrains.annotations.NotNull;
 
 import astral_mekanism.block.blockentity.core.BlockEntityUtils;
@@ -228,9 +226,8 @@ public class BECompactFIR extends TileEntityConfigurableMachine implements IPack
             return;
         }
         coolantGasTank.getStack().ifAttributePresent(CooledCoolant.class, cooledCoolant -> {
-            if ((!heatedGasCoolantGasTank.isEmpty())
-                    && !Objects.equals(heatedFluidCoolantGasTank.getType().getRegistryName(),
-                            cooledCoolant.getHeatedGas().getRegistryName())) {
+            if ((!heatedGasCoolantGasTank.isEmpty()) &&
+                    heatedGasCoolantGasTank.getType() != cooledCoolant.getHeatedGas()) {
                 return;
             }
             long coolantCanUse = Math.min(coolantGasTank.getStored(), heatedGasCoolantGasTank.getNeeded());
