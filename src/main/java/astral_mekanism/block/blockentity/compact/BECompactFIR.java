@@ -209,8 +209,13 @@ public class BECompactFIR extends TileEntityConfigurableMachine implements IPack
         int waterCanUse = Math.min(coolantFluidTank.getFluidAmount(),
                 (int) Math.min(heatedFluidCoolantGasTank.getNeeded(), Integer.MAX_VALUE));
         waterCanUse = Math.min(waterCanUse,
-                (int) Math.min((heatCapacitor.getHeat() - 30000d) / HeatUtils.getWaterThermalEnthalpy(),
+                (int) Math.min(
+                        (heatCapacitor.getTemperature() - 300) / HeatUtils.getWaterThermalEnthalpy()
+                                * heatCapacitor.getHeatCapacity(),
                         Integer.MAX_VALUE));
+        if (waterCanUse <= 0) {
+            return;
+        }
         heatCapacitor.handleHeat(-waterCanUse * HeatUtils.getWaterThermalEnthalpy());
         coolantFluidTank.extract(waterCanUse, Action.EXECUTE, AutomationType.INTERNAL);
         heatedFluidCoolantGasTank.insert(new GasStack(MekanismGases.STEAM, waterCanUse), Action.EXECUTE,
@@ -221,15 +226,20 @@ public class BECompactFIR extends TileEntityConfigurableMachine implements IPack
         if (coolantGasTank.isEmpty()) {
             return;
         }
-        coolantGasTank.getStack().ifAttributePresent(CooledCoolant.class, (cooledCoolant) -> {
+        coolantGasTank.getStack().ifAttributePresent(CooledCoolant.class, cooledCoolant -> {
             if ((!heatedGasCoolantGasTank.isEmpty())
                     && heatedFluidCoolantGasTank.getType() != cooledCoolant.getHeatedGas()) {
                 return;
             }
             long coolantCanUse = Math.min(coolantGasTank.getStored(), heatedGasCoolantGasTank.getNeeded());
             coolantCanUse = Math.min(coolantCanUse,
-                    (long) Math.min((heatCapacitor.getHeat() - 30000d) / cooledCoolant.getThermalEnthalpy(),
+                    (long) Math.min(
+                            (heatCapacitor.getTemperature() - 300d) / cooledCoolant.getThermalEnthalpy()
+                                    * heatCapacitor.getHeatCapacity(),
                             Long.MAX_VALUE));
+            if (coolantCanUse <= 0) {
+                return;
+            }
             heatCapacitor.handleHeat(-coolantCanUse * cooledCoolant.getThermalEnthalpy());
             coolantGasTank.extract(coolantCanUse, Action.EXECUTE, AutomationType.INTERNAL);
             heatedGasCoolantGasTank.insert(new GasStack(cooledCoolant.getHeatedGas(), coolantCanUse),
