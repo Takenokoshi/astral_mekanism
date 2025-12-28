@@ -11,19 +11,19 @@
             "item": "astral_mekanism:vibration_control_circuit"
         },
         "I": {
-            "item": "minecraft:water_bucket"
+            "item": "ae2:logic_processor"
         },
-        "F": {
-            "item": "minecraft:lava_bucket"
+        "P": {
+            "item": "ae2:engineering_processor"
         }
     },
     "pattern": [
         "ACA",
-        "IXF",
+        "IXP",
         "ACA"
     ],
     "result": {
-        "item": "astral_mekanism:cobblestone_supply_device",
+        "item": "astral_mekanism:mekanical_transformer",
         "count": 1
     }
 }
