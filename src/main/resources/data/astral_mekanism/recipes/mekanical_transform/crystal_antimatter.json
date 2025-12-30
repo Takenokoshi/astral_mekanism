@@ -2,9 +2,9 @@
     "type": "astral_mekanism:mekanical_transform",
     "itemInputA": {
         "ingredient": {
-            "tag": "ae2:all_fluix"
+            "item": "minecraft:nether_star"
         },
-        "amount": 64
+        "amount": 1
     },
     "itemInputB": {
         "ingredient": {

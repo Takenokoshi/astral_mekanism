@@ -25,7 +25,7 @@ public class AstralMekanismItems {
     public static final ItemRegistryObject<Item> ENRICHED_UTILITY = ITEMS.register("enriched_utility");
     public static final ItemRegistryObject<Item> ENRICHED_SINGULARITY = ITEMS.register("enriched_singularity");
     public static final ItemRegistryObject<GlintItem> ENRICHED_NETHER_STAR = ITEMS.register("enriched_nether_star",
-            GlintItem::new);
+            p -> new GlintItem(p.rarity(Rarity.UNCOMMON)));
     public static final ItemRegistryObject<Item> ELASTIC_ALLOY = ITEMS.register("alloy_elastic", Rarity.UNCOMMON);
     public static final ItemRegistryObject<Item> CONVERGENT_ALLOY = ITEMS.register("alloy_convergent", Rarity.RARE);
     public static final ItemRegistryObject<GlintItem> STARDUST_ALLOY = ITEMS.register("alloy_stardust",
