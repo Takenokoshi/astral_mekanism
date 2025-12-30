@@ -6,7 +6,9 @@ import java.util.function.Supplier;
 
 import astral_mekanism.AstralMekanismID;
 import astral_mekanism.items.GlintItem;
+import astral_mekanism.items.GlintItemNameColored;
 import astral_mekanism.items.upgrade.ItemSingularityUpgrade;
+import mekanism.api.text.EnumColor;
 import mekanism.common.registration.impl.ItemDeferredRegister;
 import mekanism.common.registration.impl.ItemRegistryObject;
 import net.minecraft.world.item.Item;
@@ -37,10 +39,12 @@ public class AstralMekanismItems {
     public static final ItemRegistryObject<GlintItem> SPACETIME_MODULATION_CORE = ITEMS.register(
             "spacetime_modulation_core",
             GlintItem::new);
-    public static final ItemRegistryObject<GlintItem> CRYSTAL_ANTIMATTER = ITEMS.register("crystal_antimatter",
-            GlintItem::new);
-    public static final ItemRegistryObject<GlintItem> CRYSTAL_ANTIMATTER_CHARGED = ITEMS.register("crystal_antimatter_charged",
-            GlintItem::new);
+    public static final ItemRegistryObject<GlintItemNameColored> CRYSTAL_ANTIMATTER = ITEMS.register(
+            "crystal_antimatter",
+            GlintItemNameColored.getSup(EnumColor.PURPLE));
+    public static final ItemRegistryObject<GlintItemNameColored> CRYSTAL_ANTIMATTER_CHARGED = ITEMS.register(
+            "crystal_antimatter_charged",
+            GlintItemNameColored.getSup(EnumColor.PURPLE));
     public static final ItemRegistryObject<Item> INSERT_UPGRADE = ITEMS.register("insert_upgrade");
     public static final ItemRegistryObject<ItemSingularityUpgrade> SINGULARITY_UPGRADE = ITEMS
             .register("singularity_upgrade", ItemSingularityUpgrade::new);
