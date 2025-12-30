@@ -12,6 +12,7 @@ import mekanism.api.text.EnumColor;
 import mekanism.common.registration.impl.ItemDeferredRegister;
 import mekanism.common.registration.impl.ItemRegistryObject;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Rarity;
 
 public class AstralMekanismItems {
     public static final ItemDeferredRegister ITEMS = new ItemDeferredRegister(AstralMekanismID.MODID);
@@ -25,20 +26,20 @@ public class AstralMekanismItems {
     public static final ItemRegistryObject<Item> ENRICHED_SINGULARITY = ITEMS.register("enriched_singularity");
     public static final ItemRegistryObject<GlintItem> ENRICHED_NETHER_STAR = ITEMS.register("enriched_nether_star",
             GlintItem::new);
-    public static final ItemRegistryObject<Item> ELASTIC_ALLOY = ITEMS.register("alloy_elastic");
-    public static final ItemRegistryObject<Item> CONVERGENT_ALLOY = ITEMS.register("alloy_convergent");
+    public static final ItemRegistryObject<Item> ELASTIC_ALLOY = ITEMS.register("alloy_elastic", Rarity.UNCOMMON);
+    public static final ItemRegistryObject<Item> CONVERGENT_ALLOY = ITEMS.register("alloy_convergent", Rarity.RARE);
     public static final ItemRegistryObject<GlintItem> STARDUST_ALLOY = ITEMS.register("alloy_stardust",
-            GlintItem::new);
+            p -> new GlintItem(p.rarity(Rarity.EPIC)));
     public static final ItemRegistryObject<Item> VIBRATION_CONTROL_CIRCUIT = ITEMS
-            .register("vibration_control_circuit");
+            .register("vibration_control_circuit", Rarity.UNCOMMON);
     public static final ItemRegistryObject<Item> RESONANCE_CONTROL_CIRCUIT = ITEMS
-            .register("resonance_control_circuit");
+            .register("resonance_control_circuit", Rarity.RARE);
     public static final ItemRegistryObject<GlintItem> ILLUSION_CONTROL_CIRCUIT = ITEMS.register(
             "illusion_control_circuit",
-            GlintItem::new);
+            p -> new GlintItem(p.rarity(Rarity.EPIC)));
     public static final ItemRegistryObject<GlintItem> SPACETIME_MODULATION_CORE = ITEMS.register(
             "spacetime_modulation_core",
-            GlintItem::new);
+            p -> new GlintItem(p.rarity(Rarity.UNCOMMON)));
     public static final ItemRegistryObject<GlintItemNameColored> CRYSTAL_ANTIMATTER = ITEMS.register(
             "crystal_antimatter",
             GlintItemNameColored.getSup(EnumColor.PURPLE));
@@ -53,9 +54,9 @@ public class AstralMekanismItems {
     public static final ItemRegistryObject<Item> SUMMARIZED_THERMAL_EVAPORTION_VALVE = ITEMS
             .register("summarized_thermal_evaporation_valve");
     public static final ItemRegistryObject<Item> SUMMARIZED_SPS_CASING = ITEMS
-            .register("summarized_sps_casing");
+            .register("summarized_sps_casing", Rarity.EPIC);
     public static final ItemRegistryObject<Item> SUMMARIZED_SPS_PORT = ITEMS
-            .register("summarized_sps_port");
+            .register("summarized_sps_port", Rarity.EPIC);
     public static final ItemRegistryObject<Item> SUMMARIZED_FIR_CASING = ITEMS
             .register("summarized_fir_casing");
     public static final ItemRegistryObject<Item> SUPERSUMMARIZED_FIR_CASING = ITEMS
