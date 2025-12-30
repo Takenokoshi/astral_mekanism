@@ -1,0 +1,39 @@
+{
+    "type": "astral_mekanism:mekanical_transform",
+    "itemInputA": {
+        "ingredient": {
+            "tag": "ae2:all_fluix"
+        },
+        "amount": 64
+    },
+    "itemInputB": {
+        "ingredient": {
+            "item": "mekanism:pellet_antimatter"
+        },
+        "amount": 64
+    },
+    "itemInputC": {
+        "ingredient": {
+            "item": "mekanism:pellet_antimatter"
+        },
+        "amount": 64
+    },
+    "itemInputD": {
+        "ingredient": {
+            "item": "ae2:singularity"
+        },
+        "amount": 64
+    },
+    "outputItem": {
+        "item": "astral_mekanism:crystal_antimatter",
+        "count": 1
+    },
+    "outputFluid": {
+        "amount": 1000,
+        "fluid": "mekanism:ethene"
+    },
+    "isCatalystA": false,
+    "isCatalystB": false,
+    "isCatalystC": false,
+    "isCatalystD": false
+}

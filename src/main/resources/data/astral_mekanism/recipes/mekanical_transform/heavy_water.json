@@ -1,0 +1,35 @@
+{
+    "type": "astral_mekanism:mekanical_transform",
+    "itemInputA": {
+        "ingredient": {
+            "item": "minecraft:bucket"
+        },
+        "amount": 1
+    },
+    "itemInputB": {
+        "ingredient": {
+            "item": "mekanism:upgrade_filter"
+        },
+        "amount": 1
+    },
+    "itemInputC": {
+        "ingredient": {
+            "item": "mekanism:electric_pump"
+        },
+        "amount": 1
+    },
+    "itemInputD": {
+        "ingredient": {
+            "item": "minecraft:water_bucket"
+        },
+        "amount": 1
+    },
+    "outputFluid": {
+        "fluid": "mekanism:heavy_water",
+        "amount": 21
+    },
+    "isCatalystA": true,
+    "isCatalystB": true,
+    "isCatalystC": true,
+    "isCatalystD": true
+}

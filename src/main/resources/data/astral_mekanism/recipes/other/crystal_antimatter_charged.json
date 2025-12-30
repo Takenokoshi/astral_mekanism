@@ -1,0 +1,9 @@
+{
+  "type": "ae2:charger",
+  "ingredient": {
+    "item": "astral_mekanism:crystal_antimatter"
+  },
+  "result": {
+    "item": "astral_mekanism:crystal_antimatter_charged"
+  }
+}

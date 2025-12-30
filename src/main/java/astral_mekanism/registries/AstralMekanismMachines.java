@@ -458,7 +458,8 @@ public class AstralMekanismMachines {
                     BEMekanicalTransformer.class,
                     AstralMekanismLang.DESCRIPTION_MEKANICAL_TRANSFORMER,
                     builder -> builder.withEnergyConfig(
-                            () -> FloatingLong.create(1000 * AstralMekanismConfig.energyRate),
+                            () -> MekanismConfig.usage.electricPump.get().multiply(2.1)
+                                    .multiply(AstralMekanismConfig.energyRate),
                             () -> FloatingLong.create(100000l * AstralMekanismConfig.energyRate)));
 
     public static final MachineRegistryObject<BEUniversalStorage, BlockTileModel<BEUniversalStorage, BlockTypeMachine<BEUniversalStorage>>, ContainerAbstractStorage<BEUniversalStorage>, ItemBlockMachine> UNIVERSAL_STORAGE = MACHINES

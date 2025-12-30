@@ -13,6 +13,7 @@ import astral_mekanism.registries.AstralMekanismRecipeSerializers;
 import astral_mekanism.registries.AstralMekanismRecipeTypes;
 import astral_mekanism.registries.AstralMekanismSlurries;
 import astral_mekanism.registries.AstralMekanismTileEntityTypes;
+import mekanism.common.lib.Version;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.server.ServerStartingEvent;
@@ -34,6 +35,7 @@ public class AstralMekanism {
     public static AstralMekanism instance;
 
     private final AstralMekanismPacketHandler packetHandler;
+    public final Version version;
 
     public AstralMekanism(FMLJavaModLoadingContext context) {
         instance = this;
@@ -53,6 +55,7 @@ public class AstralMekanism {
         AstralMekanismCreativeTab.CREATIVE_TABS.register(modEventBus);
         MinecraftForge.EVENT_BUS.register(this);
         context.registerConfig(ModConfig.Type.COMMON, AstralMekanismConfig.SPEC);
+        version = new Version(context.getActiveContainer());
         this.packetHandler = new AstralMekanismPacketHandler();
     }
 

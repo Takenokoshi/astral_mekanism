@@ -19,6 +19,7 @@ public enum AstralMekanismLang implements ILangEntry {
 	DESCRIPTION_MEKANICAL_TRANSFORMER("description","mekanical_transformer"),
 	DESCRIPTION_UNIVERSAL_STORAGE("description", "universal_storage"),
 	DESCRIPTION_ITEM_SORTABLE_STORAGE("description", "item_sortable_storage"),
+	DESCRIPTION_ASTRAL_DIAMOND_BLOCK("description", "astral_diamond_block"),
 	LABEL_FLUID_COOLANT("label", "fluid_coolant"),
 	LABEL_GAS_COOLANT("label", "gas_coolant"),
 	LABEL_HEATED_FLUID_COOLANT("label", "heated_fluid_coolant"),

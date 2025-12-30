@@ -39,6 +39,8 @@ public class AstralMekanismItems {
             GlintItem::new);
     public static final ItemRegistryObject<GlintItem> CRYSTAL_ANTIMATTER = ITEMS.register("crystal_antimatter",
             GlintItem::new);
+    public static final ItemRegistryObject<GlintItem> CRYSTAL_ANTIMATTER_CHARGED = ITEMS.register("crystal_antimatter_charged",
+            GlintItem::new);
     public static final ItemRegistryObject<Item> INSERT_UPGRADE = ITEMS.register("insert_upgrade");
     public static final ItemRegistryObject<ItemSingularityUpgrade> SINGULARITY_UPGRADE = ITEMS
             .register("singularity_upgrade", ItemSingularityUpgrade::new);
