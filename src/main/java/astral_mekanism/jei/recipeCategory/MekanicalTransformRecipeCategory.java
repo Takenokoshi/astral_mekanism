@@ -1,5 +1,7 @@
 package astral_mekanism.jei.recipeCategory;
 
+import java.util.List;
+
 import astral_mekanism.recipes.output.ItemFluidOutput;
 import astral_mekanism.recipes.recipe.MekanicalTransformRecipe;
 import mekanism.api.providers.IItemProvider;
@@ -60,8 +62,10 @@ public class MekanicalTransformRecipeCategory extends BaseRecipeCategory<Mekanic
                 inputD, recipe.getInputItemD().getRepresentations());
         initItem(builder, RecipeIngredientRole.OUTPUT, output,
                 recipe.getOutputDefinition().stream().map(ItemFluidOutput::item).toList());
-        initFluid(builder, RecipeIngredientRole.OUTPUT, outputGauge,
-                recipe.getOutputDefinition().stream().map(ItemFluidOutput::fluid).toList());
+        List<FluidStack> outputFluids = recipe.getOutputDefinition().stream().map(ItemFluidOutput::fluid).toList();
+        if (!outputFluids.stream().allMatch(FluidStack::isEmpty)) {
+            initFluid(builder, RecipeIngredientRole.OUTPUT, outputGauge, outputFluids);
+        }
     }
 
 }
