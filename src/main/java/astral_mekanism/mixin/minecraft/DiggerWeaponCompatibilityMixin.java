@@ -7,16 +7,21 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.EnchantmentCategory;
+import net.minecraft.world.item.enchantment.LootBonusEnchantment;
+import net.minecraft.world.item.enchantment.UntouchingEnchantment;
 
-@Mixin(Enchantment.class)
-public abstract class EnchantmentMixin {
+@Mixin({
+    UntouchingEnchantment.class,
+    LootBonusEnchantment.class
+})
+public abstract class DiggerWeaponCompatibilityMixin {
 
     @Inject(
         method = "checkCompatibility",
         at = @At("HEAD"),
         cancellable = true
     )
-    private void allowDiggerWeaponCombination(
+    private void allowDiggerWeapon(
             Enchantment other,
             CallbackInfoReturnable<Boolean> cir
     ) {

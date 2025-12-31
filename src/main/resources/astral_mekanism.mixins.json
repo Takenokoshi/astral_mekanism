@@ -15,7 +15,7 @@
 		"mekanism.MekanismRecipeTypeMixin2",
 		"mekanism.TileComponentEjectorMixin",
 		"mekanism.TileEntityAdvancedElectricMachineMixin",
-		"minecraft.EnchantmentMixin"
+		"minecraft.DiggerWeaponCompatibilityMixin"
 	],
 	"client": [
 	],
