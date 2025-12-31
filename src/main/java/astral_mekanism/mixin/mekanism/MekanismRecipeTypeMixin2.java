@@ -15,6 +15,7 @@ import appeng.recipes.handlers.InscriberProcessType;
 import appeng.recipes.handlers.InscriberRecipe;
 import appeng.recipes.transform.TransformRecipe;
 import astral_mekanism.botanypots.FakeRandom;
+import astral_mekanism.recipes.irecipe.CompressingAMIRecipe;
 import astral_mekanism.recipes.irecipe.DissolutionAMIrecipe;
 import astral_mekanism.recipes.irecipe.FormulizedSawingIRecipe;
 import astral_mekanism.recipes.irecipe.GreenhouseIRecipe;
@@ -181,7 +182,7 @@ public class MekanismRecipeTypeMixin2 {
             List<ItemStackGasToItemStackRecipe> beforeRecipes = recipeManager
                     .getAllRecipesFor(MekanismRecipeType.COMPRESSING.get());
             for (ItemStackGasToItemStackRecipe recipe : beforeRecipes) {
-                recipes.add((RECIPE) new PurifyingAMIRecipe(
+                recipes.add((RECIPE) new CompressingAMIRecipe(
                         recipe.getId(), recipe.getItemInput(), IngredientCreatorAccess.gas().createMulti(
                                 recipe.getChemicalInput().getRepresentations().stream()
                                         .map(stack -> IngredientCreatorAccess.gas()
