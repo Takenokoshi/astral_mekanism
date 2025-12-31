@@ -6,19 +6,14 @@
 	"compatibilityLevel": "JAVA_17",
 	"mixins": [
 		"ae2.AppEngInternalInventoryMixin",
-		"forge.ForgeEventFactoryMixin",
 		"mekanism.BasicInventorySlotMixin",
 		"mekanism.BaseTierMixin",
 		"mekanism.CableTierMixin",
 		"mekanism.DataTypeMixin",
-		"mekanism.ItemAtomicDisassemblerMixin",
 		"mekanism.MekanismRecipeTypeMixin",
 		"mekanism.MekanismRecipeTypeMixin2",
 		"mekanism.TileComponentEjectorMixin",
-		"mekanism.TileEntityAdvancedElectricMachineMixin",
-		"minecraft.DiggerWeaponCompatibilityMixin",
-		"minecraft.EnchantmentCategoryMixin",
-		"minecraft.ItemStackMixin"
+		"mekanism.TileEntityAdvancedElectricMachineMixin"
 	],
 	"client": [
 	],
