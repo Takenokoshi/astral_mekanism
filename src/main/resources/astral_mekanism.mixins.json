@@ -14,7 +14,8 @@
 		"mekanism.MekanismRecipeTypeMixin",
 		"mekanism.MekanismRecipeTypeMixin2",
 		"mekanism.TileComponentEjectorMixin",
-		"mekanism.TileEntityAdvancedElectricMachineMixin"
+		"mekanism.TileEntityAdvancedElectricMachineMixin",
+		"minecraft.EnchantmentMixin"
 	],
 	"client": [
 	],
