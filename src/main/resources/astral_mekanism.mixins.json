@@ -10,6 +10,7 @@
 		"mekanism.BaseTierMixin",
 		"mekanism.CableTierMixin",
 		"mekanism.DataTypeMixin",
+		"mekanism.ItemAtomicDisassemblerMixin",
 		"mekanism.MekanismRecipeTypeMixin",
 		"mekanism.MekanismRecipeTypeMixin2",
 		"mekanism.TileComponentEjectorMixin",
