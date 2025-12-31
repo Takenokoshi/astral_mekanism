@@ -24,7 +24,6 @@ public class ItemAtomicDisassemblerMixin {
             Enchantments.SHARPNESS,
             Enchantments.BANE_OF_ARTHROPODS,
             Enchantments.SMITE,
-            Enchantments.FIRE_ASPECT,
             Enchantments.SWEEPING_EDGE);
 
     @Inject(method = "isEnchantable", at = @At("RETURN"), cancellable = true)
