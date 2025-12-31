@@ -54,4 +54,9 @@ public class ItemAtomicDisassemblerMixin {
             return;
         }
     }
+
+    @Inject(method = "getEnchantmentValue", at = @At("RETURN"), cancellable = true)
+    private void getEnchantmentValueInject(CallbackInfoReturnable<Integer> cir){
+        cir.setReturnValue(15);
+    }
 }
