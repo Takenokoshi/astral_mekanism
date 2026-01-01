@@ -52,7 +52,9 @@ import net.minecraft.world.level.material.Fluids;
 import net.minecraftforge.client.event.RecipesUpdatedEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fluids.FluidStack;
+import net.minecraftforge.fml.common.Mod;
 
+@Mod.EventBusSubscriber(modid = AstralMekanismID.MODID, bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class AstralMekanismRecipeGenerator {
 
     private static final FluidStackIngredient WATER = IngredientCreatorAccess.fluid()
