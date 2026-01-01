@@ -56,14 +56,12 @@ import net.minecraftforge.fml.common.Mod;
 
 @Mod.EventBusSubscriber(modid = AstralMekanismID.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class AstralMekanismRecipeGenerator {
-
-    private static final FluidStackIngredient WATER = IngredientCreatorAccess.fluid()
-            .from(new FluidStack(Fluids.WATER, 10000));
-    private static final FluidStackIngredient PASTE = IngredientCreatorAccess.fluid()
-            .from(MekanismFluids.NUTRITIONAL_PASTE, 100);
-
     @SubscribeEvent
     public static void generateRecipe(RecipesUpdatedEvent event) {
+        final FluidStackIngredient WATER = IngredientCreatorAccess.fluid()
+                .from(new FluidStack(Fluids.WATER, 10000));
+        final FluidStackIngredient PASTE = IngredientCreatorAccess.fluid()
+                .from(MekanismFluids.NUTRITIONAL_PASTE, 100);
         IItemStackIngredientCreator itemCreator = IngredientCreatorAccess.item();
         IChemicalStackIngredientCreator<Gas, GasStack, GasStackIngredient> gasCreator = IngredientCreatorAccess.gas();
 
