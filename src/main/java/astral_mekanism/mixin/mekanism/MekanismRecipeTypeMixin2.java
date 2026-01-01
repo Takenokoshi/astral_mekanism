@@ -72,7 +72,7 @@ public class MekanismRecipeTypeMixin2 {
         }
 
         MekanismRecipeType<?, ?> type = (MekanismRecipeType<?, ?>) (Object) this;
-        List<RECIPE> recipes = new ArrayList<>(cir.getReturnValue());
+        List<RECIPE> recipes = new ArrayList<>();
 
         if (type == AstralMekanismRecipeTypes.MEKANICAL_CHARGER_RECIPE.get()) {
             List<ChargerRecipe> chargerRecipes = recipeManager.getAllRecipesFor(AERecipeTypes.CHARGER);
