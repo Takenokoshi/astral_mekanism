@@ -1,6 +1,7 @@
 package astral_mekanism.mixin.mekanism;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
@@ -14,6 +15,7 @@ import appeng.recipes.handlers.ChargerRecipe;
 import appeng.recipes.handlers.InscriberProcessType;
 import appeng.recipes.handlers.InscriberRecipe;
 import appeng.recipes.transform.TransformRecipe;
+import astral_mekanism.AstralMekanism;
 import astral_mekanism.botanypots.FakeRandom;
 import astral_mekanism.recipes.irecipe.CompressingAMIRecipe;
 import astral_mekanism.recipes.irecipe.DissolutionAMIrecipe;
@@ -39,7 +41,6 @@ import mekanism.api.recipes.ingredients.ItemStackIngredient;
 import mekanism.api.recipes.ingredients.ChemicalStackIngredient.GasStackIngredient;
 import mekanism.api.recipes.ingredients.creator.IItemStackIngredientCreator;
 import mekanism.api.recipes.ingredients.creator.IngredientCreatorAccess;
-import mekanism.common.Mekanism;
 import mekanism.common.recipe.MekanismRecipeType;
 import mekanism.common.registries.MekanismFluids;
 import mekanism.common.registries.MekanismItems;
@@ -56,7 +57,7 @@ import net.minecraft.world.level.material.Fluids;
 import net.minecraftforge.data.loading.DatagenModLoader;
 import net.minecraftforge.fluids.FluidStack;
 
-@Mixin(value = MekanismRecipeType.class, remap = false)
+@Mixin(value = MekanismRecipeType.class, priority = Integer.MAX_VALUE, remap = false)
 public class MekanismRecipeTypeMixin2 {
 
     @SuppressWarnings("unchecked")
@@ -74,7 +75,13 @@ public class MekanismRecipeTypeMixin2 {
         List<RECIPE> recipes = new ArrayList<>(cir.getReturnValue());
 
         if (type == AstralMekanismRecipeTypes.MEKANICAL_CHARGER_RECIPE.get()) {
-            for (ChargerRecipe chargerRecipe : recipeManager.getAllRecipesFor(AERecipeTypes.CHARGER)) {
+            List<ChargerRecipe> chargerRecipes = recipeManager.getAllRecipesFor(AERecipeTypes.CHARGER);
+            if (chargerRecipes.isEmpty()) {
+                AstralMekanism.LOGGER.info("faild to create mekanical charger recipe");
+                cir.setReturnValue(Collections.emptyList());
+                return;
+            }
+            for (ChargerRecipe chargerRecipe : chargerRecipes) {
                 ItemStack recipeOutput = chargerRecipe.getResultItem();
                 if (chargerRecipe.isSpecial() || chargerRecipe.isIncomplete() || recipeOutput.isEmpty())
                     continue;
@@ -107,11 +114,14 @@ public class MekanismRecipeTypeMixin2 {
             return;
         }
 
-        if (Objects.equals(type.getRegistryName(),
-                AstralMekanismRecipeTypes.FORMULIZED_SAWING_RECIPE.get().getRegistryName())) {
-
+        if (type == AstralMekanismRecipeTypes.FORMULIZED_SAWING_RECIPE.get()) {
             List<SawmillRecipe> hugv = recipeManager.getAllRecipesFor(MekanismRecipeType.SAWING.get());
-            Mekanism.logger.info("" + hugv.size());
+            if (hugv.isEmpty()) {
+                AstralMekanism.LOGGER.info("failed to create formulized sawing recipe.");
+                cir.setReturnValue(Collections.emptyList());
+                return;
+            }
+            AstralMekanism.LOGGER.info("Formulized Sawing Recipe creating:" + hugv.size() + " recipes");
             for (SawmillRecipe sawmillRecipe : hugv) {
                 double chance = sawmillRecipe.getSecondaryChance();
                 List<ItemStack> outputADef = sawmillRecipe.getMainOutputDefinition();
@@ -149,6 +159,10 @@ public class MekanismRecipeTypeMixin2 {
                 AstralMekanismRecipeTypes.AM_INJECTING.get().getRegistryName())) {
             List<ItemStackGasToItemStackRecipe> beforeRecipes = recipeManager
                     .getAllRecipesFor(MekanismRecipeType.INJECTING.get());
+            if (beforeRecipes.isEmpty()) {
+                cir.setReturnValue(Collections.emptyList());
+                return;
+            }
             for (ItemStackGasToItemStackRecipe recipe : beforeRecipes) {
                 recipes.add((RECIPE) new InjectingAMIRecipe(
                         recipe.getId(), recipe.getItemInput(), IngredientCreatorAccess.gas().createMulti(
@@ -165,6 +179,10 @@ public class MekanismRecipeTypeMixin2 {
                 AstralMekanismRecipeTypes.AM_PURIFYING.get().getRegistryName())) {
             List<ItemStackGasToItemStackRecipe> beforeRecipes = recipeManager
                     .getAllRecipesFor(MekanismRecipeType.PURIFYING.get());
+            if (beforeRecipes.isEmpty()) {
+                cir.setReturnValue(Collections.emptyList());
+                return;
+            }
             for (ItemStackGasToItemStackRecipe recipe : beforeRecipes) {
                 recipes.add((RECIPE) new PurifyingAMIRecipe(
                         recipe.getId(), recipe.getItemInput(), IngredientCreatorAccess.gas().createMulti(
@@ -181,6 +199,10 @@ public class MekanismRecipeTypeMixin2 {
                 AstralMekanismRecipeTypes.AM_COMPRESSING.get().getRegistryName())) {
             List<ItemStackGasToItemStackRecipe> beforeRecipes = recipeManager
                     .getAllRecipesFor(MekanismRecipeType.COMPRESSING.get());
+            if (beforeRecipes.isEmpty()) {
+                cir.setReturnValue(Collections.emptyList());
+                return;
+            }
             for (ItemStackGasToItemStackRecipe recipe : beforeRecipes) {
                 recipes.add((RECIPE) new CompressingAMIRecipe(
                         recipe.getId(), recipe.getItemInput(), IngredientCreatorAccess.gas().createMulti(
@@ -196,7 +218,12 @@ public class MekanismRecipeTypeMixin2 {
 
         if (Objects.equals(type.getRegistryName(),
                 AstralMekanismRecipeTypes.MEKANICAL_PRESSER_RECIPE.get().getRegistryName())) {
-            for (InscriberRecipe recipe : recipeManager.getAllRecipesFor(AERecipeTypes.INSCRIBER)) {
+            List<InscriberRecipe> inscriberRecipes = recipeManager.getAllRecipesFor(AERecipeTypes.INSCRIBER);
+            if (inscriberRecipes.isEmpty()) {
+                cir.setReturnValue(Collections.emptyList());
+                return;
+            }
+            for (InscriberRecipe recipe : inscriberRecipes) {
                 Ingredient top = recipe.getTopOptional();
                 Ingredient bottom = recipe.getBottomOptional();
                 if (recipe.getProcessType() == InscriberProcessType.PRESS && !top.isEmpty() && !bottom.isEmpty()) {
@@ -213,7 +240,12 @@ public class MekanismRecipeTypeMixin2 {
 
         if (Objects.equals(type.getRegistryName(),
                 AstralMekanismRecipeTypes.MEKANICAL_INSCRIBER_RECIPE.get().getRegistryName())) {
-            for (InscriberRecipe recipe : recipeManager.getAllRecipesFor(AERecipeTypes.INSCRIBER)) {
+            List<InscriberRecipe> inscriberRecipes = recipeManager.getAllRecipesFor(AERecipeTypes.INSCRIBER);
+            if (inscriberRecipes.isEmpty()) {
+                cir.setReturnValue(Collections.emptyList());
+                return;
+            }
+            for (InscriberRecipe recipe : inscriberRecipes) {
                 Ingredient top = recipe.getTopOptional();
                 Ingredient bottom = recipe.getBottomOptional();
                 if (recipe.getProcessType() == InscriberProcessType.INSCRIBE && !top.isEmpty() && bottom.isEmpty()) {
@@ -228,8 +260,13 @@ public class MekanismRecipeTypeMixin2 {
         }
 
         if (Objects.equals(type.getRegistryName(), AstralMekanismRecipeTypes.AM_DISSOLUTION.get().getRegistryName())) {
-            for (ChemicalDissolutionRecipe recipe : recipeManager
-                    .getAllRecipesFor(MekanismRecipeType.DISSOLUTION.get())) {
+            List<ChemicalDissolutionRecipe> dissolutionRecipes = recipeManager
+                    .getAllRecipesFor(MekanismRecipeType.DISSOLUTION.get());
+            if (dissolutionRecipes.isEmpty()) {
+                cir.setReturnValue(Collections.emptyList());
+                return;
+            }
+            for (ChemicalDissolutionRecipe recipe : dissolutionRecipes) {
                 recipes.add((RECIPE) (new DissolutionAMIrecipe(recipe.getId(),
                         recipe.getItemInput(),
                         IngredientCreatorAccess.gas().createMulti(
@@ -259,6 +296,10 @@ public class MekanismRecipeTypeMixin2 {
                         }
                         return false;
                     }).map(s -> (BasicSoil) s).toList();
+            if (crops.isEmpty() || soils.isEmpty()) {
+                cir.setReturnValue(Collections.emptyList());
+                return;
+            }
             for (BasicCrop crop : crops) {
                 ItemStackIngredient seedIngredient = IngredientCreatorAccess.item().from(crop.getSeed());
                 ItemStackIngredient[] soilsoil = soils.stream()
@@ -289,7 +330,12 @@ public class MekanismRecipeTypeMixin2 {
 
         if (Objects.equals(type.getRegistryName(),
                 AstralMekanismRecipeTypes.MEKANICAL_TRANSFORM.get().getRegistryName())) {
-            for (TransformRecipe recipe : recipeManager.getAllRecipesFor(AERecipeTypes.TRANSFORM)) {
+            List<TransformRecipe> transformRecipes = recipeManager.getAllRecipesFor(AERecipeTypes.TRANSFORM);
+            if (transformRecipes.isEmpty()) {
+                cir.setReturnValue(Collections.emptyList());
+                return;
+            }
+            for (TransformRecipe recipe : transformRecipes) {
                 if (recipe.circumstance.isFluid()) {
                     ItemStackIngredient bucket = IngredientCreatorAccess.item().createMulti(
                             recipe.circumstance.getFluidsForRendering().stream()
