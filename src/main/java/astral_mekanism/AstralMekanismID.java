@@ -9,6 +9,10 @@ public class AstralMekanismID {
         return new ResourceLocation(MODID, path);
     }
 
+    public static ResourceLocation reRL(ResourceLocation location, String path) {
+        return new ResourceLocation(MODID, path + location.getNamespace() + "/" + location.getPath());
+    }
+
     public static final int Int1B = 1073741823;
 
     public static final int[] ZERO_EIGHT = new int[] { 0, 1, 2, 3, 4, 5, 6, 7, 8 };
