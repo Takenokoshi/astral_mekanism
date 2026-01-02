@@ -1,5 +1,6 @@
 package astral_mekanism.recipes.cachedRecipe;
 
+import java.util.List;
 import java.util.function.BooleanSupplier;
 
 import org.jetbrains.annotations.Nullable;
@@ -18,6 +19,8 @@ public class FormulizedSawingCachedRecipe extends CachedRecipe<SawmillRecipe> {
 
     private final IInputHandler<ItemStack> inputHandler;
     private final IOutputHandler<DoubleItemOutput> outputHandler;
+    private final int multiply;
+    private final ItemStackIngredient inputIngredient;
     @Nullable
     private ItemStack recipeInput;
     @Nullable
@@ -28,6 +31,13 @@ public class FormulizedSawingCachedRecipe extends CachedRecipe<SawmillRecipe> {
         super(recipe, recheckAllErrors);
         this.inputHandler = inputHandler;
         this.outputHandler = outputHandler;
+        double chance = this.recipe.getSecondaryChance();
+        this.multiply = chance > 0 ? (int) Math.ceil(1 / this.recipe.getSecondaryChance()) : 1;
+        this.inputIngredient = IngredientCreatorAccess.item()
+                .createMulti(this.recipe.getInput().getRepresentations().stream()
+                        .map(stack -> IngredientCreatorAccess.item()
+                                .from(stack.copyWithCount(stack.getCount() * multiply)))
+                        .toArray(ItemStackIngredient[]::new));
     }
 
     @Override
@@ -38,18 +48,13 @@ public class FormulizedSawingCachedRecipe extends CachedRecipe<SawmillRecipe> {
             if (inputStack.isEmpty()) {
                 tracker.mismatchedRecipe();
             } else {
-                int multiply = (int) Math.ceil(1 / recipe.getSecondaryChance());
-                ItemStackIngredient inputIngredient = IngredientCreatorAccess.item()
-                        .createMulti(recipe.getInput().getRepresentations().stream()
-                                .map(stack -> IngredientCreatorAccess.item()
-                                        .from(stack.copyWithCount(stack.getCount() * multiply)))
-                                .toArray(ItemStackIngredient[]::new));
+                List<ItemStack> extraOutputDef = recipe.getSecondaryOutputDefinition();
                 CachedRecipeHelper.oneInputCalculateOperationsThisTick(tracker,
                         inputHandler, () -> inputIngredient, i -> recipeInput = i,
                         outputHandler, stack -> {
-                            ItemStack main = recipe.getOutput(inputStack).getMainOutput();
+                            ItemStack main = recipe.getOutput(stack).getMainOutput();
                             return new DoubleItemOutput(main.copyWithCount(main.getCount() * multiply),
-                                    recipe.getSecondaryOutputDefinition().get(0));
+                                    extraOutputDef.isEmpty() ? ItemStack.EMPTY : extraOutputDef.get(0));
                         }, o -> recipeOutput = o, ItemStack::isEmpty);
             }
         }
