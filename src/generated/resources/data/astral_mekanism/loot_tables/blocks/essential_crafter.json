@@ -51,6 +51,16 @@
                 },
                 {
                   "op": "replace",
+                  "source": "FluidTanks",
+                  "target": "mekData.FluidTanks"
+                },
+                {
+                  "op": "replace",
+                  "source": "GasTanks",
+                  "target": "mekData.GasTanks"
+                },
+                {
+                  "op": "replace",
                   "source": "Items",
                   "target": "mekData.Items"
                 }
@@ -58,12 +68,12 @@
               "source": "block_entity"
             }
           ],
-          "name": "astral_mekanism:mekanical_presser"
+          "name": "astral_mekanism:essential_crafter"
         }
       ],
       "name": "main",
       "rolls": 1.0
     }
   ],
-  "random_sequence": "astral_mekanism:blocks/mekanical_presser"
+  "random_sequence": "astral_mekanism:blocks/essential_crafter"
 }
