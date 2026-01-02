@@ -7,7 +7,6 @@ import org.jetbrains.annotations.Nullable;
 
 import astral_mekanism.recipes.cachedRecipe.FormulizedDissolutionCachedRecipe;
 import astral_mekanism.recipes.output.AMOutputHelper;
-import astral_mekanism.registries.AstralMekanismRecipeTypes;
 import mekanism.api.IContentsListener;
 import mekanism.api.RelativeSide;
 import mekanism.api.chemical.ChemicalTankBuilder;
@@ -49,6 +48,7 @@ import mekanism.common.inventory.slot.chemical.MergedChemicalInventorySlot;
 import mekanism.common.inventory.warning.WarningTracker.WarningType;
 import mekanism.common.lib.transmitter.TransmissionType;
 import mekanism.common.recipe.IMekanismRecipeTypeProvider;
+import mekanism.common.recipe.MekanismRecipeType;
 import mekanism.common.recipe.lookup.IDoubleRecipeLookupHandler.ItemChemicalRecipeLookupHandler;
 import mekanism.common.recipe.lookup.cache.InputRecipeCache.ItemChemical;
 import mekanism.common.tile.base.SubstanceType;
@@ -212,7 +212,7 @@ public class BEAstralDissolutionChamber extends TileEntityRecipeMachine<Chemical
 
     @Override
     public @NotNull IMekanismRecipeTypeProvider<ChemicalDissolutionRecipe, ItemChemical<Gas, GasStack, ChemicalDissolutionRecipe>> getRecipeType() {
-        return AstralMekanismRecipeTypes.AM_DISSOLUTION;
+        return MekanismRecipeType.DISSOLUTION;
     }
 
     @Override

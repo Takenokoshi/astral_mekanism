@@ -16,7 +16,6 @@ import astral_mekanism.block.blockentity.astralmachine.BEAstralGNA;
 import astral_mekanism.block.blockentity.astralmachine.BEAstralGreenhouse;
 import astral_mekanism.block.blockentity.astralmachine.BEAstralIsotopicCentrifuge;
 import astral_mekanism.block.blockentity.astralmachine.BEAstralMekanicalInscriber;
-import astral_mekanism.block.blockentity.astralmachine.BEAstralMekanicalPresser;
 import astral_mekanism.block.blockentity.astralmachine.BEAstralMekanicalTransformer;
 import astral_mekanism.block.blockentity.astralmachine.BEAstralMetallurgicInfuser;
 import astral_mekanism.block.blockentity.astralmachine.BEAstralPRC;
@@ -43,7 +42,6 @@ import astral_mekanism.block.blockentity.normalmachine.BEGreenhouse;
 import astral_mekanism.block.blockentity.normalmachine.BEInfuseSynthesizer;
 import astral_mekanism.block.blockentity.normalmachine.BEMekanicalCharger;
 import astral_mekanism.block.blockentity.normalmachine.BEMekanicalInscriber;
-import astral_mekanism.block.blockentity.normalmachine.BEMekanicalPresser;
 import astral_mekanism.block.blockentity.normalmachine.BEMekanicalTransformer;
 import astral_mekanism.block.blockentity.other.BEItemSortableStorage;
 import astral_mekanism.block.blockentity.other.BEUniversalStorage;
@@ -259,16 +257,6 @@ public class AstralMekanismMachines {
                             () -> FloatingLong.MAX_VALUE)
                             .changeAttributeUpgrade(EnumSet.of(Upgrade.MUFFLING, Upgrade.ENERGY)));
 
-    public static final MachineRegistryObject<BEAstralMekanicalPresser, BlockTileModel<BEAstralMekanicalPresser, BlockTypeMachine<BEAstralMekanicalPresser>>, MekanismTileContainer<BEAstralMekanicalPresser>, ItemBlockMachine> ASTRAL_MEKANICAL_PRESSER = MACHINES
-            .registerSimple("astral_mekanical_presser",
-                    BEAstralMekanicalPresser::new,
-                    BEAstralMekanicalPresser.class,
-                    AstralMekanismLang.DESCRIPTION_ASTRAL_MACHINE,
-                    builder -> builder.withEnergyConfig(
-                            () -> FloatingLong.create(10000 * AstralMekanismConfig.energyRate),
-                            () -> FloatingLong.MAX_VALUE)
-                            .changeAttributeUpgrade(EnumSet.of(Upgrade.MUFFLING, Upgrade.ENERGY)));
-
     public static final MachineRegistryObject<BEAstralMekanicalTransformer, BlockTileModel<BEAstralMekanicalTransformer, BlockTypeMachine<BEAstralMekanicalTransformer>>, MekanismTileContainer<BEAstralMekanicalTransformer>, ItemBlockMachine> ASTRAL_MEKANICAL_TRANSFOMER = MACHINES
             .registerSimple("astral_mekanical_transformer",
                     BEAstralMekanicalTransformer::new,
@@ -384,7 +372,7 @@ public class AstralMekanismMachines {
                     AstralMekGeneratorTier.class);
 
     public static final MachineRegistryObject<BEAstralCrafter, BlockTileModel<BEAstralCrafter, BlockTypeMachine<BEAstralCrafter>>, ContainerAstralCrafter, ItemBlockMachine> ASTRAL_CRAFTER = MACHINES
-            .registerDefaultBlockItem("astral_crafter",
+            .registerDefaultBlockItem("essential_crafter",
                     BEAstralCrafter::new,
                     BEAstralCrafter.class,
                     ContainerAstralCrafter::new,
@@ -439,15 +427,6 @@ public class AstralMekanismMachines {
                     BEMekanicalInscriber::new,
                     BEMekanicalInscriber.class,
                     AstralMekanismLang.DESCRIPTION_MEKANICAL_INSCRIBER,
-                    builder -> builder.withEnergyConfig(
-                            () -> FloatingLong.create(1000 * AstralMekanismConfig.energyRate),
-                            () -> FloatingLong.create(100000l * AstralMekanismConfig.energyRate)));
-
-    public static final MachineRegistryObject<BEMekanicalPresser, BlockTileModel<BEMekanicalPresser, BlockTypeMachine<BEMekanicalPresser>>, MekanismTileContainer<BEMekanicalPresser>, ItemBlockMachine> MEKANICAL_PRESSER = MACHINES
-            .registerSimple("mekanical_presser",
-                    BEMekanicalPresser::new,
-                    BEMekanicalPresser.class,
-                    AstralMekanismLang.DESCRIPTION_MEKANICAL_PRESSER,
                     builder -> builder.withEnergyConfig(
                             () -> FloatingLong.create(1000 * AstralMekanismConfig.energyRate),
                             () -> FloatingLong.create(100000l * AstralMekanismConfig.energyRate)));

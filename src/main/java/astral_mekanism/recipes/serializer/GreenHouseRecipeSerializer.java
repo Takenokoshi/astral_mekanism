@@ -12,6 +12,7 @@ import mekanism.api.recipes.ingredients.ItemStackIngredient;
 import mekanism.api.recipes.ingredients.creator.IngredientCreatorAccess;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 
 public class GreenHouseRecipeSerializer<RECIPE extends GreenhouseRecipe> implements RecipeSerializer<RECIPE> {
@@ -38,7 +39,7 @@ public class GreenHouseRecipeSerializer<RECIPE extends GreenhouseRecipe> impleme
                 new TripleItemOutput(
                         SerializerHelper.getItemStack(json, HARVEST),
                         SerializerHelper.getItemStack(json, OSEED),
-                        SerializerHelper.getItemStack(json, EXTRA)));
+                        json.has(EXTRA) ? SerializerHelper.getItemStack(json, EXTRA) : ItemStack.EMPTY));
     }
 
     @Override

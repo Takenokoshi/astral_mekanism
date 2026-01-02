@@ -39,7 +39,7 @@ public class AstralMekanismItems {
             p -> new GlintItem(p.rarity(Rarity.EPIC)));
     public static final ItemRegistryObject<GlintItem> SPACETIME_MODULATION_CORE = ITEMS.register(
             "spacetime_modulation_core",
-            p -> new GlintItem(p.rarity(Rarity.UNCOMMON)));
+            p -> new GlintItem(p.rarity(Rarity.EPIC)));
     public static final ItemRegistryObject<GlintItemNameColored> CRYSTAL_ANTIMATTER = ITEMS.register(
             "crystal_antimatter",
             GlintItemNameColored.getSup(EnumColor.PURPLE));

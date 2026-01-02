@@ -9,19 +9,19 @@
     "itemInputA2": {
         "amount": 64,
         "ingredient": {
-            "tag": "forge:ingots/steel"
+            "item": "evolvedmekanism:alloy_exoversal"
         }
     },
     "itemInputA3": {
         "amount": 64,
         "ingredient": {
-            "item": "minecraft:glass"
+            "item": "ae2:singularity"
         }
     },
     "itemInputA4": {
         "amount": 64,
         "ingredient": {
-            "tag": "forge:ingots/steel"
+            "item": "evolvedmekanism:alloy_exoversal"
         }
     },
     "itemInputA5": {
@@ -33,7 +33,7 @@
     "itemInputB1": {
         "amount": 64,
         "ingredient": {
-            "tag": "forge:ingots/bronze"
+            "item": "mekanism_extras:alloy_spectrum"
         }
     },
     "itemInputB2": {
@@ -57,13 +57,13 @@
     "itemInputB5": {
         "amount": 64,
         "ingredient": {
-            "tag": "forge:ingots/bronze"
+            "item": "mekanism_extras:alloy_spectrum"
         }
     },
     "itemInputC1": {
         "amount": 64,
         "ingredient": {
-            "item": "minecraft:glass"
+            "item": "emextras:infinite_multiversal_control_circuit"
         }
     },
     "itemInputC2": {
@@ -87,13 +87,13 @@
     "itemInputC5": {
         "amount": 64,
         "ingredient": {
-            "item": "minecraft:glass"
+            "item": "emextras:infinite_multiversal_control_circuit"
         }
     },
     "itemInputD1": {
         "amount": 64,
         "ingredient": {
-            "tag": "forge:ingots/bronze"
+            "item": "mekanism_extras:alloy_spectrum"
         }
     },
     "itemInputD2": {
@@ -117,7 +117,7 @@
     "itemInputD5": {
         "amount": 64,
         "ingredient": {
-            "tag": "forge:ingots/bronze"
+            "item": "mekanism_extras:alloy_spectrum"
         }
     },
     "itemInputE1": {
@@ -129,19 +129,19 @@
     "itemInputE2": {
         "amount": 64,
         "ingredient": {
-            "tag": "forge:ingots/steel"
+            "item": "evolvedmekanism:alloy_exoversal"
         }
     },
     "itemInputE3": {
         "amount": 64,
         "ingredient": {
-            "item": "minecraft:glass"
+            "item": "ae2:singularity"
         }
     },
     "itemInputE4": {
         "amount": 64,
         "ingredient": {
-            "tag": "forge:ingots/steel"
+            "item": "evolvedmekanism:alloy_exoversal"
         }
     },
     "itemInputE5": {

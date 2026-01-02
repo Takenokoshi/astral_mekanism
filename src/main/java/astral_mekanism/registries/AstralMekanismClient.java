@@ -6,7 +6,6 @@ import astral_mekanism.block.blockentity.astralmachine.BEAstralGNA;
 import astral_mekanism.block.blockentity.astralmachine.BEAstralGreenhouse;
 import astral_mekanism.block.blockentity.astralmachine.BEAstralIsotopicCentrifuge;
 import astral_mekanism.block.blockentity.astralmachine.BEAstralMekanicalInscriber;
-import astral_mekanism.block.blockentity.astralmachine.BEAstralMekanicalPresser;
 import astral_mekanism.block.blockentity.astralmachine.BEAstralMekanicalTransformer;
 import astral_mekanism.block.blockentity.astralmachine.BEAstralSPS;
 import astral_mekanism.block.blockentity.astralmachine.advanced.BEAstralChemicalInjectionChamber;
@@ -21,7 +20,6 @@ import astral_mekanism.block.blockentity.generator.AstralMekGeneratorTier;
 import astral_mekanism.block.blockentity.normalmachine.BEGlowstoneNeutronActivator;
 import astral_mekanism.block.blockentity.normalmachine.BEGreenhouse;
 import astral_mekanism.block.blockentity.normalmachine.BEMekanicalCharger;
-import astral_mekanism.block.blockentity.normalmachine.BEMekanicalPresser;
 import astral_mekanism.block.blockentity.normalmachine.BEMekanicalTransformer;
 import astral_mekanism.block.blockentity.other.BEItemSortableStorage;
 import astral_mekanism.block.blockentity.other.BEUniversalStorage;
@@ -53,7 +51,6 @@ import astral_mekanism.block.gui.prefab.GuiAbstractStorage;
 import astral_mekanism.block.gui.prefab.GuiDoubleItemToItemRecipeMachine;
 import astral_mekanism.block.gui.prefab.GuiGasToGasBlock;
 import astral_mekanism.block.gui.prefab.GuiGasToGasMachine;
-import astral_mekanism.block.gui.prefab.GuiTripleItemToItemMachine;
 import astral_mekanism.registration.MachineRegistryObject;
 import mekanism.client.ClientRegistrationUtil;
 import mekanism.client.gui.machine.GuiElectricMachine;
@@ -100,8 +97,6 @@ public class AstralMekanismClient {
                     GuiGasToGasMachine<BEAstralIsotopicCentrifuge>::new);
             regScreen(AstralMekanismMachines.ASTRAL_MEKANICAL_INSCRIBER,
                     GuiDoubleItemToItemRecipeMachine<BEAstralMekanicalInscriber>::new);
-            regScreen(AstralMekanismMachines.ASTRAL_MEKANICAL_PRESSER,
-                    GuiTripleItemToItemMachine<BEAstralMekanicalPresser>::new);
             regScreen(AstralMekanismMachines.ASTRAL_MEKANICAL_TRANSFOMER,
                     GuiMekanicalTransformer<BEAstralMekanicalTransformer>::new);
             regScreen(AstralMekanismMachines.ASTRAL_METALLURGIC_INFUSER, GuiAstralMetallurgicInfuser::new);
@@ -127,7 +122,6 @@ public class AstralMekanismClient {
             regScreen(AstralMekanismMachines.MEKANICAL_CHARGER,
                     GuiElectricMachine<BEMekanicalCharger, MekanismTileContainer<BEMekanicalCharger>>::new);
             regScreen(AstralMekanismMachines.MEKANICAL_INSCRIBER, GuiMekanicalInscriber::new);
-            regScreen(AstralMekanismMachines.MEKANICAL_PRESSER, GuiTripleItemToItemMachine<BEMekanicalPresser>::new);
             regScreen(AstralMekanismMachines.MEKANICAL_TRANSFORMER,
                     GuiMekanicalTransformer<BEMekanicalTransformer>::new);
             regScreen(AstralMekanismMachines.UNIVERSAL_STORAGE,
