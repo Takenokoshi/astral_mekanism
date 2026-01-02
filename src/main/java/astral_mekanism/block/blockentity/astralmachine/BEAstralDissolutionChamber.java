@@ -201,7 +201,7 @@ public class BEAstralDissolutionChamber extends TileEntityRecipeMachine<Chemical
     @Override
     public @NotNull CachedRecipe<ChemicalDissolutionRecipe> createNewCachedRecipe(
             @NotNull ChemicalDissolutionRecipe recipe, int cacheIndex) {
-        return new FormulizedDissolutionCachedRecipe(recipe, recheckAllRecipeErrors, itemInputHandler, gasInputHandler, outputHandler,100)
+        return new FormulizedDissolutionCachedRecipe(recipe, recheckAllRecipeErrors, itemInputHandler, gasInputHandler, outputHandler,10)
                 .setErrorsChanged(this::onErrorsChanged)
                 .setCanHolderFunction(() -> MekanismUtils.canFunction(this))
                 .setActive(this::setActive)
