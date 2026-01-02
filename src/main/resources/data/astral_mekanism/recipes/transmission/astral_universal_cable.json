@@ -1,19 +1,23 @@
 {
-    "type": "minecraft:crafting_shaped",
-    "key": {
-        "C": {
-            "item": "astral_mekanism:alloy_stardust"
-        },
-        "I": {
-            "item": "mekanism:ultimate_universal_cable"
+    "type": "evolvedmekanism:alloying",
+    "extraInput": {
+        "ingredient": {
+            "amount": 8,
+            "item": "evolvedmekanism:multiversal_universal_cable"
         }
     },
-    "pattern": [
-        "III",
-        "ICI",
-        "III"
-    ],
-    "result": {
+    "secondExtraInput": {
+        "ingredient": {
+            "amount": 8,
+            "item": "mekanism_extras:infinite_universal_cable"
+        }
+    },
+    "mainInput": {
+        "ingredient": {
+            "item": "astral_mekanism:alloy_stardust"
+        }
+    },
+    "output": {
         "item": "astral_mekanism:astral_universal_cable",
         "count": 1
     }

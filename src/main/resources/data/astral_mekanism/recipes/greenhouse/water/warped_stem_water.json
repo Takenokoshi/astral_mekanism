@@ -6,7 +6,7 @@
   },
   "farmland": {
     "ingredient": {
-      "item": "minecraft:crimson_nylium"
+      "item": "minecraft:warped_nylium"
     }
   },
   "harvest": {
