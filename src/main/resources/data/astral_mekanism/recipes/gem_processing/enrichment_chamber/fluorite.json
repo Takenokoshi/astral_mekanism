@@ -2,7 +2,7 @@
   "type": "mekanism:enriching",
   "input": {
     "ingredient": {
-      "item": "astral_mekanism:crushed_fluorite"
+      "tag": "forge:debris/fluorite"
     }
   },
   "output": {

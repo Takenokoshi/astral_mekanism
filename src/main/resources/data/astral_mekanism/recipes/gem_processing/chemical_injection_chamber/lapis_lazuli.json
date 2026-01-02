@@ -6,7 +6,7 @@
   },
   "itemInput": {
     "ingredient": {
-      "item": "astral_mekanism:crystal_lapis_lazuli"
+      "tag": "forge:crystals/lapis_lazuli"
     }
   },
   "output": {

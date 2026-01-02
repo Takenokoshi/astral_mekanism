@@ -6,7 +6,7 @@
   },
   "itemInput": {
     "ingredient": {
-      "item": "astral_mekanism:crystal_redstone"
+      "tag": "forge:crystals/redstone"
     }
   },
   "output": {

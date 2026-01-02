@@ -3,7 +3,7 @@
     "cookingtime": 200,
     "experience": 0.35,
     "ingredient": {
-        "item": "astral_mekanism:raw_fluorite"
+        "tag": "forge:raw/fluorite"
     },
     "result": "mekanism:fluorite_gem"
 }

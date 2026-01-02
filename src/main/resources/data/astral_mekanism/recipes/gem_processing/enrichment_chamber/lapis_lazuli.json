@@ -2,7 +2,7 @@
   "type": "mekanism:enriching",
   "input": {
     "ingredient": {
-      "item": "astral_mekanism:crushed_lapis_lazuli"
+      "tag": "forge:debris/lapis_lazuli"
     }
   },
   "output": {

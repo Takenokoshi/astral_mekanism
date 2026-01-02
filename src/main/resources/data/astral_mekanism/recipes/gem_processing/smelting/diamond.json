@@ -3,7 +3,7 @@
     "cookingtime": 200,
     "experience": 0.35,
     "ingredient": {
-        "item": "astral_mekanism:raw_diamond"
+        "tag": "forge:raw/diamond"
     },
     "result": "minecraft:diamond"
 }

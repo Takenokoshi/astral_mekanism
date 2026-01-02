@@ -11,6 +11,7 @@
 		"mekanism.CableTierMixin",
 		"mekanism.DataTypeMixin",
 		"mekanism.MekanismRecipeTypeMixin",
+		"mekanism.OperationTrackerMixin",
 		"mekanism.TileComponentEjectorMixin",
 		"mekanism.TileEntityAdvancedElectricMachineMixin"
 	],

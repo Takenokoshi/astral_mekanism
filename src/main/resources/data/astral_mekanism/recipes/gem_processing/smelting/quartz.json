@@ -3,7 +3,7 @@
     "cookingtime": 200,
     "experience": 0.35,
     "ingredient": {
-        "item": "astral_mekanism:raw_quartz"
+        "tag": "forge:raw/quartz"
     },
     "result": "minecraft:quartz"
 }

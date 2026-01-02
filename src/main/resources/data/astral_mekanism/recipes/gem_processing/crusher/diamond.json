@@ -2,7 +2,7 @@
   "type": "mekanism:crushing",
   "input": {
     "ingredient": {
-      "item": "astral_mekanism:clump_diamond"
+      "tag": "forge:clumps/diamond"
     }
   },
   "output": {

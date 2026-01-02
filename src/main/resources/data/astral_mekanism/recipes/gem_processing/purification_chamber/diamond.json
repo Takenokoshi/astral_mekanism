@@ -6,7 +6,7 @@
   },
   "itemInput": {
     "ingredient": {
-      "item": "astral_mekanism:shard_diamond"
+      "tag": "forge:shards/diamond"
     }
   },
   "output": {
