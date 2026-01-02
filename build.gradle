@@ -147,6 +147,7 @@ dependencies {
     implementation fg.deobf("curse.maven:evolved-mekanism-1230085:7321385")
     implementation fg.deobf("curse.maven:evolved-mekanism-extras-1268159:6866367")
     implementation fg.deobf("curse.maven:mekanism-extras-1026040:6936409")
+    implementation fg.deobf("curse.maven:iglee-library-541199:6987117")
     annotationProcessor "org.spongepowered:mixin:0.8.5:processor"
     compileOnly "org.spongepowered:mixin:0.8.5"
     compileOnly fg.deobf("curse.maven:jei-238222:6075247")
