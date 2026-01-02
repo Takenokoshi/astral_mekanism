@@ -1,0 +1,25 @@
+{
+    "type": "astral_mekanism:greenhouse",
+    "farmland": {
+        "ingredient": {
+            "tag": "astral_mekanism:greenhouse_soil"
+        }
+    },
+    "harvest": {
+        "count": 2,
+        "item": "minecraft:cherry_log"
+    },
+    "inputFluid": {
+        "amount": 10000,
+        "fluid": "minecraft:water"
+    },
+    "inputSeed": {
+        "ingredient": {
+            "item": "minecraft:cherry_sapling"
+        }
+    },
+    "outputSeed": {
+        "count": 1,
+        "item": "minecraft:cherry_sapling"
+    }
+}

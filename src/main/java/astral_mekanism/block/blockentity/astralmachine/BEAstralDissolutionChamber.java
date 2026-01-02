@@ -5,6 +5,8 @@ import java.util.List;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import astral_mekanism.recipes.cachedRecipe.FormulizedDissolutionCachedRecipe;
+import astral_mekanism.recipes.output.AMOutputHelper;
 import astral_mekanism.registries.AstralMekanismRecipeTypes;
 import mekanism.api.IContentsListener;
 import mekanism.api.RelativeSide;
@@ -15,6 +17,7 @@ import mekanism.api.chemical.gas.IGasTank;
 import mekanism.api.chemical.infuse.IInfusionTank;
 import mekanism.api.chemical.infuse.InfuseType;
 import mekanism.api.chemical.infuse.InfusionStack;
+import mekanism.api.chemical.merged.BoxedChemicalStack;
 import mekanism.api.chemical.merged.MergedChemicalTank;
 import mekanism.api.chemical.pigment.IPigmentTank;
 import mekanism.api.chemical.pigment.Pigment;
@@ -27,11 +30,10 @@ import mekanism.api.providers.IBlockProvider;
 import mekanism.api.recipes.ChemicalDissolutionRecipe;
 import mekanism.api.recipes.cache.CachedRecipe;
 import mekanism.api.recipes.cache.CachedRecipe.OperationTracker.RecipeError;
-import mekanism.api.recipes.cache.ChemicalDissolutionCachedRecipe;
 import mekanism.api.recipes.inputs.IInputHandler;
 import mekanism.api.recipes.inputs.ILongInputHandler;
 import mekanism.api.recipes.inputs.InputHelper;
-import mekanism.api.recipes.outputs.BoxedChemicalOutputHandler;
+import mekanism.api.recipes.outputs.IOutputHandler;
 import mekanism.common.capabilities.energy.MachineEnergyContainer;
 import mekanism.common.capabilities.holder.chemical.ChemicalTankHelper;
 import mekanism.common.capabilities.holder.chemical.IChemicalTankHolder;
@@ -70,7 +72,7 @@ public class BEAstralDissolutionChamber extends TileEntityRecipeMachine<Chemical
             RecipeError.INPUT_DOESNT_PRODUCE_OUTPUT);
     public IGasTank injectTank;
     public MergedChemicalTank outputTank;
-    private final BoxedChemicalOutputHandler outputHandler;
+    private final IOutputHandler<BoxedChemicalStack> outputHandler;
     private final IInputHandler<@NotNull ItemStack> itemInputHandler;
     private final ILongInputHandler<@NotNull GasStack> gasInputHandler;
     private MachineEnergyContainer<BEAstralDissolutionChamber> energyContainer;
@@ -101,7 +103,7 @@ public class BEAstralDissolutionChamber extends TileEntityRecipeMachine<Chemical
 
         itemInputHandler = InputHelper.getInputHandler(inputSlot, RecipeError.NOT_ENOUGH_INPUT);
         gasInputHandler = InputHelper.getConstantInputHandler(injectTank);
-        outputHandler = new BoxedChemicalOutputHandler(outputTank, RecipeError.NOT_ENOUGH_OUTPUT_SPACE);
+        outputHandler = AMOutputHelper.getOutputHandler(outputTank, RecipeError.NOT_ENOUGH_OUTPUT_SPACE);
     }
 
     @Override
@@ -199,8 +201,7 @@ public class BEAstralDissolutionChamber extends TileEntityRecipeMachine<Chemical
     @Override
     public @NotNull CachedRecipe<ChemicalDissolutionRecipe> createNewCachedRecipe(
             @NotNull ChemicalDissolutionRecipe recipe, int cacheIndex) {
-        return new ChemicalDissolutionCachedRecipe(recipe, recheckAllRecipeErrors, itemInputHandler, gasInputHandler,
-                () -> 1, outputHandler)
+        return new FormulizedDissolutionCachedRecipe(recipe, recheckAllRecipeErrors, itemInputHandler, gasInputHandler, outputHandler,100)
                 .setErrorsChanged(this::onErrorsChanged)
                 .setCanHolderFunction(() -> MekanismUtils.canFunction(this))
                 .setActive(this::setActive)

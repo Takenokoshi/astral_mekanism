@@ -5,8 +5,8 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import astral_mekanism.AstralMekanismID;
+import astral_mekanism.recipes.cachedRecipe.FormulizedItemGasToItemCachedRecipe;
 import mekanism.api.IContentsListener;
-import mekanism.api.Upgrade;
 import mekanism.api.chemical.ChemicalTankBuilder;
 import mekanism.api.chemical.gas.Gas;
 import mekanism.api.chemical.gas.GasStack;
@@ -15,7 +15,6 @@ import mekanism.api.math.FloatingLong;
 import mekanism.api.providers.IBlockProvider;
 import mekanism.api.recipes.ItemStackGasToItemStackRecipe;
 import mekanism.api.recipes.cache.CachedRecipe;
-import mekanism.api.recipes.cache.TwoInputCachedRecipe;
 import mekanism.api.recipes.cache.CachedRecipe.OperationTracker.RecipeError;
 import mekanism.api.recipes.inputs.IInputHandler;
 import mekanism.api.recipes.inputs.ILongInputHandler;
@@ -66,12 +65,12 @@ public abstract class BEAstralAdvancedMachine
     protected final IOutputHandler<ItemStack> outputHandler;
     protected final ILongInputHandler<GasStack> gasInputHandler;
 
-    protected float gas = 1;
+    private final int multiply;
 
     private final String jeiRecipeType;
 
     protected BEAstralAdvancedMachine(IBlockProvider blockProvider, BlockPos pos, BlockState state,
-            String jeiRecipeType) {
+            String jeiRecipeType, int multiply) {
         super(blockProvider, pos, state, TRACKED_ERROR_TYPES);
         this.configComponent = new TileComponentConfig(this, TransmissionType.ITEM, TransmissionType.GAS,
                 TransmissionType.ENERGY);
@@ -85,7 +84,7 @@ public abstract class BEAstralAdvancedMachine
         inputHandler = InputHelper.getInputHandler(inputInventorySlot, RecipeError.NOT_ENOUGH_INPUT);
         outputHandler = OutputHelper.getOutputHandler(outputInventorySlot, RecipeError.NOT_ENOUGH_OUTPUT_SPACE);
         gasInputHandler = InputHelper.getInputHandler(gasTank, RecipeError.NOT_ENOUGH_SECONDARY_INPUT);
-        gas = 1;
+        this.multiply = multiply;
         this.jeiRecipeType = jeiRecipeType;
     }
 
@@ -142,17 +141,9 @@ public abstract class BEAstralAdvancedMachine
     }
 
     @Override
-    public void recalculateUpgrades(Upgrade upgrade) {
-        super.recalculateUpgrades(upgrade);
-        if (supportsUpgrade(Upgrade.GAS)) {
-            gas = 1 - 9 * upgradeComponent.getUpgrades(Upgrade.GAS) / 80;
-        }
-    }
-
-    @Override
     public CachedRecipe<ItemStackGasToItemStackRecipe> createNewCachedRecipe(@NotNull ItemStackGasToItemStackRecipe recipe, int index) {
 
-        CachedRecipe<ItemStackGasToItemStackRecipe> cachedRecipe = TwoInputCachedRecipe.itemChemicalToItem(recipe, recheckAllRecipeErrors, inputHandler, gasInputHandler, outputHandler)
+        CachedRecipe<ItemStackGasToItemStackRecipe> cachedRecipe = new FormulizedItemGasToItemCachedRecipe(recipe, recheckAllRecipeErrors, inputHandler, gasInputHandler, outputHandler, multiply)
                 .setErrorsChanged(this::onErrorsChanged)
                 .setCanHolderFunction(() -> MekanismUtils.canFunction(this))
                 .setActive(this::setActive)

@@ -1,0 +1,11 @@
+{
+    "type": "astral_mekanism:mekanical_charger",
+    "input": {
+        "ingredient": {
+            "item": "minecraft:book"
+        }
+    },
+    "output": {
+        "item": "ae2:guide"
+    }
+}

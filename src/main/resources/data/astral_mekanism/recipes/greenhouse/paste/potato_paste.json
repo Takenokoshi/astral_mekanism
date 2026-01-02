@@ -1,0 +1,29 @@
+{
+  "type": "astral_mekanism:greenhouse",
+  "extra": {
+    "count": 3,
+    "item": "minecraft:poisonous_potato"
+  },
+  "farmland": {
+    "ingredient": {
+      "tag": "astral_mekanism:greenhouse_soil"
+    }
+  },
+  "harvest": {
+    "count": 6,
+    "item": "minecraft:potato"
+  },
+  "inputFluid": {
+    "amount": 100,
+    "fluid": "mekanism:nutritional_paste"
+  },
+  "inputSeed": {
+    "ingredient": {
+      "item": "minecraft:potato"
+    }
+  },
+  "outputSeed": {
+    "count": 3,
+    "item": "minecraft:potato"
+  }
+}

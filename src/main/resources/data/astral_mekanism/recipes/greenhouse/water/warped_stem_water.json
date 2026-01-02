@@ -1,0 +1,29 @@
+{
+  "type": "astral_mekanism:greenhouse",
+  "extra": {
+    "count": 1,
+    "item": "minecraft:shroomlight"
+  },
+  "farmland": {
+    "ingredient": {
+      "item": "minecraft:crimson_nylium"
+    }
+  },
+  "harvest": {
+    "count":2,
+      "item": "minecraft:warped_stem"
+  },
+  "inputFluid": {
+    "amount": 10000,
+    "fluid": "minecraft:water"
+  },
+  "inputSeed": {
+    "ingredient": {
+    "item": "minecraft:warped_fungus"
+    }
+  },
+  "outputSeed": {
+    "count":1,
+    "item": "minecraft:warped_wart_block"
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "type": "astral_mekanism:greenhouse",
+  "extra": {
+    "count":3,
+    "item": "minecraft:apple"
+  },
+  "farmland": {
+    "ingredient": {
+      "tag": "astral_mekanism:greenhouse_soil"
+    }
+  },
+  "harvest": {
+    "count":6,
+      "item": "minecraft:oak_log"
+  },
+  "inputFluid": {
+    "amount": 100,
+    "fluid": "mekanism:nutritional_paste"
+  },
+  "inputSeed": {
+    "ingredient": {
+    "item": "minecraft:oak_sapling"
+    }
+  },
+  "outputSeed": {
+    "count":3,
+    "item": "minecraft:oak_sapling"
+  }
+}

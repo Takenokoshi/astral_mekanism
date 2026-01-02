@@ -1,0 +1,29 @@
+{
+  "type": "astral_mekanism:greenhouse",
+  "extra": {
+    "count": 3,
+    "item": "minecraft:shroomlight"
+  },
+  "farmland": {
+    "ingredient": {
+      "item": "minecraft:crimson_nylium"
+    }
+  },
+  "harvest": {
+    "count":6,
+      "item": "minecraft:crimson_stem"
+  },
+  "inputFluid": {
+    "amount": 100,
+    "fluid": "mekanism:nutritional_paste"
+  },
+  "inputSeed": {
+    "ingredient": {
+    "item": "minecraft:crimson_fungus"
+    }
+  },
+  "outputSeed": {
+    "count":3,
+    "item": "minecraft:nether_wart_block"
+  }
+}

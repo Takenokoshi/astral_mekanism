@@ -1,0 +1,17 @@
+{
+    "type": "astral_mekanism:mekanical_inscriber",
+    "extraInput": {
+        "ingredient": {
+            "item": "ae2:silicon_press"
+        }
+    },
+    "mainInput": {
+        "amount": 1,
+        "ingredient": {
+      "tag": "forge:silicon"
+        }
+    },
+    "output": {
+        "item": "ae2:printed_silicon"
+    }
+}

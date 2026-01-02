@@ -1,0 +1,24 @@
+{
+  "type": "astral_mekanism:greenhouse",
+  "farmland": {
+    "ingredient": {
+      "tag": "astral_mekanism:greenhouse_soil"
+    }
+  },
+  "harvest": {
+    "count":2,
+    "item": "minecraft:nether_wart"
+  },
+  "inputFluid": {
+    "amount": 10000,
+    "fluid": "minecraft:water"
+  },
+  "inputSeed": {
+    "ingredient": {
+      "item": "minecraft:nether_wart"
+    }
+  },
+  "outputSeed": {
+    "item": "minecraft:nether_wart"
+  }
+}

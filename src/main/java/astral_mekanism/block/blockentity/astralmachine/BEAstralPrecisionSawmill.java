@@ -6,14 +6,13 @@ import java.util.List;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-import astral_mekanism.recipes.cachedRecipe.ItemToItemItemCachedRecipe;
+import astral_mekanism.recipes.cachedRecipe.FormulizedSawingCachedRecipe;
 import astral_mekanism.recipes.output.AMOutputHelper;
 import astral_mekanism.recipes.output.DoubleItemOutput;
-import astral_mekanism.recipes.recipe.ItemToItemItemRecipe;
-import astral_mekanism.registries.AstralMekanismRecipeTypes;
 import mekanism.api.IContentsListener;
 import mekanism.api.math.FloatingLong;
 import mekanism.api.providers.IBlockProvider;
+import mekanism.api.recipes.SawmillRecipe;
 import mekanism.api.recipes.cache.CachedRecipe;
 import mekanism.api.recipes.cache.CachedRecipe.OperationTracker.RecipeError;
 import mekanism.api.recipes.inputs.IInputHandler;
@@ -30,6 +29,7 @@ import mekanism.common.inventory.slot.OutputInventorySlot;
 import mekanism.common.inventory.warning.WarningTracker.WarningType;
 import mekanism.common.lib.transmitter.TransmissionType;
 import mekanism.common.recipe.IMekanismRecipeTypeProvider;
+import mekanism.common.recipe.MekanismRecipeType;
 import mekanism.common.recipe.lookup.ISingleRecipeLookupHandler.ItemRecipeLookupHandler;
 import mekanism.common.recipe.lookup.cache.InputRecipeCache.SingleItem;
 import mekanism.common.tile.component.TileComponentConfig;
@@ -42,8 +42,8 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 
-public class BEAstralPrecisionSawmill extends TileEntityRecipeMachine<ItemToItemItemRecipe>
-        implements ItemRecipeLookupHandler<ItemToItemItemRecipe> {
+public class BEAstralPrecisionSawmill extends TileEntityRecipeMachine<SawmillRecipe>
+        implements ItemRecipeLookupHandler<SawmillRecipe> {
 
     public static final RecipeError NOT_ENOUGH_SPACE_SECONDARY_OUTPUT_ERROR = RecipeError.create();
     private static final List<RecipeError> TRACKED_ERROR_TYPES = List.of(
@@ -110,25 +110,24 @@ public class BEAstralPrecisionSawmill extends TileEntityRecipeMachine<ItemToItem
 
     @Override
     @NotNull
-    public IMekanismRecipeTypeProvider<ItemToItemItemRecipe, SingleItem<ItemToItemItemRecipe>> getRecipeType() {
-        return AstralMekanismRecipeTypes.FORMULIZED_SAWING_RECIPE;
+    public IMekanismRecipeTypeProvider<SawmillRecipe, SingleItem<SawmillRecipe>> getRecipeType() {
+        return MekanismRecipeType.SAWING;
     }
 
     @Nullable
     @Override
-    public ItemToItemItemRecipe getRecipe(int cacheIndex) {
+    public SawmillRecipe getRecipe(int cacheIndex) {
         return findFirstRecipe(inputHandler);
     }
 
     @NotNull
     @Override
-    public CachedRecipe<ItemToItemItemRecipe> createNewCachedRecipe(@NotNull ItemToItemItemRecipe recipe, int cacheIndex) {
-        return new ItemToItemItemCachedRecipe(recipe, recheckAllRecipeErrors, inputHandler, outputHandler)
+    public CachedRecipe<SawmillRecipe> createNewCachedRecipe(@NotNull SawmillRecipe recipe, int cacheIndex) {
+        return new FormulizedSawingCachedRecipe(recipe, recheckAllRecipeErrors, inputHandler, outputHandler)
                 .setErrorsChanged(this::onErrorsChanged)
                 .setCanHolderFunction(() -> MekanismUtils.canFunction(this))
                 .setActive(this::setActive)
                 .setEnergyRequirements(energyContainer::getEnergyPerTick, energyContainer)
-                .setRequiredTicks(() -> 1)
                 .setOnFinish(this::markForSave)
                 .setBaselineMaxOperations(() -> Integer.MAX_VALUE);
     }

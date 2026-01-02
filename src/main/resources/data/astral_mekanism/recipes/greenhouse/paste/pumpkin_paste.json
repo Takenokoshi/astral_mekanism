@@ -1,0 +1,25 @@
+{
+  "type": "astral_mekanism:greenhouse",
+  "farmland": {
+    "ingredient": {
+      "tag": "astral_mekanism:greenhouse_soil"
+    }
+  },
+  "harvest": {
+    "count": 6,
+    "item": "minecraft:pumpkin"
+  },
+  "inputFluid": {
+    "amount": 100,
+    "fluid": "mekanism:nutritional_paste"
+  },
+  "inputSeed": {
+    "ingredient": {
+      "item": "minecraft:pumpkin_seeds"
+    }
+  },
+  "outputSeed": {
+    "count": 3,
+    "item": "minecraft:pumpkin_seeds"
+  }
+}

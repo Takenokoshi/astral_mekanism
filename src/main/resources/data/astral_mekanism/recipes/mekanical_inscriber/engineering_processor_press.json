@@ -1,0 +1,17 @@
+{
+    "type": "astral_mekanism:mekanical_inscriber",
+    "extraInput": {
+        "ingredient": {
+            "item": "ae2:engineering_processor_press"
+        }
+    },
+    "mainInput": {
+        "amount": 1,
+        "ingredient": {
+            "item": "minecraft:iron_block"
+        }
+    },
+    "output": {
+        "item": "ae2:engineering_processor_press"
+    }
+}

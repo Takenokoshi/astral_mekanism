@@ -1,0 +1,35 @@
+{
+    "type": "astral_mekanism:mekanical_transform",
+    "itemInputA": {
+        "ingredient": {
+            "item": "ae2:charged_certus_quartz_crystal"
+        },
+        "amount": 1
+    },
+    "itemInputB": {
+        "ingredient": {
+            "item": "minecraft:redstone"
+        },
+        "amount": 1
+    },
+    "itemInputC": {
+        "ingredient": {
+            "item": "minecraft:quartz"
+        },
+        "amount": 1
+    },
+    "itemInputD": {
+        "ingredient": {
+            "item": "minecraft:water_bucket"
+        },
+        "amount": 1
+    },
+    "outputItem": {
+        "count": 2,
+        "item": "ae2:fluix_crystal"
+    },
+    "isCatalystA": false,
+    "isCatalystB": false,
+    "isCatalystC": false,
+    "isCatalystD": true
+}

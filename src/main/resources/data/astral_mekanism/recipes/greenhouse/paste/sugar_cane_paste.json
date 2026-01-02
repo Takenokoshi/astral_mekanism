@@ -1,0 +1,25 @@
+{
+  "type": "astral_mekanism:greenhouse",
+  "farmland": {
+    "ingredient": {
+      "tag": "astral_mekanism:greenhouse_soil"
+    }
+  },
+  "harvest": {
+    "count": 6,
+    "item": "minecraft:sugar_cane"
+  },
+  "inputFluid": {
+    "amount": 100,
+    "fluid": "mekanism:nutritional_paste"
+  },
+  "inputSeed": {
+    "ingredient": {
+      "item": "minecraft:sugar_cane"
+    }
+  },
+  "outputSeed": {
+    "count": 3,
+    "item": "minecraft:sugar_cane"
+  }
+}
