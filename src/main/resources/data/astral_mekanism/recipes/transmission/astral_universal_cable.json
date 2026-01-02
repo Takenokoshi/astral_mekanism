@@ -1,14 +1,14 @@
 {
     "type": "evolvedmekanism:alloying",
     "extraInput": {
+        "amount": 8,
         "ingredient": {
-            "amount": 8,
             "item": "evolvedmekanism:multiversal_universal_cable"
         }
     },
     "secondExtraInput": {
+        "amount": 8,
         "ingredient": {
-            "amount": 8,
             "item": "mekanism_extras:infinite_universal_cable"
         }
     },
