@@ -66,7 +66,7 @@ public class BEEssentialSmelter extends BlockEntityProgressMachine<SmeltingRecip
         ejectorComponent = new TileComponentEjector(this, infusionTank::getCapacity);
         ejectorComponent.setOutputData(configComponent, TransmissionType.ITEM, TransmissionType.INFUSION);
         this.inputHandler = InputHelper.getInputHandler(inputSlot, RecipeError.NOT_ENOUGH_INPUT);
-        this.outputHandler = AMOutputHelper.getOutputHandler(infusionSlot, NOT_ENOUGH_ITEM_OUTPUT_SPACE, infusionTank,
+        this.outputHandler = AMOutputHelper.getOutputHandler(outputSlot, NOT_ENOUGH_ITEM_OUTPUT_SPACE, infusionTank,
                 NOT_ENOUGH_INFUSE_OUTPUT_SPACE);
     }
 
