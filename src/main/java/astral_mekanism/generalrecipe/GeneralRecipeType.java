@@ -31,7 +31,7 @@ public class GeneralRecipeType<C extends Container, RECIPE extends Recipe<C>, IN
             RecipeType.SMELTING,
             type -> new GeneralSingleItem<>(type,
                     recipe -> IngredientCreatorAccess.item().createMulti(recipe.getIngredients().stream()
-                            .map(null)
+                            .map(IngredientCreatorAccess.item()::from)
                             .toArray(ItemStackIngredient[]::new)),
                     (stack, recipe) -> recipe.getIngredients().stream()
                             .anyMatch(ingredient -> ingredient.test(stack))));
