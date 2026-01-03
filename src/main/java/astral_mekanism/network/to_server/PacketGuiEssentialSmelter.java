@@ -1,6 +1,6 @@
 package astral_mekanism.network.to_server;
 
-import astral_mekanism.block.blockentity.interf.IEssentialSmelter;
+import astral_mekanism.block.blockentity.interf.IEssentialEnergizedSmelter;
 import mekanism.common.network.IMekanismPacket;
 import mekanism.common.util.WorldUtils;
 import net.minecraft.core.BlockPos;
@@ -22,7 +22,7 @@ public class PacketGuiEssentialSmelter implements IMekanismPacket {
         if (player == null) {
             return;
         }
-        if (WorldUtils.getTileEntity(player.level(), pos) instanceof IEssentialSmelter smelter) {
+        if (WorldUtils.getTileEntity(player.level(), pos) instanceof IEssentialEnergizedSmelter smelter) {
             smelter.receive(context.getSender());
         }
     }

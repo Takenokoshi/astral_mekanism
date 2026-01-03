@@ -51,6 +51,11 @@
                 },
                 {
                   "op": "replace",
+                  "source": "InfusionTanks",
+                  "target": "mekData.InfusionTanks"
+                },
+                {
+                  "op": "replace",
                   "source": "Items",
                   "target": "mekData.Items"
                 }

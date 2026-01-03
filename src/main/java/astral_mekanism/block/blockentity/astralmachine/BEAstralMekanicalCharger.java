@@ -1,4 +1,4 @@
-package astral_mekanism.block.blockentity.normalmachine;
+package astral_mekanism.block.blockentity.astralmachine;
 
 import java.util.List;
 
@@ -7,7 +7,7 @@ import org.jetbrains.annotations.Nullable;
 
 import appeng.recipes.handlers.ChargerRecipe;
 import astral_mekanism.block.blockentity.interf.IEnergizedMachine;
-import astral_mekanism.block.blockentity.prefab.BlockEntityProgressMachine;
+import astral_mekanism.block.blockentity.prefab.BlockEntityRecipeMachine;
 import astral_mekanism.generalrecipe.GeneralRecipeType;
 import astral_mekanism.generalrecipe.IGeneralRecipeTypeProvider;
 import astral_mekanism.generalrecipe.cachedrecipe.GeneralCachedRecipe;
@@ -29,7 +29,6 @@ import mekanism.common.inventory.slot.EnergyInventorySlot;
 import mekanism.common.inventory.slot.InputInventorySlot;
 import mekanism.common.inventory.slot.OutputInventorySlot;
 import mekanism.common.inventory.warning.WarningTracker.WarningType;
-import mekanism.common.upgrade.MachineUpgradeData;
 import mekanism.common.util.MekanismUtils;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.Container;
@@ -37,9 +36,9 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 
-public class BEMekanicalCharger extends BlockEntityProgressMachine<ChargerRecipe> implements
+public class BEAstralMekanicalCharger extends BlockEntityRecipeMachine<ChargerRecipe> implements
         IGeneralSingelRecipeLookupHandler<ItemStack, ChargerRecipe, GeneralSingleItem<Container, ChargerRecipe>>,
-        IEnergizedMachine<BEMekanicalCharger> {
+        IEnergizedMachine<BEAstralMekanicalCharger> {
     private static final List<RecipeError> TRACKED_ERROR_TYPES = List.of(
             RecipeError.NOT_ENOUGH_ENERGY,
             RecipeError.NOT_ENOUGH_INPUT,
@@ -51,10 +50,10 @@ public class BEMekanicalCharger extends BlockEntityProgressMachine<ChargerRecipe
     InputInventorySlot inputSlot;
     OutputInventorySlot outputSlot;
     EnergyInventorySlot energySlot;
-    private MachineEnergyContainer<BEMekanicalCharger> energyContainer;
+    private MachineEnergyContainer<BEAstralMekanicalCharger> energyContainer;
 
-    public BEMekanicalCharger(IBlockProvider blockProvider, BlockPos pos, BlockState state) {
-        super(blockProvider, pos, state, TRACKED_ERROR_TYPES, 200);
+    public BEAstralMekanicalCharger(IBlockProvider blockProvider, BlockPos pos, BlockState state) {
+        super(blockProvider, pos, state, TRACKED_ERROR_TYPES);
         this.inputHandler = null;
         this.outputHandler = null;
     }
@@ -91,13 +90,6 @@ public class BEMekanicalCharger extends BlockEntityProgressMachine<ChargerRecipe
         recipeCacheLookupMonitor.updateAndProcess();
     }
 
-    @NotNull
-    @Override
-    public MachineUpgradeData getUpgradeData() {
-        return new MachineUpgradeData(redstone, getControlType(), getEnergyContainer(), getOperatingTicks(), energySlot,
-                inputSlot, outputSlot, getComponents());
-    }
-
     FloatingLong getEnergyUsage() {
         return getActive() ? energyContainer.getEnergyPerTick() : FloatingLong.ZERO;
     }
@@ -126,19 +118,18 @@ public class BEMekanicalCharger extends BlockEntityProgressMachine<ChargerRecipe
                 .setCanHolderFunction(() -> MekanismUtils.canFunction(this))
                 .setActive(this::setActive)
                 .setEnergyRequirements(energyContainer::getEnergyPerTick, energyContainer)
-                .setRequiredTicks(this::getTicksRequired)
                 .setOnFinish(this::markForSave)
-                .setOperatingTicksChanged(this::setOperatingTicks);
+                .setBaselineMaxOperations(() -> 0x7fffffff);
     }
 
     @Override
-    public MachineEnergyContainer<BEMekanicalCharger> getEnergyContainer() {
+    public MachineEnergyContainer<BEAstralMekanicalCharger> getEnergyContainer() {
         return energyContainer;
     }
 
     @Override
     public double getProgressScaled() {
-        return getScaledProgress();
+        return getActive() ? 1 : 0;
     }
 
 }

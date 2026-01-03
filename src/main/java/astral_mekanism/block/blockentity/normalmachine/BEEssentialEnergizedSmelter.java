@@ -4,7 +4,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import astral_mekanism.block.blockentity.elements.slot.DrainInfusionSlot;
-import astral_mekanism.block.blockentity.interf.IEssentialSmelter;
+import astral_mekanism.block.blockentity.interf.IEssentialEnergizedSmelter;
 import astral_mekanism.block.blockentity.prefab.BlockEntityProgressMachine;
 import astral_mekanism.generalrecipe.GeneralRecipeType;
 import astral_mekanism.generalrecipe.IGeneralRecipeTypeProvider;
@@ -45,10 +45,10 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.SmeltingRecipe;
 import net.minecraft.world.level.block.state.BlockState;
 
-public class BEEssentialSmelter extends BlockEntityProgressMachine<SmeltingRecipe> implements
-        IEssentialSmelter<BEEssentialSmelter> {
+public class BEEssentialEnergizedSmelter extends BlockEntityProgressMachine<SmeltingRecipe> implements
+        IEssentialEnergizedSmelter<BEEssentialEnergizedSmelter> {
 
-    private MachineEnergyContainer<BEEssentialSmelter> energyContainer;
+    private MachineEnergyContainer<BEEssentialEnergizedSmelter> energyContainer;
     private InputInventorySlot inputSlot;
     private OutputInventorySlot outputSlot;
     private IInfusionTank infusionTank;
@@ -57,7 +57,7 @@ public class BEEssentialSmelter extends BlockEntityProgressMachine<SmeltingRecip
     private final IInputHandler<ItemStack> inputHandler;
     private final IOutputHandler<ItemInfuseOutput> outputHandler;
 
-    public BEEssentialSmelter(IBlockProvider blockProvider, BlockPos pos, BlockState state) {
+    public BEEssentialEnergizedSmelter(IBlockProvider blockProvider, BlockPos pos, BlockState state) {
         super(blockProvider, pos, state, TRACKED_ERROR_TYPES, 200);
         configComponent = new TileComponentConfig(this, TransmissionType.ITEM, TransmissionType.INFUSION,TransmissionType.ENERGY);
         configComponent.setupItemIOExtraConfig(inputSlot, outputSlot, infusionSlot, energySlot);
@@ -142,7 +142,7 @@ public class BEEssentialSmelter extends BlockEntityProgressMachine<SmeltingRecip
     }
 
     @Override
-    public MachineEnergyContainer<BEEssentialSmelter> getEnergyContainer() {
+    public MachineEnergyContainer<BEEssentialEnergizedSmelter> getEnergyContainer() {
         return energyContainer;
     }
 

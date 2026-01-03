@@ -75,7 +75,7 @@
     "itemInputC3": {
         "amount": 1,
         "ingredient": {
-            "item": "mekanism:energized_smelter"
+            "item": "astral_mekanism:essential_energized_smelter"
         }
     },
     "itemInputC4": {

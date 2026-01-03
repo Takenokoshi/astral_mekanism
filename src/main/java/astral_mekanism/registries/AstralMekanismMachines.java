@@ -12,9 +12,11 @@ import astral_mekanism.block.blockentity.astralmachine.BEAstralCombiner;
 import astral_mekanism.block.blockentity.astralmachine.BEAstralCrystallizer;
 import astral_mekanism.block.blockentity.astralmachine.BEAstralDissolutionChamber;
 import astral_mekanism.block.blockentity.astralmachine.BEAstralElectrolyticSeparator;
+import astral_mekanism.block.blockentity.astralmachine.BEAstralEnergizedSmelter;
 import astral_mekanism.block.blockentity.astralmachine.BEAstralGNA;
 import astral_mekanism.block.blockentity.astralmachine.BEAstralGreenhouse;
 import astral_mekanism.block.blockentity.astralmachine.BEAstralIsotopicCentrifuge;
+import astral_mekanism.block.blockentity.astralmachine.BEAstralMekanicalCharger;
 import astral_mekanism.block.blockentity.astralmachine.BEAstralMekanicalInscriber;
 import astral_mekanism.block.blockentity.astralmachine.BEAstralMekanicalTransformer;
 import astral_mekanism.block.blockentity.astralmachine.BEAstralMetallurgicInfuser;
@@ -26,9 +28,7 @@ import astral_mekanism.block.blockentity.astralmachine.advanced.BEAstralChemical
 import astral_mekanism.block.blockentity.astralmachine.advanced.BEAstralOsmiumCompressor;
 import astral_mekanism.block.blockentity.astralmachine.advanced.BEAstralPurificationChamber;
 import astral_mekanism.block.blockentity.astralmachine.electric.BEAstralCrusher;
-import astral_mekanism.block.blockentity.astralmachine.electric.BEAstralEnergizedSmelter;
 import astral_mekanism.block.blockentity.astralmachine.electric.BEAstralEnrichmentChamber;
-import astral_mekanism.block.blockentity.astralmachine.electric.BEAstralMekanicalCharger;
 import astral_mekanism.block.blockentity.compact.BECompactFIR;
 import astral_mekanism.block.blockentity.compact.BECompactSPS;
 import astral_mekanism.block.blockentity.compact.BECompactTEP;
@@ -36,7 +36,7 @@ import astral_mekanism.block.blockentity.generator.AstralMekGeneratorTier;
 import astral_mekanism.block.blockentity.generator.BEGasBurningGenerator;
 import astral_mekanism.block.blockentity.generator.BEHeatGenerator;
 import astral_mekanism.block.blockentity.normalmachine.BEAstralCrafter;
-import astral_mekanism.block.blockentity.normalmachine.BEEssentialSmelter;
+import astral_mekanism.block.blockentity.normalmachine.BEEssentialEnergizedSmelter;
 import astral_mekanism.block.blockentity.normalmachine.BEFluidInfuser;
 import astral_mekanism.block.blockentity.normalmachine.BEGlowstoneNeutronActivator;
 import astral_mekanism.block.blockentity.normalmachine.BEGreenhouse;
@@ -110,17 +110,6 @@ public class AstralMekanismMachines {
                             () -> FloatingLong.MAX_VALUE)
                             .changeAttributeUpgrade(EnumSet.of(Upgrade.MUFFLING, Upgrade.ENERGY))
                             .withSound(MekanismSounds.CRUSHER));
-
-    public static final MachineRegistryObject<BEAstralEnergizedSmelter, BlockTileModel<BEAstralEnergizedSmelter, BlockTypeMachine<BEAstralEnergizedSmelter>>, MekanismTileContainer<BEAstralEnergizedSmelter>, ItemBlockMachine> ASTRAL_ENERGIZED_SMELTER = MACHINES
-            .registerSimple("astral_energized_smelter",
-                    BEAstralEnergizedSmelter::new,
-                    BEAstralEnergizedSmelter.class,
-                    AstralMekanismLang.DESCRIPTION_ASTRAL_MACHINE,
-                    builder -> builder.withEnergyConfig(
-                            () -> FloatingLong.create(10000 * AstralMekanismConfig.energyRate),
-                            () -> FloatingLong.MAX_VALUE)
-                            .changeAttributeUpgrade(EnumSet.of(Upgrade.MUFFLING, Upgrade.ENERGY))
-                            .withSound(MekanismSounds.ENERGIZED_SMELTER));
 
     public static final MachineRegistryObject<BEAstralEnrichmentChamber, BlockTileModel<BEAstralEnrichmentChamber, BlockTypeMachine<BEAstralEnrichmentChamber>>, MekanismTileContainer<BEAstralEnrichmentChamber>, ItemBlockMachine> ASTRAL_ENRICHMENT_CHAMBER = MACHINES
             .registerSimple("astral_enrichment_chamber",
@@ -219,6 +208,17 @@ public class AstralMekanismMachines {
                             () -> FloatingLong.MAX_VALUE)
                             .changeAttributeUpgrade(EnumSet.of(Upgrade.MUFFLING, Upgrade.ENERGY))
                             .withSound(MekanismSounds.ELECTROLYTIC_SEPARATOR));
+
+    public static final MachineRegistryObject<BEAstralEnergizedSmelter, BlockTileModel<BEAstralEnergizedSmelter, BlockTypeMachine<BEAstralEnergizedSmelter>>, MekanismTileContainer<BEAstralEnergizedSmelter>, ItemBlockMachine> ASTRAL_ENERGIZED_SMELTER = MACHINES
+            .registerSimple("astral_energized_smelter",
+                    BEAstralEnergizedSmelter::new,
+                    BEAstralEnergizedSmelter.class,
+                    AstralMekanismLang.DESCRIPTION_ASTRAL_MACHINE,
+                    builder -> builder.withEnergyConfig(
+                            () -> FloatingLong.create(10000 * AstralMekanismConfig.energyRate),
+                            () -> FloatingLong.MAX_VALUE)
+                            .changeAttributeUpgrade(EnumSet.of(Upgrade.MUFFLING, Upgrade.ENERGY))
+                            .withSound(MekanismSounds.ENERGIZED_SMELTER));
 
     public static final MachineRegistryObject<BEAstralGNA, BlockTileModel<BEAstralGNA, BlockTypeMachine<BEAstralGNA>>, MekanismTileContainer<BEAstralGNA>, ItemBlockMachine> ASTRAL_GNA = MACHINES
             .registerSimple("astral_gna",
@@ -382,14 +382,15 @@ public class AstralMekanismMachines {
                             () -> FloatingLong.create(400 * AstralMekanismConfig.energyRate),
                             () -> FloatingLong.create(10000000 * AstralMekanismConfig.energyRate)));
 
-    public static final MachineRegistryObject<BEEssentialSmelter, BlockTileModel<BEEssentialSmelter, BlockTypeMachine<BEEssentialSmelter>>, MekanismTileContainer<BEEssentialSmelter>, ItemBlockMachine> ESSENTIAL_SMELTER = MACHINES
-            .registerSimple("essential_smelter",
-                    BEEssentialSmelter::new,
-                    BEEssentialSmelter.class,
+    public static final MachineRegistryObject<BEEssentialEnergizedSmelter, BlockTileModel<BEEssentialEnergizedSmelter, BlockTypeMachine<BEEssentialEnergizedSmelter>>, MekanismTileContainer<BEEssentialEnergizedSmelter>, ItemBlockMachine> ESSENTIAL_ENERGIZED_SMELTER = MACHINES
+            .registerSimple("essential_energized_smelter",
+                    BEEssentialEnergizedSmelter::new,
+                    BEEssentialEnergizedSmelter.class,
                     AstralMekanismLang.ITEM_GROUP,
                     builder -> builder.withEnergyConfig(
-                            () -> FloatingLong.create(400 * AstralMekanismConfig.energyRate),
-                            () -> FloatingLong.create(10000000 * AstralMekanismConfig.energyRate)));
+                            MekanismConfig.usage.energizedSmelter,
+                            MekanismConfig.storage.energizedSmelter)
+                            .withSound(MekanismSounds.ENERGIZED_SMELTER));
 
     public static final MachineRegistryObject<BEFluidInfuser, BlockTileModel<BEFluidInfuser, BlockTypeMachine<BEFluidInfuser>>, MekanismTileContainer<BEFluidInfuser>, ItemBlockMachine> FLUID_INFUSER = MACHINES
             .registerSimple("fluid_infuser",

@@ -17,14 +17,12 @@ import mekanism.api.chemical.gas.Gas;
 import mekanism.api.chemical.gas.GasStack;
 import mekanism.api.recipes.CombinerRecipe;
 import mekanism.api.recipes.GasToGasRecipe;
-import mekanism.api.recipes.ItemStackToItemStackRecipe;
 import mekanism.api.recipes.MekanismRecipe;
 import mekanism.common.recipe.MekanismRecipeType;
 import mekanism.common.recipe.lookup.cache.IInputRecipeCache;
 import mekanism.common.recipe.lookup.cache.InputRecipeCache;
 import mekanism.common.recipe.lookup.cache.InputRecipeCache.DoubleItem;
 import mekanism.common.recipe.lookup.cache.InputRecipeCache.SingleChemical;
-import mekanism.common.recipe.lookup.cache.InputRecipeCache.SingleItem;
 import mekanism.common.registration.impl.RecipeTypeDeferredRegister;
 import mekanism.common.registration.impl.RecipeTypeRegistryObject;
 
@@ -56,10 +54,6 @@ public class AstralMekanismRecipeTypes {
             "fluid_infuser",
             recipeType -> new AMInputRecipeCache.FluidFluid<>(recipeType, FluidFluidToFluidRecipe::getInputA,
                     FluidFluidToFluidRecipe::getInputB));
-
-    public static final RecipeTypeRegistryObject<ItemStackToItemStackRecipe, SingleItem<ItemStackToItemStackRecipe>> MEKANICAL_CHARGER_RECIPE = register(
-            "mekanical_charger",
-            recipeType -> new InputRecipeCache.SingleItem<>(recipeType, ItemStackToItemStackRecipe::getInput));
 
     public static final RecipeTypeRegistryObject<GasToGasRecipe, SingleChemical<Gas, GasStack, GasToGasRecipe>> SPS_RECIPE = register(
             "sps", recipeType -> new InputRecipeCache.SingleChemical<Gas, GasStack, GasToGasRecipe>(recipeType,

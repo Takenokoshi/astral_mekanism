@@ -8,7 +8,6 @@ import astral_mekanism.recipes.recipe.MekanicalTransformRecipe;
 import astral_mekanism.registries.AstralMekanismMachines;
 import mekanism.api.recipes.CombinerRecipe;
 import mekanism.api.recipes.GasToGasRecipe;
-import mekanism.api.recipes.ItemStackToItemStackRecipe;
 import mekanism.client.jei.MekanismJEIRecipeType;
 import mezz.jei.api.recipe.RecipeType;
 import net.minecraft.world.item.crafting.SmeltingRecipe;
@@ -16,8 +15,6 @@ import net.minecraft.world.item.crafting.SmeltingRecipe;
 public final class AstralMekanismJEIRecipeType {
     public static final MekanismJEIRecipeType<FluidFluidToFluidRecipe> FLUID_INFUSER_RECIPE = new MekanismJEIRecipeType<>(
             AstralMekanismMachines.FLUID_INFUSER, FluidFluidToFluidRecipe.class);
-    public static final MekanismJEIRecipeType<ItemStackToItemStackRecipe> MEKANICAL_CHARGER_RECIPE = new MekanismJEIRecipeType<>(
-            AstralMekanismMachines.MEKANICAL_CHARGER, ItemStackToItemStackRecipe.class);
     public static final MekanismJEIRecipeType<GasToGasRecipe> SPS_RECIPE = new MekanismJEIRecipeType<>(
             AstralMekanismMachines.COMPACT_SPS, GasToGasRecipe.class);
     public static final MekanismJEIRecipeType<AstralCraftingRecipe> ASTRAL_CRAFTING = new MekanismJEIRecipeType<>(

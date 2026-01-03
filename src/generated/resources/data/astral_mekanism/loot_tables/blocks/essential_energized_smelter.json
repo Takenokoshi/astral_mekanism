@@ -63,12 +63,12 @@
               "source": "block_entity"
             }
           ],
-          "name": "astral_mekanism:essential_smelter"
+          "name": "astral_mekanism:essential_energized_smelter"
         }
       ],
       "name": "main",
       "rolls": 1.0
     }
   ],
-  "random_sequence": "astral_mekanism:blocks/essential_smelter"
+  "random_sequence": "astral_mekanism:blocks/essential_energized_smelter"
 }

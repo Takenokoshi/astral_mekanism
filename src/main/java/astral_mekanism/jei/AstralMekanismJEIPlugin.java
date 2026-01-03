@@ -16,7 +16,6 @@ import mekanism.client.jei.CatalystRegistryHelper;
 import mekanism.client.jei.MekanismJEIRecipeType;
 import mekanism.client.jei.RecipeRegistryHelper;
 import mekanism.client.jei.machine.GasToGasRecipeCategory;
-import mekanism.client.jei.machine.ItemStackToItemStackRecipeCategory;
 import mekanism.generators.client.jei.GeneratorsJEIRecipeType;
 import mezz.jei.api.IModPlugin;
 import mezz.jei.api.JeiPlugin;
@@ -47,9 +46,6 @@ public class AstralMekanismJEIPlugin implements IModPlugin {
         registry.addRecipeCategories(
                 new IRecipeCategory[] {
                         new FluidInfuserRecipeCategory(guiHelper, AstralMekanismJEIRecipeType.FLUID_INFUSER_RECIPE),
-                        new ItemStackToItemStackRecipeCategory(guiHelper,
-                                AstralMekanismJEIRecipeType.MEKANICAL_CHARGER_RECIPE,
-                                AstralMekanismMachines.MEKANICAL_CHARGER),
                         new GasToGasRecipeCategory(guiHelper, AstralMekanismJEIRecipeType.SPS_RECIPE,
                                 AstralMekanismMachines.COMPACT_SPS),
                         new AstralCraftingRecipeCategory(guiHelper, AstralMekanismJEIRecipeType.ASTRAL_CRAFTING,
@@ -63,7 +59,7 @@ public class AstralMekanismJEIPlugin implements IModPlugin {
                                 AstralMekanismJEIRecipeType.GREENHOUSE_RECIPE,
                                 AstralMekanismMachines.GREENHOUSE),
                         new EssentialSmeltingRecipeCategory(guiHelper, AstralMekanismJEIRecipeType.ESSENTIAL_SMELTING,
-                                AstralMekanismMachines.ESSENTIAL_SMELTER),
+                                AstralMekanismMachines.ESSENTIAL_ENERGIZED_SMELTER),
                 });
     }
 
@@ -71,8 +67,6 @@ public class AstralMekanismJEIPlugin implements IModPlugin {
     public void registerRecipes(IRecipeRegistration registry) {
         RecipeRegistryHelper.register(registry, AstralMekanismJEIRecipeType.FLUID_INFUSER_RECIPE,
                 AstralMekanismRecipeTypes.FLUID_INFUSER_RECIPE);
-        RecipeRegistryHelper.register(registry, AstralMekanismJEIRecipeType.MEKANICAL_CHARGER_RECIPE,
-                AstralMekanismRecipeTypes.MEKANICAL_CHARGER_RECIPE);
         RecipeRegistryHelper.register(registry, AstralMekanismJEIRecipeType.SPS_RECIPE,
                 AstralMekanismRecipeTypes.SPS_RECIPE);
         RecipeRegistryHelper.register(registry, AstralMekanismJEIRecipeType.ASTRAL_CRAFTING,
@@ -149,9 +143,6 @@ public class AstralMekanismJEIPlugin implements IModPlugin {
                 AstralMekanismMachines.ASTRAL_CRAFTER);
         CatalystRegistryHelper.register(registry, AstralMekanismJEIRecipeType.FLUID_INFUSER_RECIPE,
                 AstralMekanismMachines.FLUID_INFUSER);
-        CatalystRegistryHelper.register(registry, AstralMekanismJEIRecipeType.MEKANICAL_CHARGER_RECIPE,
-                AstralMekanismMachines.ASTRAL_MEKANICAL_CHARGER,
-                AstralMekanismMachines.MEKANICAL_CHARGER);
         CatalystRegistryHelper.register(registry, AstralMekanismJEIRecipeType.MEKANICAL_INSCRIBER_RECIPE,
                 AstralMekanismMachines.ASTRAL_MEKANICAL_INSCRIBER,
                 AstralMekanismMachines.MEKANICAL_INSCRIBER);
@@ -162,7 +153,8 @@ public class AstralMekanismJEIPlugin implements IModPlugin {
                 AstralMekanismMachines.GREENHOUSE,
                 AstralMekanismMachines.ASTRAL_GREENHOUSE);
         registry.addRecipeCatalysts(AstralMekanismJEIRecipeType.ESSENTIAL_SMELTING,
-                AstralMekanismMachines.ESSENTIAL_SMELTER);
+                AstralMekanismMachines.ESSENTIAL_ENERGIZED_SMELTER,
+                AstralMekanismMachines.ASTRAL_ENERGIZED_SMELTER);
     }
 
     @Override

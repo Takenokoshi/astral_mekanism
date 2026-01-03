@@ -15,7 +15,7 @@ import net.minecraft.world.Container;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.SmeltingRecipe;
 
-public interface IEssentialSmelter<BE extends BlockEntityRecipeMachine<SmeltingRecipe> & IEssentialSmelter<BE>> extends
+public interface IEssentialEnergizedSmelter<BE extends BlockEntityRecipeMachine<SmeltingRecipe> & IEssentialEnergizedSmelter<BE>> extends
         IGeneralSingelRecipeLookupHandler<ItemStack, SmeltingRecipe, GeneralSingleItem<Container, SmeltingRecipe>> {
 
     public static final RecipeError NOT_ENOUGH_ITEM_OUTPUT_SPACE = RecipeError.create();

@@ -4,7 +4,6 @@ import astral_mekanism.AstralMekanismID;
 import astral_mekanism.recipes.irecipe.AstralCraftingIRecipe;
 import astral_mekanism.recipes.irecipe.FluidInfuserIRecipe;
 import astral_mekanism.recipes.irecipe.GreenhouseIRecipe;
-import astral_mekanism.recipes.irecipe.MekanicalChagerIRecipe;
 import astral_mekanism.recipes.irecipe.MekanicalInscriberIRecipe;
 import astral_mekanism.recipes.irecipe.SPSIRecipe;
 import astral_mekanism.recipes.irecipe.MekanicalTransformIRecipe;
@@ -18,10 +17,8 @@ import astral_mekanism.recipes.serializer.GreenHouseRecipeSerializer;
 import astral_mekanism.recipes.serializer.MekanicalTransformRecipeSerializer;
 import mekanism.api.recipes.CombinerRecipe;
 import mekanism.api.recipes.GasToGasRecipe;
-import mekanism.api.recipes.ItemStackToItemStackRecipe;
 import mekanism.common.recipe.serializer.CombinerRecipeSerializer;
 import mekanism.common.recipe.serializer.GasToGasRecipeSerializer;
-import mekanism.common.recipe.serializer.ItemStackToItemStackRecipeSerializer;
 import mekanism.common.registration.impl.RecipeSerializerDeferredRegister;
 import mekanism.common.registration.impl.RecipeSerializerRegistryObject;
 
@@ -39,10 +36,6 @@ public class AstralMekanismRecipeSerializers {
     public static final RecipeSerializerRegistryObject<FluidFluidToFluidRecipe> FLUID_INFUSER_RECIPE = RECIPE_SERIALIZERS
             .register("fluid_infuser",
                     () -> new FluidFluidToFluidRecipeSerializer<>(FluidInfuserIRecipe::new));
-
-    public static final RecipeSerializerRegistryObject<ItemStackToItemStackRecipe> MEKANICAL_CHARGER_RECIPE = RECIPE_SERIALIZERS
-            .register("mekanical_charger",
-                    () -> new ItemStackToItemStackRecipeSerializer<>(MekanicalChagerIRecipe::new));
 
     public static final RecipeSerializerRegistryObject<GasToGasRecipe> SPS_RECIPE = RECIPE_SERIALIZERS
             .register("sps", () -> new GasToGasRecipeSerializer<>(SPSIRecipe::new));

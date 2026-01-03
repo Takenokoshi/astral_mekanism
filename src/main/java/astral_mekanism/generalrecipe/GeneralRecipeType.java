@@ -7,6 +7,8 @@ import java.util.function.Function;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import appeng.recipes.AERecipeTypes;
+import appeng.recipes.handlers.ChargerRecipe;
 import astral_mekanism.AstralMekanism;
 import astral_mekanism.generalrecipe.lookup.cache.recipe.SingleInputGeneralRecipeCache.GeneralSingleItem;
 import mekanism.api.recipes.ingredients.creator.IngredientCreatorAccess;
@@ -30,6 +32,14 @@ public class GeneralRecipeType<C extends Container, RECIPE extends Recipe<C>, IN
     public static final GeneralRecipeType<Container, SmeltingRecipe, GeneralSingleItem<Container, SmeltingRecipe>> SMELTING = new GeneralRecipeType<>(
             RecipeType.SMELTING,
             type -> new GeneralSingleItem<>(type,
+                    recipe -> IngredientCreatorAccess.item().createMulti(recipe.getIngredients().stream()
+                            .map(IngredientCreatorAccess.item()::from)
+                            .toArray(ItemStackIngredient[]::new)),
+                    (stack, recipe) -> recipe.getIngredients().stream()
+                            .anyMatch(ingredient -> ingredient.test(stack))));
+
+    public static final GeneralRecipeType<Container, ChargerRecipe, GeneralSingleItem<Container, ChargerRecipe>> CHARGING = new GeneralRecipeType<>(
+            AERecipeTypes.CHARGER, type -> new GeneralSingleItem<>(type,
                     recipe -> IngredientCreatorAccess.item().createMulti(recipe.getIngredients().stream()
                             .map(IngredientCreatorAccess.item()::from)
                             .toArray(ItemStackIngredient[]::new)),
