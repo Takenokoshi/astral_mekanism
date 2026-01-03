@@ -88,6 +88,9 @@ public class AstralMekanismItems {
     public static final EnumMap<OreType, ItemRegistryObject<GlintItem>> STARLIGHTS = ((Supplier<EnumMap<OreType, ItemRegistryObject<GlintItem>>>) (() -> {
         EnumMap<OreType, ItemRegistryObject<GlintItem>> result = new EnumMap<>(OreType.class);
         for (OreType oreType : OreType.values()) {
+            if (oreType == OreType.NETHERITE) {
+                continue;
+            }
             result.put(oreType, ITEMS.register("starlight_" + oreType.type, GlintItem::new));
         }
         return result;
@@ -109,7 +112,7 @@ public class AstralMekanismItems {
             String stateType = state == IntermediateState.RAW ? "dirty_dust_" : state.state;
             netheriteMap.put(state,
                     state == IntermediateState.CRUSHED ? MekanismItems.NETHERITE_DUST
-                            : ITEMS.register(stateType + OreType.NETHERITE.type));
+                            : ITEMS.register(stateType + "_" + OreType.NETHERITE.type));
         }
         result.put(OreType.NETHERITE, netheriteMap);
         return result;
