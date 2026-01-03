@@ -112,6 +112,7 @@ public class BEAstralEnergizedSmelter extends BlockEntityRecipeMachine<SmeltingR
         super.onUpdateServer();
         recipeCacheLookupMonitor.updateAndProcess();
         infusionSlot.drainTank();
+        energySlot.fillContainerOrConvert();
     }
 
     @Override

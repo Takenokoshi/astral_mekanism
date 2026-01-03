@@ -111,6 +111,7 @@ public class BEEssentialEnergizedSmelter extends BlockEntityProgressMachine<Smel
         super.onUpdateServer();
         recipeCacheLookupMonitor.updateAndProcess();
         infusionSlot.drainTank();
+        energySlot.fillContainerOrConvert();
     }
 
     @Override

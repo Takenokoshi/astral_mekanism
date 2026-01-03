@@ -31,6 +31,7 @@ public class GuiMekanicalCharger<BE extends BlockEntityRecipeMachine<ChargerReci
 
     public GuiMekanicalCharger(MekanismTileContainer<BE> container, Inventory inv, Component title) {
         super(container, inv, title);
+        dynamicSlots = true;
     }
 
     @Override
