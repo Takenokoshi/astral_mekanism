@@ -1,4 +1,4 @@
-// 1.20.1	2026-01-02T18:29:28.4080967	Loot Tables
+// 1.20.1	2026-01-03T09:24:57.4887575	Loot Tables
 7bf59ca1bbaff7a68e7b3e04106581bff6640a61 data/astral_mekanism/loot_tables/blocks/astral_chemical_infuser.json
 a4744b173276d38a38e6a388899a4a7e8f3ebe83 data/astral_mekanism/loot_tables/blocks/astral_chemical_injection_chamber.json
 08d26ef708892b3920326b6ccdc528ad3d342193 data/astral_mekanism/loot_tables/blocks/astral_chemical_oxidizer.json
@@ -35,6 +35,7 @@ d39e4e86462fd99896c771641a22a4bf8c8f58a8 data/astral_mekanism/loot_tables/blocks
 bce1c6a70dfec3344751b59340733766f37a8c7c data/astral_mekanism/loot_tables/blocks/essential_crafter.json
 9a5c7fed153a8bfb336e583588d059dfa5e3f1c2 data/astral_mekanism/loot_tables/blocks/essential_gas_burning_generator.json
 03c609a0a11a6eb7bfb246aa7959c318a06aed9e data/astral_mekanism/loot_tables/blocks/essential_heat_generator.json
+722f437424a7ab0e80c4f381e5cc9f3a6c20c481 data/astral_mekanism/loot_tables/blocks/essential_smelter.json
 3fa2ad98fa9a44d7e8757d963198cef11933c21c data/astral_mekanism/loot_tables/blocks/fluid_infuser.json
 f754e0fd32cdcd74c372c5548f66761efd96b9b3 data/astral_mekanism/loot_tables/blocks/glowstone_neutron_activator.json
 eaa8688e2f4e4d4c12212c654f730af09cbcbba7 data/astral_mekanism/loot_tables/blocks/greenhouse.json
