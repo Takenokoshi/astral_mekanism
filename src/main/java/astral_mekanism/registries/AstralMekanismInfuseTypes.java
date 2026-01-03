@@ -17,5 +17,7 @@ public class AstralMekanismInfuseTypes {
 	public static final InfuseTypeRegistryObject<InfuseType> NETHER_STAR = INFUSE_TYPES
 			.register("nether_star", 0xeef0e4);
 	public static final InfuseTypeRegistryObject<InfuseType> XP = INFUSE_TYPES
-			.register("xp", 0xFFFFFFFF);
+			.register("xp", 0xE6FFFF4D
+
+);
 }

@@ -121,7 +121,8 @@ public class AstralMekanismJEIPlugin implements IModPlugin {
         CatalystRegistryHelper.register(registry, MekanismJEIRecipeType.CENTRIFUGING,
                 AstralMekanismMachines.ASTRAL_ISOTOPIC_CENTRIFUGE);
         CatalystRegistryHelper.register(registry, MekanismJEIRecipeType.METALLURGIC_INFUSING,
-                AstralMekanismMachines.ASTRAL_METALLURGIC_INFUSER);
+                AstralMekanismMachines.ASTRAL_METALLURGIC_INFUSER,
+                AstralMekanismMachines.ESSENTIAL_METALLURGIC_INFUSER);
         CatalystRegistryHelper.register(registry, MekanismJEIRecipeType.REACTION,
                 AstralMekanismMachines.ASTRAL_PRC);
         CatalystRegistryHelper.register(registry, MekanismJEIRecipeType.SAWING,
