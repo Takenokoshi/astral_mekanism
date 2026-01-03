@@ -6,7 +6,6 @@ import org.jetbrains.annotations.Nullable;
 
 import astral_mekanism.recipes.output.ItemInfuseOutput;
 import astral_mekanism.registries.AstralMekanismInfuseTypes;
-import mekanism.api.recipes.cache.CachedRecipeHelper;
 import mekanism.api.recipes.cache.CachedRecipe.OperationTracker;
 import mekanism.api.recipes.ingredients.ItemStackIngredient;
 import mekanism.api.recipes.ingredients.creator.IItemStackIngredientCreator;
@@ -46,10 +45,15 @@ public class EssentialSmeltingCachedRecipe extends GeneralCachedRecipe<SmeltingR
             if (inputStack.isEmpty()) {
                 tracker.mismatchedRecipe();
             } else {
-                CachedRecipeHelper.oneInputCalculateOperationsThisTick(tracker, inputHandler, () -> inputIngredient,
-                        i -> recipeInput = i, outputHandler, stack -> new ItemInfuseOutput(recipe.getResultItem(null),
-                                AstralMekanismInfuseTypes.XP.getStack((long) (recipe.getExperience() * 100))),
-                        o -> recipeOutput = o, ItemStack::isEmpty);
+                recipeInput = inputHandler.getRecipeInput(inputIngredient);
+                recipeOutput = new ItemInfuseOutput(recipe.getResultItem(null),
+                        AstralMekanismInfuseTypes.XP.getStack((long) (recipe.getExperience() * 100)));
+                if (recipeInput.isEmpty() || recipeOutput.itemStack().isEmpty()) {
+                    tracker.mismatchedRecipe();
+                    return;
+                }
+                inputHandler.calculateOperationsCanSupport(tracker, recipeInput);
+                outputHandler.calculateOperationsCanSupport(tracker, recipeOutput);
             }
 
         }
