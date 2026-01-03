@@ -22,7 +22,7 @@ public abstract class TileEntityMetallurgicInfuserMixin {
         method = "getInitialInfusionTanks",
         at = @At(
             value = "INVOKE",
-            target = "Lmekanism/common/capabilities/chemical/ChemicalTankBuilder;create(JLjava/util/function/BiPredicate;Ljava/util/function/BiPredicate;Ljava.util.function.Predicate;Lmekanism.api.IContentsListener;)Lmekanism/common/capabilities/chemical/infuse/InfusionTank;"
+            target = "Lmekanism.api.chemical.ChemicalTankBuilder;create(JLjava/util/function/BiPredicate;Ljava/util/function/BiPredicate;Ljava.util.function.Predicate;Lmekanism.api.IContentsListener;)Lmekanism/common/capabilities/chemical/infuse/InfusionTank;"
         )
     )
     private IInfusionTank astral_mekanism$redirectCreate(
