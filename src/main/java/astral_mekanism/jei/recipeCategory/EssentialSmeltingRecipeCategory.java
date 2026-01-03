@@ -32,10 +32,10 @@ public class EssentialSmeltingRecipeCategory extends BaseGeneralRecipeCategory<S
         super(helper, recipeType, provider, 28, 16, 144, 54);
         this.xpGauge = this
                 .addElement(GuiInfusionGauge.getDummy(GaugeType.STANDARD.with(DataType.OUTPUT), this, 137, 13));
-        this.output = this.addSlot(SlotType.OUTPUT, 64, 17);
-        this.input = this.addSlot(SlotType.OUTPUT, 116, 35);
-        addSlot(SlotType.POWER, 64, 35).with(SlotOverlay.POWER);
-        addSlot(SlotType.POWER, 116, 53).with(SlotOverlay.PLUS);
+        this.output = this.addSlot(SlotType.OUTPUT, 116, 35);
+        this.input = this.addSlot(SlotType.INPUT, 64, 17);
+        addSlot(SlotType.POWER, 64, 53).with(SlotOverlay.POWER);
+        addSlot(SlotType.NORMAL, 116, 53).with(SlotOverlay.PLUS);
         addElement(new GuiVerticalPowerBar(this, FULL_BAR, 164, 15));
         addSimpleProgress(ProgressType.BAR, 86, 38);
     }

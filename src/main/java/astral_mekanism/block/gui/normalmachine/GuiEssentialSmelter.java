@@ -53,14 +53,14 @@ public class GuiEssentialSmelter<BE extends BlockEntityRecipeMachine<SmeltingRec
                         tile.getWarningCheck(RecipeError.INPUT_DOESNT_PRODUCE_OUTPUT))
                 .jeiCategories(MekanismJEIRecipeType.SMELTING);
         addRenderableWidget(new MekanismImageButton(this, 117, 13, 18, 18, 16, 16,
-                new ResourceLocation("minecraft", "textures/entity/experience_orb.png"), this::onPush));
+                new ResourceLocation("minecraft", "textures/item/knowledge_book.png"), this::onPush));
         if (ModList.get().isLoaded("jei")) {
             addRenderableWidget(new MekanismImageButton(
                     this,
-                    100, 53,
+                    90, 53,
                     18, 18,
-                    20, 18,
-                    new ResourceLocation("minecraft", "textures/gui/recipe_book.png"),
+                    16, 16,
+                    new ResourceLocation("minecraft", "textures/item/experience_bottle.png"),
                     GuiEssentialSmelter::connectJEI));
         }
 
