@@ -1,5 +1,6 @@
 package astral_mekanism.jei;
 
+import astral_mekanism.AstralMekanismID;
 import astral_mekanism.recipes.recipe.AstralCraftingRecipe;
 import astral_mekanism.recipes.recipe.FluidFluidToFluidRecipe;
 import astral_mekanism.recipes.recipe.GreenhouseRecipe;
@@ -9,6 +10,8 @@ import mekanism.api.recipes.CombinerRecipe;
 import mekanism.api.recipes.GasToGasRecipe;
 import mekanism.api.recipes.ItemStackToItemStackRecipe;
 import mekanism.client.jei.MekanismJEIRecipeType;
+import mezz.jei.api.recipe.RecipeType;
+import net.minecraft.world.item.crafting.SmeltingRecipe;
 
 public final class AstralMekanismJEIRecipeType {
     public static final MekanismJEIRecipeType<FluidFluidToFluidRecipe> FLUID_INFUSER_RECIPE = new MekanismJEIRecipeType<>(
@@ -25,4 +28,6 @@ public final class AstralMekanismJEIRecipeType {
             AstralMekanismMachines.MEKANICAL_TRANSFORMER, MekanicalTransformRecipe.class);
     public static final MekanismJEIRecipeType<GreenhouseRecipe> GREENHOUSE_RECIPE = new MekanismJEIRecipeType<>(
             AstralMekanismMachines.GREENHOUSE, GreenhouseRecipe.class);
+    public static final RecipeType<SmeltingRecipe> ESSENTIAL_SMELTING = RecipeType.create(AstralMekanismID.MODID,
+            "essential_smelter", SmeltingRecipe.class);
 }

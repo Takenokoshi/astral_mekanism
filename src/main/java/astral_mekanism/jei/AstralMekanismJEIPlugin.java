@@ -1,8 +1,11 @@
 package astral_mekanism.jei;
 
+import org.jetbrains.annotations.Nullable;
+
 import appeng.integration.modules.jei.ChargerCategory;
 import astral_mekanism.AstralMekanismID;
 import astral_mekanism.jei.recipeCategory.AstralCraftingRecipeCategory;
+import astral_mekanism.jei.recipeCategory.EssentialSmeltingRecipeCategory;
 import astral_mekanism.jei.recipeCategory.FluidInfuserRecipeCategory;
 import astral_mekanism.jei.recipeCategory.GreenhouseRecipeCategory;
 import astral_mekanism.jei.recipeCategory.MekanicalInscriberRecipeCategory;
@@ -24,11 +27,14 @@ import mezz.jei.api.recipe.category.IRecipeCategory;
 import mezz.jei.api.registration.IRecipeCatalystRegistration;
 import mezz.jei.api.registration.IRecipeCategoryRegistration;
 import mezz.jei.api.registration.IRecipeRegistration;
+import mezz.jei.api.runtime.IJeiRuntime;
+import net.minecraft.client.Minecraft;
 import net.minecraft.resources.ResourceLocation;
 
 @JeiPlugin
 
 public class AstralMekanismJEIPlugin implements IModPlugin {
+    private static IJeiRuntime runtime;
 
     @Override
     public ResourceLocation getPluginUid() {
@@ -56,6 +62,8 @@ public class AstralMekanismJEIPlugin implements IModPlugin {
                         new GreenhouseRecipeCategory(guiHelper,
                                 AstralMekanismJEIRecipeType.GREENHOUSE_RECIPE,
                                 AstralMekanismMachines.GREENHOUSE),
+                        new EssentialSmeltingRecipeCategory(guiHelper, AstralMekanismJEIRecipeType.ESSENTIAL_SMELTING,
+                                AstralMekanismMachines.ESSENTIAL_SMELTER),
                 });
     }
 
@@ -75,6 +83,8 @@ public class AstralMekanismJEIPlugin implements IModPlugin {
                 AstralMekanismRecipeTypes.MEKANICAL_TRANSFORM);
         RecipeRegistryHelper.register(registry, AstralMekanismJEIRecipeType.GREENHOUSE_RECIPE,
                 AstralMekanismRecipeTypes.GREENHOUSE_RECIPE);
+        registry.addRecipes(AstralMekanismJEIRecipeType.ESSENTIAL_SMELTING, Minecraft.getInstance().level
+                .getRecipeManager().getAllRecipesFor(net.minecraft.world.item.crafting.RecipeType.SMELTING));
     }
 
     @Override
@@ -151,5 +161,16 @@ public class AstralMekanismJEIPlugin implements IModPlugin {
         CatalystRegistryHelper.register(registry, AstralMekanismJEIRecipeType.GREENHOUSE_RECIPE,
                 AstralMekanismMachines.GREENHOUSE,
                 AstralMekanismMachines.ASTRAL_GREENHOUSE);
+        registry.addRecipeCatalysts(AstralMekanismJEIRecipeType.ESSENTIAL_SMELTING,
+                AstralMekanismMachines.ESSENTIAL_SMELTER);
+    }
+
+    @Override
+    public void onRuntimeAvailable(IJeiRuntime jeiRuntime) {
+        runtime = jeiRuntime;
+    }
+
+    public static @Nullable IJeiRuntime getRuntime() {
+        return runtime;
     }
 }

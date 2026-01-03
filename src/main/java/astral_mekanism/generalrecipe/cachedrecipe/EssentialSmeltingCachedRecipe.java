@@ -6,6 +6,7 @@ import org.jetbrains.annotations.Nullable;
 
 import astral_mekanism.recipes.output.ItemInfuseOutput;
 import astral_mekanism.registries.AstralMekanismInfuseTypes;
+import mekanism.api.chemical.infuse.InfusionStack;
 import mekanism.api.recipes.cache.CachedRecipe.OperationTracker;
 import mekanism.api.recipes.ingredients.ItemStackIngredient;
 import mekanism.api.recipes.ingredients.creator.IItemStackIngredientCreator;
@@ -45,9 +46,10 @@ public class EssentialSmeltingCachedRecipe extends GeneralCachedRecipe<SmeltingR
             if (inputStack.isEmpty()) {
                 tracker.mismatchedRecipe();
             } else {
+                long xp = (long) (recipe.getExperience() * 100);
                 recipeInput = inputHandler.getRecipeInput(inputIngredient);
                 recipeOutput = new ItemInfuseOutput(recipe.getResultItem(null),
-                        AstralMekanismInfuseTypes.XP.getStack((long) (recipe.getExperience() * 100)));
+                        xp <= 0 ? InfusionStack.EMPTY : AstralMekanismInfuseTypes.XP.getStack(xp));
                 if (recipeInput.isEmpty() || recipeOutput.itemStack().isEmpty()) {
                     tracker.mismatchedRecipe();
                     return;
