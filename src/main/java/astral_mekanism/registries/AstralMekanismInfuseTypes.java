@@ -2,6 +2,7 @@ package astral_mekanism.registries;
 
 import astral_mekanism.AstralMekanismID;
 import mekanism.api.chemical.infuse.InfuseType;
+import mekanism.api.chemical.infuse.InfuseTypeBuilder;
 import mekanism.common.registration.impl.InfuseTypeDeferredRegister;
 import mekanism.common.registration.impl.InfuseTypeRegistryObject;
 
@@ -17,7 +18,5 @@ public class AstralMekanismInfuseTypes {
     public static final InfuseTypeRegistryObject<InfuseType> NETHER_STAR = INFUSE_TYPES
             .register("nether_star", 0xeef0e4);
     public static final InfuseTypeRegistryObject<InfuseType> XP = INFUSE_TYPES
-            .register("xp", AstralMekanismID.rl("infuse/xp"), 0xFFFF4D
-
-            );
+            .register("xp", () -> new InfuseType(InfuseTypeBuilder.builder(AstralMekanismID.rl("infuse/xp"))));
 }

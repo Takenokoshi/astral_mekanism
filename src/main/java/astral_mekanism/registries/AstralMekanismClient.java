@@ -58,19 +58,34 @@ import astral_mekanism.block.gui.prefab.GuiGasToGasMachine;
 import astral_mekanism.registration.MachineRegistryObject;
 import mekanism.client.ClientRegistrationUtil;
 import mekanism.common.inventory.container.tile.MekanismTileContainer;
+import mekanism.common.registration.impl.FluidRegistryObject;
 import mekanism.common.tile.base.TileEntityMekanism;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.client.gui.screens.inventory.MenuAccess;
+import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.gui.screens.MenuScreens.ScreenConstructor;
 import net.minecraft.core.registries.Registries;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.registries.RegisterEvent;
 
 @Mod.EventBusSubscriber(modid = AstralMekanismID.MODID, value = Dist.CLIENT, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class AstralMekanismClient {
+
+    @SubscribeEvent
+    public static void init(FMLClientSetupEvent event) {
+
+        event.enqueueWork(() -> {
+
+            for (FluidRegistryObject<?, ?, ?, ?, ?> fluidRO : AstralMekanismFluids.FLUIDS.getAllFluids()) {
+                ClientRegistrationUtil.setRenderLayer(RenderType.translucent(), fluidRO);
+            }
+        });
+    }
+
     @SubscribeEvent(priority = EventPriority.LOW)
     public static void registerContiners(RegisterEvent event) {
         event.register(Registries.MENU, helper -> {

@@ -109,7 +109,7 @@ public class AstralMekanismItems {
         }
         EnumMap<IntermediateState, ItemRegistryObject<Item>> netheriteMap = new EnumMap<>(IntermediateState.class);
         for (IntermediateState state : IntermediateState.values()) {
-            String stateType = state == IntermediateState.RAW ? "dirty_dust_" : state.state;
+            String stateType = state == IntermediateState.RAW ? "dirty_dust" : state.state;
             netheriteMap.put(state,
                     state == IntermediateState.CRUSHED ? MekanismItems.NETHERITE_DUST
                             : ITEMS.register(stateType + "_" + OreType.NETHERITE.type));
