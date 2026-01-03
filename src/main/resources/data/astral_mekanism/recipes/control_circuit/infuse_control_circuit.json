@@ -1,0 +1,18 @@
+{
+    "type": "mekanism:combining",
+    "extraInput": {
+        "amount": 16,
+        "ingredient": {
+            "item": "astral_mekanism:enhanced_control_circuit"
+        }
+    },
+    "mainInput": {
+        "amount": 8,
+        "ingredient": {
+            "item": "emextras:infinite_multiversal_control_circuit"
+        }
+    },
+    "output": {
+        "item": "astral_mekanism:infuse_control_circuit"
+    }
+}

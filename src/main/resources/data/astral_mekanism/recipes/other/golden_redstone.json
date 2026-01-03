@@ -1,0 +1,16 @@
+{
+	"type": "mekanism:metallurgic_infusing",
+	"itemInput": {
+		"ingredient": {
+			"item": "minecraft:redstone",
+		"amount": 1
+		}
+	},
+	"chemicalInput": {
+		"infuse_type": "mekanism:gold",
+		"amount": 40
+	},
+	"output": {
+		"item": "astral_mekanism:golden_redstone"
+	}
+}

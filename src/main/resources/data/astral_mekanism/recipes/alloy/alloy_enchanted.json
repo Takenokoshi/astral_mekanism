@@ -1,0 +1,16 @@
+{
+	"type": "mekanism:metallurgic_infusing",
+	"itemInput": {
+		"ingredient": {
+			"item":"astral_mekanism:alloy_elastic",
+		"amount": 1
+		}
+	},
+	"chemicalInput": {
+		"infuse_type": "astral_mekanism:xp",
+		"amount": 200000
+	},
+	"output": {
+		"item": "astral_mekanism:alloy_enchanted"
+	}
+}

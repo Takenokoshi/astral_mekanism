@@ -2,17 +2,17 @@
     "type": "minecraft:crafting_shaped",
     "key": {
         "A": {
-            "item": "astral_mekanism:infuse_control_circuit"
+            "item": "astral_mekanism:resonance_control_circuit"
         },
         "B": {
-            "item": "astral_mekanism:alloy_stardust"
+            "item": "astral_mekanism:alloy_enchanted"
         }
     },
     "pattern": [
 	"BAB"
     ],
     "result": {
-        "item": "astral_mekanism:illusion_control_circuit",
+        "item": "astral_mekanism:enhanced_control_circuit",
         "count": 1
     }
 }

@@ -15,7 +15,8 @@ import net.minecraft.world.Container;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.SmeltingRecipe;
 
-public interface IEssentialEnergizedSmelter<BE extends BlockEntityRecipeMachine<SmeltingRecipe> & IEssentialEnergizedSmelter<BE>> extends
+public interface IEssentialEnergizedSmelter<BE extends BlockEntityRecipeMachine<SmeltingRecipe> & IEssentialEnergizedSmelter<BE>>
+        extends
         IGeneralSingelRecipeLookupHandler<ItemStack, SmeltingRecipe, GeneralSingleItem<Container, SmeltingRecipe>> {
 
     public static final RecipeError NOT_ENOUGH_ITEM_OUTPUT_SPACE = RecipeError.create();
@@ -34,12 +35,12 @@ public interface IEssentialEnergizedSmelter<BE extends BlockEntityRecipeMachine<
 
     public abstract double getProgressScaled();
 
-    public default void receive(ServerPlayer player){
+    public default void receive(ServerPlayer player) {
         IInfusionTank infusionTank = getInfusionTank();
-        if (!infusionTank.isEmpty() && infusionTank.getStack().getRaw() == AstralMekanismInfuseTypes.XP.get()) {
+        if (!infusionTank.isEmpty() && infusionTank.getType() == AstralMekanismInfuseTypes.XP.get()) {
             int give = (int) (Math.min(infusionTank.getStored() / 100, 0x7fffffff));
             player.giveExperiencePoints(give);
-            infusionTank.shrinkStack(give * 100, Action.EXECUTE);
+            infusionTank.shrinkStack(100l * give, Action.EXECUTE);
         }
     };
 }

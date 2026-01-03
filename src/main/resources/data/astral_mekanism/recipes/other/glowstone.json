@@ -2,15 +2,15 @@
 	"type": "mekanism:metallurgic_infusing",
 	"itemInput": {
 		"ingredient": {
-			"item": "astral_mekanism:alloy_infuse",
+			"item": "astral_mekanism:golden_redstone",
 		"amount": 1
 		}
 	},
 	"chemicalInput": {
-		"infuse_type": "astral_mekanism:nether_star",
+		"infuse_type": "astral_mekanism:xp",
 		"amount": 2000
 	},
 	"output": {
-		"item": "astral_mekanism:alloy_stardust"
+		"item": "minecraft:glowstone_dust"
 	}
 }

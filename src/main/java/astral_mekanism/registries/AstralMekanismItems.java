@@ -28,12 +28,22 @@ public class AstralMekanismItems {
             p -> new GlintItem(p.rarity(Rarity.UNCOMMON)));
     public static final ItemRegistryObject<Item> ELASTIC_ALLOY = ITEMS.register("alloy_elastic", Rarity.UNCOMMON);
     public static final ItemRegistryObject<Item> CONVERGENT_ALLOY = ITEMS.register("alloy_convergent", Rarity.RARE);
+    public static final ItemRegistryObject<GlintItem> ENCHANTED_ALLOY = ITEMS.register("alloy_enchanted",
+            p -> new GlintItem(p.rarity(Rarity.RARE)));
+    public static final ItemRegistryObject<GlintItem> INFUSE_ALLOY = ITEMS.register("alloy_infuse",
+            p -> new GlintItem(p.rarity(Rarity.EPIC)));
     public static final ItemRegistryObject<GlintItem> STARDUST_ALLOY = ITEMS.register("alloy_stardust",
             p -> new GlintItem(p.rarity(Rarity.EPIC)));
     public static final ItemRegistryObject<Item> VIBRATION_CONTROL_CIRCUIT = ITEMS
             .register("vibration_control_circuit", Rarity.UNCOMMON);
     public static final ItemRegistryObject<Item> RESONANCE_CONTROL_CIRCUIT = ITEMS
             .register("resonance_control_circuit", Rarity.RARE);
+    public static final ItemRegistryObject<GlintItem> ENHANCED_CONTROL_CIRCUIT = ITEMS.register(
+            "enhanced_control_circuit",
+            p -> new GlintItem(p.rarity(Rarity.EPIC)));
+    public static final ItemRegistryObject<GlintItem> INFUSE_CONTROL_CIRCUIT = ITEMS.register(
+            "infuse_control_circuit",
+            p -> new GlintItem(p.rarity(Rarity.EPIC)));
     public static final ItemRegistryObject<GlintItem> ILLUSION_CONTROL_CIRCUIT = ITEMS.register(
             "illusion_control_circuit",
             p -> new GlintItem(p.rarity(Rarity.EPIC)));
@@ -46,6 +56,7 @@ public class AstralMekanismItems {
     public static final ItemRegistryObject<GlintItemNameColored> CRYSTAL_ANTIMATTER_CHARGED = ITEMS.register(
             "crystal_antimatter_charged",
             GlintItemNameColored.getSup(EnumColor.PURPLE));
+    public static final ItemRegistryObject<Item> GOLDEN_REDSTONE = ITEMS.register("golden_redstone");
     public static final ItemRegistryObject<Item> INSERT_UPGRADE = ITEMS.register("insert_upgrade");
     public static final ItemRegistryObject<ItemSingularityUpgrade> SINGULARITY_UPGRADE = ITEMS
             .register("singularity_upgrade", ItemSingularityUpgrade::new);

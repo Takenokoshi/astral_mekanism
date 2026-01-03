@@ -1,0 +1,25 @@
+{
+    "type": "evolvedmekanism:alloying",
+    "extraInput": {
+        "amount": 8,
+        "ingredient": {
+            "item": "evolvedmekanism:alloy_exoversal"
+        }
+    },
+    "secondExtraInput": {
+        "amount": 8,
+        "ingredient": {
+            "item": "mekanism_extras:alloy_spectrum"
+        }
+    },
+    "mainInput": {
+        "amount": 16,
+        "ingredient": {
+            "item": "astral_mekanism:alloy_enchanted"
+        }
+    },
+    "output": {
+        "item": "astral_mekanism:alloy_infuse",
+        "count": 1
+    }
+}
