@@ -9,7 +9,7 @@ import mekanism.common.tile.machine.TileEntityMetallurgicInfuser;
 @Mixin(value = TileEntityMetallurgicInfuser.class, remap = false)
 public abstract class TileEntityMetallurgicInfuserMixin {
 
-    @ModifyConstant(method = "<init>", constant = @Constant(longValue = 1_000L))
+    @ModifyConstant(method = "<getInitialInfusionTanks>", constant = @Constant(longValue = 1_000L))
     private long astral_mekanism$increaseMaxInfuse(long original) {
         return 1_000_000L;
     }

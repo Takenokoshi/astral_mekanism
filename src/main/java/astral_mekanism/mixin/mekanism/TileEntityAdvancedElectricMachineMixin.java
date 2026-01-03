@@ -9,9 +9,8 @@ import mekanism.common.tile.prefab.TileEntityAdvancedElectricMachine;
 @Mixin(value = TileEntityAdvancedElectricMachine.class, remap = false)
 public abstract class TileEntityAdvancedElectricMachineMixin {
 
-    @ModifyConstant(method = "<init>", constant = @Constant(longValue = 210L))
+    @ModifyConstant(method = "<getInitialGasTanks>", constant = @Constant(longValue = 210L))
     private long astral_mekanism$increaseMaxInfuse(long original) {
         return 1_000_000L;
     }
-
 }
