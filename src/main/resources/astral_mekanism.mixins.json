@@ -14,7 +14,7 @@
 		"mekanism.OperationTrackerMixin",
 		"mekanism.TileComponentEjectorMixin",
 		"mekanism.TileEntityAdvancedElectricMachineMixin",
-		"mekanism.TileEntityMetallurgicInfuserMixin"
+		"mekanism.TileEntityRecipeMachineMixin"
 	],
 	"client": [
 	],
