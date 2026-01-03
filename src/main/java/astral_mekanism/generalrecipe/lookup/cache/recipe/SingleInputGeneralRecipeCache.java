@@ -9,6 +9,7 @@ import java.util.function.Predicate;
 
 import org.jetbrains.annotations.Nullable;
 
+import astral_mekanism.generalrecipe.GeneralRecipeType;
 import astral_mekanism.generalrecipe.lookup.cache.type.IGeneralInputCache;
 import astral_mekanism.generalrecipe.lookup.cache.type.ItemGeneralInputCache;
 import mekanism.api.functions.ConstantPredicates;
@@ -17,7 +18,6 @@ import mekanism.api.recipes.ingredients.ItemStackIngredient;
 import net.minecraft.world.Container;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Recipe;
-import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.level.Level;
 
 public abstract class SingleInputGeneralRecipeCache<INPUT, INGREDIENT extends InputIngredient<INPUT>, C extends Container, RECIPE extends Recipe<C>, CACHE extends IGeneralInputCache<INPUT, INGREDIENT, RECIPE>>
@@ -28,7 +28,7 @@ public abstract class SingleInputGeneralRecipeCache<INPUT, INGREDIENT extends In
     private final CACHE cache;
     private final BiPredicate<INPUT, RECIPE> biPredicate;
 
-    protected SingleInputGeneralRecipeCache(RecipeType<RECIPE> recipeType, CACHE cache,
+    protected SingleInputGeneralRecipeCache(GeneralRecipeType<C,RECIPE,?> recipeType, CACHE cache,
             Function<RECIPE, INGREDIENT> inputExtractor, BiPredicate<INPUT, RECIPE> biPredicate) {
         super(recipeType);
         this.inputExtractor = inputExtractor;
@@ -87,7 +87,7 @@ public abstract class SingleInputGeneralRecipeCache<INPUT, INGREDIENT extends In
     public static class GeneralSingleItem<C extends Container, RECIPE extends Recipe<C>> extends
             SingleInputGeneralRecipeCache<ItemStack, ItemStackIngredient, C, RECIPE, ItemGeneralInputCache<RECIPE>> {
 
-        public GeneralSingleItem(RecipeType<RECIPE> recipeType,
+        public GeneralSingleItem(GeneralRecipeType<C, RECIPE, ?> recipeType,
                 Function<RECIPE, ItemStackIngredient> inputExtractor, BiPredicate<ItemStack, RECIPE> biPredicate) {
             super(recipeType, new ItemGeneralInputCache<>(), inputExtractor, biPredicate);
         }

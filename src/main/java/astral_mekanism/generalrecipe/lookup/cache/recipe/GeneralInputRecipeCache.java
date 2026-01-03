@@ -8,20 +8,20 @@ import java.util.function.Predicate;
 
 import org.jetbrains.annotations.Nullable;
 
+import astral_mekanism.generalrecipe.GeneralRecipeType;
 import astral_mekanism.generalrecipe.lookup.cache.type.IGeneralInputCache;
 import mekanism.api.recipes.ingredients.InputIngredient;
 import mekanism.common.recipe.lookup.cache.IInputRecipeCache;
 import net.minecraft.world.Container;
 import net.minecraft.world.item.crafting.Recipe;
-import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.level.Level;
 
 public abstract class GeneralInputRecipeCache<C extends Container,RECIPE extends Recipe<C>> implements IInputRecipeCache {
 
-    protected final RecipeType<RECIPE> recipeType;
+    protected final GeneralRecipeType<C,RECIPE,?> recipeType;
     protected boolean initialized;
 
-    protected GeneralInputRecipeCache(RecipeType<RECIPE> recipeType) {
+    protected GeneralInputRecipeCache(GeneralRecipeType<C,RECIPE,?> recipeType) {
         this.recipeType = recipeType;
     }
 
@@ -33,7 +33,7 @@ public abstract class GeneralInputRecipeCache<C extends Container,RECIPE extends
     protected void initCacheIfNeeded(@Nullable Level world) {
         if (!initialized) {
             initialized = true;
-            initCache(world.getRecipeManager().getAllRecipesFor(recipeType));
+            initCache(recipeType.getRecipes(world));
         }
     }
 
