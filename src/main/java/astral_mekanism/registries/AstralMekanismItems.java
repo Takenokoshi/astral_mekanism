@@ -1,7 +1,6 @@
 package astral_mekanism.registries;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.EnumMap;
 import java.util.function.Supplier;
 
 import astral_mekanism.AstralMekanismID;
@@ -11,6 +10,7 @@ import astral_mekanism.items.upgrade.ItemSingularityUpgrade;
 import mekanism.api.text.EnumColor;
 import mekanism.common.registration.impl.ItemDeferredRegister;
 import mekanism.common.registration.impl.ItemRegistryObject;
+import mekanism.common.registries.MekanismItems;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Rarity;
 
@@ -85,25 +85,33 @@ public class AstralMekanismItems {
     public static final ItemRegistryObject<Item> SUMMARIZED_FIR_LOGIC_ADAPTOR = ITEMS
             .register("summarized_fir_logic_adapter");
 
-    public static final Map<OreType, ItemRegistryObject<GlintItem>> STARLIGHTS = ((Supplier<Map<OreType, ItemRegistryObject<GlintItem>>>) (() -> {
-        Map<OreType, ItemRegistryObject<GlintItem>> result = new HashMap<>();
+    public static final EnumMap<OreType, ItemRegistryObject<GlintItem>> STARLIGHTS = ((Supplier<EnumMap<OreType, ItemRegistryObject<GlintItem>>>) (() -> {
+        EnumMap<OreType, ItemRegistryObject<GlintItem>> result = new EnumMap<>(OreType.class);
         for (OreType oreType : OreType.values()) {
             result.put(oreType, ITEMS.register("starlight_" + oreType.type, GlintItem::new));
         }
         return result;
     })).get();
 
-    static Map<OreType, Map<IntermediateState, ItemRegistryObject<Item>>> GII() {
-        Map<OreType, Map<IntermediateState, ItemRegistryObject<Item>>> result = new HashMap<>();
+    static EnumMap<OreType, EnumMap<IntermediateState, ItemRegistryObject<Item>>> GII() {
+        EnumMap<OreType, EnumMap<IntermediateState, ItemRegistryObject<Item>>> result = new EnumMap<>(OreType.class);
         for (OreType type : OreType.values()) {
             if (!type.hasMekprocessing) {
-                Map<IntermediateState, ItemRegistryObject<Item>> stateMap = new HashMap<>();
+                EnumMap<IntermediateState, ItemRegistryObject<Item>> stateMap = new EnumMap<>(IntermediateState.class);
                 for (IntermediateState state : IntermediateState.values()) {
                     stateMap.put(state, ITEMS.register(state.state + "_" + type.type));
                 }
                 result.put(type, stateMap);
             }
         }
+        EnumMap<IntermediateState, ItemRegistryObject<Item>> netheriteMap = new EnumMap<>(IntermediateState.class);
+        for (IntermediateState state : IntermediateState.values()) {
+            String stateType = state == IntermediateState.RAW ? "dirty_dust_" : state.state;
+            netheriteMap.put(state,
+                    state == IntermediateState.CRUSHED ? MekanismItems.NETHERITE_DUST
+                            : ITEMS.register(stateType + OreType.NETHERITE.type));
+        }
+        result.put(OreType.NETHERITE, netheriteMap);
         return result;
     }
 
@@ -122,5 +130,5 @@ public class AstralMekanismItems {
         public final String state;
     }
 
-    public static final Map<OreType, Map<IntermediateState, ItemRegistryObject<Item>>> GEM_INTERMEDIATE_ITEMS = GII();
+    public static final EnumMap<OreType, EnumMap<IntermediateState, ItemRegistryObject<Item>>> GEM_INTERMEDIATE_ITEMS = GII();
 }

@@ -1,0 +1,19 @@
+{
+    "type": "mekanism:rotary",
+    "fluidInput": {
+        "amount": 1,
+        "fluid": "astral_mekanism:netherrack"
+    },
+    "fluidOutput": {
+        "amount": 1,
+        "fluid": "astral_mekanism:netherrack"
+    },
+    "gasInput": {
+        "amount": 1,
+        "gas": "astral_mekanism:netherrack"
+    },
+    "gasOutput": {
+        "amount": 1,
+        "gas": "astral_mekanism:netherrack"
+    }
+}

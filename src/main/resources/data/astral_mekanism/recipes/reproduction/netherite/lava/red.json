@@ -1,0 +1,15 @@
+{
+    "type": "astral_mekanism:fluid_infuser",
+    "fluidInputA": {
+        "fluid": "evolvedmekanism:molten_refined_redstone",
+        "amount": 90
+    },
+    "fluidInputB": {
+        "fluid": "minecraft:lava",
+        "amount": 1000
+    },
+    "fluidOutput": {
+        "fluid": "astral_mekanism:red_lava",
+        "amount": 100
+    }
+}

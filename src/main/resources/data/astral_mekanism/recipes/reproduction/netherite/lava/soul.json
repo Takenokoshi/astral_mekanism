@@ -1,0 +1,15 @@
+{
+    "type": "astral_mekanism:fluid_infuser",
+    "fluidInputA": {
+        "fluid": "evolvedmekanism:molten_soul",
+        "amount": 1
+    },
+    "fluidInputB": {
+        "fluid": "minecraft:lava",
+        "amount": 10
+    },
+    "fluidOutput": {
+        "fluid": "astral_mekanism:soul_lava",
+        "amount": 1
+    }
+}

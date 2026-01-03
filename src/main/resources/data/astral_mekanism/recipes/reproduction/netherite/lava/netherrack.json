@@ -1,0 +1,15 @@
+{
+    "type": "astral_mekanism:fluid_infuser",
+    "fluidInputA": {
+        "fluid": "astral_mekanism:netherrack",
+        "amount": 1
+    },
+    "fluidInputB": {
+        "fluid": "minecraft:lava",
+        "amount": 10
+    },
+    "fluidOutput": {
+        "fluid": "astral_mekanism:netherrack_lava",
+        "amount": 1
+    }
+}

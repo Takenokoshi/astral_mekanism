@@ -1,0 +1,15 @@
+{
+  "type": "mekanism:purifying",
+  "chemicalInput": {
+    "amount": 1,
+    "gas": "mekanism:oxygen"
+  },
+  "itemInput": {
+    "ingredient": {
+      "tag": "forge:shards/netherite"
+    }
+  },
+  "output": {
+    "item": "astral_mekanism:clump_netherite"
+  }
+}

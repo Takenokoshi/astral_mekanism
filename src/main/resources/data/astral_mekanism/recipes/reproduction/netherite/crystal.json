@@ -1,0 +1,11 @@
+{
+  "type": "mekanism:crystallizing",
+  "chemicalType": "gas",
+  "input": {
+    "amount": 200,
+    "gas": "astral_mekanism:netherite_ether"
+  },
+  "output": {
+    "item": "astral_mekanism:crystal_netherite"
+  }
+}

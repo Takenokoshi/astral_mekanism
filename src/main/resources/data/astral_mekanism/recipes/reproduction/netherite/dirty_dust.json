@@ -1,0 +1,11 @@
+{
+  "type": "mekanism:crushing",
+  "input": {
+    "ingredient": {
+      "tag": "forge:clumps/netherite"
+    }
+  },
+  "output": {
+    "item": "astral_mekanism:dirty_dust_netherite"
+  }
+}

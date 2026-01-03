@@ -5,6 +5,7 @@ import com.mojang.logging.LogUtils;
 import astral_mekanism.network.AstralMekanismPacketHandler;
 import astral_mekanism.registries.AstralMekanismBlocks;
 import astral_mekanism.registries.AstralMekanismCreativeTab;
+import astral_mekanism.registries.AstralMekanismFluids;
 import astral_mekanism.registries.AstralMekanismGases;
 import astral_mekanism.registries.AstralMekanismInfuseTypes;
 import astral_mekanism.registries.AstralMekanismItems;
@@ -47,7 +48,7 @@ public class AstralMekanism {
         AstralMekanismInfuseTypes.INFUSE_TYPES.register(modEventBus);
         AstralMekanismSlurries.SLURRIES.register(modEventBus);
         AstralMekanismBlocks.BLOCKS.register(modEventBus);
-        //AstralMekanismFluids.FLUIDS.register(modEventBus);
+        AstralMekanismFluids.FLUIDS.register(modEventBus);
         AstralMekanismItems.ITEMS.register(modEventBus);
         AstralMekanismTileEntityTypes.TILE_ENTITY_TYPES.register(modEventBus);
         AstralMekanismRecipeSerializers.RECIPE_SERIALIZERS.register(modEventBus);

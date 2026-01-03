@@ -1,0 +1,27 @@
+{
+    "type": "mekanism:reaction",
+    "duration": 400,
+    "energyRequired": 200,
+    "fluidInput": {
+        "amount": 1000,
+        "fluid": "astral_mekanism:red_lava"
+    },
+    "gasInput": {
+        "amount": 1000,
+        "gas": "mekanism:sodium"
+    },
+    "gasOutput": {
+        "amount": 1000,
+        "gas": "astral_mekanism:netherrack"
+    },
+    "itemInput": {
+        "amount": 1,
+        "ingredient": {
+            "item": "mekanism_extras:enriched_radiance"
+        }
+    },
+    "itemOutput": {
+        "count": 2,
+        "item": "minecraft:blackstone"
+    }
+}

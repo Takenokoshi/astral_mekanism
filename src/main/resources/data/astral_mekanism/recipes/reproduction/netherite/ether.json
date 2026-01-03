@@ -1,0 +1,27 @@
+{
+    "type": "mekanism:reaction",
+    "duration": 400,
+    "energyRequired": 200,
+    "fluidInput": {
+        "amount": 10000,
+        "fluid": "astral_mekanism:mixed_lava"
+    },
+    "gasInput": {
+        "amount": 1000,
+        "gas": "astral_mekanism:astral_ether"
+    },
+    "gasOutput": {
+        "amount": 1000,
+        "gas": "astral_mekanism:netherite_ether"
+    },
+    "itemInput": {
+        "amount": 1,
+        "ingredient": {
+            "tag": "forge:dusts/netherite"
+        }
+    },
+    "itemOutput": {
+        "count": 2,
+        "item": "minecraft:blaze_powder"
+    }
+}

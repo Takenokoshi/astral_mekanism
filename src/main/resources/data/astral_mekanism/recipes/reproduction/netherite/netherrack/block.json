@@ -1,0 +1,12 @@
+{
+    "type": "mekanism:crystallizing",
+    "chemicalType": "gas",
+    "input": {
+        "amount": 100,
+        "gas": "astral_mekanism:netherrack"
+    },
+    "output": {
+        "item": "minecraft:netherrack",
+        "count": 64
+    }
+}
