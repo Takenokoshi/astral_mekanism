@@ -75,7 +75,7 @@
     "itemInputC3": {
         "amount": 1,
         "ingredient": {
-            "item": "mekanism:metallurgic_infuser"
+            "item": "astral_mekanism:essential_metallurgic_infuser"
         }
     },
     "itemInputC4": {

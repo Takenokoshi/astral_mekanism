@@ -8,6 +8,7 @@ import mekanism.client.gui.element.bar.GuiVerticalPowerBar;
 import mekanism.client.gui.element.progress.GuiProgress;
 import mekanism.client.gui.element.progress.ProgressType;
 import mekanism.client.gui.element.tab.GuiEnergyTab;
+import mekanism.client.jei.MekanismJEIRecipeType;
 import mekanism.common.inventory.container.tile.MekanismTileContainer;
 import mekanism.common.inventory.warning.WarningTracker.WarningType;
 import net.minecraft.client.gui.GuiGraphics;
@@ -33,7 +34,8 @@ public class GuiEssentialMetallurgicInfuser extends
                 .warning(WarningType.NOT_ENOUGH_ENERGY, tile.getWarningCheck(RecipeError.NOT_ENOUGH_ENERGY));
         addRenderableWidget(new GuiEnergyTab(this, tile.getEnergyContainer(), tile::getActive));
         addRenderableWidget(
-                new GuiProgress(tile::getScaledProgress, ProgressType.RIGHT, this, 72, 47).jeiCategory(tile))
+                new GuiProgress(tile::getScaledProgress, ProgressType.RIGHT, this, 72, 47))
+                .jeiCategories(MekanismJEIRecipeType.METALLURGIC_INFUSING)
                 .warning(WarningType.INPUT_DOESNT_PRODUCE_OUTPUT,
                         tile.getWarningCheck(RecipeError.INPUT_DOESNT_PRODUCE_OUTPUT));
         addRenderableWidget(new GuiChemicalBar<>(this,

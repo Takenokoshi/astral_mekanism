@@ -44,6 +44,7 @@ import astral_mekanism.block.gui.generator.GuiGasBurningGenerator;
 import astral_mekanism.block.gui.generator.GuiHeatGenerator;
 import astral_mekanism.block.gui.normalmachine.GuiAstralCrafter;
 import astral_mekanism.block.gui.normalmachine.GuiEssentialEnergizedSmelter;
+import astral_mekanism.block.gui.normalmachine.GuiEssentialMetallurgicInfuser;
 import astral_mekanism.block.gui.normalmachine.GuiFluidInfuser;
 import astral_mekanism.block.gui.normalmachine.GuiGreenhouse;
 import astral_mekanism.block.gui.normalmachine.GuiInfuseSynthesizer;
@@ -116,7 +117,10 @@ public class AstralMekanismClient {
                         GuiHeatGenerator::new);
             }
             regScreen(AstralMekanismMachines.ASTRAL_CRAFTER, GuiAstralCrafter::new);
-            regScreen(AstralMekanismMachines.ESSENTIAL_ENERGIZED_SMELTER, GuiEssentialEnergizedSmelter<BEEssentialEnergizedSmelter>::new);
+            regScreen(AstralMekanismMachines.ESSENTIAL_ENERGIZED_SMELTER,
+                    GuiEssentialEnergizedSmelter<BEEssentialEnergizedSmelter>::new);
+            regScreen(AstralMekanismMachines.ESSENTIAL_METALLURGIC_INFUSER,
+                    GuiEssentialMetallurgicInfuser::new);
             regScreen(AstralMekanismMachines.FLUID_INFUSER, GuiFluidInfuser::new);
             regScreen(AstralMekanismMachines.GLOWSTONE_NEUTRON_ACTIVATOR,
                     GuiGasToGasBlock<BEGlowstoneNeutronActivator>::new);
