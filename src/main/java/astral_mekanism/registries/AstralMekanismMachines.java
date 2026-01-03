@@ -37,6 +37,7 @@ import astral_mekanism.block.blockentity.generator.BEGasBurningGenerator;
 import astral_mekanism.block.blockentity.generator.BEHeatGenerator;
 import astral_mekanism.block.blockentity.normalmachine.BEAstralCrafter;
 import astral_mekanism.block.blockentity.normalmachine.BEEssentialEnergizedSmelter;
+import astral_mekanism.block.blockentity.normalmachine.BEEssentialMetallurgicInfuser;
 import astral_mekanism.block.blockentity.normalmachine.BEFluidInfuser;
 import astral_mekanism.block.blockentity.normalmachine.BEGlowstoneNeutronActivator;
 import astral_mekanism.block.blockentity.normalmachine.BEGreenhouse;
@@ -56,6 +57,7 @@ import astral_mekanism.registration.MachineRegistryObject;
 import astral_mekanism.registration.BlockTypeMachine.BlockMachineBuilder;
 import mekanism.api.Upgrade;
 import mekanism.api.math.FloatingLong;
+import mekanism.common.MekanismLang;
 import mekanism.common.block.attribute.AttributeTier;
 import mekanism.common.block.prefab.BlockTile.BlockTileModel;
 import mekanism.common.config.MekanismConfig;
@@ -386,11 +388,21 @@ public class AstralMekanismMachines {
             .registerSimple("essential_energized_smelter",
                     BEEssentialEnergizedSmelter::new,
                     BEEssentialEnergizedSmelter.class,
-                    AstralMekanismLang.ITEM_GROUP,
+                    MekanismLang.DESCRIPTION_ENERGIZED_SMELTER,
                     builder -> builder.withEnergyConfig(
                             MekanismConfig.usage.energizedSmelter,
                             MekanismConfig.storage.energizedSmelter)
                             .withSound(MekanismSounds.ENERGIZED_SMELTER));
+
+    public static final MachineRegistryObject<BEEssentialMetallurgicInfuser, BlockTileModel<BEEssentialMetallurgicInfuser, BlockTypeMachine<BEEssentialMetallurgicInfuser>>, MekanismTileContainer<BEEssentialMetallurgicInfuser>, ItemBlockMachine> ESSENTIAL_METALLURGIC_INFUSER = MACHINES
+            .registerSimple("essential_metallurgic_infuser",
+                    BEEssentialMetallurgicInfuser::new,
+                    BEEssentialMetallurgicInfuser.class,
+                    MekanismLang.DESCRIPTION_METALLURGIC_INFUSER,
+                    builder -> builder.withEnergyConfig(
+                            MekanismConfig.usage.metallurgicInfuser,
+                            MekanismConfig.storage.metallurgicInfuser)
+                            .withSound(MekanismSounds.METALLURGIC_INFUSER));
 
     public static final MachineRegistryObject<BEFluidInfuser, BlockTileModel<BEFluidInfuser, BlockTypeMachine<BEFluidInfuser>>, MekanismTileContainer<BEFluidInfuser>, ItemBlockMachine> FLUID_INFUSER = MACHINES
             .registerSimple("fluid_infuser",

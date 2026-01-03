@@ -12,9 +12,7 @@
 		"mekanism.DataTypeMixin",
 		"mekanism.MekanismRecipeTypeMixin",
 		"mekanism.OperationTrackerMixin",
-		"mekanism.TileComponentEjectorMixin",
-		"mekanism.TileEntityAdvancedElectricMachineMixin",
-		"mekanism.TileEntityRecipeMachineMixin"
+		"mekanism.TileComponentEjectorMixin"
 	],
 	"client": [
 	],

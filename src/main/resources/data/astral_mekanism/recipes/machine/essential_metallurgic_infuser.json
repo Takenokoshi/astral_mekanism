@@ -1,0 +1,26 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "key": {
+        "X": {
+            "item": "mekanism:metallurgic_infuser"
+        },
+        "A": {
+            "item": "astral_mekanism:alloy_elastic"
+        },
+        "C": {
+            "item": "astral_mekanism:vibration_control_circuit"
+        },
+        "I": {
+            "item": "minecraft:bucket"
+        }
+    },
+    "pattern": [
+        "ACA",
+        "IXI",
+        "ACA"
+    ],
+    "result": {
+        "item": "astral_mekanism:essential_metallurgic_infuser",
+        "count": 1
+    }
+}
