@@ -1,16 +1,16 @@
 {
-	"type": "mekanism:metallurgic_infusing",
-	"itemInput": {
-		"ingredient": {
-			"item": "astral_mekanism:alloy_infuse",
-		"amount": 1
-		}
-	},
-	"chemicalInput": {
-		"infuse_type": "astral_mekanism:nether_star",
-		"amount": 2000
-	},
-	"output": {
-		"item": "astral_mekanism:alloy_stardust"
-	}
+    "type": "mekanism:metallurgic_infusing",
+    "itemInput": {
+        "ingredient": {
+            "item": "astral_mekanism:alloy_infuse"
+        },
+        "amount": 1
+    },
+    "chemicalInput": {
+        "infuse_type": "astral_mekanism:nether_star",
+        "amount": 2000
+    },
+    "output": {
+        "item": "astral_mekanism:alloy_stardust"
+    }
 }

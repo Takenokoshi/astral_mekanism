@@ -2,15 +2,15 @@
     "type": "mekanism:metallurgic_infusing",
     "itemInput": {
         "ingredient": {
-            "item": "astral_mekanism:alloy_convergent"
+            "item": "minecraft:glass_bottle"
         },
         "amount": 1
     },
     "chemicalInput": {
         "infuse_type": "astral_mekanism:xp",
-        "amount": 200000
+        "amount": 8000
     },
     "output": {
-        "item": "astral_mekanism:alloy_enchanted"
+        "item": "minecraft:experience_bottle"
     }
 }

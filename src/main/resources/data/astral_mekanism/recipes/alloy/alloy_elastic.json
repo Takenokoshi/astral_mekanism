@@ -2,9 +2,9 @@
 	"type": "mekanism:metallurgic_infusing",
 	"itemInput": {
 		"ingredient": {
-			"tag": "forge:ingots/tin",
+			"tag": "forge:ingots/tin"
+		},
 		"amount": 1
-		}
 	},
 	"chemicalInput": {
 		"infuse_type": "astral_mekanism:utility_infuse",
