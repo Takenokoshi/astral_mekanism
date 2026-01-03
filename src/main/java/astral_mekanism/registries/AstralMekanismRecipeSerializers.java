@@ -2,7 +2,6 @@ package astral_mekanism.registries;
 
 import astral_mekanism.AstralMekanismID;
 import astral_mekanism.recipes.irecipe.AstralCraftingIRecipe;
-import astral_mekanism.recipes.irecipe.EssentialSmeltingIRecipe;
 import astral_mekanism.recipes.irecipe.FluidInfuserIRecipe;
 import astral_mekanism.recipes.irecipe.GreenhouseIRecipe;
 import astral_mekanism.recipes.irecipe.MekanicalChagerIRecipe;
@@ -12,12 +11,10 @@ import astral_mekanism.recipes.irecipe.MekanicalTransformIRecipe;
 import astral_mekanism.recipes.recipe.AstralCraftingRecipe;
 import astral_mekanism.recipes.recipe.FluidFluidToFluidRecipe;
 import astral_mekanism.recipes.recipe.GreenhouseRecipe;
-import astral_mekanism.recipes.recipe.ItemToItemInfuseRecipe;
 import astral_mekanism.recipes.recipe.MekanicalTransformRecipe;
 import astral_mekanism.recipes.serializer.AstralCraftingRecipeSerializer;
 import astral_mekanism.recipes.serializer.FluidFluidToFluidRecipeSerializer;
 import astral_mekanism.recipes.serializer.GreenHouseRecipeSerializer;
-import astral_mekanism.recipes.serializer.ItemToItemInfuseRecipeSerializer;
 import astral_mekanism.recipes.serializer.MekanicalTransformRecipeSerializer;
 import mekanism.api.recipes.CombinerRecipe;
 import mekanism.api.recipes.GasToGasRecipe;
@@ -60,8 +57,4 @@ public class AstralMekanismRecipeSerializers {
     public static final RecipeSerializerRegistryObject<MekanicalTransformRecipe> MEKANICAL_TRANSFORM = RECIPE_SERIALIZERS
             .register("mekanical_transform",
                     () -> new MekanicalTransformRecipeSerializer<>(MekanicalTransformIRecipe::new));
-
-    public static final RecipeSerializerRegistryObject<ItemToItemInfuseRecipe> ESSENTIAL_SMELTING = RECIPE_SERIALIZERS
-            .register("essential_smelting",
-                    () -> new ItemToItemInfuseRecipeSerializer<>(EssentialSmeltingIRecipe::new));
 }

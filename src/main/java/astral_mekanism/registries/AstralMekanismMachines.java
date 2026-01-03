@@ -36,6 +36,7 @@ import astral_mekanism.block.blockentity.generator.AstralMekGeneratorTier;
 import astral_mekanism.block.blockentity.generator.BEGasBurningGenerator;
 import astral_mekanism.block.blockentity.generator.BEHeatGenerator;
 import astral_mekanism.block.blockentity.normalmachine.BEAstralCrafter;
+import astral_mekanism.block.blockentity.normalmachine.BEEssentialSmelter;
 import astral_mekanism.block.blockentity.normalmachine.BEFluidInfuser;
 import astral_mekanism.block.blockentity.normalmachine.BEGlowstoneNeutronActivator;
 import astral_mekanism.block.blockentity.normalmachine.BEGreenhouse;
@@ -377,6 +378,15 @@ public class AstralMekanismMachines {
                     BEAstralCrafter.class,
                     ContainerAstralCrafter::new,
                     AstralMekanismLang.DESCRIPTION_ASTRAL_CRAFTER,
+                    builder -> builder.withEnergyConfig(
+                            () -> FloatingLong.create(400 * AstralMekanismConfig.energyRate),
+                            () -> FloatingLong.create(10000000 * AstralMekanismConfig.energyRate)));
+
+    public static final MachineRegistryObject<BEEssentialSmelter, BlockTileModel<BEEssentialSmelter, BlockTypeMachine<BEEssentialSmelter>>, MekanismTileContainer<BEEssentialSmelter>, ItemBlockMachine> ESSENTIAL_SMELTER = MACHINES
+            .registerSimple("essential_smelter",
+                    BEEssentialSmelter::new,
+                    BEEssentialSmelter.class,
+                    AstralMekanismLang.ITEM_GROUP,
                     builder -> builder.withEnergyConfig(
                             () -> FloatingLong.create(400 * AstralMekanismConfig.energyRate),
                             () -> FloatingLong.create(10000000 * AstralMekanismConfig.energyRate)));

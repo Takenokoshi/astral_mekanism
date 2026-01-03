@@ -12,7 +12,6 @@ import astral_mekanism.recipes.inputRecipeCache.AMInputRecipeCache.QuadItem;
 import astral_mekanism.recipes.recipe.AstralCraftingRecipe;
 import astral_mekanism.recipes.recipe.FluidFluidToFluidRecipe;
 import astral_mekanism.recipes.recipe.GreenhouseRecipe;
-import astral_mekanism.recipes.recipe.ItemToItemInfuseRecipe;
 import astral_mekanism.recipes.recipe.MekanicalTransformRecipe;
 import mekanism.api.chemical.gas.Gas;
 import mekanism.api.chemical.gas.GasStack;
@@ -79,7 +78,4 @@ public class AstralMekanismRecipeTypes {
                     MekanicalTransformRecipe::getInputItemB,
                     MekanicalTransformRecipe::getInputItemC,
                     MekanicalTransformRecipe::getInputItemD));
-
-    public static final RecipeTypeRegistryObject<ItemToItemInfuseRecipe, SingleItem<ItemToItemInfuseRecipe>> ESSENTIAL_SMELTING = register(
-            "essential_smelting", rt -> new SingleItem<>(rt, ItemToItemInfuseRecipe::getInput));
 }

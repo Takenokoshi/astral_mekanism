@@ -1,4 +1,4 @@
-package astral_mekanism.block.blockentity.recipemachine;
+package astral_mekanism.generalrecipe.cachedrecipe;
 
 import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
 import java.util.Collections;
@@ -103,8 +103,6 @@ public abstract class GeneralCachedRecipe<RECIPE extends Recipe<?>> {
     }
 
     private void updateErrors(Set<RecipeError> errors) {
-        // Validate the errors actually changed as they potentially are just the same
-        // ones we found last go around
         if (!this.errors.equals(errors)) {
             this.errors = errors;
             onErrorsChange.accept(errors);
@@ -181,12 +179,7 @@ public abstract class GeneralCachedRecipe<RECIPE extends Recipe<?>> {
     }
 
     protected void useEnergy(int operations) {
-        FloatingLong energy = perTickEnergy.get();
-        if (operations == 1) {
-            useEnergy.accept(energy);
-        } else {
-            useEnergy.accept(energy.multiply(operations));
-        }
+        useEnergy.accept(perTickEnergy.get().multiply(operations));
     }
 
     protected void calculateOperationsThisTick(OperationTracker tracker) {

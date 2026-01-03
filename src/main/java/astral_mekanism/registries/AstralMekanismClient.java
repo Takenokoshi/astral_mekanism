@@ -17,6 +17,7 @@ import astral_mekanism.block.blockentity.astralmachine.electric.BEAstralEnrichme
 import astral_mekanism.block.blockentity.astralmachine.electric.BEAstralMekanicalCharger;
 import astral_mekanism.block.blockentity.compact.BECompactSPS;
 import astral_mekanism.block.blockentity.generator.AstralMekGeneratorTier;
+import astral_mekanism.block.blockentity.normalmachine.BEEssentialSmelter;
 import astral_mekanism.block.blockentity.normalmachine.BEGlowstoneNeutronActivator;
 import astral_mekanism.block.blockentity.normalmachine.BEGreenhouse;
 import astral_mekanism.block.blockentity.normalmachine.BEMekanicalCharger;
@@ -42,6 +43,7 @@ import astral_mekanism.block.gui.compact.GuiCompactTEP;
 import astral_mekanism.block.gui.generator.GuiGasBurningGenerator;
 import astral_mekanism.block.gui.generator.GuiHeatGenerator;
 import astral_mekanism.block.gui.normalmachine.GuiAstralCrafter;
+import astral_mekanism.block.gui.normalmachine.GuiEssentialSmelter;
 import astral_mekanism.block.gui.normalmachine.GuiFluidInfuser;
 import astral_mekanism.block.gui.normalmachine.GuiGreenhouse;
 import astral_mekanism.block.gui.normalmachine.GuiInfuseSynthesizer;
@@ -114,6 +116,7 @@ public class AstralMekanismClient {
                         GuiHeatGenerator::new);
             }
             regScreen(AstralMekanismMachines.ASTRAL_CRAFTER, GuiAstralCrafter::new);
+            regScreen(AstralMekanismMachines.ESSENTIAL_SMELTER, GuiEssentialSmelter<BEEssentialSmelter>::new);
             regScreen(AstralMekanismMachines.FLUID_INFUSER, GuiFluidInfuser::new);
             regScreen(AstralMekanismMachines.GLOWSTONE_NEUTRON_ACTIVATOR,
                     GuiGasToGasBlock<BEGlowstoneNeutronActivator>::new);

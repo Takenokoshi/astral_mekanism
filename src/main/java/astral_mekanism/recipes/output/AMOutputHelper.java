@@ -7,6 +7,7 @@ import mekanism.api.AutomationType;
 import mekanism.api.annotations.NothingNullByDefault;
 import mekanism.api.chemical.ChemicalStack;
 import mekanism.api.chemical.IChemicalTank;
+import mekanism.api.chemical.infuse.IInfusionTank;
 import mekanism.api.chemical.merged.BoxedChemicalStack;
 import mekanism.api.chemical.merged.MergedChemicalTank;
 import mekanism.api.fluid.IExtendedFluidTank;
@@ -114,6 +115,26 @@ public class AMOutputHelper {
                     IChemicalTank<?, ?> tank, STACK stack) {
                 AMOutputHelper.calculateOperationsCanSupport(tracker, notEnoughSpaceError,
                         (IChemicalTank<?, STACK>) tank, stack);
+            }
+
+        };
+    }
+
+    public static IOutputHandler<ItemInfuseOutput> getOutputHandler(IInventorySlot slot, RecipeError notEnoughItemSpace,
+            IInfusionTank tank, RecipeError notEnoughInfusionSpace) {
+        return new IOutputHandler<ItemInfuseOutput>() {
+
+            @Override
+            public void handleOutput(ItemInfuseOutput toOutput, int operations) {
+                AMOutputHelper.handleOutput(slot, toOutput.itemStack(), operations);
+                AMOutputHelper.handleOutput(tank, toOutput.infusionStack(), operations);
+            }
+
+            @Override
+            public void calculateOperationsCanSupport(OperationTracker tracker, ItemInfuseOutput toOutput) {
+                AMOutputHelper.calculateOperationsCanSupport(tracker, notEnoughInfusionSpace, tank,
+                        toOutput.infusionStack());
+                AMOutputHelper.calculateOperationsCanSupport(tracker, notEnoughItemSpace, slot, toOutput.itemStack());
             }
 
         };

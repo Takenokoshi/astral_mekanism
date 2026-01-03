@@ -1,4 +1,4 @@
-package astral_mekanism.block.blockentity.recipemachine;
+package astral_mekanism.generalrecipe.lookup.handler;
 
 import mekanism.api.IContentsListener;
 import net.minecraft.world.entity.Entity;
@@ -7,6 +7,9 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+
+import astral_mekanism.generalrecipe.IGeneralRecipeTypeProvider;
+import astral_mekanism.generalrecipe.cachedrecipe.GeneralCachedRecipe;
 
 public interface IGeneralRecipeLookUpHandler<RECIPE extends Recipe<?>> extends IContentsListener {
 
@@ -31,4 +34,6 @@ public interface IGeneralRecipeLookUpHandler<RECIPE extends Recipe<?>> extends I
     }
     default void clearRecipeErrors(int cacheIndex) {
     }
+    @NotNull
+    IGeneralRecipeTypeProvider<?, RECIPE, ?> getRecipeType();
 }
