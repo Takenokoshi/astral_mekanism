@@ -2,7 +2,7 @@
 	"type": "mekanism:metallurgic_infusing",
 	"itemInput": {
 		"ingredient": {
-			"item":"astral_mekanism:alloy_elastic",
+			"item":"astral_mekanism:alloy_convergent",
 		"amount": 1
 		}
 	},
