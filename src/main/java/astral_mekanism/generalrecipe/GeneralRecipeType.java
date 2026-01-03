@@ -7,11 +7,11 @@ import java.util.function.Function;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import astral_mekanism.AstralMekanism;
 import astral_mekanism.generalrecipe.lookup.cache.recipe.SingleInputGeneralRecipeCache.GeneralSingleItem;
 import mekanism.api.recipes.ingredients.creator.IngredientCreatorAccess;
 import mekanism.api.recipes.ingredients.ItemStackIngredient;
 import mekanism.client.MekanismClient;
-import mekanism.common.Mekanism;
 import mekanism.common.recipe.lookup.cache.IInputRecipeCache;
 import net.minecraft.core.RegistryAccess;
 import net.minecraft.resources.ResourceLocation;
@@ -37,11 +37,13 @@ public class GeneralRecipeType<C extends Container, RECIPE extends Recipe<C>, IN
                             .anyMatch(ingredient -> ingredient.test(stack))));
 
     private List<RECIPE> cachedRecipes = Collections.emptyList();
+    private final RecipeType<RECIPE> recipeType;
     private final ResourceLocation registryName;
     private final INPUT_CACHE inputCache;
 
     public GeneralRecipeType(RecipeType<RECIPE> recipeType,
             Function<GeneralRecipeType<C, RECIPE, INPUT_CACHE>, INPUT_CACHE> function) {
+        this.recipeType = recipeType;
         this.registryName = new ResourceLocation(recipeType.toString());
         this.inputCache = function.apply(this);
     }
@@ -94,7 +96,7 @@ public class GeneralRecipeType<C extends Container, RECIPE extends Recipe<C>, IN
     }
 
     private @NotNull List<RECIPE> getRecipesUncached(RecipeManager recipeManager, RegistryAccess registryAccess) {
-        List<RECIPE> recipes = recipeManager.getAllRecipesFor(this);
+        List<RECIPE> recipes = recipeManager.getAllRecipesFor(recipeType);
         return recipes;
     }
 
@@ -104,7 +106,7 @@ public class GeneralRecipeType<C extends Container, RECIPE extends Recipe<C>, IN
             if (!recipe.isIncomplete()) {
                 continue;
             }
-            Mekanism.logger.error("Incomplete recipe detected: {}", recipe.getId());
+            AstralMekanism.LOGGER.error("Incomplete recipe detected: {}", recipe.getId());
             incomplete = true;
         }
         return incomplete;
