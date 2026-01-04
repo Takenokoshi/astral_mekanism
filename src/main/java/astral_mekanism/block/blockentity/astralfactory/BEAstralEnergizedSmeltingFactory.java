@@ -107,6 +107,8 @@ public class BEAstralEnergizedSmeltingFactory
     @Override
     protected InventorySlotHelper addSlots(InventorySlotHelper builder, IContentsListener listener,
             IContentsListener updateSortingListener) {
+        inputSlots = new InputInventorySlot[tier.processes];
+        outputSlots = new OutputInventorySlot[tier.processes];
         for (int i = 0; i < tier.processes; i++) {
             int x = FactoryGuiHelper.getXofOneLine(i, tier, getWidthPerProcess(), getSideSpaceWidth());
             int y = FactoryGuiHelper.getYofOneLine(i, tier, getHeightPerProcess());
