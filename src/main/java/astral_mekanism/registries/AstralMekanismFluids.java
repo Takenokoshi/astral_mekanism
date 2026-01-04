@@ -16,7 +16,7 @@ public class AstralMekanismFluids {
     public static final FluidRegistryObject<MekanismFluidType, Source, Flowing, LiquidBlock, BucketItem> RED_LAVA = FLUIDS
             .register("red_lava", renderProperties -> renderProperties.texture(
                     new ResourceLocation("block/lava_still"),
-                    new ResourceLocation("block/lava_flow")));
+                    new ResourceLocation("block/lava_flow")).tint(0x80800000));
     public static final FluidRegistryObject<MekanismFluidType, Source, Flowing, LiquidBlock, BucketItem> NETHERRACK = FLUIDS
             .register("netherrack", renderProperties -> renderProperties.texture(
                     new ResourceLocation("block/netherrack"),
@@ -25,15 +25,15 @@ public class AstralMekanismFluids {
     public static final FluidRegistryObject<MekanismFluidType, Source, Flowing, LiquidBlock, BucketItem> NETHERRACK_LAVA = FLUIDS
             .register("netherrack_lava", renderProperties -> renderProperties.texture(
                     new ResourceLocation("block/lava_still"),
-                    new ResourceLocation("block/lava_flow")));
+                    new ResourceLocation("block/lava_flow")).tint(0x80700000));
 
     public static final FluidRegistryObject<MekanismFluidType, Source, Flowing, LiquidBlock, BucketItem> SOUL_LAVA = FLUIDS
             .register("soul_lava", renderProperties -> renderProperties.texture(
                     new ResourceLocation("block/lava_still"),
-                    new ResourceLocation("block/lava_flow")));
+                    new ResourceLocation("block/lava_flow")).tint(0x80004060));
 
     public static final FluidRegistryObject<MekanismFluidType, Source, Flowing, LiquidBlock, BucketItem> MIXED_LAVA = FLUIDS
             .register("mixed_lava", renderProperties -> renderProperties.texture(
                     new ResourceLocation("block/lava_still"),
-                    new ResourceLocation("block/lava_flow")));
+                    new ResourceLocation("block/lava_flow")).tint(0x80804060));
 }

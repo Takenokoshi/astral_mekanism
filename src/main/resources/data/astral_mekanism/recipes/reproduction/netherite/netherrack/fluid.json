@@ -1,0 +1,13 @@
+{
+    "type": "evolvedmekanism:melting",
+    "input": {
+        "ingredient": {
+            "item": "minecraft:netherrack"
+        },
+        "amount": 64
+    },
+    "output": {
+        "fluid": "astral_mekanism:netherrack",
+        "amount": 100
+    }
+}

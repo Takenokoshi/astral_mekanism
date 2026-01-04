@@ -2,9 +2,13 @@ package astral_mekanism.registries;
 
 import java.util.EnumMap;
 import java.util.EnumSet;
+import java.util.function.Function;
+import java.util.function.UnaryOperator;
+
 import astral_mekanism.AstralMekanismConfig;
 import astral_mekanism.AstralMekanismID;
 import astral_mekanism.AstralMekanismLang;
+import astral_mekanism.block.blockentity.astralfactory.BEAstralEnergizedSmeltingFactory;
 import astral_mekanism.block.blockentity.astralmachine.BEAstralChemicalInfuser;
 import astral_mekanism.block.blockentity.astralmachine.BEAstralChemicalOxidizer;
 import astral_mekanism.block.blockentity.astralmachine.BEAstralChemicalWasher;
@@ -29,6 +33,8 @@ import astral_mekanism.block.blockentity.astralmachine.advanced.BEAstralOsmiumCo
 import astral_mekanism.block.blockentity.astralmachine.advanced.BEAstralPurificationChamber;
 import astral_mekanism.block.blockentity.astralmachine.electric.BEAstralCrusher;
 import astral_mekanism.block.blockentity.astralmachine.electric.BEAstralEnrichmentChamber;
+import astral_mekanism.block.blockentity.base.AstralMekanismFactoryTier;
+import astral_mekanism.block.blockentity.base.BlockEntityRecipeFactory;
 import astral_mekanism.block.blockentity.compact.BECompactFIR;
 import astral_mekanism.block.blockentity.compact.BECompactSPS;
 import astral_mekanism.block.blockentity.compact.BECompactTEP;
@@ -47,6 +53,7 @@ import astral_mekanism.block.blockentity.normalmachine.BEMekanicalInscriber;
 import astral_mekanism.block.blockentity.normalmachine.BEMekanicalTransformer;
 import astral_mekanism.block.blockentity.other.BEItemSortableStorage;
 import astral_mekanism.block.blockentity.other.BEUniversalStorage;
+import astral_mekanism.block.container.factory.ContainerAstralMekanismFactory;
 import astral_mekanism.block.container.normal_machine.ContainerAstralCrafter;
 import astral_mekanism.block.container.other.ContainerItemSortableStorage;
 import astral_mekanism.block.container.prefab.ContainerAbstractStorage;
@@ -55,8 +62,10 @@ import astral_mekanism.registration.BlockTypeMachine;
 import astral_mekanism.registration.MachineDeferredRegister;
 import astral_mekanism.registration.MachineRegistryObject;
 import astral_mekanism.registration.BlockTypeMachine.BlockMachineBuilder;
+import astral_mekanism.registration.RegistrationInterfaces.BlockEntityConstructor;
 import mekanism.api.Upgrade;
 import mekanism.api.math.FloatingLong;
+import mekanism.api.text.ILangEntry;
 import mekanism.common.MekanismLang;
 import mekanism.common.block.attribute.AttributeTier;
 import mekanism.common.block.prefab.BlockTile.BlockTileModel;
@@ -69,6 +78,33 @@ import mekanism.generators.common.registries.GeneratorsSounds;
 
 public class AstralMekanismMachines {
     public static final MachineDeferredRegister MACHINES = new MachineDeferredRegister(AstralMekanismID.MODID);
+
+    private static <BE extends BlockEntityRecipeFactory<?, BE>> EnumMap<AstralMekanismFactoryTier, MachineRegistryObject<BE, BlockTileModel<BE, BlockTypeMachine<BE>>, ContainerAstralMekanismFactory<BE>, ItemBlockMachine>> registerFactories(
+            Function<AstralMekanismFactoryTier, String> nameBuilder,
+            BlockEntityConstructor<BE, BlockTypeMachine<BE>, BlockTileModel<BE, BlockTypeMachine<BE>>> constructor,
+            Class<BE> beClass,
+            ILangEntry langEntry,
+            UnaryOperator<BlockMachineBuilder<BlockTypeMachine<BE>, BE>> operator) {
+        EnumMap<AstralMekanismFactoryTier, MachineRegistryObject<BE, BlockTileModel<BE, BlockTypeMachine<BE>>, ContainerAstralMekanismFactory<BE>, ItemBlockMachine>> result = new EnumMap<>(
+                AstralMekanismFactoryTier.class);
+        for (AstralMekanismFactoryTier tier : AstralMekanismFactoryTier.values()) {
+            MACHINES.registerDefaultBlockItem(nameBuilder.apply(tier),
+                    constructor, beClass, ContainerAstralMekanismFactory<BE>::new, langEntry,
+                    builder -> operator.apply(builder.with(new AttributeTier<>(tier))));
+        }
+        return result;
+    }
+
+    public static final EnumMap<AstralMekanismFactoryTier, MachineRegistryObject<BEAstralEnergizedSmeltingFactory, BlockTileModel<BEAstralEnergizedSmeltingFactory, BlockTypeMachine<BEAstralEnergizedSmeltingFactory>>, ContainerAstralMekanismFactory<BEAstralEnergizedSmeltingFactory>, ItemBlockMachine>> ASTRAL_ENERGIZED_SMELTING_FACTRIES = registerFactories(
+            t -> t.nameForAstral + "_astral_energized_smelting_factory",
+            BEAstralEnergizedSmeltingFactory::new,
+            BEAstralEnergizedSmeltingFactory.class,
+            AstralMekanismLang.DESCRIPTION_ASTRAL_MACHINE,
+            builder -> builder.withEnergyConfig(
+                    () -> FloatingLong.create(20000 * AstralMekanismConfig.energyRate),
+                    () -> FloatingLong.MAX_VALUE)
+                    .changeAttributeUpgrade(EnumSet.of(Upgrade.MUFFLING, Upgrade.ENERGY))
+                    .withSound(MekanismSounds.ENERGIZED_SMELTER));
 
     public static final MachineRegistryObject<BEAstralChemicalInjectionChamber, BlockTileModel<BEAstralChemicalInjectionChamber, BlockTypeMachine<BEAstralChemicalInjectionChamber>>, MekanismTileContainer<BEAstralChemicalInjectionChamber>, ItemBlockMachine> ASTRAL_CHEMICAL_INJECTION_CHAMBER = MACHINES
             .registerSimple("astral_chemical_injection_chamber",

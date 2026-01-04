@@ -15,5 +15,6 @@ public class AstralMekanismCreativeTab {
                 CreativeTabDeferredRegister.addToDisplay(AstralMekanismMachines.MACHINES.blockRegister, output);
                 CreativeTabDeferredRegister.addToDisplay(AstralMekanismItems.ITEMS, output);
                 CreativeTabDeferredRegister.addToDisplay(AstralMekanismBlocks.BLOCKS, output);
+                CreativeTabDeferredRegister.addToDisplay(AstralMekanismFluids.FLUIDS, output);
             }));
 }

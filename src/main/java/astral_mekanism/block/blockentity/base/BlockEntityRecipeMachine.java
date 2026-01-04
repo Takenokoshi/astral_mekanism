@@ -1,4 +1,4 @@
-package astral_mekanism.block.blockentity.prefab;
+package astral_mekanism.block.blockentity.base;
 
 import java.util.Arrays;
 import java.util.List;
@@ -69,10 +69,6 @@ public abstract class BlockEntityRecipeMachine<RECIPE extends Recipe<?>> extends
     }
 
     protected IContentsListener getRecipeCacheSaveOnlyListener() {
-        // If we don't support comparators we can just skip having a special one that
-        // only marks for save as our
-        // setChanged won't actually do anything so there is no reason to bother
-        // creating a save only listener
         if (supportsComparator()) {
             if (recipeCacheSaveOnlyListener == null) {
                 recipeCacheSaveOnlyListener = () -> {

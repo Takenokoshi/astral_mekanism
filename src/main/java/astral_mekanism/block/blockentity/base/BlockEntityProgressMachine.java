@@ -1,4 +1,4 @@
-package astral_mekanism.block.blockentity.prefab;
+package astral_mekanism.block.blockentity.base;
 
 import java.util.List;
 

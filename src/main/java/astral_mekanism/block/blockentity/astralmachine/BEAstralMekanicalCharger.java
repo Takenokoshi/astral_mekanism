@@ -6,8 +6,8 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import appeng.recipes.handlers.ChargerRecipe;
+import astral_mekanism.block.blockentity.base.BlockEntityRecipeMachine;
 import astral_mekanism.block.blockentity.interf.IEnergizedMachine;
-import astral_mekanism.block.blockentity.prefab.BlockEntityRecipeMachine;
 import astral_mekanism.generalrecipe.GeneralRecipeType;
 import astral_mekanism.generalrecipe.IGeneralRecipeTypeProvider;
 import astral_mekanism.generalrecipe.cachedrecipe.GeneralCachedRecipe;

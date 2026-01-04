@@ -6,8 +6,8 @@ import org.jetbrains.annotations.NotNull;
 
 import appeng.integration.modules.jei.ChargerCategory;
 import appeng.recipes.handlers.ChargerRecipe;
+import astral_mekanism.block.blockentity.base.BlockEntityRecipeMachine;
 import astral_mekanism.block.blockentity.interf.IEnergizedMachine;
-import astral_mekanism.block.blockentity.prefab.BlockEntityRecipeMachine;
 import astral_mekanism.jei.AstralMekanismJEIPlugin;
 import mekanism.api.recipes.cache.CachedRecipe.OperationTracker.RecipeError;
 import mekanism.client.gui.GuiConfigurableTile;

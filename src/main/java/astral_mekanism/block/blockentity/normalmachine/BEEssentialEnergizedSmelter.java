@@ -3,9 +3,9 @@ package astral_mekanism.block.blockentity.normalmachine;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import astral_mekanism.block.blockentity.base.BlockEntityProgressMachine;
 import astral_mekanism.block.blockentity.elements.slot.DrainInfusionSlot;
 import astral_mekanism.block.blockentity.interf.IEssentialEnergizedSmelter;
-import astral_mekanism.block.blockentity.prefab.BlockEntityProgressMachine;
 import astral_mekanism.generalrecipe.GeneralRecipeType;
 import astral_mekanism.generalrecipe.IGeneralRecipeTypeProvider;
 import astral_mekanism.generalrecipe.cachedrecipe.EssentialSmeltingCachedRecipe;

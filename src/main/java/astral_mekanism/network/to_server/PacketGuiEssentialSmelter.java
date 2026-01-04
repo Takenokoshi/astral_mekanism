@@ -1,5 +1,6 @@
 package astral_mekanism.network.to_server;
 
+import astral_mekanism.block.blockentity.interf.IEnergizedSmeltingFactory;
 import astral_mekanism.block.blockentity.interf.IEssentialEnergizedSmelter;
 import mekanism.common.network.IMekanismPacket;
 import mekanism.common.util.WorldUtils;
@@ -23,6 +24,8 @@ public class PacketGuiEssentialSmelter implements IMekanismPacket {
             return;
         }
         if (WorldUtils.getTileEntity(player.level(), pos) instanceof IEssentialEnergizedSmelter smelter) {
+            smelter.receive(context.getSender());
+        } else if (WorldUtils.getTileEntity(player.level(), pos) instanceof IEnergizedSmeltingFactory smelter) {
             smelter.receive(context.getSender());
         }
     }

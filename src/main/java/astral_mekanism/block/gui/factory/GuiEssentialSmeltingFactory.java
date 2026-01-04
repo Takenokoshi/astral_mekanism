@@ -1,14 +1,14 @@
-package astral_mekanism.block.gui.normalmachine;
-
-import java.util.List;
+package astral_mekanism.block.gui.factory;
 
 import org.jetbrains.annotations.NotNull;
 
 import astral_mekanism.AstralMekanism;
-import astral_mekanism.block.blockentity.base.BlockEntityRecipeMachine;
+import astral_mekanism.block.blockentity.base.BlockEntityRecipeFactory;
+import astral_mekanism.block.blockentity.base.FactoryGuiHelper;
+import astral_mekanism.block.blockentity.interf.IEnergizedSmeltingFactory;
 import astral_mekanism.block.blockentity.interf.IEssentialEnergizedSmelter;
-import astral_mekanism.jei.AstralMekanismJEIPlugin;
-import astral_mekanism.jei.AstralMekanismJEIRecipeType;
+import astral_mekanism.block.container.factory.ContainerAstralMekanismFactory;
+import astral_mekanism.block.gui.normalmachine.GuiEssentialEnergizedSmelter;
 import astral_mekanism.network.to_server.PacketGuiEssentialSmelter;
 import mekanism.api.recipes.cache.CachedRecipe.OperationTracker.RecipeError;
 import mekanism.client.gui.GuiConfigurableTile;
@@ -20,9 +20,7 @@ import mekanism.client.gui.element.progress.GuiProgress;
 import mekanism.client.gui.element.progress.ProgressType;
 import mekanism.client.gui.element.tab.GuiEnergyTab;
 import mekanism.client.jei.MekanismJEIRecipeType;
-import mekanism.common.inventory.container.tile.MekanismTileContainer;
 import mekanism.common.inventory.warning.WarningTracker.WarningType;
-import mezz.jei.api.runtime.IJeiRuntime;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
@@ -30,34 +28,43 @@ import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.item.crafting.SmeltingRecipe;
 import net.minecraftforge.fml.ModList;
 
-public class GuiEssentialEnergizedSmelter<BE extends BlockEntityRecipeMachine<SmeltingRecipe> & IEssentialEnergizedSmelter<BE>>
-        extends GuiConfigurableTile<BE, MekanismTileContainer<BE>> {
+public class GuiEssentialSmeltingFactory<BE extends BlockEntityRecipeFactory<SmeltingRecipe, BE> & IEnergizedSmeltingFactory<BE>>
+        extends GuiConfigurableTile<BE, ContainerAstralMekanismFactory<BE>> {
 
-    public GuiEssentialEnergizedSmelter(MekanismTileContainer<BE> container, Inventory inv, Component title) {
+    public GuiEssentialSmeltingFactory(ContainerAstralMekanismFactory<BE> container, Inventory inv,
+            Component title) {
         super(container, inv, title);
+        imageHeight = FactoryGuiHelper.getALLHeight(tile.tier, tile.getHeightPerProcess());
+        imageWidth = FactoryGuiHelper.getALLWidth(tile.tier, tile.getWidthPerProcess(), tile.getSideSpaceWidth());
         dynamicSlots = true;
     }
 
     @Override
     protected void addGuiElements() {
         super.addGuiElements();
-        addRenderableWidget(new GuiInfusionGauge(tile::getInfusionTank, () -> tile.getInfusionTanks(null),
-                GaugeType.STANDARD, this, 137, 13))
-                .warning(WarningType.NO_SPACE_IN_OUTPUT,
-                        tile.getWarningCheck(IEssentialEnergizedSmelter.NOT_ENOUGH_INFUSE_OUTPUT_SPACE));
-        addRenderableWidget(new GuiVerticalPowerBar(this, tile.getEnergyContainer(), 164, 15))
-                .warning(WarningType.NOT_ENOUGH_ENERGY, tile.getWarningCheck(RecipeError.NOT_ENOUGH_ENERGY));
         addRenderableWidget(new GuiEnergyTab(this, tile.getEnergyContainer(), tile::getActive));
-        addRenderableWidget(new GuiProgress(tile::getProgressScaled, ProgressType.BAR, this, 82, 38))
-                .warning(WarningType.INPUT_DOESNT_PRODUCE_OUTPUT,
-                        tile.getWarningCheck(RecipeError.INPUT_DOESNT_PRODUCE_OUTPUT))
-                .jeiCategories(MekanismJEIRecipeType.SMELTING);
-        addRenderableWidget(new MekanismImageButton(this, 117, 13, 18, 18, 16, 16,
+        addRenderableWidget(new GuiVerticalPowerBar(this, tile.getEnergyContainer(), 188, 16)
+                .warning(WarningType.NOT_ENOUGH_ENERGY,
+                        tile.getWarningCheck(RecipeError.NOT_ENOUGH_ENERGY, 0)));
+        for (int index = 0; index < tile.tier.processes; index++) {
+            int x = FactoryGuiHelper.getXofOneLine(index, tile.tier, tile.getWidthPerProcess(),
+                    tile.getSideSpaceWidth()) + 4;
+            int y = FactoryGuiHelper.getYofOneLine(index, tile.tier, tile.getHeightPerProcess() + 20);
+            int cacheIndex = index;
+            addRenderableWidget(
+                    new GuiProgress(() -> tile.getProgressScaled(cacheIndex), ProgressType.DOWN, this, x, y))
+                    .jeiCategories(MekanismJEIRecipeType.SMELTING);
+        }
+        addRenderableWidget(new MekanismImageButton(this, imageWidth - 24, imageHeight - 18, 18, 18, 16, 16,
                 new ResourceLocation("minecraft", "textures/item/experience_bottle.png"), this::onPush));
+        addRenderableWidget(new GuiInfusionGauge(tile::getInfusionTank, () -> tile.getInfusionTanks(null),
+                GaugeType.SMALL, this, imageWidth - 24, imageHeight - 36))
+                .warning(WarningType.NO_SPACE_IN_OUTPUT,
+                        tile.getWarningCheck(IEssentialEnergizedSmelter.NOT_ENOUGH_INFUSE_OUTPUT_SPACE, 0));
         if (ModList.get().isLoaded("jei")) {
             addRenderableWidget(new MekanismImageButton(
                     this,
-                    90, 53,
+                    3, 80,
                     18, 18,
                     16, 16,
                     new ResourceLocation("minecraft", "textures/item/knowledge_book.png"),
@@ -75,14 +82,6 @@ public class GuiEssentialEnergizedSmelter<BE extends BlockEntityRecipeMachine<Sm
 
     private void onPush() {
         AstralMekanism.packetHandler().sendToServer(new PacketGuiEssentialSmelter(tile.getBlockPos()));
-    }
-
-    public static void connectJEI() {
-        IJeiRuntime runtime = AstralMekanismJEIPlugin.getRuntime();
-        if (runtime == null)
-            return;
-        runtime.getRecipesGui().showTypes(
-                List.of(AstralMekanismJEIRecipeType.ESSENTIAL_SMELTING));
     }
 
 }
