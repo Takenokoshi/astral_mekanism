@@ -16,24 +16,24 @@ public class AstralMekanismFluids {
     public static final FluidRegistryObject<MekanismFluidType, Source, Flowing, LiquidBlock, BucketItem> RED_LAVA = FLUIDS
             .register("red_lava", renderProperties -> renderProperties.texture(
                     new ResourceLocation("block/lava_still"),
-                    new ResourceLocation("block/lava_flow")).tint(0x75140D));
+                    new ResourceLocation("block/lava_flow")));
     public static final FluidRegistryObject<MekanismFluidType, Source, Flowing, LiquidBlock, BucketItem> NETHERRACK = FLUIDS
             .register("netherrack", renderProperties -> renderProperties.texture(
                     new ResourceLocation("block/netherrack"),
-                    new ResourceLocation("block/netherrack")).tint(0x55140D));
+                    new ResourceLocation("block/netherrack")));
 
     public static final FluidRegistryObject<MekanismFluidType, Source, Flowing, LiquidBlock, BucketItem> NETHERRACK_LAVA = FLUIDS
             .register("netherrack_lava", renderProperties -> renderProperties.texture(
                     new ResourceLocation("block/lava_still"),
-                    new ResourceLocation("block/lava_flow")).tint(0x55140D));
+                    new ResourceLocation("block/lava_flow")));
 
     public static final FluidRegistryObject<MekanismFluidType, Source, Flowing, LiquidBlock, BucketItem> SOUL_LAVA = FLUIDS
             .register("soul_lava", renderProperties -> renderProperties.texture(
                     new ResourceLocation("block/lava_still"),
-                    new ResourceLocation("block/lava_flow")).tint(0x3FC5E0));
+                    new ResourceLocation("block/lava_flow")));
 
     public static final FluidRegistryObject<MekanismFluidType, Source, Flowing, LiquidBlock, BucketItem> MIXED_LAVA = FLUIDS
             .register("mixed_lava", renderProperties -> renderProperties.texture(
                     new ResourceLocation("block/lava_still"),
-                    new ResourceLocation("block/lava_flow")).tint(0x4A6C76));
+                    new ResourceLocation("block/lava_flow")));
 }

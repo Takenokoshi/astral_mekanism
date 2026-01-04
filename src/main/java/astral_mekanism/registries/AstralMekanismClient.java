@@ -79,7 +79,6 @@ public class AstralMekanismClient {
     public static void init(FMLClientSetupEvent event) {
 
         event.enqueueWork(() -> {
-
             for (FluidRegistryObject<?, ?, ?, ?, ?> fluidRO : AstralMekanismFluids.FLUIDS.getAllFluids()) {
                 ClientRegistrationUtil.setRenderLayer(RenderType.translucent(), fluidRO);
             }
