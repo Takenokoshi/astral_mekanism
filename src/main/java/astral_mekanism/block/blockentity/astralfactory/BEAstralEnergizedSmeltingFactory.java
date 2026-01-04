@@ -1,5 +1,7 @@
 package astral_mekanism.block.blockentity.astralfactory;
 
+import java.util.Arrays;
+
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -14,6 +16,7 @@ import astral_mekanism.generalrecipe.lookup.cache.recipe.SingleInputGeneralRecip
 import astral_mekanism.recipes.output.AMOutputHelper;
 import astral_mekanism.recipes.output.ItemInfuseOutput;
 import mekanism.api.IContentsListener;
+import mekanism.api.RelativeSide;
 import mekanism.api.chemical.ChemicalTankBuilder;
 import mekanism.api.chemical.infuse.IInfusionTank;
 import mekanism.api.chemical.infuse.InfuseType;
@@ -28,6 +31,9 @@ import mekanism.common.capabilities.holder.chemical.ChemicalTankHelper;
 import mekanism.common.capabilities.holder.slot.InventorySlotHelper;
 import mekanism.common.inventory.slot.InputInventorySlot;
 import mekanism.common.inventory.slot.OutputInventorySlot;
+import mekanism.common.lib.transmitter.TransmissionType;
+import mekanism.common.tile.component.TileComponentConfig;
+import mekanism.common.tile.component.TileComponentEjector;
 import mekanism.common.util.MekanismUtils;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.Container;
@@ -48,6 +54,13 @@ public class BEAstralEnergizedSmeltingFactory
     @SuppressWarnings("unchecked")
     public BEAstralEnergizedSmeltingFactory(IBlockProvider blockProvider, BlockPos pos, BlockState state) {
         super(blockProvider, pos, state, TRACKED_ERROR_TYPES, GLOBAL_ERROR_TYPES);
+        configComponent = new TileComponentConfig(this, TransmissionType.ITEM, TransmissionType.INFUSION,
+                TransmissionType.ENERGY);
+        configComponent.setupItemIOConfig(Arrays.asList(inputSlots), Arrays.asList(outputSlots), energySlot, false);
+        configComponent.setupOutputConfig(TransmissionType.INFUSION, infusionTank, RelativeSide.values());
+        configComponent.setupInputConfig(TransmissionType.ENERGY, energyContainer);
+        ejectorComponent = new TileComponentEjector(this, () -> Long.MAX_VALUE);
+        ejectorComponent.setOutputData(configComponent, TransmissionType.ITEM, TransmissionType.INFUSION);
         this.inputHandlers = new IInputHandler[tier.processes];
         this.outputHandlers = new IOutputHandler[tier.processes];
         for (int i = 0; i < tier.processes; i++) {
