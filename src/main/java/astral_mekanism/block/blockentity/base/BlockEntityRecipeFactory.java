@@ -42,6 +42,7 @@ import mekanism.common.inventory.container.MekanismContainer;
 import mekanism.common.inventory.container.sync.SyncableFloatingLong;
 import mekanism.common.inventory.slot.EnergyInventorySlot;
 import mekanism.common.tile.prefab.TileEntityConfigurableMachine;
+import mekanism.common.tile.prefab.TileEntityRecipeMachine;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.level.block.state.BlockState;
@@ -64,6 +65,10 @@ public abstract class BlockEntityRecipeFactory<RECIPE extends Recipe<?>, BE exte
         super(blockProvider, pos, state);
         this.activeStates = new boolean[tier.processes];
         this.errorTracker = new ErrorTracker(errorTypes, globalErrorTypes, tier.processes);
+        recheckAllRecipeErrors = new BooleanSupplier[tier.processes];
+        for (int i = 0; i < recheckAllRecipeErrors.length; i++) {
+            recheckAllRecipeErrors[i] = TileEntityRecipeMachine.shouldRecheckAllErrors(this);
+        }
     }
 
     protected IContentsListener markAllMonitorsChanged(IContentsListener listener) {
