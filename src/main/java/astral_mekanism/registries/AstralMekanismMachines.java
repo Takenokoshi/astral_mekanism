@@ -88,9 +88,9 @@ public class AstralMekanismMachines {
         EnumMap<AstralMekanismFactoryTier, MachineRegistryObject<BE, BlockTileModel<BE, BlockTypeMachine<BE>>, ContainerAstralMekanismFactory<BE>, ItemBlockMachine>> result = new EnumMap<>(
                 AstralMekanismFactoryTier.class);
         for (AstralMekanismFactoryTier tier : AstralMekanismFactoryTier.values()) {
-            MACHINES.registerDefaultBlockItem(nameBuilder.apply(tier),
+            result.put(tier, MACHINES.registerDefaultBlockItem(nameBuilder.apply(tier),
                     constructor, beClass, ContainerAstralMekanismFactory<BE>::new, langEntry,
-                    builder -> operator.apply(builder.with(new AttributeTier<>(tier))));
+                    builder -> operator.apply(builder.with(new AttributeTier<>(tier)))));
         }
         return result;
     }
