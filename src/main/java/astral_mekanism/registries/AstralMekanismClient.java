@@ -1,6 +1,7 @@
 package astral_mekanism.registries;
 
 import astral_mekanism.AstralMekanismID;
+import astral_mekanism.block.blockentity.astralfactory.BEAstralEnergizedSmeltingFactory;
 import astral_mekanism.block.blockentity.astralmachine.BEAstralCombiner;
 import astral_mekanism.block.blockentity.astralmachine.BEAstralEnergizedSmelter;
 import astral_mekanism.block.blockentity.astralmachine.BEAstralGNA;
@@ -15,6 +16,7 @@ import astral_mekanism.block.blockentity.astralmachine.advanced.BEAstralOsmiumCo
 import astral_mekanism.block.blockentity.astralmachine.advanced.BEAstralPurificationChamber;
 import astral_mekanism.block.blockentity.astralmachine.electric.BEAstralCrusher;
 import astral_mekanism.block.blockentity.astralmachine.electric.BEAstralEnrichmentChamber;
+import astral_mekanism.block.blockentity.base.AstralMekanismFactoryTier;
 import astral_mekanism.block.blockentity.compact.BECompactSPS;
 import astral_mekanism.block.blockentity.generator.AstralMekGeneratorTier;
 import astral_mekanism.block.blockentity.normalmachine.BEEssentialEnergizedSmelter;
@@ -40,6 +42,7 @@ import astral_mekanism.block.gui.astralmachine.GuiAstralPrecisionSawmill;
 import astral_mekanism.block.gui.astralmachine.GuiAstralRotaryCondensentrator;
 import astral_mekanism.block.gui.compact.GuiCompactFissionReactor;
 import astral_mekanism.block.gui.compact.GuiCompactTEP;
+import astral_mekanism.block.gui.factory.GuiEssentialSmeltingFactory;
 import astral_mekanism.block.gui.generator.GuiGasBurningGenerator;
 import astral_mekanism.block.gui.generator.GuiHeatGenerator;
 import astral_mekanism.block.gui.normalmachine.GuiAstralCrafter;
@@ -88,6 +91,10 @@ public class AstralMekanismClient {
     @SubscribeEvent(priority = EventPriority.LOW)
     public static void registerContiners(RegisterEvent event) {
         event.register(Registries.MENU, helper -> {
+            for (AstralMekanismFactoryTier tier : AstralMekanismFactoryTier.values()) {
+                regScreen(AstralMekanismMachines.ASTRAL_ENERGIZED_SMELTING_FACTRIES.get(tier),
+                        GuiEssentialSmeltingFactory<BEAstralEnergizedSmeltingFactory>::new);
+            }
             regScreen(AstralMekanismMachines.ASTRAL_CHEMICAL_INJECTION_CHAMBER,
                     GuiAstralAdvancedMachine<BEAstralChemicalInjectionChamber>::new);
             regScreen(AstralMekanismMachines.ASTRAL_OSMIUM_COMPRESSOR,
