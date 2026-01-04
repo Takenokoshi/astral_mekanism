@@ -8,6 +8,7 @@ import org.jetbrains.annotations.Nullable;
 import astral_mekanism.block.blockentity.base.BlockEntityRecipeFactory;
 import astral_mekanism.block.blockentity.base.FactoryGuiHelper;
 import astral_mekanism.block.blockentity.interf.IEnergizedSmeltingFactory;
+import astral_mekanism.block.blockentity.interf.IEssentialEnergizedSmelter;
 import astral_mekanism.generalrecipe.GeneralRecipeType;
 import astral_mekanism.generalrecipe.IGeneralRecipeTypeProvider;
 import astral_mekanism.generalrecipe.cachedrecipe.EssentialSmeltingCachedRecipe;
@@ -65,7 +66,9 @@ public class BEAstralEnergizedSmeltingFactory
         this.outputHandlers = new IOutputHandler[tier.processes];
         for (int i = 0; i < tier.processes; i++) {
             inputHandlers[i] = InputHelper.getInputHandler(inputSlots[i], RecipeError.NOT_ENOUGH_INPUT);
-            outputHandlers[i] = AMOutputHelper.getOutputHandler(outputSlots[i], null, infusionTank, null);
+            outputHandlers[i] = AMOutputHelper.getOutputHandler(outputSlots[i],
+                    IEssentialEnergizedSmelter.NOT_ENOUGH_ITEM_OUTPUT_SPACE, infusionTank,
+                    IEssentialEnergizedSmelter.NOT_ENOUGH_INFUSE_OUTPUT_SPACE);
         }
     }
 

@@ -43,28 +43,28 @@ public class GuiEssentialSmeltingFactory<BE extends BlockEntityRecipeFactory<Sme
     protected void addGuiElements() {
         super.addGuiElements();
         addRenderableWidget(new GuiEnergyTab(this, tile.getEnergyContainer(), tile::getActive));
-        addRenderableWidget(new GuiVerticalPowerBar(this, tile.getEnergyContainer(), 188, 16)
+        addRenderableWidget(new GuiVerticalPowerBar(this, tile.getEnergyContainer(), imageWidth-6, 16)
                 .warning(WarningType.NOT_ENOUGH_ENERGY,
                         tile.getWarningCheck(RecipeError.NOT_ENOUGH_ENERGY, 0)));
         for (int index = 0; index < tile.tier.processes; index++) {
             int x = FactoryGuiHelper.getXofOneLine(index, tile.tier, tile.getWidthPerProcess(),
                     tile.getSideSpaceWidth()) + 4;
-            int y = FactoryGuiHelper.getYofOneLine(index, tile.tier, tile.getHeightPerProcess() + 20);
+            int y = FactoryGuiHelper.getYofOneLine(index, tile.tier, tile.getHeightPerProcess() + 38);
             int cacheIndex = index;
             addRenderableWidget(
                     new GuiProgress(() -> tile.getProgressScaled(cacheIndex), ProgressType.DOWN, this, x, y))
                     .jeiCategories(MekanismJEIRecipeType.SMELTING);
         }
-        addRenderableWidget(new MekanismImageButton(this, imageWidth - 24, imageHeight - 18, 18, 18, 16, 16,
+        addRenderableWidget(new MekanismImageButton(this, imageWidth - 24, 18, 18, 18, 16, 16,
                 new ResourceLocation("minecraft", "textures/item/experience_bottle.png"), this::onPush));
         addRenderableWidget(new GuiInfusionGauge(tile::getInfusionTank, () -> tile.getInfusionTanks(null),
-                GaugeType.SMALL, this, imageWidth - 24, imageHeight - 36))
+                GaugeType.SMALL, this, imageWidth - 24, 36))
                 .warning(WarningType.NO_SPACE_IN_OUTPUT,
                         tile.getWarningCheck(IEssentialEnergizedSmelter.NOT_ENOUGH_INFUSE_OUTPUT_SPACE, 0));
         if (ModList.get().isLoaded("jei")) {
             addRenderableWidget(new MekanismImageButton(
                     this,
-                    3, 80,
+                    3, 60,
                     18, 18,
                     16, 16,
                     new ResourceLocation("minecraft", "textures/item/knowledge_book.png"),
