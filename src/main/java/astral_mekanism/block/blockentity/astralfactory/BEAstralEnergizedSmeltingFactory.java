@@ -126,9 +126,13 @@ public class BEAstralEnergizedSmeltingFactory
         inputSlots = new InputInventorySlot[tier.processes];
         outputSlots = new OutputInventorySlot[tier.processes];
         for (int i = 0; i < tier.processes; i++) {
+            int index = i;
             int x = FactoryGuiHelper.getXofOneLine(i, tier, getWidthPerProcess(), getSideSpaceWidth());
             int y = FactoryGuiHelper.getYofOneLine(i, tier, getHeightPerProcess());
-            builder.addSlot(inputSlots[i] = InputInventorySlot.at(this::containsRecipe, updateSortingListener, x, y));
+            builder.addSlot(inputSlots[i] = InputInventorySlot.at(this::containsRecipe, () -> {
+                updateSortingListener.onContentsChanged();
+                recipeCacheLookupMonitors[index].onChange();
+            }, x, y));
             builder.addSlot(outputSlots[i] = OutputInventorySlot.at(updateSortingListener, x, y + 44));
         }
         return builder;

@@ -3,7 +3,6 @@ package astral_mekanism.block.blockentity.base;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Set;
-import java.util.concurrent.ThreadLocalRandom;
 import java.util.function.BooleanSupplier;
 
 import org.jetbrains.annotations.Nullable;
@@ -32,7 +31,6 @@ import mekanism.common.capabilities.holder.fluid.IFluidTankHolder;
 import mekanism.common.capabilities.holder.heat.IHeatCapacitorHolder;
 import mekanism.common.capabilities.holder.slot.IInventorySlotHolder;
 import mekanism.common.inventory.container.MekanismContainer;
-import mekanism.common.tile.base.TileEntityMekanism;
 import mekanism.common.tile.prefab.TileEntityConfigurableMachine;
 import mekanism.common.tile.prefab.TileEntityRecipeMachine;
 import net.minecraft.core.BlockPos;
@@ -104,12 +102,6 @@ public abstract class BlockEntityRecipeMachine<RECIPE extends Recipe<?>> extends
             return () -> false;
         }
         return () -> trackedErrors[errorIndex];
-    }
-
-    public static BooleanSupplier shouldRecheckAllErrors(TileEntityMekanism tile) {
-        int checkOffset = ThreadLocalRandom.current().nextInt(TileEntityRecipeMachine.RECIPE_CHECK_FREQUENCY);
-        return () -> !tile.playersUsing.isEmpty() && tile.hasLevel()
-                && tile.getLevel().getGameTime() % TileEntityRecipeMachine.RECIPE_CHECK_FREQUENCY == checkOffset;
     }
 
     @Nullable

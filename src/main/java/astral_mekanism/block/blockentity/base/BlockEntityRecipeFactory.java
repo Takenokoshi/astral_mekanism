@@ -140,7 +140,7 @@ public abstract class BlockEntityRecipeFactory<RECIPE extends Recipe<?>, BE exte
                 InventorySlotHelper.forSideWithConfig(this::getDirection, this::getConfig), listener,
                 createUpdateSortingListener(listener));
         builder.addSlot(
-                energySlot = EnergyInventorySlot.fillOrConvert(energyContainer, this::getLevel, listener, 7, 13));
+                energySlot = EnergyInventorySlot.fillOrConvert(energyContainer, this::getLevel, listener, 3, 18));
         return builder.build();
     }
 

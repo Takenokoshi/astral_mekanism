@@ -45,7 +45,7 @@ public class ErrorTracker {
         }
     }
 
-    BooleanSupplier getWarningCheck(RecipeError error, int processIndex) {
+    public BooleanSupplier getWarningCheck(RecipeError error, int processIndex) {
         if (processIndex >= 0 && processIndex < processes) {
             int errorIndex = errorTypes.indexOf(error);
             if (errorIndex >= 0) {
@@ -56,7 +56,6 @@ public class ErrorTracker {
                 return () -> trackedErrors[processIndex][errorIndex];
             }
         }
-        // Something went wrong
         return () -> false;
     }
 }

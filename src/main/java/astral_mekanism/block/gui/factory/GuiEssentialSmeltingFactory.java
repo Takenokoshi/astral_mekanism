@@ -43,13 +43,13 @@ public class GuiEssentialSmeltingFactory<BE extends BlockEntityRecipeFactory<Sme
     protected void addGuiElements() {
         super.addGuiElements();
         addRenderableWidget(new GuiEnergyTab(this, tile.getEnergyContainer(), tile::getActive));
-        addRenderableWidget(new GuiVerticalPowerBar(this, tile.getEnergyContainer(), imageWidth-6, 16)
+        addRenderableWidget(new GuiVerticalPowerBar(this, tile.getEnergyContainer(), imageWidth - 6, 16)
                 .warning(WarningType.NOT_ENOUGH_ENERGY,
                         tile.getWarningCheck(RecipeError.NOT_ENOUGH_ENERGY, 0)));
         for (int index = 0; index < tile.tier.processes; index++) {
             int x = FactoryGuiHelper.getXofOneLine(index, tile.tier, tile.getWidthPerProcess(),
                     tile.getSideSpaceWidth()) + 4;
-            int y = FactoryGuiHelper.getYofOneLine(index, tile.tier, tile.getHeightPerProcess() + 38);
+            int y = FactoryGuiHelper.getYofOneLine(index, tile.tier, tile.getHeightPerProcess()) + 20;
             int cacheIndex = index;
             addRenderableWidget(
                     new GuiProgress(() -> tile.getProgressScaled(cacheIndex), ProgressType.DOWN, this, x, y))
