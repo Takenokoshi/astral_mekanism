@@ -1,0 +1,6 @@
+{
+    "parent": "emextras:block/factory/flont_led/cosmic_dence",
+    "textures": {
+        "led": "astral_mekanism:block/factory/advanced"
+    }
+}

@@ -7,8 +7,8 @@ import java.util.function.BooleanSupplier;
 
 import org.jetbrains.annotations.Nullable;
 
-import astral_mekanism.generalrecipe.lookup.handler.IGeneralRecipeLookUpHandler;
-import astral_mekanism.generalrecipe.lookup.monitor.GeneralRecipeCacheLookupMonitor;
+import astral_mekanism.generalrecipe.lookup.handler.IUnifiedRecipeLookUpHandler;
+import astral_mekanism.generalrecipe.lookup.monitor.UnifiedRecipeCacheLookupMonitor;
 import mekanism.api.IContentsListener;
 import mekanism.api.chemical.gas.Gas;
 import mekanism.api.chemical.gas.GasStack;
@@ -38,12 +38,12 @@ import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.level.block.state.BlockState;
 
 public abstract class BlockEntityRecipeMachine<RECIPE extends Recipe<?>> extends TileEntityConfigurableMachine
-        implements IGeneralRecipeLookUpHandler<RECIPE> {
+        implements IUnifiedRecipeLookUpHandler<RECIPE> {
 
     protected final BooleanSupplier recheckAllRecipeErrors;
     private final List<RecipeError> errorTypes;
     private final boolean[] trackedErrors;
-    protected GeneralRecipeCacheLookupMonitor<RECIPE> recipeCacheLookupMonitor;
+    protected UnifiedRecipeCacheLookupMonitor<RECIPE> recipeCacheLookupMonitor;
     @Nullable
     private IContentsListener recipeCacheSaveOnlyListener;
 
@@ -62,8 +62,8 @@ public abstract class BlockEntityRecipeMachine<RECIPE extends Recipe<?>> extends
         recipeCacheLookupMonitor = createNewCacheMonitor();
     }
 
-    protected GeneralRecipeCacheLookupMonitor<RECIPE> createNewCacheMonitor() {
-        return new GeneralRecipeCacheLookupMonitor<>(this);
+    protected UnifiedRecipeCacheLookupMonitor<RECIPE> createNewCacheMonitor() {
+        return new UnifiedRecipeCacheLookupMonitor<>(this);
     }
 
     protected IContentsListener getRecipeCacheSaveOnlyListener() {

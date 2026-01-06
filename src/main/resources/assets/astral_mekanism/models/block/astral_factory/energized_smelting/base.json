@@ -1,0 +1,7 @@
+{
+    "parent": "astral_mekanism:block/factory_base",
+    "textures": {
+        "front": "astral_mekanism:block/astral_factory/energized_smelter_front",
+        "up": "astral_mekanism:block/machine_base/up_astral_factory"
+    }
+}

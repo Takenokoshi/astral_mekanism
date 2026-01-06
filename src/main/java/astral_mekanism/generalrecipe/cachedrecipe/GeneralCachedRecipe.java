@@ -22,7 +22,7 @@ import mekanism.api.recipes.cache.CachedRecipe.OperationTracker.RecipeError;
 import net.minecraft.world.item.crafting.Recipe;
 
 @NothingNullByDefault
-public abstract class GeneralCachedRecipe<RECIPE extends Recipe<?>> {
+public abstract class GeneralCachedRecipe<RECIPE extends Recipe<?>> implements ICachedRecipe<RECIPE> {
     protected final RECIPE recipe;
     private Set<RecipeError> errors = Collections.emptySet();
     private final BooleanSupplier recheckAllErrors;
@@ -196,9 +196,9 @@ public abstract class GeneralCachedRecipe<RECIPE extends Recipe<?>> {
         }
     }
 
-    public abstract boolean isInputValid();
-
     protected abstract void finishProcessing(int operations);
+
+    public abstract boolean isInputValid();
 
     public RECIPE getRecipe() {
         return recipe;

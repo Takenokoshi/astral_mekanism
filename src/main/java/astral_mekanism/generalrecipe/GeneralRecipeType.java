@@ -27,7 +27,7 @@ import net.minecraftforge.fml.loading.FMLEnvironment;
 import net.minecraftforge.server.ServerLifecycleHooks;
 
 public class GeneralRecipeType<C extends Container, RECIPE extends Recipe<C>, INPUT_CACHE extends IInputRecipeCache>
-        implements RecipeType<RECIPE>, IGeneralRecipeTypeProvider<C, RECIPE, INPUT_CACHE> {
+        implements IUnifiedRecipeType<RECIPE, INPUT_CACHE>, IUnifiedRecipeTypeProvider<RECIPE, INPUT_CACHE> {
 
     public static final GeneralRecipeType<Container, SmeltingRecipe, GeneralSingleItem<Container, SmeltingRecipe>> SMELTING = new GeneralRecipeType<>(
             RecipeType.SMELTING,

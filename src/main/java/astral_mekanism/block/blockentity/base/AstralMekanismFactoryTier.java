@@ -5,7 +5,7 @@ import mekanism.api.tier.ITier;
 
 public enum AstralMekanismFactoryTier implements ITier {
     ESSENTIAL("essential", 2),
-    BASIC("basic_cosmic", 4),
+    BASIC("basic_standard", 4),
     ADVANCED("advanced", 6),
     ELITE("elite", 8),
     ULTIMATE("enchanted_ultimate", 10),

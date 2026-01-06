@@ -34,7 +34,7 @@ import astral_mekanism.block.blockentity.astralmachine.advanced.BEAstralPurifica
 import astral_mekanism.block.blockentity.astralmachine.electric.BEAstralCrusher;
 import astral_mekanism.block.blockentity.astralmachine.electric.BEAstralEnrichmentChamber;
 import astral_mekanism.block.blockentity.base.AstralMekanismFactoryTier;
-import astral_mekanism.block.blockentity.base.BlockEntityRecipeFactory;
+import astral_mekanism.block.blockentity.base.BlockEntityGeneralRecipeFactory;
 import astral_mekanism.block.blockentity.compact.BECompactFIR;
 import astral_mekanism.block.blockentity.compact.BECompactSPS;
 import astral_mekanism.block.blockentity.compact.BECompactTEP;
@@ -79,7 +79,7 @@ import mekanism.generators.common.registries.GeneratorsSounds;
 public class AstralMekanismMachines {
     public static final MachineDeferredRegister MACHINES = new MachineDeferredRegister(AstralMekanismID.MODID);
 
-    private static <BE extends BlockEntityRecipeFactory<?, BE>> EnumMap<AstralMekanismFactoryTier, MachineRegistryObject<BE, BlockTileModel<BE, BlockTypeMachine<BE>>, ContainerAstralMekanismFactory<BE>, ItemBlockMachine>> registerFactories(
+    private static <BE extends BlockEntityGeneralRecipeFactory<?, BE>> EnumMap<AstralMekanismFactoryTier, MachineRegistryObject<BE, BlockTileModel<BE, BlockTypeMachine<BE>>, ContainerAstralMekanismFactory<BE>, ItemBlockMachine>> registerFactories(
             Function<AstralMekanismFactoryTier, String> nameBuilder,
             BlockEntityConstructor<BE, BlockTypeMachine<BE>, BlockTileModel<BE, BlockTypeMachine<BE>>> constructor,
             Class<BE> beClass,

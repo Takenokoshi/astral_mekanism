@@ -42,7 +42,7 @@ import astral_mekanism.block.gui.astralmachine.GuiAstralPrecisionSawmill;
 import astral_mekanism.block.gui.astralmachine.GuiAstralRotaryCondensentrator;
 import astral_mekanism.block.gui.compact.GuiCompactFissionReactor;
 import astral_mekanism.block.gui.compact.GuiCompactTEP;
-import astral_mekanism.block.gui.factory.GuiEssentialSmeltingFactory;
+import astral_mekanism.block.gui.factory.GuiEnergizedSmeltingFactory;
 import astral_mekanism.block.gui.generator.GuiGasBurningGenerator;
 import astral_mekanism.block.gui.generator.GuiHeatGenerator;
 import astral_mekanism.block.gui.normalmachine.GuiAstralCrafter;
@@ -93,7 +93,7 @@ public class AstralMekanismClient {
         event.register(Registries.MENU, helper -> {
             for (AstralMekanismFactoryTier tier : AstralMekanismFactoryTier.values()) {
                 regScreen(AstralMekanismMachines.ASTRAL_ENERGIZED_SMELTING_FACTRIES.get(tier),
-                        GuiEssentialSmeltingFactory<BEAstralEnergizedSmeltingFactory>::new);
+                        GuiEnergizedSmeltingFactory<BEAstralEnergizedSmeltingFactory>::new);
             }
             regScreen(AstralMekanismMachines.ASTRAL_CHEMICAL_INJECTION_CHAMBER,
                     GuiAstralAdvancedMachine<BEAstralChemicalInjectionChamber>::new);

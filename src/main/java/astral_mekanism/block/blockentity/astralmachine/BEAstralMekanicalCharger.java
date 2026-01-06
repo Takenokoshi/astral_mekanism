@@ -9,11 +9,11 @@ import appeng.recipes.handlers.ChargerRecipe;
 import astral_mekanism.block.blockentity.base.BlockEntityRecipeMachine;
 import astral_mekanism.block.blockentity.interf.IEnergizedMachine;
 import astral_mekanism.generalrecipe.GeneralRecipeType;
-import astral_mekanism.generalrecipe.IGeneralRecipeTypeProvider;
+import astral_mekanism.generalrecipe.IUnifiedRecipeTypeProvider;
 import astral_mekanism.generalrecipe.cachedrecipe.GeneralCachedRecipe;
 import astral_mekanism.generalrecipe.cachedrecipe.MekanicalChargingCachedRecipe;
 import astral_mekanism.generalrecipe.lookup.cache.recipe.SingleInputGeneralRecipeCache.GeneralSingleItem;
-import astral_mekanism.generalrecipe.lookup.handler.IGeneralSingelRecipeLookupHandler;
+import astral_mekanism.generalrecipe.lookup.handler.IUnifiedSingelRecipeLookupHandler;
 import mekanism.api.IContentsListener;
 import mekanism.api.math.FloatingLong;
 import mekanism.api.providers.IBlockProvider;
@@ -42,7 +42,7 @@ import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 
 public class BEAstralMekanicalCharger extends BlockEntityRecipeMachine<ChargerRecipe> implements
-        IGeneralSingelRecipeLookupHandler<ItemStack, ChargerRecipe, GeneralSingleItem<Container, ChargerRecipe>>,
+        IUnifiedSingelRecipeLookupHandler<ItemStack, ChargerRecipe, GeneralSingleItem<Container, ChargerRecipe>>,
         IEnergizedMachine<BEAstralMekanicalCharger> {
     private static final List<RecipeError> TRACKED_ERROR_TYPES = List.of(
             RecipeError.NOT_ENOUGH_ENERGY,
@@ -113,7 +113,7 @@ public class BEAstralMekanicalCharger extends BlockEntityRecipeMachine<ChargerRe
     }
 
     @Override
-    public @NotNull IGeneralRecipeTypeProvider<?, ChargerRecipe, GeneralSingleItem<Container, ChargerRecipe>> getRecipeType() {
+    public @NotNull IUnifiedRecipeTypeProvider<ChargerRecipe, GeneralSingleItem<Container, ChargerRecipe>> getRecipeType() {
         return GeneralRecipeType.CHARGING;
     }
 

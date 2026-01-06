@@ -34,7 +34,7 @@ public class MekanicalChargingCachedRecipe extends GeneralCachedRecipe<ChargerRe
     }
 
     @Override
-    protected void calculateOperationsThisTick(OperationTracker tracker) {
+    public void calculateOperationsThisTick(OperationTracker tracker) {
         super.calculateOperationsThisTick(tracker);
         if (tracker.shouldContinueChecking()) {
             ItemStack inputStack = inputHandler.getInput();
@@ -59,7 +59,7 @@ public class MekanicalChargingCachedRecipe extends GeneralCachedRecipe<ChargerRe
     }
 
     @Override
-    protected void finishProcessing(int operations) {
+    public void finishProcessing(int operations) {
         if (recipeInput != null && !recipeInput.isEmpty() && recipeOutput != null) {
             inputHandler.use(recipeInput, operations);
             outputHandler.handleOutput(recipeOutput, operations);

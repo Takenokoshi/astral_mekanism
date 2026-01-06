@@ -3,7 +3,7 @@ package astral_mekanism.registries;
 import java.util.function.Function;
 
 import astral_mekanism.AstralMekanismID;
-import astral_mekanism.mixin.mekanism.MekanismRecipeTypeMixin;
+import astral_mekanism.mixin.mekanism.recipe.MekanismRecipeTypeMixin;
 import astral_mekanism.recipes.inputRecipeCache.AMInputRecipeCache;
 import astral_mekanism.recipes.inputRecipeCache.AstralCraftingRecipeCache;
 import astral_mekanism.recipes.inputRecipeCache.AMInputRecipeCache.FluidFluid;
@@ -36,10 +36,10 @@ public class AstralMekanismRecipeTypes {
         return RECIPE_TYPES.register(name, () -> {
             MekanismRecipeType<MR, IIRC> recipeType = MekanismRecipeTypeMixin.invokeNew(name,
                     (t) -> null);
-            if (recipeType instanceof MekanismRecipeTypeMixin rtMixin) {
-                rtMixin.setRegistryName(AstralMekanismID.rl(name));
-                rtMixin.setInputCache(inputCacheCreator.apply(recipeType));
-            }
+            @SuppressWarnings("unchecked")
+            MekanismRecipeTypeMixin<MR, IIRC> rtMixin = (MekanismRecipeTypeMixin<MR, IIRC>) (Object) recipeType;
+            rtMixin.setRegistryName(AstralMekanismID.rl(name));
+            rtMixin.setInputCache(inputCacheCreator.apply(recipeType));
             return recipeType;
         });
     }

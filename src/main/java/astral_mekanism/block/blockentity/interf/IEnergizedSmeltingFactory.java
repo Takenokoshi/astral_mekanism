@@ -3,13 +3,17 @@ package astral_mekanism.block.blockentity.interf;
 import java.util.List;
 import java.util.Set;
 
+import astral_mekanism.block.blockentity.base.IAstralMekanismFactory;
 import astral_mekanism.generalrecipe.lookup.cache.recipe.SingleInputGeneralRecipeCache.GeneralSingleItem;
-import astral_mekanism.generalrecipe.lookup.handler.IGeneralSingelRecipeLookupHandler;
+import astral_mekanism.generalrecipe.lookup.handler.IUnifiedSingelRecipeLookupHandler;
 import astral_mekanism.registries.AstralMekanismInfuseTypes;
 import mekanism.api.Action;
 import mekanism.api.chemical.infuse.IInfusionTank;
 import mekanism.api.recipes.cache.CachedRecipe.OperationTracker.RecipeError;
+import mekanism.common.tile.TileEntityChemicalTank.GasMode;
 import mekanism.common.tile.base.TileEntityMekanism;
+import mekanism.common.tile.interfaces.IHasGasMode;
+import mekanism.common.tile.interfaces.ISustainedData;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.Container;
 import net.minecraft.world.item.ItemStack;
@@ -17,8 +21,8 @@ import net.minecraft.world.item.crafting.SmeltingRecipe;
 
 public interface IEnergizedSmeltingFactory<BE extends TileEntityMekanism & IEnergizedSmeltingFactory<BE> & IEnergizedMachine<BE>>
         extends
-        IGeneralSingelRecipeLookupHandler<ItemStack, SmeltingRecipe, GeneralSingleItem<Container, SmeltingRecipe>>,
-        IEnergizedMachine<BE> {
+        IUnifiedSingelRecipeLookupHandler<ItemStack, SmeltingRecipe, GeneralSingleItem<Container, SmeltingRecipe>>,
+        IEnergizedMachine<BE>, IHasGasMode, ISustainedData, IAstralMekanismFactory<BE> {
 
     public static final List<RecipeError> TRACKED_ERROR_TYPES = List.of(
             RecipeError.NOT_ENOUGH_INPUT,
@@ -32,11 +36,27 @@ public interface IEnergizedSmeltingFactory<BE extends TileEntityMekanism & IEner
     public default void receive(ServerPlayer player) {
         IInfusionTank infusionTank = getInfusionTank();
         if (!infusionTank.isEmpty() && infusionTank.getType() == AstralMekanismInfuseTypes.XP.get()) {
-            int give = (int) (Math.min(infusionTank.getStored() / 100, 0x7fffffff));
-            player.giveExperiencePoints(give);
-            infusionTank.shrinkStack(100l * give, Action.EXECUTE);
+            IEssentialEnergizedSmelter.giveXp(player, infusionTank.getStored() / 100);
+            infusionTank.setStackSize(infusionTank.getStored() % 100, Action.EXECUTE);
         }
     }
+
+    public default void handleTank() {
+        IInfusionTank infusionTank = getInfusionTank();
+        GasMode gasMode = getGasMode();
+        if (gasMode == GasMode.DUMPING) {
+            if (infusionTank.getStored() > infusionTank.getCapacity() / 5 * 4) {
+                infusionTank.shrinkStack(infusionTank.getCapacity() / 5 * 4, Action.EXECUTE);
+            }
+            infusionTank.shrinkStack(infusionTank.getCapacity() / 100, Action.EXECUTE);
+        } else if (gasMode == GasMode.DUMPING_EXCESS) {
+            if (infusionTank.getStored() > infusionTank.getCapacity() / 5 * 4) {
+                infusionTank.shrinkStack(infusionTank.getCapacity() / 5 * 4, Action.EXECUTE);
+            }
+        }
+    }
+
+    public abstract GasMode getGasMode();
 
     public abstract double getProgressScaled(int index);
 }

@@ -14,7 +14,7 @@ import net.minecraft.world.item.crafting.Recipe;
 
 public abstract class BaseGeneralInputCache<KEY, INPUT, INGREDIENT extends InputIngredient<INPUT>, RECIPE extends Recipe<?>>
         implements
-        IGeneralInputCache<INPUT, INGREDIENT, RECIPE> {
+        IUnifiedInputCache<INPUT, INGREDIENT, RECIPE> {
 
     private final Map<KEY, Set<RECIPE>> inputCache = new HashMap<>();
 

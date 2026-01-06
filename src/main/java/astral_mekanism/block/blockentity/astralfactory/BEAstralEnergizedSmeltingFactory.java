@@ -1,22 +1,26 @@
 package astral_mekanism.block.blockentity.astralfactory;
 
 import java.util.Arrays;
+import java.util.Map;
 
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-import astral_mekanism.block.blockentity.base.BlockEntityRecipeFactory;
-import astral_mekanism.block.blockentity.base.FactoryGuiHelper;
+import astral_mekanism.block.blockentity.base.BlockEntityGeneralRecipeFactory;
+import astral_mekanism.block.blockentity.elements.slot.paged.PagedInputInventorySlot;
+import astral_mekanism.block.blockentity.elements.slot.paged.PagedOutputInventorySlot;
 import astral_mekanism.block.blockentity.interf.IEnergizedSmeltingFactory;
 import astral_mekanism.block.blockentity.interf.IEssentialEnergizedSmelter;
 import astral_mekanism.generalrecipe.GeneralRecipeType;
-import astral_mekanism.generalrecipe.IGeneralRecipeTypeProvider;
+import astral_mekanism.generalrecipe.IUnifiedRecipeTypeProvider;
 import astral_mekanism.generalrecipe.cachedrecipe.EssentialSmeltingCachedRecipe;
 import astral_mekanism.generalrecipe.cachedrecipe.GeneralCachedRecipe;
 import astral_mekanism.generalrecipe.lookup.cache.recipe.SingleInputGeneralRecipeCache.GeneralSingleItem;
 import astral_mekanism.recipes.output.AMOutputHelper;
 import astral_mekanism.recipes.output.ItemInfuseOutput;
+import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
 import mekanism.api.IContentsListener;
+import mekanism.api.NBTConstants;
 import mekanism.api.RelativeSide;
 import mekanism.api.chemical.ChemicalTankBuilder;
 import mekanism.api.chemical.infuse.IInfusionTank;
@@ -30,27 +34,31 @@ import mekanism.api.recipes.outputs.IOutputHandler;
 import mekanism.common.capabilities.energy.MachineEnergyContainer;
 import mekanism.common.capabilities.holder.chemical.ChemicalTankHelper;
 import mekanism.common.capabilities.holder.slot.InventorySlotHelper;
-import mekanism.common.inventory.slot.InputInventorySlot;
-import mekanism.common.inventory.slot.OutputInventorySlot;
+import mekanism.common.inventory.container.MekanismContainer;
+import mekanism.common.inventory.container.sync.SyncableEnum;
 import mekanism.common.lib.transmitter.TransmissionType;
+import mekanism.common.tile.TileEntityChemicalTank.GasMode;
 import mekanism.common.tile.component.TileComponentConfig;
 import mekanism.common.tile.component.TileComponentEjector;
 import mekanism.common.util.MekanismUtils;
+import mekanism.common.util.NBTUtils;
 import net.minecraft.core.BlockPos;
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.Container;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.SmeltingRecipe;
 import net.minecraft.world.level.block.state.BlockState;
 
 public class BEAstralEnergizedSmeltingFactory
-        extends BlockEntityRecipeFactory<SmeltingRecipe, BEAstralEnergizedSmeltingFactory>
+        extends BlockEntityGeneralRecipeFactory<SmeltingRecipe, BEAstralEnergizedSmeltingFactory>
         implements IEnergizedSmeltingFactory<BEAstralEnergizedSmeltingFactory> {
 
-    private InputInventorySlot[] inputSlots;
-    private OutputInventorySlot[] outputSlots;
+    private PagedInputInventorySlot[] inputSlots;
+    private PagedOutputInventorySlot[] outputSlots;
     private IInfusionTank infusionTank;
     private final IInputHandler<ItemStack>[] inputHandlers;
     private final IOutputHandler<ItemInfuseOutput>[] outputHandlers;
+    private GasMode gasMode;
 
     @SuppressWarnings("unchecked")
     public BEAstralEnergizedSmeltingFactory(IBlockProvider blockProvider, BlockPos pos, BlockState state) {
@@ -70,10 +78,11 @@ public class BEAstralEnergizedSmeltingFactory
                     IEssentialEnergizedSmelter.NOT_ENOUGH_ITEM_OUTPUT_SPACE, infusionTank,
                     IEssentialEnergizedSmelter.NOT_ENOUGH_INFUSE_OUTPUT_SPACE);
         }
+        gasMode = GasMode.IDLE;
     }
 
     @Override
-    public @NotNull IGeneralRecipeTypeProvider<?, SmeltingRecipe, GeneralSingleItem<Container, SmeltingRecipe>> getRecipeType() {
+    public @NotNull IUnifiedRecipeTypeProvider<SmeltingRecipe, GeneralSingleItem<Container, SmeltingRecipe>> getRecipeType() {
         return GeneralRecipeType.SMELTING;
     }
 
@@ -101,7 +110,7 @@ public class BEAstralEnergizedSmeltingFactory
     }
 
     @Override
-    protected BEAstralEnergizedSmeltingFactory getSelf() {
+    public BEAstralEnergizedSmeltingFactory getSelf() {
         return this;
     }
 
@@ -117,23 +126,24 @@ public class BEAstralEnergizedSmeltingFactory
 
     @Override
     public int getSideSpaceWidth() {
-        return 24;
+        return 36;
     }
 
     @Override
     protected InventorySlotHelper addSlots(InventorySlotHelper builder, IContentsListener listener,
             IContentsListener updateSortingListener) {
-        inputSlots = new InputInventorySlot[tier.processes];
-        outputSlots = new OutputInventorySlot[tier.processes];
+        inputSlots = new PagedInputInventorySlot[tier.processes];
+        outputSlots = new PagedOutputInventorySlot[tier.processes];
         for (int i = 0; i < tier.processes; i++) {
             int index = i;
-            int x = FactoryGuiHelper.getXofOneLine(i, tier, getWidthPerProcess(), getSideSpaceWidth());
-            int y = FactoryGuiHelper.getYofOneLine(i, tier, getHeightPerProcess());
-            builder.addSlot(inputSlots[i] = InputInventorySlot.at(this::containsRecipe, () -> {
+            int x = getXByIndex(index);
+            int y = getY();
+            int page = getPageByIndex(index);
+            builder.addSlot(inputSlots[i] = PagedInputInventorySlot.at(this::containsRecipe, () -> {
                 updateSortingListener.onContentsChanged();
                 recipeCacheLookupMonitors[index].onChange();
-            }, x, y));
-            builder.addSlot(outputSlots[i] = OutputInventorySlot.at(updateSortingListener, x, y + 44));
+            }, x, y, page));
+            builder.addSlot(outputSlots[i] = PagedOutputInventorySlot.at(updateSortingListener, x, y + 44,page));
         }
         return builder;
     }
@@ -149,5 +159,44 @@ public class BEAstralEnergizedSmeltingFactory
     @Override
     public IInfusionTank getInfusionTank() {
         return infusionTank;
+    }
+
+    @Override
+    public void nextMode(int tank) {
+        gasMode = gasMode.getNext();
+        markForSave();
+    }
+
+    @Override
+    public void addContainerTrackers(MekanismContainer container) {
+        super.addContainerTrackers(container);
+        container.track(SyncableEnum.create(GasMode::byIndexStatic, GasMode.IDLE, this::getGasMode, v -> gasMode = v));
+    }
+
+    @Override
+    public GasMode getGasMode() {
+        return gasMode;
+    }
+
+    @Override
+    public void writeSustainedData(CompoundTag dataMap) {
+        NBTUtils.writeEnum(dataMap, NBTConstants.DUMP_MODE, gasMode);
+    }
+
+    @Override
+    public void readSustainedData(CompoundTag dataMap) {
+        NBTUtils.setEnumIfPresent(dataMap, NBTConstants.DUMP_MODE, GasMode::byIndexStatic, v -> gasMode = v);
+    }
+
+    @Override
+    public Map<String, String> getTileDataRemap() {
+        Map<String, String> remap = new Object2ObjectOpenHashMap<>();
+        remap.put(NBTConstants.DUMP_MODE, NBTConstants.DUMP_MODE);
+        return remap;
+    }
+
+    @Override
+    public int getAdditionalPages() {
+        return 1;
     }
 }

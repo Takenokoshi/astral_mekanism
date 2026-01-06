@@ -8,6 +8,8 @@ import java.util.concurrent.CompletableFuture;
 
 import com.electronwill.nightconfig.core.CommentedConfig;
 
+import astral_mekanism.block.AstralMekanismBlockStateProvider;
+import astral_mekanism.lang.AstralMekanismEnglishLangProvider;
 import astral_mekanism.loottable.AstralMekanismLootTableProvider;
 import astral_mekanism.tag.AstralMekanismBlockTags;
 import mekanism.common.Mekanism;
@@ -37,6 +39,10 @@ public class AstralMekanismDataGenerator {
         if (event.includeServer()) {
             gen.addProvider(true, new AstralMekanismLootTableProvider(output));
             gen.addProvider(true, new AstralMekanismBlockTags(output, lookup, helper));
+        }
+        if (event.includeClient()) {
+            gen.addProvider(true, new AstralMekanismBlockStateProvider(output, helper));
+            gen.addProvider(true, new AstralMekanismEnglishLangProvider(output));
         }
         System.out.println("### AstralMekanism GatherDataEvent fired ###");
     }

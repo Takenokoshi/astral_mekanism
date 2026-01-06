@@ -10,7 +10,7 @@ import java.util.function.Predicate;
 import org.jetbrains.annotations.Nullable;
 
 import astral_mekanism.generalrecipe.GeneralRecipeType;
-import astral_mekanism.generalrecipe.lookup.cache.type.IGeneralInputCache;
+import astral_mekanism.generalrecipe.lookup.cache.type.IUnifiedInputCache;
 import astral_mekanism.generalrecipe.lookup.cache.type.ItemGeneralInputCache;
 import mekanism.api.functions.ConstantPredicates;
 import mekanism.api.recipes.ingredients.InputIngredient;
@@ -20,15 +20,15 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.level.Level;
 
-public abstract class SingleInputGeneralRecipeCache<INPUT, INGREDIENT extends InputIngredient<INPUT>, C extends Container, RECIPE extends Recipe<C>, CACHE extends IGeneralInputCache<INPUT, INGREDIENT, RECIPE>>
-        extends GeneralInputRecipeCache<C, RECIPE> {
+public abstract class SingleInputGeneralRecipeCache<INPUT, INGREDIENT extends InputIngredient<INPUT>, C extends Container, RECIPE extends Recipe<C>, CACHE extends IUnifiedInputCache<INPUT, INGREDIENT, RECIPE>>
+        extends GeneralInputRecipeCache<C, RECIPE> implements ISingleInputRecipeCache<INPUT, RECIPE> {
 
     private final Set<RECIPE> complexRecipes = new HashSet<>();
     private final Function<RECIPE, INGREDIENT> inputExtractor;
     private final CACHE cache;
     private final BiPredicate<INPUT, RECIPE> biPredicate;
 
-    protected SingleInputGeneralRecipeCache(GeneralRecipeType<C,RECIPE,?> recipeType, CACHE cache,
+    protected SingleInputGeneralRecipeCache(GeneralRecipeType<C, RECIPE, ?> recipeType, CACHE cache,
             Function<RECIPE, INGREDIENT> inputExtractor, BiPredicate<INPUT, RECIPE> biPredicate) {
         super(recipeType);
         this.inputExtractor = inputExtractor;
@@ -43,10 +43,12 @@ public abstract class SingleInputGeneralRecipeCache<INPUT, INGREDIENT extends In
         complexRecipes.clear();
     }
 
+    @Override
     public boolean containsInput(@Nullable Level world, INPUT input) {
         return containsInput(world, input, inputExtractor, cache, complexRecipes);
     }
 
+    @Override
     @Nullable
     public RECIPE findFirstRecipe(@Nullable Level world, INPUT input) {
         if (cache.isEmpty(input)) {
@@ -58,11 +60,13 @@ public abstract class SingleInputGeneralRecipeCache<INPUT, INGREDIENT extends In
         return recipe == null ? findFirstRecipe(complexRecipes, matchPredicate) : recipe;
     }
 
+    @Override
     @Nullable
     public RECIPE findTypeBasedRecipe(@Nullable Level world, INPUT input) {
         return findTypeBasedRecipe(world, input, ConstantPredicates.alwaysTrue());
     }
 
+    @Override
     @Nullable
     public RECIPE findTypeBasedRecipe(@Nullable Level world, INPUT input, Predicate<RECIPE> matchCriteria) {
         if (cache.isEmpty(input)) {

@@ -1,5 +1,7 @@
 package astral_mekanism.block.blockentity.normalmachine;
 
+import java.util.Map;
+
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -7,13 +9,15 @@ import astral_mekanism.block.blockentity.base.BlockEntityProgressMachine;
 import astral_mekanism.block.blockentity.elements.slot.DrainInfusionSlot;
 import astral_mekanism.block.blockentity.interf.IEssentialEnergizedSmelter;
 import astral_mekanism.generalrecipe.GeneralRecipeType;
-import astral_mekanism.generalrecipe.IGeneralRecipeTypeProvider;
+import astral_mekanism.generalrecipe.IUnifiedRecipeTypeProvider;
 import astral_mekanism.generalrecipe.cachedrecipe.EssentialSmeltingCachedRecipe;
 import astral_mekanism.generalrecipe.cachedrecipe.GeneralCachedRecipe;
 import astral_mekanism.generalrecipe.lookup.cache.recipe.SingleInputGeneralRecipeCache.GeneralSingleItem;
 import astral_mekanism.recipes.output.AMOutputHelper;
 import astral_mekanism.recipes.output.ItemInfuseOutput;
+import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
 import mekanism.api.IContentsListener;
+import mekanism.api.NBTConstants;
 import mekanism.api.RelativeSide;
 import mekanism.api.chemical.ChemicalTankBuilder;
 import mekanism.api.chemical.infuse.IInfusionTank;
@@ -31,15 +35,20 @@ import mekanism.common.capabilities.holder.energy.EnergyContainerHelper;
 import mekanism.common.capabilities.holder.energy.IEnergyContainerHolder;
 import mekanism.common.capabilities.holder.slot.IInventorySlotHolder;
 import mekanism.common.capabilities.holder.slot.InventorySlotHelper;
+import mekanism.common.inventory.container.MekanismContainer;
+import mekanism.common.inventory.container.sync.SyncableEnum;
 import mekanism.common.inventory.slot.EnergyInventorySlot;
 import mekanism.common.inventory.slot.InputInventorySlot;
 import mekanism.common.inventory.slot.OutputInventorySlot;
 import mekanism.common.inventory.warning.WarningTracker.WarningType;
 import mekanism.common.lib.transmitter.TransmissionType;
+import mekanism.common.tile.TileEntityChemicalTank.GasMode;
 import mekanism.common.tile.component.TileComponentConfig;
 import mekanism.common.tile.component.TileComponentEjector;
 import mekanism.common.util.MekanismUtils;
+import mekanism.common.util.NBTUtils;
 import net.minecraft.core.BlockPos;
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.Container;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.SmeltingRecipe;
@@ -56,6 +65,7 @@ public class BEEssentialEnergizedSmelter extends BlockEntityProgressMachine<Smel
     private EnergyInventorySlot energySlot;
     private final IInputHandler<ItemStack> inputHandler;
     private final IOutputHandler<ItemInfuseOutput> outputHandler;
+    private GasMode gasMode;
 
     public BEEssentialEnergizedSmelter(IBlockProvider blockProvider, BlockPos pos, BlockState state) {
         super(blockProvider, pos, state, TRACKED_ERROR_TYPES, 200);
@@ -68,6 +78,7 @@ public class BEEssentialEnergizedSmelter extends BlockEntityProgressMachine<Smel
         this.inputHandler = InputHelper.getInputHandler(inputSlot, RecipeError.NOT_ENOUGH_INPUT);
         this.outputHandler = AMOutputHelper.getOutputHandler(outputSlot, NOT_ENOUGH_ITEM_OUTPUT_SPACE, infusionTank,
                 NOT_ENOUGH_INFUSE_OUTPUT_SPACE);
+        gasMode = GasMode.IDLE;
     }
 
     @Override
@@ -133,7 +144,7 @@ public class BEEssentialEnergizedSmelter extends BlockEntityProgressMachine<Smel
     }
 
     @Override
-    public @NotNull IGeneralRecipeTypeProvider<Container, SmeltingRecipe, GeneralSingleItem<Container, SmeltingRecipe>> getRecipeType() {
+    public @NotNull IUnifiedRecipeTypeProvider<SmeltingRecipe, GeneralSingleItem<Container, SmeltingRecipe>> getRecipeType() {
         return GeneralRecipeType.SMELTING;
     }
 
@@ -150,6 +161,40 @@ public class BEEssentialEnergizedSmelter extends BlockEntityProgressMachine<Smel
     @Override
     public double getProgressScaled() {
         return getScaledProgress();
+    }
+
+    @Override
+    public void nextMode(int tank) {
+        gasMode = gasMode.getNext();
+        markForSave();
+    }
+
+    @Override
+    public void addContainerTrackers(MekanismContainer container) {
+        super.addContainerTrackers(container);
+        container.track(SyncableEnum.create(GasMode::byIndexStatic, GasMode.IDLE, this::getGasMode, v -> gasMode = v));
+    }
+
+    @Override
+    public GasMode getGasMode() {
+        return gasMode;
+    }
+
+    @Override
+    public void writeSustainedData(CompoundTag dataMap) {
+        NBTUtils.writeEnum(dataMap, NBTConstants.DUMP_MODE, gasMode);
+    }
+
+    @Override
+    public void readSustainedData(CompoundTag dataMap) {
+        NBTUtils.setEnumIfPresent(dataMap, NBTConstants.DUMP_MODE, GasMode::byIndexStatic, v -> gasMode = v);
+    }
+
+    @Override
+    public Map<String, String> getTileDataRemap() {
+        Map<String, String> remap = new Object2ObjectOpenHashMap<>();
+        remap.put(NBTConstants.DUMP_MODE, NBTConstants.DUMP_MODE);
+        return remap;
     }
 
 }

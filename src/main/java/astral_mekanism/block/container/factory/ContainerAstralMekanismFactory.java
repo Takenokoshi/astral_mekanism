@@ -2,13 +2,13 @@ package astral_mekanism.block.container.factory;
 
 import org.jetbrains.annotations.NotNull;
 
-import astral_mekanism.block.blockentity.base.BlockEntityRecipeFactory;
-import astral_mekanism.block.blockentity.base.FactoryGuiHelper;
+import astral_mekanism.block.blockentity.base.IAstralMekanismFactory;
 import mekanism.common.inventory.container.tile.MekanismTileContainer;
 import mekanism.common.registration.impl.ContainerTypeRegistryObject;
+import mekanism.common.tile.base.TileEntityMekanism;
 import net.minecraft.world.entity.player.Inventory;
 
-public class ContainerAstralMekanismFactory<BE extends BlockEntityRecipeFactory<?, BE>>
+public class ContainerAstralMekanismFactory<BE extends TileEntityMekanism & IAstralMekanismFactory<BE>>
         extends MekanismTileContainer<BE> {
 
     public ContainerAstralMekanismFactory(ContainerTypeRegistryObject<?> type, int id, Inventory inv,
@@ -18,12 +18,12 @@ public class ContainerAstralMekanismFactory<BE extends BlockEntityRecipeFactory<
 
     @Override
     protected int getInventoryYOffset() {
-        return FactoryGuiHelper.getALLHeight(tile.tier, tile.getHeightPerProcess()) - 94;
+        return tile.getPageHeight() - 74;
     }
 
     @Override
     protected int getInventoryXOffset() {
-        return FactoryGuiHelper.getALLWidth(tile.tier, tile.getWidthPerProcess(), tile.getSideSpaceWidth()) / 2 - 81;
+        return tile.getSideSpaceWidth() + 233;
     }
 
 }

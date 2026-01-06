@@ -1,16 +1,16 @@
 package astral_mekanism.registries;
 
 import mekanism.api.chemical.slurry.Slurry;
-import mekanism.common.registration.impl.SlurryDeferredRegister;
 import mekanism.common.registration.impl.SlurryRegistryObject;
 import net.minecraft.resources.ResourceLocation;
 import java.util.ArrayList;
 import java.util.List;
 
 import astral_mekanism.AstralMekanismID;
+import astral_mekanism.registration.ExtendedSlurryDeferredRegister;
 
 public class AstralMekanismSlurries {
-	public static final SlurryDeferredRegister SLURRIES = new SlurryDeferredRegister(
+	public static final ExtendedSlurryDeferredRegister SLURRIES = new ExtendedSlurryDeferredRegister(
 			AstralMekanismID.MODID);
 
 	static final String[] Types = { "coal", "diamond", "emerald", "fluorite", "lapis_lazuli", "quartz",

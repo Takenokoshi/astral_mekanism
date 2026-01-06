@@ -39,7 +39,7 @@ public class EssentialSmeltingCachedRecipe extends GeneralCachedRecipe<SmeltingR
     }
 
     @Override
-    protected void calculateOperationsThisTick(OperationTracker tracker) {
+    public void calculateOperationsThisTick(OperationTracker tracker) {
         super.calculateOperationsThisTick(tracker);
         if (tracker.shouldContinueChecking()) {
             ItemStack inputStack = inputHandler.getInput();
@@ -67,7 +67,7 @@ public class EssentialSmeltingCachedRecipe extends GeneralCachedRecipe<SmeltingR
     }
 
     @Override
-    protected void finishProcessing(int operations) {
+    public void finishProcessing(int operations) {
         if (recipeInput != null && !recipeInput.isEmpty() && recipeOutput != null) {
             inputHandler.use(recipeInput, operations);
             outputHandler.handleOutput(recipeOutput, operations);

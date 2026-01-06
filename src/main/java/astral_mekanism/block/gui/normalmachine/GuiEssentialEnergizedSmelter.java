@@ -13,6 +13,7 @@ import astral_mekanism.network.to_server.PacketGuiEssentialSmelter;
 import mekanism.api.recipes.cache.CachedRecipe.OperationTracker.RecipeError;
 import mekanism.client.gui.GuiConfigurableTile;
 import mekanism.client.gui.element.bar.GuiVerticalPowerBar;
+import mekanism.client.gui.element.button.GuiGasMode;
 import mekanism.client.gui.element.button.MekanismImageButton;
 import mekanism.client.gui.element.gauge.GaugeType;
 import mekanism.client.gui.element.gauge.GuiInfusionGauge;
@@ -54,6 +55,7 @@ public class GuiEssentialEnergizedSmelter<BE extends BlockEntityRecipeMachine<Sm
                 .jeiCategories(MekanismJEIRecipeType.SMELTING);
         addRenderableWidget(new MekanismImageButton(this, 117, 13, 18, 18, 16, 16,
                 new ResourceLocation("minecraft", "textures/item/experience_bottle.png"), this::onPush));
+        addRenderableWidget(new GuiGasMode(this, 143, 76, true, tile::getGasMode, tile.getBlockPos(), 0));
         if (ModList.get().isLoaded("jei")) {
             addRenderableWidget(new MekanismImageButton(
                     this,
