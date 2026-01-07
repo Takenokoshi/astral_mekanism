@@ -41,6 +41,11 @@
                 },
                 {
                   "op": "replace",
+                  "source": "dumping",
+                  "target": "mekData.dumping"
+                },
+                {
+                  "op": "replace",
                   "source": "controlType",
                   "target": "mekData.controlType"
                 },

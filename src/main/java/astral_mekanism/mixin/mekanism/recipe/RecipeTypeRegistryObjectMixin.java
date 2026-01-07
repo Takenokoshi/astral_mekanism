@@ -12,7 +12,7 @@ public abstract class RecipeTypeRegistryObjectMixin<RECIPE extends MekanismRecip
 
     @SuppressWarnings("unchecked")
     @Override
-    public MekanismRecipeTypeMixin<RECIPE, INPUT_CACHE> getRecipeType() {
+    public MekanismRecipeTypeMixin<RECIPE, INPUT_CACHE> getUnifiedRecipeType() {
         return (MekanismRecipeTypeMixin<RECIPE, INPUT_CACHE>) (Object) ((RecipeTypeRegistryObject<RECIPE, INPUT_CACHE>) (Object) this)
                 .getRecipeType();
     };

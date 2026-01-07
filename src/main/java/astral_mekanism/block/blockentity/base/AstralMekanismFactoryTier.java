@@ -11,7 +11,7 @@ public enum AstralMekanismFactoryTier implements ITier {
     ULTIMATE("enchanted_ultimate", 10),
     ABSOLUTE("absolute_overclocked", 12),
     SUPREME("supreme_quantum", 16),
-    COSMIC("cosmic_dence", 20),
+    COSMIC("cosmic_dense", 20),
     INFINITE("infinite_multiversal", 24),
     ASTRAL("astronomical", "astral", 32);
 

@@ -5,7 +5,6 @@ import java.util.EnumMap;
 import astral_mekanism.AstralMekanismID;
 import astral_mekanism.block.blockentity.base.AstralMekanismFactoryTier;
 import astral_mekanism.registries.AstralMekanismMachines;
-import io.github.masyumero.emextras.EMExtras;
 import mekanism.api.providers.IBlockProvider;
 import net.minecraft.core.Direction;
 import net.minecraft.data.PackOutput;
@@ -32,9 +31,7 @@ public class AstralMekanismBlockStateProvider extends BlockStateProvider {
             IBlockProvider factory = map.get(tier);
             String baseName = factory.getRegistryName().getPath().replace(tier.nameForAstral + "_astral_", "")
                     .replace("_factory", "");
-            ResourceLocation ledLocation = 11 < tier.processes && tier.processes < 25
-                    ? EMExtras.rl("block/factory/flont_led/" + tier.nameForNormal)
-                    : modLoc("block/factory/led/" + tier.nameForNormal);
+            ResourceLocation ledLocation = modLoc("block/factory/led/" + tier.nameForNormal);
             ModelFile model = models().withExistingParent("block/astral_factory/" + baseName + "/" + tier.nameForAstral,
                     modLoc("block/astral_factory/" + baseName + "/base"))
                     .parent(models().getExistingFile(ledLocation));

@@ -12,7 +12,6 @@ import org.jetbrains.annotations.Nullable;
 import astral_mekanism.generalrecipe.GeneralRecipeType;
 import astral_mekanism.generalrecipe.lookup.cache.type.IUnifiedInputCache;
 import astral_mekanism.generalrecipe.lookup.cache.type.ItemGeneralInputCache;
-import mekanism.api.functions.ConstantPredicates;
 import mekanism.api.recipes.ingredients.InputIngredient;
 import mekanism.api.recipes.ingredients.ItemStackIngredient;
 import net.minecraft.world.Container;
@@ -58,12 +57,6 @@ public abstract class SingleInputGeneralRecipeCache<INPUT, INGREDIENT extends In
         Predicate<RECIPE> matchPredicate = recipe -> biPredicate.test(input, recipe);
         RECIPE recipe = cache.findFirstRecipe(input, matchPredicate);
         return recipe == null ? findFirstRecipe(complexRecipes, matchPredicate) : recipe;
-    }
-
-    @Override
-    @Nullable
-    public RECIPE findTypeBasedRecipe(@Nullable Level world, INPUT input) {
-        return findTypeBasedRecipe(world, input, ConstantPredicates.alwaysTrue());
     }
 
     @Override

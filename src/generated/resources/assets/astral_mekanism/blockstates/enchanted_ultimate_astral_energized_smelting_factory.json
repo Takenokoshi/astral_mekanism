@@ -1,0 +1,94 @@
+{
+  "variants": {
+    "active=false,facing=east,fluid_logged=empty": {
+      "model": "astral_mekanism:block/astral_factory/energized_smelting/enchanted_ultimate",
+      "y": 270
+    },
+    "active=false,facing=east,fluid_logged=lava": {
+      "model": "astral_mekanism:block/astral_factory/energized_smelting/enchanted_ultimate",
+      "y": 270
+    },
+    "active=false,facing=east,fluid_logged=water": {
+      "model": "astral_mekanism:block/astral_factory/energized_smelting/enchanted_ultimate",
+      "y": 270
+    },
+    "active=false,facing=north,fluid_logged=empty": {
+      "model": "astral_mekanism:block/astral_factory/energized_smelting/enchanted_ultimate",
+      "y": 180
+    },
+    "active=false,facing=north,fluid_logged=lava": {
+      "model": "astral_mekanism:block/astral_factory/energized_smelting/enchanted_ultimate",
+      "y": 180
+    },
+    "active=false,facing=north,fluid_logged=water": {
+      "model": "astral_mekanism:block/astral_factory/energized_smelting/enchanted_ultimate",
+      "y": 180
+    },
+    "active=false,facing=south,fluid_logged=empty": {
+      "model": "astral_mekanism:block/astral_factory/energized_smelting/enchanted_ultimate"
+    },
+    "active=false,facing=south,fluid_logged=lava": {
+      "model": "astral_mekanism:block/astral_factory/energized_smelting/enchanted_ultimate"
+    },
+    "active=false,facing=south,fluid_logged=water": {
+      "model": "astral_mekanism:block/astral_factory/energized_smelting/enchanted_ultimate"
+    },
+    "active=false,facing=west,fluid_logged=empty": {
+      "model": "astral_mekanism:block/astral_factory/energized_smelting/enchanted_ultimate",
+      "y": 90
+    },
+    "active=false,facing=west,fluid_logged=lava": {
+      "model": "astral_mekanism:block/astral_factory/energized_smelting/enchanted_ultimate",
+      "y": 90
+    },
+    "active=false,facing=west,fluid_logged=water": {
+      "model": "astral_mekanism:block/astral_factory/energized_smelting/enchanted_ultimate",
+      "y": 90
+    },
+    "active=true,facing=east,fluid_logged=empty": {
+      "model": "astral_mekanism:block/astral_factory/energized_smelting/enchanted_ultimate",
+      "y": 270
+    },
+    "active=true,facing=east,fluid_logged=lava": {
+      "model": "astral_mekanism:block/astral_factory/energized_smelting/enchanted_ultimate",
+      "y": 270
+    },
+    "active=true,facing=east,fluid_logged=water": {
+      "model": "astral_mekanism:block/astral_factory/energized_smelting/enchanted_ultimate",
+      "y": 270
+    },
+    "active=true,facing=north,fluid_logged=empty": {
+      "model": "astral_mekanism:block/astral_factory/energized_smelting/enchanted_ultimate",
+      "y": 180
+    },
+    "active=true,facing=north,fluid_logged=lava": {
+      "model": "astral_mekanism:block/astral_factory/energized_smelting/enchanted_ultimate",
+      "y": 180
+    },
+    "active=true,facing=north,fluid_logged=water": {
+      "model": "astral_mekanism:block/astral_factory/energized_smelting/enchanted_ultimate",
+      "y": 180
+    },
+    "active=true,facing=south,fluid_logged=empty": {
+      "model": "astral_mekanism:block/astral_factory/energized_smelting/enchanted_ultimate"
+    },
+    "active=true,facing=south,fluid_logged=lava": {
+      "model": "astral_mekanism:block/astral_factory/energized_smelting/enchanted_ultimate"
+    },
+    "active=true,facing=south,fluid_logged=water": {
+      "model": "astral_mekanism:block/astral_factory/energized_smelting/enchanted_ultimate"
+    },
+    "active=true,facing=west,fluid_logged=empty": {
+      "model": "astral_mekanism:block/astral_factory/energized_smelting/enchanted_ultimate",
+      "y": 90
+    },
+    "active=true,facing=west,fluid_logged=lava": {
+      "model": "astral_mekanism:block/astral_factory/energized_smelting/enchanted_ultimate",
+      "y": 90
+    },
+    "active=true,facing=west,fluid_logged=water": {
+      "model": "astral_mekanism:block/astral_factory/energized_smelting/enchanted_ultimate",
+      "y": 90
+    }
+  }
+}

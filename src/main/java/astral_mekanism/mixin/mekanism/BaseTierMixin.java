@@ -26,14 +26,14 @@ public class BaseTierMixin {
     static BaseTier[] $VALUES;
 
     @Invoker("<init>")
-    private static BaseTier involeNew(String name, int num, String name2, int[] rgbCode, MapColor mapColor) {
+    private static BaseTier invokeNew(String name, int num, String name2, int[] rgbCode, MapColor mapColor) {
         return null;
     }
 
     @Unique
     private static BaseTier createNew(String name, int[] rgbCode, MapColor mapColor) {
         int index = $VALUES.length;
-        BaseTier result = involeNew(name, index, name, rgbCode, mapColor);
+        BaseTier result = invokeNew(name, index, name, rgbCode, mapColor);
         BaseTier[] newValues = Arrays.copyOf($VALUES, index + 1);
         newValues[index] = result;
         $VALUES = newValues;

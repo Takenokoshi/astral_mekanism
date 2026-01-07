@@ -1,0 +1,6 @@
+{
+    "parent": "emextras:block/factory/flont_led/cosmic_dense",
+  "textures": {
+    "led": "emextras:block/factory/supreme_quantum_led"
+  }
+}

@@ -4,6 +4,7 @@ import java.util.function.Predicate;
 
 import org.jetbrains.annotations.Nullable;
 
+import mekanism.api.functions.ConstantPredicates;
 import mekanism.common.recipe.lookup.cache.IInputRecipeCache;
 import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.level.Level;
@@ -18,7 +19,9 @@ public interface ISingleInputRecipeCache<INPUT, RECIPE extends Recipe<?>> extend
     RECIPE findFirstRecipe(@Nullable Level world, INPUT input);
 
     @Nullable
-    RECIPE findTypeBasedRecipe(@Nullable Level world, INPUT input);
+    default RECIPE findTypeBasedRecipe(@Nullable Level world, INPUT input){
+        return findTypeBasedRecipe(world, input, ConstantPredicates.alwaysTrue());
+    };
 
     @Nullable
     RECIPE findTypeBasedRecipe(

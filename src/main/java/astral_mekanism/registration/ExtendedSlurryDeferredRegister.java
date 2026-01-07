@@ -8,7 +8,6 @@ import mekanism.api.chemical.slurry.Slurry;
 import mekanism.api.chemical.slurry.SlurryBuilder;
 import mekanism.common.registration.impl.SlurryDeferredRegister;
 import mekanism.common.registration.impl.SlurryRegistryObject;
-import mekanism.common.resource.PrimaryResource;
 
 public class ExtendedSlurryDeferredRegister extends SlurryDeferredRegister {
 
@@ -17,13 +16,6 @@ public class ExtendedSlurryDeferredRegister extends SlurryDeferredRegister {
     public ExtendedSlurryDeferredRegister(String modid) {
         super(modid);
         allSlurries = new ArrayList<>();
-    }
-
-    @Override
-    public SlurryRegistryObject<Slurry, Slurry> register(PrimaryResource resource) {
-        SlurryRegistryObject<Slurry, Slurry> slurry = super.register(resource);
-        allSlurries.add(slurry);
-        return slurry;
     }
 
     @Override

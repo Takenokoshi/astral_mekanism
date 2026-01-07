@@ -65,14 +65,14 @@ public class AstralMekanismEnglishLangProvider extends LanguageProvider {
     }
 
     private void addLangEntry(ILangEntry entry) {
-        String[] parts = entry.getTranslationKey().split(".");
+        String[] parts = entry.getTranslationKey().split("\\.");
         add(entry.getTranslationKey(), toTitle(parts[parts.length - 1]));
     }
 
     private void addFluid(FluidRegistryObject<?, ?, ?, ?, ?> fluid) {
         String path = fluid.getRegistryName().getPath();
         add(fluid.getBucket(), toTitle(path + "_bucket"));
-        add(fluid.getTranslationKey(), toTitle(path));
+        add("fluid.astral_mekanism." + path, toTitle(path));
         add(fluid.getBlock(), toTitle(path));
     }
 

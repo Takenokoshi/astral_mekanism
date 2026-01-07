@@ -13,18 +13,18 @@ import net.minecraft.world.level.Level;
 
 public interface IUnifiedRecipeTypeProvider<RECIPE extends Recipe<?>, INPUT_CACHE extends IInputRecipeCache> {
 
-    IUnifiedRecipeType<RECIPE, INPUT_CACHE> getRecipeType();
+    IUnifiedRecipeType<RECIPE, INPUT_CACHE> getUnifiedRecipeType();
 
     default ResourceLocation getRegistryName() {
-        return getRecipeType().getRegistryName();
+        return getUnifiedRecipeType().getRegistryName();
     }
 
     default INPUT_CACHE getInputCache() {
-        return getRecipeType().getInputCache();
+        return getUnifiedRecipeType().getInputCache();
     }
 
     default List<RECIPE> getRecipes(@Nullable Level level) {
-        return getRecipeType().getRecipes(level);
+        return getUnifiedRecipeType().getRecipes(level);
     }
 
     default Stream<RECIPE> stream(@Nullable Level world) {

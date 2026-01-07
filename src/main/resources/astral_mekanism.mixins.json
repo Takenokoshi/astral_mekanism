@@ -7,9 +7,9 @@
 	"mixins": [
 		"ae2.AppEngInternalInventoryMixin",
 		"mekanism.recipe.cache.CachedRecipeMixin",
+		"mekanism.recipe.lookup.cache.type.BaseInputCacheMixin",
 		"mekanism.recipe.lookup.cache.recipe.SingleInputRecipeCacheMixin",
 		"mekanism.recipe.lookup.cache.recipe.SingleItemMixin",
-		"mekanism.recipe.lookup.cache.type.BaseInputCacheMixin",
 		"mekanism.recipe.MekanismRecipeTypeMixin",
 		"mekanism.recipe.RecipeTypeRegistryObjectMixin",
 		"mekanism.BasicInventorySlotMixin",

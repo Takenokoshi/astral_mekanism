@@ -69,7 +69,7 @@ public class GeneralRecipeType<C extends Container, RECIPE extends Recipe<C>, IN
     }
 
     @Override
-    public GeneralRecipeType<C, RECIPE, INPUT_CACHE> getRecipeType() {
+    public GeneralRecipeType<C, RECIPE, INPUT_CACHE> getUnifiedRecipeType() {
         return this;
     }
 

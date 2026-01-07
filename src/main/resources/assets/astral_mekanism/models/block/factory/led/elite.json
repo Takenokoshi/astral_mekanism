@@ -1,5 +1,5 @@
 {
-    "parent": "emextras:block/factory/flont_led/cosmic_dence",
+    "parent": "emextras:block/factory/flont_led/cosmic_dense",
     "textures": {
         "led": "astral_mekanism:block/factory/elite"
     }
