@@ -48,7 +48,7 @@ public class GuiEnergizedSmeltingFactory<BE extends BlockEntityGeneralRecipeFact
                         .jeiCategories(MekanismJEIRecipeType.SMELTING);
             }
         }
-        addRenderableWidget(new MekanismImageButton(this, imageWidth - 36, 18, 18, 18, 16, 16,
+        addRenderableWidget(new MekanismImageButton(this, imageWidth - 36, 36, 18, 18, 16, 16,
                 new ResourceLocation("minecraft", "textures/item/experience_bottle.png"), this::onPush));
         addRenderableWidget(new GuiInfusionGauge(tile::getInfusionTank, () -> tile.getInfusionTanks(null),
                 GaugeType.SMALL, this, imageWidth - 36, 36))
