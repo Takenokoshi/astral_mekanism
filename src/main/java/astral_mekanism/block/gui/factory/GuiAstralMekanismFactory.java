@@ -32,7 +32,7 @@ public class GuiAstralMekanismFactory<BE extends TileEntityConfigurableMachine &
         dynamicSlots = true;
         imageHeight = tile.getPageHeight();
         imageWidth = tile.getPageWidth();
-        inventoryLabelX = imageWidth / 2 + 81;
+        inventoryLabelX = imageWidth / 2 - 81;
         inventoryLabelY = imageHeight - 92;
     }
 

@@ -18,12 +18,12 @@ public class ContainerAstralMekanismFactory<BE extends TileEntityMekanism & IAst
 
     @Override
     protected int getInventoryYOffset() {
-        return tile.getPageHeight() - 74;
+        return tile.getPageHeight() - 76;
     }
 
     @Override
     protected int getInventoryXOffset() {
-        return tile.getSideSpaceWidth() + 233;
+        return tile.getSideSpaceWidth() + 71;
     }
 
 }
