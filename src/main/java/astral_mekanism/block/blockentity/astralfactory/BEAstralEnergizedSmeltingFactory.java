@@ -143,7 +143,7 @@ public class BEAstralEnergizedSmeltingFactory
                 updateSortingListener.onContentsChanged();
                 recipeCacheLookupMonitors[index].onChange();
             }, x, y, page));
-            builder.addSlot(outputSlots[i] = PagedOutputInventorySlot.at(updateSortingListener, x, y + 44,page));
+            builder.addSlot(outputSlots[i] = PagedOutputInventorySlot.at(updateSortingListener, x, y + 44, page));
         }
         return builder;
     }

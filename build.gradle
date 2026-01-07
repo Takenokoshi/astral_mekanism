@@ -45,9 +45,6 @@ sourceSets {
         runtimeClasspath += sourceSets.main.output
     }
 }
-processResources {
-    exclude("**/lang/en_us_generated.json")
-}
 
 
 println "Java: ${System.getProperty 'java.version'}, JVM: ${System.getProperty 'java.vm.version'} (${System.getProperty 'java.vendor'}), Arch: ${System.getProperty 'os.arch'}"
