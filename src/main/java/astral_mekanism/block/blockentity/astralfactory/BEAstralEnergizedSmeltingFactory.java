@@ -6,7 +6,7 @@ import java.util.Map;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-import astral_mekanism.block.blockentity.base.BlockEntityGeneralRecipeFactory;
+import astral_mekanism.block.blockentity.base.BlockEntityRecipeFactory;
 import astral_mekanism.block.blockentity.elements.slot.paged.PagedInputInventorySlot;
 import astral_mekanism.block.blockentity.elements.slot.paged.PagedOutputInventorySlot;
 import astral_mekanism.block.blockentity.interf.IEnergizedSmeltingFactory;
@@ -50,7 +50,7 @@ import net.minecraft.world.item.crafting.SmeltingRecipe;
 import net.minecraft.world.level.block.state.BlockState;
 
 public class BEAstralEnergizedSmeltingFactory
-        extends BlockEntityGeneralRecipeFactory<SmeltingRecipe, BEAstralEnergizedSmeltingFactory>
+        extends BlockEntityRecipeFactory<SmeltingRecipe, BEAstralEnergizedSmeltingFactory>
         implements IEnergizedSmeltingFactory<BEAstralEnergizedSmeltingFactory> {
 
     private PagedInputInventorySlot[] inputSlots;

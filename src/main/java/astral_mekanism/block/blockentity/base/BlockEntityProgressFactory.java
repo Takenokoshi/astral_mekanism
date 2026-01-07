@@ -27,8 +27,8 @@ import net.minecraft.nbt.Tag;
 import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.level.block.state.BlockState;
 
-public abstract class BlockEntityGeneralProgressFactory<RECIPE extends Recipe<?>, BE extends BlockEntityGeneralProgressFactory<RECIPE, BE>>
-        extends BlockEntityGeneralRecipeFactory<RECIPE, BE>
+public abstract class BlockEntityProgressFactory<RECIPE extends Recipe<?>, BE extends BlockEntityProgressFactory<RECIPE, BE>>
+        extends BlockEntityRecipeFactory<RECIPE, BE>
         implements ISustainedData {
 
     protected final int baseTicksRequired;
@@ -37,7 +37,7 @@ public abstract class BlockEntityGeneralProgressFactory<RECIPE extends Recipe<?>
     private boolean sorting;
     private boolean sortingNeeded = true;
 
-    protected BlockEntityGeneralProgressFactory(IBlockProvider blockProvider, BlockPos pos, BlockState state,
+    protected BlockEntityProgressFactory(IBlockProvider blockProvider, BlockPos pos, BlockState state,
             int baseTicksRequired, List<RecipeError> errorTypes, Set<RecipeError> globalErrorTypes) {
         super(blockProvider, pos, state, errorTypes, globalErrorTypes);
         this.baseTicksRequired = baseTicksRequired;

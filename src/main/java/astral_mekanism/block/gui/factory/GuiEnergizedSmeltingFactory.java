@@ -1,7 +1,7 @@
 package astral_mekanism.block.gui.factory;
 
 import astral_mekanism.AstralMekanism;
-import astral_mekanism.block.blockentity.base.BlockEntityGeneralRecipeFactory;
+import astral_mekanism.block.blockentity.base.BlockEntityRecipeFactory;
 import astral_mekanism.block.blockentity.interf.IEnergizedSmeltingFactory;
 import astral_mekanism.block.blockentity.interf.IEssentialEnergizedSmelter;
 import astral_mekanism.block.container.factory.ContainerAstralMekanismFactory;
@@ -24,7 +24,7 @@ import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.item.crafting.SmeltingRecipe;
 import net.minecraftforge.fml.ModList;
 
-public class GuiEnergizedSmeltingFactory<BE extends BlockEntityGeneralRecipeFactory<SmeltingRecipe, BE> & IEnergizedSmeltingFactory<BE>>
+public class GuiEnergizedSmeltingFactory<BE extends BlockEntityRecipeFactory<SmeltingRecipe, BE> & IEnergizedSmeltingFactory<BE>>
         extends GuiAstralMekanismFactory<BE> {
 
     public GuiEnergizedSmeltingFactory(ContainerAstralMekanismFactory<BE> container, Inventory inv, Component title) {

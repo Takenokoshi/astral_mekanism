@@ -34,6 +34,7 @@ public class GuiAstralMekanismFactory<BE extends TileEntityConfigurableMachine &
         imageWidth = tile.getPageWidth();
         inventoryLabelX = imageWidth / 2 - 81;
         inventoryLabelY = imageHeight - 92;
+        rebuildWidgets();
     }
 
     @Override
@@ -44,16 +45,14 @@ public class GuiAstralMekanismFactory<BE extends TileEntityConfigurableMachine &
                     page = (byte) ((page - 1) % tile.getAllPages());
                     menu.setSelectedWindow(
                             new SelectedWindowData(AMWindowType.PAGED, page));
-                    clearWidgets();
-                    init();
+                            rebuildWidgets();
                 }, null));
         addRenderableWidget(new MekanismButton(this, imageWidth - tile.getSideSpaceWidth(), 18, 18, 18,
                 Component.literal(">"), () -> {
                     page = (byte) ((page + 1) % tile.getAllPages());
                     menu.setSelectedWindow(
                             new SelectedWindowData(AMWindowType.PAGED, page));
-                    clearWidgets();
-                    init();
+                            rebuildWidgets();
                 }, null));
     }
 

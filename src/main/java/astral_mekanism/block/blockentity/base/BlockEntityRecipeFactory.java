@@ -47,7 +47,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.level.block.state.BlockState;
 
-public abstract class BlockEntityGeneralRecipeFactory<RECIPE extends Recipe<?>, BE extends BlockEntityGeneralRecipeFactory<RECIPE, BE>>
+public abstract class BlockEntityRecipeFactory<RECIPE extends Recipe<?>, BE extends BlockEntityRecipeFactory<RECIPE, BE>>
         extends TileEntityConfigurableMachine
         implements IUnifiedRecipeLookUpHandler<RECIPE>, IEnergizedMachine<BE>, IAstralMekanismFactory<BE> {
 
@@ -60,7 +60,7 @@ public abstract class BlockEntityGeneralRecipeFactory<RECIPE extends Recipe<?>, 
     protected MachineEnergyContainer<BE> energyContainer;
     protected EnergyInventorySlot energySlot;
 
-    protected BlockEntityGeneralRecipeFactory(IBlockProvider blockProvider, BlockPos pos, BlockState state,
+    protected BlockEntityRecipeFactory(IBlockProvider blockProvider, BlockPos pos, BlockState state,
             List<RecipeError> errorTypes, Set<RecipeError> globalErrorTypes) {
         super(blockProvider, pos, state);
         this.activeStates = new boolean[tier.processes];
