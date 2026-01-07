@@ -7,15 +7,13 @@ import org.spongepowered.asm.mixin.Mutable;
 import org.spongepowered.asm.mixin.gen.Accessor;
 import org.spongepowered.asm.mixin.gen.Invoker;
 
-import astral_mekanism.generalrecipe.IMekanismRecipeType;
 import mekanism.api.recipes.MekanismRecipe;
 import mekanism.common.recipe.MekanismRecipeType;
 import mekanism.common.recipe.lookup.cache.IInputRecipeCache;
 import net.minecraft.resources.ResourceLocation;
 
 @Mixin(value = MekanismRecipeType.class, remap = false)
-public interface MekanismRecipeTypeMixin<RECIPE extends MekanismRecipe, INPUT_CACHE extends IInputRecipeCache>
-        extends IMekanismRecipeType<RECIPE,INPUT_CACHE> {
+public interface MekanismRecipeTypeMixin<RECIPE extends MekanismRecipe, INPUT_CACHE extends IInputRecipeCache> {
     @Invoker("<init>")
     public static <RECIPE extends MekanismRecipe, INPUT_CACHE extends IInputRecipeCache> MekanismRecipeType<RECIPE, INPUT_CACHE> invokeNew(
             String name, Function<MekanismRecipeType<RECIPE, INPUT_CACHE>, INPUT_CACHE> inputCacheCreator) {

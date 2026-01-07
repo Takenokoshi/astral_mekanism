@@ -11,6 +11,7 @@
 		"mekanism.recipe.lookup.cache.recipe.SingleInputRecipeCacheMixin",
 		"mekanism.recipe.lookup.cache.recipe.SingleItemMixin",
 		"mekanism.recipe.MekanismRecipeTypeMixin",
+		"mekanism.recipe.MekanismRecipeTypeMixin2",
 		"mekanism.recipe.RecipeTypeRegistryObjectMixin",
 		"mekanism.BasicInventorySlotMixin",
 		"mekanism.BaseTierMixin",
