@@ -11,11 +11,10 @@ import astral_mekanism.generalrecipe.lookup.cache.type.IUnifiedInputCache;
 import mekanism.api.recipes.MekanismRecipe;
 import mekanism.api.recipes.ingredients.InputIngredient;
 import mekanism.common.recipe.lookup.cache.SingleInputRecipeCache;
-import mekanism.common.recipe.lookup.cache.type.IInputCache;
 import net.minecraft.world.level.Level;
 
 @Mixin(value = SingleInputRecipeCache.class, remap = false)
-public abstract class SingleInputRecipeCacheMixin<INPUT, INGREDIENT extends InputIngredient<INPUT>, RECIPE extends MekanismRecipe & Predicate<INPUT>, CACHE extends IUnifiedInputCache<INPUT, INGREDIENT, RECIPE> & IInputCache<INPUT, INGREDIENT, RECIPE>>
+public abstract class SingleInputRecipeCacheMixin<INPUT, INGREDIENT extends InputIngredient<INPUT>, RECIPE extends MekanismRecipe & Predicate<INPUT>, CACHE extends IUnifiedInputCache<INPUT, INGREDIENT, RECIPE>>
         implements ISingleInputRecipeCache<INPUT, RECIPE> {
 
     @Shadow
