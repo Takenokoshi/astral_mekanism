@@ -1,0 +1,16 @@
+{
+    "type": "mekanism:injecting",
+    "chemicalInput": {
+        "amount": 4,
+        "gas": "astral_mekanism:aqua_regia"
+    },
+    "itemInput": {
+        "ingredient": {
+            "tag": "forge:crystals/redstone"
+        }
+    },
+    "output": {
+        "count": 2,
+        "item": "astral_mekanism:shard_redstone"
+    }
+}

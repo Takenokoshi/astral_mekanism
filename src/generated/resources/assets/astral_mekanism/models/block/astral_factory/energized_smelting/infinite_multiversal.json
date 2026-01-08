@@ -1,3 +1,15 @@
 {
-  "parent": "astral_mekanism:block/factory/led/infinite_multiversal"
+  "parent": "minecraft:block/block",
+  "children": {
+    "base": {},
+    "front_led": {}
+  },
+  "item_render_order": [
+    "base",
+    "front_led"
+  ],
+  "loader": "forge:composite",
+  "textures": {
+    "particle": "astral_mekanism:block/factory/base"
+  }
 }

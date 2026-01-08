@@ -11,6 +11,7 @@ import mekanism.client.gui.element.slot.GuiSlot;
 import mekanism.client.gui.element.slot.SlotType;
 import mekanism.common.inventory.container.SelectedWindowData;
 import mekanism.common.inventory.container.slot.ContainerSlotType;
+import mekanism.common.inventory.container.slot.IVirtualSlot;
 import mekanism.common.inventory.container.slot.InventoryContainerSlot;
 import mekanism.common.inventory.container.slot.SlotOverlay;
 import mekanism.common.tile.component.config.DataType;
@@ -45,14 +46,14 @@ public class GuiAstralMekanismFactory<BE extends TileEntityConfigurableMachine &
                     page = (byte) ((page - 1) % tile.getAllPages());
                     menu.setSelectedWindow(
                             new SelectedWindowData(AMWindowType.PAGED, page));
-                            rebuildWidgets();
+                    rebuildWidgets();
                 }, null));
         addRenderableWidget(new MekanismButton(this, imageWidth - tile.getSideSpaceWidth(), 18, 18, 18,
                 Component.literal(">"), () -> {
                     page = (byte) ((page + 1) % tile.getAllPages());
                     menu.setSelectedWindow(
                             new SelectedWindowData(AMWindowType.PAGED, page));
-                            rebuildWidgets();
+                    rebuildWidgets();
                 }, null));
     }
 
@@ -61,34 +62,36 @@ public class GuiAstralMekanismFactory<BE extends TileEntityConfigurableMachine &
         int size = menu.slots.size();
         for (int i = 0; i < size; i++) {
             Slot slot = menu.slots.get(i);
-            if (slot instanceof InventoryContainerSlot containerSlot
-                    && containerSlot.exists(menu.getSelectedWindow())) {
-                ContainerSlotType slotType = containerSlot.getSlotType();
-                DataType dataType = findDataType(containerSlot);
-                SlotType type;
-                if (dataType != null) {
-                    type = SlotType.get(dataType);
-                } else if (slotType == ContainerSlotType.INPUT || slotType == ContainerSlotType.OUTPUT
-                        || slotType == ContainerSlotType.EXTRA) {
-                    type = SlotType.NORMAL;
-                } else if (slotType == ContainerSlotType.POWER) {
-                    type = SlotType.POWER;
-                } else if (slotType == ContainerSlotType.NORMAL || slotType == ContainerSlotType.VALIDITY) {
-                    type = SlotType.NORMAL;
-                } else {
-                    continue;
+            if (slot instanceof InventoryContainerSlot containerSlot) {
+                if (containerSlot.exists(menu.getSelectedWindow())
+                        || containerSlot instanceof IVirtualSlot) {
+                    ContainerSlotType slotType = containerSlot.getSlotType();
+                    DataType dataType = findDataType(containerSlot);
+                    SlotType type;
+                    if (dataType != null) {
+                        type = SlotType.get(dataType);
+                    } else if (slotType == ContainerSlotType.INPUT || slotType == ContainerSlotType.OUTPUT
+                            || slotType == ContainerSlotType.EXTRA) {
+                        type = SlotType.NORMAL;
+                    } else if (slotType == ContainerSlotType.POWER) {
+                        type = SlotType.POWER;
+                    } else if (slotType == ContainerSlotType.NORMAL || slotType == ContainerSlotType.VALIDITY) {
+                        type = SlotType.NORMAL;
+                    } else {
+                        continue;
+                    }
+                    GuiSlot guiSlot = new GuiSlot(type, this, slot.x - 1, slot.y - 1);
+                    containerSlot.addWarnings(guiSlot);
+                    SlotOverlay slotOverlay = containerSlot.getSlotOverlay();
+                    if (slotOverlay != null) {
+                        guiSlot.with(slotOverlay);
+                    }
+                    if (slotType == ContainerSlotType.VALIDITY) {
+                        int index = i;
+                        guiSlot.validity(() -> checkValidity(index));
+                    }
+                    addRenderableWidget(guiSlot);
                 }
-                GuiSlot guiSlot = new GuiSlot(type, this, slot.x - 1, slot.y - 1);
-                containerSlot.addWarnings(guiSlot);
-                SlotOverlay slotOverlay = containerSlot.getSlotOverlay();
-                if (slotOverlay != null) {
-                    guiSlot.with(slotOverlay);
-                }
-                if (slotType == ContainerSlotType.VALIDITY) {
-                    int index = i;
-                    guiSlot.validity(() -> checkValidity(index));
-                }
-                addRenderableWidget(guiSlot);
             } else {
                 addRenderableWidget(new GuiSlot(SlotType.NORMAL, this, slot.x - 1, slot.y - 1));
             }

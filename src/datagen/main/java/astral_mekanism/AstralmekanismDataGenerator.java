@@ -20,6 +20,7 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.data.event.GatherDataEvent;
 
+@SuppressWarnings("unused")
 @Mod.EventBusSubscriber(modid = AstralMekanismID.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class AstralMekanismDataGenerator {
 
@@ -42,7 +43,7 @@ public class AstralMekanismDataGenerator {
         }
         if (event.includeClient()) {
             gen.addProvider(true, new AstralMekanismBlockStateProvider(output, helper));
-            gen.addProvider(true, new AstralMekanismEnglishLangProvider(output));
+            //gen.addProvider(true, new AstralMekanismEnglishLangProvider(output));
         }
         System.out.println("### AstralMekanism GatherDataEvent fired ###");
     }
