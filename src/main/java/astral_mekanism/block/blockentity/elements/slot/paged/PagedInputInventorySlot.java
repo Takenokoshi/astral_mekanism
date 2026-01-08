@@ -7,21 +7,25 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import astral_mekanism.block.container.core.AMWindowType;
+import astral_mekanism.block.container.slot.PagedInventoryContainerSlot;
 import mekanism.api.IContentsListener;
 import mekanism.common.inventory.container.SelectedWindowData;
 import mekanism.common.inventory.container.slot.InventoryContainerSlot;
-import mekanism.common.inventory.container.slot.VirtualInventoryContainerSlot;
 import mekanism.common.inventory.slot.InputInventorySlot;
 import net.minecraft.world.item.ItemStack;
 
 public class PagedInputInventorySlot extends InputInventorySlot implements IPagedSlot {
 
     private final int page;
+    private final int x;
+    private final int y;
 
     protected PagedInputInventorySlot(Predicate<@NotNull ItemStack> insertPredicate,
             Predicate<@NotNull ItemStack> isItemValid, @Nullable IContentsListener listener, int x, int y, int page) {
         super(insertPredicate, isItemValid, listener, x, y);
         this.page = page;
+        this.x = x;
+        this.y = y;
     }
 
     public static PagedInputInventorySlot at(Predicate<@NotNull ItemStack> insertPredicate,
@@ -48,9 +52,8 @@ public class PagedInputInventorySlot extends InputInventorySlot implements IPage
 
     @Override
     public @Nullable InventoryContainerSlot createContainerSlot() {
-        return new VirtualInventoryContainerSlot(this,
-                new SelectedWindowData(AMWindowType.PAGED, page > 127 ? (byte) 0 : (byte) page), getSlotOverlay(),
-                this::setStackUnchecked);
+        return new PagedInventoryContainerSlot(this, x, y, getSlotType(), getSlotOverlay(), null, this::setStackUnchecked,
+                new SelectedWindowData(AMWindowType.PAGED, (byte) page));
     }
 
 }
