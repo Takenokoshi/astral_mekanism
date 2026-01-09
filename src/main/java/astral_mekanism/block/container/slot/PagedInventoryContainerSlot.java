@@ -4,7 +4,6 @@ import java.util.function.Consumer;
 
 import org.jetbrains.annotations.Nullable;
 
-import mekanism.common.inventory.container.SelectedWindowData;
 import mekanism.common.inventory.container.slot.ContainerSlotType;
 import mekanism.common.inventory.container.slot.InventoryContainerSlot;
 import mekanism.common.inventory.container.slot.SlotOverlay;
@@ -13,18 +12,25 @@ import mekanism.common.inventory.warning.ISupportsWarning;
 import net.minecraft.world.item.ItemStack;
 
 public class PagedInventoryContainerSlot extends InventoryContainerSlot {
-    private final SelectedWindowData windowData;
+
+    public final int page;
+    private boolean active;
 
     public PagedInventoryContainerSlot(BasicInventorySlot slot, int x, int y, ContainerSlotType slotType,
             @Nullable SlotOverlay slotOverlay, @Nullable Consumer<ISupportsWarning<?>> warningAdder,
-            Consumer<ItemStack> uncheckedSetter, SelectedWindowData windowData) {
+            Consumer<ItemStack> uncheckedSetter, int page) {
         super(slot, x, y, slotType, slotOverlay, warningAdder, uncheckedSetter);
-        this.windowData = windowData;
+        this.page = page;
+        this.active = false;
+    }
+
+    public void setPage(int page) {
+        active = this.page == page;
     }
 
     @Override
-    public boolean exists(@Nullable SelectedWindowData windowData) {
-        return this.windowData.equals(windowData);
+    public boolean isActive() {
+        return super.isActive() && active;
     }
 
 }

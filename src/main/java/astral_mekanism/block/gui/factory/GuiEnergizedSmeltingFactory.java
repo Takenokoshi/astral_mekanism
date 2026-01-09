@@ -5,6 +5,7 @@ import astral_mekanism.block.blockentity.base.BlockEntityRecipeFactory;
 import astral_mekanism.block.blockentity.interf.IEnergizedSmeltingFactory;
 import astral_mekanism.block.blockentity.interf.IEssentialEnergizedSmelter;
 import astral_mekanism.block.container.factory.ContainerAstralMekanismFactory;
+import astral_mekanism.block.gui.element.PagedGuiProgress;
 import astral_mekanism.block.gui.normalmachine.GuiEssentialEnergizedSmelter;
 import astral_mekanism.network.to_server.PacketGuiEssentialSmelter;
 import mekanism.api.recipes.cache.CachedRecipe.OperationTracker.RecipeError;
@@ -13,7 +14,6 @@ import mekanism.client.gui.element.button.GuiGasMode;
 import mekanism.client.gui.element.button.MekanismImageButton;
 import mekanism.client.gui.element.gauge.GaugeType;
 import mekanism.client.gui.element.gauge.GuiInfusionGauge;
-import mekanism.client.gui.element.progress.GuiProgress;
 import mekanism.client.gui.element.progress.ProgressType;
 import mekanism.client.gui.element.tab.GuiEnergyTab;
 import mekanism.client.jei.MekanismJEIRecipeType;
@@ -39,14 +39,13 @@ public class GuiEnergizedSmeltingFactory<BE extends BlockEntityRecipeFactory<Sme
                 .warning(WarningType.NOT_ENOUGH_ENERGY,
                         tile.getWarningCheck(RecipeError.NOT_ENOUGH_ENERGY, 0)));
         for (int index = 0; index < tile.tier.processes; index++) {
-            if (tile.getPageByIndex(index) == page) {
-                int x = tile.getXByIndex(index) + 4;
-                int y = tile.getY() + 20;
-                int cacheIndex = index;
-                addRenderableWidget(
-                        new GuiProgress(() -> tile.getProgressScaled(cacheIndex), ProgressType.DOWN, this, x, y))
-                        .jeiCategories(MekanismJEIRecipeType.SMELTING);
-            }
+            int page = tile.getPageByIndex(index);
+            int x = tile.getXByIndex(index) + 4;
+            int y = tile.getY() + 20;
+            int cacheIndex = index;
+            addRenderableWidget(
+                    new PagedGuiProgress(() -> tile.getProgressScaled(cacheIndex), ProgressType.DOWN, this, x, y, page))
+                    .jeiCategories(MekanismJEIRecipeType.SMELTING);
         }
         addRenderableWidget(new MekanismImageButton(this, imageWidth - 36, 60, 18, 18, 16, 16,
                 new ResourceLocation("minecraft", "textures/item/experience_bottle.png"), this::onPush));

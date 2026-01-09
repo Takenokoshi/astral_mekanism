@@ -1,19 +1,28 @@
 package astral_mekanism.block.container.factory;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.jetbrains.annotations.NotNull;
 
 import astral_mekanism.block.blockentity.base.IAstralMekanismFactory;
+import astral_mekanism.block.container.slot.PagedInventoryContainerSlot;
 import mekanism.common.inventory.container.tile.MekanismTileContainer;
 import mekanism.common.registration.impl.ContainerTypeRegistryObject;
 import mekanism.common.tile.base.TileEntityMekanism;
 import net.minecraft.world.entity.player.Inventory;
+import net.minecraft.world.inventory.Slot;
 
 public class ContainerAstralMekanismFactory<BE extends TileEntityMekanism & IAstralMekanismFactory<BE>>
         extends MekanismTileContainer<BE> {
 
+    public final List<PagedInventoryContainerSlot> pagedSlots;
+
     public ContainerAstralMekanismFactory(ContainerTypeRegistryObject<?> type, int id, Inventory inv,
             @NotNull BE tile) {
         super(type, id, inv, tile);
+        pagedSlots = new ArrayList<>();
+        
     }
 
     @Override
@@ -24,6 +33,16 @@ public class ContainerAstralMekanismFactory<BE extends TileEntityMekanism & IAst
     @Override
     protected int getInventoryXOffset() {
         return tile.getSideSpaceWidth() + 71;
+    }
+
+    @NotNull
+    @Override
+    protected Slot addSlot(@NotNull Slot slot) {
+        if (slot instanceof PagedInventoryContainerSlot slot2) {
+            slot2.setPage(0);
+            pagedSlots.add(slot2);
+        }
+         return super.addSlot(slot);
     }
 
 }

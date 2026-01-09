@@ -1,20 +1,22 @@
 package astral_mekanism.block.blockentity.elements.slot.paged;
 
+import java.util.function.Consumer;
+
 import org.jetbrains.annotations.Nullable;
 
-import astral_mekanism.block.container.core.AMWindowType;
 import astral_mekanism.block.container.slot.PagedInventoryContainerSlot;
 import mekanism.api.IContentsListener;
-import mekanism.common.inventory.container.SelectedWindowData;
 import mekanism.common.inventory.container.slot.ContainerSlotType;
 import mekanism.common.inventory.container.slot.InventoryContainerSlot;
 import mekanism.common.inventory.slot.BasicInventorySlot;
+import mekanism.common.inventory.warning.ISupportsWarning;
 
 public class PagedOutputInventorySlot extends BasicInventorySlot implements IPagedSlot {
 
     private final int page;
     private final int x;
     private final int y;
+    private @Nullable Consumer<ISupportsWarning<?>> warningAdder;
 
     private PagedOutputInventorySlot(@Nullable IContentsListener listener, int x, int y, int page) {
         super(alwaysTrueBi, internalOnly, alwaysTrue, listener, x, y);
@@ -34,8 +36,15 @@ public class PagedOutputInventorySlot extends BasicInventorySlot implements IPag
     }
 
     @Override
+
+    public void tracksWarnings(@Nullable Consumer<ISupportsWarning<?>> warningAdder) {
+        super.tracksWarnings(warningAdder);
+        this.warningAdder = warningAdder;
+    }
+
+    @Override
     public @Nullable InventoryContainerSlot createContainerSlot() {
-        return new PagedInventoryContainerSlot(this, x, y, getSlotType(), getSlotOverlay(), null, this::setStackUnchecked,
-                new SelectedWindowData(AMWindowType.PAGED, (byte) page));
+        return new PagedInventoryContainerSlot(this, x, y, getSlotType(), getSlotOverlay(), warningAdder,
+                this::setStackUnchecked, page);
     }
 }
