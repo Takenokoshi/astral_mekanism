@@ -38,12 +38,12 @@ public class AstralMekanismBlockStateProvider extends BlockStateProvider {
                     .replace("_factory", "");
 
             BlockModelBuilder base = models().getBuilder("block/astral_factory/" + baseName + "/base/p")
-                            .parent(models().getExistingFile(
-                                    AstralMekanismID.rl("block/astral_factory/" + baseName + "/base")));
+                    .parent(models().getExistingFile(
+                            AstralMekanismID.rl("block/astral_factory/" + baseName + "/base")));
 
-            BlockModelBuilder child =  models().getBuilder("block/factory/led/" + tier.nameForNormal + "/p")
-                            .parent(models().getExistingFile(
-                                    AstralMekanismID.rl("block/factory/led/" + tier.nameForNormal)));
+            BlockModelBuilder child = models().getBuilder("block/factory/led/" + tier.nameForNormal + "/p")
+                    .parent(models().getExistingFile(
+                            AstralMekanismID.rl("block/factory/led/" + tier.nameForNormal)));
 
             // ===== Composite Model =====
             ModelFile model = models().getBuilder(
@@ -64,7 +64,7 @@ public class AstralMekanismBlockStateProvider extends BlockStateProvider {
                         Direction dir = state.getValue(HorizontalDirectionalBlock.FACING);
                         return ConfiguredModel.builder()
                                 .modelFile(model)
-                                .rotationY((int) dir.toYRot())
+                                .rotationY((int) dir.toYRot() + 180)
                                 .build();
                     },
                             factory.getBlock().getStateDefinition().getProperties().stream()

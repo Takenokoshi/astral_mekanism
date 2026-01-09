@@ -61,11 +61,11 @@ public class GuiAstralMekanismFactory<BE extends TileEntityConfigurableMachine &
     @Override
     protected void addGuiElements() {
         super.addGuiElements();
-        addRenderableWidget(new MekanismButton(this, tile.getSideSpaceWidth() - 18, 18, 18, 18,
+        addRenderableWidget(new MekanismButton(this, tile.getSideSpaceWidth(), -30, 18, 18,
                 Component.literal("<"), () -> {
                     changePage(-1);
                 }, null));
-        addRenderableWidget(new MekanismButton(this, imageWidth - tile.getSideSpaceWidth(), 18, 18, 18,
+        addRenderableWidget(new MekanismButton(this, imageWidth - tile.getSideSpaceWidth() - 18, -30, 18, 18,
                 Component.literal(">"), () -> {
                     changePage(1);
                 }, null));
@@ -116,5 +116,7 @@ public class GuiAstralMekanismFactory<BE extends TileEntityConfigurableMachine &
         renderTitleText(guiGraphics);
         drawString(guiGraphics, playerInventoryTitle, inventoryLabelX, inventoryLabelY, titleTextColor());
         super.drawForegroundText(guiGraphics, mouseX, mouseY);
+        drawString(guiGraphics, Component.literal("Page: " + (page + 1) + " / " + maxPage),
+                tile.getSideSpaceWidth() + 24, -30, 0xffffff);
     }
 }
