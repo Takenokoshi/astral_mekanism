@@ -16,13 +16,19 @@ import net.minecraft.world.inventory.Slot;
 public class ContainerAstralMekanismFactory<BE extends TileEntityMekanism & IAstralMekanismFactory<BE>>
         extends MekanismTileContainer<BE> {
 
-    public final List<PagedInventoryContainerSlot> pagedSlots;
+    public List<PagedInventoryContainerSlot> pagedSlots;
 
     public ContainerAstralMekanismFactory(ContainerTypeRegistryObject<?> type, int id, Inventory inv,
             @NotNull BE tile) {
         super(type, id, inv, tile);
+
+    }
+
+    @Override
+
+    protected void addSlotsAndOpen() {
         pagedSlots = new ArrayList<>();
-        
+        super.addSlotsAndOpen();
     }
 
     @Override
@@ -42,7 +48,7 @@ public class ContainerAstralMekanismFactory<BE extends TileEntityMekanism & IAst
             slot2.setPage(0);
             pagedSlots.add(slot2);
         }
-         return super.addSlot(slot);
+        return super.addSlot(slot);
     }
 
 }
