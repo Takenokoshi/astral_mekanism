@@ -2,33 +2,35 @@
   "variants": {
     "active=false,facing=east": {
       "model": "astral_mekanism:block/astral_factory/energized_smelting/elite",
-      "y": 270
+      "y": 450
     },
     "active=false,facing=north": {
       "model": "astral_mekanism:block/astral_factory/energized_smelting/elite",
-      "y": 180
+      "y": 360
     },
     "active=false,facing=south": {
-      "model": "astral_mekanism:block/astral_factory/energized_smelting/elite"
+      "model": "astral_mekanism:block/astral_factory/energized_smelting/elite",
+      "y": 180
     },
     "active=false,facing=west": {
       "model": "astral_mekanism:block/astral_factory/energized_smelting/elite",
-      "y": 90
+      "y": 270
     },
     "active=true,facing=east": {
       "model": "astral_mekanism:block/astral_factory/energized_smelting/elite",
-      "y": 270
+      "y": 450
     },
     "active=true,facing=north": {
       "model": "astral_mekanism:block/astral_factory/energized_smelting/elite",
-      "y": 180
+      "y": 360
     },
     "active=true,facing=south": {
-      "model": "astral_mekanism:block/astral_factory/energized_smelting/elite"
+      "model": "astral_mekanism:block/astral_factory/energized_smelting/elite",
+      "y": 180
     },
     "active=true,facing=west": {
       "model": "astral_mekanism:block/astral_factory/energized_smelting/elite",
-      "y": 90
+      "y": 270
     }
   }
 }
