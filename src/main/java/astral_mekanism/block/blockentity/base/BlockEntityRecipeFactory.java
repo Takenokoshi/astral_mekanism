@@ -69,6 +69,7 @@ public abstract class BlockEntityRecipeFactory<RECIPE extends Recipe<?>, BE exte
         for (int i = 0; i < recheckAllRecipeErrors.length; i++) {
             recheckAllRecipeErrors[i] = TileEntityRecipeMachine.shouldRecheckAllErrors(this);
         }
+        
     }
 
     @Override

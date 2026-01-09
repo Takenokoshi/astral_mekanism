@@ -1,8 +1,12 @@
 {
   "parent": "minecraft:block/block",
   "children": {
-    "base": {},
-    "front_led": {}
+    "base": {
+      "parent": "astral_mekanism:block/astral_factory/energized_smelting/base"
+    },
+    "front_led": {
+      "parent": "astral_mekanism:block/factory/led/astral"
+    }
   },
   "item_render_order": [
     "base",

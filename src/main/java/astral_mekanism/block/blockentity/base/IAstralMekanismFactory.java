@@ -1,6 +1,6 @@
 package astral_mekanism.block.blockentity.base;
 
-public interface IAstralMekanismFactory<BE extends IAstralMekanismFactory<BE>> {
+public interface IAstralMekanismFactory<BE extends IAstralMekanismFactory<BE>>  {
 
     public abstract BE getSelf();
 
@@ -52,5 +52,4 @@ public interface IAstralMekanismFactory<BE extends IAstralMekanismFactory<BE>> {
         int h = getHeightPerProcess();
         return h > 54 ? 112 + h : 166;
     }
-
 }

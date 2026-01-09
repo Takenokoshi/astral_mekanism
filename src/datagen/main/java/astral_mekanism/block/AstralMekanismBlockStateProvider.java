@@ -11,6 +11,7 @@ import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.HorizontalDirectionalBlock;
 import net.minecraft.world.level.block.state.properties.Property;
+import net.minecraftforge.client.model.generators.BlockModelBuilder;
 import net.minecraftforge.client.model.generators.BlockStateProvider;
 import net.minecraftforge.client.model.generators.ConfiguredModel;
 import net.minecraftforge.client.model.generators.ModelFile;
@@ -36,6 +37,14 @@ public class AstralMekanismBlockStateProvider extends BlockStateProvider {
                     .replace(tier.nameForAstral + "_astral_", "")
                     .replace("_factory", "");
 
+            BlockModelBuilder base = models().getBuilder("block/astral_factory/" + baseName + "/base/p")
+                            .parent(models().getExistingFile(
+                                    AstralMekanismID.rl("block/astral_factory/" + baseName + "/base")));
+
+            BlockModelBuilder child =  models().getBuilder("block/factory/led/" + tier.nameForNormal + "/p")
+                            .parent(models().getExistingFile(
+                                    AstralMekanismID.rl("block/factory/led/" + tier.nameForNormal)));
+
             // ===== Composite Model =====
             ModelFile model = models().getBuilder(
                     "block/astral_factory/" + baseName + "/" + tier.nameForAstral)
@@ -45,8 +54,8 @@ public class AstralMekanismBlockStateProvider extends BlockStateProvider {
 
                     // ★ composite loader
                     .customLoader(CompositeModelBuilder::begin)
-                    .child("base", models().getBuilder("block/astral_factory/" + baseName + "/base"))
-                    .child("front_led", models().getBuilder("block/factory/led/" + tier.nameForNormal))
+                    .child("base", base)
+                    .child("front_led", child)
                     .end();
 
             // ===== BlockState =====

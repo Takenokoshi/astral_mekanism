@@ -194,9 +194,4 @@ public class BEAstralEnergizedSmeltingFactory
         remap.put(NBTConstants.DUMP_MODE, NBTConstants.DUMP_MODE);
         return remap;
     }
-
-    @Override
-    public int getAdditionalPages() {
-        return 1;
-    }
 }
