@@ -8,7 +8,6 @@ import java.util.function.Predicate;
 
 import org.jetbrains.annotations.Nullable;
 
-import appeng.recipes.handlers.InscriberProcessType;
 import appeng.recipes.handlers.InscriberRecipe;
 import astral_mekanism.generalrecipe.IUnifiedRecipeType;
 import astral_mekanism.generalrecipe.lookup.cache.type.IUnifiedInputCache;
@@ -19,6 +18,7 @@ import mekanism.api.recipes.ingredients.creator.IItemStackIngredientCreator;
 import mekanism.api.recipes.ingredients.creator.IngredientCreatorAccess;
 import net.minecraft.world.Container;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.Level;
 
 public class InscriberRecipeInputRecipeCache extends GeneralInputRecipeCache<Container, InscriberRecipe> {
@@ -84,13 +84,10 @@ public class InscriberRecipeInputRecipeCache extends GeneralInputRecipeCache<Con
 
     public InscriberRecipe findFirstRecipe(Level world, ItemStack topInput, ItemStack middleInput,
             ItemStack bottomInput) {
-        if (cacheTop.isEmpty(topInput) || cacheMiddle.isEmpty(middleInput)) {
-            return null;
-        }
         initCacheIfNeeded(world);
-        Predicate<InscriberRecipe> matchPredicate = r -> r.getTopOptional().test(topInput) &&
-                r.getMiddleInput().test(middleInput) &&
-                r.getBottomOptional().test(bottomInput);
+        Predicate<InscriberRecipe> matchPredicate = r -> r.getMiddleInput().test(middleInput)
+                && (r.getTopOptional().isEmpty() || r.getTopOptional().test(topInput))
+                && (r.getBottomOptional().isEmpty() || r.getBottomOptional().test(bottomInput));
         InscriberRecipe recipe = cacheMiddle.findFirstRecipe(middleInput, matchPredicate);
         return recipe == null ? findFirstRecipe(complexRecipes, matchPredicate) : recipe;
     }
@@ -110,34 +107,32 @@ public class InscriberRecipeInputRecipeCache extends GeneralInputRecipeCache<Con
     @Override
     protected void initCache(List<InscriberRecipe> recipes) {
         for (InscriberRecipe recipe : recipes) {
-            if (recipe.getProcessType() == InscriberProcessType.INSCRIBE) {
-                boolean complexT = cacheTop.mapInputs(recipe, topInputExtractor.apply(recipe));
-                boolean complexM = cacheMiddle.mapInputs(recipe, middleInputExtractor.apply(recipe));
-                if (complexT) {
-                    complexRecipesTop.add(recipe);
-                }
-                if (complexM) {
-                    complexRecipesMiddle.add(recipe);
-                }
-                if (complexT || complexM) {
-                    complexRecipes.add(recipe);
-                }
-            } else {
-                boolean complexT = cacheTop.mapInputs(recipe, topInputExtractor.apply(recipe));
-                boolean complexM = cacheMiddle.mapInputs(recipe, middleInputExtractor.apply(recipe));
-                boolean complexB = cacheBottom.mapInputs(recipe, bottomInputExtractor.apply(recipe));
-                if (complexT) {
-                    complexRecipesTop.add(recipe);
-                }
-                if (complexM) {
-                    complexRecipesMiddle.add(recipe);
-                }
-                if (complexB) {
-                    complexRecipesBottom.add(recipe);
-                }
-                if (complexT || complexM || complexB) {
-                    complexRecipes.add(recipe);
-                }
+            boolean complexT = false;
+            boolean complexM = false;
+            boolean complexB = false;
+            Ingredient topIngredient = recipe.getTopOptional();
+            if (!topIngredient.isEmpty()) {
+                complexT = cacheTop.mapInputs(recipe, topInputExtractor.apply(recipe));
+            }
+            if (complexT) {
+                complexRecipesTop.add(recipe);
+            }
+            Ingredient middleIngredient = recipe.getTopOptional();
+            if (!middleIngredient.isEmpty()) {
+                complexM = cacheTop.mapInputs(recipe, middleInputExtractor.apply(recipe));
+            }
+            if (complexM) {
+                complexRecipesMiddle.add(recipe);
+            }
+            Ingredient bottomIngredient = recipe.getTopOptional();
+            if (!bottomIngredient.isEmpty()) {
+                complexB = cacheTop.mapInputs(recipe, bottomInputExtractor.apply(recipe));
+            }
+            if (complexB) {
+                complexRecipesBottom.add(recipe);
+            }
+            if (complexT || complexM || complexB) {
+                complexRecipes.add(recipe);
             }
         }
     }
