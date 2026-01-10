@@ -60,7 +60,8 @@ public class AstralMekanismJEIPlugin implements IModPlugin {
                         new EssentialSmeltingRecipeCategory(guiHelper, AstralMekanismJEIRecipeType.ESSENTIAL_SMELTING,
                                 AstralMekanismMachines.ESSENTIAL_ENERGIZED_SMELTER),
                         new MekanicalInscribingRecipeCategory(guiHelper,
-                                AstralMekanismJEIRecipeType.MEKANICAL_INSCRIBING, null),
+                                AstralMekanismJEIRecipeType.MEKANICAL_INSCRIBING,
+                                AstralMekanismMachines.MEKANICAL_INSCRIBER),
                 });
     }
 
