@@ -28,6 +28,7 @@ import mekanism.common.inventory.slot.InputInventorySlot;
 import mekanism.common.inventory.slot.OutputInventorySlot;
 import mekanism.common.lib.transmitter.TransmissionType;
 import mekanism.common.tile.component.TileComponentConfig;
+import mekanism.common.tile.component.TileComponentEjector;
 import mekanism.common.tile.component.config.ConfigInfo;
 import mekanism.common.tile.component.config.DataType;
 import mekanism.common.tile.component.config.slot.InventorySlotInfo;
@@ -64,6 +65,8 @@ public class BEMekanicalInscriber extends BlockEntityProgressMachine<InscriberRe
         itemConfig.setDefaults();
         itemConfig.setCanEject(true);
         configComponent.setupInputConfig(TransmissionType.ENERGY, energyContainer);
+        ejectorComponent = new TileComponentEjector(this);
+        ejectorComponent.setOutputData(configComponent, TransmissionType.ITEM);
         topHandler = InputHelper.getInputHandler(topSlot, NOT_ENOUGH_TOP_INPUT);
         middleHandler = InputHelper.getInputHandler(middleSlot, NOT_ENOUGH_MIDDLE_INPUT);
         bottomHandler = InputHelper.getInputHandler(bottomSlot, NOT_ENOUGH_BOTTOM_INPUT);
