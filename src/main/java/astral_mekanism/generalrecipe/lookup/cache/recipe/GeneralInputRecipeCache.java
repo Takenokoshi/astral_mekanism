@@ -16,12 +16,13 @@ import net.minecraft.world.Container;
 import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.level.Level;
 
-public abstract class GeneralInputRecipeCache<C extends Container,RECIPE extends Recipe<C>> implements IInputRecipeCache {
+public abstract class GeneralInputRecipeCache<C extends Container, RECIPE extends Recipe<C>>
+        implements IInputRecipeCache {
 
-    protected final IUnifiedRecipeType<RECIPE,?> recipeType;
+    protected final IUnifiedRecipeType<RECIPE, ?> recipeType;
     protected boolean initialized;
 
-    protected GeneralInputRecipeCache(IUnifiedRecipeType<RECIPE,?> recipeType) {
+    protected GeneralInputRecipeCache(IUnifiedRecipeType<RECIPE, ?> recipeType) {
         this.recipeType = recipeType;
     }
 
@@ -52,7 +53,9 @@ public abstract class GeneralInputRecipeCache<C extends Container,RECIPE extends
         }
         initCacheIfNeeded(world);
         return cache.contains(input)
-                || complexRecipes.stream().anyMatch(recipe -> inputExtractor.apply(recipe).testType(input));
+                || complexRecipes.stream().anyMatch(recipe -> inputExtractor.apply(recipe) == null
+                        ? true
+                        : inputExtractor.apply(recipe).testType(input));
     }
 
     protected <INPUT_1, INGREDIENT_1 extends InputIngredient<INPUT_1>, CACHE_1 extends IUnifiedInputCache<INPUT_1, INGREDIENT_1, RECIPE>, INPUT_2, INGREDIENT_2 extends InputIngredient<INPUT_2>, CACHE_2 extends IUnifiedInputCache<INPUT_2, INGREDIENT_2, RECIPE>> boolean containsPairing(

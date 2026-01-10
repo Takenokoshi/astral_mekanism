@@ -41,9 +41,15 @@ public class InscriberRecipeInputRecipeCache extends GeneralInputRecipeCache<Con
         this.complexRecipesTop = new HashSet<>();
         this.complexRecipesMiddle = new HashSet<>();
         this.complexRecipesBottom = new HashSet<>();
-        this.topInputExtractor = recipe -> creator.from(recipe.getTopOptional());
-        this.middleInputExtractor = recipe -> creator.from(recipe.getMiddleInput());
-        this.bottomInputExtractor = recipe -> creator.from(recipe.getBottomOptional());
+        this.topInputExtractor = recipe -> recipe.getTopOptional().isEmpty()
+                ? null
+                : creator.from(recipe.getTopOptional());
+        this.middleInputExtractor = recipe -> recipe.getMiddleInput().isEmpty()
+                ? null
+                : creator.from(recipe.getMiddleInput());
+        this.bottomInputExtractor = recipe -> recipe.getBottomOptional().isEmpty()
+                ? null
+                : creator.from(recipe.getBottomOptional());
         this.cacheTop = new ItemGeneralInputCache<>();
         this.cacheMiddle = new ItemGeneralInputCache<>();
         this.cacheBottom = new ItemGeneralInputCache<>();
