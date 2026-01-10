@@ -6,8 +6,6 @@ import java.util.Set;
 import java.util.function.Function;
 import java.util.function.Predicate;
 
-import org.jetbrains.annotations.Nullable;
-
 import appeng.recipes.handlers.InscriberRecipe;
 import astral_mekanism.generalrecipe.IUnifiedRecipeType;
 import astral_mekanism.generalrecipe.lookup.cache.type.ItemGeneralInputCache;
@@ -66,24 +64,18 @@ public class InscriberRecipeInputRecipeCache extends GeneralInputRecipeCache<Con
     }
 
     public boolean containsTMB(Level world, ItemStack topInput, ItemStack middleInput, ItemStack bottomInput) {
-        return containsGrouping(world,
-                topInput, topInputExtractor, cacheTop, complexRecipesTop,
-                middleInput, middleInputExtractor, cacheMiddle, complexRecipesMiddle,
-                bottomInput, bottomInputExtractor, cacheBottom, complexRecipesBottom);
+        return contains(world, topInput, topInputExtractor, middleInput, middleInputExtractor, bottomInput,
+                bottomInputExtractor);
     }
 
     public boolean containsMTB(Level world, ItemStack topInput, ItemStack middleInput, ItemStack bottomInput) {
-        return containsGrouping(world,
-                middleInput, middleInputExtractor, cacheMiddle, complexRecipesMiddle,
-                topInput, topInputExtractor, cacheTop, complexRecipesTop,
-                bottomInput, bottomInputExtractor, cacheBottom, complexRecipesBottom);
+        return contains(world, middleInput, middleInputExtractor, topInput, topInputExtractor, bottomInput,
+                bottomInputExtractor);
     }
 
     public boolean containsBTM(Level world, ItemStack topInput, ItemStack middleInput, ItemStack bottomInput) {
-        return containsGrouping(world,
-                bottomInput, bottomInputExtractor, cacheBottom, complexRecipesBottom,
-                topInput, topInputExtractor, cacheTop, complexRecipesTop,
-                middleInput, middleInputExtractor, cacheMiddle, complexRecipesMiddle);
+        return contains(world, bottomInput, bottomInputExtractor, topInput, topInputExtractor, middleInput,
+                middleInputExtractor);
     }
 
     public InscriberRecipe findFirstRecipe(Level world, ItemStack topInput, ItemStack middleInput,
@@ -141,36 +133,21 @@ public class InscriberRecipeInputRecipeCache extends GeneralInputRecipeCache<Con
         }
     }
 
-    private boolean containsGrouping(
-            @Nullable Level world,
-            ItemStack input1, Function<InscriberRecipe, ItemStackIngredient> input1Extractor,
-            ItemGeneralInputCache<InscriberRecipe> cache1,
-            Set<InscriberRecipe> complexIngredients1,
-            ItemStack input2, Function<InscriberRecipe, ItemStackIngredient> input2Extractor,
-            ItemGeneralInputCache<InscriberRecipe> cache2,
-            Set<InscriberRecipe> complexIngredients2,
-            ItemStack input3, Function<InscriberRecipe, ItemStackIngredient> input3Extractor,
-            ItemGeneralInputCache<InscriberRecipe> cache3,
-            Set<InscriberRecipe> complexIngredients3) {
-        if (input2.isEmpty()) {
-            if (input3.isEmpty()) {
-                return containsInput(world, input1, input1Extractor, cache1, complexIngredients1);
-            } else {
-                return complexIngredients1.stream().anyMatch(recipe -> input1Extractor.apply(recipe) != null &&
-                        input1Extractor.apply(recipe).testType(input1) &&
-                        (input3Extractor.apply(recipe) == null || input3Extractor.apply(recipe).testType(input3)));
+    private boolean contains(Level world,
+            ItemStack input, Function<InscriberRecipe, ItemStackIngredient> inputExtractor,
+            ItemStack other1, Function<InscriberRecipe, ItemStackIngredient> other1Extractor,
+            ItemStack other2, Function<InscriberRecipe, ItemStackIngredient> other2Extractor) {
+        initCacheIfNeeded(world);
+        return complexRecipes.stream().anyMatch(recipe -> {
+            if (input.isEmpty() || inputExtractor.apply(recipe) == null) {
+                return false;
             }
-        } else {
-            if (input3.isEmpty()) {
-                return complexIngredients1.stream().anyMatch(recipe -> input1Extractor.apply(recipe) != null &&
-                        input1Extractor.apply(recipe).testType(input1) &&
-                        (input2Extractor.apply(recipe) == null || input2Extractor.apply(recipe).testType(input2)));
-            } else {
-                return complexIngredients1.stream().anyMatch(recipe -> input1Extractor.apply(recipe) != null &&
-                        input1Extractor.apply(recipe).testType(input1) &&
-                        (input2Extractor.apply(recipe) == null || input2Extractor.apply(recipe).testType(input2)) &&
-                        (input3Extractor.apply(recipe) == null || input3Extractor.apply(recipe).testType(input3)));
-            }
-        }
+            boolean result = true;
+            result &= (other1.isEmpty() || other1Extractor.apply(recipe) == null
+                    || other1Extractor.apply(recipe).testType(other1));
+            result &= (other2.isEmpty() || other2Extractor.apply(recipe) == null
+                    || other2Extractor.apply(recipe).testType(other2));
+            return result;
+        });
     }
 }

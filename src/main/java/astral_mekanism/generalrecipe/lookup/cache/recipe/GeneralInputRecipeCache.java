@@ -52,10 +52,8 @@ public abstract class GeneralInputRecipeCache<C extends Container, RECIPE extend
             return false;
         }
         initCacheIfNeeded(world);
-        return cache.contains(input)
-                || (complexRecipes.stream().anyMatch(recipe -> inputExtractor.apply(recipe) == null
-                        ? true
-                        : inputExtractor.apply(recipe).testType(input)));
+        return cache.contains(input) ||
+                complexRecipes.stream().anyMatch(recipe -> inputExtractor.apply(recipe).testType(input));
     }
 
     protected <INPUT_1, INGREDIENT_1 extends InputIngredient<INPUT_1>, CACHE_1 extends IUnifiedInputCache<INPUT_1, INGREDIENT_1, RECIPE>, INPUT_2, INGREDIENT_2 extends InputIngredient<INPUT_2>, CACHE_2 extends IUnifiedInputCache<INPUT_2, INGREDIENT_2, RECIPE>> boolean containsPairing(
