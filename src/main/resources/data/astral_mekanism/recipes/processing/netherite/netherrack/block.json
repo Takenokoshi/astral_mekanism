@@ -2,7 +2,7 @@
     "type": "mekanism:crystallizing",
     "chemicalType": "gas",
     "input": {
-        "amount": 100,
+        "amount": 1,
         "gas": "astral_mekanism:netherrack"
     },
     "output": {
