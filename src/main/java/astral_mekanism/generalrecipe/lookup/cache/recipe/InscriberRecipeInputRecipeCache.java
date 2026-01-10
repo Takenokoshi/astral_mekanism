@@ -152,51 +152,25 @@ public class InscriberRecipeInputRecipeCache extends GeneralInputRecipeCache<Con
             ItemStack input3, Function<InscriberRecipe, ItemStackIngredient> input3Extractor,
             ItemGeneralInputCache<InscriberRecipe> cache3,
             Set<InscriberRecipe> complexIngredients3) {
-        if (cache1.isEmpty(input1)) {
-            if (cache3.isEmpty(input3)) {
-                return containsInput(world, input2, input2Extractor, cache2, complexIngredients2);
+        if (input2.isEmpty()) {
+            if (input3.isEmpty()) {
+                return containsInput(world, input1, input1Extractor, cache1, complexIngredients1);
+            } else {
+                return complexIngredients1.stream().anyMatch(recipe -> input1Extractor.apply(recipe) != null &&
+                        input1Extractor.apply(recipe).testType(input1) &&
+                        (input3Extractor.apply(recipe) == null || input3Extractor.apply(recipe).testType(input3)));
             }
-            return containsPairing(world, input2, input2Extractor, cache2, complexIngredients2, input3, input3Extractor,
-                    cache3, complexIngredients3);
-        } else if (cache2.isEmpty(input2)) {
-            return containsPairing(world, input1, input1Extractor, cache1, complexIngredients1, input3, input3Extractor,
-                    cache3, complexIngredients3);
-        } else if (cache3.isEmpty(input3)) {
-            return containsPairing(world, input1, input1Extractor, cache1, complexIngredients1, input2, input2Extractor,
-                    cache2, complexIngredients2);
-        }
-        initCacheIfNeeded(world);
-        if (cache1.contains(input1,
-                recipe -> (input2Extractor.apply(recipe) == null || input2Extractor.apply(recipe).testType(input2))
-                        && (input3Extractor.apply(recipe) == null || input3Extractor.apply(recipe).testType(input3)))) {
-            return true;
-        }
-        return complexIngredients1.stream().anyMatch(
-                recipe -> (input1Extractor.apply(recipe) == null || input1Extractor.apply(recipe).testType(input1)) &&
+        } else {
+            if (input3.isEmpty()) {
+                return complexIngredients1.stream().anyMatch(recipe -> input1Extractor.apply(recipe) != null &&
+                        input1Extractor.apply(recipe).testType(input1) &&
+                        (input2Extractor.apply(recipe) == null || input2Extractor.apply(recipe).testType(input2)));
+            } else {
+                return complexIngredients1.stream().anyMatch(recipe -> input1Extractor.apply(recipe) != null &&
+                        input1Extractor.apply(recipe).testType(input1) &&
                         (input2Extractor.apply(recipe) == null || input2Extractor.apply(recipe).testType(input2)) &&
                         (input3Extractor.apply(recipe) == null || input3Extractor.apply(recipe).testType(input3)));
-    }
-
-    protected boolean containsPairing(
-            @Nullable Level world,
-            ItemStack input1, Function<InscriberRecipe, ItemStackIngredient> input1Extractor,
-            ItemGeneralInputCache<InscriberRecipe> cache1,
-            Set<InscriberRecipe> complexIngredients1, ItemStack input2,
-            Function<InscriberRecipe, ItemStackIngredient> input2Extractor,
-            ItemGeneralInputCache<InscriberRecipe> cache2, Set<InscriberRecipe> complexIngredients2) {
-        if (cache1.isEmpty(input1)) {
-            return containsInput(world, input2, input2Extractor, cache2, complexIngredients2);
-        } else if (cache2.isEmpty(input2)) {
-            return true;
+            }
         }
-        initCacheIfNeeded(world);
-        if (cache1.contains(input1,
-                recipe -> (input2Extractor.apply(recipe) == null || input2Extractor.apply(recipe).testType(input2)))) {
-            return true;
-        }
-        return complexIngredients1.stream().anyMatch(
-                recipe -> (input1Extractor.apply(recipe) == null || input1Extractor.apply(recipe).testType(input1))
-                        && (input2Extractor.apply(recipe) == null || input2Extractor.apply(recipe).testType(input2)));
     }
-
 }
