@@ -8,7 +8,7 @@ import java.util.function.Predicate;
 
 import org.jetbrains.annotations.Nullable;
 
-import astral_mekanism.generalrecipe.GeneralRecipeType;
+import astral_mekanism.generalrecipe.IUnifiedRecipeType;
 import astral_mekanism.generalrecipe.lookup.cache.type.IUnifiedInputCache;
 import mekanism.api.recipes.ingredients.InputIngredient;
 import mekanism.common.recipe.lookup.cache.IInputRecipeCache;
@@ -18,10 +18,10 @@ import net.minecraft.world.level.Level;
 
 public abstract class GeneralInputRecipeCache<C extends Container,RECIPE extends Recipe<C>> implements IInputRecipeCache {
 
-    protected final GeneralRecipeType<C,RECIPE,?> recipeType;
+    protected final IUnifiedRecipeType<RECIPE,?> recipeType;
     protected boolean initialized;
 
-    protected GeneralInputRecipeCache(GeneralRecipeType<C,RECIPE,?> recipeType) {
+    protected GeneralInputRecipeCache(IUnifiedRecipeType<RECIPE,?> recipeType) {
         this.recipeType = recipeType;
     }
 

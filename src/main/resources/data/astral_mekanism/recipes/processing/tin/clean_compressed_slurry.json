@@ -1,0 +1,15 @@
+{
+    "type": "mekanism:washing",
+    "fluidInput": {
+        "amount": 5,
+        "tag":"minecraft:water"
+    },
+    "output": {
+        "amount": 1,
+        "slurry": "astral_mekanism:clean_compressed_tin"
+    },
+    "slurryInput": {
+        "amount": 1,
+        "slurry": "astral_mekanism:dirty_compressed_tin"
+    }
+}

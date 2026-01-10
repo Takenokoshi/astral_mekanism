@@ -9,7 +9,9 @@ import org.jetbrains.annotations.Nullable;
 
 import appeng.recipes.AERecipeTypes;
 import appeng.recipes.handlers.ChargerRecipe;
+import appeng.recipes.handlers.InscriberRecipe;
 import astral_mekanism.AstralMekanism;
+import astral_mekanism.generalrecipe.lookup.cache.recipe.InscriberRecipeInputRecipeCache;
 import astral_mekanism.generalrecipe.lookup.cache.recipe.SingleInputGeneralRecipeCache.GeneralSingleItem;
 import mekanism.api.recipes.ingredients.creator.IngredientCreatorAccess;
 import mekanism.api.recipes.ingredients.ItemStackIngredient;
@@ -28,23 +30,6 @@ import net.minecraftforge.server.ServerLifecycleHooks;
 
 public class GeneralRecipeType<C extends Container, RECIPE extends Recipe<C>, INPUT_CACHE extends IInputRecipeCache>
         implements IUnifiedRecipeType<RECIPE, INPUT_CACHE>, IUnifiedRecipeTypeProvider<RECIPE, INPUT_CACHE> {
-
-    public static final GeneralRecipeType<Container, SmeltingRecipe, GeneralSingleItem<Container, SmeltingRecipe>> SMELTING = new GeneralRecipeType<>(
-            RecipeType.SMELTING,
-            type -> new GeneralSingleItem<>(type,
-                    recipe -> IngredientCreatorAccess.item().createMulti(recipe.getIngredients().stream()
-                            .map(IngredientCreatorAccess.item()::from)
-                            .toArray(ItemStackIngredient[]::new)),
-                    (stack, recipe) -> recipe.getIngredients().stream()
-                            .anyMatch(ingredient -> ingredient.test(stack))));
-
-    public static final GeneralRecipeType<Container, ChargerRecipe, GeneralSingleItem<Container, ChargerRecipe>> CHARGING = new GeneralRecipeType<>(
-            AERecipeTypes.CHARGER, type -> new GeneralSingleItem<>(type,
-                    recipe -> IngredientCreatorAccess.item().createMulti(recipe.getIngredients().stream()
-                            .map(IngredientCreatorAccess.item()::from)
-                            .toArray(ItemStackIngredient[]::new)),
-                    (stack, recipe) -> recipe.getIngredients().stream()
-                            .anyMatch(ingredient -> ingredient.test(stack))));
 
     private List<RECIPE> cachedRecipes = Collections.emptyList();
     private final RecipeType<RECIPE> recipeType;
@@ -121,5 +106,25 @@ public class GeneralRecipeType<C extends Container, RECIPE extends Recipe<C>, IN
         }
         return incomplete;
     }
+
+    public static final GeneralRecipeType<Container, SmeltingRecipe, GeneralSingleItem<Container, SmeltingRecipe>> SMELTING = new GeneralRecipeType<>(
+            RecipeType.SMELTING,
+            type -> new GeneralSingleItem<>(type,
+                    recipe -> IngredientCreatorAccess.item().createMulti(recipe.getIngredients().stream()
+                            .map(IngredientCreatorAccess.item()::from)
+                            .toArray(ItemStackIngredient[]::new)),
+                    (stack, recipe) -> recipe.getIngredients().stream()
+                            .anyMatch(ingredient -> ingredient.test(stack))));
+
+    public static final GeneralRecipeType<Container, ChargerRecipe, GeneralSingleItem<Container, ChargerRecipe>> CHARGING = new GeneralRecipeType<>(
+            AERecipeTypes.CHARGER, type -> new GeneralSingleItem<>(type,
+                    recipe -> IngredientCreatorAccess.item().createMulti(recipe.getIngredients().stream()
+                            .map(IngredientCreatorAccess.item()::from)
+                            .toArray(ItemStackIngredient[]::new)),
+                    (stack, recipe) -> recipe.getIngredients().stream()
+                            .anyMatch(ingredient -> ingredient.test(stack))));
+
+    public static final GeneralRecipeType<Container, InscriberRecipe, InscriberRecipeInputRecipeCache> INSCRIBE = new GeneralRecipeType<>(
+            AERecipeTypes.INSCRIBER, InscriberRecipeInputRecipeCache::new);
 
 }

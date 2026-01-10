@@ -483,7 +483,7 @@ public class AstralMekanismMachines {
                             () -> FloatingLong.create(1000 * AstralMekanismConfig.energyRate),
                             () -> FloatingLong.create(100000l * AstralMekanismConfig.energyRate)));
 
-    public static final MachineRegistryObject<BEMekanicalInscriber, BlockTileModel<BEMekanicalInscriber, BlockTypeMachine<BEMekanicalInscriber>>, MekanismTileContainer<BEMekanicalInscriber>, ItemBlockMachine> MEKANICAL_INSCRIBER = MACHINES
+    public static final MachineRegistryObject<BEMekanicalInscriber,BlockTileModel<BEMekanicalInscriber,BlockTypeMachine<BEMekanicalInscriber>>,MekanismTileContainer<BEMekanicalInscriber>,ItemBlockMachine> MEKANICAL_INSCRIBER = MACHINES
             .registerSimple("mekanical_inscriber",
                     BEMekanicalInscriber::new,
                     BEMekanicalInscriber.class,

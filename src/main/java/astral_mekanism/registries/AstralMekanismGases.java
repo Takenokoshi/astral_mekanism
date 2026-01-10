@@ -19,4 +19,5 @@ public class AstralMekanismGases {
         return new Gas(GasBuilder.builder(new ResourceLocation("block/netherrack")));
     });
     public static final GasRegistryObject<Gas> NETHERITE_ETHER = GASES.register("netherite_ether", 0x4A3A33);
+    public static final GasRegistryObject<Gas> OLEUM = GASES.register("oleum", 0xE6F2B3);
 }

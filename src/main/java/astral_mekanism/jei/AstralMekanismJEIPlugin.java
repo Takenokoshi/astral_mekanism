@@ -3,12 +3,13 @@ package astral_mekanism.jei;
 import org.jetbrains.annotations.Nullable;
 
 import appeng.integration.modules.jei.ChargerCategory;
+import appeng.recipes.AERecipeTypes;
 import astral_mekanism.AstralMekanismID;
 import astral_mekanism.jei.recipeCategory.AstralCraftingRecipeCategory;
 import astral_mekanism.jei.recipeCategory.EssentialSmeltingRecipeCategory;
 import astral_mekanism.jei.recipeCategory.FluidInfuserRecipeCategory;
 import astral_mekanism.jei.recipeCategory.GreenhouseRecipeCategory;
-import astral_mekanism.jei.recipeCategory.MekanicalInscriberRecipeCategory;
+import astral_mekanism.jei.recipeCategory.MekanicalInscribingRecipeCategory;
 import astral_mekanism.jei.recipeCategory.MekanicalTransformRecipeCategory;
 import astral_mekanism.registries.AstralMekanismMachines;
 import astral_mekanism.registries.AstralMekanismRecipeTypes;
@@ -50,8 +51,6 @@ public class AstralMekanismJEIPlugin implements IModPlugin {
                                 AstralMekanismMachines.COMPACT_SPS),
                         new AstralCraftingRecipeCategory(guiHelper, AstralMekanismJEIRecipeType.ASTRAL_CRAFTING,
                                 AstralMekanismMachines.ASTRAL_CRAFTER),
-                        new MekanicalInscriberRecipeCategory(guiHelper,
-                                AstralMekanismJEIRecipeType.MEKANICAL_INSCRIBER_RECIPE),
                         new MekanicalTransformRecipeCategory(guiHelper,
                                 AstralMekanismJEIRecipeType.MEKANICAL_TRANSFORM,
                                 AstralMekanismMachines.MEKANICAL_TRANSFORMER),
@@ -60,6 +59,8 @@ public class AstralMekanismJEIPlugin implements IModPlugin {
                                 AstralMekanismMachines.GREENHOUSE),
                         new EssentialSmeltingRecipeCategory(guiHelper, AstralMekanismJEIRecipeType.ESSENTIAL_SMELTING,
                                 AstralMekanismMachines.ESSENTIAL_ENERGIZED_SMELTER),
+                        new MekanicalInscribingRecipeCategory(guiHelper,
+                                AstralMekanismJEIRecipeType.MEKANICAL_INSCRIBING, null),
                 });
     }
 
@@ -71,19 +72,19 @@ public class AstralMekanismJEIPlugin implements IModPlugin {
                 AstralMekanismRecipeTypes.SPS_RECIPE);
         RecipeRegistryHelper.register(registry, AstralMekanismJEIRecipeType.ASTRAL_CRAFTING,
                 AstralMekanismRecipeTypes.ASTRAL_CRAFTING);
-        RecipeRegistryHelper.register(registry, AstralMekanismJEIRecipeType.MEKANICAL_INSCRIBER_RECIPE,
-                AstralMekanismRecipeTypes.MEKANICAL_INSCRIBER_RECIPE);
         RecipeRegistryHelper.register(registry, AstralMekanismJEIRecipeType.MEKANICAL_TRANSFORM,
                 AstralMekanismRecipeTypes.MEKANICAL_TRANSFORM);
         RecipeRegistryHelper.register(registry, AstralMekanismJEIRecipeType.GREENHOUSE_RECIPE,
                 AstralMekanismRecipeTypes.GREENHOUSE_RECIPE);
         registry.addRecipes(AstralMekanismJEIRecipeType.ESSENTIAL_SMELTING, Minecraft.getInstance().level
                 .getRecipeManager().getAllRecipesFor(net.minecraft.world.item.crafting.RecipeType.SMELTING));
+        registry.addRecipes(AstralMekanismJEIRecipeType.MEKANICAL_INSCRIBING, Minecraft.getInstance().level
+                .getRecipeManager().getAllRecipesFor(AERecipeTypes.INSCRIBER));
     }
 
     @Override
     public void registerRecipeCatalysts(IRecipeCatalystRegistration registry) {
-        // ae2
+        // ae2  Note:Inscriber's JEI class is package-private.
         registry.addRecipeCatalyst(AstralMekanismMachines.MEKANICAL_CHARGER,
                 new RecipeType[] { ChargerCategory.RECIPE_TYPE });
         registry.addRecipeCatalyst(AstralMekanismMachines.ASTRAL_MEKANICAL_CHARGER,
@@ -144,9 +145,6 @@ public class AstralMekanismJEIPlugin implements IModPlugin {
                 AstralMekanismMachines.ASTRAL_CRAFTER);
         CatalystRegistryHelper.register(registry, AstralMekanismJEIRecipeType.FLUID_INFUSER_RECIPE,
                 AstralMekanismMachines.FLUID_INFUSER);
-        CatalystRegistryHelper.register(registry, AstralMekanismJEIRecipeType.MEKANICAL_INSCRIBER_RECIPE,
-                AstralMekanismMachines.ASTRAL_MEKANICAL_INSCRIBER,
-                AstralMekanismMachines.MEKANICAL_INSCRIBER);
         CatalystRegistryHelper.register(registry, AstralMekanismJEIRecipeType.MEKANICAL_TRANSFORM,
                 AstralMekanismMachines.ASTRAL_MEKANICAL_TRANSFOMER,
                 AstralMekanismMachines.MEKANICAL_TRANSFORMER);

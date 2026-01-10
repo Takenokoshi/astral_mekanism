@@ -23,6 +23,7 @@ import astral_mekanism.block.blockentity.normalmachine.BEEssentialEnergizedSmelt
 import astral_mekanism.block.blockentity.normalmachine.BEGlowstoneNeutronActivator;
 import astral_mekanism.block.blockentity.normalmachine.BEGreenhouse;
 import astral_mekanism.block.blockentity.normalmachine.BEMekanicalCharger;
+import astral_mekanism.block.blockentity.normalmachine.BEMekanicalInscriber;
 import astral_mekanism.block.blockentity.normalmachine.BEMekanicalTransformer;
 import astral_mekanism.block.blockentity.other.BEItemSortableStorage;
 import astral_mekanism.block.blockentity.other.BEUniversalStorage;
@@ -149,7 +150,7 @@ public class AstralMekanismClient {
             regScreen(AstralMekanismMachines.INFUSE_SYNTHESIZER, GuiInfuseSynthesizer::new);
             regScreen(AstralMekanismMachines.MEKANICAL_CHARGER,
                     GuiMekanicalCharger<BEMekanicalCharger>::new);
-            regScreen(AstralMekanismMachines.MEKANICAL_INSCRIBER, GuiMekanicalInscriber::new);
+            regScreen(AstralMekanismMachines.MEKANICAL_INSCRIBER, GuiMekanicalInscriber<BEMekanicalInscriber>::new);
             regScreen(AstralMekanismMachines.MEKANICAL_TRANSFORMER,
                     GuiMekanicalTransformer<BEMekanicalTransformer>::new);
             regScreen(AstralMekanismMachines.UNIVERSAL_STORAGE,

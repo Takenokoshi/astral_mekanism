@@ -1,0 +1,18 @@
+{
+    "type": "mekanism:dissolution",
+    "gasInput": {
+        "amount": 1,
+        "gas": "astral_mekanism:oleum"
+    },
+    "itemInput": {
+        "amount": 3,
+        "ingredient": {
+            "tag": "forge:raw_materials/tin"
+        }
+    },
+    "output": {
+        "amount": 10,
+        "chemicalType": "slurry",
+        "slurry": "astral_mekanism:dirty_compressed_tin"
+    }
+}

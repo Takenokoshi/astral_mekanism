@@ -43,7 +43,7 @@ public class AstralMekanismDataGenerator {
         }
         if (event.includeClient()) {
             gen.addProvider(true, new AstralMekanismBlockStateProvider(output, helper));
-            //gen.addProvider(true, new AstralMekanismEnglishLangProvider(output));
+            gen.addProvider(true, new AstralMekanismEnglishLangProvider(output));
         }
         System.out.println("### AstralMekanism GatherDataEvent fired ###");
     }

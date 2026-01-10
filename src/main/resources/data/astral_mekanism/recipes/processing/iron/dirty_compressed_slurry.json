@@ -1,0 +1,17 @@
+{
+    "type": "mekanism:dissolution",
+    "gasInput": {
+        "amount": 1,
+        "gas": "astral_mekanism:oleum"
+    },
+    "itemInput": {
+        "ingredient": {
+            "tag": "forge:ores/iron"
+        }
+    },
+    "output": {
+        "amount": 5,
+        "chemicalType": "slurry",
+        "slurry": "astral_mekanism:dirty_compressed_iron"
+    }
+}
