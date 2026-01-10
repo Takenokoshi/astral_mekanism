@@ -177,4 +177,26 @@ public class InscriberRecipeInputRecipeCache extends GeneralInputRecipeCache<Con
                         (input3Extractor.apply(recipe) == null || input3Extractor.apply(recipe).testType(input3)));
     }
 
+    protected boolean containsPairing(
+            @Nullable Level world,
+            ItemStack input1, Function<InscriberRecipe, ItemStackIngredient> input1Extractor,
+            ItemGeneralInputCache<InscriberRecipe> cache1,
+            Set<InscriberRecipe> complexIngredients1, ItemStack input2,
+            Function<InscriberRecipe, ItemStackIngredient> input2Extractor,
+            ItemGeneralInputCache<InscriberRecipe> cache2, Set<InscriberRecipe> complexIngredients2) {
+        if (cache1.isEmpty(input1)) {
+            return containsInput(world, input2, input2Extractor, cache2, complexIngredients2);
+        } else if (cache2.isEmpty(input2)) {
+            return true;
+        }
+        initCacheIfNeeded(world);
+        if (cache1.contains(input1,
+                recipe -> (input2Extractor.apply(recipe) == null || input2Extractor.apply(recipe).testType(input2)))) {
+            return true;
+        }
+        return complexIngredients1.stream().anyMatch(
+                recipe -> (input1Extractor.apply(recipe) == null || input1Extractor.apply(recipe).testType(input1))
+                        && (input2Extractor.apply(recipe) == null || input2Extractor.apply(recipe).testType(input2)));
+    }
+
 }
