@@ -125,14 +125,14 @@ public class InscriberRecipeInputRecipeCache extends GeneralInputRecipeCache<Con
             }
             Ingredient middleIngredient = recipe.getTopOptional();
             if (!middleIngredient.isEmpty()) {
-                complexM = cacheTop.mapInputs(recipe, middleInputExtractor.apply(recipe));
+                complexM = cacheMiddle.mapInputs(recipe, middleInputExtractor.apply(recipe));
             }
             if (complexM) {
                 complexRecipesMiddle.add(recipe);
             }
             Ingredient bottomIngredient = recipe.getTopOptional();
             if (!bottomIngredient.isEmpty()) {
-                complexB = cacheTop.mapInputs(recipe, bottomInputExtractor.apply(recipe));
+                complexB = cacheBottom.mapInputs(recipe, bottomInputExtractor.apply(recipe));
             }
             if (complexB) {
                 complexRecipesBottom.add(recipe);
