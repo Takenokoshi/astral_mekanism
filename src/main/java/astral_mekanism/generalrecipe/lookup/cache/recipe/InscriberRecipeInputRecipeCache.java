@@ -135,6 +135,7 @@ public class InscriberRecipeInputRecipeCache extends GeneralInputRecipeCache<Con
             }
         }
     }
+    
 
     private boolean contains(Level world,
             ItemStack input, Function<InscriberRecipe, ItemStackIngredient> inputExtractor,

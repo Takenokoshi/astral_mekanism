@@ -88,13 +88,13 @@ public class BEMekanicalInscriber extends BlockEntityProgressMachine<InscriberRe
         InventorySlotHelper builder = InventorySlotHelper.forSideWithConfig(this::getDirection,
                 this::getConfig);
         builder.addSlot(topSlot = InputInventorySlot.at(
-                stack -> containsInputTMB(stack, middleSlot.getStack(), bottomSlot.getStack()),
+                //stack -> containsInputTMB(stack, middleSlot.getStack(), bottomSlot.getStack()),
                 this::containsInputT, recipeCacheListener, 46, 17));
         builder.addSlot(middleSlot = InputInventorySlot.at(
-                stack -> containsInputMTB(topSlot.getStack(), stack, bottomSlot.getStack()),
+                //stack -> containsInputMTB(topSlot.getStack(), stack, bottomSlot.getStack()),
                 this::containsInputM, recipeCacheListener, 64, 35));
         builder.addSlot(bottomSlot = InputInventorySlot.at(
-                stack -> containsInputBTM(topSlot.getStack(), middleSlot.getStack(), stack),
+                //stack -> containsInputBTM(topSlot.getStack(), middleSlot.getStack(), stack),
                 this::containsInputB, recipeCacheListener, 46, 53));
         builder.addSlot(outputSlot = OutputInventorySlot.at(listener, 116, 35));
         builder.addSlot(
