@@ -6,6 +6,7 @@ import java.util.Set;
 import java.util.function.Function;
 import java.util.function.Predicate;
 
+import appeng.recipes.AERecipeTypes;
 import appeng.recipes.handlers.InscriberRecipe;
 import astral_mekanism.generalrecipe.IUnifiedRecipeType;
 import astral_mekanism.generalrecipe.lookup.cache.type.ItemGeneralInputCache;
@@ -19,6 +20,7 @@ import net.minecraft.world.level.Level;
 
 public class InscriberRecipeInputRecipeCache extends GeneralInputRecipeCache<Container, InscriberRecipe> {
 
+    private final Set<InscriberRecipe> recipes;
     private final Set<InscriberRecipe> complexRecipes;
     private final Set<InscriberRecipe> complexRecipesTop;
     private final Set<InscriberRecipe> complexRecipesMiddle;
@@ -49,6 +51,7 @@ public class InscriberRecipeInputRecipeCache extends GeneralInputRecipeCache<Con
         this.cacheTop = new ItemGeneralInputCache<>();
         this.cacheMiddle = new ItemGeneralInputCache<>();
         this.cacheBottom = new ItemGeneralInputCache<>();
+        recipes = new HashSet<>();
     }
 
     public boolean containsInputTop(Level world, ItemStack input) {
@@ -137,8 +140,12 @@ public class InscriberRecipeInputRecipeCache extends GeneralInputRecipeCache<Con
             ItemStack input, Function<InscriberRecipe, ItemStackIngredient> inputExtractor,
             ItemStack other1, Function<InscriberRecipe, ItemStackIngredient> other1Extractor,
             ItemStack other2, Function<InscriberRecipe, ItemStackIngredient> other2Extractor) {
-        initCacheIfNeeded(world);
-        return complexRecipes.stream().anyMatch(recipe -> {
+        if (recipes.isEmpty()) {
+            for (InscriberRecipe recipe : world.getRecipeManager().getAllRecipesFor(AERecipeTypes.INSCRIBER)) {
+                recipes.add(recipe);
+            }
+        }
+        return recipes.stream().anyMatch(recipe -> {
             if (input.isEmpty() || inputExtractor.apply(recipe) == null) {
                 return false;
             }
