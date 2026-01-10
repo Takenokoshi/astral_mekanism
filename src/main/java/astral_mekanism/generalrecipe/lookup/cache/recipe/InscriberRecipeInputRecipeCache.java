@@ -10,9 +10,7 @@ import org.jetbrains.annotations.Nullable;
 
 import appeng.recipes.handlers.InscriberRecipe;
 import astral_mekanism.generalrecipe.IUnifiedRecipeType;
-import astral_mekanism.generalrecipe.lookup.cache.type.IUnifiedInputCache;
 import astral_mekanism.generalrecipe.lookup.cache.type.ItemGeneralInputCache;
-import mekanism.api.recipes.ingredients.InputIngredient;
 import mekanism.api.recipes.ingredients.ItemStackIngredient;
 import mekanism.api.recipes.ingredients.creator.IItemStackIngredientCreator;
 import mekanism.api.recipes.ingredients.creator.IngredientCreatorAccess;
@@ -143,29 +141,24 @@ public class InscriberRecipeInputRecipeCache extends GeneralInputRecipeCache<Con
         }
     }
 
-    private <INPUT_1, INGREDIENT_1 extends InputIngredient<INPUT_1>, CACHE_1 extends IUnifiedInputCache<INPUT_1, INGREDIENT_1, InscriberRecipe>, INPUT_2, INGREDIENT_2 extends InputIngredient<INPUT_2>, CACHE_2 extends IUnifiedInputCache<INPUT_2, INGREDIENT_2, InscriberRecipe>, INPUT_3, INGREDIENT_3 extends InputIngredient<INPUT_3>, CACHE_3 extends IUnifiedInputCache<INPUT_3, INGREDIENT_3, InscriberRecipe>> boolean containsGrouping(
+    private boolean containsGrouping(
             @Nullable Level world,
-            INPUT_1 input1, Function<InscriberRecipe, INGREDIENT_1> input1Extractor, CACHE_1 cache1,
+            ItemStack input1, Function<InscriberRecipe, ItemStackIngredient> input1Extractor,
+            ItemGeneralInputCache<InscriberRecipe> cache1,
             Set<InscriberRecipe> complexIngredients1,
-            INPUT_2 input2, Function<InscriberRecipe, INGREDIENT_2> input2Extractor, CACHE_2 cache2,
+            ItemStack input2, Function<InscriberRecipe, ItemStackIngredient> input2Extractor,
+            ItemGeneralInputCache<InscriberRecipe> cache2,
             Set<InscriberRecipe> complexIngredients2,
-            INPUT_3 input3, Function<InscriberRecipe, INGREDIENT_3> input3Extractor, CACHE_3 cache3,
+            ItemStack input3, Function<InscriberRecipe, ItemStackIngredient> input3Extractor,
+            ItemGeneralInputCache<InscriberRecipe> cache3,
             Set<InscriberRecipe> complexIngredients3) {
         if (cache1.isEmpty(input1)) {
             if (cache3.isEmpty(input3)) {
-                // If 1 and 3 are empty just check 2. We have this extra check here as
-                // containsPairing will always return true
-                // if the secondary type is empty, but this is the special case when we don't
-                // want that to actually happen
                 return containsInput(world, input2, input2Extractor, cache2, complexIngredients2);
             }
-            // Note: We don't bother checking if 2 is empty here as it will be verified in
-            // containsPairing
             return containsPairing(world, input2, input2Extractor, cache2, complexIngredients2, input3, input3Extractor,
                     cache3, complexIngredients3);
         } else if (cache2.isEmpty(input2)) {
-            // Note: We don't bother checking if 3 is empty here as it will be verified in
-            // containsPairing
             return containsPairing(world, input1, input1Extractor, cache1, complexIngredients1, input3, input3Extractor,
                     cache3, complexIngredients3);
         } else if (cache3.isEmpty(input3)) {
@@ -173,17 +166,15 @@ public class InscriberRecipeInputRecipeCache extends GeneralInputRecipeCache<Con
                     cache2, complexIngredients2);
         }
         initCacheIfNeeded(world);
-        // Note: If cache 1 contains input 1 then we only need to test the type of input
-        // 2 and 3 as we already know input 1 matches
-        if (cache1.contains(input1, recipe -> input2Extractor.apply(recipe).testType(input2)
-                && input3Extractor.apply(recipe).testType(input3))) {
+        if (cache1.contains(input1,
+                recipe -> (input2Extractor.apply(recipe) == null || input2Extractor.apply(recipe).testType(input2))
+                        && (input3Extractor.apply(recipe) == null || input3Extractor.apply(recipe).testType(input3)))) {
             return true;
         }
-        // Our quick lookup 1 cache does not contain it, check any recipes where the 1
-        // ingredient was complex
-        return complexIngredients1.stream().anyMatch(recipe -> input1Extractor.apply(recipe).testType(input1) &&
-                input2Extractor.apply(recipe).testType(input2) &&
-                input3Extractor.apply(recipe).testType(input3));
+        return complexIngredients1.stream().anyMatch(
+                recipe -> (input1Extractor.apply(recipe) == null || input1Extractor.apply(recipe).testType(input1)) &&
+                        (input2Extractor.apply(recipe) == null || input2Extractor.apply(recipe).testType(input2)) &&
+                        (input3Extractor.apply(recipe) == null || input3Extractor.apply(recipe).testType(input3)));
     }
 
 }
