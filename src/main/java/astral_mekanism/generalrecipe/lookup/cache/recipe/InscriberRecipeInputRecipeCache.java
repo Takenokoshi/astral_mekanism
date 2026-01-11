@@ -6,6 +6,8 @@ import java.util.Set;
 import java.util.function.Function;
 import java.util.function.Predicate;
 
+import org.jetbrains.annotations.Nullable;
+
 import appeng.recipes.AERecipeTypes;
 import appeng.recipes.handlers.InscriberRecipe;
 import astral_mekanism.generalrecipe.IUnifiedRecipeType;
@@ -112,30 +114,29 @@ public class InscriberRecipeInputRecipeCache extends GeneralInputRecipeCache<Con
             Ingredient topIngredient = recipe.getTopOptional();
             if (!topIngredient.isEmpty()) {
                 complexT = cacheTop.mapInputs(recipe, topInputExtractor.apply(recipe));
+                if (complexT) {
+                    complexRecipesTop.add(recipe);
+                }
             }
-            if (complexT) {
-                complexRecipesTop.add(recipe);
-            }
-            Ingredient middleIngredient = recipe.getTopOptional();
+            Ingredient middleIngredient = recipe.getMiddleInput();
             if (!middleIngredient.isEmpty()) {
                 complexM = cacheMiddle.mapInputs(recipe, middleInputExtractor.apply(recipe));
+                if (complexM) {
+                    complexRecipesMiddle.add(recipe);
+                }
             }
-            if (complexM) {
-                complexRecipesMiddle.add(recipe);
-            }
-            Ingredient bottomIngredient = recipe.getTopOptional();
+            Ingredient bottomIngredient = recipe.getBottomOptional();
             if (!bottomIngredient.isEmpty()) {
                 complexB = cacheBottom.mapInputs(recipe, bottomInputExtractor.apply(recipe));
-            }
-            if (complexB) {
-                complexRecipesBottom.add(recipe);
+                if (complexB) {
+                    complexRecipesBottom.add(recipe);
+                }
             }
             if (complexT || complexM || complexB) {
                 complexRecipes.add(recipe);
             }
         }
     }
-    
 
     private boolean contains(Level world,
             ItemStack input, Function<InscriberRecipe, ItemStackIngredient> inputExtractor,
@@ -157,5 +158,57 @@ public class InscriberRecipeInputRecipeCache extends GeneralInputRecipeCache<Con
                     || other2Extractor.apply(recipe).testType(other2));
             return result;
         });
+    }
+
+    private boolean containsGrouping(Level world,
+            ItemStack input1, Function<InscriberRecipe, ItemStackIngredient> input1Extractor,
+            ItemGeneralInputCache<InscriberRecipe> cache1, Set<InscriberRecipe> complexIngredients1,
+            ItemStack input2, Function<InscriberRecipe, ItemStackIngredient> input2Extractor,
+            ItemGeneralInputCache<InscriberRecipe> cache2, Set<InscriberRecipe> complexIngredients2,
+            ItemStack input3, Function<InscriberRecipe, ItemStackIngredient> input3Extractor,
+            ItemGeneralInputCache<InscriberRecipe> cache3, Set<InscriberRecipe> complexIngredients3) {
+
+        if (cache1.isEmpty(input1)) {
+            if (cache3.isEmpty(input3)) {
+                return containsInput(world, input2, input2Extractor, cache2, complexIngredients2);
+            }
+            return containsPairing(world, input2, input2Extractor, cache2, complexIngredients2, input3, input3Extractor,
+                    cache3, complexIngredients3);
+        } else if (cache2.isEmpty(input2)) {
+            return containsPairing(world, input1, input1Extractor, cache1, complexIngredients1, input3, input3Extractor,
+                    cache3, complexIngredients3);
+        } else if (cache3.isEmpty(input3)) {
+            return containsPairing(world, input1, input1Extractor, cache1, complexIngredients1, input2, input2Extractor,
+                    cache2, complexIngredients2);
+        }
+        initCacheIfNeeded(world);
+        if (cache1.contains(input1, recipe -> input2Extractor.apply(recipe).testType(input2)
+                && input3Extractor.apply(recipe).testType(input3))) {
+            return true;
+        }
+        return complexIngredients1.stream().anyMatch(recipe -> input1Extractor.apply(recipe).testType(input1) &&
+                input2Extractor.apply(recipe).testType(input2) &&
+                input3Extractor.apply(recipe).testType(input3));
+    }
+
+    private boolean containsPairing(
+            @Nullable Level world,
+            ItemStack input1, Function<InscriberRecipe, ItemStackIngredient> input1Extractor,
+            ItemGeneralInputCache<InscriberRecipe> cache1,
+            Set<InscriberRecipe> complexIngredients1, ItemStack input2,
+            Function<InscriberRecipe, ItemStackIngredient> input2Extractor,
+            ItemGeneralInputCache<InscriberRecipe> cache2, Set<InscriberRecipe> complexIngredients2) {
+        if (cache1.isEmpty(input1)) {
+            return containsInput(world, input2, input2Extractor, cache2, complexIngredients2);
+        } else if (cache2.isEmpty(input2)) {
+            return true;
+        }
+        initCacheIfNeeded(world);
+        if (cache1.contains(input1,
+                recipe -> input2Extractor.apply(recipe) == null || input2Extractor.apply(recipe).testType(input2))) {
+            return true;
+        }
+        return complexIngredients1.stream().anyMatch(recipe -> input1Extractor.apply(recipe).testType(input1)
+                && (input2Extractor.apply(recipe) == null || input2Extractor.apply(recipe).testType(input2)));
     }
 }
