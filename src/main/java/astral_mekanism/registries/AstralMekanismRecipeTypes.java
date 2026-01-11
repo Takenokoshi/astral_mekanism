@@ -15,13 +15,11 @@ import astral_mekanism.recipes.recipe.GreenhouseRecipe;
 import astral_mekanism.recipes.recipe.MekanicalTransformRecipe;
 import mekanism.api.chemical.gas.Gas;
 import mekanism.api.chemical.gas.GasStack;
-import mekanism.api.recipes.CombinerRecipe;
 import mekanism.api.recipes.GasToGasRecipe;
 import mekanism.api.recipes.MekanismRecipe;
 import mekanism.common.recipe.MekanismRecipeType;
 import mekanism.common.recipe.lookup.cache.IInputRecipeCache;
 import mekanism.common.recipe.lookup.cache.InputRecipeCache;
-import mekanism.common.recipe.lookup.cache.InputRecipeCache.DoubleItem;
 import mekanism.common.recipe.lookup.cache.InputRecipeCache.SingleChemical;
 import mekanism.common.registration.impl.RecipeTypeDeferredRegister;
 import mekanism.common.registration.impl.RecipeTypeRegistryObject;
@@ -61,10 +59,6 @@ public class AstralMekanismRecipeTypes {
 
     public static final RecipeTypeRegistryObject<AstralCraftingRecipe, AstralCraftingRecipeCache> ASTRAL_CRAFTING = register(
             "astral_crafting", AstralCraftingRecipeCache::new);
-
-    public static final RecipeTypeRegistryObject<CombinerRecipe, DoubleItem<CombinerRecipe>> MEKANICAL_INSCRIBER_RECIPE = register(
-            "mekanical_inscriber",
-            rt -> new DoubleItem<>(rt, CombinerRecipe::getMainInput, CombinerRecipe::getExtraInput));
 
     public static final RecipeTypeRegistryObject<MekanicalTransformRecipe, QuadItem<MekanicalTransformRecipe>> MEKANICAL_TRANSFORM = register(
             "mekanical_transform", rt -> new QuadItem<>(rt,
