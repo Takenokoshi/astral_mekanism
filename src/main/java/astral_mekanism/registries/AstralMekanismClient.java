@@ -121,7 +121,7 @@ public class AstralMekanismClient {
             regScreen(AstralMekanismMachines.ASTRAL_MEKANICAL_CHARGER,
                     GuiMekanicalCharger<BEAstralMekanicalCharger>::new);
             regScreen(AstralMekanismMachines.ASTRAL_MEKANICAL_INSCRIBER,
-                    GuiDoubleItemToItemRecipeMachine<BEAstralMekanicalInscriber>::new);
+                    GuiMekanicalInscriber<BEAstralMekanicalInscriber>::new);
             regScreen(AstralMekanismMachines.ASTRAL_MEKANICAL_TRANSFOMER,
                     GuiMekanicalTransformer<BEAstralMekanicalTransformer>::new);
             regScreen(AstralMekanismMachines.ASTRAL_METALLURGIC_INFUSER, GuiAstralMetallurgicInfuser::new);

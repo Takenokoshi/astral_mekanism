@@ -287,7 +287,7 @@ public class AstralMekanismMachines {
                             .changeAttributeUpgrade(EnumSet.of(Upgrade.MUFFLING, Upgrade.ENERGY))
                             .withSound(MekanismSounds.ISOTOPIC_CENTRIFUGE));
 
-    public static final MachineRegistryObject<BEAstralMekanicalInscriber, BlockTileModel<BEAstralMekanicalInscriber, BlockTypeMachine<BEAstralMekanicalInscriber>>, MekanismTileContainer<BEAstralMekanicalInscriber>, ItemBlockMachine> ASTRAL_MEKANICAL_INSCRIBER = MACHINES
+    public static final MachineRegistryObject<BEAstralMekanicalInscriber,BlockTileModel<BEAstralMekanicalInscriber,BlockTypeMachine<BEAstralMekanicalInscriber>>,MekanismTileContainer<BEAstralMekanicalInscriber>,ItemBlockMachine> ASTRAL_MEKANICAL_INSCRIBER = MACHINES
             .registerSimple("astral_mekanical_inscriber",
                     BEAstralMekanicalInscriber::new,
                     BEAstralMekanicalInscriber.class,

@@ -112,27 +112,28 @@ public class InscriberRecipeInputRecipeCache extends GeneralInputRecipeCache<Con
 
     @Override
     protected void initCache(List<InscriberRecipe> recipes) {
+        IItemStackIngredientCreator creator = IngredientCreatorAccess.item();
         for (InscriberRecipe recipe : recipes) {
             boolean complexT = false;
             boolean complexM = false;
             boolean complexB = false;
             Ingredient topIngredient = recipe.getTopOptional();
+            Ingredient middleIngredient = recipe.getMiddleInput();
+            Ingredient bottomIngredient = recipe.getBottomOptional();
             if (!topIngredient.isEmpty()) {
-                complexT = cacheTop.mapInputs(recipe, topInputExtractor.apply(recipe));
+                complexT = cacheTop.mapInputs(recipe, creator.from(topIngredient));
                 if (complexT) {
                     complexRecipesTop.add(recipe);
                 }
             }
-            Ingredient middleIngredient = recipe.getMiddleInput();
             if (!middleIngredient.isEmpty()) {
-                complexM = cacheMiddle.mapInputs(recipe, middleInputExtractor.apply(recipe));
+                complexM = cacheMiddle.mapInputs(recipe, creator.from(middleIngredient));
                 if (complexM) {
                     complexRecipesMiddle.add(recipe);
                 }
             }
-            Ingredient bottomIngredient = recipe.getBottomOptional();
             if (!bottomIngredient.isEmpty()) {
-                complexB = cacheBottom.mapInputs(recipe, bottomInputExtractor.apply(recipe));
+                complexB = cacheBottom.mapInputs(recipe, creator.from(bottomIngredient));
                 if (complexB) {
                     complexRecipesBottom.add(recipe);
                 }

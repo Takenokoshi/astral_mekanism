@@ -88,10 +88,10 @@ public class MEkanicalInscribeCachedRecipe extends GeneralCachedRecipe<Inscriber
     protected void finishProcessing(int operations) {
         middleInputHandler.use(middleRecipeInput, operations);
         outputHandler.handleOutput(recipeOutput, operations);
-        if (!topRecipeInput.isEmpty()) {
+        if (!topRecipeInput.isEmpty() && recipe.getProcessType() == InscriberProcessType.PRESS) {
             topInputHandler.use(topRecipeInput, operations);
         }
-        if (!bottomRecipeInput.isEmpty()) {
+        if (!bottomRecipeInput.isEmpty() && recipe.getProcessType() == InscriberProcessType.PRESS) {
             bottomInputHandler.use(bottomRecipeInput, operations);
         }
     }
