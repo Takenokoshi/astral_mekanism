@@ -44,6 +44,14 @@ It references, interacts with, or was inspired by the following open-source proj
   Licensed under the MIT License
 
 ---
+### Mekanism Addons
+- [EvolvedMekanism](https://github.com/iglee42/EvolvedMekanism) - MIT
+
+- [Mekanism-Extras](https://github.com/lostmyself8/Mekanism-Extras) - MIT
+
+- [EvolvedMekanismExtras](https://github.com/masyumero/EvolvedMekanismExtras) - MIT
+
+---
 
 ### Applied Energistics 2
 - [Applied Energistics 2 (AE2)](https://github.com/AppliedEnergistics/Applied-Energistics-2)  
@@ -91,7 +99,6 @@ but their source code or design concepts were referenced during development.
 Each project is licensed under the MIT License:
 
 - [GregMek](https://github.com/toapuro/Gregmek) - MIT
-- [EvolvedMekanism](https://github.com/iglee42/EvolvedMekanism) - MIT
 
 These projects remain the property of their respective authors and are not included
 in Astral Mekanism’s distributed codebase.
