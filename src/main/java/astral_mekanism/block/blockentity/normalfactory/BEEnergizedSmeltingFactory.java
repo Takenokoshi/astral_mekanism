@@ -1,5 +1,6 @@
 package astral_mekanism.block.blockentity.normalfactory;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
@@ -101,9 +102,9 @@ public class BEEnergizedSmeltingFactory extends BlockEntityProgressFactory<Smelt
                 .setCanHolderFunction(() -> MekanismUtils.canFunction(this))
                 .setActive(active -> setActiveState(active, cacheIndex))
                 .setEnergyRequirements(energyContainer::getEnergyPerTick, energyContainer)
+                .setRequiredTicks(this::getTicksRequired)
                 .setOnFinish(this::markForSave)
-                .setOperatingTicksChanged(getProgressSetter(cacheIndex))
-                .setRequiredTicks(this::getTicksRequired);
+                .setOperatingTicksChanged(getProgressSetter(cacheIndex));
     }
 
     @Override
@@ -208,13 +209,14 @@ public class BEEnergizedSmeltingFactory extends BlockEntityProgressFactory<Smelt
         if (emptySlots.isEmpty()) {
             return;
         }
-        emptySlots.add(0, manySlot);
+        List<PagedInputInventorySlot> targetSlots = new ArrayList<>(emptySlots);
+        targetSlots.add(0, manySlot);
         ItemStack stack = manySlot.getStack().copy();
-        int size = emptySlots.size();
+        int size = targetSlots.size();
         int base = stack.getCount() / size;
         int left = stack.getCount() % size;
         for (int index = 0; index < size; index++) {
-            emptySlots.get(index).setStack(stack.copyWithCount(index < left ? base + 1 : base));
+            targetSlots.get(index).setStack(stack.copyWithCount(index < left ? base + 1 : base));
         }
     }
 

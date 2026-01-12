@@ -44,6 +44,7 @@ public abstract class BlockEntityProgressFactory<RECIPE extends Recipe<?>, BE ex
         super(blockProvider, pos, state, errorTypes, globalErrorTypes);
         this.baseTicksRequired = baseTicksRequired;
         this.progress = new int[tier.processes];
+        this.ticksRequired = this.baseTicksRequired;
     }
 
     @Override
