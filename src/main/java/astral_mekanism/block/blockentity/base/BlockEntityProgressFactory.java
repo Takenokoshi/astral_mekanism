@@ -156,7 +156,7 @@ public abstract class BlockEntityProgressFactory<RECIPE extends Recipe<?>, BE ex
 
     @Override
     public double getProgressScaled(int index) {
-        return ((double) getProgress(index)) / ticksRequired;
+        return ((double) getProgress(index)) / (double) ticksRequired;
     }
 
 }
