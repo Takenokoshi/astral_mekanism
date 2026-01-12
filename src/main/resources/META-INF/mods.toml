@@ -125,6 +125,12 @@ description='''${mod_description}'''
     versionRange="[1.3.3,)"
     ordering="NONE"
     side="BOTH"
+[[dependencies.${mod_id}]]
+    modId="compactmekanismmachines"
+    mandatory=true
+    versionRange="[0.1.9,)"
+    ordering="NONE"
+    side="BOTH"
 
 
 [[mixin]]

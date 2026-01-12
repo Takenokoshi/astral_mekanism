@@ -18,8 +18,7 @@
 		"mekanism.CableTierMixin",
 		"mekanism.DataTypeMixin",
 		"mekanism.OperationTrackerMixin",
-		"mekanism.TileComponentEjectorMixin",
-		"mekanism.WindowTypeMixin"
+		"mekanism.TileComponentEjectorMixin"
 	],
 	"client": [
 	],

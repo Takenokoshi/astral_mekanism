@@ -1,0 +1,6 @@
+{
+    "parent": "astral_mekanism:block/factory_base",
+    "textures": {
+        "front": "astral_mekanism:block/normal_factory/energized_smelter_front"
+    }
+}

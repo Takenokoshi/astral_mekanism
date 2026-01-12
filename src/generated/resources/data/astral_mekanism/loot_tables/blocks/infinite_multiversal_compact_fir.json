@@ -46,6 +46,11 @@
                 },
                 {
                   "op": "replace",
+                  "source": "GasTanks",
+                  "target": "mekData.GasTanks"
+                },
+                {
+                  "op": "replace",
                   "source": "HeatCapacitors",
                   "target": "mekData.HeatCapacitors"
                 },
@@ -58,12 +63,12 @@
               "source": "block_entity"
             }
           ],
-          "name": "astral_mekanism:compact_tep"
+          "name": "astral_mekanism:infinite_multiversal_compact_fir"
         }
       ],
       "name": "main",
       "rolls": 1.0
     }
   ],
-  "random_sequence": "astral_mekanism:blocks/compact_tep"
+  "random_sequence": "astral_mekanism:blocks/infinite_multiversal_compact_fir"
 }

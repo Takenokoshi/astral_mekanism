@@ -19,6 +19,7 @@ import mekanism.api.recipes.cache.CachedRecipe.OperationTracker.RecipeError;
 import mekanism.common.CommonWorldTickHandler;
 import mekanism.common.inventory.container.MekanismContainer;
 import mekanism.common.inventory.container.sync.SyncableBoolean;
+import mekanism.common.inventory.container.sync.SyncableInt;
 import mekanism.common.tile.interfaces.ISustainedData;
 import mekanism.common.util.MekanismUtils;
 import mekanism.common.util.NBTUtils;
@@ -44,6 +45,7 @@ public abstract class BlockEntityProgressFactory<RECIPE extends Recipe<?>, BE ex
         super(blockProvider, pos, state, errorTypes, globalErrorTypes);
         this.baseTicksRequired = baseTicksRequired;
         this.progress = new int[tier.processes];
+        Arrays.fill(progress, 0);
         this.ticksRequired = this.baseTicksRequired;
     }
 
@@ -82,21 +84,13 @@ public abstract class BlockEntityProgressFactory<RECIPE extends Recipe<?>, BE ex
 
     protected abstract void sort();
 
-    public int getProgress(int cacheIndex) {
-        return progress[cacheIndex];
-    }
-
     protected int getTicksRequired() {
         return ticksRequired;
     }
 
     @Override
     public int getSavedOperatingTicks(int cacheIndex) {
-        return getProgress(cacheIndex);
-    }
-
-    public double getScaledProgress(int i, int process) {
-        return (double) getProgress(process) * i / ticksRequired;
+        return progress[cacheIndex];
     }
 
     public IntConsumer getProgressSetter(int cacheIndex) {
@@ -152,11 +146,13 @@ public abstract class BlockEntityProgressFactory<RECIPE extends Recipe<?>, BE ex
     public void addContainerTrackers(MekanismContainer container) {
         super.addContainerTrackers(container);
         container.track(SyncableBoolean.create(this::isSorting, v -> sorting = v));
+        container.track(SyncableInt.create(this::getTicksRequired, v -> ticksRequired = v));
+        container.trackArray(progress);
     }
 
     @Override
     public double getProgressScaled(int index) {
-        return ((double) getProgress(index)) / (double) ticksRequired;
+        return ((double) progress[index]) / ((double) ticksRequired);
     }
 
 }

@@ -104,7 +104,7 @@ public class BEEnergizedSmeltingFactory extends BlockEntityProgressFactory<Smelt
                 .setEnergyRequirements(energyContainer::getEnergyPerTick, energyContainer)
                 .setRequiredTicks(this::getTicksRequired)
                 .setOnFinish(this::markForSave)
-                .setOperatingTicksChanged(getProgressSetter(cacheIndex));
+                .setOperatingTicksChanged(p -> progress[cacheIndex] = p);
     }
 
     @Override
@@ -183,11 +183,13 @@ public class BEEnergizedSmeltingFactory extends BlockEntityProgressFactory<Smelt
 
     @Override
     public void writeSustainedData(CompoundTag dataMap) {
+        super.writeSustainedData(dataMap);
         NBTUtils.writeEnum(dataMap, NBTConstants.DUMP_MODE, gasMode);
     }
 
     @Override
     public void readSustainedData(CompoundTag dataMap) {
+        super.readSustainedData(dataMap);
         NBTUtils.setEnumIfPresent(dataMap, NBTConstants.DUMP_MODE, GasMode::byIndexStatic, v -> gasMode = v);
     }
 

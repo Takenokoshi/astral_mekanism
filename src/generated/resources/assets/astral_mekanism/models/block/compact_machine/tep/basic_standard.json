@@ -1,0 +1,19 @@
+{
+  "parent": "minecraft:block/block",
+  "children": {
+    "base": {
+      "parent": "astral_mekanism:block/compact_machine/tep/base"
+    },
+    "front_led": {
+      "parent": "astral_mekanism:block/factory/led/basic_standard"
+    }
+  },
+  "item_render_order": [
+    "base",
+    "front_led"
+  ],
+  "loader": "forge:composite",
+  "textures": {
+    "particle": "astral_mekanism:block/factory/base"
+  }
+}

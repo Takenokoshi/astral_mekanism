@@ -1,0 +1,6 @@
+{
+	"parent": "astral_mekanism:block/factory_base",
+	"textures": {
+		"front": "astral_mekanism:block/compact_machine/fir_front"
+	}
+}
