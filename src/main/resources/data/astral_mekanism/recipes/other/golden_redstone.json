@@ -8,7 +8,7 @@
 	},
 	"chemicalInput": {
 		"infuse_type": "mekanism:gold",
-		"amount": 40
+		"amount": 80
 	},
 	"output": {
 		"item": "astral_mekanism:golden_redstone"

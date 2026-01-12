@@ -3,6 +3,7 @@ package astral_mekanism.block.blockentity.compact;
 import java.util.List;
 import org.jetbrains.annotations.NotNull;
 
+import astral_mekanism.AstralMekanismTier;
 import astral_mekanism.block.blockentity.core.BlockEntityUtils;
 import astral_mekanism.block.blockentity.elements.AstralMekDataType;
 import astral_mekanism.block.blockentity.interf.IPacketReceiverSetLong;
@@ -16,6 +17,7 @@ import mekanism.api.chemical.gas.IGasTank;
 import mekanism.api.chemical.gas.attribute.GasAttributes.CooledCoolant;
 import mekanism.api.heat.HeatAPI.HeatTransfer;
 import mekanism.api.providers.IBlockProvider;
+import mekanism.common.block.attribute.Attribute;
 import mekanism.common.capabilities.fluid.BasicFluidTank;
 import mekanism.common.capabilities.heat.BasicHeatCapacitor;
 import mekanism.common.capabilities.heat.CachedAmbientTemperature;
@@ -57,21 +59,22 @@ public class BECompactFIR extends TileEntityConfigurableMachine implements IPack
     private double lastEnvironmentLoss;
     private double lastTransferLoss;
 
-    IGasTank fissionFuelTank;
-    IGasTank nuclearWasteTank;
-    long efficiency;
+    private IGasTank fissionFuelTank;
+    private IGasTank nuclearWasteTank;
+    private long efficiency;
 
-    BasicFluidTank coolantFluidTank;
-    IGasTank coolantGasTank;
-    IGasTank heatedFluidCoolantGasTank;
-    IGasTank heatedGasCoolantGasTank;
+    private BasicFluidTank coolantFluidTank;
+    private IGasTank coolantGasTank;
+    private IGasTank heatedFluidCoolantGasTank;
+    private IGasTank heatedGasCoolantGasTank;
 
-    GasInventorySlot fissionFuelSlot;
-    GasInventorySlot nuclearWasteSlot;
-    FluidInventorySlot fluidCoolantSlot;
-    GasInventorySlot gasCoolantSlot;
-    GasInventorySlot heatedFluidSlot;
-    GasInventorySlot heatedGasSlot;
+    private GasInventorySlot fissionFuelSlot;
+    private GasInventorySlot nuclearWasteSlot;
+    private FluidInventorySlot fluidCoolantSlot;
+    private GasInventorySlot gasCoolantSlot;
+    private GasInventorySlot heatedFluidSlot;
+    private GasInventorySlot heatedGasSlot;
+    private AstralMekanismTier tier;
 
     public BECompactFIR(IBlockProvider blockProvider, BlockPos pos, BlockState state) {
         super(blockProvider, pos, state);
@@ -96,9 +99,16 @@ public class BECompactFIR extends TileEntityConfigurableMachine implements IPack
         }
         configComponent.setupOutputConfig(TransmissionType.HEAT, heatCapacitor);
         ejectorComponent = new TileComponentEjector(this, () -> Long.MAX_VALUE);
+        ejectorComponent.setOutputData(configComponent, TransmissionType.GAS);
         lastEnvironmentLoss = 0d;
         lastTransferLoss = 0d;
         efficiency = 0l;
+    }
+
+    @Override
+    protected void presetVariables() {
+        super.presetVariables();
+        tier = Attribute.getTier(getBlockType(), AstralMekanismTier.class);
     }
 
     @NotNull
@@ -116,13 +126,13 @@ public class BECompactFIR extends TileEntityConfigurableMachine implements IPack
     public IChemicalTankHolder<Gas, GasStack, IGasTank> getInitialGasTanks(IContentsListener listener) {
         ChemicalTankHelper<Gas, GasStack, IGasTank> builder = ChemicalTankHelper
                 .forSideGasWithConfig(this::getDirection, this::getConfig);
-        builder.addTank(fissionFuelTank = ChemicalTankBuilder.GAS.input(Long.MAX_VALUE,
+        builder.addTank(fissionFuelTank = ChemicalTankBuilder.GAS.input(tier.exToLong(),
                 gas -> gas == MekanismGases.FISSILE_FUEL.get(), listener));
-        builder.addTank(nuclearWasteTank = ChemicalTankBuilder.GAS.output(Long.MAX_VALUE, listener));
-        builder.addTank(coolantGasTank = ChemicalTankBuilder.GAS.input(Long.MAX_VALUE,
+        builder.addTank(nuclearWasteTank = ChemicalTankBuilder.GAS.output(tier.exToLong(), listener));
+        builder.addTank(coolantGasTank = ChemicalTankBuilder.GAS.input(tier.exToLong(),
                 gas -> gas.has(CooledCoolant.class), listener));
-        builder.addTank(heatedFluidCoolantGasTank = ChemicalTankBuilder.GAS.output(Long.MAX_VALUE, listener));
-        builder.addTank(heatedGasCoolantGasTank = ChemicalTankBuilder.GAS.output(Long.MAX_VALUE, listener));
+        builder.addTank(heatedFluidCoolantGasTank = ChemicalTankBuilder.GAS.output(tier.exToLong(), listener));
+        builder.addTank(heatedGasCoolantGasTank = ChemicalTankBuilder.GAS.output(tier.exToLong(), listener));
         return builder.build();
     }
 
@@ -130,7 +140,7 @@ public class BECompactFIR extends TileEntityConfigurableMachine implements IPack
     @Override
     protected IFluidTankHolder getInitialFluidTanks(IContentsListener listener) {
         FluidTankHelper builder = FluidTankHelper.forSideWithConfig(this::getDirection, this::getConfig);
-        builder.addTank(coolantFluidTank = BasicFluidTank.input(Integer.MAX_VALUE,
+        builder.addTank(coolantFluidTank = BasicFluidTank.input(tier.exToInt(),
                 (fluid) -> fluid.isFluidEqual(new FluidStack(Fluids.WATER, 1)), listener));
         return builder.build();
     }
@@ -297,7 +307,7 @@ public class BECompactFIR extends TileEntityConfigurableMachine implements IPack
 
     @Override
     public void receive(int num, long value) {
-        efficiency = value;
+        efficiency = Math.min(tier.exToLong(), value);
         markForSave();
     }
 

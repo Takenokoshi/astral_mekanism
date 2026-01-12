@@ -5,8 +5,16 @@ import java.util.List;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-import astral_mekanism.block.blockentity.elements.AstralMekDataType;
+import astral_mekanism.AstralMekanismTier;
+import astral_mekanism.block.blockentity.elements.ExtendedComponentEjector;
+import astral_mekanism.block.blockentity.elements.slot.paged.PagedEnergyInventorySlot;
+import astral_mekanism.block.blockentity.elements.slot.paged.PagedFluidInventorySlot;
+import astral_mekanism.block.blockentity.elements.slot.paged.PagedOutputInventorySlot;
+import mekanism.api.Action;
+import mekanism.api.AutomationType;
 import mekanism.api.IContentsListener;
+import mekanism.api.RelativeSide;
+import mekanism.api.fluid.IExtendedFluidTank;
 import mekanism.api.heat.HeatAPI;
 import mekanism.api.math.FloatingLong;
 import mekanism.api.providers.IBlockProvider;
@@ -18,9 +26,13 @@ import mekanism.api.recipes.inputs.IInputHandler;
 import mekanism.api.recipes.inputs.InputHelper;
 import mekanism.api.recipes.outputs.IOutputHandler;
 import mekanism.api.recipes.outputs.OutputHelper;
+import mekanism.common.block.attribute.Attribute;
+import mekanism.common.capabilities.energy.MachineEnergyContainer;
 import mekanism.common.capabilities.fluid.BasicFluidTank;
 import mekanism.common.capabilities.heat.CachedAmbientTemperature;
 import mekanism.common.capabilities.heat.VariableHeatCapacitor;
+import mekanism.common.capabilities.holder.energy.EnergyContainerHelper;
+import mekanism.common.capabilities.holder.energy.IEnergyContainerHolder;
 import mekanism.common.capabilities.holder.fluid.FluidTankHelper;
 import mekanism.common.capabilities.holder.fluid.IFluidTankHolder;
 import mekanism.common.capabilities.holder.heat.HeatCapacitorHelper;
@@ -32,6 +44,7 @@ import mekanism.common.inventory.container.MekanismContainer;
 import mekanism.common.inventory.container.slot.ContainerSlotType;
 import mekanism.common.inventory.container.slot.SlotOverlay;
 import mekanism.common.inventory.container.sync.SyncableDouble;
+import mekanism.common.inventory.container.sync.SyncableFloatingLong;
 import mekanism.common.inventory.slot.FluidInventorySlot;
 import mekanism.common.lib.transmitter.TransmissionType;
 import mekanism.common.recipe.IMekanismRecipeTypeProvider;
@@ -39,12 +52,8 @@ import mekanism.common.recipe.MekanismRecipeType;
 import mekanism.common.recipe.lookup.ISingleRecipeLookupHandler.FluidRecipeLookupHandler;
 import mekanism.common.recipe.lookup.cache.InputRecipeCache.SingleFluid;
 import mekanism.common.tile.component.TileComponentConfig;
-import mekanism.common.tile.component.TileComponentEjector;
-import mekanism.common.tile.component.config.ConfigInfo;
 import mekanism.common.tile.component.config.DataType;
-import mekanism.common.tile.component.config.slot.FluidSlotInfo;
 import mekanism.common.tile.prefab.TileEntityRecipeMachine;
-import mekanism.common.util.FluidUtils;
 import mekanism.common.util.MekanismUtils;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.Level;
@@ -59,39 +68,61 @@ public class BECompactTEP extends TileEntityRecipeMachine<FluidToFluidRecipe>
             RecipeError.NOT_ENOUGH_OUTPUT_SPACE,
             RecipeError.INPUT_DOESNT_PRODUCE_OUTPUT);
 
-    public static final double MAX_MULTIPLIER_TEMP = 3000;
-
     public BasicFluidTank inputTank;
     public BasicFluidTank outputTank;
     public VariableHeatCapacitor heatCapacitor;
+    private MachineEnergyContainer<BECompactTEP> energyContainer;
 
-    FluidInventorySlot inputSlot;
-    FluidInventorySlot outputSlot;
+    private FluidInventorySlot inputInputSlot;
+    private FluidInventorySlot outputInputSlot;
+    private PagedOutputInventorySlot inputOutputSlot;
+    private PagedOutputInventorySlot outputOutputSlot;
+    private PagedEnergyInventorySlot energySlot;
 
-    double lastEnvironmentLoss;
+    private double lastEnvironmentLoss;
     private boolean settingsChecked;
     public double tempMultiplier;
     private final IOutputHandler<@NotNull FluidStack> outputHandler;
     private final IInputHandler<@NotNull FluidStack> inputHandler;
+    protected final ExtendedComponentEjector ejectorComponetEx;
+
+    private FloatingLong clientEnergyUsed = FloatingLong.ZERO;
+
+    private AstralMekanismTier tier;
 
     public BECompactTEP(IBlockProvider blockProvider, BlockPos pos, BlockState state) {
         super(blockProvider, pos, state, TRACKED_ERROR_TYPES);
-        configComponent = new TileComponentConfig(this, TransmissionType.FLUID, TransmissionType.HEAT);
-        ConfigInfo fluidConfig = configComponent.getConfig(TransmissionType.FLUID);
-        if (fluidConfig != null) {
-            fluidConfig.addSlotInfo(DataType.INPUT_1, new FluidSlotInfo(true, false, inputTank));
-            fluidConfig.addSlotInfo(DataType.OUTPUT_2, new FluidSlotInfo(false, true, outputTank));
-            fluidConfig.addSlotInfo(AstralMekDataType.INPUT1_OUTPUT2, new FluidSlotInfo(true, false, inputTank));
-            fluidConfig.setCanEject(true);
-        }
+        configComponent = new TileComponentConfig(this, TransmissionType.FLUID, TransmissionType.HEAT,
+                TransmissionType.ENERGY);
+        configComponent.setupIOConfig(TransmissionType.FLUID, inputTank, outputTank, RelativeSide.RIGHT)
+                .setEjecting(true);
         configComponent.setupInputConfig(TransmissionType.HEAT, heatCapacitor);
-        ejectorComponent = new TileComponentEjector(this, () -> Long.MAX_VALUE, () -> 2147483647,
-                () -> FloatingLong.MAX_VALUE);
-        ejectorComponent.setOutputData(configComponent, TransmissionType.FLUID);
+        configComponent.setupInputConfig(TransmissionType.ENERGY, energyContainer);
+        ejectorComponetEx = new ExtendedComponentEjector(this, outputTank::getCapacity)
+                .setOutputData(configComponent, TransmissionType.FLUID)
+                .setCanEject(t -> t == TransmissionType.FLUID)
+                .setCanTypeEject((trans, data) -> {
+                    if (trans == TransmissionType.FLUID) {
+                        return data == DataType.OUTPUT || data == DataType.INPUT_OUTPUT;
+                    }
+                    return false;
+                }).setCanFluidTankEject((tank, data) -> {
+                    if (tank == outputTank) {
+                        return data == DataType.OUTPUT || data == DataType.INPUT_OUTPUT;
+                    }
+                    return false;
+                });
+        ejectorComponent = ejectorComponetEx;
         inputHandler = InputHelper.getInputHandler(inputTank, RecipeError.NOT_ENOUGH_INPUT);
         outputHandler = OutputHelper.getOutputHandler(outputTank, RecipeError.NOT_ENOUGH_OUTPUT_SPACE);
         this.heatCapacitor.setHeatCapacity(MekanismConfig.general.evaporationHeatCapacity.get() * 18, true);
         lastEnvironmentLoss = 0;
+    }
+
+    @Override
+    protected void presetVariables() {
+        super.presetVariables();
+        tier = Attribute.getTier(getBlockType(), AstralMekanismTier.class);
     }
 
     @NotNull
@@ -100,12 +131,18 @@ public class BECompactTEP extends TileEntityRecipeMachine<FluidToFluidRecipe>
             IContentsListener recipeCacheListener) {
         InventorySlotHelper builder = InventorySlotHelper
                 .forSideWithConfig(this::getDirection, this::getConfig);
-        builder.addSlot(inputSlot = FluidInventorySlot.fill(inputTank, listener, 5, 56));
-        builder.addSlot(outputSlot = FluidInventorySlot.drain(outputTank, listener, 155, 56));
-        inputSlot.setSlotType(ContainerSlotType.INPUT);
-        inputSlot.setSlotOverlay(SlotOverlay.MINUS);
-        outputSlot.setSlotType(ContainerSlotType.OUTPUT);
-        outputSlot.setSlotOverlay(SlotOverlay.PLUS);
+        builder.addSlot(inputInputSlot = PagedFluidInventorySlot.fill(inputTank, listener, 5, 20, 0))
+                .setSlotType(ContainerSlotType.INPUT);
+        builder.addSlot(outputInputSlot = PagedFluidInventorySlot.drain(outputTank, listener, 155, 20, 0))
+                .setSlotType(ContainerSlotType.INPUT);
+        builder.addSlot(inputOutputSlot = PagedOutputInventorySlot.at(listener, 5, 56, 0))
+                .setSlotType(ContainerSlotType.OUTPUT);
+        builder.addSlot(outputOutputSlot = PagedOutputInventorySlot.at(listener, 155, 56, 0))
+                .setSlotType(ContainerSlotType.OUTPUT);
+        builder.addSlot(energySlot = PagedEnergyInventorySlot.fillOrConvert(energyContainer, this::getLevel, listener,
+                15, 35, 1));
+        inputInputSlot.setSlotOverlay(SlotOverlay.MINUS);
+        outputInputSlot.setSlotOverlay(SlotOverlay.PLUS);
         return builder.build();
     }
 
@@ -114,9 +151,19 @@ public class BECompactTEP extends TileEntityRecipeMachine<FluidToFluidRecipe>
     public IFluidTankHolder getInitialFluidTanks(IContentsListener listener,
             IContentsListener recipeCacheListener) {
         FluidTankHelper builder = FluidTankHelper.forSideWithConfig(this::getDirection, this::getConfig);
-        builder.addTank(inputTank = BasicFluidTank.input(2147483647, fluid -> containsRecipe(fluid),
+        builder.addTank(inputTank = BasicFluidTank.input((int) Math.min(0x7fffffff, tier.exToInt() * 100l),
+                fluid -> containsRecipe(fluid),
                 recipeCacheListener));
-        builder.addTank(outputTank = BasicFluidTank.output(2147483647, recipeCacheListener));
+        builder.addTank(outputTank = BasicFluidTank.output(tier.exToInt(), recipeCacheListener));
+        return builder.build();
+    }
+
+    @NotNull
+    @Override
+    protected IEnergyContainerHolder getInitialEnergyContainers(IContentsListener listener,
+            IContentsListener recipeCacheListener) {
+        EnergyContainerHelper builder = EnergyContainerHelper.forSide(this::getDirection);
+        builder.addContainer(energyContainer = MachineEnergyContainer.input(this, listener));
         return builder.build();
     }
 
@@ -150,20 +197,34 @@ public class BECompactTEP extends TileEntityRecipeMachine<FluidToFluidRecipe>
 
     protected void onUpdateServer() {
         super.onUpdateServer();
-        this.inputSlot.fillTank();
-        this.outputSlot.drainTank(outputSlot);
+        energySlot.fillContainerOrConvert();
+        FloatingLong toUse = FloatingLong.ZERO;
+        if (MekanismUtils.canFunction(this)) {
+            toUse = energyContainer.extract(energyContainer.getEnergyPerTick(), Action.SIMULATE,
+                    AutomationType.INTERNAL);
+            if (!toUse.isZero()) {
+                heatCapacitor.handleHeat(
+                        toUse.multiply(MekanismConfig.general.resistiveHeaterEfficiency.get()).doubleValue());
+                energyContainer.extract(toUse, Action.EXECUTE, AutomationType.INTERNAL);
+            }
+        }
+        clientEnergyUsed = toUse;
+        this.inputInputSlot.fillTank(inputOutputSlot);
+        this.outputInputSlot.drainTank(outputOutputSlot);
         if (!settingsChecked) {
             recheckSettings();
         }
         lastEnvironmentLoss = simulateEnvironment();
-        tempMultiplier = Math.floor(Math.min(Integer.MAX_VALUE, (heatCapacitor.getTemperature() - HeatAPI.AMBIENT_TEMP)
+        tempMultiplier = Math.floor(Math.min(tier.exToInt(), (heatCapacitor.getTemperature() - HeatAPI.AMBIENT_TEMP)
                 * MekanismConfig.general.evaporationTempMultiplier.get()));
-        recipeCacheLookupMonitor.updateAndProcess();
-        if (ejectorComponent.isEjecting(configComponent.getConfig(TransmissionType.FLUID),
-                TransmissionType.FLUID)) {
-            FluidUtils.emit(configComponent.getConfig(TransmissionType.FLUID)
-                    .getSidesForData(AstralMekDataType.INPUT1_OUTPUT2), outputTank, this, 2147483647);
+        if (tempMultiplier > 0) {
+            recipeCacheLookupMonitor.updateAndProcess();
         }
+    }
+
+    @Override
+    public boolean getActive() {
+        return !clientEnergyUsed.isZero();
     }
 
     private void recheckSettings() {
@@ -218,7 +279,15 @@ public class BECompactTEP extends TileEntityRecipeMachine<FluidToFluidRecipe>
         return this;
     }
 
-    public List<BasicFluidTank> getFluidTanks(@Nullable Object arg0) {
+    public BasicFluidTank getInputTank() {
+        return inputTank;
+    }
+
+    public BasicFluidTank getOutputTank() {
+        return outputTank;
+    }
+
+    public List<IExtendedFluidTank> getFluidTanks() {
         return List.of(inputTank, outputTank);
     }
 
@@ -237,6 +306,20 @@ public class BECompactTEP extends TileEntityRecipeMachine<FluidToFluidRecipe>
                 value -> lastEnvironmentLoss = value));
         container.track(SyncableDouble.create(this::getTempMultipleier,
                 value -> tempMultiplier = value));
+        container.track(SyncableFloatingLong.create(this::getEnergyUsed, value -> clientEnergyUsed = value));
     }
 
+    public void setEnergyUsageFromPacket(FloatingLong floatingLong) {
+        energyContainer.setEnergyPerTick(floatingLong);
+        energyContainer.setMaxEnergy(floatingLong.multiply(400));
+        markForSave();
+    }
+
+    public FloatingLong getEnergyUsed() {
+        return clientEnergyUsed;
+    }
+
+    public MachineEnergyContainer<BECompactTEP> getEnergyContainer() {
+        return energyContainer;
+    }
 }

@@ -47,13 +47,13 @@ public class GuiEnergizedSmeltingFactory<BE extends BlockEntityRecipeFactory<Sme
                     new PagedGuiProgress(() -> tile.getProgressScaled(cacheIndex), ProgressType.DOWN, this, x, y, page))
                     .jeiCategories(MekanismJEIRecipeType.SMELTING);
         }
-        addRenderableWidget(new MekanismImageButton(this, imageWidth - 36, 60, 18, 18, 16, 16,
+        addRenderableWidget(new MekanismImageButton(this, imageWidth - 36, 18, 18, 18, 16, 16,
                 new ResourceLocation("minecraft", "textures/item/experience_bottle.png"), this::onPush));
         addRenderableWidget(new GuiInfusionGauge(tile::getInfusionTank, () -> tile.getInfusionTanks(null),
                 GaugeType.SMALL, this, imageWidth - 36, 36))
                 .warning(WarningType.NO_SPACE_IN_OUTPUT,
                         tile.getWarningCheck(IEssentialEnergizedSmelter.NOT_ENOUGH_INFUSE_OUTPUT_SPACE, 0));
-        addRenderableWidget(new GuiGasMode(this, imageWidth - 36, 70, true, tile::getGasMode, tile.getBlockPos(), 0));
+        addRenderableWidget(new GuiGasMode(this, imageWidth - 36, 80, true, tile::getGasMode, tile.getBlockPos(), 0));
         if (ModList.get().isLoaded("jei")) {
             addRenderableWidget(new MekanismImageButton(
                     this,

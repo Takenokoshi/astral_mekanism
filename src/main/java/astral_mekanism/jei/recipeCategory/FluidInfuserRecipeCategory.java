@@ -46,7 +46,6 @@ public class FluidInfuserRecipeCategory extends BaseRecipeCategory<FluidFluidToF
 
 	@Override
 	public void setRecipe(IRecipeLayoutBuilder builder, FluidFluidToFluidRecipe recipe, IFocusGroup focusGroup) {
-		builder.setShapeless();
 		initFluid(builder, RecipeIngredientRole.INPUT, inputGaugeA, recipe.getInputA().getRepresentations());
 		initFluid(builder, RecipeIngredientRole.INPUT, inputGaugeB, recipe.getInputB().getRepresentations());
 		initFluid(builder, RecipeIngredientRole.OUTPUT, outputGauge, recipe.getOutputDefinition());

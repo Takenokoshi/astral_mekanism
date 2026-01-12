@@ -1,5 +1,6 @@
 package astral_mekanism.registries;
 
+import astral_mekanism.AstralMekanismTier;
 import astral_mekanism.AstralMekanismID;
 import astral_mekanism.block.blockentity.astralfactory.BEAstralEnergizedSmeltingFactory;
 import astral_mekanism.block.blockentity.astralmachine.BEAstralCombiner;
@@ -16,9 +17,9 @@ import astral_mekanism.block.blockentity.astralmachine.advanced.BEAstralOsmiumCo
 import astral_mekanism.block.blockentity.astralmachine.advanced.BEAstralPurificationChamber;
 import astral_mekanism.block.blockentity.astralmachine.electric.BEAstralCrusher;
 import astral_mekanism.block.blockentity.astralmachine.electric.BEAstralEnrichmentChamber;
-import astral_mekanism.block.blockentity.base.AstralMekanismFactoryTier;
 import astral_mekanism.block.blockentity.compact.BECompactSPS;
 import astral_mekanism.block.blockentity.generator.AstralMekGeneratorTier;
+import astral_mekanism.block.blockentity.normalfactory.BEEnergizedSmeltingFactory;
 import astral_mekanism.block.blockentity.normalmachine.BEEssentialEnergizedSmelter;
 import astral_mekanism.block.blockentity.normalmachine.BEGlowstoneNeutronActivator;
 import astral_mekanism.block.blockentity.normalmachine.BEGreenhouse;
@@ -92,9 +93,11 @@ public class AstralMekanismClient {
     @SubscribeEvent(priority = EventPriority.LOW)
     public static void registerContiners(RegisterEvent event) {
         event.register(Registries.MENU, helper -> {
-            for (AstralMekanismFactoryTier tier : AstralMekanismFactoryTier.values()) {
+            for (AstralMekanismTier tier : AstralMekanismTier.values()) {
                 regScreen(AstralMekanismMachines.ASTRAL_ENERGIZED_SMELTING_FACTRIES.get(tier),
                         GuiEnergizedSmeltingFactory<BEAstralEnergizedSmeltingFactory>::new);
+                regScreen(AstralMekanismMachines.ENERGIZED_SMELTING_FACTORIES.get(tier),
+                        GuiEnergizedSmeltingFactory<BEEnergizedSmeltingFactory>::new);
             }
             regScreen(AstralMekanismMachines.ASTRAL_CHEMICAL_INJECTION_CHAMBER,
                     GuiAstralAdvancedMachine<BEAstralChemicalInjectionChamber>::new);
@@ -129,9 +132,13 @@ public class AstralMekanismClient {
             regScreen(AstralMekanismMachines.ASTRAL_PRECISION_SAWMILL, GuiAstralPrecisionSawmill::new);
             regScreen(AstralMekanismMachines.ASTRAL_ROTARY_CONDENSENTRATOR, GuiAstralRotaryCondensentrator::new);
             regScreen(AstralMekanismMachines.ASTRAL_SPS, GuiGasToGasMachine<BEAstralSPS>::new);
-            regScreen(AstralMekanismMachines.COMPACT_FIR, GuiCompactFissionReactor::new);
+            for (AstralMekanismTier tier : AstralMekanismTier.values()) {
+                regScreen(AstralMekanismMachines.COMPACT_FIR.get(tier), GuiCompactFissionReactor::new);
+            }
             regScreen(AstralMekanismMachines.COMPACT_SPS, GuiGasToGasMachine<BECompactSPS>::new);
-            regScreen(AstralMekanismMachines.COMPACT_TEP, GuiCompactTEP::new);
+            for (AstralMekanismTier tier : AstralMekanismTier.values()) {
+                regScreen(AstralMekanismMachines.COMPACT_TEP.get(tier), GuiCompactTEP::new);
+            }
             for (AstralMekGeneratorTier tier : AstralMekGeneratorTier.values()) {
                 regScreen(AstralMekanismMachines.GAS_BURNING_GENERATORS.get(tier),
                         GuiGasBurningGenerator::new);

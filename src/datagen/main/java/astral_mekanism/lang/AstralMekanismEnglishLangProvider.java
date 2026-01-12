@@ -96,14 +96,25 @@ public class AstralMekanismEnglishLangProvider extends LanguageProvider {
         StringBuilder sb = new StringBuilder();
 
         for (int i = 0; i < parts.length; i++) {
-            if (parts[i].isEmpty())
+            if (parts[i].isEmpty()) {
                 continue;
-            sb.append(
-                    Character.toUpperCase(parts[i].charAt(0)));
-            if (parts[i].length() > 1) {
-                sb.append(parts[i].substring(1));
             }
-
+            if (parts[i].equals("tep")) {
+                sb.append("Thermal Evaporation Plant");
+            } else if (parts[i].equals("fir")) {
+                sb.append("Fission Reactor");
+            } else if (parts[i].equals("sps")) {
+                sb.append("SPS");
+            } else if (parts[i].equals("prc")) {
+                sb.append("Pressurized REaction Chamber");
+            } else if (parts[i].equals("gna")) {
+                sb.append("Glowstone Neutron Activator");
+            } else {
+                sb.append(Character.toUpperCase(parts[i].charAt(0)));
+                if (parts[i].length() > 1) {
+                    sb.append(parts[i].substring(1));
+                }
+            }
             if (i < parts.length - 1) {
                 sb.append(" ");
             }

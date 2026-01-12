@@ -8,6 +8,7 @@ import java.util.function.BooleanSupplier;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import astral_mekanism.AstralMekanismTier;
 import astral_mekanism.block.blockentity.interf.IEnergizedMachine;
 import astral_mekanism.generalrecipe.cachedrecipe.ICachedRecipe;
 import astral_mekanism.generalrecipe.lookup.handler.IUnifiedRecipeLookUpHandler;
@@ -51,7 +52,7 @@ public abstract class BlockEntityRecipeFactory<RECIPE extends Recipe<?>, BE exte
         extends TileEntityConfigurableMachine
         implements IUnifiedRecipeLookUpHandler<RECIPE>, IEnergizedMachine<BE>, IAstralMekanismFactory<BE> {
 
-    public AstralMekanismFactoryTier tier;
+    public AstralMekanismTier tier;
     protected UnifiedRecipeCacheLookupMonitor<RECIPE>[] recipeCacheLookupMonitors;
     protected BooleanSupplier[] recheckAllRecipeErrors;
     protected final ErrorTracker errorTracker;
@@ -73,7 +74,7 @@ public abstract class BlockEntityRecipeFactory<RECIPE extends Recipe<?>, BE exte
     }
 
     @Override
-    public AstralMekanismFactoryTier getTier() {
+    public AstralMekanismTier getTier() {
         return tier;
     }
 
@@ -90,7 +91,7 @@ public abstract class BlockEntityRecipeFactory<RECIPE extends Recipe<?>, BE exte
     @Override
     protected void presetVariables() {
         super.presetVariables();
-        tier = Attribute.getTier(getBlockType(), AstralMekanismFactoryTier.class);
+        tier = Attribute.getTier(getBlockType(), AstralMekanismTier.class);
         recipeCacheLookupMonitors = new UnifiedRecipeCacheLookupMonitor[tier.processes];
         for (int i = 0; i < recipeCacheLookupMonitors.length; i++) {
             recipeCacheLookupMonitors[i] = createRecipeCacheLookupMonitor(i);

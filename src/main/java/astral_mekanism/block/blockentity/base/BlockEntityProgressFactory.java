@@ -17,6 +17,8 @@ import mekanism.api.Upgrade;
 import mekanism.api.providers.IBlockProvider;
 import mekanism.api.recipes.cache.CachedRecipe.OperationTracker.RecipeError;
 import mekanism.common.CommonWorldTickHandler;
+import mekanism.common.inventory.container.MekanismContainer;
+import mekanism.common.inventory.container.sync.SyncableBoolean;
 import mekanism.common.tile.interfaces.ISustainedData;
 import mekanism.common.util.MekanismUtils;
 import mekanism.common.util.NBTUtils;
@@ -83,7 +85,7 @@ public abstract class BlockEntityProgressFactory<RECIPE extends Recipe<?>, BE ex
         return progress[cacheIndex];
     }
 
-    protected int getTicksRequired(){
+    protected int getTicksRequired() {
         return ticksRequired;
     }
 
@@ -143,6 +145,12 @@ public abstract class BlockEntityProgressFactory<RECIPE extends Recipe<?>, BE ex
         if (upgrade == Upgrade.SPEED) {
             ticksRequired = MekanismUtils.getTicks(this, baseTicksRequired);
         }
+    }
+
+    @Override
+    public void addContainerTrackers(MekanismContainer container) {
+        super.addContainerTrackers(container);
+        container.track(SyncableBoolean.create(this::isSorting, v -> sorting = v));
     }
 
 }

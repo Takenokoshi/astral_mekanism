@@ -2,8 +2,8 @@ package astral_mekanism.block;
 
 import java.util.EnumMap;
 
+import astral_mekanism.AstralMekanismTier;
 import astral_mekanism.AstralMekanismID;
-import astral_mekanism.block.blockentity.base.AstralMekanismFactoryTier;
 import astral_mekanism.registries.AstralMekanismMachines;
 import mekanism.api.providers.IBlockProvider;
 import net.minecraft.core.Direction;
@@ -29,8 +29,8 @@ public class AstralMekanismBlockStateProvider extends BlockStateProvider {
         registerAstralFactories(AstralMekanismMachines.ASTRAL_ENERGIZED_SMELTING_FACTRIES);
     }
 
-    private void registerAstralFactories(EnumMap<AstralMekanismFactoryTier, ? extends IBlockProvider> map) {
-        for (AstralMekanismFactoryTier tier : AstralMekanismFactoryTier.values()) {
+    private void registerAstralFactories(EnumMap<AstralMekanismTier, ? extends IBlockProvider> map) {
+        for (AstralMekanismTier tier : AstralMekanismTier.values()) {
             IBlockProvider factory = map.get(tier);
 
             String baseName = factory.getRegistryName().getPath()

@@ -9,7 +9,6 @@ import org.jetbrains.annotations.Nullable;
 
 import astral_mekanism.block.container.slot.PagedInventoryContainerSlot;
 import mekanism.api.IContentsListener;
-import mekanism.common.inventory.container.slot.InventoryContainerSlot;
 import mekanism.common.inventory.slot.InputInventorySlot;
 import mekanism.common.inventory.warning.ISupportsWarning;
 import net.minecraft.world.item.ItemStack;
@@ -58,7 +57,7 @@ public class PagedInputInventorySlot extends InputInventorySlot implements IPage
     }
 
     @Override
-    public @Nullable InventoryContainerSlot createContainerSlot() {
+    public @Nullable PagedInventoryContainerSlot createContainerSlot() {
         return new PagedInventoryContainerSlot(this, x, y, getSlotType(), getSlotOverlay(), warningAdder,
                 this::setStackUnchecked, page);
     }

@@ -1,15 +1,12 @@
-package astral_mekanism.block.gui.factory;
+package astral_mekanism.block.gui.prefab;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import org.jetbrains.annotations.NotNull;
 
-import astral_mekanism.block.blockentity.base.BlockEntityProgressFactory;
-import astral_mekanism.block.blockentity.base.IAstralMekanismFactory;
-import astral_mekanism.block.container.factory.ContainerAstralMekanismFactory;
+import astral_mekanism.block.container.prefab.ContainerPagedMachine;
 import astral_mekanism.block.container.slot.PagedInventoryContainerSlot;
-import astral_mekanism.block.gui.element.GuiAMSortingTab;
 import astral_mekanism.block.gui.element.IPagedGuiElement;
 import astral_mekanism.block.gui.element.PagedGuiSlot;
 import mekanism.client.gui.GuiConfigurableTile;
@@ -27,23 +24,22 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.inventory.Slot;
 
-public class GuiAstralMekanismFactory<BE extends TileEntityConfigurableMachine & IAstralMekanismFactory<BE>>
-        extends GuiConfigurableTile<BE, ContainerAstralMekanismFactory<BE>> {
+public class GuiPagedMachine<BE extends TileEntityConfigurableMachine>
+        extends GuiConfigurableTile<BE, ContainerPagedMachine<BE>> {
 
     protected int page;
     protected final int maxPage;
     protected final List<IPagedGuiElement> pagedElements;
 
-    public GuiAstralMekanismFactory(ContainerAstralMekanismFactory<BE> container, Inventory inv, Component title) {
+    protected GuiPagedMachine(ContainerPagedMachine<BE> container, Inventory inv, Component title) {
         super(container, inv, title);
-        this.maxPage = tile.getAllPages();
-        this.page = 0;
-        dynamicSlots = true;
-        imageHeight = tile.getPageHeight();
-        imageWidth = tile.getPageWidth();
-        inventoryLabelX = imageWidth / 2 - 81;
-        inventoryLabelY = imageHeight - 92;
+        maxPage = getMaxPage();
         pagedElements = new ArrayList<>();
+        dynamicSlots = true;
+    }
+
+    protected int getMaxPage() {
+        return 1;
     }
 
     protected void changePage(int i) {
@@ -63,17 +59,14 @@ public class GuiAstralMekanismFactory<BE extends TileEntityConfigurableMachine &
     @Override
     protected void addGuiElements() {
         super.addGuiElements();
-        addRenderableWidget(new MekanismButton(this, tile.getSideSpaceWidth(), -30, 18, 18,
+        addRenderableWidget(new MekanismButton(this, 0, -30, 18, 18,
                 Component.literal("<"), () -> {
                     changePage(-1);
                 }, null));
-        addRenderableWidget(new MekanismButton(this, imageWidth - tile.getSideSpaceWidth() - 18, -30, 18, 18,
+        addRenderableWidget(new MekanismButton(this, 90 - 18, -30, 18, 18,
                 Component.literal(">"), () -> {
                     changePage(1);
                 }, null));
-        if (tile instanceof BlockEntityProgressFactory factory) {
-            addRenderableWidget(new GuiAMSortingTab(this, factory));
-        }
     }
 
     @Override
@@ -118,10 +111,9 @@ public class GuiAstralMekanismFactory<BE extends TileEntityConfigurableMachine &
 
     @Override
     protected void drawForegroundText(@NotNull GuiGraphics guiGraphics, int mouseX, int mouseY) {
-        renderTitleText(guiGraphics);
-        drawString(guiGraphics, playerInventoryTitle, inventoryLabelX, inventoryLabelY, titleTextColor());
         super.drawForegroundText(guiGraphics, mouseX, mouseY);
         drawString(guiGraphics, Component.literal("Page: " + (page + 1) + " / " + maxPage),
-                tile.getSideSpaceWidth() + 24, -30, 0xffffff);
+                24, -30, 0xffffff);
     }
+
 }

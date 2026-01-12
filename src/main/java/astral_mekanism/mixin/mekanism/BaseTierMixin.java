@@ -12,7 +12,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-import astral_mekanism.enumexpansion.AMBaseTier;
+import astral_mekanism.enumexpansion.AstralMekanismBaseTier;
 import mekanism.api.tier.BaseTier;
 import net.minecraft.world.level.material.MapColor;
 
@@ -42,6 +42,15 @@ public class BaseTierMixin {
 
     @Inject(method = "<clinit>", at = @At("TAIL"))
     private static void clinitInject(CallbackInfo ci) {
-        AMBaseTier.ASTRAL = createNew("astral", new int[] { 0xD4, 0xA1, 0xFF }, MapColor.TERRACOTTA_MAGENTA);
+        AstralMekanismBaseTier.ESSENTIAL = createNew("essential", new int[] { 0xff, 0x22, 0xF9 },
+                MapColor.TERRACOTTA_MAGENTA);
+        AstralMekanismBaseTier.ABSOLUTE = createNew("absolute_overclocked", new int[] { 95, 255, 184 },
+                MapColor.COLOR_LIGHT_GREEN);
+        AstralMekanismBaseTier.SUPREME = createNew("supreme_quantum", new int[] { 255, 128, 106 },
+                MapColor.TERRACOTTA_PINK);
+        AstralMekanismBaseTier.COSMIC = createNew("cosmic_dense", new int[] { 75, 248, 255 }, MapColor.DIAMOND);
+        AstralMekanismBaseTier.INFINITE = createNew("infinite_multiversal", new int[] { 247, 135, 255 },
+                MapColor.COLOR_MAGENTA);
+        AstralMekanismBaseTier.ASTRAL = createNew("astral", new int[] { 0xD4, 0xA1, 0xFF }, MapColor.SAND);
     }
 }

@@ -12,7 +12,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-import astral_mekanism.enumexpansion.AMBaseTier;
+import astral_mekanism.enumexpansion.AstralMekanismBaseTier;
 import astral_mekanism.enumexpansion.AMCableTier;
 import mekanism.api.math.FloatingLong;
 import mekanism.api.tier.BaseTier;
@@ -43,6 +43,6 @@ public class CableTierMixin {
 
     @Inject(method = "<clinit>", at = @At("TAIL"))
     private static void clinitInject(CallbackInfo ci) {
-        AMCableTier.ASTRAL = createNew(AMBaseTier.ASTRAL, FloatingLong.MAX_VALUE);
+        AMCableTier.ASTRAL = createNew(AstralMekanismBaseTier.ASTRAL, FloatingLong.MAX_VALUE);
     }
 }

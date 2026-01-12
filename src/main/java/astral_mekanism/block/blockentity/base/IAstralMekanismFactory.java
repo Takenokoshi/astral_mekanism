@@ -1,5 +1,7 @@
 package astral_mekanism.block.blockentity.base;
 
+import astral_mekanism.AstralMekanismTier;
+
 public interface IAstralMekanismFactory<BE extends IAstralMekanismFactory<BE>>  {
 
     public abstract BE getSelf();
@@ -14,7 +16,7 @@ public interface IAstralMekanismFactory<BE extends IAstralMekanismFactory<BE>>  
         return 0;
     };
 
-    public abstract AstralMekanismFactoryTier getTier();
+    public abstract AstralMekanismTier getTier();
 
     private int getProcessPerPage() {
         int w = getWidthPerProcess() + 1;

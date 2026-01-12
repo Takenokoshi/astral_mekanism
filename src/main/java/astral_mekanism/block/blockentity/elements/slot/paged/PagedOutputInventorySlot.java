@@ -7,7 +7,6 @@ import org.jetbrains.annotations.Nullable;
 import astral_mekanism.block.container.slot.PagedInventoryContainerSlot;
 import mekanism.api.IContentsListener;
 import mekanism.common.inventory.container.slot.ContainerSlotType;
-import mekanism.common.inventory.container.slot.InventoryContainerSlot;
 import mekanism.common.inventory.slot.BasicInventorySlot;
 import mekanism.common.inventory.warning.ISupportsWarning;
 
@@ -43,7 +42,7 @@ public class PagedOutputInventorySlot extends BasicInventorySlot implements IPag
     }
 
     @Override
-    public @Nullable InventoryContainerSlot createContainerSlot() {
+    public @Nullable PagedInventoryContainerSlot createContainerSlot() {
         return new PagedInventoryContainerSlot(this, x, y, getSlotType(), getSlotOverlay(), warningAdder,
                 this::setStackUnchecked, page);
     }
