@@ -154,4 +154,9 @@ public abstract class BlockEntityProgressFactory<RECIPE extends Recipe<?>, BE ex
         container.track(SyncableBoolean.create(this::isSorting, v -> sorting = v));
     }
 
+    @Override
+    public double getProgressScaled(int index) {
+        return ((double) getProgress(index)) / ticksRequired;
+    }
+
 }
