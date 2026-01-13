@@ -316,6 +316,7 @@ public class BECompactTEP extends TileEntityRecipeMachine<FluidToFluidRecipe>
     public void setEnergyUsageFromPacket(FloatingLong floatingLong) {
         energyContainer.setEnergyPerTick(floatingLong);
         energyContainer.setMaxEnergy(floatingLong.multiply(400));
+        clientEnergyUsed = floatingLong;
         markForSave();
     }
 
