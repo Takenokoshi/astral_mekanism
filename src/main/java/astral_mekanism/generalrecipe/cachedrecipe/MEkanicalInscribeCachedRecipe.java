@@ -99,8 +99,10 @@ public class MEkanicalInscribeCachedRecipe extends GeneralCachedRecipe<Inscriber
     @Override
     public boolean isInputValid() {
         boolean result = middleStackIngredient.test(middleInputHandler.getInput());
-        result &= topIngredient.isEmpty() ? true : topStackIngredient.test(topInputHandler.getInput());
-        result &= bottomIngredient.isEmpty() ? true : bottomStackIngredient.test(bottomInputHandler.getInput());
+        result &= (topIngredient.isEmpty() == topInputHandler.getInput().isEmpty()
+                || topStackIngredient.test(topInputHandler.getInput()));
+        result &= (bottomIngredient.isEmpty() == bottomInputHandler.getInput().isEmpty()
+                || bottomStackIngredient.test(bottomInputHandler.getInput()));
         return result;
     }
 
