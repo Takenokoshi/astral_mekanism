@@ -13,6 +13,7 @@ import astral_mekanism.block.blockentity.elements.slot.paged.PagedOutputInventor
 import mekanism.api.Action;
 import mekanism.api.AutomationType;
 import mekanism.api.IContentsListener;
+import mekanism.api.NBTConstants;
 import mekanism.api.RelativeSide;
 import mekanism.api.fluid.IExtendedFluidTank;
 import mekanism.api.heat.HeatAPI;
@@ -55,7 +56,10 @@ import mekanism.common.tile.component.TileComponentConfig;
 import mekanism.common.tile.component.config.DataType;
 import mekanism.common.tile.prefab.TileEntityRecipeMachine;
 import mekanism.common.util.MekanismUtils;
+import mekanism.common.util.NBTUtils;
 import net.minecraft.core.BlockPos;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.fluids.FluidStack;
@@ -321,5 +325,18 @@ public class BECompactTEP extends TileEntityRecipeMachine<FluidToFluidRecipe>
 
     public MachineEnergyContainer<BECompactTEP> getEnergyContainer() {
         return energyContainer;
+    }
+
+    @Override
+    public CompoundTag getConfigurationData(Player player) {
+        CompoundTag data = super.getConfigurationData(player);
+        data.putString(NBTConstants.ENERGY_USAGE, energyContainer.getEnergyPerTick().toString());
+        return data;
+    }
+
+    @Override
+    public void setConfigurationData(Player player, CompoundTag data) {
+        super.setConfigurationData(player, data);
+        NBTUtils.setFloatingLongIfPresent(data, NBTConstants.ENERGY_USAGE, this::setEnergyUsageFromPacket);
     }
 }

@@ -107,7 +107,7 @@
     "description.astral_mekanism.greenhouse": "農業を自動化し、作物を供給する機械です。",
     "description.astral_mekanism.infuse_synthesizer": "冶金吹込機用の吹込物質の精製を切り離し、クラフト速度の向上に寄与する機械です。",
     "description.astral_mekanism.mekanical_charger": "AE2のチャージャーをMekanismのシステムに対応させ、自動クラフトに組み込みやすくした機械です。",
-    "description.astral_mekanism.mekanical_inscriber": "AE2の刻印機をMekanismのシステムに対応させ、自動クラフトに組み込みやすくした機械です。金型を用いる加工を担います。",
+    "description.astral_mekanism.mekanical_inscriber": "AE2の刻印機をMekanismのシステムに対応させ、自動クラフトに組み込みやすくした機械です。",
     "description.astral_mekanism.mekanical_transformer": "AE2の液体を利用したアイテム加工をMekanismのシステムに対応させ、自動クラフトに組み込みやすくした機械です。",
     "description.astral_mekanism.universal_storage": "アイテム、液体、化学物質を大量に収納可能なストレージです。",
     "description.astral_mekanism.item_sortable_storage": "アイテムの仕分け機能を追加したユニバーサルストレージです。",
