@@ -17,7 +17,7 @@
             "item": "astral_mekanism:vibration_control_circuit"
         },
         "O": {
-            "item": "mekanism:basic_control_circuuit"
+            "item": "mekanism:basic_control_circuit"
         }
     },
     "pattern": [

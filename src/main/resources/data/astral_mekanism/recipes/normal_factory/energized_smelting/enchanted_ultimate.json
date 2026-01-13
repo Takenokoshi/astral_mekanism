@@ -2,7 +2,7 @@
     "type": "minecraft:crafting_shaped",
     "key": {
         "M": {
-        "item": "astral_mekanism:advanced_energized_smelting_factory"
+        "item": "astral_mekanism:elite_energized_smelting_factory"
         },
         "B": {
             "item": "ae2:charged_certus_quartz_crystal"

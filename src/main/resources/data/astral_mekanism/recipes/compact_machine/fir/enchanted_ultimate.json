@@ -2,7 +2,7 @@
     "type": "minecraft:crafting_shaped",
     "key": {
         "M": {
-        "item": "astral_mekanism:advanced_compact_fir"
+        "item": "astral_mekanism:elite_compact_fir"
         },
         "B": {
             "item": "ae2:charged_certus_quartz_crystal"

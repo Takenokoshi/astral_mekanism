@@ -2,7 +2,7 @@
     "type": "minecraft:crafting_shaped",
     "key": {
         "M": {
-        "item": "astral_mekanism:advanced_compact_tep"
+        "item": "astral_mekanism:elite_compact_tep"
         },
         "B": {
             "item": "ae2:charged_certus_quartz_crystal"
