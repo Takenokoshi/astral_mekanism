@@ -7,7 +7,7 @@ import appeng.recipes.handlers.InscriberRecipe;
 import astral_mekanism.block.blockentity.base.BlockEntityProgressMachine;
 import astral_mekanism.block.blockentity.interf.IMekanicalInscriber;
 import astral_mekanism.generalrecipe.cachedrecipe.ICachedRecipe;
-import astral_mekanism.generalrecipe.cachedrecipe.MEkanicalInscribeCachedRecipe;
+import astral_mekanism.generalrecipe.cachedrecipe.MekanicalInscribeCachedRecipe;
 import mekanism.api.IContentsListener;
 import mekanism.api.math.FloatingLong;
 import mekanism.api.providers.IBlockProvider;
@@ -89,19 +89,13 @@ public class BEMekanicalInscriber extends BlockEntityProgressMachine<InscriberRe
                 this::getConfig);
         builder.addSlot(topSlot = InputInventorySlot.at(
                 stack -> containsInputTMB(stack, middleSlot.getStack(), bottomSlot.getStack()),
-                this::containsInputT, ()->{
-                    recipeCacheListener.onContentsChanged();
-                    recipeCacheLookupMonitor.onChange();
-                }, 46, 17));
+                this::containsInputT, recipeCacheListener, 46, 17));
         builder.addSlot(middleSlot = InputInventorySlot.at(
                 stack -> containsInputMTB(topSlot.getStack(), stack, bottomSlot.getStack()),
                 this::containsInputM, recipeCacheListener, 64, 35));
         builder.addSlot(bottomSlot = InputInventorySlot.at(
                 stack -> containsInputBTM(topSlot.getStack(), middleSlot.getStack(), stack),
-                this::containsInputB,  ()->{
-                    recipeCacheListener.onContentsChanged();
-                    recipeCacheLookupMonitor.onChange();
-                }, 46, 53));
+                this::containsInputB, recipeCacheListener, 46, 53));
         builder.addSlot(outputSlot = OutputInventorySlot.at(listener, 116, 35));
         builder.addSlot(
                 energySlot = EnergyInventorySlot.fillOrConvert(energyContainer, this::getLevel, listener, 21, 35));
@@ -123,7 +117,7 @@ public class BEMekanicalInscriber extends BlockEntityProgressMachine<InscriberRe
     @Override
     public @NotNull ICachedRecipe<InscriberRecipe> createNewCachedRecipe(@NotNull InscriberRecipe recipe,
             int cacheIndex) {
-        return new MEkanicalInscribeCachedRecipe(recipe, recheckAllRecipeErrors, topHandler, middleHandler,
+        return new MekanicalInscribeCachedRecipe(recipe, recheckAllRecipeErrors, topHandler, middleHandler,
                 bottomHandler, outputHandler)
                 .setErrorsChanged(this::onErrorsChanged)
                 .setCanHolderFunction(() -> MekanismUtils.canFunction(this))

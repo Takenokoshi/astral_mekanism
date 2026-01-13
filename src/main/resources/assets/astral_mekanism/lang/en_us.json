@@ -320,7 +320,7 @@
     "description.astral_mekanism.compact_machine": "This machine combines multi-block machines into one block for easier handling.",
     "description.astral_mekanism.am_generator": "This is a high-level generator that can control the loading and unloading of energy and fuel.",
     "description.astral_mekanism.essential_crafter": "expanded crafting table for advanced crafting.",
-    "description.astral_mekanism.fluid_infuser": "fluid infuser[Note: There are currently no crafts that use this machine.]",
+    "description.astral_mekanism.fluid_infuser": "Mix the liquid",
     "description.astral_mekanism.glowstone_neutron_activator": "This machine uses glowstone neutrons instead of solar neutrons, allowing it to process nuclear material regardless of the environment.",
     "description.astral_mekanism.greenhouse": "This machine performs farming internally and automatically supplies crops.",
     "description.astral_mekanism.infuse_synthesizer": "This machine independently refines materials for the metallurgic infuser, contributing to an increase in the overall crafting speed.",

@@ -7,7 +7,7 @@ import appeng.recipes.handlers.InscriberRecipe;
 import astral_mekanism.block.blockentity.base.BlockEntityRecipeMachine;
 import astral_mekanism.block.blockentity.interf.IMekanicalInscriber;
 import astral_mekanism.generalrecipe.cachedrecipe.ICachedRecipe;
-import astral_mekanism.generalrecipe.cachedrecipe.MEkanicalInscribeCachedRecipe;
+import astral_mekanism.generalrecipe.cachedrecipe.MekanicalInscribeCachedRecipe;
 import mekanism.api.IContentsListener;
 import mekanism.api.math.FloatingLong;
 import mekanism.api.providers.IBlockProvider;
@@ -117,7 +117,7 @@ public class BEAstralMekanicalInscriber extends BlockEntityRecipeMachine<Inscrib
     @Override
     public @NotNull ICachedRecipe<InscriberRecipe> createNewCachedRecipe(@NotNull InscriberRecipe recipe,
             int cacheIndex) {
-        return new MEkanicalInscribeCachedRecipe(recipe, recheckAllRecipeErrors, topHandler, middleHandler,
+        return new MekanicalInscribeCachedRecipe(recipe, recheckAllRecipeErrors, topHandler, middleHandler,
                 bottomHandler, outputHandler)
                 .setErrorsChanged(this::onErrorsChanged)
                 .setCanHolderFunction(() -> MekanismUtils.canFunction(this))

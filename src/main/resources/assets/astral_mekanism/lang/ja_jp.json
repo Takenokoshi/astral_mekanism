@@ -102,7 +102,7 @@
     "description.astral_mekanism.compact_machine": "マルチブロックを一つのブロックにまとめて扱いやすくした機械です。",
     "description.astral_mekanism.am_generator": "エネルギーや燃料の搬出入を制御可能な発電機です。",
     "description.astral_mekanism.essential_crafter": "高度なクラフトを行うための拡張された作業台です。",
-    "description.astral_mekanism.fluid_infuser": "液体混成機[Note: There are currently no crafts that use this machine.]",
+    "description.astral_mekanism.fluid_infuser": "液体を混ぜます。",
     "description.astral_mekanism.glowstone_neutron_activator": "太陽中性子の代わりにグロウストーン中性子を用いることで、環境に左右されずに核物質を処理可能な機械です。",
     "description.astral_mekanism.greenhouse": "農業を自動化し、作物を供給する機械です。",
     "description.astral_mekanism.infuse_synthesizer": "冶金吹込機用の吹込物質の精製を切り離し、クラフト速度の向上に寄与する機械です。",

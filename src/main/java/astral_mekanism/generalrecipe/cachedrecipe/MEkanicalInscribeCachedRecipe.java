@@ -15,7 +15,7 @@ import mekanism.api.recipes.outputs.IOutputHandler;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
 
-public class MEkanicalInscribeCachedRecipe extends GeneralCachedRecipe<InscriberRecipe> {
+public class MekanicalInscribeCachedRecipe extends GeneralCachedRecipe<InscriberRecipe> {
 
     private final IInputHandler<ItemStack> topInputHandler;
     private final IInputHandler<ItemStack> middleInputHandler;
@@ -36,7 +36,7 @@ public class MEkanicalInscribeCachedRecipe extends GeneralCachedRecipe<Inscriber
     @Nullable
     private ItemStack recipeOutput;
 
-    public MEkanicalInscribeCachedRecipe(InscriberRecipe recipe, BooleanSupplier recheckAllErrors,
+    public MekanicalInscribeCachedRecipe(InscriberRecipe recipe, BooleanSupplier recheckAllErrors,
             IInputHandler<ItemStack> topInputHandler,
             IInputHandler<ItemStack> middleInputHandler,
             IInputHandler<ItemStack> bottomInputHandler,
@@ -100,9 +100,9 @@ public class MEkanicalInscribeCachedRecipe extends GeneralCachedRecipe<Inscriber
     public boolean isInputValid() {
         boolean result = middleStackIngredient.test(middleInputHandler.getInput());
         result &= (topIngredient.isEmpty() == topInputHandler.getInput().isEmpty()
-                || topStackIngredient.test(topInputHandler.getInput()));
+                || (!topIngredient.isEmpty() && topStackIngredient.test(topInputHandler.getInput())));
         result &= (bottomIngredient.isEmpty() == bottomInputHandler.getInput().isEmpty()
-                || bottomStackIngredient.test(bottomInputHandler.getInput()));
+                || (!bottomIngredient.isEmpty() && bottomStackIngredient.test(bottomInputHandler.getInput())));
         return result;
     }
 
