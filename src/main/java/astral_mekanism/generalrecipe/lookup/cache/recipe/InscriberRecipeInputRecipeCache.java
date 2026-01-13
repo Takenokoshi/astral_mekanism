@@ -92,8 +92,9 @@ public class InscriberRecipeInputRecipeCache extends GeneralInputRecipeCache<Con
             ItemStack bottomInput) {
         initCacheIfNeeded(world);
         Predicate<InscriberRecipe> matchPredicate = r -> r.getMiddleInput().test(middleInput)
-                && (r.getTopOptional().isEmpty() || r.getTopOptional().test(topInput))
-                && (r.getBottomOptional().isEmpty() || r.getBottomOptional().test(bottomInput));
+                && (r.getTopOptional().isEmpty() == topInput.isEmpty() || r.getTopOptional().test(topInput))
+                && (r.getBottomOptional().isEmpty() == bottomInput.isEmpty()
+                        || r.getBottomOptional().test(bottomInput));
         InscriberRecipe recipe = cacheMiddle.findFirstRecipe(middleInput, matchPredicate);
         return recipe == null ? findFirstRecipe(complexRecipes, matchPredicate) : recipe;
     }

@@ -1,0 +1,32 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "key": {
+        "M": {
+        "item": "astral_mekanism:advanced_energized_smelting_factory"
+        },
+        "B": {
+            "tag": "forge:ingots/gold"
+        },
+        "A": {
+            "item": "mekanism:alloy_reinforced"
+        },
+        "L": {
+            "item": "mekanism:alloy_reinforced"
+        },
+        "C": {
+            "item": "mekanism:elite_control_circuit"
+        },
+        "O": {
+            "item": "mekanism:elite_control_circuit"
+        }
+    },
+    "pattern": [
+        "ABL",
+        "CMO",
+        "ABL"
+    ],
+    "result": {
+        "item": "astral_mekanism:elite_energized_smelting_factory",
+        "count": 1
+    }
+}

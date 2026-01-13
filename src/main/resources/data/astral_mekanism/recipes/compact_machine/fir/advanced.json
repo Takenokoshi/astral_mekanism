@@ -1,0 +1,32 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "key": {
+        "M": {
+        "item": "astral_mekanism:basic_standard_compact_fir"
+        },
+        "B": {
+            "tag": "forge:ingots/refined_redstone"
+        },
+        "A": {
+            "item": "mekanism:alloy_infused"
+        },
+        "L": {
+            "item": "mekanism:alloy_infused"
+        },
+        "C": {
+            "item": "mekanism:advanced_control_circuit"
+        },
+        "O": {
+            "item": "mekanism:advanced_control_circuit"
+        }
+    },
+    "pattern": [
+        "ABL",
+        "CMO",
+        "ABL"
+    ],
+    "result": {
+        "item": "astral_mekanism:advanced_compact_fir",
+        "count": 1
+    }
+}

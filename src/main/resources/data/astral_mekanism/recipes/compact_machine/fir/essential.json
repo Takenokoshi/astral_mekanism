@@ -1,0 +1,32 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "key": {
+        "M": {
+            "item": "compactmekanismmachines:compact_fission_reactor"
+        },
+        "B": {
+            "item": "minecraft:amethyst_block"
+        },
+        "A": {
+            "item": "astral_mekanism:alloy_elastic"
+        },
+        "L": {
+            "item": "astral_mekanism:alloy_elastic"
+        },
+        "C": {
+            "item": "astral_mekanism:vibration_control_circuit"
+        },
+        "O": {
+            "item": "astral_mekanism:vibration_control_circuit"
+        }
+    },
+    "pattern": [
+        "ABL",
+        "CMO",
+        "ABL"
+    ],
+    "result": {
+        "item": "astral_mekanism:essential_compact_fir",
+        "count": 1
+    }
+}

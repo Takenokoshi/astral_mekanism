@@ -1,0 +1,32 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "key": {
+        "M": {
+        "item": "astral_mekanism:cosmic_dense_energized_smelting_factory"
+        },
+        "B": {
+            "tag": "forge:ingots/netherite"
+        },
+        "A": {
+            "item": "evolvedmekanism:alloy_exoversal"
+        },
+        "L": {
+            "item": "mekanism_extras:alloy_spectrum"
+        },
+        "C": {
+            "item": "emextras:infinite_multiversal_control_circuit"
+        },
+        "O": {
+            "item": "emextras:infinite_multiversal_control_circuit"
+        }
+    },
+    "pattern": [
+        "ABL",
+        "CMO",
+        "ABL"
+    ],
+    "result": {
+        "item": "astral_mekanism:infinite_multiversal_energized_smelting_factory",
+        "count": 1
+    }
+}

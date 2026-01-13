@@ -1,0 +1,32 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "key": {
+        "M": {
+        "item": "astral_mekanism:advanced_energized_smelting_factory"
+        },
+        "B": {
+            "item": "ae2:charged_certus_quartz_crystal"
+        },
+        "A": {
+            "item": "astral_mekanism:alloy_enchanted"
+        },
+        "L": {
+            "item": "mekanism:alloy_atomic"
+        },
+        "C": {
+            "item": "astral_mekanism:enhanced_control_circuit"
+        },
+        "O": {
+            "item": "mekanism:ultimate_control_circuit"
+        }
+    },
+    "pattern": [
+        "ABL",
+        "CMO",
+        "ABL"
+    ],
+    "result": {
+        "item": "astral_mekanism:enchanted_ultimate_energized_smelting_factory",
+        "count": 1
+    }
+}

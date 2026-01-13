@@ -1,0 +1,32 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "key": {
+        "M": {
+        "item": "astral_mekanism:supreme_quantum_compact_fir"
+        },
+        "B": {
+            "tag": "forge:ingots/refined_obsidian"
+        },
+        "A": {
+            "item": "evolvedmekanism:alloy_singular"
+        },
+        "L": {
+            "item": "mekanism_extras:alloy_shining"
+        },
+        "C": {
+            "item": "emextras:cosmic_dense_control_circuit"
+        },
+        "O": {
+            "item": "emextras:cosmic_dense_control_circuit"
+        }
+    },
+    "pattern": [
+        "ABL",
+        "CMO",
+        "ABL"
+    ],
+    "result": {
+        "count": 1,
+        "item": "astral_mekanism:cosmic_dense_compact_fir"
+    }
+}

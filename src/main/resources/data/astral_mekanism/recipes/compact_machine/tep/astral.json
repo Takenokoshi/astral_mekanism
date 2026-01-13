@@ -1,0 +1,32 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "key": {
+        "M": {
+        "item": "astral_mekanism:infinite_multiversal_compact_tep"
+        },
+        "B": {
+            "item": "mekanism:pellet_polonium"
+        },
+        "A": {
+            "item": "astral_mekanism:alloy_stardust"
+        },
+        "L": {
+            "item": "astral_mekanism:alloy_stardust"
+        },
+        "C": {
+            "item": "astral_mekanism:illusion_control_circuit"
+        },
+        "O": {
+            "item": "astral_mekanism:illusion_control_circuit"
+        }
+    },
+    "pattern": [
+        "ABL",
+        "CMO",
+        "ABL"
+    ],
+    "result": {
+        "count": 1,
+        "item": "astral_mekanism:astral_compact_tep"
+    }
+}

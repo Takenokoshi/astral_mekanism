@@ -60,31 +60,10 @@ public class AstralMekanismItems {
     public static final ItemRegistryObject<Item> INSERT_UPGRADE = ITEMS.register("insert_upgrade");
     public static final ItemRegistryObject<ItemSingularityUpgrade> SINGULARITY_UPGRADE = ITEMS
             .register("singularity_upgrade", ItemSingularityUpgrade::new);
-    public static final ItemRegistryObject<Item> SUMMARIZED_THERMAL_EVAPORTION_BLOCK = ITEMS
-            .register("summarized_thermal_evaporation_block");
-    public static final ItemRegistryObject<Item> SUMMARIZED_THERMAL_EVAPORTION_VALVE = ITEMS
-            .register("summarized_thermal_evaporation_valve");
     public static final ItemRegistryObject<Item> SUMMARIZED_SPS_CASING = ITEMS
             .register("summarized_sps_casing", Rarity.EPIC);
     public static final ItemRegistryObject<Item> SUMMARIZED_SPS_PORT = ITEMS
             .register("summarized_sps_port", Rarity.EPIC);
-    public static final ItemRegistryObject<Item> SUMMARIZED_FIR_CASING = ITEMS
-            .register("summarized_fir_casing");
-    public static final ItemRegistryObject<Item> SUPERSUMMARIZED_FIR_CASING = ITEMS
-            .register("supersummarized_fir_casing");
-    public static final ItemRegistryObject<Item> SUMMARIZED_FIR_FUEL_ASSEMBLY = ITEMS
-            .register("summarized_fir_fuel_assembly");
-    public static final ItemRegistryObject<Item> SUPERSUMMARIZED_FIR_FUEL_ASSEMBLY = ITEMS
-            .register("supersummarized_fir_fuel_assembly");
-    public static final ItemRegistryObject<Item> SUMMARIZED_FIR_CONTROL_ROD_ASSEMBLY = ITEMS
-            .register("summarized_fir_control_rod_assembly");
-    public static final ItemRegistryObject<Item> SUPERSUMMARIZED_FIR_CONTROL_ROD_ASSEMBLY = ITEMS
-            .register("supersummarized_fir_control_rod_assembly");
-    public static final ItemRegistryObject<Item> SUMMARIZED_FIR_PORT = ITEMS
-            .register("summarized_fir_port");
-    public static final ItemRegistryObject<Item> SUMMARIZED_FIR_LOGIC_ADAPTOR = ITEMS
-            .register("summarized_fir_logic_adapter");
-
     public static final EnumMap<OreType, ItemRegistryObject<GlintItem>> STARLIGHTS = ((Supplier<EnumMap<OreType, ItemRegistryObject<GlintItem>>>) (() -> {
         EnumMap<OreType, ItemRegistryObject<GlintItem>> result = new EnumMap<>(OreType.class);
         for (OreType oreType : OreType.values()) {

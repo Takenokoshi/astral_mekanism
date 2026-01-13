@@ -1,0 +1,32 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "key": {
+        "M": {
+            "item": "astral_mekanism:essential_compact_tep"
+        },
+        "B": {
+            "tag": "forge:ingots/bronze"
+        },
+        "A": {
+            "item": "astral_mekanism:alloy_convergent"
+        },
+        "L": {
+            "tag": "forge:ingots/iron"
+        },
+        "C": {
+            "item": "astral_mekanism:vibration_control_circuit"
+        },
+        "O": {
+            "item": "mekanism:basic_control_circuuit"
+        }
+    },
+    "pattern": [
+        "ABL",
+        "CMO",
+        "ABL"
+    ],
+    "result": {
+        "item": "astral_mekanism:basic_standard_compact_tep",
+        "count": 1
+    }
+}

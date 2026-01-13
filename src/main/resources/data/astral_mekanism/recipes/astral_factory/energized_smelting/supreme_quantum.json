@@ -1,0 +1,32 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "key": {
+        "M": {
+        "item": "astral_mekanism:absolute_overclocked_astral_energized_smelting_factory"
+        },
+        "B": {
+            "item": "minecraft:shulker_shell"
+        },
+        "A": {
+            "item": "evolvedmekanism:alloy_subatomic"
+        },
+        "L": {
+            "item": "mekanism_extras:alloy_thermonuclear"
+        },
+        "C": {
+            "item": "emextras:supreme_quantum_control_circuit"
+        },
+        "O": {
+            "item": "emextras:supreme_quantum_control_circuit"
+        }
+    },
+    "pattern": [
+        "ABL",
+        "CMO",
+        "ABL"
+    ],
+    "result": {
+        "item": "astral_mekanism:supreme_quantum_astral_energized_smelting_factory",
+        "count": 1
+    }
+}

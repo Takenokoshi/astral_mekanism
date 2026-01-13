@@ -3,7 +3,8 @@
 	"credit": "Made with Blockbench",
 	"parent": "block/block",
 	"textures": {
-		"4": "astral_mekanism:block/machine_base/up_factory",
+		"up": "astral_mekanism:block/machine_base/up_factory",
+		"down": "astral_mekanism:block/machine_base/down",
 		"front": "astral_mekanism:block/machine_base/front",
 		"particle": "astral_mekanism:block/machine_base/back",
 		"back": "astral_mekanism:block/machine_base/back",
@@ -18,8 +19,8 @@
 				"east": {"uv": [0, 1, 16, 16], "texture": "#side"},
 				"south": {"uv": [0, 1, 16, 16], "texture": "#back"},
 				"west": {"uv": [0, 1, 16, 16], "texture": "#side"},
-				"up": {"uv": [0, 0, 16, 16], "texture": "#4"},
-				"down": {"uv": [0, 0, 16, 16], "texture": "#missing"}
+				"up": {"uv": [0, 0, 16, 16], "texture": "#up"},
+				"down": {"uv": [0, 0, 16, 16], "texture": "#down"}
 			}
 		},
 		{
@@ -29,7 +30,8 @@
 			"faces": {
 				"north": {"uv": [5, 0, 11, 1], "texture": "#front"},
 				"south": {"uv": [5, 0, 11, 1], "texture": "#back"},
-				"up": {"uv": [5, 1, 11, 16], "texture": "#4"}
+				"up": {"uv": [5, 1, 11, 16], "texture": "#up"},
+				"down": {"uv": [0, 0, 0, 0], "texture": "#down"}
 			}
 		},
 		{
@@ -41,7 +43,8 @@
 				"east": {"uv": [0, 0, 16, 1], "texture": "#side"},
 				"south": {"uv": [0, 0, 5, 1], "texture": "#back"},
 				"west": {"uv": [0, 0, 16, 1], "texture": "#side"},
-				"up": {"uv": [0, 0, 5, 16], "texture": "#4"}
+				"up": {"uv": [0, 0, 5, 16], "texture": "#up"},
+				"down": {"uv": [0, 0, 0, 0], "texture": "#down"}
 			}
 		},
 		{
@@ -53,7 +56,8 @@
 				"east": {"uv": [0, 0, 16, 1], "texture": "#side"},
 				"south": {"uv": [11, 0, 16, 1], "texture": "#back"},
 				"west": {"uv": [0, 0, 16, 1], "texture": "#side"},
-				"up": {"uv": [11, 0, 16, 16], "texture": "#4"}
+				"up": {"uv": [11, 0, 16, 16], "texture": "#up"},
+				"down": {"uv": [0, 0, 0, 0], "texture": "#down"}
 			}
 		}
 	]

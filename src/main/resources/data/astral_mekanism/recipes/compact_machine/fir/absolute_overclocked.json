@@ -1,0 +1,32 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "key": {
+        "M": {
+        "item": "astral_mekanism:enchanted_ultimate_compact_fir"
+        },
+        "B": {
+            "item": "minecraft:glowstone"
+        },
+        "A": {
+            "item": "evolvedmekanism:alloy_hyperchaged"
+        },
+        "L": {
+            "item": "mekanism_extras:alloy_radiance"
+        },
+        "C": {
+            "item": "emextras:absolute_overclocked_control_circuit"
+        },
+        "O": {
+            "item": "emextras:absolute_overclocked_control_circuit"
+        }
+    },
+    "pattern": [
+        "ABL",
+        "CMO",
+        "ABL"
+    ],
+    "result": {
+        "count": 1,
+        "item": "astral_mekanism:absolute_overclocked_compact_fir"
+    }
+}
