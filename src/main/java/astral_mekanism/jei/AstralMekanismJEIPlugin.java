@@ -13,10 +13,12 @@ import astral_mekanism.jei.recipeCategory.MekanicalInscribingRecipeCategory;
 import astral_mekanism.jei.recipeCategory.MekanicalTransformRecipeCategory;
 import astral_mekanism.registries.AstralMekanismMachines;
 import astral_mekanism.registries.AstralMekanismRecipeTypes;
+import mekanism.api.providers.IItemProvider;
 import mekanism.client.jei.CatalystRegistryHelper;
 import mekanism.client.jei.MekanismJEIRecipeType;
 import mekanism.client.jei.RecipeRegistryHelper;
 import mekanism.client.jei.machine.GasToGasRecipeCategory;
+import mekanism.generators.client.jei.GeneratorsJEIRecipeType;
 import mezz.jei.api.IModPlugin;
 import mezz.jei.api.JeiPlugin;
 import mezz.jei.api.constants.RecipeTypes;
@@ -28,6 +30,7 @@ import mezz.jei.api.registration.IRecipeRegistration;
 import mezz.jei.api.runtime.IJeiRuntime;
 import net.minecraft.client.Minecraft;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.level.ItemLike;
 
 @JeiPlugin
 
@@ -100,6 +103,10 @@ public class AstralMekanismJEIPlugin implements IModPlugin {
                 AstralMekanismMachines.ASTRAL_CRUSHER);
         CatalystRegistryHelper.registerRecipeItem(registry, AstralMekanismMachines.ASTRAL_ENERGIZED_SMELTER,
                 MekanismJEIRecipeType.SMELTING, RecipeTypes.SMELTING);
+        CatalystRegistryHelper.register(registry, MekanismJEIRecipeType.SMELTING,
+                AstralMekanismMachines.ENERGIZED_SMELTING_FACTORIES.values().toArray(IItemProvider[]::new));
+        CatalystRegistryHelper.register(registry, MekanismJEIRecipeType.SMELTING,
+                AstralMekanismMachines.ASTRAL_ENERGIZED_SMELTING_FACTRIES.values().toArray(IItemProvider[]::new));
         CatalystRegistryHelper.register(registry, MekanismJEIRecipeType.ENRICHING,
                 AstralMekanismMachines.ASTRAL_ENRICHMENT_CHAMBER);
         CatalystRegistryHelper.register(registry, MekanismJEIRecipeType.CHEMICAL_INFUSING,
@@ -135,6 +142,10 @@ public class AstralMekanismJEIPlugin implements IModPlugin {
                 AstralMekanismMachines.ASTRAL_SPS);
         CatalystRegistryHelper.register(registry, MekanismJEIRecipeType.INFUSION_CONVERSION,
                 AstralMekanismMachines.INFUSE_SYNTHESIZER);
+        CatalystRegistryHelper.register(registry, MekanismJEIRecipeType.EVAPORATING,
+                AstralMekanismMachines.COMPACT_TEP.values().toArray(IItemProvider[]::new));
+        CatalystRegistryHelper.register(registry, GeneratorsJEIRecipeType.FISSION,
+                AstralMekanismMachines.COMPACT_FIR.values().toArray(IItemProvider[]::new));
 
         // astral_mekanism
         CatalystRegistryHelper.register(registry, AstralMekanismJEIRecipeType.ASTRAL_CRAFTING,
@@ -150,6 +161,16 @@ public class AstralMekanismJEIPlugin implements IModPlugin {
         registry.addRecipeCatalysts(AstralMekanismJEIRecipeType.ESSENTIAL_SMELTING,
                 AstralMekanismMachines.ESSENTIAL_ENERGIZED_SMELTER,
                 AstralMekanismMachines.ASTRAL_ENERGIZED_SMELTER);
+        registry.addRecipeCatalysts(AstralMekanismJEIRecipeType.ESSENTIAL_SMELTING,
+                AstralMekanismMachines.ENERGIZED_SMELTING_FACTORIES.values().toArray(ItemLike[]::new));
+        registry.addRecipeCatalysts(AstralMekanismJEIRecipeType.ESSENTIAL_SMELTING,
+                AstralMekanismMachines.ASTRAL_ENERGIZED_SMELTING_FACTRIES.values().toArray(ItemLike[]::new));
+
+        // minecraft
+        registry.addRecipeCatalysts(RecipeTypes.SMELTING,
+                AstralMekanismMachines.ENERGIZED_SMELTING_FACTORIES.values().toArray(ItemLike[]::new));
+        registry.addRecipeCatalysts(RecipeTypes.SMELTING,
+                AstralMekanismMachines.ASTRAL_ENERGIZED_SMELTING_FACTRIES.values().toArray(ItemLike[]::new));
     }
 
     @Override

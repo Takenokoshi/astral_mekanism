@@ -87,18 +87,13 @@ public class AstralMekanismMachines {
             BlockEntityConstructor<BE, BlockTypeMachine<BE>, BlockTileModel<BE, BlockTypeMachine<BE>>> constructor,
             Class<BE> beClass,
             ILangEntry langEntry,
-            UnaryOperator<BlockMachineBuilder<BlockTypeMachine<BE>, BE>> operator) {
+            Function<AstralMekanismTier, UnaryOperator<BlockMachineBuilder<BlockTypeMachine<BE>, BE>>> operator) {
         EnumMap<AstralMekanismTier, MachineRegistryObject<BE, BlockTileModel<BE, BlockTypeMachine<BE>>, ContainerAstralMekanismFactory<BE>, ItemBlockMachine>> result = new EnumMap<>(
                 AstralMekanismTier.class);
         for (AstralMekanismTier tier : AstralMekanismTier.values()) {
             result.put(tier, MACHINES.registerDefaultBlockItem(nameBuilder.apply(tier),
                     constructor, beClass, ContainerAstralMekanismFactory<BE>::new, langEntry,
-                    builder -> operator.apply(builder
-                            .with(new AttributeTier<>(tier))
-                            .withEnergyConfig(
-                                    () -> FloatingLong.create(20000 * AstralMekanismConfig.energyRate),
-                                    () -> tier == AstralMekanismTier.ASTRAL ? FloatingLong.MAX_VALUE
-                                            : FloatingLong.create(72057594037927936l).multiply(tier.processes)))));
+                    builder -> operator.apply(tier).apply(builder.with(new AttributeTier<>(tier)))));
         }
         return result;
     }
@@ -139,9 +134,14 @@ public class AstralMekanismMachines {
             BEAstralEnergizedSmeltingFactory::new,
             BEAstralEnergizedSmeltingFactory.class,
             AstralMekanismLang.DESCRIPTION_ASTRAL_MACHINE,
-            builder -> builder
+            t -> builder -> builder
                     .changeAttributeUpgrade(EnumSet.of(Upgrade.MUFFLING, Upgrade.ENERGY))
-                    .withSound(MekanismSounds.ENERGIZED_SMELTER));
+                    .withSound(MekanismSounds.ENERGIZED_SMELTER)
+                    .withEnergyConfig(
+                            () -> FloatingLong.create(20000 * AstralMekanismConfig.energyRate),
+                            () -> t == AstralMekanismTier.ASTRAL
+                                    ? FloatingLong.MAX_VALUE
+                                    : FloatingLong.create(72057594037927936l).multiply(t.processes)));
 
     public static final MachineRegistryObject<BEAstralChemicalInjectionChamber, BlockTileModel<BEAstralChemicalInjectionChamber, BlockTypeMachine<BEAstralChemicalInjectionChamber>>, MekanismTileContainer<BEAstralChemicalInjectionChamber>, ItemBlockMachine> ASTRAL_CHEMICAL_INJECTION_CHAMBER = MACHINES
             .registerSimple("astral_chemical_injection_chamber",
@@ -457,7 +457,10 @@ public class AstralMekanismMachines {
             BEEnergizedSmeltingFactory::new,
             BEEnergizedSmeltingFactory.class,
             MekanismLang.FACTORY_TYPE,
-            builder -> builder.withSound(MekanismSounds.ENERGIZED_SMELTER));
+            tier -> builder -> builder.withSound(MekanismSounds.ENERGIZED_SMELTER)
+                    .withEnergyConfig(
+                            MekanismConfig.usage.energizedSmelter,
+                            () -> MekanismConfig.storage.energizedSmelter.get().multiply(tier.processes)));
 
     public static final MachineRegistryObject<BEAstralCrafter, BlockTileModel<BEAstralCrafter, BlockTypeMachine<BEAstralCrafter>>, ContainerAstralCrafter, ItemBlockMachine> ASTRAL_CRAFTER = MACHINES
             .registerDefaultBlockItem("essential_crafter",
