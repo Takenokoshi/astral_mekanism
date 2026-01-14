@@ -1,0 +1,11 @@
+{
+  "type": "mekanism:crystallizing",
+  "chemicalType": "slurry",
+  "input": {
+    "amount": 1,
+    "slurry": "astral_mekanism:clean_compressed_naquadah"
+  },
+  "output": {
+    "item": "mekanism_extras:crystal_naquadah"
+  }
+}

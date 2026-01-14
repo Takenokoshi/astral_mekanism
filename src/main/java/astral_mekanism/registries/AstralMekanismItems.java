@@ -75,7 +75,7 @@ public class AstralMekanismItems {
         return result;
     })).get();
 
-    static EnumMap<OreType, EnumMap<IntermediateState, ItemRegistryObject<Item>>> GII() {
+    public static final EnumMap<OreType, EnumMap<IntermediateState, ItemRegistryObject<Item>>> GEM_INTERMEDIATE_ITEMS = ((Supplier<EnumMap<OreType, EnumMap<IntermediateState, ItemRegistryObject<Item>>>>) (() -> {
         EnumMap<OreType, EnumMap<IntermediateState, ItemRegistryObject<Item>>> result = new EnumMap<>(OreType.class);
         for (OreType type : OreType.values()) {
             if (!type.hasMekprocessing) {
@@ -95,7 +95,7 @@ public class AstralMekanismItems {
         }
         result.put(OreType.NETHERITE, netheriteMap);
         return result;
-    }
+    })).get();
 
     public static enum IntermediateState {
         CLUMP("clump"),
@@ -111,6 +111,4 @@ public class AstralMekanismItems {
 
         public final String state;
     }
-
-    public static final EnumMap<OreType, EnumMap<IntermediateState, ItemRegistryObject<Item>>> GEM_INTERMEDIATE_ITEMS = GII();
 }

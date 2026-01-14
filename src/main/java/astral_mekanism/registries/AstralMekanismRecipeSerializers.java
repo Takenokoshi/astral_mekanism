@@ -4,6 +4,7 @@ import astral_mekanism.AstralMekanismID;
 import astral_mekanism.recipes.irecipe.AstralCraftingIRecipe;
 import astral_mekanism.recipes.irecipe.FluidInfuserIRecipe;
 import astral_mekanism.recipes.irecipe.GreenhouseIRecipe;
+import astral_mekanism.recipes.irecipe.IonExchangeIRecipe;
 import astral_mekanism.recipes.irecipe.SPSIRecipe;
 import astral_mekanism.recipes.irecipe.MekanicalTransformIRecipe;
 import astral_mekanism.recipes.recipe.AstralCraftingRecipe;
@@ -43,4 +44,7 @@ public class AstralMekanismRecipeSerializers {
     public static final RecipeSerializerRegistryObject<MekanicalTransformRecipe> MEKANICAL_TRANSFORM = RECIPE_SERIALIZERS
             .register("mekanical_transform",
                     () -> new MekanicalTransformRecipeSerializer<>(MekanicalTransformIRecipe::new));
+
+    public static final RecipeSerializerRegistryObject<GasToGasRecipe> ION_EXCHANGE = RECIPE_SERIALIZERS
+            .register("ion_exchange", () -> new GasToGasRecipeSerializer<>(IonExchangeIRecipe::new));
 }

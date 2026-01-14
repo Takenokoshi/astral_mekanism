@@ -15,7 +15,8 @@ public enum OreType {
 	LEAD("lead", true),
 	URANIUM("uranium", true),
 	OSMIUM("osmium", true),
-	NETHERITE("netherite", true),;
+	NETHERITE("netherite", true),
+	NAQUADAH("naquadah", true),;
 
 	private OreType(String type, boolean hasMekprocessing) {
 		this.type = type;

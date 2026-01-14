@@ -54,8 +54,7 @@ public class AstralMekanismRecipeTypes {
                     FluidFluidToFluidRecipe::getInputB));
 
     public static final RecipeTypeRegistryObject<GasToGasRecipe, SingleChemical<Gas, GasStack, GasToGasRecipe>> SPS_RECIPE = register(
-            "sps", recipeType -> new InputRecipeCache.SingleChemical<Gas, GasStack, GasToGasRecipe>(recipeType,
-                    GasToGasRecipe::getInput));
+            "sps", rt -> new InputRecipeCache.SingleChemical<>(rt, GasToGasRecipe::getInput));
 
     public static final RecipeTypeRegistryObject<AstralCraftingRecipe, AstralCraftingRecipeCache> ASTRAL_CRAFTING = register(
             "astral_crafting", AstralCraftingRecipeCache::new);
@@ -66,4 +65,7 @@ public class AstralMekanismRecipeTypes {
                     MekanicalTransformRecipe::getInputItemB,
                     MekanicalTransformRecipe::getInputItemC,
                     MekanicalTransformRecipe::getInputItemD));
+
+    public static final RecipeTypeRegistryObject<GasToGasRecipe, SingleChemical<Gas, GasStack, GasToGasRecipe>> ION_EXCHANGE = register(
+            "ion_exchange", rt -> new InputRecipeCache.SingleChemical<>(rt, GasToGasRecipe::getInput));
 }
