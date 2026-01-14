@@ -28,6 +28,7 @@ import mekanism.api.recipes.inputs.InputHelper;
 import mekanism.api.recipes.outputs.IOutputHandler;
 import mekanism.api.recipes.outputs.OutputHelper;
 import mekanism.common.block.attribute.Attribute;
+import mekanism.common.capabilities.Capabilities;
 import mekanism.common.capabilities.energy.MachineEnergyContainer;
 import mekanism.common.capabilities.fluid.BasicFluidTank;
 import mekanism.common.capabilities.heat.CachedAmbientTemperature;
@@ -40,6 +41,7 @@ import mekanism.common.capabilities.holder.heat.HeatCapacitorHelper;
 import mekanism.common.capabilities.holder.heat.IHeatCapacitorHolder;
 import mekanism.common.capabilities.holder.slot.IInventorySlotHolder;
 import mekanism.common.capabilities.holder.slot.InventorySlotHelper;
+import mekanism.common.capabilities.resolver.BasicCapabilityResolver;
 import mekanism.common.config.MekanismConfig;
 import mekanism.common.inventory.container.MekanismContainer;
 import mekanism.common.inventory.container.slot.ContainerSlotType;
@@ -96,6 +98,7 @@ public class BECompactTEP extends TileEntityRecipeMachine<FluidToFluidRecipe>
 
     public BECompactTEP(IBlockProvider blockProvider, BlockPos pos, BlockState state) {
         super(blockProvider, pos, state, TRACKED_ERROR_TYPES);
+        addCapabilityResolver(BasicCapabilityResolver.constant(Capabilities.CONFIG_CARD, this));
         configComponent = new TileComponentConfig(this, TransmissionType.FLUID, TransmissionType.HEAT,
                 TransmissionType.ENERGY);
         configComponent.setupIOConfig(TransmissionType.FLUID, inputTank, outputTank, RelativeSide.RIGHT)
@@ -339,5 +342,20 @@ public class BECompactTEP extends TileEntityRecipeMachine<FluidToFluidRecipe>
     public void setConfigurationData(Player player, CompoundTag data) {
         super.setConfigurationData(player, data);
         NBTUtils.setFloatingLongIfPresent(data, NBTConstants.ENERGY_USAGE, this::setEnergyUsageFromPacket);
+    }
+
+    @Override
+    public void load(@NotNull CompoundTag nbt) {
+        super.load(nbt);
+        if (nbt.contains("tep_energy_l") && nbt.contains("tep_energy_s")) {
+            setEnergyUsageFromPacket(FloatingLong.create(nbt.getLong("tep_energy_l"), nbt.getShort("tep_energy_s")));
+        }
+    }
+
+    @Override
+    public void saveAdditional(@NotNull CompoundTag nbtTags) {
+        super.saveAdditional(nbtTags);
+        nbtTags.putLong("tep_energy_l", clientEnergyUsed.getValue());
+        nbtTags.putShort("tep_energy_s", clientEnergyUsed.getDecimal());
     }
 }
