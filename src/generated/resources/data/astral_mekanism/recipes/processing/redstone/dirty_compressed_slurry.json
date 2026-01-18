@@ -6,7 +6,7 @@
   },
   "itemInput": {
     "ingredient": {
-      "tag": "forge:redstone"
+      "tag": "forge:ores/redstone"
     }
   },
   "output": {

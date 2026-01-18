@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "astral_mekanism:item/netherite/crushed_netherite"
+    "layer0": "astral_mekanism:item/netherite/dirty_dust_netherite"
   }
 }

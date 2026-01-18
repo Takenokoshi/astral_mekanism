@@ -6,7 +6,7 @@
   },
   "itemInput": {
     "ingredient": {
-      "tag": "forge:lapis_lazuli"
+      "tag": "forge:ores/lapis_lazuli"
     }
   },
   "output": {

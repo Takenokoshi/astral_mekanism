@@ -6,7 +6,7 @@
   },
   "itemInput": {
     "ingredient": {
-      "tag": "forge:amethyst"
+      "tag": "forge:ores/amethyst"
     }
   },
   "output": {

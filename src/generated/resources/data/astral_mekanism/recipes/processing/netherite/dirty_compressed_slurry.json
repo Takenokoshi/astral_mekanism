@@ -6,7 +6,7 @@
   },
   "itemInput": {
     "ingredient": {
-      "tag": "forge:netherite"
+      "tag": "forge:ores/netherite"
     }
   },
   "output": {

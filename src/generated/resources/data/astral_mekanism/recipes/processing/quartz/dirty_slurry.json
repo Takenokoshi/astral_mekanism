@@ -6,7 +6,7 @@
   },
   "itemInput": {
     "ingredient": {
-      "tag": "forge:quartz"
+      "tag": "forge:ores/quartz"
     }
   },
   "output": {

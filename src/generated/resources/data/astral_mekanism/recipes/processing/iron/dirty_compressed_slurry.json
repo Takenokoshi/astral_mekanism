@@ -6,7 +6,7 @@
   },
   "itemInput": {
     "ingredient": {
-      "tag": "forge:iron"
+      "tag": "forge:ores/iron"
     }
   },
   "output": {

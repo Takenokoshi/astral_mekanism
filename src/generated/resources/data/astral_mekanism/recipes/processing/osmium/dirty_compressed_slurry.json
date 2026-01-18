@@ -6,7 +6,7 @@
   },
   "itemInput": {
     "ingredient": {
-      "tag": "forge:osmium"
+      "tag": "forge:ores/osmium"
     }
   },
   "output": {

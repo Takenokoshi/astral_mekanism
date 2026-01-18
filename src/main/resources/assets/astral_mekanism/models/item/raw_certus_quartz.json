@@ -1,6 +1,6 @@
 {
     "parent": "item/generated",
     "textures":{
-        "layer0": "astral_mekanism:item/raw_gem/raw_certu_quartz"
+        "layer0": "astral_mekanism:item/raw_gem/raw_certus_quartz"
     }
 }

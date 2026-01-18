@@ -6,7 +6,7 @@
   },
   "itemInput": {
     "ingredient": {
-      "tag": "forge:naquadah"
+      "tag": "forge:ores/naquadah"
     }
   },
   "output": {

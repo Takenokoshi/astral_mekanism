@@ -46,7 +46,7 @@ public class AstralMekanismDataGenerator {
             gen.addProvider(true, new AstralMekanismLootTableProvider(output));
             gen.addProvider(true, new AstralMekanismBlockTags(output, lookup, helper));
             gen.addProvider(true, new AstralMekanismItemTags(output, lookup,
-                    CompletableFuture.completedFuture(TagLookup.empty()), helper));
+                    CompletableFuture.completedFuture(TagLookup.empty()), helper));// */
             gen.addProvider(true, new AstralMekanismRecipeProvider(output));
         }
         if (event.includeClient()) {

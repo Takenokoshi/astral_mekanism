@@ -6,7 +6,7 @@
   },
   "itemInput": {
     "ingredient": {
-      "tag": "forge:uranium"
+      "tag": "forge:ores/uranium"
     }
   },
   "output": {

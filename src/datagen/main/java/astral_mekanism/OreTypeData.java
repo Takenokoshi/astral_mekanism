@@ -92,7 +92,7 @@ public enum OreTypeData {
             ((Supplier<EnumMap<IntermediateState, ResourceLocation>>) () -> {
                 EnumMap<IntermediateState, ResourceLocation> map = new EnumMap<>(IntermediateState.class);
                 map.put(IntermediateState.CLUMP, AstralMekanismID.rl("item/netherite/clump_netherite"));
-                map.put(IntermediateState.CRUSHED, AstralMekanismID.rl("item/netherite/crushed_netherite"));
+                map.put(IntermediateState.CRUSHED, AstralMekanismID.rl("item/netherite/dirty_dust_netherite"));
                 map.put(IntermediateState.CRYSTAL, AstralMekanismID.rl("item/netherite/crystal_netherite"));
                 map.put(IntermediateState.RAW, Mekanism.rl("item/dust_netherite"));
                 map.put(IntermediateState.SHARD, AstralMekanismID.rl("item/netherite/shard_netherite"));
@@ -101,7 +101,7 @@ public enum OreTypeData {
     NAQUADAH(OreType.NAQUADAH, 1,
             ExtraItem.INGOT_NAQUADAH.getItemStack(),
             ExtraBlock.ORES.get(ExtraOreType.NAQUADAH).stone().getItemStack(),
-            MekanismExtras.rl("ingot_naquadah"),
+            MekanismExtras.rl("item/ingot_naquadah"),
             MekanismExtras::rl),
             ;
 

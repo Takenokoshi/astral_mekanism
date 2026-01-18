@@ -44,7 +44,7 @@ public class AstralMekanismRecipeProvider extends RecipeProvider {
             String base = "processing/" + typeData.oreType.type;
             ChemicalDissolutionRecipeBuilder.dissolution(
                     IngredientCreatorAccess.item()
-                            .from(ItemTags.create(new ResourceLocation("forge", typeData.oreType.type))),
+                            .from(ItemTags.create(new ResourceLocation("forge", "ores/"+ typeData.oreType.type))),
                     IngredientCreatorAccess.gas().from(AstralMekanismGases.OLEUM.getStack(100)),
                     AstralMekanismSlurries.COMPRESSED_SLURRIES.get(typeData.oreType).getDirtySlurry()
                             .getStack(1))
@@ -169,7 +169,7 @@ public class AstralMekanismRecipeProvider extends RecipeProvider {
             if (!typeData.oreType.hasMekprocessing) {
                 ChemicalDissolutionRecipeBuilder.dissolution(
                         IngredientCreatorAccess.item()
-                                .from(ItemTags.create(new ResourceLocation("forge", typeData.oreType.type))),
+                                .from(ItemTags.create(new ResourceLocation("forge","ores/"+ typeData.oreType.type))),
                         IngredientCreatorAccess.gas().from(MekanismGases.SULFURIC_ACID.getStack(100)),
                         AstralMekanismSlurries.GEM_SLURRIES.get(typeData.oreType).getDirtySlurry()
                                 .getStack(1000))
