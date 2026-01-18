@@ -1,5 +1,5 @@
 {
-  "type": "mekanism:purifying",
+  "type": "mekanism:injecting",
   "chemicalInput": {
     "amount": 200,
     "gas": "astral_mekanism:aqua_regia"

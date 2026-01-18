@@ -73,7 +73,7 @@ public class AstralMekanismRecipeProvider extends RecipeProvider {
                                     .get(IntermediateState.SHARD).getItemStack(1))
                     .build(consumer, AstralMekanismID.rl(base + "/shard_compressed_1"));
             ItemStackChemicalToItemStackRecipeBuilder
-                    .purifying(IngredientCreatorAccess.item()
+                    .injecting(IngredientCreatorAccess.item()
                             .from(AstralMekanismItems.COMPRESSED_PROCESSING_ITEMS.get(typeData.oreType)
                                     .get(IntermediateState.CRYSTAL).getItemStack(1)),
                             IngredientCreatorAccess.gas().from(AstralMekanismGases.AQUA_REGIA.getStack(200)),
