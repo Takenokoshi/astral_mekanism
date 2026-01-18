@@ -1,0 +1,15 @@
+{
+  "type": "mekanism:washing",
+  "fluidInput": {
+    "amount": 1,
+    "fluid": "minecraft:water"
+  },
+  "output": {
+    "amount": 1,
+    "slurry": "astral_mekanism:clean_fluorite"
+  },
+  "slurryInput": {
+    "amount": 1,
+    "slurry": "astral_mekanism:dirty_fluorite"
+  }
+}

@@ -16,11 +16,13 @@ import astral_mekanism.recipes.recipe.MekanicalTransformRecipe;
 import mekanism.api.chemical.gas.Gas;
 import mekanism.api.chemical.gas.GasStack;
 import mekanism.api.recipes.GasToGasRecipe;
+import mekanism.api.recipes.ItemStackToItemStackRecipe;
 import mekanism.api.recipes.MekanismRecipe;
 import mekanism.common.recipe.MekanismRecipeType;
 import mekanism.common.recipe.lookup.cache.IInputRecipeCache;
 import mekanism.common.recipe.lookup.cache.InputRecipeCache;
 import mekanism.common.recipe.lookup.cache.InputRecipeCache.SingleChemical;
+import mekanism.common.recipe.lookup.cache.InputRecipeCache.SingleItem;
 import mekanism.common.registration.impl.RecipeTypeDeferredRegister;
 import mekanism.common.registration.impl.RecipeTypeRegistryObject;
 
@@ -66,6 +68,9 @@ public class AstralMekanismRecipeTypes {
                     MekanicalTransformRecipe::getInputItemC,
                     MekanicalTransformRecipe::getInputItemD));
 
-    public static final RecipeTypeRegistryObject<GasToGasRecipe, SingleChemical<Gas, GasStack, GasToGasRecipe>> ION_EXCHANGE = register(
-            "ion_exchange", rt -> new InputRecipeCache.SingleChemical<>(rt, GasToGasRecipe::getInput));
+    public static final RecipeTypeRegistryObject<ItemStackToItemStackRecipe, SingleItem<ItemStackToItemStackRecipe>> ITEM_COMPRESSING = register(
+            "item_compressing", rt -> new SingleItem<>(rt, ItemStackToItemStackRecipe::getInput));
+
+    public static final RecipeTypeRegistryObject<ItemStackToItemStackRecipe, SingleItem<ItemStackToItemStackRecipe>> ITEM_UNZIPPING = register(
+            "item_unzipping", rt -> new SingleItem<>(rt, ItemStackToItemStackRecipe::getInput));
 }

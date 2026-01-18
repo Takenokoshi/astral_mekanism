@@ -1,0 +1,15 @@
+{
+  "type": "mekanism:washing",
+  "fluidInput": {
+    "amount": 1,
+    "fluid": "minecraft:water"
+  },
+  "output": {
+    "amount": 1,
+    "slurry": "astral_mekanism:clean_compressed_copper"
+  },
+  "slurryInput": {
+    "amount": 1152921504606846976,
+    "slurry": "astral_mekanism:dirty_compressed_copper"
+  }
+}

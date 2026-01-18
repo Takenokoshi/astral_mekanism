@@ -1,0 +1,11 @@
+{
+  "type": "mekanism:crushing",
+  "input": {
+    "ingredient": {
+      "item": "astral_mekanism:clump_compressed_osmium"
+    }
+  },
+  "output": {
+    "item": "astral_mekanism:dirty_dust_compressed_osmium"
+  }
+}

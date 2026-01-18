@@ -1,0 +1,11 @@
+{
+  "type": "mekanism:enriching",
+  "input": {
+    "ingredient": {
+      "item": "astral_mekanism:dirty_dust_compressed_tin"
+    }
+  },
+  "output": {
+    "item": "astral_mekanism:dust_compressed_tin"
+  }
+}

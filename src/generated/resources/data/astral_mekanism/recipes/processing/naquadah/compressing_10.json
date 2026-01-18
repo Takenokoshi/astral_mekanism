@@ -1,0 +1,12 @@
+{
+  "type": "astral_mekanism:item_compressing",
+  "input": {
+    "amount": 64,
+    "ingredient": {
+      "item": "astral_mekanism:9x_compressed_naquadah"
+    }
+  },
+  "output": {
+    "item": "astral_mekanism:10x_compressed_naquadah"
+  }
+}

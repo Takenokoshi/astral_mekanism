@@ -1,0 +1,12 @@
+{
+  "type": "astral_mekanism:item_compressing",
+  "input": {
+    "amount": 64,
+    "ingredient": {
+      "item": "astral_mekanism:8x_compressed_uranium"
+    }
+  },
+  "output": {
+    "item": "astral_mekanism:9x_compressed_uranium"
+  }
+}

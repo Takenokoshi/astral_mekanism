@@ -1,0 +1,17 @@
+{
+  "type": "mekanism:dissolution",
+  "gasInput": {
+    "amount": 100,
+    "gas": "astral_mekanism:oleum"
+  },
+  "itemInput": {
+    "ingredient": {
+      "tag": "forge:diamond"
+    }
+  },
+  "output": {
+    "amount": 1,
+    "chemicalType": "slurry",
+    "slurry": "astral_mekanism:dirty_compressed_diamond"
+  }
+}

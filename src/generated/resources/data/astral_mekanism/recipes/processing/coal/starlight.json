@@ -1,0 +1,20 @@
+{
+  "type": "mekanism:reaction",
+  "duration": 100,
+  "fluidInput": {
+    "amount": 1000,
+    "fluid": "minecraft:lava"
+  },
+  "gasInput": {
+    "amount": 1,
+    "gas": "astral_mekanism:astral_ether"
+  },
+  "itemInput": {
+    "ingredient": {
+      "tag": "forge:dusts/coal"
+    }
+  },
+  "itemOutput": {
+    "item": "astral_mekanism:starlight_coal"
+  }
+}

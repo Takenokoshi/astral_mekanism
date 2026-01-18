@@ -16,11 +16,9 @@ public class AstralMekanismSlurries {
     public static final EnumMap<OreType, SlurryRegistryObject<Slurry, Slurry>> GEM_SLURRIES = ((Supplier<EnumMap<OreType, SlurryRegistryObject<Slurry, Slurry>>>) (() -> {
         EnumMap<OreType, SlurryRegistryObject<Slurry, Slurry>> result = new EnumMap<>(OreType.class);
         for (OreType type : OreType.values()) {
-            if (!type.hasMekprocessing) {
-                result.put(type, SLURRIES.register(type.type, builder -> {
-                    builder.ore(new ResourceLocation("forge", "ores/" + type.type));
-                    return builder;
-                }));
+            if (!type.hasMekprocessing || type == OreType.NETHERITE) {
+                result.put(type, SLURRIES.register(type.type,
+                        builder -> builder.ore(new ResourceLocation("forge", "ores/" + type.type))));
             }
         }
         return result;
@@ -29,12 +27,8 @@ public class AstralMekanismSlurries {
     public static final EnumMap<OreType, SlurryRegistryObject<Slurry, Slurry>> COMPRESSED_SLURRIES = ((Supplier<EnumMap<OreType, SlurryRegistryObject<Slurry, Slurry>>>) (() -> {
         EnumMap<OreType, SlurryRegistryObject<Slurry, Slurry>> result = new EnumMap<>(OreType.class);
         for (OreType type : OreType.values()) {
-            if (type != OreType.NETHERITE) {
-                result.put(type, SLURRIES.register("compressed_" + type.type, builder -> {
-                    builder.ore(new ResourceLocation("forge", "ores/" + type.type));
-                    return builder;
-                }));
-            }
+            result.put(type, SLURRIES.register("compressed_" + type.type,
+                    builder -> builder.ore(new ResourceLocation("forge", "ores/" + type.type))));
         }
         return result;
     })).get();

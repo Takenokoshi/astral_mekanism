@@ -1,0 +1,12 @@
+{
+  "type": "astral_mekanism:item_compressing",
+  "input": {
+    "amount": 64,
+    "ingredient": {
+      "item": "astral_mekanism:18x_compressed_certus_quartz"
+    }
+  },
+  "output": {
+    "item": "astral_mekanism:19x_compressed_certus_quartz"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "type": "mekanism:enriching",
+  "input": {
+    "ingredient": {
+      "item": "astral_mekanism:crushed_fluorite"
+    }
+  },
+  "output": {
+    "count": 3,
+    "item": "astral_mekanism:raw_fluorite"
+  }
+}

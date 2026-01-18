@@ -1,0 +1,17 @@
+{
+  "type": "mekanism:combining",
+  "extraInput": {
+    "ingredient": {
+      "item": "minecraft:cobblestone"
+    }
+  },
+  "mainInput": {
+    "ingredient": {
+      "item": "astral_mekanism:starlight_copper"
+    }
+  },
+  "output": {
+    "count": 64,
+    "item": "minecraft:copper_ore"
+  }
+}

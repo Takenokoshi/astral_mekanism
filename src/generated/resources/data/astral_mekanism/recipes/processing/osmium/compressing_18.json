@@ -1,0 +1,12 @@
+{
+  "type": "astral_mekanism:item_compressing",
+  "input": {
+    "amount": 64,
+    "ingredient": {
+      "item": "astral_mekanism:17x_compressed_osmium"
+    }
+  },
+  "output": {
+    "item": "astral_mekanism:18x_compressed_osmium"
+  }
+}

@@ -16,6 +16,7 @@ import mekanism.common.registration.impl.FluidRegistryObject;
 import mekanism.common.registration.impl.GasRegistryObject;
 import mekanism.common.registration.impl.InfuseTypeRegistryObject;
 import mekanism.common.registration.impl.SlurryRegistryObject;
+import mekanism.common.util.text.InputValidator;
 import net.minecraft.data.PackOutput;
 import net.minecraftforge.common.data.LanguageProvider;
 
@@ -95,8 +96,15 @@ public class AstralMekanismEnglishLangProvider extends LanguageProvider {
         String[] parts = path.split("_");
         StringBuilder sb = new StringBuilder();
 
-        if (parts[0].equals("alloy") || parts[0].equals("clump")
-                || parts[0].equals("crystal") || parts[0].equals("shard") || parts[0].equals("starlight")) {
+        if (parts[0].equals("crystal") && parts[parts.length - 1].equals("charged")) {
+            parts[0] = "charged";
+            parts[parts.length - 1] = "crystal";
+        } else if (parts[0].equals("alloy")
+                || parts[0].equals("clump")
+                || parts[0].equals("crystal")
+                || parts[0].equals("shard")
+                || parts[0].equals("dust")
+                || parts[0].equals("starlight")) {
             String[] neo = new String[parts.length];
             for (int i = 0; i < neo.length - 1; i++) {
                 neo[i] = parts[i + 1];
@@ -134,6 +142,8 @@ public class AstralMekanismEnglishLangProvider extends LanguageProvider {
                 sb.append("Pressurized REaction Chamber");
             } else if (parts[i].equals("gna")) {
                 sb.append("Glowstone Neutron Activator");
+            } else if (InputValidator.DIGIT.test(parts[i].charAt(0))) {
+                sb.append(parts[i]);
             } else {
                 sb.append(Character.toUpperCase(parts[i].charAt(0)));
                 if (parts[i].length() > 1) {

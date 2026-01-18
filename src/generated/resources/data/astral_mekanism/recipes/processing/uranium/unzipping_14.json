@@ -1,0 +1,12 @@
+{
+  "type": "astral_mekanism:item_unzipping",
+  "input": {
+    "ingredient": {
+      "item": "astral_mekanism:14x_compressed_uranium"
+    }
+  },
+  "output": {
+    "count": 64,
+    "item": "astral_mekanism:13x_compressed_uranium"
+  }
+}

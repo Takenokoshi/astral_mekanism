@@ -1,0 +1,11 @@
+{
+  "type": "mekanism:crushing",
+  "input": {
+    "ingredient": {
+      "item": "astral_mekanism:clump_fluorite"
+    }
+  },
+  "output": {
+    "item": "astral_mekanism:crushed_fluorite"
+  }
+}

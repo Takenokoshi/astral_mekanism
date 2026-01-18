@@ -1,0 +1,11 @@
+{
+  "type": "mekanism:enriching",
+  "input": {
+    "ingredient": {
+      "item": "astral_mekanism:crushed_compressed_emerald"
+    }
+  },
+  "output": {
+    "item": "astral_mekanism:raw_compressed_emerald"
+  }
+}

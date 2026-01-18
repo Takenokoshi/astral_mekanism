@@ -1,0 +1,12 @@
+{
+  "type": "mekanism:enriching",
+  "input": {
+    "ingredient": {
+      "item": "astral_mekanism:crushed_amethyst"
+    }
+  },
+  "output": {
+    "count": 24,
+    "item": "astral_mekanism:raw_amethyst"
+  }
+}

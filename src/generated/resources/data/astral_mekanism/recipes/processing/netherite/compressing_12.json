@@ -1,0 +1,12 @@
+{
+  "type": "astral_mekanism:item_compressing",
+  "input": {
+    "amount": 64,
+    "ingredient": {
+      "item": "astral_mekanism:11x_compressed_netherite"
+    }
+  },
+  "output": {
+    "item": "astral_mekanism:12x_compressed_netherite"
+  }
+}

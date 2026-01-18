@@ -1,0 +1,15 @@
+{
+  "type": "mekanism:purifying",
+  "chemicalInput": {
+    "amount": 50,
+    "gas": "mekanism:oxygen"
+  },
+  "itemInput": {
+    "ingredient": {
+      "item": "astral_mekanism:shard_compressed_tin"
+    }
+  },
+  "output": {
+    "item": "astral_mekanism:clump_compressed_tin"
+  }
+}

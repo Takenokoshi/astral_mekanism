@@ -4,7 +4,8 @@ import astral_mekanism.AstralMekanismID;
 import astral_mekanism.recipes.irecipe.AstralCraftingIRecipe;
 import astral_mekanism.recipes.irecipe.FluidInfuserIRecipe;
 import astral_mekanism.recipes.irecipe.GreenhouseIRecipe;
-import astral_mekanism.recipes.irecipe.IonExchangeIRecipe;
+import astral_mekanism.recipes.irecipe.ItemCompressingIRecipe;
+import astral_mekanism.recipes.irecipe.ItemUnzippingIRecipe;
 import astral_mekanism.recipes.irecipe.SPSIRecipe;
 import astral_mekanism.recipes.irecipe.MekanicalTransformIRecipe;
 import astral_mekanism.recipes.recipe.AstralCraftingRecipe;
@@ -16,7 +17,9 @@ import astral_mekanism.recipes.serializer.FluidFluidToFluidRecipeSerializer;
 import astral_mekanism.recipes.serializer.GreenHouseRecipeSerializer;
 import astral_mekanism.recipes.serializer.MekanicalTransformRecipeSerializer;
 import mekanism.api.recipes.GasToGasRecipe;
+import mekanism.api.recipes.ItemStackToItemStackRecipe;
 import mekanism.common.recipe.serializer.GasToGasRecipeSerializer;
+import mekanism.common.recipe.serializer.ItemStackToItemStackRecipeSerializer;
 import mekanism.common.registration.impl.RecipeSerializerDeferredRegister;
 import mekanism.common.registration.impl.RecipeSerializerRegistryObject;
 
@@ -45,6 +48,11 @@ public class AstralMekanismRecipeSerializers {
             .register("mekanical_transform",
                     () -> new MekanicalTransformRecipeSerializer<>(MekanicalTransformIRecipe::new));
 
-    public static final RecipeSerializerRegistryObject<GasToGasRecipe> ION_EXCHANGE = RECIPE_SERIALIZERS
-            .register("ion_exchange", () -> new GasToGasRecipeSerializer<>(IonExchangeIRecipe::new));
+    public static final RecipeSerializerRegistryObject<ItemStackToItemStackRecipe> ITEM_COMPRESSING = RECIPE_SERIALIZERS
+            .register("item_compressing",
+                    () -> new ItemStackToItemStackRecipeSerializer<>(ItemCompressingIRecipe::new));
+
+    public static final RecipeSerializerRegistryObject<ItemStackToItemStackRecipe> ITEM_UNZIPPING = RECIPE_SERIALIZERS
+            .register("item_unzipping",
+                    () -> new ItemStackToItemStackRecipeSerializer<>(ItemUnzippingIRecipe::new));
 }

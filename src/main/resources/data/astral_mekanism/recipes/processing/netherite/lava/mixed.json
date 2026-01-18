@@ -2,11 +2,11 @@
     "type": "astral_mekanism:fluid_infuser",
     "fluidInputA": {
         "fluid": "astral_mekanism:netherrack_lava",
-        "amount": 10
+        "amount": 100
     },
     "fluidInputB": {
         "fluid": "astral_mekanism:soul_lava",
-        "amount": 10
+        "amount": 100
     },
     "fluidOutput": {
         "fluid": "astral_mekanism:mixed_lava",

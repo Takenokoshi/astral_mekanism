@@ -1,0 +1,12 @@
+{
+  "type": "astral_mekanism:item_compressing",
+  "input": {
+    "amount": 64,
+    "ingredient": {
+      "item": "astral_mekanism:6x_compressed_lapis_lazuli"
+    }
+  },
+  "output": {
+    "item": "astral_mekanism:7x_compressed_lapis_lazuli"
+  }
+}

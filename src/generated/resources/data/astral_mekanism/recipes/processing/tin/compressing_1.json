@@ -1,0 +1,12 @@
+{
+  "type": "astral_mekanism:item_compressing",
+  "input": {
+    "amount": 64,
+    "ingredient": {
+      "item": "mekanism:ingot_tin"
+    }
+  },
+  "output": {
+    "item": "astral_mekanism:1x_compressed_tin"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "type": "astral_mekanism:item_compressing",
+  "input": {
+    "amount": 64,
+    "ingredient": {
+      "item": "astral_mekanism:15x_compressed_emerald"
+    }
+  },
+  "output": {
+    "item": "astral_mekanism:16x_compressed_emerald"
+  }
+}

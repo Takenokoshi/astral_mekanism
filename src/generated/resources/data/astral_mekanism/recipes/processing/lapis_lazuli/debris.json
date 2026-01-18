@@ -1,0 +1,11 @@
+{
+  "type": "mekanism:crushing",
+  "input": {
+    "ingredient": {
+      "item": "astral_mekanism:clump_lapis_lazuli"
+    }
+  },
+  "output": {
+    "item": "astral_mekanism:crushed_lapis_lazuli"
+  }
+}

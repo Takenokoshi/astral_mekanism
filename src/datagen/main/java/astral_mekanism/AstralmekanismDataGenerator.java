@@ -9,13 +9,17 @@ import java.util.concurrent.CompletableFuture;
 import com.electronwill.nightconfig.core.CommentedConfig;
 
 import astral_mekanism.block.AstralMekanismBlockStateProvider;
+import astral_mekanism.item.AstralMekanismItemModelProvider;
 import astral_mekanism.lang.AstralMekanismEnglishLangProvider;
 import astral_mekanism.loottable.AstralMekanismLootTableProvider;
+import astral_mekanism.recipe.AstralMekanismRecipeProvider;
 import astral_mekanism.tag.AstralMekanismBlockTags;
+import astral_mekanism.tag.AstralMekanismItemTags;
 import mekanism.common.Mekanism;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.PackOutput;
+import net.minecraft.data.tags.TagsProvider.TagLookup;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.data.event.GatherDataEvent;
@@ -24,7 +28,8 @@ import net.minecraftforge.data.event.GatherDataEvent;
 @Mod.EventBusSubscriber(modid = AstralMekanismID.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class AstralMekanismDataGenerator {
 
-    private AstralMekanismDataGenerator(){}
+    private AstralMekanismDataGenerator() {
+    }
 
     @SubscribeEvent
     public static void gatherData(GatherDataEvent event) {
@@ -40,21 +45,22 @@ public class AstralMekanismDataGenerator {
         if (event.includeServer()) {
             gen.addProvider(true, new AstralMekanismLootTableProvider(output));
             gen.addProvider(true, new AstralMekanismBlockTags(output, lookup, helper));
+            gen.addProvider(true, new AstralMekanismItemTags(output, lookup,
+                    CompletableFuture.completedFuture(TagLookup.empty()), helper));
+            gen.addProvider(true, new AstralMekanismRecipeProvider(output));
         }
         if (event.includeClient()) {
             gen.addProvider(true, new AstralMekanismBlockStateProvider(output, helper));
             gen.addProvider(true, new AstralMekanismEnglishLangProvider(output));
+            gen.addProvider(true, new AstralMekanismItemModelProvider(output, helper));
         }
         System.out.println("### AstralMekanism GatherDataEvent fired ###");
     }
+
     public static void bootstrapConfigs(String modid) {
         ConfigTracker.INSTANCE.configSets().forEach((type, configs) -> {
             for (ModConfig config : configs) {
                 if (config.getModId().equals(modid)) {
-                    //Similar to how ConfigTracker#loadDefaultServerConfigs works for loading default server configs on the client
-                    // except we don't bother firing an event as it is private, and we are already at defaults if we had called earlier,
-                    // and we also don't fully initialize the mod config as the spec is what we care about, and we can do so without having
-                    // to reflect into package private methods
                     CommentedConfig commentedConfig = CommentedConfig.inMemory();
                     config.getSpec().correct(commentedConfig);
                     config.getSpec().acceptConfig(commentedConfig);

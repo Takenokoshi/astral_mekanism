@@ -1,0 +1,12 @@
+{
+  "type": "mekanism:enriching",
+  "input": {
+    "ingredient": {
+      "item": "astral_mekanism:crushed_compressed_redstone"
+    }
+  },
+  "output": {
+    "count": 6,
+    "item": "astral_mekanism:raw_compressed_redstone"
+  }
+}

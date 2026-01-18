@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:smelting",
+  "category": "misc",
+  "cookingtime": 200,
+  "experience": 0.5,
+  "ingredient": {
+    "item": "astral_mekanism:dust_compressed_gold"
+  },
+  "result": "astral_mekanism:20x_compressed_gold"
+}

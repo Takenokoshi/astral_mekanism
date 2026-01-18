@@ -1,0 +1,17 @@
+{
+  "type": "mekanism:dissolution",
+  "gasInput": {
+    "amount": 100,
+    "gas": "mekanism:sulfuric_acid"
+  },
+  "itemInput": {
+    "ingredient": {
+      "tag": "forge:amethyst"
+    }
+  },
+  "output": {
+    "amount": 1000,
+    "chemicalType": "slurry",
+    "slurry": "astral_mekanism:dirty_amethyst"
+  }
+}
