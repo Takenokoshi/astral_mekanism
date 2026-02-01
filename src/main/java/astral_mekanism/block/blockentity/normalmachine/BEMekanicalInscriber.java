@@ -61,7 +61,7 @@ public class BEMekanicalInscriber extends BlockEntityProgressMachine<InscriberRe
         itemConfig.addSlotInfo(DataType.INPUT, new InventorySlotInfo(true, false, topSlot, middleSlot, bottomSlot));
         itemConfig.addSlotInfo(DataType.OUTPUT, new InventorySlotInfo(false, true, outputSlot));
         itemConfig.addSlotInfo(DataType.INPUT_OUTPUT,
-                new InventorySlotInfo(true, true, topSlot, middleSlot, bottomSlot, bottomSlot));
+                new InventorySlotInfo(true, true, topSlot, middleSlot, bottomSlot, outputSlot));
         itemConfig.setDefaults();
         itemConfig.setCanEject(true);
         configComponent.setupInputConfig(TransmissionType.ENERGY, energyContainer);

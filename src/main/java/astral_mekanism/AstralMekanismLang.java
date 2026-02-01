@@ -13,6 +13,8 @@ public enum AstralMekanismLang implements ILangEntry {
 	DESCRIPTION_GLOWSTONE_NEUTRON_ACTIVATOR("description", "glowstone_neutron_activator"),
 	DESCRIPTION_GREENHOUSE("description", "greenhouse"),
 	DESCRIPTION_INFUSE_SYNTHESIZER("description", "infuse_synthesizer"),
+	DESCRIPTION_ITEM_COMPRESSOR("description", "item_compressor"),
+	DESCRIPTION_ITEM_UNZIPPER("description", "item_unzipper"),
 	DESCRIPTION_MEKANICAL_CHARGER("description","mekanical_charger"),
 	DESCRIPTION_MEKANICAL_INSCRIBER("description","mekanical_inscriber"),
 	DESCRIPTION_MEKANICAL_PRESSER("description","mekanical_presser"),

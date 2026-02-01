@@ -2,7 +2,7 @@
   "type": "mekanism:injecting",
   "chemicalInput": {
     "amount": 50,
-    "gas": "mekanism:oxygen"
+    "gas": "mekanism:hydrogen_chloride"
   },
   "itemInput": {
     "ingredient": {

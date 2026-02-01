@@ -49,6 +49,8 @@ import astral_mekanism.block.blockentity.normalmachine.BEFluidInfuser;
 import astral_mekanism.block.blockentity.normalmachine.BEGlowstoneNeutronActivator;
 import astral_mekanism.block.blockentity.normalmachine.BEGreenhouse;
 import astral_mekanism.block.blockentity.normalmachine.BEInfuseSynthesizer;
+import astral_mekanism.block.blockentity.normalmachine.BEItemCompressor;
+import astral_mekanism.block.blockentity.normalmachine.BEItemUnzipper;
 import astral_mekanism.block.blockentity.normalmachine.BEMekanicalCharger;
 import astral_mekanism.block.blockentity.normalmachine.BEMekanicalInscriber;
 import astral_mekanism.block.blockentity.normalmachine.BEMekanicalTransformer;
@@ -524,6 +526,24 @@ public class AstralMekanismMachines {
                     BEInfuseSynthesizer.class,
                     AstralMekanismLang.DESCRIPTION_INFUSE_SYNTHESIZER,
                     BlockMachineBuilder::removeAttributeUpgrade);
+
+    public static final MachineRegistryObject<BEItemCompressor, BlockTileModel<BEItemCompressor, BlockTypeMachine<BEItemCompressor>>, MekanismTileContainer<BEItemCompressor>, ItemBlockMachine> ITEM_COMPRESSOR = MACHINES
+            .registerSimple("item_compressor",
+                    BEItemCompressor::new,
+                    BEItemCompressor.class,
+                    AstralMekanismLang.DESCRIPTION_ITEM_COMPRESSOR,
+                    builder -> builder.withEnergyConfig(
+                            () -> FloatingLong.create(1000 * AstralMekanismConfig.energyRate),
+                            () -> FloatingLong.create(100000l * AstralMekanismConfig.energyRate)));
+
+    public static final MachineRegistryObject<BEItemUnzipper, BlockTileModel<BEItemUnzipper, BlockTypeMachine<BEItemUnzipper>>, MekanismTileContainer<BEItemUnzipper>, ItemBlockMachine> ITEM_UNZIPPER = MACHINES
+            .registerSimple("item_unzipper",
+                    BEItemUnzipper::new,
+                    BEItemUnzipper.class,
+                    AstralMekanismLang.DESCRIPTION_ITEM_UNZIPPER,
+                    builder -> builder.withEnergyConfig(
+                            () -> FloatingLong.create(1000 * AstralMekanismConfig.energyRate),
+                            () -> FloatingLong.create(100000l * AstralMekanismConfig.energyRate)));
 
     public static final MachineRegistryObject<BEMekanicalCharger, BlockTileModel<BEMekanicalCharger, BlockTypeMachine<BEMekanicalCharger>>, MekanismTileContainer<BEMekanicalCharger>, ItemBlockMachine> MEKANICAL_CHARGER = MACHINES
             .registerSimple("mekanical_charger",

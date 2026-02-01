@@ -1,0 +1,6 @@
+{
+    "parent": "astral_mekanism:block/machine_base",
+    "textures": {
+        "front": "astral_mekanism:block/normal_machine/item_unzipper_front"
+    }
+}
