@@ -60,7 +60,7 @@ public class AstralMekanismRecipeProvider extends RecipeProvider {
             ChemicalCrystallizerRecipeBuilder.crystallizing(
                     IngredientCreatorAccess.slurry()
                             .from(AstralMekanismSlurries.COMPRESSED_SLURRIES.get(typeData.oreType).getCleanSlurry()
-                                    .getStack(1)),
+                                    .getStack(0x1000000000000000L)),
                     AstralMekanismItems.COMPRESSED_PROCESSING_ITEMS.get(typeData.oreType)
                             .get(IntermediateState.CRYSTAL).getItemStack(1))
                     .build(consumer, AstralMekanismID.rl(base + "/crystal_compressed"));

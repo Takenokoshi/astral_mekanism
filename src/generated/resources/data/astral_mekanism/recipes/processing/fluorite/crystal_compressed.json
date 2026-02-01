@@ -2,7 +2,7 @@
   "type": "mekanism:crystallizing",
   "chemicalType": "slurry",
   "input": {
-    "amount": 1,
+    "amount": 1152921504606846976,
     "slurry": "astral_mekanism:clean_compressed_fluorite"
   },
   "output": {
