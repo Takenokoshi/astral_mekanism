@@ -18,6 +18,7 @@ import mekanism.client.jei.CatalystRegistryHelper;
 import mekanism.client.jei.MekanismJEIRecipeType;
 import mekanism.client.jei.RecipeRegistryHelper;
 import mekanism.client.jei.machine.GasToGasRecipeCategory;
+import mekanism.client.jei.machine.ItemStackToItemStackRecipeCategory;
 import mekanism.generators.client.jei.GeneratorsJEIRecipeType;
 import mezz.jei.api.IModPlugin;
 import mezz.jei.api.JeiPlugin;
@@ -63,6 +64,12 @@ public class AstralMekanismJEIPlugin implements IModPlugin {
                         new MekanicalInscribingRecipeCategory(guiHelper,
                                 AstralMekanismJEIRecipeType.MEKANICAL_INSCRIBING,
                                 AstralMekanismMachines.MEKANICAL_INSCRIBER),
+                        new ItemStackToItemStackRecipeCategory(guiHelper,
+                                AstralMekanismJEIRecipeType.ITEM_COMPRESSING,
+                                AstralMekanismMachines.ITEM_COMPRESSOR),
+                        new ItemStackToItemStackRecipeCategory(guiHelper,
+                                AstralMekanismJEIRecipeType.ITEM_UNZIPPING,
+                                AstralMekanismMachines.ITEM_UNZIPPER),
                 });
     }
 
@@ -78,6 +85,10 @@ public class AstralMekanismJEIPlugin implements IModPlugin {
                 AstralMekanismRecipeTypes.MEKANICAL_TRANSFORM);
         RecipeRegistryHelper.register(registry, AstralMekanismJEIRecipeType.GREENHOUSE_RECIPE,
                 AstralMekanismRecipeTypes.GREENHOUSE_RECIPE);
+        RecipeRegistryHelper.register(registry, AstralMekanismJEIRecipeType.ITEM_COMPRESSING,
+                AstralMekanismRecipeTypes.ITEM_COMPRESSING);
+        RecipeRegistryHelper.register(registry, AstralMekanismJEIRecipeType.ITEM_UNZIPPING,
+                AstralMekanismRecipeTypes.ITEM_UNZIPPING);
         registry.addRecipes(AstralMekanismJEIRecipeType.ESSENTIAL_SMELTING,
                 GeneralRecipeType.SMELTING.getRecipes(Minecraft.getInstance().level));
         registry.addRecipes(AstralMekanismJEIRecipeType.MEKANICAL_INSCRIBING,
@@ -158,6 +169,10 @@ public class AstralMekanismJEIPlugin implements IModPlugin {
         CatalystRegistryHelper.register(registry, AstralMekanismJEIRecipeType.GREENHOUSE_RECIPE,
                 AstralMekanismMachines.GREENHOUSE,
                 AstralMekanismMachines.ASTRAL_GREENHOUSE);
+        CatalystRegistryHelper.register(registry, AstralMekanismJEIRecipeType.ITEM_COMPRESSING,
+                AstralMekanismMachines.ITEM_COMPRESSOR);
+        CatalystRegistryHelper.register(registry, AstralMekanismJEIRecipeType.ITEM_UNZIPPING,
+                AstralMekanismMachines.ITEM_UNZIPPER);
         registry.addRecipeCatalysts(AstralMekanismJEIRecipeType.ESSENTIAL_SMELTING,
                 AstralMekanismMachines.ESSENTIAL_ENERGIZED_SMELTER,
                 AstralMekanismMachines.ASTRAL_ENERGIZED_SMELTER);

@@ -8,6 +8,7 @@ import astral_mekanism.recipes.recipe.GreenhouseRecipe;
 import astral_mekanism.recipes.recipe.MekanicalTransformRecipe;
 import astral_mekanism.registries.AstralMekanismMachines;
 import mekanism.api.recipes.GasToGasRecipe;
+import mekanism.api.recipes.ItemStackToItemStackRecipe;
 import mekanism.client.jei.MekanismJEIRecipeType;
 import mezz.jei.api.recipe.RecipeType;
 import net.minecraft.world.item.crafting.SmeltingRecipe;
@@ -23,6 +24,11 @@ public final class AstralMekanismJEIRecipeType {
             AstralMekanismMachines.MEKANICAL_TRANSFORMER, MekanicalTransformRecipe.class);
     public static final MekanismJEIRecipeType<GreenhouseRecipe> GREENHOUSE_RECIPE = new MekanismJEIRecipeType<>(
             AstralMekanismMachines.GREENHOUSE, GreenhouseRecipe.class);
+    public static final MekanismJEIRecipeType<ItemStackToItemStackRecipe> ITEM_COMPRESSING = new MekanismJEIRecipeType<>(
+            AstralMekanismMachines.ITEM_COMPRESSOR, ItemStackToItemStackRecipe.class);
+    public static final MekanismJEIRecipeType<ItemStackToItemStackRecipe> ITEM_UNZIPPING = new MekanismJEIRecipeType<>(
+            AstralMekanismMachines.ITEM_UNZIPPER, ItemStackToItemStackRecipe.class);
+
     public static final RecipeType<SmeltingRecipe> ESSENTIAL_SMELTING = RecipeType.create(AstralMekanismID.MODID,
             "essential_smelter", SmeltingRecipe.class);
     public static final RecipeType<InscriberRecipe> MEKANICAL_INSCRIBING = RecipeType.create(AstralMekanismID.MODID,

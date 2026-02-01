@@ -23,6 +23,8 @@ import astral_mekanism.block.blockentity.normalfactory.BEEnergizedSmeltingFactor
 import astral_mekanism.block.blockentity.normalmachine.BEEssentialEnergizedSmelter;
 import astral_mekanism.block.blockentity.normalmachine.BEGlowstoneNeutronActivator;
 import astral_mekanism.block.blockentity.normalmachine.BEGreenhouse;
+import astral_mekanism.block.blockentity.normalmachine.BEItemCompressor;
+import astral_mekanism.block.blockentity.normalmachine.BEItemUnzipper;
 import astral_mekanism.block.blockentity.normalmachine.BEMekanicalCharger;
 import astral_mekanism.block.blockentity.normalmachine.BEMekanicalInscriber;
 import astral_mekanism.block.blockentity.normalmachine.BEMekanicalTransformer;
@@ -62,6 +64,7 @@ import astral_mekanism.block.gui.prefab.GuiGasToGasBlock;
 import astral_mekanism.block.gui.prefab.GuiGasToGasMachine;
 import astral_mekanism.registration.MachineRegistryObject;
 import mekanism.client.ClientRegistrationUtil;
+import mekanism.client.gui.machine.GuiElectricMachine;
 import mekanism.common.inventory.container.tile.MekanismTileContainer;
 import mekanism.common.registration.impl.FluidRegistryObject;
 import mekanism.common.tile.base.TileEntityMekanism;
@@ -155,6 +158,10 @@ public class AstralMekanismClient {
                     GuiGasToGasBlock<BEGlowstoneNeutronActivator>::new);
             regScreen(AstralMekanismMachines.GREENHOUSE, GuiGreenhouse<BEGreenhouse>::new);
             regScreen(AstralMekanismMachines.INFUSE_SYNTHESIZER, GuiInfuseSynthesizer::new);
+            regScreen(AstralMekanismMachines.ITEM_COMPRESSOR,
+                    GuiElectricMachine<BEItemCompressor, MekanismTileContainer<BEItemCompressor>>::new);
+            regScreen(AstralMekanismMachines.ITEM_UNZIPPER,
+                    GuiElectricMachine<BEItemUnzipper, MekanismTileContainer<BEItemUnzipper>>::new);
             regScreen(AstralMekanismMachines.MEKANICAL_CHARGER,
                     GuiMekanicalCharger<BEMekanicalCharger>::new);
             regScreen(AstralMekanismMachines.MEKANICAL_INSCRIBER, GuiMekanicalInscriber<BEMekanicalInscriber>::new);
