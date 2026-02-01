@@ -47,7 +47,7 @@ public class AstralMekanismRecipeProvider extends RecipeProvider {
                             .from(ItemTags.create(new ResourceLocation("forge", "ores/"+ typeData.oreType.type))),
                     IngredientCreatorAccess.gas().from(AstralMekanismGases.OLEUM.getStack(1)),
                     AstralMekanismSlurries.COMPRESSED_SLURRIES.get(typeData.oreType).getDirtySlurry()
-                            .getStack(1))
+                            .getStack(5))
                     .build(consumer, AstralMekanismID.rl(base + "/dirty_compressed_slurry"));
             FluidSlurryToSlurryRecipeBuilder.washing(
                     IngredientCreatorAccess.fluid().from(new FluidStack(Fluids.WATER, 1)),

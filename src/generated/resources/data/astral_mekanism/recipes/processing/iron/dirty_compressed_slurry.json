@@ -10,7 +10,7 @@
     }
   },
   "output": {
-    "amount": 1,
+    "amount": 5,
     "chemicalType": "slurry",
     "slurry": "astral_mekanism:dirty_compressed_iron"
   }
