@@ -46,11 +46,6 @@
                 },
                 {
                   "op": "replace",
-                  "source": "EnergyContainers",
-                  "target": "mekData.EnergyContainers"
-                },
-                {
-                  "op": "replace",
                   "source": "Items",
                   "target": "mekData.Items"
                 }
