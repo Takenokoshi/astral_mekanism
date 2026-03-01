@@ -8,7 +8,10 @@ import astral_mekanism.recipes.output.ItemFluidOutput;
 import astral_mekanism.recipes.recipe.MekanicalTransformRecipe;
 import astral_mekanism.util.AMJsonUtils;
 import mekanism.api.SerializerHelper;
+import mekanism.api.recipes.ingredients.FluidStackIngredient;
 import mekanism.api.recipes.ingredients.ItemStackIngredient;
+import mekanism.api.recipes.ingredients.creator.IFluidStackIngredientCreator;
+import mekanism.api.recipes.ingredients.creator.IItemStackIngredientCreator;
 import mekanism.api.recipes.ingredients.creator.IngredientCreatorAccess;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceLocation;
@@ -28,52 +31,62 @@ public class MekanicalTransformRecipeSerializer<RECIPE extends MekanicalTransfor
 
     @Override
     public RECIPE fromJson(ResourceLocation id, JsonObject json) {
+        IItemStackIngredientCreator creatorI = IngredientCreatorAccess.item();
+        IFluidStackIngredientCreator creatorF = IngredientCreatorAccess.fluid();
         return factory.create(id,
-                IngredientCreatorAccess.item().deserialize(AMJsonUtils.read(json, "itemInputA")),
-                IngredientCreatorAccess.item().deserialize(AMJsonUtils.read(json, "itemInputB")),
-                IngredientCreatorAccess.item().deserialize(AMJsonUtils.read(json, "itemInputC")),
-                IngredientCreatorAccess.item().deserialize(AMJsonUtils.read(json, "itemInputD")),
+                creatorI.deserialize(AMJsonUtils.read(json, "itemInputA")),
+                creatorI.deserialize(AMJsonUtils.read(json, "itemInputB")),
+                creatorI.deserialize(AMJsonUtils.read(json, "itemInputC")),
+                creatorF.deserialize(AMJsonUtils.read(json, "fluidInputA")),
+                creatorF.deserialize(AMJsonUtils.read(json, "fluidInputB")),
                 new ItemFluidOutput(
                         json.has("outputItem") ? SerializerHelper.getItemStack(json, "outputItem") : ItemStack.EMPTY,
                         json.has("outputFluid") ? SerializerHelper.getFluidStack(json, "outputFluid")
                                 : FluidStack.EMPTY),
-                GsonHelper.getAsBoolean(json, "isCatalystA"),
-                GsonHelper.getAsBoolean(json, "isCatalystB"),
-                GsonHelper.getAsBoolean(json, "isCatalystC"),
-                GsonHelper.getAsBoolean(json, "isCatalystD"));
+                GsonHelper.getAsBoolean(json, "itemAIsCatalyst"),
+                GsonHelper.getAsBoolean(json, "itemBIsCatalyst"),
+                GsonHelper.getAsBoolean(json, "itemCIsCatalyst"),
+                GsonHelper.getAsBoolean(json, "fluidAIsCatalyst"),
+                GsonHelper.getAsBoolean(json, "fluidBIsCatalyst"));
     }
 
     @Override
-    public @Nullable RECIPE fromNetwork(ResourceLocation id, FriendlyByteBuf buffer) {
+    public @Nullable RECIPE fromNetwork(ResourceLocation id, FriendlyByteBuf buf) {
+        IItemStackIngredientCreator creatorI = IngredientCreatorAccess.item();
+        IFluidStackIngredientCreator creatorF = IngredientCreatorAccess.fluid();
         return factory.create(id,
-                IngredientCreatorAccess.item().read(buffer),
-                IngredientCreatorAccess.item().read(buffer),
-                IngredientCreatorAccess.item().read(buffer),
-                IngredientCreatorAccess.item().read(buffer),
-                ItemFluidOutput.readFromBuf(buffer),
-                buffer.readBoolean(),
-                buffer.readBoolean(),
-                buffer.readBoolean(),
-                buffer.readBoolean());
+                creatorI.read(buf),
+                creatorI.read(buf),
+                creatorI.read(buf),
+                creatorF.read(buf),
+                creatorF.read(buf),
+                ItemFluidOutput.readFromBuf(buf),
+                buf.readBoolean(),
+                buf.readBoolean(),
+                buf.readBoolean(),
+                buf.readBoolean(),
+                buf.readBoolean());
     }
 
     @Override
-    public void toNetwork(FriendlyByteBuf buffer, RECIPE recipe) {
-        recipe.write(buffer);
+    public void toNetwork(FriendlyByteBuf buf, RECIPE recipe) {
+        recipe.write(buf);
     }
 
     @FunctionalInterface
-    public interface IFactory<RECIPE extends MekanicalTransformRecipe> {
+    public static interface IFactory<RECIPE extends MekanicalTransformRecipe> {
         RECIPE create(ResourceLocation id,
                 ItemStackIngredient inputItemA,
                 ItemStackIngredient inputItemB,
                 ItemStackIngredient inputItemC,
-                ItemStackIngredient inputItemD,
+                FluidStackIngredient inputFluidA,
+                FluidStackIngredient inputFluidB,
                 ItemFluidOutput output,
-                boolean a,
-                boolean b,
-                boolean c,
-                boolean d);
+                boolean ia,
+                boolean ib,
+                boolean ic,
+                boolean fa,
+                boolean fb);
     }
 
 }

@@ -3,7 +3,7 @@ package astral_mekanism.jei.recipeCategory;
 import java.util.List;
 
 import astral_mekanism.recipes.output.ItemFluidOutput;
-import astral_mekanism.recipes.recipe.MekanicalTransformRecipe;
+import astral_mekanism.recipes.recipe.MekanicalTransformOldRecipe;
 import mekanism.api.providers.IItemProvider;
 import mekanism.client.gui.element.bar.GuiVerticalPowerBar;
 import mekanism.client.gui.element.gauge.GaugeType;
@@ -21,7 +21,7 @@ import mezz.jei.api.recipe.IFocusGroup;
 import mezz.jei.api.recipe.RecipeIngredientRole;
 import net.minecraftforge.fluids.FluidStack;
 
-public class MekanicalTransformRecipeCategory extends BaseRecipeCategory<MekanicalTransformRecipe> {
+public class MekanicalTransformRecipeCategory extends BaseRecipeCategory<MekanicalTransformOldRecipe> {
 
     private final GuiSlot inputA;
     private final GuiSlot inputB;
@@ -31,7 +31,7 @@ public class MekanicalTransformRecipeCategory extends BaseRecipeCategory<Mekanic
     private final GuiGauge<FluidStack> outputGauge;
 
     public MekanicalTransformRecipeCategory(IGuiHelper helper,
-            MekanismJEIRecipeType<MekanicalTransformRecipe> recipeType, IItemProvider provider) {
+            MekanismJEIRecipeType<MekanicalTransformOldRecipe> recipeType, IItemProvider provider) {
         super(helper, recipeType, provider, 3, 10, 170, 60);
         inputA = addSlot(SlotType.INPUT, 10, 35);
         inputB = addSlot(SlotType.INPUT, 28, 35);
@@ -47,7 +47,7 @@ public class MekanicalTransformRecipeCategory extends BaseRecipeCategory<Mekanic
     }
 
     @Override
-    public void setRecipe(IRecipeLayoutBuilder builder, MekanicalTransformRecipe recipe, IFocusGroup focusGroup) {
+    public void setRecipe(IRecipeLayoutBuilder builder, MekanicalTransformOldRecipe recipe, IFocusGroup focusGroup) {
         initItem(builder,
                 recipe.isACatalyst() ? RecipeIngredientRole.CATALYST : RecipeIngredientRole.INPUT,
                 inputA, recipe.getInputItemA().getRepresentations());

@@ -541,18 +541,14 @@ public class AstralMekanismMachines {
                     BEItemUnzipper::new,
                     BEItemUnzipper.class,
                     AstralMekanismLang.DESCRIPTION_ITEM_UNZIPPER,
-                    builder -> builder.withEnergyConfig(
-                            () -> FloatingLong.create(1000 * AstralMekanismConfig.energyRate),
-                            () -> FloatingLong.create(100000l * AstralMekanismConfig.energyRate)));
+                    builder -> builder);
 
     public static final MachineRegistryObject<BEMekanicalCharger, BlockTileModel<BEMekanicalCharger, BlockTypeMachine<BEMekanicalCharger>>, MekanismTileContainer<BEMekanicalCharger>, ItemBlockMachine> MEKANICAL_CHARGER = MACHINES
             .registerSimple("mekanical_charger",
                     BEMekanicalCharger::new,
                     BEMekanicalCharger.class,
                     AstralMekanismLang.DESCRIPTION_MEKANICAL_CHARGER,
-                    builder -> builder.withEnergyConfig(
-                            () -> FloatingLong.create(1000 * AstralMekanismConfig.energyRate),
-                            () -> FloatingLong.create(100000l * AstralMekanismConfig.energyRate)));
+                    builder -> builder);
 
     public static final MachineRegistryObject<BEMekanicalInscriber, BlockTileModel<BEMekanicalInscriber, BlockTypeMachine<BEMekanicalInscriber>>, MekanismTileContainer<BEMekanicalInscriber>, ItemBlockMachine> MEKANICAL_INSCRIBER = MACHINES
             .registerSimple("mekanical_inscriber",

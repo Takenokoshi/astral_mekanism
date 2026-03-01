@@ -1,5 +1,5 @@
 {
-    "type": "astral_mekanism:mekanical_transform",
+    "type": "astral_mekanism:old_mekanical_transform",
     "itemInputA": {
         "ingredient": {
             "item": "minecraft:lava_bucket"
@@ -8,25 +8,25 @@
     },
     "itemInputB": {
         "ingredient": {
-            "item":"minecraft:glass"
+            "item": "minecraft:iron_pickaxe"
         },
         "amount": 1
     },
     "itemInputC": {
         "ingredient": {
-            "item": "minecraft:pointed_dripstone"
+            "item": "minecraft:iron_pickaxe"
         },
         "amount": 1
     },
     "itemInputD": {
         "ingredient": {
-            "item": "minecraft:cauldron"
+            "item": "minecraft:water_bucket"
         },
         "amount": 1
     },
-    "outputFluid": {
-        "fluid": "minecraft:lava",
-        "amount": 50
+    "outputItem": {
+        "item": "minecraft:cobblestone",
+        "count": 2
     },
     "isCatalystA": true,
     "isCatalystB": true,

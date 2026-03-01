@@ -6,15 +6,18 @@ import astral_mekanism.recipes.irecipe.FluidInfuserIRecipe;
 import astral_mekanism.recipes.irecipe.GreenhouseIRecipe;
 import astral_mekanism.recipes.irecipe.ItemCompressingIRecipe;
 import astral_mekanism.recipes.irecipe.ItemUnzippingIRecipe;
-import astral_mekanism.recipes.irecipe.SPSIRecipe;
 import astral_mekanism.recipes.irecipe.MekanicalTransformIRecipe;
+import astral_mekanism.recipes.irecipe.SPSIRecipe;
+import astral_mekanism.recipes.irecipe.MekanicalTransformOldIRecipe;
 import astral_mekanism.recipes.recipe.AstralCraftingRecipe;
 import astral_mekanism.recipes.recipe.FluidFluidToFluidRecipe;
 import astral_mekanism.recipes.recipe.GreenhouseRecipe;
+import astral_mekanism.recipes.recipe.MekanicalTransformOldRecipe;
 import astral_mekanism.recipes.recipe.MekanicalTransformRecipe;
 import astral_mekanism.recipes.serializer.AstralCraftingRecipeSerializer;
 import astral_mekanism.recipes.serializer.FluidFluidToFluidRecipeSerializer;
 import astral_mekanism.recipes.serializer.GreenHouseRecipeSerializer;
+import astral_mekanism.recipes.serializer.MekanicalTransformOldRecipeSerializer;
 import astral_mekanism.recipes.serializer.MekanicalTransformRecipeSerializer;
 import mekanism.api.recipes.GasToGasRecipe;
 import mekanism.api.recipes.ItemStackToItemStackRecipe;
@@ -47,6 +50,10 @@ public class AstralMekanismRecipeSerializers {
     public static final RecipeSerializerRegistryObject<MekanicalTransformRecipe> MEKANICAL_TRANSFORM = RECIPE_SERIALIZERS
             .register("mekanical_transform",
                     () -> new MekanicalTransformRecipeSerializer<>(MekanicalTransformIRecipe::new));
+
+    public static final RecipeSerializerRegistryObject<MekanicalTransformOldRecipe> MEKANICAL_TRANSFORM_OLD = RECIPE_SERIALIZERS
+            .register("old_mekanical_transform",
+                    () -> new MekanicalTransformOldRecipeSerializer<>(MekanicalTransformOldIRecipe::new));
 
     public static final RecipeSerializerRegistryObject<ItemStackToItemStackRecipe> ITEM_COMPRESSING = RECIPE_SERIALIZERS
             .register("item_compressing",

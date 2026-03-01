@@ -6,12 +6,14 @@ import astral_mekanism.AstralMekanismID;
 import astral_mekanism.mixin.mekanism.recipe.MekanismRecipeTypeMixin;
 import astral_mekanism.recipes.inputRecipeCache.AMInputRecipeCache;
 import astral_mekanism.recipes.inputRecipeCache.AstralCraftingRecipeCache;
+import astral_mekanism.recipes.inputRecipeCache.MekanicalTransformRecipeCache;
 import astral_mekanism.recipes.inputRecipeCache.AMInputRecipeCache.FluidFluid;
 import astral_mekanism.recipes.inputRecipeCache.AMInputRecipeCache.ItemItemFluid;
 import astral_mekanism.recipes.inputRecipeCache.AMInputRecipeCache.QuadItem;
 import astral_mekanism.recipes.recipe.AstralCraftingRecipe;
 import astral_mekanism.recipes.recipe.FluidFluidToFluidRecipe;
 import astral_mekanism.recipes.recipe.GreenhouseRecipe;
+import astral_mekanism.recipes.recipe.MekanicalTransformOldRecipe;
 import astral_mekanism.recipes.recipe.MekanicalTransformRecipe;
 import mekanism.api.chemical.gas.Gas;
 import mekanism.api.chemical.gas.GasStack;
@@ -61,12 +63,15 @@ public class AstralMekanismRecipeTypes {
     public static final RecipeTypeRegistryObject<AstralCraftingRecipe, AstralCraftingRecipeCache> ASTRAL_CRAFTING = register(
             "astral_crafting", AstralCraftingRecipeCache::new);
 
-    public static final RecipeTypeRegistryObject<MekanicalTransformRecipe, QuadItem<MekanicalTransformRecipe>> MEKANICAL_TRANSFORM = register(
-            "mekanical_transform", rt -> new QuadItem<>(rt,
-                    MekanicalTransformRecipe::getInputItemA,
-                    MekanicalTransformRecipe::getInputItemB,
-                    MekanicalTransformRecipe::getInputItemC,
-                    MekanicalTransformRecipe::getInputItemD));
+    public static final RecipeTypeRegistryObject<MekanicalTransformRecipe, MekanicalTransformRecipeCache> MEKANICAL_TRAMSFORM = register(
+            "mekanical_transform", MekanicalTransformRecipeCache::new);
+
+    public static final RecipeTypeRegistryObject<MekanicalTransformOldRecipe, QuadItem<MekanicalTransformOldRecipe>> MEKANICAL_TRANSFORM_OLD = register(
+            "old_mekanical_transform", rt -> new QuadItem<>(rt,
+                    MekanicalTransformOldRecipe::getInputItemA,
+                    MekanicalTransformOldRecipe::getInputItemB,
+                    MekanicalTransformOldRecipe::getInputItemC,
+                    MekanicalTransformOldRecipe::getInputItemD));
 
     public static final RecipeTypeRegistryObject<ItemStackToItemStackRecipe, SingleItem<ItemStackToItemStackRecipe>> ITEM_COMPRESSING = register(
             "item_compressing", rt -> new SingleItem<>(rt, ItemStackToItemStackRecipe::getInput));

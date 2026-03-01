@@ -10,8 +10,10 @@ import org.jetbrains.annotations.Nullable;
 import appeng.recipes.AERecipeTypes;
 import appeng.recipes.handlers.ChargerRecipe;
 import appeng.recipes.handlers.InscriberRecipe;
+import appeng.recipes.transform.TransformRecipe;
 import astral_mekanism.AstralMekanism;
 import astral_mekanism.generalrecipe.lookup.cache.recipe.InscriberRecipeInputRecipeCache;
+import astral_mekanism.generalrecipe.lookup.cache.recipe.TransformRecipeInputRecipeCache;
 import astral_mekanism.generalrecipe.lookup.cache.recipe.SingleInputGeneralRecipeCache.GeneralSingleItem;
 import mekanism.api.recipes.ingredients.creator.IngredientCreatorAccess;
 import mekanism.api.recipes.ingredients.ItemStackIngredient;
@@ -127,4 +129,6 @@ public class GeneralRecipeType<C extends Container, RECIPE extends Recipe<C>, IN
     public static final GeneralRecipeType<Container, InscriberRecipe, InscriberRecipeInputRecipeCache> INSCRIBE = new GeneralRecipeType<>(
             AERecipeTypes.INSCRIBER, InscriberRecipeInputRecipeCache::new);
 
+    public static final GeneralRecipeType<Container, TransformRecipe, TransformRecipeInputRecipeCache> TRANSFORM = new GeneralRecipeType<>(
+            AERecipeTypes.TRANSFORM, TransformRecipeInputRecipeCache::new);
 }

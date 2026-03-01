@@ -1,35 +1,35 @@
 {
-    "type": "astral_mekanism:mekanical_transform",
+    "type": "astral_mekanism:old_mekanical_transform",
     "itemInputA": {
         "ingredient": {
-            "item": "ae2:charged_certus_quartz_crystal"
+            "item": "minecraft:lava_bucket"
         },
         "amount": 1
     },
     "itemInputB": {
         "ingredient": {
-      "item": "ae2:certus_quartz_dust"
+            "item": "minecraft:iron_pickaxe"
         },
         "amount": 1
     },
     "itemInputC": {
         "ingredient": {
-            "item": "minecraft:water_bucket"
+            "item": "minecraft:soul_soil"
         },
         "amount": 1
     },
     "itemInputD": {
         "ingredient": {
-            "item": "minecraft:water_bucket"
+            "item": "minecraft:blue_ice"
         },
         "amount": 1
     },
     "outputItem": {
-        "count": 2,
-        "item": "ae2:certus_quartz_crystal"
+        "item": "minecraft:basalt",
+        "count": 1
     },
-    "isCatalystA": false,
-    "isCatalystB": false,
+    "isCatalystA": true,
+    "isCatalystB": true,
     "isCatalystC": true,
     "isCatalystD": true
 }

@@ -1,35 +1,35 @@
 {
-    "type": "astral_mekanism:mekanical_transform",
+    "type": "astral_mekanism:old_mekanical_transform",
     "itemInputA": {
         "ingredient": {
-            "item": "ae2:charged_certus_quartz_crystal"
+            "item": "minecraft:lava_bucket"
         },
         "amount": 1
     },
     "itemInputB": {
         "ingredient": {
-            "item": "ae2:fluix_dust"
+            "item":"minecraft:glass"
         },
         "amount": 1
     },
     "itemInputC": {
         "ingredient": {
-            "item": "minecraft:water_bucket"
+            "item": "minecraft:pointed_dripstone"
         },
         "amount": 1
     },
     "itemInputD": {
         "ingredient": {
-            "item": "minecraft:water_bucket"
+            "item": "minecraft:cauldron"
         },
         "amount": 1
     },
-    "outputItem": {
-        "count": 1,
-        "item": "ae2:fluix_crystal"
+    "outputFluid": {
+        "fluid": "minecraft:lava",
+        "amount": 50
     },
-    "isCatalystA": false,
-    "isCatalystB": false,
+    "isCatalystA": true,
+    "isCatalystB": true,
     "isCatalystC": true,
     "isCatalystD": true
 }

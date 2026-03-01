@@ -1,5 +1,5 @@
 {
-    "type": "astral_mekanism:mekanical_transform",
+    "type": "astral_mekanism:old_mekanical_transform",
     "itemInputA": {
         "ingredient": {
             "item": "minecraft:water_bucket"
@@ -8,25 +8,25 @@
     },
     "itemInputB": {
         "ingredient": {
-            "item": "minecraft:dripstone_block"
+            "item": "minecraft:water_bucket"
         },
         "amount": 1
     },
     "itemInputC": {
         "ingredient": {
-            "item": "minecraft:pointed_dripstone"
+            "item": "minecraft:water_bucket"
         },
         "amount": 1
     },
     "itemInputD": {
         "ingredient": {
-            "item": "minecraft:iron_pickaxe"
+            "item": "minecraft:water_bucket"
         },
         "amount": 1
     },
-    "outputItem": {
-        "item": "minecraft:pointed_dripstone",
-        "count": 1
+    "outputFluid": {
+        "fluid": "minecraft:water",
+        "amount": 2147483647
     },
     "isCatalystA": true,
     "isCatalystB": true,

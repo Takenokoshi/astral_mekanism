@@ -1,20 +1,20 @@
 {
-    "type": "astral_mekanism:mekanical_transform",
+    "type": "astral_mekanism:old_mekanical_transform",
     "itemInputA": {
         "ingredient": {
-            "item": "minecraft:lava_bucket"
+            "item": "minecraft:bucket"
         },
         "amount": 1
     },
     "itemInputB": {
         "ingredient": {
-            "item": "minecraft:iron_pickaxe"
+            "item": "mekanism:upgrade_filter"
         },
         "amount": 1
     },
     "itemInputC": {
         "ingredient": {
-            "item": "minecraft:iron_pickaxe"
+            "item": "mekanism:electric_pump"
         },
         "amount": 1
     },
@@ -24,9 +24,9 @@
         },
         "amount": 1
     },
-    "outputItem": {
-        "item": "minecraft:cobblestone",
-        "count": 2
+    "outputFluid": {
+        "fluid": "mekanism:heavy_water",
+        "amount": 21
     },
     "isCatalystA": true,
     "isCatalystB": true,

@@ -82,7 +82,7 @@ public class AstralMekanismJEIPlugin implements IModPlugin {
         RecipeRegistryHelper.register(registry, AstralMekanismJEIRecipeType.ASTRAL_CRAFTING,
                 AstralMekanismRecipeTypes.ASTRAL_CRAFTING);
         RecipeRegistryHelper.register(registry, AstralMekanismJEIRecipeType.MEKANICAL_TRANSFORM,
-                AstralMekanismRecipeTypes.MEKANICAL_TRANSFORM);
+                AstralMekanismRecipeTypes.MEKANICAL_TRANSFORM_OLD);
         RecipeRegistryHelper.register(registry, AstralMekanismJEIRecipeType.GREENHOUSE_RECIPE,
                 AstralMekanismRecipeTypes.GREENHOUSE_RECIPE);
         RecipeRegistryHelper.register(registry, AstralMekanismJEIRecipeType.ITEM_COMPRESSING,

@@ -6,11 +6,11 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import astral_mekanism.block.blockentity.interf.IMekanicalTransformer;
-import astral_mekanism.recipes.cachedRecipe.MekanicalTransformCachedRecipe;
+import astral_mekanism.recipes.cachedRecipe.MekanicalTransformOldCachedRecipe;
 import astral_mekanism.recipes.inputRecipeCache.AMInputRecipeCache.QuadItem;
 import astral_mekanism.recipes.output.AMOutputHelper;
 import astral_mekanism.recipes.output.ItemFluidOutput;
-import astral_mekanism.recipes.recipe.MekanicalTransformRecipe;
+import astral_mekanism.recipes.recipe.MekanicalTransformOldRecipe;
 import astral_mekanism.registries.AstralMekanismRecipeTypes;
 import mekanism.api.IContentsListener;
 import mekanism.api.RelativeSide;
@@ -48,7 +48,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.state.BlockState;
 
-public class BEMekanicalTransformer extends TileEntityProgressMachine<MekanicalTransformRecipe>
+public class BEMekanicalTransformer extends TileEntityProgressMachine<MekanicalTransformOldRecipe>
         implements IMekanicalTransformer<BEMekanicalTransformer> {
 
     public static final RecipeError NOT_ENOUGH_INPUT_A = RecipeError.create();
@@ -166,13 +166,13 @@ public class BEMekanicalTransformer extends TileEntityProgressMachine<MekanicalT
     }
 
     @Override
-    public @NotNull IMekanismRecipeTypeProvider<MekanicalTransformRecipe, QuadItem<MekanicalTransformRecipe>> getRecipeType() {
-        return AstralMekanismRecipeTypes.MEKANICAL_TRANSFORM;
+    public @NotNull IMekanismRecipeTypeProvider<MekanicalTransformOldRecipe, QuadItem<MekanicalTransformOldRecipe>> getRecipeType() {
+        return AstralMekanismRecipeTypes.MEKANICAL_TRANSFORM_OLD;
     }
 
     @Override
-    public @NotNull CachedRecipe<MekanicalTransformRecipe> createNewCachedRecipe(@NotNull MekanicalTransformRecipe recipe, int arg1) {
-        return new MekanicalTransformCachedRecipe(recipe, recheckAllRecipeErrors,
+    public @NotNull CachedRecipe<MekanicalTransformOldRecipe> createNewCachedRecipe(@NotNull MekanicalTransformOldRecipe recipe, int arg1) {
+        return new MekanicalTransformOldCachedRecipe(recipe, recheckAllRecipeErrors,
                 inputHandlerA, inputHandlerB, inputHandlerC, inputHandlerD, outputHandler)
                 .setErrorsChanged(this::onErrorsChanged)
                 .setCanHolderFunction(() -> MekanismUtils.canFunction(this))
@@ -184,7 +184,7 @@ public class BEMekanicalTransformer extends TileEntityProgressMachine<MekanicalT
     }
 
     @Override
-    public @Nullable MekanicalTransformRecipe getRecipe(int arg0) {
+    public @Nullable MekanicalTransformOldRecipe getRecipe(int arg0) {
         return findFirstRecipe(inputHandlerA, inputHandlerB, inputHandlerC, inputHandlerD);
     }
 

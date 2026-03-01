@@ -4,7 +4,7 @@ import org.jetbrains.annotations.NotNull;
 
 import astral_mekanism.block.blockentity.interf.IMekanicalTransformer;
 import astral_mekanism.jei.AstralMekanismJEIRecipeType;
-import astral_mekanism.recipes.recipe.MekanicalTransformRecipe;
+import astral_mekanism.recipes.recipe.MekanicalTransformOldRecipe;
 import mekanism.api.recipes.cache.CachedRecipe.OperationTracker.RecipeError;
 import mekanism.client.gui.GuiConfigurableTile;
 import mekanism.client.gui.element.bar.GuiVerticalPowerBar;
@@ -20,7 +20,7 @@ import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.player.Inventory;
 
-public class GuiMekanicalTransformer<BE extends TileEntityRecipeMachine<MekanicalTransformRecipe> & IMekanicalTransformer<BE>>
+public class GuiMekanicalTransformer<BE extends TileEntityRecipeMachine<MekanicalTransformOldRecipe> & IMekanicalTransformer<BE>>
         extends GuiConfigurableTile<BE, MekanismTileContainer<BE>> {
 
     public GuiMekanicalTransformer(MekanismTileContainer<BE> container, Inventory inv, Component title) {

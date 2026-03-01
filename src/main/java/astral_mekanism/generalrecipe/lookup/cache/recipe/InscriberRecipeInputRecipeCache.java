@@ -11,7 +11,6 @@ import org.jetbrains.annotations.Nullable;
 import appeng.recipes.handlers.InscriberRecipe;
 import astral_mekanism.generalrecipe.IUnifiedRecipeType;
 import astral_mekanism.generalrecipe.lookup.cache.type.ItemGeneralInputCache;
-import mekanism.api.recipes.ingredients.ItemStackIngredient;
 import mekanism.api.recipes.ingredients.creator.IItemStackIngredientCreator;
 import mekanism.api.recipes.ingredients.creator.IngredientCreatorAccess;
 import net.minecraft.world.Container;
@@ -21,38 +20,23 @@ import net.minecraft.world.level.Level;
 
 public class InscriberRecipeInputRecipeCache extends GeneralInputRecipeCache<Container, InscriberRecipe> {
 
-    private final Set<InscriberRecipe> recipes;
     private final Set<InscriberRecipe> complexRecipes;
     private final Set<InscriberRecipe> complexRecipesTop;
     private final Set<InscriberRecipe> complexRecipesMiddle;
     private final Set<InscriberRecipe> complexRecipesBottom;
-    private final Function<InscriberRecipe, ItemStackIngredient> topInputExtractor;
-    private final Function<InscriberRecipe, ItemStackIngredient> middleInputExtractor;
-    private final Function<InscriberRecipe, ItemStackIngredient> bottomInputExtractor;
     private final ItemGeneralInputCache<InscriberRecipe> cacheTop;
     private final ItemGeneralInputCache<InscriberRecipe> cacheMiddle;
     private final ItemGeneralInputCache<InscriberRecipe> cacheBottom;
 
     public InscriberRecipeInputRecipeCache(IUnifiedRecipeType<InscriberRecipe, ?> recipeType) {
         super(recipeType);
-        IItemStackIngredientCreator creator = IngredientCreatorAccess.item();
         this.complexRecipes = new HashSet<>();
         this.complexRecipesTop = new HashSet<>();
         this.complexRecipesMiddle = new HashSet<>();
         this.complexRecipesBottom = new HashSet<>();
-        this.topInputExtractor = recipe -> recipe.getTopOptional().isEmpty()
-                ? null
-                : creator.from(recipe.getTopOptional());
-        this.middleInputExtractor = recipe -> recipe.getMiddleInput().isEmpty()
-                ? null
-                : creator.from(recipe.getMiddleInput());
-        this.bottomInputExtractor = recipe -> recipe.getBottomOptional().isEmpty()
-                ? null
-                : creator.from(recipe.getBottomOptional());
         this.cacheTop = new ItemGeneralInputCache<>();
         this.cacheMiddle = new ItemGeneralInputCache<>();
         this.cacheBottom = new ItemGeneralInputCache<>();
-        recipes = new HashSet<>();
     }
 
     public boolean containsInputTop(Level world, ItemStack input) {

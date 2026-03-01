@@ -5,7 +5,7 @@ import astral_mekanism.AstralMekanismID;
 import astral_mekanism.recipes.recipe.AstralCraftingRecipe;
 import astral_mekanism.recipes.recipe.FluidFluidToFluidRecipe;
 import astral_mekanism.recipes.recipe.GreenhouseRecipe;
-import astral_mekanism.recipes.recipe.MekanicalTransformRecipe;
+import astral_mekanism.recipes.recipe.MekanicalTransformOldRecipe;
 import astral_mekanism.registries.AstralMekanismMachines;
 import mekanism.api.recipes.GasToGasRecipe;
 import mekanism.api.recipes.ItemStackToItemStackRecipe;
@@ -20,8 +20,8 @@ public final class AstralMekanismJEIRecipeType {
             AstralMekanismMachines.COMPACT_SPS, GasToGasRecipe.class);
     public static final MekanismJEIRecipeType<AstralCraftingRecipe> ASTRAL_CRAFTING = new MekanismJEIRecipeType<>(
             AstralMekanismMachines.ASTRAL_CRAFTER, AstralCraftingRecipe.class);
-    public static final MekanismJEIRecipeType<MekanicalTransformRecipe> MEKANICAL_TRANSFORM = new MekanismJEIRecipeType<>(
-            AstralMekanismMachines.MEKANICAL_TRANSFORMER, MekanicalTransformRecipe.class);
+    public static final MekanismJEIRecipeType<MekanicalTransformOldRecipe> MEKANICAL_TRANSFORM = new MekanismJEIRecipeType<>(
+            AstralMekanismMachines.MEKANICAL_TRANSFORMER, MekanicalTransformOldRecipe.class);
     public static final MekanismJEIRecipeType<GreenhouseRecipe> GREENHOUSE_RECIPE = new MekanismJEIRecipeType<>(
             AstralMekanismMachines.GREENHOUSE, GreenhouseRecipe.class);
     public static final MekanismJEIRecipeType<ItemStackToItemStackRecipe> ITEM_COMPRESSING = new MekanismJEIRecipeType<>(
