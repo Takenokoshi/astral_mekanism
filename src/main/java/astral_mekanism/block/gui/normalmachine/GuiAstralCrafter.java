@@ -3,7 +3,7 @@ package astral_mekanism.block.gui.normalmachine;
 import org.jetbrains.annotations.NotNull;
 
 import astral_mekanism.block.blockentity.normalmachine.BEAstralCrafter;
-import astral_mekanism.block.container.normal_machine.ContainerAstralCrafter;
+import astral_mekanism.block.container.normalmachine.ContainerAstralCrafter;
 import mekanism.api.recipes.cache.CachedRecipe.OperationTracker.RecipeError;
 import mekanism.client.gui.GuiConfigurableTile;
 import mekanism.client.gui.element.bar.GuiVerticalPowerBar;

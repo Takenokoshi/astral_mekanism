@@ -28,6 +28,7 @@ import astral_mekanism.block.blockentity.normalmachine.BEItemUnzipper;
 import astral_mekanism.block.blockentity.normalmachine.BEMekanicalCharger;
 import astral_mekanism.block.blockentity.normalmachine.BEMekanicalInscriber;
 import astral_mekanism.block.blockentity.normalmachine.BEMekanicalTransformer;
+import astral_mekanism.block.blockentity.normalmachine.BETransformer;
 import astral_mekanism.block.blockentity.other.BEItemSortableStorage;
 import astral_mekanism.block.blockentity.other.BEUniversalStorage;
 import astral_mekanism.block.container.other.ContainerItemSortableStorage;
@@ -58,6 +59,7 @@ import astral_mekanism.block.gui.normalmachine.GuiInfuseSynthesizer;
 import astral_mekanism.block.gui.normalmachine.GuiMekanicalCharger;
 import astral_mekanism.block.gui.normalmachine.GuiMekanicalInscriber;
 import astral_mekanism.block.gui.normalmachine.GuiMekanicalTransformer;
+import astral_mekanism.block.gui.normalmachine.GuiTransformer;
 import astral_mekanism.block.gui.prefab.GuiAbstractStorage;
 import astral_mekanism.block.gui.prefab.GuiDoubleItemToItemRecipeMachine;
 import astral_mekanism.block.gui.prefab.GuiGasToGasBlock;
@@ -167,6 +169,7 @@ public class AstralMekanismClient {
             regScreen(AstralMekanismMachines.MEKANICAL_INSCRIBER, GuiMekanicalInscriber<BEMekanicalInscriber>::new);
             regScreen(AstralMekanismMachines.MEKANICAL_TRANSFORMER,
                     GuiMekanicalTransformer<BEMekanicalTransformer>::new);
+            regScreen(AstralMekanismMachines.TRANSFORMER, GuiTransformer<BETransformer>::new);
             regScreen(AstralMekanismMachines.UNIVERSAL_STORAGE,
                     GuiAbstractStorage<BEUniversalStorage, ContainerAbstractStorage<BEUniversalStorage>>::new);
             regScreen(AstralMekanismMachines.ITEM_SORTABLE_STORAGE,

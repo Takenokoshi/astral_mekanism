@@ -6,6 +6,7 @@ import astral_mekanism.network.to_server.PacketGuiCompactTEP;
 import astral_mekanism.network.to_server.PacketGuiEssentialSmelter;
 import astral_mekanism.network.to_server.PacketGuiProgressFactory;
 import astral_mekanism.network.to_server.PacketGuiSetLong;
+import astral_mekanism.network.to_server.PacketGuiTransformerMode;
 import mekanism.common.network.BasePacketHandler;
 import net.minecraftforge.network.simple.SimpleChannel;
 
@@ -25,6 +26,7 @@ public class AstralMekanismPacketHandler extends BasePacketHandler {
         registerClientToServer(PacketGuiEssentialSmelter.class, PacketGuiEssentialSmelter::decode);
         registerClientToServer(PacketGuiCompactTEP.class, PacketGuiCompactTEP::decode);
         registerClientToServer(PacketGuiProgressFactory.class, PacketGuiProgressFactory::decode);
+        registerClientToServer(PacketGuiTransformerMode.class, PacketGuiTransformerMode::decode);
     }
 
 }

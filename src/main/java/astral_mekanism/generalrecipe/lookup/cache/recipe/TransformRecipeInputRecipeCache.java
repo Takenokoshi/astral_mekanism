@@ -49,7 +49,7 @@ public class TransformRecipeInputRecipeCache extends GeneralInputRecipeCache<Con
     }
 
     public boolean containsInputFluid(Level world, FluidStack stack) {
-        if (cacheFluid.isEmpty(stack)) {
+        if (stack.isEmpty()) {
             return false;
         }
         initCacheIfNeeded(world);
@@ -59,7 +59,7 @@ public class TransformRecipeInputRecipeCache extends GeneralInputRecipeCache<Con
     }
 
     public boolean containsInputFirst(Level world, ItemStack stack) {
-        if (cacheFirst.isEmpty(stack)) {
+        if (stack.isEmpty()) {
             return false;
         }
         initCacheIfNeeded(world);
@@ -73,7 +73,7 @@ public class TransformRecipeInputRecipeCache extends GeneralInputRecipeCache<Con
     }
 
     public boolean containsInputSecond(Level world, ItemStack stack) {
-        if (cacheSecond.isEmpty(stack)) {
+        if (stack.isEmpty()) {
             return false;
         }
         initCacheIfNeeded(world);
@@ -87,7 +87,7 @@ public class TransformRecipeInputRecipeCache extends GeneralInputRecipeCache<Con
     }
 
     public boolean containsInputThird(Level world, ItemStack stack) {
-        if (cacheThird.isEmpty(stack)) {
+        if (stack.isEmpty()) {
             return false;
         }
         initCacheIfNeeded(world);

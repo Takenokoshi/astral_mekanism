@@ -54,10 +54,12 @@ import astral_mekanism.block.blockentity.normalmachine.BEItemUnzipper;
 import astral_mekanism.block.blockentity.normalmachine.BEMekanicalCharger;
 import astral_mekanism.block.blockentity.normalmachine.BEMekanicalInscriber;
 import astral_mekanism.block.blockentity.normalmachine.BEMekanicalTransformer;
+import astral_mekanism.block.blockentity.normalmachine.BETransformer;
 import astral_mekanism.block.blockentity.other.BEItemSortableStorage;
 import astral_mekanism.block.blockentity.other.BEUniversalStorage;
 import astral_mekanism.block.container.factory.ContainerAstralMekanismFactory;
-import astral_mekanism.block.container.normal_machine.ContainerAstralCrafter;
+import astral_mekanism.block.container.normalmachine.ContainerAstralCrafter;
+import astral_mekanism.block.container.normalmachine.ContainerTransformer;
 import astral_mekanism.block.container.other.ContainerItemSortableStorage;
 import astral_mekanism.block.container.prefab.ContainerAbstractStorage;
 import astral_mekanism.block.container.prefab.ContainerPagedMachine;
@@ -541,14 +543,18 @@ public class AstralMekanismMachines {
                     BEItemUnzipper::new,
                     BEItemUnzipper.class,
                     AstralMekanismLang.DESCRIPTION_ITEM_UNZIPPER,
-                    builder -> builder);
+                    builder -> builder.withEnergyConfig(
+                            () -> FloatingLong.create(1000 * AstralMekanismConfig.energyRate),
+                            () -> FloatingLong.create(100000l * AstralMekanismConfig.energyRate)));
 
     public static final MachineRegistryObject<BEMekanicalCharger, BlockTileModel<BEMekanicalCharger, BlockTypeMachine<BEMekanicalCharger>>, MekanismTileContainer<BEMekanicalCharger>, ItemBlockMachine> MEKANICAL_CHARGER = MACHINES
             .registerSimple("mekanical_charger",
                     BEMekanicalCharger::new,
                     BEMekanicalCharger.class,
                     AstralMekanismLang.DESCRIPTION_MEKANICAL_CHARGER,
-                    builder -> builder);
+                    builder -> builder.withEnergyConfig(
+                            () -> FloatingLong.create(1000 * AstralMekanismConfig.energyRate),
+                            () -> FloatingLong.create(100000l * AstralMekanismConfig.energyRate)));
 
     public static final MachineRegistryObject<BEMekanicalInscriber, BlockTileModel<BEMekanicalInscriber, BlockTypeMachine<BEMekanicalInscriber>>, MekanismTileContainer<BEMekanicalInscriber>, ItemBlockMachine> MEKANICAL_INSCRIBER = MACHINES
             .registerSimple("mekanical_inscriber",
@@ -567,6 +573,16 @@ public class AstralMekanismMachines {
                     builder -> builder.withEnergyConfig(
                             () -> MekanismConfig.usage.electricPump.get().multiply(2.1)
                                     .multiply(AstralMekanismConfig.energyRate),
+                            () -> FloatingLong.create(100000l * AstralMekanismConfig.energyRate)));
+
+    public static final MachineRegistryObject<BETransformer, BlockTileModel<BETransformer, BlockTypeMachine<BETransformer>>, ContainerTransformer<BETransformer>, ItemBlockMachine> TRANSFORMER = MACHINES
+            .registerDefaultBlockItem("transformer",
+                    BETransformer::new,
+                    BETransformer.class,
+                    ContainerTransformer<BETransformer>::new,
+                    AstralMekanismLang.DESCRIPTION_MEKANICAL_TRANSFORMER,
+                    builder -> builder.withEnergyConfig(
+                            () -> FloatingLong.create(1000 * AstralMekanismConfig.energyRate),
                             () -> FloatingLong.create(100000l * AstralMekanismConfig.energyRate)));
 
     public static final MachineRegistryObject<BEUniversalStorage, BlockTileModel<BEUniversalStorage, BlockTypeMachine<BEUniversalStorage>>, ContainerAbstractStorage<BEUniversalStorage>, ItemBlockMachine> UNIVERSAL_STORAGE = MACHINES

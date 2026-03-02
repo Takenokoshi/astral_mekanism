@@ -1,4 +1,4 @@
-package astral_mekanism.block.container.normal_machine;
+package astral_mekanism.block.container.normalmachine;
 
 import org.jetbrains.annotations.NotNull;
 

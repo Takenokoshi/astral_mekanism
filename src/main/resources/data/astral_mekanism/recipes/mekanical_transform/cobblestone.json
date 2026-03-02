@@ -1,0 +1,35 @@
+{
+    "type": "astral_mekanism:mekanical_transform",
+    "itemInputA": {
+        "ingredient": {
+            "tag": "minecraft:pickaxes"
+        }
+    },
+    "itemInputB": {
+        "ingredient": {
+            "tag": "minecraft:pickaxes"
+        }
+    },
+    "itemInputC": {
+        "ingredient": {
+            "tag": "minecraft:pickaxes"
+        }
+    },
+    "fluidInputA": {
+        "tag": "minecraft:water",
+        "amount": 1000
+    },
+    "fluidInputB": {
+        "fluid": "minecraft:lava",
+        "amount": 1000
+    },
+    "outputItem": {
+        "item": "minecraft:cobblestone",
+        "count": 4
+    },
+    "itemAIsCatalyst": true,
+    "itemBIsCatalyst": true,
+    "itemCIsCatalyst": true,
+    "fluidAIsCatalyst": true,
+    "fluidBIsCatalyst": true
+}

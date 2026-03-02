@@ -12,7 +12,7 @@ import astral_mekanism.block.blockentity.elements.AstralMekDataType;
 import astral_mekanism.block.blockentity.elements.ExtendedComponentEjector;
 import astral_mekanism.generalrecipe.GeneralRecipeType;
 import astral_mekanism.generalrecipe.IUnifiedRecipeTypeProvider;
-import astral_mekanism.generalrecipe.cachedrecipe.ICachedRecipe;
+import astral_mekanism.generalrecipe.cachedrecipe.GeneralCachedRecipe;
 import astral_mekanism.generalrecipe.cachedrecipe.TransformCachedRecipe;
 import astral_mekanism.generalrecipe.cachedrecipe.TransformCachedRecipe.TransformItemOutputHandler;
 import astral_mekanism.generalrecipe.lookup.cache.recipe.TransformRecipeInputRecipeCache;
@@ -26,6 +26,7 @@ import astral_mekanism.recipes.output.ItemFluidOutput;
 import astral_mekanism.recipes.recipe.MekanicalTransformRecipe;
 import astral_mekanism.registries.AstralMekanismRecipeTypes;
 import mekanism.api.IContentsListener;
+import mekanism.api.fluid.IExtendedFluidTank;
 import mekanism.api.providers.IBlockProvider;
 import mekanism.api.recipes.cache.CachedRecipe;
 import mekanism.api.recipes.cache.CachedRecipe.OperationTracker.RecipeError;
@@ -89,7 +90,7 @@ public abstract class BEAbstractTransformer extends TileEntityConfigurableMachin
     protected BasicFluidTank inputTankB;
     protected OutputInventorySlot outputSlot;
     protected BasicFluidTank outputTank;
-    protected MachineEnergyContainer<BEAbstractTransformer> energyContainer;
+    public MachineEnergyContainer<BEAbstractTransformer> energyContainer;
     protected EnergyInventorySlot energySlot;
     protected FluidInventorySlot fluidSlotIA;
     protected OutputInventorySlot fluidSlotOA;
@@ -338,12 +339,37 @@ public abstract class BEAbstractTransformer extends TileEntityConfigurableMachin
         return () -> trackedErrors[errorIndex];
     }
 
+    public double getScaledProgress() {
+        return this.getActive() ? 1 : 0;
+    }
+
+    public IExtendedFluidTank getInputTankA() {
+        return inputTankA;
+    }
+
+    public IExtendedFluidTank getInputTankB() {
+        return inputTankB;
+    }
+
+    public IExtendedFluidTank getOutputTank() {
+        return outputTank;
+    }
+
+    public List<IExtendedFluidTank> getFluidTanks() {
+        return List.of(inputTankA, inputTankB, outputTank);
+    }
+
     protected abstract int fluidTankCapacity();
 
-    protected abstract ICachedRecipe<TransformRecipe> consumeCachedRecipe(ICachedRecipe<TransformRecipe> cachedRecipe);
+    protected abstract GeneralCachedRecipe<TransformRecipe> operateCachedRecipe(
+            GeneralCachedRecipe<TransformRecipe> cachedRecipe);
 
-    protected abstract CachedRecipe<MekanicalTransformRecipe> consumeCachedRecipe(
+    protected abstract CachedRecipe<MekanicalTransformRecipe> operateCachedRecipe(
             CachedRecipe<MekanicalTransformRecipe> cachedRecipe);
+
+    public int getSavedOperatingTicks(int cacheIndex) {
+        return 0;
+    };
 
     public static class AE2TransformRecipeLookUpObject
             implements IUnifiedRecipeTypedLookupHandler<TransformRecipe, TransformRecipeInputRecipeCache> {
@@ -367,9 +393,9 @@ public abstract class BEAbstractTransformer extends TileEntityConfigurableMachin
         }
 
         @Override
-        public @NotNull ICachedRecipe<TransformRecipe> createNewCachedRecipe(@NotNull TransformRecipe recipe,
+        public @NotNull GeneralCachedRecipe<TransformRecipe> createNewCachedRecipe(@NotNull TransformRecipe recipe,
                 int cacheIndex) {
-            ICachedRecipe<TransformRecipe> cachedRecipe = new TransformCachedRecipe(recipe,
+            GeneralCachedRecipe<TransformRecipe> cachedRecipe = new TransformCachedRecipe(recipe,
                     transformer.recheckAllRecipeErrors,
                     transformer.inputHandlerIA, transformer.inputHandlerIB, transformer.inputHandlerIC,
                     transformer.inputHandlerFA, outputHandler)
@@ -378,7 +404,7 @@ public abstract class BEAbstractTransformer extends TileEntityConfigurableMachin
                     .setActive(transformer::setActive)
                     .setEnergyRequirements(transformer.energyContainer::getEnergyPerTick, transformer.energyContainer)
                     .setOnFinish(transformer::markForSave);
-            return transformer.consumeCachedRecipe(cachedRecipe);
+            return transformer.operateCachedRecipe(cachedRecipe);
         }
 
         @Override
@@ -390,6 +416,11 @@ public abstract class BEAbstractTransformer extends TileEntityConfigurableMachin
         public @NotNull IUnifiedRecipeTypeProvider<TransformRecipe, TransformRecipeInputRecipeCache> getRecipeType() {
             return GeneralRecipeType.TRANSFORM;
         }
+
+        @Override
+        public int getSavedOperatingTicks(int cacheIndex) {
+            return transformer.getSavedOperatingTicks(cacheIndex);
+        };
 
         public boolean containsInputIA(ItemStack input) {
             return getRecipeType().getInputCache().containsInputFirst(getHandlerWorld(), input);
@@ -470,13 +501,18 @@ public abstract class BEAbstractTransformer extends TileEntityConfigurableMachin
                     .setActive(transformer::setActive)
                     .setEnergyRequirements(transformer.energyContainer::getEnergyPerTick, transformer.energyContainer)
                     .setOnFinish(transformer::markForSave);
-            return transformer.consumeCachedRecipe(cachedRecipe);
+            return transformer.operateCachedRecipe(cachedRecipe);
         }
 
         @Override
         public void onContentsChanged() {
             transformer.onContentsChanged();
         }
+
+        @Override
+        public int getSavedOperatingTicks(int cacheIndex) {
+            return transformer.getSavedOperatingTicks(cacheIndex);
+        };
 
     }
 
