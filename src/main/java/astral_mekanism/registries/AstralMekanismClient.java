@@ -12,6 +12,7 @@ import astral_mekanism.block.blockentity.astralmachine.BEAstralMekanicalCharger;
 import astral_mekanism.block.blockentity.astralmachine.BEAstralMekanicalInscriber;
 import astral_mekanism.block.blockentity.astralmachine.BEAstralMekanicalTransformer;
 import astral_mekanism.block.blockentity.astralmachine.BEAstralSPS;
+import astral_mekanism.block.blockentity.astralmachine.BEAstralTransformer;
 import astral_mekanism.block.blockentity.astralmachine.advanced.BEAstralChemicalInjectionChamber;
 import astral_mekanism.block.blockentity.astralmachine.advanced.BEAstralOsmiumCompressor;
 import astral_mekanism.block.blockentity.astralmachine.advanced.BEAstralPurificationChamber;
@@ -137,6 +138,7 @@ public class AstralMekanismClient {
             regScreen(AstralMekanismMachines.ASTRAL_PRECISION_SAWMILL, GuiAstralPrecisionSawmill::new);
             regScreen(AstralMekanismMachines.ASTRAL_ROTARY_CONDENSENTRATOR, GuiAstralRotaryCondensentrator::new);
             regScreen(AstralMekanismMachines.ASTRAL_SPS, GuiGasToGasMachine<BEAstralSPS>::new);
+            regScreen(AstralMekanismMachines.ASTRAL_TRANSFORMER, GuiTransformer<BEAstralTransformer>::new);
             for (AstralMekanismTier tier : AstralMekanismTier.values()) {
                 regScreen(AstralMekanismMachines.COMPACT_FIR.get(tier), GuiCompactFissionReactor::new);
             }

@@ -2,17 +2,17 @@
     "type": "astral_mekanism:mekanical_transform",
     "itemInputA": {
         "ingredient": {
-            "tag": "minecraft:pickaxes"
+            "item": "minecraft:diamond_pickaxe"
         }
     },
     "itemInputB": {
         "ingredient": {
-            "tag": "minecraft:pickaxes"
+            "item": "minecraft:diamond_pickaxe"
         }
     },
     "itemInputC": {
         "ingredient": {
-            "tag": "minecraft:pickaxes"
+            "item": "minecraft:diamond_pickaxe"
         }
     },
     "fluidInputA": {

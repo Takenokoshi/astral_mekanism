@@ -34,23 +34,23 @@ public class GuiTransformer<BE extends BEAbstractTransformer>
     protected void addGuiElements() {
         super.addGuiElements();
         addRenderableWidget(new GuiFluidGauge(tile::getInputTankA, tile::getFluidTanks,
-                GaugeType.STANDARD, this, 45, 30))
+                GaugeType.STANDARD, this, 27, 10))
                 .warning(WarningType.NO_MATCHING_RECIPE,
                         tile.getWarningCheck(BEAbstractTransformer.NOT_ENOUGH_INPUT_FA));
         addRenderableWidget(new GuiFluidGauge(tile::getInputTankB, tile::getFluidTanks,
-                GaugeType.STANDARD, this, 81, 10))
+                GaugeType.STANDARD, this, 63, 10))
                 .warning(WarningType.NO_MATCHING_RECIPE,
                         tile.getWarningCheck(BEAbstractTransformer.NOT_ENOUGH_INPUT_FB));
         addRenderableWidget(new GuiFluidGauge(tile::getOutputTank, tile::getFluidTanks,
-                GaugeType.STANDARD, this, 153, 10))
+                GaugeType.STANDARD, this, 142, 10))
                 .warning(WarningType.NO_MATCHING_RECIPE,
                         tile.getWarningCheck(RecipeError.NOT_ENOUGH_OUTPUT_SPACE));
-        addRenderableWidget(new GuiProgress(tile::getScaledProgress, ProgressType.BAR, this, 118, 38))
+        addRenderableWidget(new GuiProgress(tile::getScaledProgress, ProgressType.BAR, this, 100, 38))
                 .warning(WarningType.INPUT_DOESNT_PRODUCE_OUTPUT,
                         tile.getWarningCheck(RecipeError.INPUT_DOESNT_PRODUCE_OUTPUT));
-        addRenderableWidget(new GuiVerticalPowerBar(this, tile.energyContainer, 200, 15))
+        addRenderableWidget(new GuiVerticalPowerBar(this, tile.energyContainer, 200, 25))
                 .warning(WarningType.NOT_ENOUGH_ENERGY, tile.getWarningCheck(RecipeError.NOT_ENOUGH_ENERGY));
-        addRenderableWidget(new MekanismImageButton(this, 118, 16, 18, 18, 16, 16,
+        addRenderableWidget(new MekanismImageButton(this, 100, 16, 18, 18, 16, 16,
                 new ResourceLocation("minecraft", "textures/block/lever.png"), this::onPush));
     }
 
@@ -58,6 +58,8 @@ public class GuiTransformer<BE extends BEAbstractTransformer>
     protected void drawForegroundText(@NotNull GuiGraphics guiGraphics, int mouseX, int mouseY) {
         renderTitleText(guiGraphics);
         drawString(guiGraphics, playerInventoryTitle, inventoryLabelX, inventoryLabelY, titleTextColor());
+        drawString(guiGraphics, Component.literal("Mode:" + (tile.getMode() ? "Mekanical Transform" : "AE2 Transform")),
+                imageWidth / 2, inventoryLabelY, titleTextColor());
         super.drawForegroundText(guiGraphics, mouseX, mouseY);
     }
 

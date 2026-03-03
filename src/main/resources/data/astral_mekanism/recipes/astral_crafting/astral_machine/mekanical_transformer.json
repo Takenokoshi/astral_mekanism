@@ -75,7 +75,7 @@
     "itemInputC3": {
         "amount": 1,
         "ingredient": {
-            "item": "astral_mekanism:mekanical_transformer"
+            "item": "astral_mekanism:transformer"
         }
     },
     "itemInputC4": {
@@ -159,7 +159,7 @@
         "amount": 10000
     },
     "output": {
-        "item": "astral_mekanism:astral_mekanical_transformer",
+        "item": "astral_mekanism:astral_transformer",
         "count": 1
     }
 }

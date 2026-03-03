@@ -29,6 +29,7 @@ import astral_mekanism.block.blockentity.astralmachine.BEAstralPRC;
 import astral_mekanism.block.blockentity.astralmachine.BEAstralPrecisionSawmill;
 import astral_mekanism.block.blockentity.astralmachine.BEAstralRotaryCondensentrator;
 import astral_mekanism.block.blockentity.astralmachine.BEAstralSPS;
+import astral_mekanism.block.blockentity.astralmachine.BEAstralTransformer;
 import astral_mekanism.block.blockentity.astralmachine.advanced.BEAstralChemicalInjectionChamber;
 import astral_mekanism.block.blockentity.astralmachine.advanced.BEAstralOsmiumCompressor;
 import astral_mekanism.block.blockentity.astralmachine.advanced.BEAstralPurificationChamber;
@@ -403,6 +404,17 @@ public class AstralMekanismMachines {
                             .withSound(MekanismSounds.SPS)
                             .removeAttributeUpgrade()
                             .withSupportedUpgrades(EnumSet.of(Upgrade.MUFFLING)));
+
+    public static final MachineRegistryObject<BEAstralTransformer, BlockTileModel<BEAstralTransformer, BlockTypeMachine<BEAstralTransformer>>, ContainerTransformer<BEAstralTransformer>, ItemBlockMachine> ASTRAL_TRANSFORMER = MACHINES
+            .registerDefaultBlockItem("astral_transformer",
+                    BEAstralTransformer::new,
+                    BEAstralTransformer.class,
+                    ContainerTransformer<BEAstralTransformer>::new,
+                    AstralMekanismLang.DESCRIPTION_ASTRAL_MACHINE,
+                    builder -> builder.withEnergyConfig(
+                            () -> FloatingLong.create(1000 * AstralMekanismConfig.energyRate),
+                            () -> FloatingLong.MAX_VALUE)
+                            .changeAttributeUpgrade(EnumSet.of(Upgrade.ENERGY)));
 
     public static final EnumMap<AstralMekanismTier, MachineRegistryObject<BECompactFIR, BlockTileModel<BECompactFIR, BlockTypeMachine<BECompactFIR>>, MekanismTileContainer<BECompactFIR>, ItemBlockMachine>> COMPACT_FIR = registerMachines(
             tier -> tier.nameForNormal + "_compact_fir",

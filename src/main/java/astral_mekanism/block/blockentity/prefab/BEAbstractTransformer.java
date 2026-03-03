@@ -42,6 +42,7 @@ import mekanism.common.capabilities.holder.fluid.IFluidTankHolder;
 import mekanism.common.capabilities.holder.slot.IInventorySlotHolder;
 import mekanism.common.capabilities.holder.slot.InventorySlotHelper;
 import mekanism.common.inventory.container.MekanismContainer;
+import mekanism.common.inventory.container.slot.SlotOverlay;
 import mekanism.common.inventory.container.sync.SyncableBoolean;
 import mekanism.common.inventory.slot.EnergyInventorySlot;
 import mekanism.common.inventory.slot.FluidInventorySlot;
@@ -203,7 +204,7 @@ public abstract class BEAbstractTransformer extends TileEntityConfigurableMachin
                 : ae2LookUpObject.containsInputIAOther(stack, inputSlotB.getStack(), inputSlotC.getStack(),
                         inputTankA.getFluid()),
                 stack -> mode ? mekanicalLookUpObject.containsRecipeIA(stack) : ae2LookUpObject.containsInputIA(stack),
-                this::saveCache, 64, 17))
+                this::saveCache, 46, 17))
                 .tracksWarnings(
                         slot -> slot.warning(WarningType.NO_MATCHING_RECIPE, getWarningCheck(NOT_ENOUGH_INPUT_IA)));
         builder.addSlot(inputSlotB = InputInventorySlot.at(stack -> mode
@@ -212,7 +213,7 @@ public abstract class BEAbstractTransformer extends TileEntityConfigurableMachin
                 : ae2LookUpObject.containsInputIBOther(inputSlotA.getStack(), stack, inputSlotC.getStack(),
                         inputTankA.getFluid()),
                 stack -> mode ? mekanicalLookUpObject.containsRecipeIB(stack) : ae2LookUpObject.containsInputIB(stack),
-                this::saveCache, 64, 35))
+                this::saveCache, 46, 35))
                 .tracksWarnings(
                         slot -> slot.warning(WarningType.NO_MATCHING_RECIPE, getWarningCheck(NOT_ENOUGH_INPUT_IB)));
         builder.addSlot(inputSlotC = InputInventorySlot.at(stack -> mode
@@ -221,20 +222,20 @@ public abstract class BEAbstractTransformer extends TileEntityConfigurableMachin
                 : ae2LookUpObject.containsInputICOther(inputSlotA.getStack(), inputSlotB.getStack(), stack,
                         inputTankA.getFluid()),
                 stack -> mode ? mekanicalLookUpObject.containsRecipeIC(stack) : ae2LookUpObject.containsInputIC(stack),
-                this::saveCache, 64, 53))
+                this::saveCache, 46, 53))
                 .tracksWarnings(
                         slot -> slot.warning(WarningType.NO_MATCHING_RECIPE, getWarningCheck(NOT_ENOUGH_INPUT_IC)));
-        builder.addSlot(outputSlot = OutputInventorySlot.at(listener, 136, 35))
+        builder.addSlot(outputSlot = OutputInventorySlot.at(listener, 125, 35))
                 .tracksWarnings(slot -> slot
                         .warning(WarningType.NO_SPACE_IN_OUTPUT, getWarningCheck(RecipeError.NOT_ENOUGH_OUTPUT_SPACE)));
-        builder.addSlot(fluidSlotIA = FluidInventorySlot.fill(inputTankA, listener, 28, 17));
-        builder.addSlot(fluidSlotOA = OutputInventorySlot.at(listener, 28, 53));
-        builder.addSlot(fluidSlotIB = FluidInventorySlot.fill(inputTankB, listener, 100, 17));
-        builder.addSlot(fluidSlotOB = OutputInventorySlot.at(listener, 100, 53));
-        builder.addSlot(fluidSlotIO = FluidInventorySlot.drain(outputTank, listener, 172, 17));
-        builder.addSlot(fluidSlotOO = OutputInventorySlot.at(listener, 172, 53));
+        builder.addSlot(fluidSlotIA = FluidInventorySlot.fill(inputTankA, listener, 10, 17)).setSlotOverlay(SlotOverlay.MINUS);
+        builder.addSlot(fluidSlotOA = OutputInventorySlot.at(listener, 10, 53));
+        builder.addSlot(fluidSlotIB = FluidInventorySlot.fill(inputTankB, listener, 82, 17)).setSlotOverlay(SlotOverlay.MINUS);;
+        builder.addSlot(fluidSlotOB = OutputInventorySlot.at(listener, 82, 53));
+        builder.addSlot(fluidSlotIO = FluidInventorySlot.drain(outputTank, listener, 161, 17)).setSlotOverlay(SlotOverlay.PLUS);;
+        builder.addSlot(fluidSlotOO = OutputInventorySlot.at(listener, 161, 53));
         builder.addSlot(energySlot = EnergyInventorySlot
-                .fillOrConvert(energyContainer, this::getLevel, listener, 200, 8));
+                .fillOrConvert(energyContainer, this::getLevel, listener, 190, 4));
         return builder.build();
     }
 
@@ -357,6 +358,10 @@ public abstract class BEAbstractTransformer extends TileEntityConfigurableMachin
 
     public List<IExtendedFluidTank> getFluidTanks() {
         return List.of(inputTankA, inputTankB, outputTank);
+    }
+
+    public boolean getMode(){
+        return mode;
     }
 
     protected abstract int fluidTankCapacity();

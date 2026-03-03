@@ -193,7 +193,7 @@ public class AstralMekanismRecipeProvider extends RecipeProvider {
                         .injecting(IngredientCreatorAccess.item()
                                 .from(AstralMekanismItems.GEM_INTERMEDIATE_ITEMS.get(typeData.oreType)
                                         .get(IntermediateState.CRYSTAL).getItemStack(1)),
-                                IngredientCreatorAccess.gas().from(MekanismGases.HYDROGEN_CHLORIDE.getStack(50)),
+                                IngredientCreatorAccess.gas().from(MekanismGases.HYDROGEN_CHLORIDE.getStack(1)),
                                 AstralMekanismItems.GEM_INTERMEDIATE_ITEMS.get(typeData.oreType)
                                         .get(IntermediateState.SHARD).getItemStack(1))
                         .build(consumer, AstralMekanismID.rl(base + "/shard_1"));
@@ -201,7 +201,7 @@ public class AstralMekanismRecipeProvider extends RecipeProvider {
                         .injecting(IngredientCreatorAccess.item()
                                 .from(AstralMekanismItems.GEM_INTERMEDIATE_ITEMS.get(typeData.oreType)
                                         .get(IntermediateState.CRYSTAL).getItemStack(1)),
-                                IngredientCreatorAccess.gas().from(AstralMekanismGases.AQUA_REGIA.getStack(200)),
+                                IngredientCreatorAccess.gas().from(AstralMekanismGases.AQUA_REGIA.getStack(4)),
                                 AstralMekanismItems.GEM_INTERMEDIATE_ITEMS.get(typeData.oreType)
                                         .get(IntermediateState.SHARD).getItemStack(2))
                         .build(consumer, AstralMekanismID.rl(base + "/shard_2"));
@@ -209,7 +209,7 @@ public class AstralMekanismRecipeProvider extends RecipeProvider {
                         .purifying(IngredientCreatorAccess.item()
                                 .from(AstralMekanismItems.GEM_INTERMEDIATE_ITEMS.get(typeData.oreType)
                                         .get(IntermediateState.SHARD).getItemStack(1)),
-                                IngredientCreatorAccess.gas().from(MekanismGases.OXYGEN.getStack(50)),
+                                IngredientCreatorAccess.gas().from(MekanismGases.OXYGEN.getStack(1)),
                                 AstralMekanismItems.GEM_INTERMEDIATE_ITEMS.get(typeData.oreType)
                                         .get(IntermediateState.CLUMP).getItemStack(1))
                         .build(consumer, AstralMekanismID.rl(base + "/clump_1"));
@@ -217,7 +217,7 @@ public class AstralMekanismRecipeProvider extends RecipeProvider {
                         .purifying(IngredientCreatorAccess.item()
                                 .from(AstralMekanismItems.GEM_INTERMEDIATE_ITEMS.get(typeData.oreType)
                                         .get(IntermediateState.SHARD).getItemStack(1)),
-                                IngredientCreatorAccess.gas().from(AstralMekanismGases.NITRIC_ACID.getStack(200)),
+                                IngredientCreatorAccess.gas().from(AstralMekanismGases.NITRIC_ACID.getStack(4)),
                                 AstralMekanismItems.GEM_INTERMEDIATE_ITEMS.get(typeData.oreType)
                                         .get(IntermediateState.CLUMP).getItemStack(2))
                         .build(consumer, AstralMekanismID.rl(base + "/clump_2"));

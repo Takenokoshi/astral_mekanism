@@ -1,11 +1,10 @@
 package astral_mekanism.generalrecipe.cachedrecipe;
 
 import java.util.function.BooleanSupplier;
-import java.util.function.Function;
-
 import appeng.blockentity.qnb.QuantumBridgeBlockEntity;
 import appeng.core.definitions.AEItems;
 import appeng.recipes.transform.TransformRecipe;
+import astral_mekanism.AstralMekanismID;
 import mekanism.api.Action;
 import mekanism.api.AutomationType;
 import mekanism.api.inventory.IInventorySlot;
@@ -17,15 +16,10 @@ import mekanism.api.recipes.ingredients.creator.IItemStackIngredientCreator;
 import mekanism.api.recipes.ingredients.creator.IngredientCreatorAccess;
 import mekanism.api.recipes.inputs.IInputHandler;
 import mekanism.api.recipes.outputs.IOutputHandler;
-import mekanism.generators.common.registries.GeneratorsFluids;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.fluids.FluidStack;
 
 public class TransformCachedRecipe extends GeneralCachedRecipe<TransformRecipe> {
-
-    public static final Function<TransformRecipe, FluidStack> fluidExtractor = recipe -> recipe.circumstance.isFluid()
-            ? new FluidStack(recipe.circumstance.getFluidsForRendering().get(0), 1)
-            : GeneratorsFluids.FUSION_FUEL.getFluidStack(1);
 
     private final IInputHandler<ItemStack> inputHandlerIA;
     private final IInputHandler<ItemStack> inputHandlerIB;
@@ -50,7 +44,7 @@ public class TransformCachedRecipe extends GeneralCachedRecipe<TransformRecipe> 
         this.inputHandlerIC = inputHandlerIC;
         this.inputHandlerF = inputHandlerF;
         this.outputHandler = outputHandler;
-        this.fIngredient = IngredientCreatorAccess.fluid().from(fluidExtractor.apply(this.recipe));
+        this.fIngredient = AstralMekanismID.transformFluidExtractor.apply(recipe);
         IItemStackIngredientCreator creatorI = IngredientCreatorAccess.item();
         int size = this.recipe.ingredients.size();
         this.iAIngredient = 0 < size && size < 4 ? creatorI.from(this.recipe.ingredients.get(0)) : null;
@@ -123,6 +117,11 @@ public class TransformCachedRecipe extends GeneralCachedRecipe<TransformRecipe> 
         if (iBIngredient != null) {
             inputHandlerIB.use(inputHandlerIB.getRecipeInput(iBIngredient), operations);
         }
+        if (iCIngredient != null) {
+            inputHandlerIC.use(inputHandlerIC.getRecipeInput(iCIngredient), operations);
+        }
+        inputHandlerF.use(inputHandlerF.getRecipeInput(fIngredient), operations);
+        outputHandler.handleOutput(recipe.output, operations);
     }
 
     @Override
@@ -152,7 +151,7 @@ public class TransformCachedRecipe extends GeneralCachedRecipe<TransformRecipe> 
             if (AEItems.QUANTUM_ENTANGLED_SINGULARITY.isSameAs(toOutput)) {
                 QuantumBridgeBlockEntity.assignFrequency(toOutput);
             }
-            slot.insertItem(toOutput.copyWithCount(toOutput.getMaxStackSize() * operations), Action.EXECUTE,
+            slot.insertItem(toOutput.copyWithCount(toOutput.getCount() * operations), Action.EXECUTE,
                     AutomationType.INTERNAL);
         }
 
