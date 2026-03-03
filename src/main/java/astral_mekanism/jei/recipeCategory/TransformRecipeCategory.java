@@ -37,7 +37,7 @@ public class TransformRecipeCategory extends BaseGeneralRecipeCategory<Transform
             GuiFluidGauge.getDummy(GaugeType.STANDARD, this, 150, 10));
 
     public TransformRecipeCategory(IGuiHelper helper, RecipeType<TransformRecipe> recipeType, IItemProvider provider) {
-        super(helper, recipeType, provider, 28, 16, 180, 54);
+        super(helper, recipeType, provider, 10, 10, 200, 60);
         addSlot(SlotType.NORMAL, 10, 17).with(SlotOverlay.MINUS);
         addSlot(SlotType.NORMAL, 10, 53);
         addSlot(SlotType.NORMAL, 82, 17).with(SlotOverlay.MINUS);
