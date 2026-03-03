@@ -29,6 +29,7 @@ public class BETransformer extends BEAbstractTransformer {
 
     public BETransformer(IBlockProvider blockProvider, BlockPos pos, BlockState state) {
         super(blockProvider, pos, state);
+        ticksRequired = baseTicksRequired;
     }
 
     @Override

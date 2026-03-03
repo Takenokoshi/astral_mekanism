@@ -1,0 +1,38 @@
+{
+    "type": "astral_mekanism:mekanical_transform",
+    "itemInputA": {
+        "ingredient": {
+            "item": "mekanism:dynamic_tank"
+        },
+        "amount": 64
+    },
+    "itemInputB": {
+        "ingredient": {
+            "item": "mekanism_extras:upgrade_ionic_membrane"
+        },
+        "amount": 1
+    },
+    "itemInputC": {
+        "ingredient": {
+            "item": "mekanism_extras:advance_electric_pump"
+        },
+        "amount": 1
+    },
+    "fluidInputA": {
+        "fluid": "mekanism:uranium_hexafluoride",
+        "amount": 1
+    },
+    "fluidInputB": {
+        "fluid": "mekanism:uranium_hexafluoride",
+        "amount": 1
+    },
+    "outputFluid": {
+        "fluid": "mekanism_extras:rich_uranium_fuel",
+        "amount": 2
+    },
+    "itemAIsCatalyst": true,
+    "itemBIsCatalyst": true,
+    "itemCIsCatalyst": true,
+    "fluidAIsCatalyst": false,
+    "fluidBIsCatalyst": false
+}
