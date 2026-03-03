@@ -186,7 +186,7 @@ public abstract class BEAbstractTransformer extends TileEntityConfigurableMachin
         inputHandlerIB = InputHelper.getInputHandler(inputSlotB, NOT_ENOUGH_INPUT_IB);
         inputHandlerIC = InputHelper.getInputHandler(inputSlotC, NOT_ENOUGH_INPUT_IC);
         inputHandlerFA = InputHelper.getInputHandler(inputTankA, NOT_ENOUGH_INPUT_FA);
-        inputHandlerFB = InputHelper.getInputHandler(inputTankA, NOT_ENOUGH_INPUT_FB);
+        inputHandlerFB = InputHelper.getInputHandler(inputTankB, NOT_ENOUGH_INPUT_FB);
         outputHandlerAE = new TransformItemOutputHandler(outputSlot, RecipeError.NOT_ENOUGH_OUTPUT_SPACE);
         outputHandlerMe = AMOutputHelper.getOutputHandler(outputSlot, RecipeError.NOT_ENOUGH_OUTPUT_SPACE, outputTank,
                 RecipeError.NOT_ENOUGH_OUTPUT_SPACE);
@@ -206,7 +206,7 @@ public abstract class BEAbstractTransformer extends TileEntityConfigurableMachin
     protected IInventorySlotHolder getInitialInventory(IContentsListener listener) {
         InventorySlotHelper builder = InventorySlotHelper.forSideWithConfig(this::getDirection, this::getConfig);
         builder.addSlot(inputSlotA = InputInventorySlot.at(stack -> mode
-                ? mekanicalLookUpObject.containsRecipeFAOther(stack, inputSlotB.getStack(), inputSlotC.getStack(),
+                ? mekanicalLookUpObject.containsRecipeIAOther(stack, inputSlotB.getStack(), inputSlotC.getStack(),
                         inputTankA.getFluid(), inputTankB.getFluid())
                 : ae2LookUpObject.containsInputIAOther(stack, inputSlotB.getStack(), inputSlotC.getStack(),
                         inputTankA.getFluid()),
@@ -300,7 +300,7 @@ public abstract class BEAbstractTransformer extends TileEntityConfigurableMachin
         }
         fluidSlotIA.fillTank(fluidSlotOA);
         fluidSlotIB.fillTank(fluidSlotOB);
-        fluidSlotIO.fillTank(fluidSlotOO);
+        fluidSlotIO.drainTank(fluidSlotOO);
         energySlot.fillContainerOrConvert();
     }
 
