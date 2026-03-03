@@ -228,11 +228,16 @@ public abstract class BEAbstractTransformer extends TileEntityConfigurableMachin
         builder.addSlot(outputSlot = OutputInventorySlot.at(listener, 133, 35))
                 .tracksWarnings(slot -> slot
                         .warning(WarningType.NO_SPACE_IN_OUTPUT, getWarningCheck(RecipeError.NOT_ENOUGH_OUTPUT_SPACE)));
-        builder.addSlot(fluidSlotIA = FluidInventorySlot.fill(inputTankA, listener, 10, 17)).setSlotOverlay(SlotOverlay.MINUS);
+        builder.addSlot(fluidSlotIA = FluidInventorySlot.fill(inputTankA, listener, 10, 17))
+                .setSlotOverlay(SlotOverlay.MINUS);
         builder.addSlot(fluidSlotOA = OutputInventorySlot.at(listener, 10, 53));
-        builder.addSlot(fluidSlotIB = FluidInventorySlot.fill(inputTankB, listener, 82, 17)).setSlotOverlay(SlotOverlay.MINUS);;
+        builder.addSlot(fluidSlotIB = FluidInventorySlot.fill(inputTankB, listener, 82, 17))
+                .setSlotOverlay(SlotOverlay.MINUS);
+        ;
         builder.addSlot(fluidSlotOB = OutputInventorySlot.at(listener, 82, 53));
-        builder.addSlot(fluidSlotIO = FluidInventorySlot.drain(outputTank, listener, 169, 17)).setSlotOverlay(SlotOverlay.PLUS);;
+        builder.addSlot(fluidSlotIO = FluidInventorySlot.drain(outputTank, listener, 169, 17))
+                .setSlotOverlay(SlotOverlay.PLUS);
+        ;
         builder.addSlot(fluidSlotOO = OutputInventorySlot.at(listener, 169, 53));
         builder.addSlot(energySlot = EnergyInventorySlot
                 .fillOrConvert(energyContainer, this::getLevel, listener, 190, 4));
@@ -310,6 +315,15 @@ public abstract class BEAbstractTransformer extends TileEntityConfigurableMachin
         super.load(nbt);
         if (nbt.contains(modeNBTtag)) {
             mode = nbt.getBoolean(modeNBTtag);
+            if (mode) {
+                ae2LookupMonitor.setHasNoRecipe(0);
+                mekanicalLookupMonitor.onChange();
+            } else {
+                mekanicalLookupMonitor.setHasNoRecipe(0);
+                ae2LookupMonitor.onChange();
+            }
+            markForSave();
+            onContentsChanged();
         }
     }
 
@@ -360,7 +374,7 @@ public abstract class BEAbstractTransformer extends TileEntityConfigurableMachin
         return List.of(inputTankA, inputTankB, outputTank);
     }
 
-    public boolean getMode(){
+    public boolean getMode() {
         return mode;
     }
 
