@@ -1,7 +1,6 @@
 package astral_mekanism.jei;
 
 import appeng.recipes.handlers.InscriberRecipe;
-import appeng.recipes.transform.TransformRecipe;
 import astral_mekanism.AstralMekanismID;
 import astral_mekanism.recipes.recipe.AstralCraftingRecipe;
 import astral_mekanism.recipes.recipe.FluidFluidToFluidRecipe;
@@ -37,6 +36,4 @@ public final class AstralMekanismJEIRecipeType {
             "essential_smelter", SmeltingRecipe.class);
     public static final RecipeType<InscriberRecipe> MEKANICAL_INSCRIBING = RecipeType.create(AstralMekanismID.MODID,
             "mekanical_inscriber", InscriberRecipe.class);
-    public static final RecipeType<TransformRecipe> TRANSFORM = RecipeType.create(AstralMekanismID.MODID,
-            "transformer", TransformRecipe.class);
 }

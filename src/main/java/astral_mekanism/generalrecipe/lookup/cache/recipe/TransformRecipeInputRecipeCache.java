@@ -24,7 +24,7 @@ public class TransformRecipeInputRecipeCache extends GeneralInputRecipeCache<Con
         if (allRecipesCache.isEmpty()) {
             allRecipesCache = recipeType.getRecipes(world);
         }
-        if (allRecipesCache.isEmpty()) {
+        if (allRecipesCache.isEmpty() && world != null) {
             allRecipesCache = world.getRecipeManager().getAllRecipesFor(AERecipeTypes.TRANSFORM);
         }
     }
@@ -138,7 +138,8 @@ public class TransformRecipeInputRecipeCache extends GeneralInputRecipeCache<Con
             return null;
         }
         createCache(world);
-        return allRecipesCache.stream().filter(r->testInputs(r, fluid, first, second, third)).findFirst().orElse(null);
+        return allRecipesCache.stream().filter(r -> testInputs(r, fluid, first, second, third)).findFirst()
+                .orElse(null);
     }
 
     @Override

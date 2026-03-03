@@ -22,7 +22,7 @@ public class MekanicalTransformRecipeCache
         if (allRecipesCache.isEmpty()) {
             allRecipesCache = recipeType.getRecipes(world);
         }
-        if (allRecipesCache.isEmpty()) {
+        if (allRecipesCache.isEmpty() && world != null) {
             allRecipesCache = world.getRecipeManager().getAllRecipesFor(recipeType);
         }
     }

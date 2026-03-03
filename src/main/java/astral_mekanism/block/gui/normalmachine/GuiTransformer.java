@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.jetbrains.annotations.NotNull;
 
+import appeng.integration.modules.jei.TransformCategory;
 import astral_mekanism.AstralMekanism;
 import astral_mekanism.block.blockentity.prefab.BEAbstractTransformer;
 import astral_mekanism.block.container.normalmachine.ContainerTransformer;
@@ -92,7 +93,7 @@ public class GuiTransformer<BE extends BEAbstractTransformer>
         if (runtime == null)
             return;
         runtime.getRecipesGui().showTypes(
-                List.of(AstralMekanismJEIRecipeType.TRANSFORM));
+                List.of(TransformCategory.RECIPE_TYPE));
     }
 
 }

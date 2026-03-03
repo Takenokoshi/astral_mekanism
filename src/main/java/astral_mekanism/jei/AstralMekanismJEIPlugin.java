@@ -3,6 +3,7 @@ package astral_mekanism.jei;
 import org.jetbrains.annotations.Nullable;
 
 import appeng.integration.modules.jei.ChargerCategory;
+import appeng.integration.modules.jei.TransformCategory;
 import astral_mekanism.AstralMekanismID;
 import astral_mekanism.generalrecipe.GeneralRecipeType;
 import astral_mekanism.jei.recipeCategory.AstralCraftingRecipeCategory;
@@ -12,7 +13,6 @@ import astral_mekanism.jei.recipeCategory.GreenhouseRecipeCategory;
 import astral_mekanism.jei.recipeCategory.MekanicalInscribingRecipeCategory;
 import astral_mekanism.jei.recipeCategory.MekanicalTransformOldRecipeCategory;
 import astral_mekanism.jei.recipeCategory.MekanicalTransformRecipeCategory;
-import astral_mekanism.jei.recipeCategory.TransformRecipeCategory;
 import astral_mekanism.registries.AstralMekanismMachines;
 import astral_mekanism.registries.AstralMekanismRecipeTypes;
 import mekanism.api.providers.IItemProvider;
@@ -72,9 +72,6 @@ public class AstralMekanismJEIPlugin implements IModPlugin {
                         new ItemStackToItemStackRecipeCategory(guiHelper,
                                 AstralMekanismJEIRecipeType.ITEM_UNZIPPING,
                                 AstralMekanismMachines.ITEM_UNZIPPER),
-                        new TransformRecipeCategory(guiHelper,
-                                AstralMekanismJEIRecipeType.TRANSFORM,
-                                AstralMekanismMachines.TRANSFORMER),
                         new MekanicalTransformRecipeCategory(guiHelper,
                                 AstralMekanismJEIRecipeType.MEKANICAL_TRANSFORM,
                                 AstralMekanismMachines.TRANSFORMER),
@@ -103,7 +100,7 @@ public class AstralMekanismJEIPlugin implements IModPlugin {
                 GeneralRecipeType.SMELTING.getRecipes(Minecraft.getInstance().level));
         registry.addRecipes(AstralMekanismJEIRecipeType.MEKANICAL_INSCRIBING,
                 GeneralRecipeType.INSCRIBE.getRecipes(Minecraft.getInstance().level));
-        registry.addRecipes(AstralMekanismJEIRecipeType.TRANSFORM,
+        registry.addRecipes(TransformCategory.RECIPE_TYPE,
                 GeneralRecipeType.TRANSFORM.getRecipes(Minecraft.getInstance().level));
     }
 
@@ -115,7 +112,7 @@ public class AstralMekanismJEIPlugin implements IModPlugin {
         registry.addRecipeCatalysts(AstralMekanismJEIRecipeType.MEKANICAL_INSCRIBING,
                 AstralMekanismMachines.MEKANICAL_INSCRIBER,
                 AstralMekanismMachines.ASTRAL_MEKANICAL_INSCRIBER);
-        registry.addRecipeCatalysts(AstralMekanismJEIRecipeType.TRANSFORM,
+        registry.addRecipeCatalysts(TransformCategory.RECIPE_TYPE,
                 AstralMekanismMachines.TRANSFORMER, AstralMekanismMachines.ASTRAL_TRANSFORMER);
         // mekanism
         CatalystRegistryHelper.register(registry, MekanismJEIRecipeType.INJECTING,
