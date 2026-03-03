@@ -23,7 +23,7 @@
         "amount": 1000
     },
     "fluidInputB": {
-        "tag": "mekanismgenerators:fusion_fuel",
+        "fluid": "mekanismgenerators:fusion_fuel",
         "amount": 1000
     },
     "outputItem": {

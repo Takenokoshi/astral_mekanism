@@ -13,6 +13,7 @@ import astral_mekanism.jei.recipeCategory.GreenhouseRecipeCategory;
 import astral_mekanism.jei.recipeCategory.MekanicalInscribingRecipeCategory;
 import astral_mekanism.jei.recipeCategory.MekanicalTransformOldRecipeCategory;
 import astral_mekanism.jei.recipeCategory.MekanicalTransformRecipeCategory;
+import astral_mekanism.jei.recipeCategory.TransformRecipeCategory;
 import astral_mekanism.registries.AstralMekanismMachines;
 import astral_mekanism.registries.AstralMekanismRecipeTypes;
 import mekanism.api.providers.IItemProvider;
@@ -75,6 +76,9 @@ public class AstralMekanismJEIPlugin implements IModPlugin {
                         new MekanicalTransformRecipeCategory(guiHelper,
                                 AstralMekanismJEIRecipeType.MEKANICAL_TRANSFORM,
                                 AstralMekanismMachines.TRANSFORMER),
+                        new TransformRecipeCategory(guiHelper,
+                                AstralMekanismJEIRecipeType.TRANSFORM,
+                                AstralMekanismMachines.TRANSFORMER),
                 });
     }
 
@@ -100,7 +104,7 @@ public class AstralMekanismJEIPlugin implements IModPlugin {
                 GeneralRecipeType.SMELTING.getRecipes(Minecraft.getInstance().level));
         registry.addRecipes(AstralMekanismJEIRecipeType.MEKANICAL_INSCRIBING,
                 GeneralRecipeType.INSCRIBE.getRecipes(Minecraft.getInstance().level));
-        registry.addRecipes(TransformCategory.RECIPE_TYPE,
+        registry.addRecipes(AstralMekanismJEIRecipeType.TRANSFORM,
                 GeneralRecipeType.TRANSFORM.getRecipes(Minecraft.getInstance().level));
     }
 
@@ -113,6 +117,8 @@ public class AstralMekanismJEIPlugin implements IModPlugin {
                 AstralMekanismMachines.MEKANICAL_INSCRIBER,
                 AstralMekanismMachines.ASTRAL_MEKANICAL_INSCRIBER);
         registry.addRecipeCatalysts(TransformCategory.RECIPE_TYPE,
+                AstralMekanismMachines.TRANSFORMER, AstralMekanismMachines.ASTRAL_TRANSFORMER);
+        registry.addRecipeCatalysts(AstralMekanismJEIRecipeType.TRANSFORM,
                 AstralMekanismMachines.TRANSFORMER, AstralMekanismMachines.ASTRAL_TRANSFORMER);
         // mekanism
         CatalystRegistryHelper.register(registry, MekanismJEIRecipeType.INJECTING,

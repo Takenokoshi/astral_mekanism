@@ -70,9 +70,9 @@ public class GuiTransformer<BE extends BEAbstractTransformer>
                     new ResourceLocation("minecraft", "textures/item/knowledge_book.png"),
                     GuiTransformer::connectJEI));
         }
-        addRenderableWidget(new GuiDownArrow(this, 10, 35));
-        addRenderableWidget(new GuiDownArrow(this, 82, 35));
-        addRenderableWidget(new GuiDownArrow(this, 169, 35));
+        addRenderableWidget(new GuiDownArrow(this, 14, 39));
+        addRenderableWidget(new GuiDownArrow(this, 86, 39));
+        addRenderableWidget(new GuiDownArrow(this, 173, 39));
     }
 
     @Override
@@ -93,7 +93,7 @@ public class GuiTransformer<BE extends BEAbstractTransformer>
         if (runtime == null)
             return;
         runtime.getRecipesGui().showTypes(
-                List.of(TransformCategory.RECIPE_TYPE));
+                List.of(AstralMekanismJEIRecipeType.TRANSFORM, TransformCategory.RECIPE_TYPE));
     }
 
 }
