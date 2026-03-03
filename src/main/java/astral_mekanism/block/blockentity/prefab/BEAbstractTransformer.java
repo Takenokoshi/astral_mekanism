@@ -103,6 +103,9 @@ public abstract class BEAbstractTransformer extends TileEntityConfigurableMachin
     protected final IInputHandler<ItemStack> inputHandlerIB;
     protected final IInputHandler<ItemStack> inputHandlerIC;
     protected final IInputHandler<FluidStack> inputHandlerFA;
+    protected final IInputHandler<FluidStack> inputHandlerFB;
+    protected final TransformItemOutputHandler outputHandlerAE;
+    protected final IOutputHandler<ItemFluidOutput> outputHandlerMe;
     protected AE2TransformRecipeLookUpObject ae2LookUpObject;
     protected UnifiedRecipeCacheLookupMonitor<TransformRecipe> ae2LookupMonitor;
     protected MekanicalTransformRecipeLookUpObject mekanicalLookUpObject;
@@ -183,6 +186,10 @@ public abstract class BEAbstractTransformer extends TileEntityConfigurableMachin
         inputHandlerIB = InputHelper.getInputHandler(inputSlotB, NOT_ENOUGH_INPUT_IB);
         inputHandlerIC = InputHelper.getInputHandler(inputSlotC, NOT_ENOUGH_INPUT_IC);
         inputHandlerFA = InputHelper.getInputHandler(inputTankA, NOT_ENOUGH_INPUT_FA);
+        inputHandlerFB = InputHelper.getInputHandler(inputTankA, NOT_ENOUGH_INPUT_FB);
+        outputHandlerAE = new TransformItemOutputHandler(outputSlot, RecipeError.NOT_ENOUGH_OUTPUT_SPACE);
+        outputHandlerMe = AMOutputHelper.getOutputHandler(outputSlot, RecipeError.NOT_ENOUGH_OUTPUT_SPACE, outputTank,
+                RecipeError.NOT_ENOUGH_OUTPUT_SPACE);
     }
 
     @Override
@@ -394,12 +401,9 @@ public abstract class BEAbstractTransformer extends TileEntityConfigurableMachin
             implements IUnifiedRecipeTypedLookupHandler<TransformRecipe, TransformRecipeInputRecipeCache> {
 
         private final BEAbstractTransformer transformer;
-        private final TransformItemOutputHandler outputHandler;
 
         public AE2TransformRecipeLookUpObject(BEAbstractTransformer transformer) {
             this.transformer = transformer;
-            this.outputHandler = new TransformItemOutputHandler(this.transformer.outputSlot,
-                    RecipeError.NOT_ENOUGH_OUTPUT_SPACE);
         }
 
         @Override
@@ -417,7 +421,7 @@ public abstract class BEAbstractTransformer extends TileEntityConfigurableMachin
             GeneralCachedRecipe<TransformRecipe> cachedRecipe = new TransformCachedRecipe(recipe,
                     transformer.recheckAllRecipeErrors,
                     transformer.inputHandlerIA, transformer.inputHandlerIB, transformer.inputHandlerIC,
-                    transformer.inputHandlerFA, outputHandler)
+                    transformer.inputHandlerFA, transformer.outputHandlerAE)
                     .setErrorsChanged(transformer::onErrorsChanged)
                     .setCanHolderFunction(() -> MekanismUtils.canFunction(transformer))
                     .setActive(transformer::setActive)
@@ -486,15 +490,9 @@ public abstract class BEAbstractTransformer extends TileEntityConfigurableMachin
     public static class MekanicalTransformRecipeLookUpObject implements MekanicalTransformRecipeLookUpHandler {
 
         private final BEAbstractTransformer transformer;
-        private final IInputHandler<FluidStack> inputHandlerFB;
-        private final IOutputHandler<ItemFluidOutput> outputHandler;
 
         public MekanicalTransformRecipeLookUpObject(BEAbstractTransformer transformer) {
             this.transformer = transformer;
-            this.inputHandlerFB = InputHelper.getInputHandler(transformer.inputTankB, NOT_ENOUGH_INPUT_FB);
-            this.outputHandler = AMOutputHelper.getOutputHandler(transformer.outputSlot,
-                    RecipeError.NOT_ENOUGH_OUTPUT_SPACE,
-                    transformer.outputTank, RecipeError.NOT_ENOUGH_OUTPUT_SPACE);
         }
 
         @Override
@@ -505,7 +503,7 @@ public abstract class BEAbstractTransformer extends TileEntityConfigurableMachin
         @Override
         public @Nullable MekanicalTransformRecipe getRecipe(int cacheIndex) {
             return findFirstRecipe(transformer.inputHandlerIA, transformer.inputHandlerIB, transformer.inputHandlerIC,
-                    transformer.inputHandlerFA, inputHandlerFB);
+                    transformer.inputHandlerFA, transformer.inputHandlerFB);
         }
 
         @Override
@@ -514,7 +512,7 @@ public abstract class BEAbstractTransformer extends TileEntityConfigurableMachin
             CachedRecipe<MekanicalTransformRecipe> cachedRecipe = new MekanicalTransformCachedRecipe(recipe,
                     transformer.recheckAllRecipeErrors,
                     transformer.inputHandlerIA, transformer.inputHandlerIB, transformer.inputHandlerIC,
-                    transformer.inputHandlerFA, inputHandlerFB, outputHandler)
+                    transformer.inputHandlerFA, transformer.inputHandlerFB, transformer.outputHandlerMe)
                     .setErrorsChanged(transformer::onErrorsChanged)
                     .setCanHolderFunction(() -> MekanismUtils.canFunction(transformer))
                     .setActive(transformer::setActive)
