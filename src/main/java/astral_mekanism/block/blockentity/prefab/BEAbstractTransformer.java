@@ -103,10 +103,10 @@ public abstract class BEAbstractTransformer extends TileEntityConfigurableMachin
     protected final IInputHandler<ItemStack> inputHandlerIB;
     protected final IInputHandler<ItemStack> inputHandlerIC;
     protected final IInputHandler<FluidStack> inputHandlerFA;
-    protected final AE2TransformRecipeLookUpObject ae2LookUpObject;
-    protected final UnifiedRecipeCacheLookupMonitor<TransformRecipe> ae2LookupMonitor;
-    protected final MekanicalTransformRecipeLookUpObject mekanicalLookUpObject;
-    protected final RecipeCacheLookupMonitor<MekanicalTransformRecipe> mekanicalLookupMonitor;
+    protected AE2TransformRecipeLookUpObject ae2LookUpObject;
+    protected UnifiedRecipeCacheLookupMonitor<TransformRecipe> ae2LookupMonitor;
+    protected MekanicalTransformRecipeLookUpObject mekanicalLookUpObject;
+    protected RecipeCacheLookupMonitor<MekanicalTransformRecipe> mekanicalLookupMonitor;
 
     public BEAbstractTransformer(IBlockProvider blockProvider, BlockPos pos, BlockState state) {
         super(blockProvider, pos, state);
@@ -183,15 +183,15 @@ public abstract class BEAbstractTransformer extends TileEntityConfigurableMachin
         inputHandlerIB = InputHelper.getInputHandler(inputSlotB, NOT_ENOUGH_INPUT_IB);
         inputHandlerIC = InputHelper.getInputHandler(inputSlotC, NOT_ENOUGH_INPUT_IC);
         inputHandlerFA = InputHelper.getInputHandler(inputTankA, NOT_ENOUGH_INPUT_FA);
-        ae2LookUpObject = new AE2TransformRecipeLookUpObject(this);
-        ae2LookupMonitor = new UnifiedRecipeCacheLookupMonitor<>(ae2LookUpObject);
-        mekanicalLookUpObject = new MekanicalTransformRecipeLookUpObject(this);
-        mekanicalLookupMonitor = new RecipeCacheLookupMonitor<>(mekanicalLookUpObject);
     }
 
     @Override
     protected void presetVariables() {
         super.presetVariables();
+        ae2LookUpObject = new AE2TransformRecipeLookUpObject(this);
+        mekanicalLookUpObject = new MekanicalTransformRecipeLookUpObject(this);
+        ae2LookupMonitor = new UnifiedRecipeCacheLookupMonitor<>(ae2LookUpObject);
+        mekanicalLookupMonitor = new RecipeCacheLookupMonitor<>(mekanicalLookUpObject);
     }
 
     @NotNull
