@@ -1,0 +1,35 @@
+{
+    "type": "astral_mekanism:mekanical_transform",
+    "itemInputA": {
+        "ingredient": {
+            "item": "minecraft:bucket"
+        }
+    },
+    "itemInputB": {
+        "ingredient": {
+            "item": "minecraft:bucket"
+        }
+    },
+    "itemInputC": {
+        "ingredient": {
+            "item": "minecraft:bucket"
+        }
+    },
+    "fluidInputA": {
+        "tag": "minecraft:water",
+        "amount": 1000
+    },
+    "fluidInputB": {
+        "tag": "minecraft:water",
+        "amount": 1000
+    },
+    "outputFluid": {
+        "fluid": "minecraft:water",
+        "amount": 20000
+    },
+    "itemAIsCatalyst": true,
+    "itemBIsCatalyst": true,
+    "itemCIsCatalyst": true,
+    "fluidAIsCatalyst": true,
+    "fluidBIsCatalyst": true
+}

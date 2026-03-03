@@ -53,7 +53,7 @@ public class GuiMekanicalInscriber<BE extends BlockEntityRecipeMachine<Inscriber
         }
     }
 
-    public static void connectJEI() {
+    private static void connectJEI() {
         IJeiRuntime runtime = AstralMekanismJEIPlugin.getRuntime();
         if (runtime == null)
             return;

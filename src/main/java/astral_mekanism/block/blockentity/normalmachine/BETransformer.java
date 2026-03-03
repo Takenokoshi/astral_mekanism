@@ -106,4 +106,10 @@ public class BETransformer extends BEAbstractTransformer {
                 .setOperatingTicksChanged(this::setOperatingTicks);
     }
 
+    @Override
+    public void changeMode() {
+        operatingTicks = 0;
+        super.changeMode();
+    }
+
 }

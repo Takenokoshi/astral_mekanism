@@ -1,0 +1,35 @@
+{
+    "type": "astral_mekanism:mekanical_transform",
+    "itemInputA": {
+        "ingredient": {
+            "item": "minecraft:smooth_stone"
+        }
+    },
+    "itemInputB": {
+        "ingredient": {
+            "item": "minecraft:pointed_dripstone"
+        }
+    },
+    "itemInputC": {
+        "ingredient": {
+            "item": "minecraft:cauldron"
+        }
+    },
+    "fluidInputA": {
+        "fluid": "minecraft:lava",
+        "amount": 10000
+    },
+    "fluidInputB": {
+        "fluid": "minecraft:lava",
+        "amount": 10000
+    },
+    "outputFluid": {
+        "fluid": "minecraft:lava",
+        "amount": 200
+    },
+    "itemAIsCatalyst": true,
+    "itemBIsCatalyst": true,
+    "itemCIsCatalyst": true,
+    "fluidAIsCatalyst": true,
+    "fluidBIsCatalyst": true
+}

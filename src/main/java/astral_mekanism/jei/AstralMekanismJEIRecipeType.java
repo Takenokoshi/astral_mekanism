@@ -1,11 +1,13 @@
 package astral_mekanism.jei;
 
 import appeng.recipes.handlers.InscriberRecipe;
+import appeng.recipes.transform.TransformRecipe;
 import astral_mekanism.AstralMekanismID;
 import astral_mekanism.recipes.recipe.AstralCraftingRecipe;
 import astral_mekanism.recipes.recipe.FluidFluidToFluidRecipe;
 import astral_mekanism.recipes.recipe.GreenhouseRecipe;
 import astral_mekanism.recipes.recipe.MekanicalTransformOldRecipe;
+import astral_mekanism.recipes.recipe.MekanicalTransformRecipe;
 import astral_mekanism.registries.AstralMekanismMachines;
 import mekanism.api.recipes.GasToGasRecipe;
 import mekanism.api.recipes.ItemStackToItemStackRecipe;
@@ -20,7 +22,7 @@ public final class AstralMekanismJEIRecipeType {
             AstralMekanismMachines.COMPACT_SPS, GasToGasRecipe.class);
     public static final MekanismJEIRecipeType<AstralCraftingRecipe> ASTRAL_CRAFTING = new MekanismJEIRecipeType<>(
             AstralMekanismMachines.ASTRAL_CRAFTER, AstralCraftingRecipe.class);
-    public static final MekanismJEIRecipeType<MekanicalTransformOldRecipe> MEKANICAL_TRANSFORM = new MekanismJEIRecipeType<>(
+    public static final MekanismJEIRecipeType<MekanicalTransformOldRecipe> MEKANICAL_TRANSFORM_OLD = new MekanismJEIRecipeType<>(
             AstralMekanismMachines.MEKANICAL_TRANSFORMER, MekanicalTransformOldRecipe.class);
     public static final MekanismJEIRecipeType<GreenhouseRecipe> GREENHOUSE_RECIPE = new MekanismJEIRecipeType<>(
             AstralMekanismMachines.GREENHOUSE, GreenhouseRecipe.class);
@@ -28,9 +30,13 @@ public final class AstralMekanismJEIRecipeType {
             AstralMekanismMachines.ITEM_COMPRESSOR, ItemStackToItemStackRecipe.class);
     public static final MekanismJEIRecipeType<ItemStackToItemStackRecipe> ITEM_UNZIPPING = new MekanismJEIRecipeType<>(
             AstralMekanismMachines.ITEM_UNZIPPER, ItemStackToItemStackRecipe.class);
+    public static final MekanismJEIRecipeType<MekanicalTransformRecipe> MEKANICAL_TRANSFORM = new MekanismJEIRecipeType<>(
+            AstralMekanismMachines.TRANSFORMER, MekanicalTransformRecipe.class);
 
     public static final RecipeType<SmeltingRecipe> ESSENTIAL_SMELTING = RecipeType.create(AstralMekanismID.MODID,
             "essential_smelter", SmeltingRecipe.class);
     public static final RecipeType<InscriberRecipe> MEKANICAL_INSCRIBING = RecipeType.create(AstralMekanismID.MODID,
             "mekanical_inscriber", InscriberRecipe.class);
+    public static final RecipeType<TransformRecipe> TRANSFORM = RecipeType.create(AstralMekanismID.MODID,
+            "transformer", TransformRecipe.class);
 }

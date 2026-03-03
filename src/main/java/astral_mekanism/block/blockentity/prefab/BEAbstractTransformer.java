@@ -225,15 +225,15 @@ public abstract class BEAbstractTransformer extends TileEntityConfigurableMachin
                 this::saveCache, 46, 53))
                 .tracksWarnings(
                         slot -> slot.warning(WarningType.NO_MATCHING_RECIPE, getWarningCheck(NOT_ENOUGH_INPUT_IC)));
-        builder.addSlot(outputSlot = OutputInventorySlot.at(listener, 125, 35))
+        builder.addSlot(outputSlot = OutputInventorySlot.at(listener, 133, 35))
                 .tracksWarnings(slot -> slot
                         .warning(WarningType.NO_SPACE_IN_OUTPUT, getWarningCheck(RecipeError.NOT_ENOUGH_OUTPUT_SPACE)));
         builder.addSlot(fluidSlotIA = FluidInventorySlot.fill(inputTankA, listener, 10, 17)).setSlotOverlay(SlotOverlay.MINUS);
         builder.addSlot(fluidSlotOA = OutputInventorySlot.at(listener, 10, 53));
         builder.addSlot(fluidSlotIB = FluidInventorySlot.fill(inputTankB, listener, 82, 17)).setSlotOverlay(SlotOverlay.MINUS);;
         builder.addSlot(fluidSlotOB = OutputInventorySlot.at(listener, 82, 53));
-        builder.addSlot(fluidSlotIO = FluidInventorySlot.drain(outputTank, listener, 161, 17)).setSlotOverlay(SlotOverlay.PLUS);;
-        builder.addSlot(fluidSlotOO = OutputInventorySlot.at(listener, 161, 53));
+        builder.addSlot(fluidSlotIO = FluidInventorySlot.drain(outputTank, listener, 169, 17)).setSlotOverlay(SlotOverlay.PLUS);;
+        builder.addSlot(fluidSlotOO = OutputInventorySlot.at(listener, 169, 53));
         builder.addSlot(energySlot = EnergyInventorySlot
                 .fillOrConvert(energyContainer, this::getLevel, listener, 190, 4));
         return builder.build();

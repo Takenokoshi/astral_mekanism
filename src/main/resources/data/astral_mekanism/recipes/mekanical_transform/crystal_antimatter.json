@@ -1,0 +1,42 @@
+{
+    "type": "astral_mekanism:mekanical_transform",
+    "itemInputA": {
+        "ingredient": {
+            "item": "minecraft:nether_star"
+        },
+        "amount": 1
+    },
+    "itemInputB": {
+        "ingredient": {
+            "item": "mekanism:pellet_antimatter"
+        },
+        "amount": 64
+    },
+    "itemInputC": {
+        "ingredient": {
+            "item": "mekanism:pellet_antimatter"
+        },
+        "amount": 64
+    },
+    "fluidInputA": {
+        "fluid": "mekanism_extras:polonium-208",
+        "amount": 1000
+    },
+    "fluidInputB": {
+        "tag": "mekanismgenerators:fusion_fuel",
+        "amount": 1000
+    },
+    "outputItem": {
+        "item": "astral_mekanism:crystal_antimatter",
+        "count": 1
+    },
+    "outputFluid": {
+        "amount": 1000,
+        "fluid": "mekanism:lithium"
+    },
+    "itemAIsCatalyst": false,
+    "itemBIsCatalyst": false,
+    "itemCIsCatalyst": false,
+    "fluidAIsCatalyst": false,
+    "fluidBIsCatalyst": false
+}

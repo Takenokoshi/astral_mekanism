@@ -1,7 +1,9 @@
 package astral_mekanism.jei.recipeCategory;
 
-import astral_mekanism.recipes.output.ItemFluidOutput;
-import astral_mekanism.recipes.recipe.MekanicalTransformRecipe;
+import java.util.List;
+
+import appeng.recipes.transform.TransformRecipe;
+import astral_mekanism.AstralMekanismID;
 import mekanism.api.providers.IItemProvider;
 import mekanism.client.gui.element.bar.GuiVerticalPowerBar;
 import mekanism.client.gui.element.gauge.GaugeType;
@@ -10,16 +12,15 @@ import mekanism.client.gui.element.gauge.GuiGauge;
 import mekanism.client.gui.element.progress.ProgressType;
 import mekanism.client.gui.element.slot.GuiSlot;
 import mekanism.client.gui.element.slot.SlotType;
-import mekanism.client.jei.BaseRecipeCategory;
-import mekanism.client.jei.MekanismJEIRecipeType;
 import mekanism.common.inventory.container.slot.SlotOverlay;
 import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
 import mezz.jei.api.helpers.IGuiHelper;
 import mezz.jei.api.recipe.IFocusGroup;
 import mezz.jei.api.recipe.RecipeIngredientRole;
+import mezz.jei.api.recipe.RecipeType;
 import net.minecraftforge.fluids.FluidStack;
 
-public class MekanicalTransformRecipeCategory extends BaseRecipeCategory<MekanicalTransformRecipe> {
+public class TransformRecipeCategory extends BaseGeneralRecipeCategory<TransformRecipe> {
 
     private final GuiSlot inputSlotA = addSlot(SlotType.INPUT, 46, 17);
     private final GuiSlot inputSlotB = addSlot(SlotType.INPUT, 46, 35);
@@ -32,8 +33,7 @@ public class MekanicalTransformRecipeCategory extends BaseRecipeCategory<Mekanic
     private final GuiGauge<FluidStack> outputTank = addElement(
             GuiFluidGauge.getDummy(GaugeType.STANDARD, this, 150, 10));
 
-    public MekanicalTransformRecipeCategory(IGuiHelper helper,
-            MekanismJEIRecipeType<MekanicalTransformRecipe> recipeType, IItemProvider provider) {
+    public TransformRecipeCategory(IGuiHelper helper, RecipeType<TransformRecipe> recipeType, IItemProvider provider) {
         super(helper, recipeType, provider, 28, 16, 180, 54);
         addSlot(SlotType.NORMAL, 10, 17).with(SlotOverlay.MINUS);
         addSlot(SlotType.NORMAL, 10, 53);
@@ -46,26 +46,22 @@ public class MekanicalTransformRecipeCategory extends BaseRecipeCategory<Mekanic
         addElement(new GuiVerticalPowerBar(this, FULL_BAR, 200, 25));
     }
 
-    private static RecipeIngredientRole convertBoolRole(boolean val) {
-        return val ? RecipeIngredientRole.CATALYST : RecipeIngredientRole.INPUT;
-    }
-
     @Override
-    public void setRecipe(IRecipeLayoutBuilder builder, MekanicalTransformRecipe recipe, IFocusGroup focusGroup) {
-        initItem(builder, convertBoolRole(recipe.isItemACatalyst()), inputSlotA,
-                recipe.getInputItemA().getRepresentations());
-        initItem(builder, convertBoolRole(recipe.isItemBCatalyst()), inputSlotB,
-                recipe.getInputItemB().getRepresentations());
-        initItem(builder, convertBoolRole(recipe.isItemCCatalyst()), inputSlotC,
-                recipe.getInputItemC().getRepresentations());
-        initFluid(builder, convertBoolRole(recipe.isFluidACatalyst()), inputTankA,
-                recipe.getInputFluidA().getRepresentations());
-        initFluid(builder, convertBoolRole(recipe.isFluidBCatalyst()), inputTankB,
-                recipe.getInputFluidB().getRepresentations());
-        initItem(builder, RecipeIngredientRole.OUTPUT, outputSlot,
-                recipe.getOutputDefinition().stream().map(ItemFluidOutput::item).toList());
-        initFluid(builder, RecipeIngredientRole.OUTPUT, outputTank,
-                recipe.getOutputDefinition().stream().map(ItemFluidOutput::fluid).toList());
+    public void setRecipe(IRecipeLayoutBuilder builder, TransformRecipe recipe, IFocusGroup focusGroup) {
+        int size = recipe.ingredients.size();
+        if (size > 3) {
+            return;
+        }
+        initFluid(builder, RecipeIngredientRole.CATALYST, inputTankA,
+                AstralMekanismID.transformFluidExtractor.apply(recipe).getRepresentations());
+        initItem(builder, RecipeIngredientRole.INPUT, inputSlotA, List.of(recipe.ingredients.get(0).getItems()));
+        if (size > 1) {
+            initItem(builder, RecipeIngredientRole.INPUT, inputSlotB, List.of(recipe.ingredients.get(1).getItems()));
+        }
+        if (size > 2) {
+            initItem(builder, RecipeIngredientRole.INPUT, inputSlotC, List.of(recipe.ingredients.get(2).getItems()));
+        }
+        initItem(builder, RecipeIngredientRole.OUTPUT, outputSlot, List.of(recipe.getResultItem()));
     }
 
 }

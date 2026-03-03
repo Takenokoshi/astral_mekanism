@@ -39,7 +39,7 @@ public class GuiMekanicalTransformer<BE extends TileEntityRecipeMachine<Mekanica
         addRenderableWidget(new GuiProgress(tile::getProgressScaled, ProgressType.BAR, this, 82, 38))
                 .warning(WarningType.INPUT_DOESNT_PRODUCE_OUTPUT,
                         tile.getWarningCheck(RecipeError.INPUT_DOESNT_PRODUCE_OUTPUT))
-                .jeiCategories(AstralMekanismJEIRecipeType.MEKANICAL_TRANSFORM);
+                .jeiCategories(AstralMekanismJEIRecipeType.MEKANICAL_TRANSFORM_OLD);
     }
 
     @Override
