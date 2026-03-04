@@ -18,6 +18,11 @@ public class MekanicalTransformRecipeCache
         super(recipeType);
     }
 
+    @Override
+    public void initCacheIfNeeded(Level world) {
+        createCache(world);
+    }
+
     private void createCache(Level world) {
         if (allRecipesCache.isEmpty()) {
             allRecipesCache = recipeType.getRecipes(world);

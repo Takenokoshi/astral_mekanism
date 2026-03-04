@@ -23,16 +23,16 @@
         "amount": 1
     },
     "fluidInputB": {
-        "fluid": "mekanism:uranium_hexafluoride",
-        "amount": 1
+        "fluid": "evolvedmekanism:molten_amethyst",
+        "amount": 360
     },
     "outputFluid": {
         "fluid": "mekanism_extras:rich_uranium_fuel",
-        "amount": 2
+        "amount": 1
     },
     "itemAIsCatalyst": true,
     "itemBIsCatalyst": true,
     "itemCIsCatalyst": true,
     "fluidAIsCatalyst": false,
-    "fluidBIsCatalyst": false
+    "fluidBIsCatalyst": true
 }
