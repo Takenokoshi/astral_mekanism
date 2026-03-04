@@ -110,6 +110,7 @@ public abstract class BEAbstractTransformer extends TileEntityConfigurableMachin
     protected UnifiedRecipeCacheLookupMonitor<TransformRecipe> ae2LookupMonitor;
     protected MekanicalTransformRecipeLookUpObject mekanicalLookUpObject;
     protected RecipeCacheLookupMonitor<MekanicalTransformRecipe> mekanicalLookupMonitor;
+    private boolean loaded = false;
 
     public BEAbstractTransformer(IBlockProvider blockProvider, BlockPos pos, BlockState state) {
         super(blockProvider, pos, state);
@@ -293,6 +294,9 @@ public abstract class BEAbstractTransformer extends TileEntityConfigurableMachin
     @Override
     protected void onUpdateServer() {
         super.onUpdateServer();
+        if (loaded) {
+            onFirstTickAfterLoad();
+        }
         if (mode) {
             mekanicalLookupMonitor.updateAndProcess();
         } else {
@@ -317,21 +321,18 @@ public abstract class BEAbstractTransformer extends TileEntityConfigurableMachin
         onContentsChanged();
     }
 
+    public void onFirstTickAfterLoad(){
+        loaded = false;
+        saveCache();
+    }
+
     @Override
     public void load(@NotNull CompoundTag nbt) {
         if (nbt.contains(modeNBTtag)) {
             mode = nbt.getBoolean(modeNBTtag);
         }
         super.load(nbt);
-        if (mode) {
-            ae2LookupMonitor.setHasNoRecipe(0);
-            mekanicalLookupMonitor.onChange();
-        } else {
-            mekanicalLookupMonitor.setHasNoRecipe(0);
-            ae2LookupMonitor.onChange();
-        }
-        markForSave();
-        onContentsChanged();
+        loaded = true;
     }
 
     @Override
