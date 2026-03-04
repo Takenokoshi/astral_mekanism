@@ -319,19 +319,19 @@ public abstract class BEAbstractTransformer extends TileEntityConfigurableMachin
 
     @Override
     public void load(@NotNull CompoundTag nbt) {
-        super.load(nbt);
         if (nbt.contains(modeNBTtag)) {
             mode = nbt.getBoolean(modeNBTtag);
-            if (mode) {
-                ae2LookupMonitor.setHasNoRecipe(0);
-                mekanicalLookupMonitor.onChange();
-            } else {
-                mekanicalLookupMonitor.setHasNoRecipe(0);
-                ae2LookupMonitor.onChange();
-            }
-            markForSave();
-            onContentsChanged();
         }
+        super.load(nbt);
+        if (mode) {
+            ae2LookupMonitor.setHasNoRecipe(0);
+            mekanicalLookupMonitor.onChange();
+        } else {
+            mekanicalLookupMonitor.setHasNoRecipe(0);
+            ae2LookupMonitor.onChange();
+        }
+        markForSave();
+        onContentsChanged();
     }
 
     @Override

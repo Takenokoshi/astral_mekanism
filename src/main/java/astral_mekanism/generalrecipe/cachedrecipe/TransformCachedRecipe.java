@@ -156,18 +156,20 @@ public class TransformCachedRecipe extends GeneralCachedRecipe<TransformRecipe> 
 
         @Override
         public void calculateOperationsCanSupport(OperationTracker tracker, ItemStack toOutput) {
-            if (AEItems.QUANTUM_ENTANGLED_SINGULARITY.isSameAs(slot.getStack())) {
-                tracker.addError(notEnoughSpaceError);
-                tracker.mismatchedRecipe();
-            } else if (AEItems.QUANTUM_ENTANGLED_SINGULARITY.isSameAs(toOutput)) {
-                tracker.updateOperations(1);
+            if (AEItems.QUANTUM_ENTANGLED_SINGULARITY.isSameAs(toOutput)) {
+                if (slot.isEmpty()) {
+                    tracker.updateOperations(1);
+                } else {
+                    tracker.addError(notEnoughSpaceError);
+                    tracker.mismatchedRecipe();
+                }
             } else if (slot.isEmpty() || ItemStack.isSameItem(slot.getStack(), toOutput)) {
                 int operations = (toOutput.getMaxStackSize() - slot.getCount()) / toOutput.getCount();
                 if (operations < 1) {
                     tracker.addError(notEnoughSpaceError);
                     tracker.mismatchedRecipe();
                 } else {
-                    tracker.updateOperations((toOutput.getMaxStackSize() - slot.getCount()) / toOutput.getCount());
+                    tracker.updateOperations(operations);
                 }
             } else {
                 tracker.addError(RecipeError.INPUT_DOESNT_PRODUCE_OUTPUT);
