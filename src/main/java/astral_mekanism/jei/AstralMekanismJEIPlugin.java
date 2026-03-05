@@ -174,7 +174,9 @@ public class AstralMekanismJEIPlugin implements IModPlugin {
 
         // Evolved Mekanism
         CatalystRegistryHelper.register(registry, EMJEI.APT,
-                AstralMekanismMachines.COMPACT_APT);
+                AstralMekanismMachines.COMPACT_APT,
+                AstralMekanismMachines.ASTRAL_APT);
+        CatalystRegistryHelper.register(registry, EMJEI.ALLOYING, AstralMekanismMachines.ASTRAL_ALLOYER);
 
         // astral_mekanism
         CatalystRegistryHelper.register(registry, AstralMekanismJEIRecipeType.ASTRAL_CRAFTING,

@@ -37,8 +37,8 @@ public class GuiCompactAPT<BE extends TileEntityConfigurableMachine & ICompactAP
     protected void addGuiElements() {
         super.addGuiElements();
         addRenderableWidget(new GuiGasGauge(tile::getInputTank, () -> tile.getGasTanks(null),
-                GaugeType.SMALL_MED, this, 7, 5));
-        addRenderableWidget(new GuiEnergyGauge(tile.getEnergyContainer(), GaugeType.SMALL_MED, this, 151, 5));
+                GaugeType.SMALL_MED, this, 7, 11));
+        addRenderableWidget(new GuiEnergyGauge(tile.getEnergyContainer(), GaugeType.SMALL_MED, this, 151, 11));
         addRenderableWidget(new GuiCustomDynamicHorizontalRateBar(this, new IBarInfoHandler() {
             @Override
             public Component getTooltip() {
@@ -49,8 +49,8 @@ public class GuiCompactAPT<BE extends TileEntityConfigurableMachine & ICompactAP
             public double getLevel() {
                 return Math.max(0.0D, tile.getProgressScaled());
             }
-        }, 7, 55, 160, progress -> tile.getColor()));
-        addRenderableWidget(new GuiInnerScreen(this, 47, 17, 82, 36, () -> {
+        }, 7, 61, 160, progress -> tile.getColor()));
+        addRenderableWidget(new GuiInnerScreen(this, 47, 17, 82, 42, () -> {
             List<Component> list = new ArrayList<>();
             boolean active = tile.getActive();
             list.add(MekanismLang.STATUS.translate(active ? MekanismLang.ACTIVE : MekanismLang.IDLE));

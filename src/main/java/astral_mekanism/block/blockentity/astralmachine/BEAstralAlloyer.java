@@ -5,6 +5,7 @@ import java.util.List;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import astral_mekanism.block.blockentity.interf.IEnergizedMachine;
 import fr.iglee42.evolvedmekanism.interfaces.EMInputRecipeCache.TripleItem;
 import fr.iglee42.evolvedmekanism.interfaces.ThreeInputCachedRecipe;
 import fr.iglee42.evolvedmekanism.interfaces.TripleItemRecipeLookupHandler;
@@ -44,7 +45,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.state.BlockState;
 
 public class BEAstralAlloyer extends TileEntityRecipeMachine<AlloyerRecipe>
-        implements TripleItemRecipeLookupHandler<AlloyerRecipe> {
+        implements TripleItemRecipeLookupHandler<AlloyerRecipe>, IEnergizedMachine<BEAstralAlloyer> {
 
     private static final List<RecipeError> TRACKED_ERROR_TYPES = List.of(
             RecipeError.NOT_ENOUGH_ENERGY,
@@ -63,9 +64,8 @@ public class BEAstralAlloyer extends TileEntityRecipeMachine<AlloyerRecipe>
     OutputInventorySlot outputSlot;
     EnergyInventorySlot energySlot;
 
-    public BEAstralAlloyer(IBlockProvider blockProvider, BlockPos pos, BlockState state,
-            List<RecipeError> errorTypes) {
-        super(blockProvider, pos, state, errorTypes);
+    public BEAstralAlloyer(IBlockProvider blockProvider, BlockPos pos, BlockState state) {
+        super(blockProvider, pos, state, TRACKED_ERROR_TYPES);
         configComponent = new TileComponentConfig(this, TransmissionType.ITEM, TransmissionType.ENERGY);
         setupItemIOExtraConfig(configComponent, mainInputSlot, outputSlot, extraInputSlot, secondExtraInputSlot,
                 energySlot);
@@ -164,6 +164,16 @@ public class BEAstralAlloyer extends TileEntityRecipeMachine<AlloyerRecipe>
                 .setEnergyRequirements(energyContainer::getEnergyPerTick, energyContainer)
                 .setOnFinish(this::markForSave)
                 .setBaselineMaxOperations(() -> 0x7fffffff);
+    }
+
+    @Override
+    public MachineEnergyContainer<BEAstralAlloyer> getEnergyContainer() {
+        return energyContainer;
+    }
+
+    @Override
+    public double getProgressScaled() {
+        return getActive() ? 1 : 0;
     }
 
 }

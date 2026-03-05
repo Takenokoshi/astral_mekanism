@@ -10,6 +10,8 @@ import astral_mekanism.AstralMekanismTier;
 import astral_mekanism.AstralMekanismID;
 import astral_mekanism.AstralMekanismLang;
 import astral_mekanism.block.blockentity.astralfactory.BEAstralEnergizedSmeltingFactory;
+import astral_mekanism.block.blockentity.astralmachine.BEAstralAPT;
+import astral_mekanism.block.blockentity.astralmachine.BEAstralAlloyer;
 import astral_mekanism.block.blockentity.astralmachine.BEAstralChemicalInfuser;
 import astral_mekanism.block.blockentity.astralmachine.BEAstralChemicalOxidizer;
 import astral_mekanism.block.blockentity.astralmachine.BEAstralChemicalWasher;
@@ -216,6 +218,25 @@ public class AstralMekanismMachines {
                             () -> FloatingLong.create(800 * AstralMekanismConfig.energyRate),
                             () -> FloatingLong.MAX_VALUE)
                             .changeAttributeUpgrade(EnumSet.of(Upgrade.MUFFLING, Upgrade.ENERGY)));
+
+    public static final MachineRegistryObject<BEAstralAlloyer, BlockTileModel<BEAstralAlloyer, BlockTypeMachine<BEAstralAlloyer>>, MekanismTileContainer<BEAstralAlloyer>, ItemBlockMachine> ASTRAL_ALLOYER = MACHINES
+            .registerSimple("astral_alloyer",
+                    BEAstralAlloyer::new,
+                    BEAstralAlloyer.class,
+                    AstralMekanismLang.DESCRIPTION_ASTRAL_MACHINE,
+                    builder -> builder
+                            .withSound(MekanismSounds.COMBINER)
+                            .withEnergyConfig(MekanismConfig.usage.combiner, () -> FloatingLong.MAX_VALUE)
+                            .changeAttributeUpgrade(EnumSet.of(Upgrade.MUFFLING, Upgrade.ENERGY)));
+
+    public static final MachineRegistryObject<BEAstralAPT, BlockTileModel<BEAstralAPT, BlockTypeMachine<BEAstralAPT>>, MekanismTileContainer<BEAstralAPT>, ItemBlockMachine> ASTRAL_APT = MACHINES
+            .registerSimple("astral_apt",
+                    BEAstralAPT::new,
+                    BEAstralAPT.class,
+                    AstralMekanismLang.DESCRIPTION_ASTRAL_MACHINE,
+                    builder -> builder
+                            .withEnergyConfig(EMConfig.general.aptEnergyConsumption, () -> FloatingLong.MAX_VALUE)
+                            .removeAttributeUpgrade());
 
     public static final MachineRegistryObject<BEAstralChemicalInfuser, BlockTileModel<BEAstralChemicalInfuser, BlockTypeMachine<BEAstralChemicalInfuser>>, MekanismTileContainer<BEAstralChemicalInfuser>, ItemBlockMachine> ASTRAL_CHEMICAL_INFUSER = MACHINES
             .registerSimple("astral_chemical_infuser",

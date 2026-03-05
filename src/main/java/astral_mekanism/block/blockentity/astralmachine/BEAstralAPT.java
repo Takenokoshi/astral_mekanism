@@ -1,10 +1,9 @@
-package astral_mekanism.block.blockentity.compact;
+package astral_mekanism.block.blockentity.astralmachine;
 
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import astral_mekanism.block.blockentity.interf.ICompactAPT;
-import fr.iglee42.evolvedmekanism.config.EMConfig;
 import fr.iglee42.evolvedmekanism.registries.EMBlocks;
 import fr.iglee42.evolvedmekanism.registries.EMRecipeType;
 import mekanism.api.IContentsListener;
@@ -17,8 +16,8 @@ import mekanism.api.math.FloatingLong;
 import mekanism.api.providers.IBlockProvider;
 import mekanism.api.recipes.ItemStackGasToItemStackRecipe;
 import mekanism.api.recipes.cache.CachedRecipe;
-import mekanism.api.recipes.cache.TwoInputCachedRecipe;
 import mekanism.api.recipes.cache.CachedRecipe.OperationTracker.RecipeError;
+import mekanism.api.recipes.cache.TwoInputCachedRecipe;
 import mekanism.api.recipes.inputs.IInputHandler;
 import mekanism.api.recipes.inputs.InputHelper;
 import mekanism.api.recipes.outputs.IOutputHandler;
@@ -41,20 +40,20 @@ import mekanism.common.recipe.IMekanismRecipeTypeProvider;
 import mekanism.common.recipe.lookup.cache.InputRecipeCache.ItemChemical;
 import mekanism.common.tile.component.TileComponentConfig;
 import mekanism.common.tile.component.TileComponentEjector;
-import mekanism.common.tile.prefab.TileEntityProgressMachine;
+import mekanism.common.tile.prefab.TileEntityRecipeMachine;
 import mekanism.common.util.MekanismUtils;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.state.BlockState;
 
-public class BECompactAPT extends TileEntityProgressMachine<ItemStackGasToItemStackRecipe>
-        implements ICompactAPT<BECompactAPT> {
+public class BEAstralAPT extends TileEntityRecipeMachine<ItemStackGasToItemStackRecipe>
+        implements ICompactAPT<BEAstralAPT> {
 
     private InputInventorySlot inputSlot;
     private IGasTank inputTank;
     private OutputInventorySlot outputSlot;
     private BasicInventorySlot superChargingSlot;
-    private MachineEnergyContainer<BECompactAPT> energyContainer;
+    private MachineEnergyContainer<BEAstralAPT> energyContainer;
     private EnergyInventorySlot energySlot;
     private FloatingLong lastEnergyUsed = FloatingLong.ZERO;
 
@@ -62,8 +61,8 @@ public class BECompactAPT extends TileEntityProgressMachine<ItemStackGasToItemSt
     private final IInputHandler<GasStack> gasInputHandler;
     private final IOutputHandler<ItemStack> outputHandler;
 
-    public BECompactAPT(IBlockProvider blockProvider, BlockPos pos, BlockState state) {
-        super(blockProvider, pos, state, TRACKED_ERROR_TYPES, EMConfig.general.aptDefaultDuration.getOrDefault());
+    public BEAstralAPT(IBlockProvider blockProvider, BlockPos pos, BlockState state) {
+        super(blockProvider, pos, state, TRACKED_ERROR_TYPES);
         configComponent = new TileComponentConfig(this, TransmissionType.ITEM, TransmissionType.GAS,
                 TransmissionType.ENERGY);
         configComponent.setupItemIOConfig(inputSlot, outputSlot, energySlot);
@@ -95,7 +94,7 @@ public class BECompactAPT extends TileEntityProgressMachine<ItemStackGasToItemSt
             IContentsListener recipeCacheListener) {
         ChemicalTankHelper<Gas, GasStack, IGasTank> builder = ChemicalTankHelper
                 .forSideGasWithConfig(this::getDirection, this::getConfig);
-        builder.addTank(inputTank = ChemicalTankBuilder.GAS.create(5000,
+        builder.addTank(inputTank = ChemicalTankBuilder.GAS.create(Long.MAX_VALUE,
                 (gas, a) -> false,
                 (gas, a) -> containsRecipeBA(inputSlot.getStack(), gas),
                 this::containsRecipeB,
@@ -130,6 +129,16 @@ public class BECompactAPT extends TileEntityProgressMachine<ItemStackGasToItemSt
     }
 
     @Override
+    public MachineEnergyContainer<BEAstralAPT> getEnergyContainer() {
+        return energyContainer;
+    }
+
+    @Override
+    public double getProgressScaled() {
+        return getActive() ? 1 : 0;
+    }
+
+    @Override
     public @NotNull CachedRecipe<ItemStackGasToItemStackRecipe> createNewCachedRecipe(
             @NotNull ItemStackGasToItemStackRecipe recipe, int cacheIndex) {
         return TwoInputCachedRecipe
@@ -139,25 +148,7 @@ public class BECompactAPT extends TileEntityProgressMachine<ItemStackGasToItemSt
                 .setActive(this::setActive)
                 .setOnFinish(this::markForSave)
                 .setEnergyRequirements(energyContainer::getEnergyPerTick, energyContainer)
-                .setOperatingTicksChanged(this::setOperatingTicks)
-                .setRequiredTicks(() -> calculateTicksRequired(recipe));
-    }
-
-    private int calculateTicksRequired(ItemStackGasToItemStackRecipe r) {
-        ticksRequired = (int) ((EMConfig.general.aptDefaultDuration.getOrDefault()
-                * (r.getChemicalInput().getNeededAmount(inputTank.getStack()) / 100))
-                / (Math.min(superChargingSlot.getCount() + 1, 26)));
-        return ticksRequired;
-    }
-
-    @Override
-    public MachineEnergyContainer<BECompactAPT> getEnergyContainer() {
-        return energyContainer;
-    }
-
-    @Override
-    public double getProgressScaled() {
-        return getScaledProgress();
+                .setBaselineMaxOperations(() -> 0x7fffffff);
     }
 
     @Override

@@ -3,6 +3,7 @@ package astral_mekanism.registries;
 import astral_mekanism.AstralMekanismTier;
 import astral_mekanism.AstralMekanismID;
 import astral_mekanism.block.blockentity.astralfactory.BEAstralEnergizedSmeltingFactory;
+import astral_mekanism.block.blockentity.astralmachine.BEAstralAPT;
 import astral_mekanism.block.blockentity.astralmachine.BEAstralCombiner;
 import astral_mekanism.block.blockentity.astralmachine.BEAstralEnergizedSmelter;
 import astral_mekanism.block.blockentity.astralmachine.BEAstralGNA;
@@ -36,6 +37,7 @@ import astral_mekanism.block.blockentity.other.BEUniversalStorage;
 import astral_mekanism.block.container.other.ContainerItemSortableStorage;
 import astral_mekanism.block.container.prefab.ContainerAbstractStorage;
 import astral_mekanism.block.gui.astralmachine.GuiAstralAdvancedMachine;
+import astral_mekanism.block.gui.astralmachine.GuiAstralAlloyer;
 import astral_mekanism.block.gui.astralmachine.GuiAstralChemicalInfuser;
 import astral_mekanism.block.gui.astralmachine.GuiAstralChemicalOxider;
 import astral_mekanism.block.gui.astralmachine.GuiAstralChemicalWasher;
@@ -118,6 +120,8 @@ public class AstralMekanismClient {
             regScreen(AstralMekanismMachines.ASTRAL_CRUSHER, GuiAstralElectricMachine<BEAstralCrusher>::new);
             regScreen(AstralMekanismMachines.ASTRAL_ENRICHMENT_CHAMBER,
                     GuiAstralElectricMachine<BEAstralEnrichmentChamber>::new);
+            regScreen(AstralMekanismMachines.ASTRAL_ALLOYER, GuiAstralAlloyer::new);
+            regScreen(AstralMekanismMachines.ASTRAL_APT, GuiCompactAPT<BEAstralAPT>::new);
             regScreen(AstralMekanismMachines.ASTRAL_CHEMICAL_INFUSER, GuiAstralChemicalInfuser::new);
             regScreen(AstralMekanismMachines.ASTRAL_CHEMICAL_OXIDIZER, GuiAstralChemicalOxider::new);
             regScreen(AstralMekanismMachines.ASTRAL_CHEMICAL_WASHER, GuiAstralChemicalWasher::new);
