@@ -1,0 +1,29 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "key": {
+        "X": {
+            "item": "mekanism:steel_casing"
+        },
+        "A": {
+            "item": "astral_mekanism:alloy_elastic"
+        },
+        "C": {
+            "item": "astral_mekanism:vibration_control_circuit"
+        },
+        "I": {
+            "item": "mekanism:enriched_gold"
+        },
+        "J": {
+            "item": "mekanism:dust_gold"
+        }
+    },
+    "pattern": [
+        "ACA",
+        "IXJ",
+        "ACA"
+    ],
+    "result": {
+        "item": "astral_mekanism:item_unzipper",
+        "count": 1
+    }
+}

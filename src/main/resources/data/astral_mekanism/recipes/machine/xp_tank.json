@@ -1,0 +1,26 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "key": {
+        "X": {
+            "item": "mekanism:steel_casing"
+        },
+        "A": {
+            "item": "astral_mekanism:alloy_elastic"
+        },
+        "C": {
+            "item": "mekanism:dynamic_tank"
+        },
+        "I": {
+            "item": "minecraft:experience_bottle"
+        }
+    },
+    "pattern": [
+        "ACA",
+        "IXI",
+        "ACA"
+    ],
+    "result": {
+        "item": "astral_mekanism:xp_tank",
+        "count": 1
+    }
+}

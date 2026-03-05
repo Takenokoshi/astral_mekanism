@@ -3,7 +3,6 @@ package astral_mekanism.block.gui.normalmachine;
 import org.jetbrains.annotations.NotNull;
 
 import astral_mekanism.block.blockentity.interf.IMekanicalTransformer;
-import astral_mekanism.jei.AstralMekanismJEIRecipeType;
 import astral_mekanism.recipes.recipe.MekanicalTransformOldRecipe;
 import mekanism.api.recipes.cache.CachedRecipe.OperationTracker.RecipeError;
 import mekanism.client.gui.GuiConfigurableTile;
@@ -38,8 +37,7 @@ public class GuiMekanicalTransformer<BE extends TileEntityRecipeMachine<Mekanica
         addRenderableWidget(new GuiEnergyTab(this, tile.getEnergyContainer(), tile::getActive));
         addRenderableWidget(new GuiProgress(tile::getProgressScaled, ProgressType.BAR, this, 82, 38))
                 .warning(WarningType.INPUT_DOESNT_PRODUCE_OUTPUT,
-                        tile.getWarningCheck(RecipeError.INPUT_DOESNT_PRODUCE_OUTPUT))
-                .jeiCategories(AstralMekanismJEIRecipeType.MEKANICAL_TRANSFORM_OLD);
+                        tile.getWarningCheck(RecipeError.INPUT_DOESNT_PRODUCE_OUTPUT));
     }
 
     @Override

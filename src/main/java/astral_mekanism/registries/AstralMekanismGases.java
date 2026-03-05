@@ -14,7 +14,6 @@ public class AstralMekanismGases {
     public static final GasRegistryObject<Gas> NITRIC_ACID = GASES.register("nitric_acid", 0xFFF5CC);
     public static final GasRegistryObject<Gas> AQUA_REGIA = GASES.register("aqua_regia", 0xFF6600);
     public static final GasRegistryObject<Gas> ASTRAL_ETHER = GASES.register("astral_ether", 0xD4A1FF);
-    public static final GasRegistryObject<Gas> DILUTED_ASTRAL_ETHER = GASES.register("diluted_astral_ether", 0xF4C1FF);
     public static final GasRegistryObject<Gas> NETHERRACK = GASES.register("netherrack", () -> {
         return new Gas(GasBuilder.builder(new ResourceLocation("block/netherrack")));
     });

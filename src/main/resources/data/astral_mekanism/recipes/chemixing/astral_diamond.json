@@ -1,0 +1,20 @@
+{
+    "type": "evolvedmekanism:chemixing",
+    "extraInput": {
+        "ingredient": {
+            "item": "ae2:singularity"
+        }
+    },
+    "gasInput": {
+        "amount": 50,
+        "gas": "astral_mekanism:astral_ether"
+    },
+    "mainInput": {
+        "ingredient": {
+            "item": "minecraft:diamond"
+        }
+    },
+    "output": {
+        "item": "astral_mekanism:astral_diamond"
+    }
+}

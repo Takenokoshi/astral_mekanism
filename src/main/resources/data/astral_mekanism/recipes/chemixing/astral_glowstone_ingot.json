@@ -1,0 +1,20 @@
+{
+    "type": "evolvedmekanism:chemixing",
+    "extraInput": {
+        "ingredient": {
+            "item": "mekanism_extras:enriched_radiance"
+        }
+    },
+    "gasInput": {
+        "amount": 50,
+        "gas": "astral_mekanism:astral_ether"
+    },
+    "mainInput": {
+        "ingredient": {
+            "item": "mekanism:ingot_refined_glowstone"
+        }
+    },
+    "output": {
+        "item": "astral_mekanism:astral_glowstone_ingot"
+    }
+}

@@ -18,6 +18,7 @@ import astral_mekanism.block.blockentity.astralmachine.advanced.BEAstralOsmiumCo
 import astral_mekanism.block.blockentity.astralmachine.advanced.BEAstralPurificationChamber;
 import astral_mekanism.block.blockentity.astralmachine.electric.BEAstralCrusher;
 import astral_mekanism.block.blockentity.astralmachine.electric.BEAstralEnrichmentChamber;
+import astral_mekanism.block.blockentity.compact.BECompactAPT;
 import astral_mekanism.block.blockentity.compact.BECompactSPS;
 import astral_mekanism.block.blockentity.generator.AstralMekGeneratorTier;
 import astral_mekanism.block.blockentity.normalfactory.BEEnergizedSmeltingFactory;
@@ -46,6 +47,7 @@ import astral_mekanism.block.gui.astralmachine.GuiAstralMetallurgicInfuser;
 import astral_mekanism.block.gui.astralmachine.GuiAstralPRC;
 import astral_mekanism.block.gui.astralmachine.GuiAstralPrecisionSawmill;
 import astral_mekanism.block.gui.astralmachine.GuiAstralRotaryCondensentrator;
+import astral_mekanism.block.gui.compact.GuiCompactAPT;
 import astral_mekanism.block.gui.compact.GuiCompactFissionReactor;
 import astral_mekanism.block.gui.compact.GuiCompactTEP;
 import astral_mekanism.block.gui.factory.GuiEnergizedSmeltingFactory;
@@ -141,6 +143,7 @@ public class AstralMekanismClient {
             regScreen(AstralMekanismMachines.ASTRAL_ROTARY_CONDENSENTRATOR, GuiAstralRotaryCondensentrator::new);
             regScreen(AstralMekanismMachines.ASTRAL_SPS, GuiGasToGasMachine<BEAstralSPS>::new);
             regScreen(AstralMekanismMachines.ASTRAL_TRANSFORMER, GuiTransformer<BEAstralTransformer>::new);
+            regScreen(AstralMekanismMachines.COMPACT_APT, GuiCompactAPT<BECompactAPT>::new);
             for (AstralMekanismTier tier : AstralMekanismTier.values()) {
                 regScreen(AstralMekanismMachines.COMPACT_FIR.get(tier), GuiCompactFissionReactor::new);
             }

@@ -36,6 +36,7 @@ import astral_mekanism.block.blockentity.astralmachine.advanced.BEAstralPurifica
 import astral_mekanism.block.blockentity.astralmachine.electric.BEAstralCrusher;
 import astral_mekanism.block.blockentity.astralmachine.electric.BEAstralEnrichmentChamber;
 import astral_mekanism.block.blockentity.base.BlockEntityRecipeFactory;
+import astral_mekanism.block.blockentity.compact.BECompactAPT;
 import astral_mekanism.block.blockentity.compact.BECompactFIR;
 import astral_mekanism.block.blockentity.compact.BECompactSPS;
 import astral_mekanism.block.blockentity.compact.BECompactTEP;
@@ -72,6 +73,7 @@ import astral_mekanism.registration.MachineDeferredRegister;
 import astral_mekanism.registration.MachineRegistryObject;
 import astral_mekanism.registration.BlockTypeMachine.BlockMachineBuilder;
 import astral_mekanism.registration.RegistrationInterfaces.BlockEntityConstructor;
+import fr.iglee42.evolvedmekanism.config.EMConfig;
 import mekanism.api.Upgrade;
 import mekanism.api.math.FloatingLong;
 import mekanism.api.text.ILangEntry;
@@ -417,6 +419,15 @@ public class AstralMekanismMachines {
                             () -> FloatingLong.create(1000 * AstralMekanismConfig.energyRate),
                             () -> FloatingLong.MAX_VALUE)
                             .changeAttributeUpgrade(EnumSet.of(Upgrade.ENERGY)));
+
+    public static final MachineRegistryObject<BECompactAPT, BlockTileModel<BECompactAPT, BlockTypeMachine<BECompactAPT>>, MekanismTileContainer<BECompactAPT>, ItemBlockMachine> COMPACT_APT = MACHINES
+            .registerSimple("compact_apt",
+                    BECompactAPT::new,
+                    BECompactAPT.class,
+                    AstralMekanismLang.DESCRIPTION_COMPACT_MACHINE,
+                    builder -> builder
+                            .withEnergyConfig(EMConfig.general.aptEnergyConsumption, EMConfig.general.aptEnergyStorage)
+                            .removeAttributeUpgrade());
 
     public static final EnumMap<AstralMekanismTier, MachineRegistryObject<BECompactFIR, BlockTileModel<BECompactFIR, BlockTypeMachine<BECompactFIR>>, MekanismTileContainer<BECompactFIR>, ItemBlockMachine>> COMPACT_FIR = registerMachines(
             tier -> tier.nameForNormal + "_compact_fir",

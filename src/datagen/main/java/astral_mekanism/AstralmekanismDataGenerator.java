@@ -15,6 +15,7 @@ import astral_mekanism.loottable.AstralMekanismLootTableProvider;
 import astral_mekanism.recipe.AstralMekanismRecipeProvider;
 import astral_mekanism.tag.AstralMekanismBlockTags;
 import astral_mekanism.tag.AstralMekanismItemTags;
+import fr.iglee42.evolvedmekanism.EvolvedMekanism;
 import mekanism.common.Mekanism;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.DataGenerator;
@@ -34,9 +35,7 @@ public class AstralMekanismDataGenerator {
     @SubscribeEvent
     public static void gatherData(GatherDataEvent event) {
 
-        bootstrapConfigs(AstralMekanismID.MODID);
-        bootstrapConfigs(Mekanism.MODID);
-
+        bootstrapConfigs();
         DataGenerator gen = event.getGenerator();
         PackOutput output = gen.getPackOutput();
         ExistingFileHelper helper = event.getExistingFileHelper();
@@ -57,14 +56,12 @@ public class AstralMekanismDataGenerator {
         System.out.println("### AstralMekanism GatherDataEvent fired ###");
     }
 
-    public static void bootstrapConfigs(String modid) {
+    public static void bootstrapConfigs() {
         ConfigTracker.INSTANCE.configSets().forEach((type, configs) -> {
             for (ModConfig config : configs) {
-                if (config.getModId().equals(modid)) {
-                    CommentedConfig commentedConfig = CommentedConfig.inMemory();
-                    config.getSpec().correct(commentedConfig);
-                    config.getSpec().acceptConfig(commentedConfig);
-                }
+                CommentedConfig commentedConfig = CommentedConfig.inMemory();
+                config.getSpec().correct(commentedConfig);
+                config.getSpec().acceptConfig(commentedConfig);
             }
         });
     }
