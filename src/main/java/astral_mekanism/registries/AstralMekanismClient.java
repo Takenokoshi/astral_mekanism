@@ -55,12 +55,14 @@ import astral_mekanism.block.gui.normalmachine.GuiAstralCrafter;
 import astral_mekanism.block.gui.normalmachine.GuiEssentialEnergizedSmelter;
 import astral_mekanism.block.gui.normalmachine.GuiEssentialMetallurgicInfuser;
 import astral_mekanism.block.gui.normalmachine.GuiFluidInfuser;
+import astral_mekanism.block.gui.normalmachine.GuiGasSynthesizer;
 import astral_mekanism.block.gui.normalmachine.GuiGreenhouse;
 import astral_mekanism.block.gui.normalmachine.GuiInfuseSynthesizer;
 import astral_mekanism.block.gui.normalmachine.GuiMekanicalCharger;
 import astral_mekanism.block.gui.normalmachine.GuiMekanicalInscriber;
 import astral_mekanism.block.gui.normalmachine.GuiMekanicalTransformer;
 import astral_mekanism.block.gui.normalmachine.GuiTransformer;
+import astral_mekanism.block.gui.other.GuiXpTank;
 import astral_mekanism.block.gui.prefab.GuiAbstractStorage;
 import astral_mekanism.block.gui.prefab.GuiDoubleItemToItemRecipeMachine;
 import astral_mekanism.block.gui.prefab.GuiGasToGasBlock;
@@ -158,6 +160,7 @@ public class AstralMekanismClient {
             regScreen(AstralMekanismMachines.ESSENTIAL_METALLURGIC_INFUSER,
                     GuiEssentialMetallurgicInfuser::new);
             regScreen(AstralMekanismMachines.FLUID_INFUSER, GuiFluidInfuser::new);
+            regScreen(AstralMekanismMachines.GAS_SYNTHESIZER, GuiGasSynthesizer::new);
             regScreen(AstralMekanismMachines.GLOWSTONE_NEUTRON_ACTIVATOR,
                     GuiGasToGasBlock<BEGlowstoneNeutronActivator>::new);
             regScreen(AstralMekanismMachines.GREENHOUSE, GuiGreenhouse<BEGreenhouse>::new);
@@ -176,6 +179,7 @@ public class AstralMekanismClient {
                     GuiAbstractStorage<BEUniversalStorage, ContainerAbstractStorage<BEUniversalStorage>>::new);
             regScreen(AstralMekanismMachines.ITEM_SORTABLE_STORAGE,
                     GuiAbstractStorage<BEItemSortableStorage, ContainerItemSortableStorage<BEItemSortableStorage>>::new);
+            regScreen(AstralMekanismMachines.XP_TANK, GuiXpTank::new);
         });
     }
 

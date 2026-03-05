@@ -47,6 +47,7 @@ import astral_mekanism.block.blockentity.normalmachine.BEAstralCrafter;
 import astral_mekanism.block.blockentity.normalmachine.BEEssentialEnergizedSmelter;
 import astral_mekanism.block.blockentity.normalmachine.BEEssentialMetallurgicInfuser;
 import astral_mekanism.block.blockentity.normalmachine.BEFluidInfuser;
+import astral_mekanism.block.blockentity.normalmachine.BEGasSynthesizer;
 import astral_mekanism.block.blockentity.normalmachine.BEGlowstoneNeutronActivator;
 import astral_mekanism.block.blockentity.normalmachine.BEGreenhouse;
 import astral_mekanism.block.blockentity.normalmachine.BEInfuseSynthesizer;
@@ -58,6 +59,7 @@ import astral_mekanism.block.blockentity.normalmachine.BEMekanicalTransformer;
 import astral_mekanism.block.blockentity.normalmachine.BETransformer;
 import astral_mekanism.block.blockentity.other.BEItemSortableStorage;
 import astral_mekanism.block.blockentity.other.BEUniversalStorage;
+import astral_mekanism.block.blockentity.other.BEXpTank;
 import astral_mekanism.block.container.factory.ContainerAstralMekanismFactory;
 import astral_mekanism.block.container.normalmachine.ContainerAstralCrafter;
 import astral_mekanism.block.container.normalmachine.ContainerTransformer;
@@ -518,6 +520,13 @@ public class AstralMekanismMachines {
                             () -> FloatingLong.create(1000 * AstralMekanismConfig.energyRate),
                             () -> FloatingLong.create(10000000)));
 
+    public static final MachineRegistryObject<BEGasSynthesizer, BlockTileModel<BEGasSynthesizer, BlockTypeMachine<BEGasSynthesizer>>, MekanismTileContainer<BEGasSynthesizer>, ItemBlockMachine> GAS_SYNTHESIZER = MACHINES
+            .registerSimple("gas_synthesizer",
+                    BEGasSynthesizer::new,
+                    BEGasSynthesizer.class,
+                    AstralMekanismLang.DESCRIPTION_INFUSE_SYNTHESIZER,
+                    BlockMachineBuilder::removeAttributeUpgrade);
+
     public static final MachineRegistryObject<BEGlowstoneNeutronActivator, BlockTileModel<BEGlowstoneNeutronActivator, BlockTypeMachine<BEGlowstoneNeutronActivator>>, MekanismTileContainer<BEGlowstoneNeutronActivator>, ItemBlockMachine> GLOWSTONE_NEUTRON_ACTIVATOR = MACHINES
             .registerSimple("glowstone_neutron_activator",
                     BEGlowstoneNeutronActivator::new,
@@ -612,5 +621,12 @@ public class AstralMekanismMachines {
                     ContainerItemSortableStorage<BEItemSortableStorage>::new,
                     AstralMekanismLang.DESCRIPTION_ITEM_SORTABLE_STORAGE,
                     builder -> builder.removeAttributeUpgrade());
+
+    public static final MachineRegistryObject<BEXpTank, BlockTileModel<BEXpTank, BlockTypeMachine<BEXpTank>>, MekanismTileContainer<BEXpTank>, ItemBlockMachine> XP_TANK = MACHINES
+            .registerSimple("xp_tank",
+                    BEXpTank::new,
+                    BEXpTank.class,
+                    MekanismLang.ACTIVE,
+                    BlockMachineBuilder::removeAttributeUpgrade);
 
 }
