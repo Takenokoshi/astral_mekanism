@@ -1,11 +1,11 @@
-package astral_mekanism.block.gui.compact;
+package astral_mekanism.block.gui.prefab;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import org.jetbrains.annotations.NotNull;
 
-import astral_mekanism.block.blockentity.interf.ICompactAPT;
+import astral_mekanism.block.blockentity.interf.IItemGasToItemMachine;
 import fr.iglee42.evolvedmekanism.client.bars.GuiCustomDynamicHorizontalRateBar;
 import fr.iglee42.evolvedmekanism.config.EMConfig;
 import fr.iglee42.evolvedmekanism.jei.EMJEI;
@@ -25,10 +25,10 @@ import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.player.Inventory;
 
-public class GuiCompactAPT<BE extends TileEntityConfigurableMachine & ICompactAPT<BE>>
+public class GuiItemGasToItemMachine<BE extends TileEntityConfigurableMachine & IItemGasToItemMachine<BE, ?>>
         extends GuiConfigurableTile<BE, MekanismTileContainer<BE>> {
 
-    public GuiCompactAPT(MekanismTileContainer<BE> container, Inventory inv, Component title) {
+    public GuiItemGasToItemMachine(MekanismTileContainer<BE> container, Inventory inv, Component title) {
         super(container, inv, title);
         dynamicSlots = true;
     }

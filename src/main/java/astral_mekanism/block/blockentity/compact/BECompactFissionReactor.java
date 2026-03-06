@@ -53,7 +53,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.Fluids;
 import net.minecraftforge.fluids.FluidStack;
 
-public class BECompactFIR extends TileEntityConfigurableMachine implements IPacketReceiverSetLong {
+public class BECompactFissionReactor extends TileEntityConfigurableMachine implements IPacketReceiverSetLong {
 
     public BasicHeatCapacitor heatCapacitor;
     private double lastEnvironmentLoss;
@@ -76,7 +76,7 @@ public class BECompactFIR extends TileEntityConfigurableMachine implements IPack
     private GasInventorySlot heatedGasSlot;
     private AstralMekanismTier tier;
 
-    public BECompactFIR(IBlockProvider blockProvider, BlockPos pos, BlockState state) {
+    public BECompactFissionReactor(IBlockProvider blockProvider, BlockPos pos, BlockState state) {
         super(blockProvider, pos, state);
         configComponent = new TileComponentConfig(this, TransmissionType.GAS, TransmissionType.FLUID,
                 TransmissionType.HEAT);

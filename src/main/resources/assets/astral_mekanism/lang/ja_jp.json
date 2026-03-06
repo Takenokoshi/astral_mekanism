@@ -225,6 +225,9 @@
     "label.astral_mekanism.gas_coolant": "ガス冷媒",
     "label.astral_mekanism.heated_fluid_coolant": "加熱された液体冷媒",
     "label.astral_mekanism.heated_gas_coolant": "加熱されたガス冷媒",
+    "label.astral_mekanism.mixed_fuel": "混合済燃料タンク",
+    "label.astral_mekanism.left_fuel": "左側燃料タンク",
+    "label.astral_mekanism.right_fuel": "右側燃料タンク",
     "side_data.astral_mekanism.input3": "搬入(3)",
     "side_data.astral_mekanism.output_left": "搬出(残り)",
     "side_data.astral_mekanism.output1_low": "搬出(1)[優先度:低]",
@@ -261,5 +264,9 @@
     "slurry.astral_mekanism.dirty_quartz": "汚れたクォーツの懸濁液",
     "slurry.astral_mekanism.clean_redstone": "純粋なレッドストーンの懸濁液",
     "slurry.astral_mekanism.dirty_redstone": "汚れたレッドストーンの懸濁液",
+    "side_data.astral_mekanism.mixed_fuel": "混合済燃料",
+    "side_data.astral_mekanism.left_fuel": "左側燃料",
+    "side_data.astral_mekanism.right_fuel": "右側燃料",
+    "side_data.astral_mekanism.steam": "蒸気",
     "item_group.astral_mekanism.modid": "Astral Mekanism"
 }

@@ -39,7 +39,9 @@ import astral_mekanism.block.blockentity.astralmachine.electric.BEAstralCrusher;
 import astral_mekanism.block.blockentity.astralmachine.electric.BEAstralEnrichmentChamber;
 import astral_mekanism.block.blockentity.base.BlockEntityRecipeFactory;
 import astral_mekanism.block.blockentity.compact.BECompactAPT;
-import astral_mekanism.block.blockentity.compact.BECompactFIR;
+import astral_mekanism.block.blockentity.compact.BECompactFissionReactor;
+import astral_mekanism.block.blockentity.compact.BECompactFusionReactor;
+import astral_mekanism.block.blockentity.compact.BECompactNaquadahReactor;
 import astral_mekanism.block.blockentity.compact.BECompactSPS;
 import astral_mekanism.block.blockentity.compact.BECompactTEP;
 import astral_mekanism.block.blockentity.generator.AstralMekGeneratorTier;
@@ -450,10 +452,24 @@ public class AstralMekanismMachines {
                             .withEnergyConfig(EMConfig.general.aptEnergyConsumption, EMConfig.general.aptEnergyStorage)
                             .removeAttributeUpgrade());
 
-    public static final EnumMap<AstralMekanismTier, MachineRegistryObject<BECompactFIR, BlockTileModel<BECompactFIR, BlockTypeMachine<BECompactFIR>>, MekanismTileContainer<BECompactFIR>, ItemBlockMachine>> COMPACT_FIR = registerMachines(
+    public static final EnumMap<AstralMekanismTier, MachineRegistryObject<BECompactFissionReactor, BlockTileModel<BECompactFissionReactor, BlockTypeMachine<BECompactFissionReactor>>, MekanismTileContainer<BECompactFissionReactor>, ItemBlockMachine>> COMPACT_FIR = registerMachines(
             tier -> tier.nameForNormal + "_compact_fir",
-            BECompactFIR::new,
-            BECompactFIR.class,
+            BECompactFissionReactor::new,
+            BECompactFissionReactor.class,
+            AstralMekanismLang.DESCRIPTION_COMPACT_MACHINE,
+            tier -> BlockMachineBuilder::removeAttributeUpgrade);
+
+    public static final EnumMap<AstralMekanismTier, MachineRegistryObject<BECompactFusionReactor, BlockTileModel<BECompactFusionReactor, BlockTypeMachine<BECompactFusionReactor>>, MekanismTileContainer<BECompactFusionReactor>, ItemBlockMachine>> COMPACT_FUSION_REACTOR = registerMachines(
+            tier -> tier.nameForNormal + "_compact_fusion_reactor",
+            BECompactFusionReactor::new,
+            BECompactFusionReactor.class,
+            AstralMekanismLang.DESCRIPTION_COMPACT_MACHINE,
+            tier -> BlockMachineBuilder::removeAttributeUpgrade);
+
+    public static final EnumMap<AstralMekanismTier, MachineRegistryObject<BECompactNaquadahReactor, BlockTileModel<BECompactNaquadahReactor, BlockTypeMachine<BECompactNaquadahReactor>>, MekanismTileContainer<BECompactNaquadahReactor>, ItemBlockMachine>> COMPACT_NAQUADAH_REACTOR = registerMachines(
+            tier -> tier.nameForNormal + "_compact_naquadah_reactor",
+            BECompactNaquadahReactor::new,
+            BECompactNaquadahReactor.class,
             AstralMekanismLang.DESCRIPTION_COMPACT_MACHINE,
             tier -> BlockMachineBuilder::removeAttributeUpgrade);
 

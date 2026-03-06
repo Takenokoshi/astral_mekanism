@@ -35,6 +35,12 @@ public class AstralMekanismBlockStateProvider extends BlockStateProvider {
         registerTierdMachines(AstralMekanismMachines.COMPACT_TEP,
                 (t, s) -> "block/compact_machine/" + s + "/" + t.nameForNormal, "tep",
                 "block/compact_machine/tep/base");
+        registerTierdMachines(AstralMekanismMachines.COMPACT_FUSION_REACTOR,
+                (t, s) -> "block/compact_machine/" + s + "/" + t.nameForNormal, "fusion_reactor",
+                "block/compact_machine/fusion_reactor/base");
+        registerTierdMachines(AstralMekanismMachines.COMPACT_NAQUADAH_REACTOR,
+                (t, s) -> "block/compact_machine/" + s + "/" + t.nameForNormal, "naquadah_reactor",
+                "block/compact_machine/naquadah_reactor/base");
     }
 
     private void registerAstralFactories(EnumMap<AstralMekanismTier, ? extends IBlockProvider> map) {
@@ -45,11 +51,11 @@ public class AstralMekanismBlockStateProvider extends BlockStateProvider {
                     .replace(tier.nameForAstral + "_astral_", "")
                     .replace("_factory", "");
 
-            BlockModelBuilder base = models().getBuilder("block/aaaaa/astral/"+baseName)
+            BlockModelBuilder base = models().getBuilder("block/aaaaa/astral/" + baseName)
                     .parent(models().getExistingFile(
                             AstralMekanismID.rl("block/astral_factory/" + baseName + "/base")));
 
-            BlockModelBuilder child = models().getBuilder("block/aaaaa/astral/"+baseName+"/"+tier.nameForNormal)
+            BlockModelBuilder child = models().getBuilder("block/aaaaa/astral/" + baseName + "/" + tier.nameForNormal)
                     .parent(models().getExistingFile(
                             AstralMekanismID.rl("block/factory/led/" + tier.nameForNormal)));
 
@@ -87,11 +93,11 @@ public class AstralMekanismBlockStateProvider extends BlockStateProvider {
                     .replace(tier.nameForNormal + "_", "")
                     .replace("_factory", "");
 
-            BlockModelBuilder base = models().getBuilder("block/aaaaa/"+baseName)
+            BlockModelBuilder base = models().getBuilder("block/aaaaa/" + baseName)
                     .parent(models().getExistingFile(
                             AstralMekanismID.rl("block/normal_factory/" + baseName + "/base")));
 
-            BlockModelBuilder child = models().getBuilder("block/aaaaa/"+baseName+"/"+tier.nameForNormal)
+            BlockModelBuilder child = models().getBuilder("block/aaaaa/" + baseName + "/" + tier.nameForNormal)
                     .parent(models().getExistingFile(
                             AstralMekanismID.rl("block/factory/led/" + tier.nameForNormal)));
 
@@ -126,11 +132,11 @@ public class AstralMekanismBlockStateProvider extends BlockStateProvider {
             BiFunction<AstralMekanismTier, String, String> resultModelPathFunction,
             String baseName,
             String baseModelPath) {
-        BlockModelBuilder base = models().getBuilder("block/aaaaa/"+baseName)
+        BlockModelBuilder base = models().getBuilder("block/aaaaa/" + baseName)
                 .parent(models().getExistingFile(AstralMekanismID.rl(baseModelPath)));
         for (AstralMekanismTier tier : AstralMekanismTier.values()) {
             IBlockProvider machine = map.get(tier);
-            BlockModelBuilder child = models().getBuilder("block/aaaaa/"+baseName+"/"+tier.nameForNormal)
+            BlockModelBuilder child = models().getBuilder("block/aaaaa/" + baseName + "/" + tier.nameForNormal)
                     .parent(models().getExistingFile(
                             AstralMekanismID.rl("block/factory/led/" + tier.nameForNormal)));
 

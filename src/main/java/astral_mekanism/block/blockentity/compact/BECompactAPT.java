@@ -3,7 +3,7 @@ package astral_mekanism.block.blockentity.compact;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-import astral_mekanism.block.blockentity.interf.ICompactAPT;
+import astral_mekanism.block.blockentity.interf.IItemGasToItemMachine;
 import fr.iglee42.evolvedmekanism.config.EMConfig;
 import fr.iglee42.evolvedmekanism.registries.EMBlocks;
 import fr.iglee42.evolvedmekanism.registries.EMRecipeType;
@@ -48,7 +48,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.state.BlockState;
 
 public class BECompactAPT extends TileEntityProgressMachine<ItemStackGasToItemStackRecipe>
-        implements ICompactAPT<BECompactAPT> {
+        implements IItemGasToItemMachine<BECompactAPT, ItemStackGasToItemStackRecipe> {
 
     private InputInventorySlot inputSlot;
     private IGasTank inputTank;

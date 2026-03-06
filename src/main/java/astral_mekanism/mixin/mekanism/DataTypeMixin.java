@@ -92,6 +92,15 @@ public class DataTypeMixin {
                 AstralMekanismLang.SIDE_DATA_HEATED_GAS_COOLANT, EnumColor.RED);
         AstralMekDataType.DOUBLE_GAS_COOLANT = createNew("double_gas_coolant",
                 AstralMekanismLang.SIDE_DATA_DOUBLE_GAS_COOLANT, EnumColor.PURPLE);
+
+        AstralMekDataType.MIXED_FUEL = createNew("mixed_fuel", AstralMekanismLang.SIDE_DATA_MIXED_FUEL,
+                EnumColor.PURPLE);
+        AstralMekDataType.LEFT_FUEL = createNew("left_fuel", AstralMekanismLang.SIDE_DATA_LEFT_FUEL,
+                EnumColor.RED);
+        AstralMekDataType.RIGHT_FUEL = createNew("right_fuel", AstralMekanismLang.SIDE_DATA_RIGHT_FUEL,
+                EnumColor.BRIGHT_GREEN);
+        AstralMekDataType.STEAM = createNew("steam", AstralMekanismLang.SIDE_DATA_STEAM,
+                EnumColor.WHITE);
     }
 
     @Unique

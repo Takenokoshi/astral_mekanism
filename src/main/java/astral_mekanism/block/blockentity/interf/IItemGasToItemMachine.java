@@ -12,10 +12,8 @@ import mekanism.common.lib.Color;
 import mekanism.common.recipe.lookup.IDoubleRecipeLookupHandler.ItemChemicalRecipeLookupHandler;
 import mekanism.common.tile.base.TileEntityMekanism;
 
-public interface ICompactAPT<BE extends TileEntityMekanism & ICompactAPT<BE>>
-        extends IEnergizedMachine<BE>, ItemChemicalRecipeLookupHandler<Gas, GasStack, ItemStackGasToItemStackRecipe> {
-
-    
+public interface IItemGasToItemMachine<BE extends TileEntityMekanism & IItemGasToItemMachine<BE, RECIPE>, RECIPE extends ItemStackGasToItemStackRecipe>
+        extends IEnergizedMachine<BE>, ItemChemicalRecipeLookupHandler<Gas, GasStack, RECIPE> {
 
     public static final List<RecipeError> TRACKED_ERROR_TYPES = List.of(RecipeError.NOT_ENOUGH_ENERGY,
             RecipeError.NOT_ENOUGH_INPUT,
@@ -24,9 +22,8 @@ public interface ICompactAPT<BE extends TileEntityMekanism & ICompactAPT<BE>>
             RecipeError.INPUT_DOESNT_PRODUCE_OUTPUT);
 
     public IGasTank getInputTank();
-    
 
-    public default Color getColor(){
+    public default Color getColor() {
         return getInputTank().isEmpty() ? Color.WHITE : Color.rgb(getInputTank().getStack().getChemicalTint());
     }
 

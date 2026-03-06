@@ -20,6 +20,8 @@ import astral_mekanism.block.blockentity.astralmachine.advanced.BEAstralPurifica
 import astral_mekanism.block.blockentity.astralmachine.electric.BEAstralCrusher;
 import astral_mekanism.block.blockentity.astralmachine.electric.BEAstralEnrichmentChamber;
 import astral_mekanism.block.blockentity.compact.BECompactAPT;
+import astral_mekanism.block.blockentity.compact.BECompactFusionReactor;
+import astral_mekanism.block.blockentity.compact.BECompactNaquadahReactor;
 import astral_mekanism.block.blockentity.compact.BECompactSPS;
 import astral_mekanism.block.blockentity.generator.AstralMekGeneratorTier;
 import astral_mekanism.block.blockentity.normalfactory.BEEnergizedSmeltingFactory;
@@ -49,8 +51,8 @@ import astral_mekanism.block.gui.astralmachine.GuiAstralMetallurgicInfuser;
 import astral_mekanism.block.gui.astralmachine.GuiAstralPRC;
 import astral_mekanism.block.gui.astralmachine.GuiAstralPrecisionSawmill;
 import astral_mekanism.block.gui.astralmachine.GuiAstralRotaryCondensentrator;
-import astral_mekanism.block.gui.compact.GuiCompactAPT;
 import astral_mekanism.block.gui.compact.GuiCompactFissionReactor;
+import astral_mekanism.block.gui.compact.GuiCompactMixingReactor;
 import astral_mekanism.block.gui.compact.GuiCompactTEP;
 import astral_mekanism.block.gui.factory.GuiEnergizedSmeltingFactory;
 import astral_mekanism.block.gui.generator.GuiGasBurningGenerator;
@@ -68,6 +70,7 @@ import astral_mekanism.block.gui.normalmachine.GuiMekanicalTransformer;
 import astral_mekanism.block.gui.normalmachine.GuiTransformer;
 import astral_mekanism.block.gui.other.GuiXpTank;
 import astral_mekanism.block.gui.prefab.GuiAbstractStorage;
+import astral_mekanism.block.gui.prefab.GuiItemGasToItemMachine;
 import astral_mekanism.block.gui.prefab.GuiDoubleItemToItemRecipeMachine;
 import astral_mekanism.block.gui.prefab.GuiGasToGasBlock;
 import astral_mekanism.block.gui.prefab.GuiGasToGasMachine;
@@ -121,7 +124,7 @@ public class AstralMekanismClient {
             regScreen(AstralMekanismMachines.ASTRAL_ENRICHMENT_CHAMBER,
                     GuiAstralElectricMachine<BEAstralEnrichmentChamber>::new);
             regScreen(AstralMekanismMachines.ASTRAL_ALLOYER, GuiAstralAlloyer::new);
-            regScreen(AstralMekanismMachines.ASTRAL_APT, GuiCompactAPT<BEAstralAPT>::new);
+            regScreen(AstralMekanismMachines.ASTRAL_APT, GuiItemGasToItemMachine<BEAstralAPT>::new);
             regScreen(AstralMekanismMachines.ASTRAL_CHEMICAL_INFUSER, GuiAstralChemicalInfuser::new);
             regScreen(AstralMekanismMachines.ASTRAL_CHEMICAL_OXIDIZER, GuiAstralChemicalOxider::new);
             regScreen(AstralMekanismMachines.ASTRAL_CHEMICAL_WASHER, GuiAstralChemicalWasher::new);
@@ -147,14 +150,16 @@ public class AstralMekanismClient {
             regScreen(AstralMekanismMachines.ASTRAL_ROTARY_CONDENSENTRATOR, GuiAstralRotaryCondensentrator::new);
             regScreen(AstralMekanismMachines.ASTRAL_SPS, GuiGasToGasMachine<BEAstralSPS>::new);
             regScreen(AstralMekanismMachines.ASTRAL_TRANSFORMER, GuiTransformer<BEAstralTransformer>::new);
-            regScreen(AstralMekanismMachines.COMPACT_APT, GuiCompactAPT<BECompactAPT>::new);
-            for (AstralMekanismTier tier : AstralMekanismTier.values()) {
-                regScreen(AstralMekanismMachines.COMPACT_FIR.get(tier), GuiCompactFissionReactor::new);
-            }
+            regScreen(AstralMekanismMachines.COMPACT_APT, GuiItemGasToItemMachine<BECompactAPT>::new);
+            AstralMekanismMachines.COMPACT_FIR
+                    .forEach((t, m) -> regScreen(m, GuiCompactFissionReactor::new));
+            AstralMekanismMachines.COMPACT_FUSION_REACTOR
+                    .forEach((t, m) -> regScreen(m, GuiCompactMixingReactor<BECompactFusionReactor>::new));
+            AstralMekanismMachines.COMPACT_NAQUADAH_REACTOR
+                    .forEach((t, m) -> regScreen(m, GuiCompactMixingReactor<BECompactNaquadahReactor>::new));
             regScreen(AstralMekanismMachines.COMPACT_SPS, GuiGasToGasMachine<BECompactSPS>::new);
-            for (AstralMekanismTier tier : AstralMekanismTier.values()) {
-                regScreen(AstralMekanismMachines.COMPACT_TEP.get(tier), GuiCompactTEP::new);
-            }
+            AstralMekanismMachines.COMPACT_TEP
+                    .forEach((t, m) -> regScreen(m, GuiCompactTEP::new));
             for (AstralMekGeneratorTier tier : AstralMekGeneratorTier.values()) {
                 regScreen(AstralMekanismMachines.GAS_BURNING_GENERATORS.get(tier),
                         GuiGasBurningGenerator::new);

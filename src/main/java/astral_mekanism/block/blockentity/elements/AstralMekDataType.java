@@ -27,4 +27,8 @@ public class AstralMekDataType {
 	public static DataType HEATED_FLUID_COOLANT;
 	public static DataType HEATED_GAS_COOLANT;
 	public static DataType DOUBLE_GAS_COOLANT;
+    public static DataType MIXED_FUEL;
+    public static DataType LEFT_FUEL;
+    public static DataType RIGHT_FUEL;
+    public static DataType STEAM;
 }

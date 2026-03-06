@@ -4,7 +4,7 @@ import java.util.List;
 
 import astral_mekanism.AstralMekanism;
 import astral_mekanism.AstralMekanismLang;
-import astral_mekanism.block.blockentity.compact.BECompactFIR;
+import astral_mekanism.block.blockentity.compact.BECompactFissionReactor;
 import astral_mekanism.network.to_server.PacketGuiSetLong;
 import mekanism.api.text.EnumColor;
 import mekanism.client.gui.GuiConfigurableTile;
@@ -25,11 +25,11 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.player.Inventory;
 
 public class GuiCompactFissionReactor
-        extends GuiConfigurableTile<BECompactFIR, MekanismTileContainer<BECompactFIR>> {
+        extends GuiConfigurableTile<BECompactFissionReactor, MekanismTileContainer<BECompactFissionReactor>> {
 
     private GuiTextField field;
 
-    public GuiCompactFissionReactor(MekanismTileContainer<BECompactFIR> container, Inventory inv,
+    public GuiCompactFissionReactor(MekanismTileContainer<BECompactFissionReactor> container, Inventory inv,
             Component title) {
         super(container, inv, title);
         dynamicSlots = true;

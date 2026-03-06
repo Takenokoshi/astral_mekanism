@@ -3,8 +3,7 @@ package astral_mekanism.block.blockentity.astralmachine;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-import astral_mekanism.block.blockentity.interf.ICompactAPT;
-import fr.iglee42.evolvedmekanism.registries.EMBlocks;
+import astral_mekanism.block.blockentity.interf.IItemGasToItemMachine;
 import fr.iglee42.evolvedmekanism.registries.EMRecipeType;
 import mekanism.api.IContentsListener;
 import mekanism.api.chemical.ChemicalTankBuilder;
@@ -31,7 +30,6 @@ import mekanism.common.capabilities.holder.slot.IInventorySlotHolder;
 import mekanism.common.capabilities.holder.slot.InventorySlotHelper;
 import mekanism.common.inventory.container.MekanismContainer;
 import mekanism.common.inventory.container.sync.SyncableFloatingLong;
-import mekanism.common.inventory.slot.BasicInventorySlot;
 import mekanism.common.inventory.slot.EnergyInventorySlot;
 import mekanism.common.inventory.slot.InputInventorySlot;
 import mekanism.common.inventory.slot.OutputInventorySlot;
@@ -47,12 +45,11 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.state.BlockState;
 
 public class BEAstralAPT extends TileEntityRecipeMachine<ItemStackGasToItemStackRecipe>
-        implements ICompactAPT<BEAstralAPT> {
+        implements IItemGasToItemMachine<BEAstralAPT, ItemStackGasToItemStackRecipe> {
 
     private InputInventorySlot inputSlot;
     private IGasTank inputTank;
     private OutputInventorySlot outputSlot;
-    private BasicInventorySlot superChargingSlot;
     private MachineEnergyContainer<BEAstralAPT> energyContainer;
     private EnergyInventorySlot energySlot;
     private FloatingLong lastEnergyUsed = FloatingLong.ZERO;
@@ -83,8 +80,6 @@ public class BEAstralAPT extends TileEntityRecipeMachine<ItemStackGasToItemStack
                 this::containsRecipeA, recipeCacheListener, 28, 40));
         builder.addSlot(outputSlot = OutputInventorySlot.at(listener, 132, 40));
         builder.addSlot(energySlot = EnergyInventorySlot.fill(energyContainer, listener, 132, 18));
-        builder.addSlot(superChargingSlot = BasicInventorySlot.at(
-                stack -> ItemStack.isSameItem(stack, EMBlocks.SUPERCHARGING_ELEMENT.getItemStack()), listener, 28, 18));
         return builder.build();
     }
 
