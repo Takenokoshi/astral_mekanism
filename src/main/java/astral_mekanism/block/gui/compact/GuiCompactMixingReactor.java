@@ -2,6 +2,8 @@ package astral_mekanism.block.gui.compact;
 
 import java.util.List;
 
+import org.jetbrains.annotations.NotNull;
+
 import astral_mekanism.AstralMekanism;
 import astral_mekanism.AstralMekanismLang;
 import astral_mekanism.block.blockentity.prefab.BEAbstractCompactMixingReactor;
@@ -20,6 +22,7 @@ import mekanism.common.util.MekanismUtils;
 import mekanism.common.util.UnitDisplayUtils.TemperatureUnit;
 import mekanism.common.util.text.InputValidator;
 import mekanism.generators.common.GeneratorsLang;
+import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.player.Inventory;
 
@@ -31,6 +34,7 @@ public class GuiCompactMixingReactor<BE extends BEAbstractCompactMixingReactor>
     public GuiCompactMixingReactor(MekanismTileContainer<BE> container, Inventory inv,
             Component title) {
         super(container, inv, title);
+        dynamicSlots = true;
     }
 
     @Override
@@ -45,13 +49,14 @@ public class GuiCompactMixingReactor<BE extends BEAbstractCompactMixingReactor>
         addRenderableWidget(new GuiGasGauge(tile::getRightFuelTank, () -> tile.getGasTanks(null),
                 GaugeType.STANDARD, this, 43, 4))
                 .setLabel(AstralMekanismLang.LABEL_RIGHT_FUEL.translateColored(EnumColor.BRIGHT_GREEN));
-        addRenderableWidget(new GuiGasGauge(tile::getSteamTank, () -> tile.getGasTanks(null),
-                GaugeType.SMALL, this, 115, 34))
-                .setLabel(GeneratorsLang.FISSION_HEATED_COOLANT_TANK.translateColored(EnumColor.WHITE));
         addRenderableWidget(new GuiFluidGauge(tile::getWaterTank, () -> tile.getFluidTanks(null),
-                GaugeType.SMALL, this, 151, 34));
+                GaugeType.SMALL, this, 115, 34))
+                .setLabel(GeneratorsLang.FISSION_COOLANT_TANK.translateColored(EnumColor.AQUA));
+        addRenderableWidget(new GuiGasGauge(tile::getSteamTank, () -> tile.getGasTanks(null),
+                GaugeType.SMALL, this, 151, 34))
+                .setLabel(GeneratorsLang.FISSION_HEATED_COOLANT_TANK.translateColored(EnumColor.WHITE));
         addRenderableWidget(new GuiInnerScreen(this, 61, 4, 108, 30, () -> {
-            return List.of(this.title, GeneratorsLang.INSUFFICIENT_FUEL.translate(tile.getMixingRate()));
+            return List.of(this.title, GeneratorsLang.REACTOR_INJECTION_RATE.translate(tile.getMixingRate()));
         }).clearFormat());
         addRenderableWidget(new GuiHeatTab(this, () -> {
             Component temp = MekanismUtils.getTemperatureDisplay(tile.heatCapacitor.getTemperature(),
@@ -69,6 +74,13 @@ public class GuiCompactMixingReactor<BE extends BEAbstractCompactMixingReactor>
         field.setMaxLength(32);
         field.setInputValidator(InputValidator.DIGIT).configureDigitalInput(this::setEfficiency);
         field.setFocused(true);
+    }
+
+    @Override
+    protected void drawForegroundText(@NotNull GuiGraphics guiGraphics, int mouseX, int mouseY) {
+        renderTitleText(guiGraphics);
+        drawString(guiGraphics, playerInventoryTitle, inventoryLabelX, inventoryLabelY, titleTextColor());
+        super.drawForegroundText(guiGraphics, mouseX, mouseY);
     }
 
     private void setEfficiency() {

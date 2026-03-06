@@ -12,6 +12,7 @@ import astral_mekanism.AstralMekanismLang;
 import astral_mekanism.block.blockentity.astralfactory.BEAstralEnergizedSmeltingFactory;
 import astral_mekanism.block.blockentity.astralmachine.BEAstralAPT;
 import astral_mekanism.block.blockentity.astralmachine.BEAstralAlloyer;
+import astral_mekanism.block.blockentity.astralmachine.BEAstralAntiprotonicNucleosynthesizer;
 import astral_mekanism.block.blockentity.astralmachine.BEAstralChemicalInfuser;
 import astral_mekanism.block.blockentity.astralmachine.BEAstralChemicalOxidizer;
 import astral_mekanism.block.blockentity.astralmachine.BEAstralChemicalWasher;
@@ -239,6 +240,17 @@ public class AstralMekanismMachines {
                     builder -> builder
                             .withEnergyConfig(EMConfig.general.aptEnergyConsumption, () -> FloatingLong.MAX_VALUE)
                             .removeAttributeUpgrade());
+
+    public static final MachineRegistryObject<BEAstralAntiprotonicNucleosynthesizer, BlockTileModel<BEAstralAntiprotonicNucleosynthesizer, BlockTypeMachine<BEAstralAntiprotonicNucleosynthesizer>>, MekanismTileContainer<BEAstralAntiprotonicNucleosynthesizer>, ItemBlockMachine> ASTRAL_ANTIPROTONIC_NUCLEOSYNTHESIZER = MACHINES
+            .registerSimple("astral_antiprotonic_nucleosynthesizer",
+                    BEAstralAntiprotonicNucleosynthesizer::new,
+                    BEAstralAntiprotonicNucleosynthesizer.class,
+                    AstralMekanismLang.DESCRIPTION_ASTRAL_MACHINE,
+                    builder -> builder
+                            .withSound(MekanismSounds.ANTIPROTONIC_NUCLEOSYNTHESIZER)
+                            .withEnergyConfig(MekanismConfig.usage.antiprotonicNucleosynthesizer,
+                                    () -> FloatingLong.MAX_VALUE)
+                            .changeAttributeUpgrade(EnumSet.of(Upgrade.MUFFLING)));
 
     public static final MachineRegistryObject<BEAstralChemicalInfuser, BlockTileModel<BEAstralChemicalInfuser, BlockTypeMachine<BEAstralChemicalInfuser>>, MekanismTileContainer<BEAstralChemicalInfuser>, ItemBlockMachine> ASTRAL_CHEMICAL_INFUSER = MACHINES
             .registerSimple("astral_chemical_infuser",

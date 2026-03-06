@@ -4,6 +4,7 @@ import astral_mekanism.AstralMekanismTier;
 import astral_mekanism.AstralMekanismID;
 import astral_mekanism.block.blockentity.astralfactory.BEAstralEnergizedSmeltingFactory;
 import astral_mekanism.block.blockentity.astralmachine.BEAstralAPT;
+import astral_mekanism.block.blockentity.astralmachine.BEAstralAntiprotonicNucleosynthesizer;
 import astral_mekanism.block.blockentity.astralmachine.BEAstralCombiner;
 import astral_mekanism.block.blockentity.astralmachine.BEAstralEnergizedSmelter;
 import astral_mekanism.block.blockentity.astralmachine.BEAstralGNA;
@@ -124,6 +125,8 @@ public class AstralMekanismClient {
             regScreen(AstralMekanismMachines.ASTRAL_ENRICHMENT_CHAMBER,
                     GuiAstralElectricMachine<BEAstralEnrichmentChamber>::new);
             regScreen(AstralMekanismMachines.ASTRAL_ALLOYER, GuiAstralAlloyer::new);
+            regScreen(AstralMekanismMachines.ASTRAL_ANTIPROTONIC_NUCLEOSYNTHESIZER,
+                    GuiItemGasToItemMachine<BEAstralAntiprotonicNucleosynthesizer>::new);
             regScreen(AstralMekanismMachines.ASTRAL_APT, GuiItemGasToItemMachine<BEAstralAPT>::new);
             regScreen(AstralMekanismMachines.ASTRAL_CHEMICAL_INFUSER, GuiAstralChemicalInfuser::new);
             regScreen(AstralMekanismMachines.ASTRAL_CHEMICAL_OXIDIZER, GuiAstralChemicalOxider::new);
