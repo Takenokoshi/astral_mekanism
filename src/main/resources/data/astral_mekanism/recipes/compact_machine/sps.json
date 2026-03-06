@@ -1,0 +1,165 @@
+{
+    "type": "astral_mekanism:astral_crafting",
+    "itemInputA1": {
+        "amount": 1,
+        "ingredient": {
+            "item": "mekanism:block_steel"
+        }
+    },
+    "itemInputA2": {
+        "amount": 1,
+        "ingredient": {
+            "item": "astral_mekanism:alloy_convergent"
+        }
+    },
+    "itemInputA3": {
+        "amount": 1,
+        "ingredient": {
+            "item": "astral_mekanism:resonance_control_circuit"
+        }
+    },
+    "itemInputA4": {
+        "amount": 1,
+        "ingredient": {
+            "item": "astral_mekanism:alloy_convergent"
+        }
+    },
+    "itemInputA5": {
+        "amount": 1,
+        "ingredient": {
+            "item": "mekanism:block_steel"
+        }
+    },
+    "itemInputB1": {
+        "amount": 1,
+        "ingredient": {
+            "item": "astral_mekanism:alloy_convergent"
+        }
+    },
+    "itemInputB2": {
+        "amount": 15,
+        "ingredient": {
+            "item": "mekanism:sps_casing"
+        }
+    },
+    "itemInputB3": {
+        "amount": 60,
+        "ingredient": {
+            "item": "mekanism:structural_glass"
+        }
+    },
+    "itemInputB4": {
+        "amount": 15,
+        "ingredient": {
+            "item": "mekanism:sps_casing"
+        }
+    },
+    "itemInputB5": {
+        "amount": 1,
+        "ingredient": {
+            "item": "astral_mekanism:alloy_convergent"
+        }
+    },
+    "itemInputC1": {
+        "amount": 1,
+        "ingredient": {
+            "item": "astral_mekanism:resonance_control_circuit"
+        }
+    },
+    "itemInputC2": {
+        "amount": 3,
+        "ingredient": {
+            "item": "mekanism:sps_port"
+        }
+    },
+    "itemInputC3": {
+        "amount": 2,
+        "ingredient": {
+            "item": "mekanism:supercharged_coil"
+        }
+    },
+    "itemInputC4": {
+        "amount": 3,
+        "ingredient": {
+            "item": "mekanism:sps_port"
+        }
+    },
+    "itemInputC5": {
+        "amount": 1,
+        "ingredient": {
+            "item": "astral_mekanism:resonance_control_circuit"
+        }
+    },
+    "itemInputD1": {
+        "amount": 1,
+        "ingredient": {
+            "item": "astral_mekanism:alloy_convergent"
+        }
+    },
+    "itemInputD2": {
+        "amount": 15,
+        "ingredient": {
+            "item": "mekanism:sps_casing"
+        }
+    },
+    "itemInputD3": {
+        "amount": 60,
+        "ingredient": {
+            "item": "mekanism:structural_glass"
+        }
+    },
+    "itemInputD4": {
+        "amount": 15,
+        "ingredient": {
+            "item": "mekanism:sps_casing"
+        }
+    },
+    "itemInputD5": {
+        "amount": 1,
+        "ingredient": {
+            "item": "astral_mekanism:alloy_convergent"
+        }
+    },
+    "itemInputE1": {
+        "amount": 1,
+        "ingredient": {
+            "item": "mekanism:block_steel"
+        }
+    },
+    "itemInputE2": {
+        "amount": 1,
+        "ingredient": {
+            "item": "astral_mekanism:alloy_convergent"
+        }
+    },
+    "itemInputE3": {
+        "amount": 1,
+        "ingredient": {
+            "item": "astral_mekanism:resonance_control_circuit"
+        }
+    },
+    "itemInputE4": {
+        "amount": 1,
+        "ingredient": {
+            "item": "astral_mekanism:alloy_convergent"
+        }
+    },
+    "itemInputE5": {
+        "amount": 1,
+        "ingredient": {
+            "item": "mekanism:block_steel"
+        }
+    },
+    "fluidInput": {
+        "fluid": "mekanism:heavy_water",
+        "amount": 1000
+    },
+    "gasInput": {
+        "gas": "mekanism:ethene",
+        "amount": 1000
+    },
+    "output": {
+        "item": "astral_mekanism:compact_sps",
+        "count": 1
+    }
+}

@@ -3,6 +3,7 @@ package astral_mekanism.jei;
 import appeng.recipes.handlers.InscriberRecipe;
 import appeng.recipes.transform.TransformRecipe;
 import astral_mekanism.AstralMekanismID;
+import astral_mekanism.AstralMekanismTier;
 import astral_mekanism.recipes.recipe.AstralCraftingRecipe;
 import astral_mekanism.recipes.recipe.FluidFluidToFluidRecipe;
 import astral_mekanism.recipes.recipe.GreenhouseRecipe;
@@ -29,6 +30,10 @@ public final class AstralMekanismJEIRecipeType {
             AstralMekanismMachines.ITEM_UNZIPPER, ItemStackToItemStackRecipe.class);
     public static final MekanismJEIRecipeType<MekanicalTransformRecipe> MEKANICAL_TRANSFORM = new MekanismJEIRecipeType<>(
             AstralMekanismMachines.TRANSFORMER, MekanicalTransformRecipe.class);
+    public static final MekanismJEIRecipeType<MixingReactorJEIrecipe> FUSION_REACTOR = new MekanismJEIRecipeType<>(
+            AstralMekanismMachines.COMPACT_FUSION_REACTOR.get(AstralMekanismTier.ASTRAL), MixingReactorJEIrecipe.class);
+    public static final MekanismJEIRecipeType<MixingReactorJEIrecipe> NAQUADAH_REACTOR = new MekanismJEIRecipeType<>(
+            AstralMekanismMachines.COMPACT_NAQUADAH_REACTOR.get(AstralMekanismTier.ASTRAL), MixingReactorJEIrecipe.class);
 
     public static final RecipeType<SmeltingRecipe> ESSENTIAL_SMELTING = RecipeType.create(AstralMekanismID.MODID,
             "essential_smelter", SmeltingRecipe.class);

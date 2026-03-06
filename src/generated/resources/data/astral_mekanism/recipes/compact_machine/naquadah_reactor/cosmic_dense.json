@@ -1,0 +1,33 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "redstone",
+  "key": {
+    "A": {
+      "item": "evolvedmekanism:alloy_singular"
+    },
+    "B": {
+      "item": "mekanism:ingot_refined_obsidian"
+    },
+    "C": {
+      "item": "evolvedmekanism:alloy_singular"
+    },
+    "D": {
+      "item": "mekanism_extras:alloy_shining"
+    },
+    "E": {
+      "item": "astral_mekanism:supreme_quantum_compact_naquadah_reactor"
+    },
+    "F": {
+      "item": "emextras:cosmic_dense_control_circuit"
+    }
+  },
+  "pattern": [
+    "ABC",
+    "DEF",
+    "ABC"
+  ],
+  "result": {
+    "item": "astral_mekanism:cosmic_dense_compact_naquadah_reactor"
+  },
+  "show_notification": true
+}

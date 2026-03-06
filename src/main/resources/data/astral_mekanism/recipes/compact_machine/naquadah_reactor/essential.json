@@ -1,0 +1,165 @@
+{
+    "type": "astral_mekanism:astral_crafting",
+    "itemInputA1": {
+        "amount": 36,
+        "ingredient": {
+            "item": "mekanism_extras:lead_coated_glass"
+        }
+    },
+    "itemInputA2": {
+        "amount": 1,
+        "ingredient": {
+            "item": "mekanism_extras:alloy_thermonuclear"
+        }
+    },
+    "itemInputA3": {
+        "amount": 1,
+        "ingredient": {
+            "item": "mekanism_extras:supreme_control_circuit"
+        }
+    },
+    "itemInputA4": {
+        "amount": 1,
+        "ingredient": {
+            "item": "mekanism_extras:alloy_thermonuclear"
+        }
+    },
+    "itemInputA5": {
+        "amount": 36,
+        "ingredient": {
+            "item": "mekanism_extras:lead_coated_glass"
+        }
+    },
+    "itemInputB1": {
+        "amount": 1,
+        "ingredient": {
+            "item": "astral_mekanism:alloy_elastic"
+        }
+    },
+    "itemInputB2": {
+        "amount": 27,
+        "ingredient": {
+            "item": "mekanism_extras:naquadah_reactor_casing"
+        }
+    },
+    "itemInputB3": {
+        "amount": 36,
+        "ingredient": {
+            "item": "mekanism_extras:lead_coated_glass"
+        }
+    },
+    "itemInputB4": {
+        "amount": 27,
+        "ingredient": {
+            "item": "mekanism_extras:naquadah_reactor_casing"
+        }
+    },
+    "itemInputB5": {
+        "amount": 1,
+        "ingredient": {
+            "item": "astral_mekanism:alloy_elastic"
+        }
+    },
+    "itemInputC1": {
+        "amount": 1,
+        "ingredient": {
+            "item": "astral_mekanism:vibration_control_circuit"
+        }
+    },
+    "itemInputC2": {
+        "amount": 3,
+        "ingredient": {
+            "item": "mekanism_extras:naquadah_reactor_port"
+        }
+    },
+    "itemInputC3": {
+        "amount": 1,
+        "ingredient": {
+            "item": "mekanism_extras:naquadah_reactor_controller"
+        }
+    },
+    "itemInputC4": {
+        "amount": 3,
+        "ingredient": {
+            "item": "mekanism_extras:naquadah_reactor_port"
+        }
+    },
+    "itemInputC5": {
+        "amount": 1,
+        "ingredient": {
+            "item": "astral_mekanism:vibration_control_circuit"
+        }
+    },
+    "itemInputD1": {
+        "amount": 1,
+        "ingredient": {
+            "item": "astral_mekanism:alloy_elastic"
+        }
+    },
+    "itemInputD2": {
+        "amount": 27,
+        "ingredient": {
+            "item": "mekanism_extras:naquadah_reactor_casing"
+        }
+    },
+    "itemInputD3": {
+        "amount": 36,
+        "ingredient": {
+            "item": "mekanism_extras:lead_coated_glass"
+        }
+    },
+    "itemInputD4": {
+        "amount": 27,
+        "ingredient": {
+            "item": "mekanism_extras:naquadah_reactor_casing"
+        }
+    },
+    "itemInputD5": {
+        "amount": 1,
+        "ingredient": {
+            "item": "astral_mekanism:alloy_elastic"
+        }
+    },
+    "itemInputE1": {
+        "amount": 36,
+        "ingredient": {
+            "item": "mekanism_extras:lead_coated_glass"
+        }
+    },
+    "itemInputE2": {
+        "amount": 1,
+        "ingredient": {
+            "item": "mekanism_extras:alloy_thermonuclear"
+        }
+    },
+    "itemInputE3": {
+        "amount": 1,
+        "ingredient": {
+            "item": "mekanism_extras:supreme_control_circuit"
+        }
+    },
+    "itemInputE4": {
+        "amount": 1,
+        "ingredient": {
+            "item": "mekanism_extras:alloy_thermonuclear"
+        }
+    },
+    "itemInputE5": {
+        "amount": 36,
+        "ingredient": {
+            "item": "mekanism_extras:lead_coated_glass"
+        }
+    },
+    "fluidInput": {
+        "fluid": "mekanism:heavy_water",
+        "amount": 1000
+    },
+    "gasInput": {
+        "gas": "mekanism:ethene",
+        "amount": 1000
+    },
+    "output": {
+        "item": "astral_mekanism:essential_compact_naquadah_reactor",
+        "count": 1
+    }
+}

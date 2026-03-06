@@ -78,7 +78,7 @@ public class GuiCompactFissionReactor
         addRenderableWidget(new GuiInnerScreen(this, 61, 34, 54, 12));
 
         field = addRenderableWidget(new GuiTextField(this, 61, 34, 54, 12));
-        field.setMaxLength(32);
+        field.setMaxLength(19);
         field.setInputValidator(InputValidator.DIGIT).configureDigitalInput(this::setEfficiency);
         field.setFocused(true);
     }

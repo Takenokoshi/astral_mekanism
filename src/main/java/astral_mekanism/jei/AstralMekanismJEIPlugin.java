@@ -2,6 +2,10 @@ package astral_mekanism.jei;
 
 import org.jetbrains.annotations.Nullable;
 
+import com.jerry.generator_extras.common.ExtraGenLang;
+import com.jerry.generator_extras.common.genregistry.ExtraGenBlocks;
+import com.jerry.generator_extras.common.genregistry.ExtraGenItem;
+
 import appeng.integration.modules.jei.ChargerCategory;
 import appeng.integration.modules.jei.TransformCategory;
 import astral_mekanism.AstralMekanismID;
@@ -12,6 +16,7 @@ import astral_mekanism.jei.recipeCategory.FluidInfuserRecipeCategory;
 import astral_mekanism.jei.recipeCategory.GreenhouseRecipeCategory;
 import astral_mekanism.jei.recipeCategory.MekanicalInscribingRecipeCategory;
 import astral_mekanism.jei.recipeCategory.MekanicalTransformRecipeCategory;
+import astral_mekanism.jei.recipeCategory.MixingReactorRecipeCategory;
 import astral_mekanism.jei.recipeCategory.TransformRecipeCategory;
 import astral_mekanism.registries.AstralMekanismMachines;
 import astral_mekanism.registries.AstralMekanismRecipeTypes;
@@ -23,6 +28,9 @@ import mekanism.client.jei.RecipeRegistryHelper;
 import mekanism.client.jei.machine.GasToGasRecipeCategory;
 import mekanism.client.jei.machine.ItemStackToItemStackRecipeCategory;
 import mekanism.generators.client.jei.GeneratorsJEIRecipeType;
+import mekanism.generators.common.GeneratorsLang;
+import mekanism.generators.common.registries.GeneratorsBlocks;
+import mekanism.generators.common.registries.GeneratorsItems;
 import mezz.jei.api.IModPlugin;
 import mezz.jei.api.JeiPlugin;
 import mezz.jei.api.constants.RecipeTypes;
@@ -76,6 +84,14 @@ public class AstralMekanismJEIPlugin implements IModPlugin {
                         new TransformRecipeCategory(guiHelper,
                                 AstralMekanismJEIRecipeType.TRANSFORM,
                                 AstralMekanismMachines.TRANSFORMER),
+                        new MixingReactorRecipeCategory(guiHelper,
+                                AstralMekanismJEIRecipeType.FUSION_REACTOR,
+                                GeneratorsLang.FUSION_REACTOR.translate(),
+                                GeneratorsBlocks.FUSION_REACTOR_CONTROLLER),
+                        new MixingReactorRecipeCategory(guiHelper,
+                                AstralMekanismJEIRecipeType.NAQUADAH_REACTOR,
+                                ExtraGenLang.NAQUADAH_REACTOR.translate(),
+                                ExtraGenBlocks.NAQUADAH_REACTOR_CONTROLLER),
                 });
     }
 
@@ -95,6 +111,10 @@ public class AstralMekanismJEIPlugin implements IModPlugin {
                 AstralMekanismRecipeTypes.ITEM_UNZIPPING);
         RecipeRegistryHelper.register(registry, AstralMekanismJEIRecipeType.MEKANICAL_TRANSFORM,
                 AstralMekanismRecipeTypes.MEKANICAL_TRAMSFORM);
+        RecipeRegistryHelper.register(registry, AstralMekanismJEIRecipeType.FUSION_REACTOR,
+                MixingReactorJEIrecipe.fusionRecipes);
+        RecipeRegistryHelper.register(registry, AstralMekanismJEIRecipeType.NAQUADAH_REACTOR,
+                MixingReactorJEIrecipe.naquadahRecipes);
         registry.addRecipes(AstralMekanismJEIRecipeType.ESSENTIAL_SMELTING,
                 GeneralRecipeType.SMELTING.getRecipes(Minecraft.getInstance().level));
         registry.addRecipes(AstralMekanismJEIRecipeType.MEKANICAL_INSCRIBING,
@@ -132,6 +152,8 @@ public class AstralMekanismJEIPlugin implements IModPlugin {
                 AstralMekanismMachines.ASTRAL_ENERGIZED_SMELTING_FACTRIES.values().toArray(IItemProvider[]::new));
         CatalystRegistryHelper.register(registry, MekanismJEIRecipeType.ENRICHING,
                 AstralMekanismMachines.ASTRAL_ENRICHMENT_CHAMBER);
+        CatalystRegistryHelper.register(registry, MekanismJEIRecipeType.NUCLEOSYNTHESIZING,
+                AstralMekanismMachines.ASTRAL_ANTIPROTONIC_NUCLEOSYNTHESIZER);
         CatalystRegistryHelper.register(registry, MekanismJEIRecipeType.CHEMICAL_INFUSING,
                 AstralMekanismMachines.ASTRAL_CHEMICAL_INFUSER);
         CatalystRegistryHelper.register(registry, MekanismJEIRecipeType.OXIDIZING,
@@ -171,12 +193,33 @@ public class AstralMekanismJEIPlugin implements IModPlugin {
                 AstralMekanismMachines.COMPACT_FIR.values().toArray(IItemProvider[]::new));
         CatalystRegistryHelper.register(registry, MekanismJEIRecipeType.GAS_CONVERSION,
                 AstralMekanismMachines.GAS_SYNTHESIZER);
+        CatalystRegistryHelper.register(registry, AstralMekanismJEIRecipeType.FUSION_REACTOR,
+                AstralMekanismMachines.COMPACT_FUSION_REACTOR.values().toArray(IItemProvider[]::new));
+        CatalystRegistryHelper.register(registry, AstralMekanismJEIRecipeType.FUSION_REACTOR,
+                GeneratorsBlocks.FUSION_REACTOR_CONTROLLER,
+                GeneratorsBlocks.FUSION_REACTOR_FRAME,
+                GeneratorsBlocks.FUSION_REACTOR_LOGIC_ADAPTER,
+                GeneratorsBlocks.FUSION_REACTOR_PORT,
+                GeneratorsBlocks.REACTOR_GLASS,
+                GeneratorsItems.HOHLRAUM);
 
         // Evolved Mekanism
         CatalystRegistryHelper.register(registry, EMJEI.APT,
                 AstralMekanismMachines.COMPACT_APT,
                 AstralMekanismMachines.ASTRAL_APT);
         CatalystRegistryHelper.register(registry, EMJEI.ALLOYING, AstralMekanismMachines.ASTRAL_ALLOYER);
+
+        // mekanism extras
+        CatalystRegistryHelper.register(registry, AstralMekanismJEIRecipeType.NAQUADAH_REACTOR,
+                AstralMekanismMachines.COMPACT_NAQUADAH_REACTOR.values().toArray(IItemProvider[]::new));
+        CatalystRegistryHelper.register(registry, AstralMekanismJEIRecipeType.NAQUADAH_REACTOR,
+                ExtraGenBlocks.NAQUADAH_REACTOR_CASING,
+                ExtraGenBlocks.NAQUADAH_REACTOR_CONTROLLER,
+                ExtraGenBlocks.NAQUADAH_REACTOR_LOGIC_ADAPTER,
+                ExtraGenBlocks.NAQUADAH_REACTOR_PORT,
+                ExtraGenBlocks.LEAD_COATED_GLASS,
+                ExtraGenBlocks.LEAD_COATED_LASER_FOCUS_MATRIX,
+                ExtraGenItem.HOHLRAUM);
 
         // astral_mekanism
         CatalystRegistryHelper.register(registry, AstralMekanismJEIRecipeType.ASTRAL_CRAFTING,

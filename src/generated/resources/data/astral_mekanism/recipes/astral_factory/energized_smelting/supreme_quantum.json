@@ -1,0 +1,33 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "redstone",
+  "key": {
+    "A": {
+      "item": "evolvedmekanism:alloy_subatomic"
+    },
+    "B": {
+      "item": "minecraft:shulker_shell"
+    },
+    "C": {
+      "item": "evolvedmekanism:alloy_subatomic"
+    },
+    "D": {
+      "item": "mekanism_extras:alloy_thermonuclear"
+    },
+    "E": {
+      "item": "astral_mekanism:absolute_overclocked_astral_energized_smelting_factory"
+    },
+    "F": {
+      "item": "emextras:supreme_quantum_control_circuit"
+    }
+  },
+  "pattern": [
+    "ABC",
+    "DEF",
+    "ABC"
+  ],
+  "result": {
+    "item": "astral_mekanism:supreme_quantum_astral_energized_smelting_factory"
+  },
+  "show_notification": true
+}

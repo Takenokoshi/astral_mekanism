@@ -1,0 +1,165 @@
+{
+    "type": "astral_mekanism:astral_crafting",
+    "itemInputA1": {
+        "amount": 1,
+        "ingredient": {
+            "item": "mekanism:block_refined_obsidian"
+        }
+    },
+    "itemInputA2": {
+        "amount": 1,
+        "ingredient": {
+            "item": "astral_mekanism:alloy_enchanted"
+        }
+    },
+    "itemInputA3": {
+        "amount": 1,
+        "ingredient": {
+            "item": "astral_mekanism:enhanced_control_circuit"
+        }
+    },
+    "itemInputA4": {
+        "amount": 1,
+        "ingredient": {
+            "item": "astral_mekanism:alloy_enchanted"
+        }
+    },
+    "itemInputA5": {
+        "amount": 1,
+        "ingredient": {
+            "item": "mekanism:block_refined_obsidian"
+        }
+    },
+    "itemInputB1": {
+        "amount": 1,
+        "ingredient": {
+            "item": "astral_mekanism:alloy_elastic"
+        }
+    },
+    "itemInputB2": {
+        "amount": 9,
+        "ingredient": {
+            "item": "mekanismgenerators:fusion_reactor_frame"
+        }
+    },
+    "itemInputB3": {
+        "amount": 12,
+        "ingredient": {
+            "item": "mekanismgenerators:reactor_glass"
+        }
+    },
+    "itemInputB4": {
+        "amount": 9,
+        "ingredient": {
+            "item": "mekanismgenerators:fusion_reactor_frame"
+        }
+    },
+    "itemInputB5": {
+        "amount": 1,
+        "ingredient": {
+            "item": "astral_mekanism:alloy_elastic"
+        }
+    },
+    "itemInputC1": {
+        "amount": 1,
+        "ingredient": {
+            "item": "astral_mekanism:vibration_control_circuit"
+        }
+    },
+    "itemInputC2": {
+        "amount": 3,
+        "ingredient": {
+            "item": "mekanismgenerators:fusion_reactor_port"
+        }
+    },
+    "itemInputC3": {
+        "amount": 1,
+        "ingredient": {
+            "item": "mekanismgenerators:fusion_reactor_controller"
+        }
+    },
+    "itemInputC4": {
+        "amount": 3,
+        "ingredient": {
+            "item": "mekanismgenerators:fusion_reactor_port"
+        }
+    },
+    "itemInputC5": {
+        "amount": 1,
+        "ingredient": {
+            "item": "astral_mekanism:vibration_control_circuit"
+        }
+    },
+    "itemInputD1": {
+        "amount": 1,
+        "ingredient": {
+            "item": "astral_mekanism:alloy_elastic"
+        }
+    },
+    "itemInputD2": {
+        "amount": 9,
+        "ingredient": {
+            "item": "mekanismgenerators:fusion_reactor_frame"
+        }
+    },
+    "itemInputD3": {
+        "amount": 12,
+        "ingredient": {
+            "item": "mekanismgenerators:reactor_glass"
+        }
+    },
+    "itemInputD4": {
+        "amount": 9,
+        "ingredient": {
+            "item": "mekanismgenerators:fusion_reactor_frame"
+        }
+    },
+    "itemInputD5": {
+        "amount": 1,
+        "ingredient": {
+            "item": "astral_mekanism:alloy_elastic"
+        }
+    },
+    "itemInputE1": {
+        "amount": 1,
+        "ingredient": {
+            "item": "mekanism:block_refined_obsidian"
+        }
+    },
+    "itemInputE2": {
+        "amount": 1,
+        "ingredient": {
+            "item": "astral_mekanism:alloy_enchanted"
+        }
+    },
+    "itemInputE3": {
+        "amount": 1,
+        "ingredient": {
+            "item": "astral_mekanism:enhanced_control_circuit"
+        }
+    },
+    "itemInputE4": {
+        "amount": 1,
+        "ingredient": {
+            "item": "astral_mekanism:alloy_enchanted"
+        }
+    },
+    "itemInputE5": {
+        "amount": 1,
+        "ingredient": {
+            "item": "mekanism:block_refined_obsidian"
+        }
+    },
+    "fluidInput": {
+        "fluid": "mekanism:heavy_water",
+        "amount": 1000
+    },
+    "gasInput": {
+        "gas": "mekanism:ethene",
+        "amount": 1000
+    },
+    "output": {
+        "item": "astral_mekanism:essential_compact_fusion_reactor",
+        "count": 1
+    }
+}

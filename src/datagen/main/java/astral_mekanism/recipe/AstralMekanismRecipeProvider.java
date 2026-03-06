@@ -1,13 +1,16 @@
 package astral_mekanism.recipe;
 
+import java.util.EnumMap;
 import java.util.function.Consumer;
 
 import astral_mekanism.AstralMekanismID;
+import astral_mekanism.AstralMekanismTier;
 import astral_mekanism.OreTypeData;
 import astral_mekanism.recipe.builder.AstralMekanismRecipeBuilder.ItemCompressingRecipeBuilder;
 import astral_mekanism.recipe.builder.AstralMekanismRecipeBuilder.ItemUnzippingRecipeBuilder;
 import astral_mekanism.registries.AstralMekanismGases;
 import astral_mekanism.registries.AstralMekanismItems;
+import astral_mekanism.registries.AstralMekanismMachines;
 import astral_mekanism.registries.AstralMekanismSlurries;
 import astral_mekanism.registries.OreType;
 import astral_mekanism.registries.AstralMekanismItems.IntermediateState;
@@ -18,12 +21,14 @@ import mekanism.api.datagen.recipe.builder.FluidSlurryToSlurryRecipeBuilder;
 import mekanism.api.datagen.recipe.builder.ItemStackChemicalToItemStackRecipeBuilder;
 import mekanism.api.datagen.recipe.builder.ItemStackToItemStackRecipeBuilder;
 import mekanism.api.datagen.recipe.builder.PressurizedReactionRecipeBuilder;
+import mekanism.api.providers.IItemProvider;
 import mekanism.api.recipes.ingredients.creator.IngredientCreatorAccess;
 import mekanism.common.registries.MekanismGases;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.data.recipes.RecipeProvider;
+import net.minecraft.data.recipes.ShapedRecipeBuilder;
 import net.minecraft.data.recipes.SimpleCookingRecipeBuilder;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.ItemTags;
@@ -40,11 +45,45 @@ public class AstralMekanismRecipeProvider extends RecipeProvider {
 
     @Override
     protected void buildRecipes(Consumer<FinishedRecipe> consumer) {
+        buildProcessingRecipes(consumer);
+        buildTierMachineUpgradeRecipes(AstralMekanismMachines.ASTRAL_ENERGIZED_SMELTING_FACTRIES, consumer,
+                "astral_factory/energized_smelting");
+        buildTierMachineUpgradeRecipes(AstralMekanismMachines.COMPACT_FIR, consumer,
+                "compact_machine/fir");
+        buildTierMachineUpgradeRecipes(AstralMekanismMachines.COMPACT_FUSION_REACTOR, consumer,
+                "compact_machine/fusion_reactor");
+        buildTierMachineUpgradeRecipes(AstralMekanismMachines.COMPACT_NAQUADAH_REACTOR, consumer,
+                "compact_machine/naquadah_reactor");
+        buildTierMachineUpgradeRecipes(AstralMekanismMachines.COMPACT_TEP, consumer,
+                "compact_machine/tep");
+        buildTierMachineUpgradeRecipes(AstralMekanismMachines.ENERGIZED_SMELTING_FACTORIES, consumer,
+                "normal_factory/energized_smelting");
+    }
+
+    private static void buildTierMachineUpgradeRecipes(EnumMap<AstralMekanismTier, ? extends IItemProvider> machines,
+            Consumer<FinishedRecipe> consumer, String path) {
+        for (AstralMekanismTierRecipeData data : AstralMekanismTierRecipeData.values()) {
+            ShapedRecipeBuilder.shaped(RecipeCategory.REDSTONE, machines.get(data.afterTier))
+                    .pattern("ABC")
+                    .pattern("DEF")
+                    .pattern("ABC")
+                    .define('A', data.leftAlloy)
+                    .define('B', data.centerItem)
+                    .define('C', data.rightAlloy)
+                    .define('D', data.leftCircuit)
+                    .define('E', machines.get(data.beforeTier))
+                    .define('F', data.rightCircuit)
+                    .unlockedBy("has_before", has(machines.get(data.beforeTier)))
+                    .save(consumer, AstralMekanismID.rl(path + "/" + data.afterTier.nameForNormal));
+        }
+    }
+
+    private static void buildProcessingRecipes(Consumer<FinishedRecipe> consumer) {
         for (OreTypeData typeData : OreTypeData.values()) {
             String base = "processing/" + typeData.oreType.type;
             ChemicalDissolutionRecipeBuilder.dissolution(
                     IngredientCreatorAccess.item()
-                            .from(ItemTags.create(new ResourceLocation("forge", "ores/"+ typeData.oreType.type))),
+                            .from(ItemTags.create(new ResourceLocation("forge", "ores/" + typeData.oreType.type))),
                     IngredientCreatorAccess.gas().from(AstralMekanismGases.OLEUM.getStack(1)),
                     AstralMekanismSlurries.COMPRESSED_SLURRIES.get(typeData.oreType).getDirtySlurry()
                             .getStack(5))
@@ -169,7 +208,7 @@ public class AstralMekanismRecipeProvider extends RecipeProvider {
             if (!typeData.oreType.hasMekprocessing) {
                 ChemicalDissolutionRecipeBuilder.dissolution(
                         IngredientCreatorAccess.item()
-                                .from(ItemTags.create(new ResourceLocation("forge","ores/"+ typeData.oreType.type))),
+                                .from(ItemTags.create(new ResourceLocation("forge", "ores/" + typeData.oreType.type))),
                         IngredientCreatorAccess.gas().from(MekanismGases.SULFURIC_ACID.getStack(1)),
                         AstralMekanismSlurries.GEM_SLURRIES.get(typeData.oreType).getDirtySlurry()
                                 .getStack(1000))

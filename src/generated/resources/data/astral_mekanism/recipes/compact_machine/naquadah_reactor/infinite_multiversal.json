@@ -1,0 +1,33 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "redstone",
+  "key": {
+    "A": {
+      "item": "evolvedmekanism:alloy_exoversal"
+    },
+    "B": {
+      "item": "minecraft:netherite_ingot"
+    },
+    "C": {
+      "item": "evolvedmekanism:alloy_exoversal"
+    },
+    "D": {
+      "item": "mekanism_extras:alloy_spectrum"
+    },
+    "E": {
+      "item": "astral_mekanism:cosmic_dense_compact_naquadah_reactor"
+    },
+    "F": {
+      "item": "emextras:infinite_multiversal_control_circuit"
+    }
+  },
+  "pattern": [
+    "ABC",
+    "DEF",
+    "ABC"
+  ],
+  "result": {
+    "item": "astral_mekanism:infinite_multiversal_compact_naquadah_reactor"
+  },
+  "show_notification": true
+}

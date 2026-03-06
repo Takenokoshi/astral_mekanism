@@ -1,0 +1,33 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "redstone",
+  "key": {
+    "A": {
+      "item": "astral_mekanism:alloy_enchanted"
+    },
+    "B": {
+      "item": "ae2:charged_certus_quartz_crystal"
+    },
+    "C": {
+      "item": "mekanism:alloy_atomic"
+    },
+    "D": {
+      "item": "astral_mekanism:enhanced_control_circuit"
+    },
+    "E": {
+      "item": "astral_mekanism:elite_compact_tep"
+    },
+    "F": {
+      "item": "mekanism:ultimate_control_circuit"
+    }
+  },
+  "pattern": [
+    "ABC",
+    "DEF",
+    "ABC"
+  ],
+  "result": {
+    "item": "astral_mekanism:enchanted_ultimate_compact_tep"
+  },
+  "show_notification": true
+}

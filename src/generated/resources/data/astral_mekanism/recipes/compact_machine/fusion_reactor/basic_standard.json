@@ -1,0 +1,33 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "redstone",
+  "key": {
+    "A": {
+      "item": "astral_mekanism:alloy_convergent"
+    },
+    "B": {
+      "item": "mekanism:ingot_bronze"
+    },
+    "C": {
+      "item": "minecraft:iron_ingot"
+    },
+    "D": {
+      "item": "astral_mekanism:resonance_control_circuit"
+    },
+    "E": {
+      "item": "astral_mekanism:essential_compact_fusion_reactor"
+    },
+    "F": {
+      "item": "mekanism:basic_control_circuit"
+    }
+  },
+  "pattern": [
+    "ABC",
+    "DEF",
+    "ABC"
+  ],
+  "result": {
+    "item": "astral_mekanism:basic_standard_compact_fusion_reactor"
+  },
+  "show_notification": true
+}

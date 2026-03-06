@@ -8,7 +8,6 @@ import org.jetbrains.annotations.NotNull;
 import astral_mekanism.block.blockentity.interf.IItemGasToItemMachine;
 import fr.iglee42.evolvedmekanism.client.bars.GuiCustomDynamicHorizontalRateBar;
 import fr.iglee42.evolvedmekanism.config.EMConfig;
-import fr.iglee42.evolvedmekanism.jei.EMJEI;
 import mekanism.client.gui.GuiConfigurableTile;
 import mekanism.client.gui.element.GuiInnerScreen;
 import mekanism.client.gui.element.bar.GuiBar.IBarInfoHandler;
@@ -16,6 +15,7 @@ import mekanism.client.gui.element.gauge.GaugeType;
 import mekanism.client.gui.element.gauge.GuiEnergyGauge;
 import mekanism.client.gui.element.gauge.GuiGasGauge;
 import mekanism.client.gui.element.tab.GuiEnergyTab;
+import mekanism.client.jei.MekanismJEIRecipeType;
 import mekanism.common.MekanismLang;
 import mekanism.common.inventory.container.tile.MekanismTileContainer;
 import mekanism.common.tile.prefab.TileEntityConfigurableMachine;
@@ -25,7 +25,7 @@ import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.player.Inventory;
 
-public class GuiItemGasToItemMachine<BE extends TileEntityConfigurableMachine & IItemGasToItemMachine<BE, ?>>
+public abstract class GuiItemGasToItemMachine<BE extends TileEntityConfigurableMachine & IItemGasToItemMachine<BE, ?>>
         extends GuiConfigurableTile<BE, MekanismTileContainer<BE>> {
 
     public GuiItemGasToItemMachine(MekanismTileContainer<BE> container, Inventory inv, Component title) {
@@ -59,7 +59,7 @@ public class GuiItemGasToItemMachine<BE extends TileEntityConfigurableMachine & 
                         .translate(EnergyDisplay.of(EMConfig.general.aptEnergyConsumption.getOrDefault())));
             }
             return list;
-        }).jeiCategories(EMJEI.APT));
+        }).jeiCategories(jei()));
         addRenderableWidget(new GuiEnergyTab(this, tile.getEnergyContainer(), tile::getEnergyUsage));
     }
 
@@ -69,5 +69,7 @@ public class GuiItemGasToItemMachine<BE extends TileEntityConfigurableMachine & 
         drawString(guiGraphics, playerInventoryTitle, inventoryLabelX, inventoryLabelY, titleTextColor());
         super.drawForegroundText(guiGraphics, mouseX, mouseY);
     }
+
+    public abstract MekanismJEIRecipeType<?> jei();
 
 }

@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_before": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "astral_mekanism:enchanted_ultimate_energized_smelting_factory"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "astral_mekanism:normal_factory/energized_smelting/absolute_overclocked"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_before",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "astral_mekanism:normal_factory/energized_smelting/absolute_overclocked"
+    ]
+  },
+  "sends_telemetry_event": false
+}

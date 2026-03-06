@@ -1,0 +1,33 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "redstone",
+  "key": {
+    "A": {
+      "item": "mekanism:alloy_infused"
+    },
+    "B": {
+      "item": "evolvedmekanism:ingot_refined_redstone"
+    },
+    "C": {
+      "item": "mekanism:alloy_infused"
+    },
+    "D": {
+      "item": "mekanism:advanced_control_circuit"
+    },
+    "E": {
+      "item": "astral_mekanism:basic_standard_compact_fir"
+    },
+    "F": {
+      "item": "mekanism:advanced_control_circuit"
+    }
+  },
+  "pattern": [
+    "ABC",
+    "DEF",
+    "ABC"
+  ],
+  "result": {
+    "item": "astral_mekanism:advanced_compact_fir"
+  },
+  "show_notification": true
+}

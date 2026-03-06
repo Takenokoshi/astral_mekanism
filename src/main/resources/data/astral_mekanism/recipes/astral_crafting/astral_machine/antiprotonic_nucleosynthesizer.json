@@ -1,0 +1,165 @@
+{
+    "type": "astral_mekanism:astral_crafting",
+    "itemInputA1": {
+        "amount": 64,
+        "ingredient": {
+            "item": "astral_mekanism:alloy_elastic"
+        }
+    },
+    "itemInputA2": {
+        "amount": 64,
+        "ingredient": {
+            "item": "evolvedmekanism:alloy_exoversal"
+        }
+    },
+    "itemInputA3": {
+        "amount": 64,
+        "ingredient": {
+            "item": "ae2:singularity"
+        }
+    },
+    "itemInputA4": {
+        "amount": 64,
+        "ingredient": {
+            "item": "evolvedmekanism:alloy_exoversal"
+        }
+    },
+    "itemInputA5": {
+        "amount": 64,
+        "ingredient": {
+            "item": "astral_mekanism:alloy_elastic"
+        }
+    },
+    "itemInputB1": {
+        "amount": 64,
+        "ingredient": {
+            "item": "mekanism_extras:alloy_spectrum"
+        }
+    },
+    "itemInputB2": {
+        "amount": 1,
+        "ingredient": {
+            "item": "astral_mekanism:alloy_stardust"
+        }
+    },
+    "itemInputB3": {
+        "amount": 1,
+        "ingredient": {
+            "item": "astral_mekanism:illusion_control_circuit"
+        }
+    },
+    "itemInputB4": {
+        "amount": 1,
+        "ingredient": {
+            "item": "astral_mekanism:alloy_stardust"
+        }
+    },
+    "itemInputB5": {
+        "amount": 64,
+        "ingredient": {
+            "item": "mekanism_extras:alloy_spectrum"
+        }
+    },
+    "itemInputC1": {
+        "amount": 64,
+        "ingredient": {
+            "item": "emextras:infinite_multiversal_control_circuit"
+        }
+    },
+    "itemInputC2": {
+        "amount": 1,
+        "ingredient": {
+            "item": "astral_mekanism:spacetime_modulation_core"
+        }
+    },
+    "itemInputC3": {
+        "amount": 1,
+        "ingredient": {
+            "item": "mekanism:antiprotonic_nucleosynthesizer"
+        }
+    },
+    "itemInputC4": {
+        "amount": 1,
+        "ingredient": {
+            "item": "astral_mekanism:spacetime_modulation_core"
+        }
+    },
+    "itemInputC5": {
+        "amount": 64,
+        "ingredient": {
+            "item": "emextras:infinite_multiversal_control_circuit"
+        }
+    },
+    "itemInputD1": {
+        "amount": 64,
+        "ingredient": {
+            "item": "mekanism_extras:alloy_spectrum"
+        }
+    },
+    "itemInputD2": {
+        "amount": 1,
+        "ingredient": {
+            "item": "astral_mekanism:alloy_stardust"
+        }
+    },
+    "itemInputD3": {
+        "amount": 1,
+        "ingredient": {
+            "item": "astral_mekanism:illusion_control_circuit"
+        }
+    },
+    "itemInputD4": {
+        "amount": 1,
+        "ingredient": {
+            "item": "astral_mekanism:alloy_stardust"
+        }
+    },
+    "itemInputD5": {
+        "amount": 64,
+        "ingredient": {
+            "item": "mekanism_extras:alloy_spectrum"
+        }
+    },
+    "itemInputE1": {
+        "amount": 64,
+        "ingredient": {
+            "item": "astral_mekanism:alloy_elastic"
+        }
+    },
+    "itemInputE2": {
+        "amount": 64,
+        "ingredient": {
+            "item": "evolvedmekanism:alloy_exoversal"
+        }
+    },
+    "itemInputE3": {
+        "amount": 64,
+        "ingredient": {
+            "item": "ae2:singularity"
+        }
+    },
+    "itemInputE4": {
+        "amount": 64,
+        "ingredient": {
+            "item": "evolvedmekanism:alloy_exoversal"
+        }
+    },
+    "itemInputE5": {
+        "amount": 64,
+        "ingredient": {
+            "item": "astral_mekanism:alloy_elastic"
+        }
+    },
+    "fluidInput": {
+        "fluid": "minecraft:lava",
+        "amount": 10000
+    },
+    "gasInput": {
+        "gas": "astral_mekanism:astral_ether",
+        "amount": 10000
+    },
+    "output": {
+        "item": "astral_mekanism:astral_antiprotonic_nucleosynthesizer",
+        "count": 1
+    }
+}

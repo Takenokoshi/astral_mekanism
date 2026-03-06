@@ -1,0 +1,165 @@
+{
+    "type": "astral_mekanism:astral_crafting",
+    "itemInputA1": {
+        "amount": 1,
+        "ingredient": {
+            "item": "mekanism:block_refined_obsidian"
+        }
+    },
+    "itemInputA2": {
+        "amount": 1,
+        "ingredient": {
+            "item": "evolvedmekanism:alloy_subatomic"
+        }
+    },
+    "itemInputA3": {
+        "amount": 1,
+        "ingredient": {
+            "item": "evolvedmekanism:quantum_control_circuit"
+        }
+    },
+    "itemInputA4": {
+        "amount": 1,
+        "ingredient": {
+            "item": "evolvedmekanism:alloy_subatomic"
+        }
+    },
+    "itemInputA5": {
+        "amount": 1,
+        "ingredient": {
+            "item": "mekanism:block_refined_obsidian"
+        }
+    },
+    "itemInputB1": {
+        "amount": 1,
+        "ingredient": {
+            "item": "evolvedmekanism:alloy_subatomic"
+        }
+    },
+    "itemInputB2": {
+        "amount": 13,
+        "ingredient": {
+            "item": "evolvedmekanism:apt_casing"
+        }
+    },
+    "itemInputB3": {
+        "amount": 40,
+        "ingredient": {
+            "item": "mekanism:structural_glass"
+        }
+    },
+    "itemInputB4": {
+        "amount": 13,
+        "ingredient": {
+            "item": "evolvedmekanism:apt_casing"
+        }
+    },
+    "itemInputB5": {
+        "amount": 1,
+        "ingredient": {
+            "item": "evolvedmekanism:alloy_subatomic"
+        }
+    },
+    "itemInputC1": {
+        "amount": 1,
+        "ingredient": {
+            "item": "evolvedmekanism:quantum_control_circuit"
+        }
+    },
+    "itemInputC2": {
+        "amount": 3,
+        "ingredient": {
+            "item": "evolvedmekanism:apt_port"
+        }
+    },
+    "itemInputC3": {
+        "amount": 2,
+        "ingredient": {
+            "item": "mekanism:steel_casing"
+        }
+    },
+    "itemInputC4": {
+        "amount": 3,
+        "ingredient": {
+            "item": "evolvedmekanism:apt_port"
+        }
+    },
+    "itemInputC5": {
+        "amount": 1,
+        "ingredient": {
+            "item": "evolvedmekanism:quantum_control_circuit"
+        }
+    },
+    "itemInputD1": {
+        "amount": 1,
+        "ingredient": {
+            "item": "evolvedmekanism:alloy_subatomic"
+        }
+    },
+    "itemInputD2": {
+        "amount": 13,
+        "ingredient": {
+            "item": "evolvedmekanism:apt_casing"
+        }
+    },
+    "itemInputD3": {
+        "amount": 40,
+        "ingredient": {
+            "item": "mekanism:structural_glass"
+        }
+    },
+    "itemInputD4": {
+        "amount": 13,
+        "ingredient": {
+            "item": "evolvedmekanism:apt_casing"
+        }
+    },
+    "itemInputD5": {
+        "amount": 1,
+        "ingredient": {
+            "item": "evolvedmekanism:alloy_subatomic"
+        }
+    },
+    "itemInputE1": {
+        "amount": 1,
+        "ingredient": {
+            "item": "mekanism:block_refined_obsidian"
+        }
+    },
+    "itemInputE2": {
+        "amount": 1,
+        "ingredient": {
+            "item": "evolvedmekanism:alloy_subatomic"
+        }
+    },
+    "itemInputE3": {
+        "amount": 1,
+        "ingredient": {
+            "item": "evolvedmekanism:quantum_control_circuit"
+        }
+    },
+    "itemInputE4": {
+        "amount": 1,
+        "ingredient": {
+            "item": "evolvedmekanism:alloy_subatomic"
+        }
+    },
+    "itemInputE5": {
+        "amount": 1,
+        "ingredient": {
+            "item": "mekanism:block_refined_obsidian"
+        }
+    },
+    "fluidInput": {
+        "fluid": "mekanism:heavy_water",
+        "amount": 1000
+    },
+    "gasInput": {
+        "gas": "mekanism:ethene",
+        "amount": 1000
+    },
+    "output": {
+        "item": "astral_mekanism:compact_apt",
+        "count": 1
+    }
+}

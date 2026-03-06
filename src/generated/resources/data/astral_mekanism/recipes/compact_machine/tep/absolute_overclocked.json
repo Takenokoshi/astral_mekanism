@@ -1,0 +1,33 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "redstone",
+  "key": {
+    "A": {
+      "item": "evolvedmekanism:alloy_hypercharged"
+    },
+    "B": {
+      "item": "minecraft:glowstone"
+    },
+    "C": {
+      "item": "evolvedmekanism:alloy_hypercharged"
+    },
+    "D": {
+      "item": "mekanism_extras:alloy_radiance"
+    },
+    "E": {
+      "item": "astral_mekanism:enchanted_ultimate_compact_tep"
+    },
+    "F": {
+      "item": "emextras:absolute_overclocked_control_circuit"
+    }
+  },
+  "pattern": [
+    "ABC",
+    "DEF",
+    "ABC"
+  ],
+  "result": {
+    "item": "astral_mekanism:absolute_overclocked_compact_tep"
+  },
+  "show_notification": true
+}

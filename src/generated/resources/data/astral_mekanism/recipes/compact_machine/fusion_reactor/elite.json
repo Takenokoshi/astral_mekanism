@@ -1,0 +1,33 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "redstone",
+  "key": {
+    "A": {
+      "item": "mekanism:alloy_reinforced"
+    },
+    "B": {
+      "item": "minecraft:gold_ingot"
+    },
+    "C": {
+      "item": "mekanism:alloy_reinforced"
+    },
+    "D": {
+      "item": "mekanism:elite_control_circuit"
+    },
+    "E": {
+      "item": "astral_mekanism:advanced_compact_fusion_reactor"
+    },
+    "F": {
+      "item": "mekanism:elite_control_circuit"
+    }
+  },
+  "pattern": [
+    "ABC",
+    "DEF",
+    "ABC"
+  ],
+  "result": {
+    "item": "astral_mekanism:elite_compact_fusion_reactor"
+  },
+  "show_notification": true
+}
