@@ -41,6 +41,7 @@ import mekanism.common.util.MekanismUtils;
 import mekanism.common.util.NBTUtils;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.Fluids;
 import net.minecraftforge.fluids.FluidStack;
@@ -233,5 +234,7 @@ public abstract class BEAbstractCompactMixingReactor extends TileEntityConfigura
     public IExtendedFluidTank getWaterTank() {
         return waterTank;
     }
+
+    public abstract ResourceLocation getJEICategoryName();
 
 }

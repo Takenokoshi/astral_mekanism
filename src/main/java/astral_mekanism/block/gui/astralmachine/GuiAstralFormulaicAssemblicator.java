@@ -1,9 +1,7 @@
 package astral_mekanism.block.gui.astralmachine;
 
 import java.util.List;
-
 import org.jetbrains.annotations.NotNull;
-
 import astral_mekanism.AstralMekanismLang;
 import astral_mekanism.block.blockentity.astralmachine.BEAstralFormulaicAssemblicator;
 import astral_mekanism.block.container.astralmachine.ContainerAstralFAssemblicator;
@@ -11,6 +9,7 @@ import astral_mekanism.jei.AstralMekanismJEIPlugin;
 import mekanism.client.gui.GuiConfigurableTile;
 import mekanism.client.gui.element.bar.GuiVerticalPowerBar;
 import mekanism.client.gui.element.button.MekanismImageButton;
+import mekanism.client.gui.element.button.ToggleButton;
 import mekanism.client.gui.element.progress.GuiProgress;
 import mekanism.client.gui.element.progress.ProgressType;
 import mekanism.client.gui.element.tab.GuiEnergyTab;
@@ -40,12 +39,10 @@ public class GuiAstralFormulaicAssemblicator extends
                 .jeiCategories(MekanismJEIRecipeType.VANILLA_CRAFTING);
         addRenderableWidget(new GuiVerticalPowerBar(this, tile.getEnergyContainer(), 224, 15));
         addRenderableWidget(new GuiEnergyTab(this, tile.getEnergyContainer(), tile::getActive));
-        addRenderableWidget(new MekanismImageButton(this, 86, 17,
-                18, 18, 16, 16,
-                tile.getSavedRecipe() != null
-                        ? new ResourceLocation("minecraft", "textures/block/redstone_torch.png")
-                        : new ResourceLocation("minecraft", "textures/block/redstone_torch_off.png"),
-                () -> {
+        addRenderableWidget(new ToggleButton(this, 86, 17, 18, 16,
+                new ResourceLocation("minecraft", "textures/block/redstone_torch_off.png"),
+                new ResourceLocation("minecraft", "textures/block/redstone_torch.png"),
+                () -> tile.getSavedRecipe() != null, () -> {
                 }, getOnHover(AstralMekanismLang.EXPLAIN_ASSEMBLICATOR_TORCHBUTTON)));
         addRenderableWidget(new MekanismImageButton(this, 86, 53,
                 18, 18, 16, 16,

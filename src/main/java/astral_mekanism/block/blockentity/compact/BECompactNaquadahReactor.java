@@ -4,6 +4,7 @@ import com.jerry.generator_extras.common.config.GenLoadConfig;
 import com.jerry.generator_extras.common.genregistry.ExtraGenGases;
 import com.jerry.mekanism_extras.common.registry.ExtraGases;
 
+import astral_mekanism.AstralMekanismID;
 import astral_mekanism.block.blockentity.prefab.BEAbstractCompactMixingReactor;
 import mekanism.api.Action;
 import mekanism.api.AutomationType;
@@ -11,6 +12,7 @@ import mekanism.api.providers.IBlockProvider;
 import mekanism.api.providers.IGasProvider;
 import mekanism.common.util.HeatUtils;
 import net.minecraft.core.BlockPos;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.state.BlockState;
 
 public class BECompactNaquadahReactor extends BEAbstractCompactMixingReactor {
@@ -57,6 +59,11 @@ public class BECompactNaquadahReactor extends BEAbstractCompactMixingReactor {
     @Override
     protected double workableTemp() {
         return 400000000;
+    }
+
+    @Override
+    public ResourceLocation getJEICategoryName() {
+        return AstralMekanismID.rl("astral_compact_naquadah_reactor");
     }
 
 }

@@ -1,5 +1,6 @@
 package astral_mekanism.block.blockentity.compact;
 
+import astral_mekanism.AstralMekanismID;
 import astral_mekanism.block.blockentity.prefab.BEAbstractCompactMixingReactor;
 import mekanism.api.Action;
 import mekanism.api.AutomationType;
@@ -10,6 +11,7 @@ import mekanism.common.util.HeatUtils;
 import mekanism.generators.common.config.MekanismGeneratorsConfig;
 import mekanism.generators.common.registries.GeneratorsGases;
 import net.minecraft.core.BlockPos;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.state.BlockState;
 
 public class BECompactFusionReactor extends BEAbstractCompactMixingReactor {
@@ -55,6 +57,11 @@ public class BECompactFusionReactor extends BEAbstractCompactMixingReactor {
     @Override
     protected double workableTemp() {
         return 100000000;
+    }
+
+    @Override
+    public ResourceLocation getJEICategoryName() {
+        return AstralMekanismID.rl("astral_compact_fusion_reactor");
     }
 
 }

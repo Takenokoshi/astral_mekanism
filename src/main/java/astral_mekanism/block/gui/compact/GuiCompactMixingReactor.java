@@ -16,6 +16,7 @@ import mekanism.client.gui.element.gauge.GuiFluidGauge;
 import mekanism.client.gui.element.gauge.GuiGasGauge;
 import mekanism.client.gui.element.tab.GuiHeatTab;
 import mekanism.client.gui.element.text.GuiTextField;
+import mekanism.client.jei.MekanismJEIRecipeType;
 import mekanism.common.MekanismLang;
 import mekanism.common.inventory.container.tile.MekanismTileContainer;
 import mekanism.common.util.MekanismUtils;
@@ -57,7 +58,7 @@ public class GuiCompactMixingReactor<BE extends BEAbstractCompactMixingReactor>
                 .setLabel(GeneratorsLang.FISSION_HEATED_COOLANT_TANK.translateColored(EnumColor.WHITE));
         addRenderableWidget(new GuiInnerScreen(this, 61, 4, 108, 30, () -> {
             return List.of(this.title, GeneratorsLang.REACTOR_INJECTION_RATE.translate(tile.getMixingRate()));
-        }).clearFormat());
+        }).clearFormat()).jeiCategories(MekanismJEIRecipeType.findType(tile.getJEICategoryName()));
         addRenderableWidget(new GuiHeatTab(this, () -> {
             Component temp = MekanismUtils.getTemperatureDisplay(tile.heatCapacitor.getTemperature(),
                     TemperatureUnit.KELVIN, true);
