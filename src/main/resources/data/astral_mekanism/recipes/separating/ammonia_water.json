@@ -10,6 +10,6 @@
   },
   "rightGasOutput": {
     "amount": 5,
-    "gas": "mekanism:oxegen"
+    "gas": "mekanism:oxygen"
   }
 }

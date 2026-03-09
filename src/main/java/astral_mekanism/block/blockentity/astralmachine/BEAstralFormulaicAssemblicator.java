@@ -55,8 +55,6 @@ public class BEAstralFormulaicAssemblicator extends TileEntityConfigurableMachin
             RecipeError.NOT_ENOUGH_OUTPUT_SPACE,
             RecipeError.INPUT_DOESNT_PRODUCE_OUTPUT);
 
-    private static List<CraftingRecipe> craftingRecipes = List.of();
-
     private IInventorySlot[] inputSlots;
     private OutputInventorySlot outputSlot;
     private IInventorySlot[] secondaryOutputSlots;
@@ -65,7 +63,7 @@ public class BEAstralFormulaicAssemblicator extends TileEntityConfigurableMachin
     private EnergyInventorySlot energySlot;
 
     @Nullable
-    public CraftingRecipe savedRecipe;
+    private CraftingRecipe savedRecipe;
     private final Ingredient[] savedIngredients;
     private ItemStack savedOutputItem;
     private final ItemStack[] savedRemainingItems;
@@ -289,14 +287,12 @@ public class BEAstralFormulaicAssemblicator extends TileEntityConfigurableMachin
     }
 
     private void tryLoadRecipe() {
-        if (craftingRecipes.isEmpty()) {
-            craftingRecipes = level.getRecipeManager().getAllRecipesFor(RecipeType.CRAFTING);
-        }
-        if (!craftingRecipes.isEmpty()) {
+        List<CraftingRecipe> recipes = level.getRecipeManager().getAllRecipesFor(RecipeType.CRAFTING);
+        if (!recipes.isEmpty()) {
             tryingLoadRecipe = false;
-            craftingRecipes.stream().filter(
-                    r -> r.getId().getNamespace() == savedRecipeNameSpace
-                            && r.getId().getPath() == savedRecipePath)
+            recipes.stream().filter(
+                    r -> r.getId().getNamespace().equals(savedRecipeNameSpace)
+                            && r.getId().getPath().equals(savedRecipePath))
                     .findFirst().ifPresentOrElse(this::setSavedRecipe, () -> setSavedRecipe(null));
         }
     }
@@ -372,6 +368,15 @@ public class BEAstralFormulaicAssemblicator extends TileEntityConfigurableMachin
     @Override
     public int getInventoryXOffset() {
         return IHasCustomSizeContainer.super.getInventoryXOffset() + 30;
+    }
+
+    @Nullable
+    public CraftingRecipe getSavedRecipe() {
+        return savedRecipe;
+    }
+
+    public ItemStack getSavedOutputItem() {
+        return savedOutputItem.copy();
     }
 
 }

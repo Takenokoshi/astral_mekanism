@@ -42,6 +42,7 @@ import mezz.jei.api.registration.IRecipeCategoryRegistration;
 import mezz.jei.api.registration.IRecipeRegistration;
 import mezz.jei.api.registration.IRecipeTransferRegistration;
 import mezz.jei.api.runtime.IJeiRuntime;
+import mezz.jei.api.runtime.IRecipesGui;
 import net.minecraft.client.Minecraft;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.ItemLike;
@@ -50,6 +51,7 @@ import net.minecraft.world.level.ItemLike;
 
 public class AstralMekanismJEIPlugin implements IModPlugin {
     private static IJeiRuntime runtime;
+    private static IRecipesGui recipesGui;
 
     @Override
     public ResourceLocation getPluginUid() {
@@ -256,6 +258,8 @@ public class AstralMekanismJEIPlugin implements IModPlugin {
                 AstralMekanismMachines.ENERGIZED_SMELTING_FACTORIES.values().toArray(ItemLike[]::new));
         registry.addRecipeCatalysts(RecipeTypes.SMELTING,
                 AstralMekanismMachines.ASTRAL_ENERGIZED_SMELTING_FACTRIES.values().toArray(ItemLike[]::new));
+        CatalystRegistryHelper.registerRecipeItem(registry, AstralMekanismMachines.ASTRAL_FORMULAIC_ASSEMBLICATOR, 
+            MekanismJEIRecipeType.VANILLA_CRAFTING,RecipeTypes.CRAFTING);
     }
 
     @Override
@@ -266,9 +270,14 @@ public class AstralMekanismJEIPlugin implements IModPlugin {
     @Override
     public void onRuntimeAvailable(IJeiRuntime jeiRuntime) {
         runtime = jeiRuntime;
+        recipesGui = runtime.getRecipesGui();
     }
 
     public static @Nullable IJeiRuntime getRuntime() {
         return runtime;
+    }
+
+    public static @Nullable IRecipesGui getRecipesGui(){
+        return recipesGui;
     }
 }

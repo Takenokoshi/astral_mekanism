@@ -24,7 +24,6 @@ import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Inventory;
-import net.minecraftforge.fml.ModList;
 
 public class GuiMekanicalCharger<BE extends BlockEntityRecipeMachine<ChargerRecipe> & IEnergizedMachine<BE>>
         extends GuiConfigurableTile<BE, MekanismTileContainer<BE>> {
@@ -39,19 +38,18 @@ public class GuiMekanicalCharger<BE extends BlockEntityRecipeMachine<ChargerReci
         super.addGuiElements();
         addRenderableWidget(new GuiUpArrow(this, 68, 38));
         addRenderableWidget(new GuiVerticalPowerBar(this, tile.getEnergyContainer(), 164, 15))
-              .warning(WarningType.NOT_ENOUGH_ENERGY, tile.getWarningCheck(RecipeError.NOT_ENOUGH_ENERGY));
+                .warning(WarningType.NOT_ENOUGH_ENERGY, tile.getWarningCheck(RecipeError.NOT_ENOUGH_ENERGY));
         addRenderableWidget(new GuiEnergyTab(this, tile.getEnergyContainer(), tile::getActive));
         addRenderableWidget(new GuiProgress(tile::getProgressScaled, ProgressType.BAR, this, 86, 38))
-              .warning(WarningType.INPUT_DOESNT_PRODUCE_OUTPUT, tile.getWarningCheck(RecipeError.INPUT_DOESNT_PRODUCE_OUTPUT));
-        if (ModList.get().isLoaded("jei")) {
-            addRenderableWidget(new MekanismImageButton(
-                    this,
-                    90, 53,
-                    18, 18,
-                    16, 16,
-                    new ResourceLocation("minecraft", "textures/item/knowledge_book.png"),
-                    GuiMekanicalCharger::connectJEI));
-        }
+                .warning(WarningType.INPUT_DOESNT_PRODUCE_OUTPUT,
+                        tile.getWarningCheck(RecipeError.INPUT_DOESNT_PRODUCE_OUTPUT));
+        addRenderableWidget(new MekanismImageButton(
+                this,
+                90, 53,
+                18, 18,
+                16, 16,
+                new ResourceLocation("minecraft", "textures/item/knowledge_book.png"),
+                GuiMekanicalCharger::connectJEI));
     }
 
     @Override
@@ -61,7 +59,7 @@ public class GuiMekanicalCharger<BE extends BlockEntityRecipeMachine<ChargerReci
         super.drawForegroundText(guiGraphics, mouseX, mouseY);
     }
 
-    public static void connectJEI(){
+    public static void connectJEI() {
         IJeiRuntime runtime = AstralMekanismJEIPlugin.getRuntime();
         if (runtime == null)
             return;

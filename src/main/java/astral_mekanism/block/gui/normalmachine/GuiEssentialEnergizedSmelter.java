@@ -29,7 +29,6 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.item.crafting.SmeltingRecipe;
-import net.minecraftforge.fml.ModList;
 
 public class GuiEssentialEnergizedSmelter<BE extends BlockEntityRecipeMachine<SmeltingRecipe> & IEssentialEnergizedSmelter<BE>>
         extends GuiConfigurableTile<BE, MekanismTileContainer<BE>> {
@@ -56,16 +55,13 @@ public class GuiEssentialEnergizedSmelter<BE extends BlockEntityRecipeMachine<Sm
         addRenderableWidget(new MekanismImageButton(this, 117, 13, 18, 18, 16, 16,
                 new ResourceLocation("minecraft", "textures/item/experience_bottle.png"), this::onPush));
         addRenderableWidget(new GuiGasMode(this, 143, 76, true, tile::getGasMode, tile.getBlockPos(), 0));
-        if (ModList.get().isLoaded("jei")) {
-            addRenderableWidget(new MekanismImageButton(
-                    this,
-                    90, 53,
-                    18, 18,
-                    16, 16,
-                    new ResourceLocation("minecraft", "textures/item/knowledge_book.png"),
-                    GuiEssentialEnergizedSmelter::connectJEI));
-        }
-
+        addRenderableWidget(new MekanismImageButton(
+                this,
+                90, 53,
+                18, 18,
+                16, 16,
+                new ResourceLocation("minecraft", "textures/item/knowledge_book.png"),
+                GuiEssentialEnergizedSmelter::connectJEI));
     }
 
     @Override

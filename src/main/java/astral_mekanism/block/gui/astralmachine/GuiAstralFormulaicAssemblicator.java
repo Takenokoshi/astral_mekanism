@@ -1,17 +1,25 @@
 package astral_mekanism.block.gui.astralmachine;
 
+import java.util.List;
+
 import org.jetbrains.annotations.NotNull;
 
+import astral_mekanism.AstralMekanismLang;
 import astral_mekanism.block.blockentity.astralmachine.BEAstralFormulaicAssemblicator;
 import astral_mekanism.block.container.astralmachine.ContainerAstralFAssemblicator;
+import astral_mekanism.jei.AstralMekanismJEIPlugin;
 import mekanism.client.gui.GuiConfigurableTile;
 import mekanism.client.gui.element.bar.GuiVerticalPowerBar;
+import mekanism.client.gui.element.button.MekanismImageButton;
 import mekanism.client.gui.element.progress.GuiProgress;
 import mekanism.client.gui.element.progress.ProgressType;
 import mekanism.client.gui.element.tab.GuiEnergyTab;
 import mekanism.client.jei.MekanismJEIRecipeType;
+import mezz.jei.api.constants.RecipeTypes;
+import mezz.jei.api.runtime.IJeiRuntime;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Inventory;
 
 public class GuiAstralFormulaicAssemblicator extends
@@ -32,19 +40,33 @@ public class GuiAstralFormulaicAssemblicator extends
                 .jeiCategories(MekanismJEIRecipeType.VANILLA_CRAFTING);
         addRenderableWidget(new GuiVerticalPowerBar(this, tile.getEnergyContainer(), 224, 15));
         addRenderableWidget(new GuiEnergyTab(this, tile.getEnergyContainer(), tile::getActive));
+        addRenderableWidget(new MekanismImageButton(this, 86, 17,
+                18, 18, 16, 16,
+                tile.getSavedRecipe() != null
+                        ? new ResourceLocation("minecraft", "textures/block/redstone_torch.png")
+                        : new ResourceLocation("minecraft", "textures/block/redstone_torch_off.png"),
+                () -> {
+                }, getOnHover(AstralMekanismLang.EXPLAIN_ASSEMBLICATOR_TORCHBUTTON)));
+        addRenderableWidget(new MekanismImageButton(this, 86, 53,
+                18, 18, 16, 16,
+                new ResourceLocation("minecraft", "textures/item/knowledge_book.png"),
+                this::viewSavedRecipeInJEI, getOnHover(AstralMekanismLang.EXPLAIN_ASSEMBLICATOR_BOOKBUTTON)));
     }
 
     @Override
     protected void drawForegroundText(@NotNull GuiGraphics guiGraphics, int mouseX, int mouseY) {
         renderTitleText(guiGraphics);
         drawString(guiGraphics, playerInventoryTitle, inventoryLabelX, inventoryLabelY, titleTextColor());
-        drawString(guiGraphics, tile.savedRecipe != null
-                ? Component.literal("Filter recipe id:" + tile.savedRecipe.getId().toString())
-                : Component.literal("I don't have filter recipe. You can set it with JEI."),
-                0, -30, 0xffffff);
-        drawString(guiGraphics, Component.literal("Filter recipe can block item which cannot use for the recipe."),
-                0, -50, 0xffffff);
         super.drawForegroundText(guiGraphics, mouseX, mouseY);
+    }
+
+    private void viewSavedRecipeInJEI() {
+        IJeiRuntime jeiRuntime = AstralMekanismJEIPlugin.getRuntime();
+        if (jeiRuntime != null && tile.getSavedRecipe() != null) {
+            jeiRuntime.getRecipesGui().showRecipes(
+                    jeiRuntime.getRecipeManager().getRecipeCategory(RecipeTypes.CRAFTING),
+                    List.of(tile.getSavedRecipe()), List.of());
+        }
     }
 
 }

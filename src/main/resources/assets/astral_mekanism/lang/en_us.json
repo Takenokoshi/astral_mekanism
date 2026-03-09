@@ -886,6 +886,8 @@
     "description.astral_mekanism.universal_storage": "This is a large storage capacity that can hold a large amount of items, liquids, and chemicals.",
     "description.astral_mekanism.item_sortable_storage": "This is a universal storage solution with item sorting capabilities.",
     "description.astral_mekanism.astral_diamond_block": "A sturdy block that can withstand Wither attacks.",
+    "explain.astral_mekanism.assemblicator_bookbutton": "Show a recipe on JEI which is regitered on this machine.\nYou can register a recipe with JEI's '+' button.",
+    "explain.astral_mekanism.assemblicator_torchbutton": "If this torch doesn't lit, any recipe isn't registered on this machine.\nYou can register a recipe with JEI's '+' button.",
     "label.astral_mekanism.fluid_coolant": "Fluid Coolant",
     "label.astral_mekanism.gas_coolant": "Gas Coolant",
     "label.astral_mekanism.heated_fluid_coolant": "Heated Fluid Coolant",
