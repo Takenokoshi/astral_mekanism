@@ -31,12 +31,14 @@ import mekanism.common.lib.transmitter.TransmissionType;
 import mekanism.common.tile.component.TileComponentConfig;
 import mekanism.common.tile.component.TileComponentEjector;
 import mekanism.common.tile.prefab.TileEntityConfigurableMachine;
+import mekanism.common.util.MekanismUtils;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.CraftingRecipe;
 import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.item.crafting.ShapedRecipe;
 import net.minecraft.world.level.block.state.BlockState;
 
@@ -53,6 +55,8 @@ public class BEAstralFormulaicAssemblicator extends TileEntityConfigurableMachin
             RecipeError.NOT_ENOUGH_OUTPUT_SPACE,
             RecipeError.INPUT_DOESNT_PRODUCE_OUTPUT);
 
+    private static List<CraftingRecipe> craftingRecipes = List.of();
+
     private IInventorySlot[] inputSlots;
     private OutputInventorySlot outputSlot;
     private IInventorySlot[] secondaryOutputSlots;
@@ -68,6 +72,9 @@ public class BEAstralFormulaicAssemblicator extends TileEntityConfigurableMachin
     private final boolean[] marksRemainingItemChange;
     private final boolean[] marksNeedSorting;
     private FloatingLong lastEnergyUsed;
+    private String savedRecipeNameSpace;
+    private String savedRecipePath;
+    private boolean tryingLoadRecipe;
 
     public BEAstralFormulaicAssemblicator(IBlockProvider blockProvider, BlockPos pos, BlockState state) {
         super(blockProvider, pos, state);
@@ -89,6 +96,9 @@ public class BEAstralFormulaicAssemblicator extends TileEntityConfigurableMachin
         marksNeedSorting = new boolean[9];
         Arrays.fill(marksNeedSorting, false);
         lastEnergyUsed = FloatingLong.ZERO;
+        savedRecipeNameSpace = "";
+        savedRecipePath = "";
+        tryingLoadRecipe = false;
     }
 
     @NotNull
@@ -136,10 +146,17 @@ public class BEAstralFormulaicAssemblicator extends TileEntityConfigurableMachin
     @Override
     protected void onUpdateServer() {
         super.onUpdateServer();
+        if (tryingLoadRecipe) {
+            tryLoadRecipe();
+        }
         energySlot.fillContainerOrConvert();
-        runSort();
-        setRemainingItems();
-        setActive(runCraft());
+        if (MekanismUtils.canFunction(this)) {
+            runSort();
+            setRemainingItems();
+            setActive(runCraft());
+        } else {
+            setActive(false);
+        }
     }
 
     private void runSort() {
@@ -262,19 +279,25 @@ public class BEAstralFormulaicAssemblicator extends TileEntityConfigurableMachin
             if (nbt.getBoolean(NBT_RECIPE_ISNULL)) {
                 setSavedRecipe(null);
             } else if (nbt.contains(NBT_SAVED_RECIPE_NAMESPACE) && nbt.contains(NBT_SAVED_RECIPE_PATH)) {
-                getLevel().getRecipeManager()
-                        .byKey(new ResourceLocation(nbt.getString(NBT_SAVED_RECIPE_NAMESPACE),
-                                nbt.getString(NBT_SAVED_RECIPE_PATH)))
-                        .ifPresentOrElse(r -> {
-                            if (r != null && r instanceof CraftingRecipe recipe) {
-                                setSavedRecipe(recipe);
-                            } else {
-                                setSavedRecipe(null);
-                            }
-                        }, () -> setSavedRecipe(null));
+                tryingLoadRecipe = true;
+                savedRecipeNameSpace = nbt.getString(NBT_SAVED_RECIPE_NAMESPACE);
+                savedRecipePath = nbt.getString(NBT_SAVED_RECIPE_PATH);
             } else {
                 setSavedRecipe(null);
             }
+        }
+    }
+
+    private void tryLoadRecipe() {
+        if (craftingRecipes.isEmpty()) {
+            craftingRecipes = level.getRecipeManager().getAllRecipesFor(RecipeType.CRAFTING);
+        }
+        if (!craftingRecipes.isEmpty()) {
+            tryingLoadRecipe = false;
+            craftingRecipes.stream().filter(
+                    r -> r.getId().getNamespace() == savedRecipeNameSpace
+                            && r.getId().getPath() == savedRecipePath)
+                    .findFirst().ifPresentOrElse(this::setSavedRecipe, () -> setSavedRecipe(null));
         }
     }
 
@@ -333,12 +356,16 @@ public class BEAstralFormulaicAssemblicator extends TileEntityConfigurableMachin
                 }
             }
             savedOutputItem = savedRecipe.getResultItem(getLevel().registryAccess());
+            savedRecipeNameSpace = savedRecipe.getId().getNamespace();
+            savedRecipePath = savedRecipe.getId().getPath();
         } else {
             int size = savedRecipe.getIngredients().size();
             for (int i = 0; i < 9; i++) {
                 savedIngredients[i] = i < size ? savedRecipe.getIngredients().get(i) : Ingredient.EMPTY;
             }
             savedOutputItem = savedRecipe.getResultItem(getLevel().registryAccess());
+            savedRecipeNameSpace = savedRecipe.getId().getNamespace();
+            savedRecipePath = savedRecipe.getId().getPath();
         }
     }
 
