@@ -18,9 +18,9 @@ public class AstralMekanismItems {
     public static final ItemDeferredRegister ITEMS = new ItemDeferredRegister(AstralMekanismID.MODID);
 
     public static final ItemRegistryObject<Item> ASTRAL_DIAMOND = ITEMS
-            .register("astral_diamond");
+            .register("astral_diamond", Rarity.RARE);
     public static final ItemRegistryObject<Item> ASTRAL_GLOWSTONE_INGOT = ITEMS
-            .register("astral_glowstone_ingot");
+            .register("astral_glowstone_ingot", Rarity.RARE);
     public static final ItemRegistryObject<Item> UTILITY_DUST = ITEMS.register("utility_dust");
     public static final ItemRegistryObject<Item> ENRICHED_UTILITY = ITEMS.register("enriched_utility");
     public static final ItemRegistryObject<Item> ENRICHED_SINGULARITY = ITEMS.register("enriched_singularity");
@@ -62,10 +62,8 @@ public class AstralMekanismItems {
     public static final ItemRegistryObject<Item> INSERT_UPGRADE = ITEMS.register("insert_upgrade");
     public static final ItemRegistryObject<ItemSingularityUpgrade> SINGULARITY_UPGRADE = ITEMS
             .register("singularity_upgrade", ItemSingularityUpgrade::new);
-    public static final ItemRegistryObject<Item> SUMMARIZED_SPS_CASING = ITEMS
-            .register("summarized_sps_casing", Rarity.EPIC);
-    public static final ItemRegistryObject<Item> SUMMARIZED_SPS_PORT = ITEMS
-            .register("summarized_sps_port", Rarity.EPIC);
+    public static final ItemRegistryObject<Item> SODIUM_HYDROXIDE_DUST = ITEMS.register("sodium_hydroxide_dust");
+    public static final ItemRegistryObject<Item> BIOMASS_PASTE = ITEMS.register("biomass_paste");
     public static final EnumMap<OreType, ItemRegistryObject<GlintItem>> STARLIGHTS = ((Supplier<EnumMap<OreType, ItemRegistryObject<GlintItem>>>) (() -> {
         EnumMap<OreType, ItemRegistryObject<GlintItem>> result = new EnumMap<>(OreType.class);
         for (OreType oreType : OreType.values()) {

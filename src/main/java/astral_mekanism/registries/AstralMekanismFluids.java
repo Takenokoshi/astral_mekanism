@@ -1,6 +1,7 @@
 package astral_mekanism.registries;
 
 import astral_mekanism.AstralMekanismID;
+import mekanism.common.Mekanism;
 import mekanism.common.registration.impl.FluidDeferredRegister;
 import mekanism.common.registration.impl.FluidRegistryObject;
 import mekanism.common.registration.impl.FluidDeferredRegister.MekanismFluidType;
@@ -17,6 +18,7 @@ public class AstralMekanismFluids {
             .register("red_lava", renderProperties -> renderProperties.texture(
                     new ResourceLocation("block/lava_still"),
                     new ResourceLocation("block/lava_flow")).tint(0x80800000));
+
     public static final FluidRegistryObject<MekanismFluidType, Source, Flowing, LiquidBlock, BucketItem> NETHERRACK = FLUIDS
             .register("netherrack", renderProperties -> renderProperties.texture(
                     new ResourceLocation("block/netherrack"),
@@ -36,4 +38,14 @@ public class AstralMekanismFluids {
             .register("mixed_lava", renderProperties -> renderProperties.texture(
                     new ResourceLocation("block/lava_still"),
                     new ResourceLocation("block/lava_flow")).tint(0x80804060));
+
+    public static final FluidRegistryObject<MekanismFluidType, Source, Flowing, LiquidBlock, BucketItem> AMMONIA_WATER = FLUIDS
+            .register("ammonia_water", p -> p.texture(
+                    Mekanism.rl("liquid/liquid"),
+                    Mekanism.rl("liquid/liquid_flow")).tint(0x806699ff));
+
+    public static final FluidRegistryObject<MekanismFluidType, Source, Flowing, LiquidBlock, BucketItem> UTILITY_FLUID = FLUIDS
+            .register("utility_fluid", p -> p.texture(
+                    Mekanism.rl("liquid/liquid"),
+                    Mekanism.rl("liquid/liquid_flow")).tint(0x80ff55ff));
 }

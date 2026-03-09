@@ -37,7 +37,6 @@ public abstract class BEItemToItemBlock extends TileEntityRecipeMachine<ItemStac
         implements ItemRecipeLookupHandler<ItemStackToItemStackRecipe> {
 
     private static final List<RecipeError> TRACKED_ERROR_TYPES = List.of(
-            RecipeError.NOT_ENOUGH_ENERGY,
             RecipeError.NOT_ENOUGH_INPUT,
             RecipeError.NOT_ENOUGH_OUTPUT_SPACE,
             RecipeError.INPUT_DOESNT_PRODUCE_OUTPUT);

@@ -6,6 +6,7 @@ import astral_mekanism.block.blockentity.astralfactory.BEAstralEnergizedSmelting
 import astral_mekanism.block.blockentity.astralmachine.BEAstralAPT;
 import astral_mekanism.block.blockentity.astralmachine.BEAstralCombiner;
 import astral_mekanism.block.blockentity.astralmachine.BEAstralEnergizedSmelter;
+import astral_mekanism.block.blockentity.astralmachine.BEAstralFluidInfuser;
 import astral_mekanism.block.blockentity.astralmachine.BEAstralGNA;
 import astral_mekanism.block.blockentity.astralmachine.BEAstralGreenhouse;
 import astral_mekanism.block.blockentity.astralmachine.BEAstralIsotopicCentrifuge;
@@ -26,6 +27,7 @@ import astral_mekanism.block.blockentity.compact.BECompactSPS;
 import astral_mekanism.block.blockentity.generator.AstralMekGeneratorTier;
 import astral_mekanism.block.blockentity.normalfactory.BEEnergizedSmeltingFactory;
 import astral_mekanism.block.blockentity.normalmachine.BEEssentialEnergizedSmelter;
+import astral_mekanism.block.blockentity.normalmachine.BEFluidInfuser;
 import astral_mekanism.block.blockentity.normalmachine.BEGlowstoneNeutronActivator;
 import astral_mekanism.block.blockentity.normalmachine.BEGreenhouse;
 import astral_mekanism.block.blockentity.normalmachine.BEItemCompressor;
@@ -44,14 +46,18 @@ import astral_mekanism.block.gui.astralmachine.GuiAstralAntiprotonicNucleoSynthe
 import astral_mekanism.block.gui.astralmachine.GuiAstralChemicalInfuser;
 import astral_mekanism.block.gui.astralmachine.GuiAstralChemicalOxider;
 import astral_mekanism.block.gui.astralmachine.GuiAstralChemicalWasher;
+import astral_mekanism.block.gui.astralmachine.GuiAstralChemixer;
 import astral_mekanism.block.gui.astralmachine.GuiAstralCrystallizer;
 import astral_mekanism.block.gui.astralmachine.GuiAstralDissolutionChamber;
 import astral_mekanism.block.gui.astralmachine.GuiAstralElectricMachine;
 import astral_mekanism.block.gui.astralmachine.GuiAstralElectrolyticSeparator;
+import astral_mekanism.block.gui.astralmachine.GuiAstralFormulaicAssemblicator;
+import astral_mekanism.block.gui.astralmachine.GuiAstralMelter;
 import astral_mekanism.block.gui.astralmachine.GuiAstralMetallurgicInfuser;
 import astral_mekanism.block.gui.astralmachine.GuiAstralPRC;
 import astral_mekanism.block.gui.astralmachine.GuiAstralPrecisionSawmill;
 import astral_mekanism.block.gui.astralmachine.GuiAstralRotaryCondensentrator;
+import astral_mekanism.block.gui.astralmachine.GuiAstralSolidifier;
 import astral_mekanism.block.gui.compact.GuiCompactAPT;
 import astral_mekanism.block.gui.compact.GuiCompactFissionReactor;
 import astral_mekanism.block.gui.compact.GuiCompactMixingReactor;
@@ -131,12 +137,15 @@ public class AstralMekanismClient {
             regScreen(AstralMekanismMachines.ASTRAL_CHEMICAL_INFUSER, GuiAstralChemicalInfuser::new);
             regScreen(AstralMekanismMachines.ASTRAL_CHEMICAL_OXIDIZER, GuiAstralChemicalOxider::new);
             regScreen(AstralMekanismMachines.ASTRAL_CHEMICAL_WASHER, GuiAstralChemicalWasher::new);
+            regScreen(AstralMekanismMachines.ASTRAL_CHEMIXER, GuiAstralChemixer::new);
             regScreen(AstralMekanismMachines.ASTRAL_COMBINER, GuiDoubleItemToItemRecipeMachine<BEAstralCombiner>::new);
             regScreen(AstralMekanismMachines.ASTRAL_CRYSTALLIZER, GuiAstralCrystallizer::new);
             regScreen(AstralMekanismMachines.ASTRAL_DISSOLUTION_CHAMBER, GuiAstralDissolutionChamber::new);
             regScreen(AstralMekanismMachines.ASTRAL_ELECTROLYTIC_SEPARATOR, GuiAstralElectrolyticSeparator::new);
             regScreen(AstralMekanismMachines.ASTRAL_ENERGIZED_SMELTER,
                     GuiEssentialEnergizedSmelter<BEAstralEnergizedSmelter>::new);
+            regScreen(AstralMekanismMachines.ASTRAL_FLUID_INFUSER, GuiFluidInfuser<BEAstralFluidInfuser>::new);
+            regScreen(AstralMekanismMachines.ASTRAL_FORMULAIC_ASSEMBLICATOR, GuiAstralFormulaicAssemblicator::new);
             regScreen(AstralMekanismMachines.ASTRAL_GNA, GuiGasToGasBlock<BEAstralGNA>::new);
             regScreen(AstralMekanismMachines.ASTRAL_GREENHOUSE, GuiGreenhouse<BEAstralGreenhouse>::new);
             regScreen(AstralMekanismMachines.ASTRAL_ISOTOPIC_CENTRIFUGE,
@@ -147,11 +156,13 @@ public class AstralMekanismClient {
                     GuiMekanicalInscriber<BEAstralMekanicalInscriber>::new);
             regScreen(AstralMekanismMachines.ASTRAL_MEKANICAL_TRANSFOMER,
                     GuiMekanicalTransformer<BEAstralMekanicalTransformer>::new);
+            regScreen(AstralMekanismMachines.ASTRAL_THERMALIZER, GuiAstralMelter::new);
             regScreen(AstralMekanismMachines.ASTRAL_METALLURGIC_INFUSER, GuiAstralMetallurgicInfuser::new);
             regScreen(AstralMekanismMachines.ASTRAL_PRC, GuiAstralPRC::new);
             regScreen(AstralMekanismMachines.ASTRAL_PRECISION_SAWMILL, GuiAstralPrecisionSawmill::new);
             regScreen(AstralMekanismMachines.ASTRAL_ROTARY_CONDENSENTRATOR, GuiAstralRotaryCondensentrator::new);
             regScreen(AstralMekanismMachines.ASTRAL_SPS, GuiGasToGasMachine<BEAstralSPS>::new);
+            regScreen(AstralMekanismMachines.ASTRAL_SOLIDIFICATION_CHAMBER, GuiAstralSolidifier::new);
             regScreen(AstralMekanismMachines.ASTRAL_TRANSFORMER, GuiTransformer<BEAstralTransformer>::new);
             regScreen(AstralMekanismMachines.COMPACT_APT, GuiCompactAPT<BECompactAPT>::new);
             AstralMekanismMachines.COMPACT_FIR
@@ -174,7 +185,7 @@ public class AstralMekanismClient {
                     GuiEssentialEnergizedSmelter<BEEssentialEnergizedSmelter>::new);
             regScreen(AstralMekanismMachines.ESSENTIAL_METALLURGIC_INFUSER,
                     GuiEssentialMetallurgicInfuser::new);
-            regScreen(AstralMekanismMachines.FLUID_INFUSER, GuiFluidInfuser::new);
+            regScreen(AstralMekanismMachines.FLUID_INFUSER, GuiFluidInfuser<BEFluidInfuser>::new);
             regScreen(AstralMekanismMachines.GAS_SYNTHESIZER, GuiGasSynthesizer::new);
             regScreen(AstralMekanismMachines.GLOWSTONE_NEUTRON_ACTIVATOR,
                     GuiGasToGasBlock<BEGlowstoneNeutronActivator>::new);

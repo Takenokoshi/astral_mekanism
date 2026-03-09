@@ -1,0 +1,19 @@
+{
+    "type": "mekanism:rotary",
+    "fluidInput": {
+        "amount": 1,
+        "fluid": "astral_mekanism:utility_fluid"
+    },
+    "fluidOutput": {
+        "amount": 1,
+        "fluid": "astral_mekanism:utility_fluid"
+    },
+    "gasInput": {
+        "amount": 1,
+        "gas": "astral_mekanism:utility_gas"
+    },
+    "gasOutput": {
+        "amount": 1,
+        "gas": "astral_mekanism:utility_gas"
+    }
+}

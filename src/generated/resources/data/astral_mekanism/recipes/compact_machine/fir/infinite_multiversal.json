@@ -9,10 +9,10 @@
       "item": "minecraft:netherite_ingot"
     },
     "C": {
-      "item": "evolvedmekanism:alloy_exoversal"
+      "item": "mekanism_extras:alloy_spectrum"
     },
     "D": {
-      "item": "mekanism_extras:alloy_spectrum"
+      "item": "emextras:infinite_multiversal_control_circuit"
     },
     "E": {
       "item": "astral_mekanism:cosmic_dense_compact_fir"

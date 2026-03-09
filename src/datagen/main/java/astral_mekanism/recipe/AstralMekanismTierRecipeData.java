@@ -106,10 +106,10 @@ public enum AstralMekanismTierRecipeData {
             AstralMekanismTier beforeTier,
             AstralMekanismTier afterTier,
             ItemLike centerItem,
-            ItemLike alloy,
-            ItemLike leftCircuit,
-            ItemLike rightCircuit) {
-        this(beforeTier, afterTier, centerItem, alloy, leftCircuit, alloy, rightCircuit);
+            ItemLike leftAlloy,
+            ItemLike rightAlloy,
+            ItemLike circuit) {
+        this(beforeTier, afterTier, centerItem, leftAlloy, circuit, rightAlloy, circuit);
     }
 
     public final AstralMekanismTier beforeTier;

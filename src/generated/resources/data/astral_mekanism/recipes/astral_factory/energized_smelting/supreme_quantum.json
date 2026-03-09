@@ -9,10 +9,10 @@
       "item": "minecraft:shulker_shell"
     },
     "C": {
-      "item": "evolvedmekanism:alloy_subatomic"
+      "item": "mekanism_extras:alloy_thermonuclear"
     },
     "D": {
-      "item": "mekanism_extras:alloy_thermonuclear"
+      "item": "emextras:supreme_quantum_control_circuit"
     },
     "E": {
       "item": "astral_mekanism:absolute_overclocked_astral_energized_smelting_factory"

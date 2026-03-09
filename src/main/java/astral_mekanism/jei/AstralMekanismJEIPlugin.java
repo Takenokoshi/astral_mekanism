@@ -18,6 +18,7 @@ import astral_mekanism.jei.recipeCategory.MekanicalInscribingRecipeCategory;
 import astral_mekanism.jei.recipeCategory.MekanicalTransformRecipeCategory;
 import astral_mekanism.jei.recipeCategory.MixingReactorRecipeCategory;
 import astral_mekanism.jei.recipeCategory.TransformRecipeCategory;
+import astral_mekanism.jei.transferHandler.AstralFormulaicAssemblicatorTransferHandler;
 import astral_mekanism.registries.AstralMekanismMachines;
 import astral_mekanism.registries.AstralMekanismRecipeTypes;
 import fr.iglee42.evolvedmekanism.jei.EMJEI;
@@ -39,6 +40,7 @@ import mezz.jei.api.recipe.category.IRecipeCategory;
 import mezz.jei.api.registration.IRecipeCatalystRegistration;
 import mezz.jei.api.registration.IRecipeCategoryRegistration;
 import mezz.jei.api.registration.IRecipeRegistration;
+import mezz.jei.api.registration.IRecipeTransferRegistration;
 import mezz.jei.api.runtime.IJeiRuntime;
 import net.minecraft.client.Minecraft;
 import net.minecraft.resources.ResourceLocation;
@@ -208,6 +210,10 @@ public class AstralMekanismJEIPlugin implements IModPlugin {
                 AstralMekanismMachines.COMPACT_APT,
                 AstralMekanismMachines.ASTRAL_APT);
         CatalystRegistryHelper.register(registry, EMJEI.ALLOYING, AstralMekanismMachines.ASTRAL_ALLOYER);
+        CatalystRegistryHelper.register(registry, EMJEI.CHEMIXING, AstralMekanismMachines.ASTRAL_CHEMIXER);
+        CatalystRegistryHelper.register(registry, EMJEI.MELTING, AstralMekanismMachines.ASTRAL_THERMALIZER);
+        CatalystRegistryHelper.register(registry, EMJEI.SOLIDIFICATION,
+                AstralMekanismMachines.ASTRAL_SOLIDIFICATION_CHAMBER);
 
         // mekanism extras
         CatalystRegistryHelper.register(registry, AstralMekanismJEIRecipeType.NAQUADAH_REACTOR,
@@ -225,7 +231,8 @@ public class AstralMekanismJEIPlugin implements IModPlugin {
         CatalystRegistryHelper.register(registry, AstralMekanismJEIRecipeType.ASTRAL_CRAFTING,
                 AstralMekanismMachines.ASTRAL_CRAFTER);
         CatalystRegistryHelper.register(registry, AstralMekanismJEIRecipeType.FLUID_INFUSER_RECIPE,
-                AstralMekanismMachines.FLUID_INFUSER);
+                AstralMekanismMachines.FLUID_INFUSER,
+                AstralMekanismMachines.ASTRAL_FLUID_INFUSER);
         CatalystRegistryHelper.register(registry, AstralMekanismJEIRecipeType.GREENHOUSE_RECIPE,
                 AstralMekanismMachines.GREENHOUSE,
                 AstralMekanismMachines.ASTRAL_GREENHOUSE);
@@ -249,6 +256,11 @@ public class AstralMekanismJEIPlugin implements IModPlugin {
                 AstralMekanismMachines.ENERGIZED_SMELTING_FACTORIES.values().toArray(ItemLike[]::new));
         registry.addRecipeCatalysts(RecipeTypes.SMELTING,
                 AstralMekanismMachines.ASTRAL_ENERGIZED_SMELTING_FACTRIES.values().toArray(ItemLike[]::new));
+    }
+
+    @Override
+    public void registerRecipeTransferHandlers(IRecipeTransferRegistration registration) {
+        registration.addRecipeTransferHandler(new AstralFormulaicAssemblicatorTransferHandler(), RecipeTypes.CRAFTING);
     }
 
     @Override

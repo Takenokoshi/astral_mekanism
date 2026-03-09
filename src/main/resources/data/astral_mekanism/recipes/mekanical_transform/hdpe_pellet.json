@@ -1,0 +1,38 @@
+{
+    "type": "astral_mekanism:mekanical_transform",
+    "itemInputA": {
+        "ingredient": {
+            "item": "astral_mekanism:utility_dust"
+        },
+        "amount": 1
+    },
+    "itemInputB": {
+        "ingredient": {
+            "item": "astral_mekanism:utility_dust"
+        },
+        "amount": 1
+    },
+    "itemInputC": {
+        "ingredient": {
+            "item": "astral_mekanism:utility_dust"
+        },
+        "amount": 1
+    },
+    "fluidInputA": {
+        "fluid": "mekanism:ethene",
+        "amount": 50
+    },
+    "fluidInputB": {
+        "fluid": "mekanism:oxegen",
+        "amount": 10
+    },
+    "outputItem": {
+        "item": "mekanism:hdpe_pellet",
+        "count": 1
+    },
+    "itemAIsCatalyst": true,
+    "itemBIsCatalyst": true,
+    "itemCIsCatalyst": true,
+    "fluidAIsCatalyst": false,
+    "fluidBIsCatalyst": false
+}

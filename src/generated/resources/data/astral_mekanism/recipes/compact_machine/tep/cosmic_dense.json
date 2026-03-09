@@ -9,10 +9,10 @@
       "item": "mekanism:ingot_refined_obsidian"
     },
     "C": {
-      "item": "evolvedmekanism:alloy_singular"
+      "item": "mekanism_extras:alloy_shining"
     },
     "D": {
-      "item": "mekanism_extras:alloy_shining"
+      "item": "emextras:cosmic_dense_control_circuit"
     },
     "E": {
       "item": "astral_mekanism:supreme_quantum_compact_tep"

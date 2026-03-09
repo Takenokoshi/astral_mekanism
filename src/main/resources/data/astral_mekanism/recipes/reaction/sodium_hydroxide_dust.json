@@ -1,0 +1,27 @@
+{
+    "type": "mekanism:reaction",
+    "duration": 100,
+    "energyRequired": 200,
+    "fluidInput": {
+        "tag": "minecraft:water",
+        "amount": 100
+    },
+    "gasInput": {
+        "amount": 100,
+        "gas": "mekanism:sodium"
+    },
+    "gasOutput": {
+        "amount": 100,
+        "gas": "astral_mekanism:utility_gas"
+    },
+    "itemInput": {
+        "ingredient": {
+            "item": "astral_mekanism:utility_dust"
+        },
+        "amount": 1
+    },
+    "itemOutput": {
+        "count": 1,
+        "item": "astral_mekanism:sodium_hydroxide_dust"
+    }
+}

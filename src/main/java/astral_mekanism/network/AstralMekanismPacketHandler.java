@@ -2,6 +2,7 @@ package astral_mekanism.network;
 
 import astral_mekanism.AstralMekanism;
 import astral_mekanism.AstralMekanismID;
+import astral_mekanism.network.to_server.PacketGuiAstralFAssemblicator;
 import astral_mekanism.network.to_server.PacketGuiCompactTEP;
 import astral_mekanism.network.to_server.PacketGuiEssentialSmelter;
 import astral_mekanism.network.to_server.PacketGuiProgressFactory;
@@ -29,6 +30,7 @@ public class AstralMekanismPacketHandler extends BasePacketHandler {
         registerClientToServer(PacketGuiProgressFactory.class, PacketGuiProgressFactory::decode);
         registerClientToServer(PacketGuiTransformerMode.class, PacketGuiTransformerMode::decode);
         registerClientToServer(PacketGuiXpTank.class, PacketGuiXpTank::decode);
+        registerClientToServer(PacketGuiAstralFAssemblicator.class, PacketGuiAstralFAssemblicator::decode);
     }
 
 }

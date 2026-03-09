@@ -1,0 +1,27 @@
+{
+    "type": "mekanism:reaction",
+    "duration": 100,
+    "energyRequired": 200,
+    "fluidInput": {
+        "fluid": "astral_mekanism:utility_fluid",
+        "amount": 400
+    },
+    "gasInput": {
+        "amount": 150,
+        "gas": "mekanism:oxygen"
+    },
+    "gasOutput": {
+        "amount": 100,
+        "gas": "mekanism:sulfur_trioxide"
+    },
+    "itemInput": {
+        "ingredient": {
+            "tag": "forge:dusts/sulfur"
+        },
+        "amount": 1
+    },
+    "itemOutput": {
+        "count": 4,
+        "item": "astral_mekanism:utility_dust"
+    }
+}

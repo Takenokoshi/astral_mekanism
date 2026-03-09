@@ -21,16 +21,16 @@ import net.minecraft.network.chat.Component;
 public class MixingReactorRecipeCategory extends
         BaseRecipeCategory<MixingReactorJEIrecipe> {
 
-    private final GuiGasGauge leftFuelGauge = addElement(GuiGasGauge.getDummy(GaugeType.STANDARD, this, 7, 4));
-    private final GuiGasGauge mixedFuelGauge = addElement(GuiGasGauge.getDummy(GaugeType.STANDARD, this, 25, 4));
-    private final GuiGasGauge rightFuelGauge = addElement(GuiGasGauge.getDummy(GaugeType.STANDARD, this, 43, 4));
-    private final GuiFluidGauge waterGauge = addElement(GuiFluidGauge.getDummy(GaugeType.SMALL, this, 115, 34));
-    private final GuiGasGauge steamGauge = addElement(GuiGasGauge.getDummy(GaugeType.SMALL, this, 151, 34));
+    private final GuiGasGauge leftFuelGauge = addElement(GuiGasGauge.getDummy(GaugeType.STANDARD, this, 7, 14));
+    private final GuiGasGauge mixedFuelGauge = addElement(GuiGasGauge.getDummy(GaugeType.STANDARD, this, 25, 14));
+    private final GuiGasGauge rightFuelGauge = addElement(GuiGasGauge.getDummy(GaugeType.STANDARD, this, 43, 14));
+    private final GuiFluidGauge waterGauge = addElement(GuiFluidGauge.getDummy(GaugeType.SMALL, this, 115, 44));
+    private final GuiGasGauge steamGauge = addElement(GuiGasGauge.getDummy(GaugeType.SMALL, this, 151, 44));
 
     public MixingReactorRecipeCategory(IGuiHelper helper,
             MekanismJEIRecipeType<MixingReactorJEIrecipe> recipeType, Component title,IItemProvider provider) {
         super(helper, recipeType, title, createIcon(helper, provider),3, 10, 170, 80);
-        addElement(new GuiInnerScreen(this, 61, 4, 108, 30, () -> {
+        addElement(new GuiInnerScreen(this, 61, 14, 108, 30, () -> {
             return List.of(title, GeneratorsLang.REACTOR_INJECTION_RATE.translate(2));
         }));
     }

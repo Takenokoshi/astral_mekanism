@@ -1,0 +1,42 @@
+{
+    "type": "astral_mekanism:mekanical_transform",
+    "itemInputA": {
+        "ingredient": {
+            "item": "mekanism:bio_fuel"
+        },
+        "amount": 2
+    },
+    "itemInputB": {
+        "ingredient": {
+            "item": "mekanism:sawdust"
+        },
+        "amount": 1
+    },
+    "itemInputC": {
+        "ingredient": {
+            "item": "astral_mekanism:sodium_hydroxide_dust"
+        },
+        "amount": 1
+    },
+    "fluidInputA": {
+        "tag": "minecraft:water",
+        "amount": 1000
+    },
+    "fluidInputB": {
+        "fluid": "minecraft:lava",
+        "amount": 1
+    },
+    "outputItem": {
+        "item": "astral_mekanism:biomass_paste",
+        "count": 1
+    },
+    "outputFluid": {
+        "amount": 1000,
+        "fluid": "astral_mekanism:ammonia_water"
+    },
+    "itemAIsCatalyst": false,
+    "itemBIsCatalyst": false,
+    "itemCIsCatalyst": false,
+    "fluidAIsCatalyst": false,
+    "fluidBIsCatalyst": true
+}

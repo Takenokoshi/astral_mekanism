@@ -9,10 +9,10 @@
       "item": "minecraft:glowstone"
     },
     "C": {
-      "item": "evolvedmekanism:alloy_hypercharged"
+      "item": "mekanism_extras:alloy_radiance"
     },
     "D": {
-      "item": "mekanism_extras:alloy_radiance"
+      "item": "emextras:absolute_overclocked_control_circuit"
     },
     "E": {
       "item": "astral_mekanism:enchanted_ultimate_compact_fir"

@@ -2,6 +2,7 @@ package astral_mekanism;
 
 import com.mojang.logging.LogUtils;
 
+import astral_mekanism.config.AstralMekanismConfig;
 import astral_mekanism.network.AstralMekanismPacketHandler;
 import astral_mekanism.registries.AstralMekanismBlocks;
 import astral_mekanism.registries.AstralMekanismCreativeTab;
@@ -39,6 +40,8 @@ public class AstralMekanism {
     public final Version version;
 
     public AstralMekanism(FMLJavaModLoadingContext context) {
+        context.registerConfig(ModConfig.Type.COMMON, AstralMekanismConfig.SPEC);
+        AstralMekanismConfig.registerConfigs(context);
         instance = this;
         IEventBus modEventBus = context.getModEventBus();
         modEventBus.addListener(this::commonSetup);
@@ -55,7 +58,6 @@ public class AstralMekanism {
         AstralMekanismRecipeTypes.RECIPE_TYPES.register(modEventBus);
         AstralMekanismCreativeTab.CREATIVE_TABS.register(modEventBus);
         MinecraftForge.EVENT_BUS.register(this);
-        context.registerConfig(ModConfig.Type.COMMON, AstralMekanismConfig.SPEC);
         version = new Version(context.getActiveContainer());
         this.packetHandler = new AstralMekanismPacketHandler();
     }

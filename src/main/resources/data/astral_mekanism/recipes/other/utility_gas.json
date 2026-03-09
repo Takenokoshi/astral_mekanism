@@ -1,5 +1,5 @@
 {
-    "type": "mekanism:oxidizing",
+    "type": "mekanism:gas_conversion",
     "input": {
         "ingredient": {
             "item": "astral_mekanism:utility_dust"

@@ -102,7 +102,7 @@ public class BEAstralMekanicalCharger extends BlockEntityRecipeMachine<ChargerRe
         recipeCacheLookupMonitor.updateAndProcess();
     }
 
-    FloatingLong getEnergyUsage() {
+    public FloatingLong getEnergyUsage() {
         return getActive() ? energyContainer.getEnergyPerTick() : FloatingLong.ZERO;
     }
 
