@@ -20,7 +20,7 @@
     },
     "fluidInputA": {
         "fluid": "mekanism_extras:naquadah_hexafluoride",
-        "amount": 1
+        "amount": 1000
     },
     "fluidInputB": {
         "fluid": "evolvedmekanism:molten_amethyst",
@@ -28,7 +28,7 @@
     },
     "outputFluid": {
         "fluid": "mekanism_extras:rich_naquadah_fuel",
-        "amount": 1
+        "amount": 1000
     },
     "itemAIsCatalyst": true,
     "itemBIsCatalyst": true,

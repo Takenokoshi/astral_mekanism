@@ -1,0 +1,21 @@
+{
+    "type": "evolvedmekanism:chemixing",
+    "extraInput": {
+        "amount": 64,
+        "ingredient": {
+            "item": "ae2:singularity"
+        }
+    },
+    "gasInput": {
+        "amount": 20000,
+        "gas": "astral_mekanism:netherite_ether"
+    },
+    "mainInput": {
+        "ingredient": {
+            "item": "astral_mekanism:printed_composite_processor"
+        }
+    },
+    "output": {
+        "item": "astral_mekanism:printed_origin_processor"
+    }
+}

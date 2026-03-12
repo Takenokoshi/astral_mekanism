@@ -21,7 +21,50 @@ public class AstralMekanismItems {
             .register("astral_diamond", Rarity.RARE);
     public static final ItemRegistryObject<Item> ASTRAL_GLOWSTONE_INGOT = ITEMS
             .register("astral_glowstone_ingot", Rarity.RARE);
+    public static final ItemRegistryObject<Item> RIFINED_EMERALD_INGOT = ITEMS
+            .register("refined_emerald_ingot");
+    public static final ItemRegistryObject<Item> COMPOSITE_ALLOY_INGOT = ITEMS
+            .register("composite_alloy_ingot", Rarity.RARE);
+    public static final ItemRegistryObject<Item> FIRMAMENT_ALLOY_INGOT = ITEMS
+            .register("firmament_alloy_ingot", Rarity.RARE);
+    public static final ItemRegistryObject<Item> PRINTED_PHOTON_PROCESSOR = ITEMS
+            .register("printed_photon_processor", Rarity.RARE);
+    public static final ItemRegistryObject<Item> PRINTED_COMPOSITE_PROCESSOR = ITEMS
+            .register("printed_composite_processor");
+    public static final ItemRegistryObject<Item> PRINTED_ORIGIN_PROCESSOR = ITEMS
+            .register("printed_origin_processor");
+    public static final ItemRegistryObject<Item> PRINTED_AUTONOMY_PROCESSOR = ITEMS.register(
+            "printed_autonomy_processor",
+            p -> new Item(p.fireResistant()));
+    public static final ItemRegistryObject<Item> PRINTED_FIRMAMENT_PROCESSOR = ITEMS
+            .register("printed_firmament_processor");
+    public static final ItemRegistryObject<Item> PHOTON_PROCESSOR = ITEMS
+            .register("photon_processor");
+    public static final ItemRegistryObject<Item> COMPOSITE_PROCESSOR = ITEMS
+            .register("composite_processor");
+    public static final ItemRegistryObject<Item> ORIGIN_PROCESSOR = ITEMS
+            .register("origin_processor");
+    public static final ItemRegistryObject<Item> AUTONOMY_PROCESSOR = ITEMS
+            .register("autonomy_processor");
+    public static final ItemRegistryObject<Item> FIRMAMENT_PROCESSOR = ITEMS
+            .register("firmament_processor");
+    public static final ItemRegistryObject<Item> PHOTON_PROCESSOR_PRESS = ITEMS
+            .register("photon_processor_press");
+    public static final ItemRegistryObject<Item> FIRMAMENT_PROCESSOR_PRESS = ITEMS
+            .register("firmament_processor_press");
     public static final ItemRegistryObject<Item> UTILITY_DUST = ITEMS.register("utility_dust");
+    public static final ItemRegistryObject<Item> RIFINED_EMERALD_DUST = ITEMS.register("refined_emerald_dust");
+    public static final ItemRegistryObject<Item> GOLDEN_REDSTONE = ITEMS.register("golden_redstone");
+    public static final ItemRegistryObject<Item> AMETHYST_DUST = ITEMS.register("amethyst_dust");
+    public static final ItemRegistryObject<Item> SODIUM_HYDROXIDE_DUST = ITEMS.register("sodium_hydroxide_dust");
+    public static final ItemRegistryObject<GlintItemNameColored> CRYSTAL_ANTIMATTER = ITEMS.register(
+            "crystal_antimatter",
+            GlintItemNameColored.getSup(EnumColor.PURPLE));
+    public static final ItemRegistryObject<GlintItemNameColored> CRYSTAL_ANTIMATTER_CHARGED = ITEMS.register(
+            "crystal_antimatter_charged",
+            GlintItemNameColored.getSup(EnumColor.PURPLE));
+    public static final ItemRegistryObject<Item> NETHERITE_CLUSTER = ITEMS.register("netherite_cluster");
+    public static final ItemRegistryObject<Item> BIOMASS_PASTE = ITEMS.register("biomass_paste");
     public static final ItemRegistryObject<Item> ENRICHED_UTILITY = ITEMS.register("enriched_utility");
     public static final ItemRegistryObject<Item> ENRICHED_SINGULARITY = ITEMS.register("enriched_singularity");
     public static final ItemRegistryObject<GlintItem> ENRICHED_NETHER_STAR = ITEMS.register("enriched_nether_star",
@@ -50,20 +93,9 @@ public class AstralMekanismItems {
     public static final ItemRegistryObject<GlintItem> SPACETIME_MODULATION_CORE = ITEMS.register(
             "spacetime_modulation_core",
             p -> new GlintItem(p.rarity(Rarity.EPIC)));
-    public static final ItemRegistryObject<GlintItemNameColored> CRYSTAL_ANTIMATTER = ITEMS.register(
-            "crystal_antimatter",
-            GlintItemNameColored.getSup(EnumColor.PURPLE));
-    public static final ItemRegistryObject<GlintItemNameColored> CRYSTAL_ANTIMATTER_CHARGED = ITEMS.register(
-            "crystal_antimatter_charged",
-            GlintItemNameColored.getSup(EnumColor.PURPLE));
-    public static final ItemRegistryObject<Item> GOLDEN_REDSTONE = ITEMS.register("golden_redstone");
-    public static final ItemRegistryObject<Item> NETHERITE_CLUSTER = ITEMS.register("netherite_cluster");
-    public static final ItemRegistryObject<Item> AMETHYST_DUST = ITEMS.register("dust_amethyst");
     public static final ItemRegistryObject<Item> INSERT_UPGRADE = ITEMS.register("insert_upgrade");
     public static final ItemRegistryObject<ItemSingularityUpgrade> SINGULARITY_UPGRADE = ITEMS
             .register("singularity_upgrade", ItemSingularityUpgrade::new);
-    public static final ItemRegistryObject<Item> SODIUM_HYDROXIDE_DUST = ITEMS.register("sodium_hydroxide_dust");
-    public static final ItemRegistryObject<Item> BIOMASS_PASTE = ITEMS.register("biomass_paste");
     public static final EnumMap<OreType, ItemRegistryObject<GlintItem>> STARLIGHTS = ((Supplier<EnumMap<OreType, ItemRegistryObject<GlintItem>>>) (() -> {
         EnumMap<OreType, ItemRegistryObject<GlintItem>> result = new EnumMap<>(OreType.class);
         for (OreType oreType : OreType.values()) {

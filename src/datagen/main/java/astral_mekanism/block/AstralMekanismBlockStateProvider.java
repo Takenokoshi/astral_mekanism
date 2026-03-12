@@ -3,8 +3,10 @@ package astral_mekanism.block;
 import java.util.EnumMap;
 import java.util.function.BiFunction;
 
+import appeng.block.networking.EnergyCellBlock;
 import astral_mekanism.AstralMekanismTier;
 import astral_mekanism.AstralMekanismID;
+import astral_mekanism.registries.AstralMekanismBlocks;
 import astral_mekanism.registries.AstralMekanismMachines;
 import mekanism.api.providers.IBlockProvider;
 import net.minecraft.core.Direction;
@@ -41,6 +43,7 @@ public class AstralMekanismBlockStateProvider extends BlockStateProvider {
         registerTierdMachines(AstralMekanismMachines.COMPACT_NAQUADAH_REACTOR,
                 (t, s) -> "block/compact_machine/" + s + "/" + t.nameForNormal, "naquadah_reactor",
                 "block/compact_machine/naquadah_reactor/base");
+        registerEnergyCells();
     }
 
     private void registerAstralFactories(EnumMap<AstralMekanismTier, ? extends IBlockProvider> map) {
@@ -163,6 +166,23 @@ public class AstralMekanismBlockStateProvider extends BlockStateProvider {
             itemModels().getBuilder(machine.getRegistryName().getPath())
                     .parent(model);
         }
+    }
+
+    private void registerEnergyCells() {
+        AstralMekanismBlocks.ENERGY_CELLS.forEach((tier, object) -> {
+            ModelFile[] files = new ModelFile[5];
+            for (int i = 0; i < files.length; i++) {
+                files[i] = models().getBuilder("block/energy_cell/" + tier.nameForAE + "_" + i)
+                        .parent(models().getExistingFile(AstralMekanismID.rl("block/energy_cell/base")))
+                        .texture("frame", AstralMekanismID.rl("block/energy_cell/" + tier.nameForAE + "_frame"))
+                        .texture("base", AstralMekanismID.rl("block/energy_cell/base_" + i));
+            }
+            getVariantBuilder(object.getBlock()).forAllStates(state -> ConfiguredModel
+                    .builder()
+                    .modelFile(files[state.getValue(EnergyCellBlock.ENERGY_STORAGE)])
+                    .build());
+            itemModels().getBuilder(object.getRegistryName().getPath()).parent(files[0]);
+        });
     }
 
 }

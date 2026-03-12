@@ -39,4 +39,5 @@ public class AstralMekanismTileEntityTypes {
                     (p, s) -> new TileEntityUniversalCable(AstralMekanismBlocks.ASTRAL_UNIVERSAL_CABLE, p, s))
             .serverTicker(TileEntityTransmitter::tickServer).build();
 
+
 }

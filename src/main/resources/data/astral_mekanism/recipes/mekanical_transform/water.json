@@ -25,7 +25,7 @@
     },
     "outputFluid": {
         "fluid": "minecraft:water",
-        "amount": 20000
+        "amount": 2147483647
     },
     "itemAIsCatalyst": true,
     "itemBIsCatalyst": true,

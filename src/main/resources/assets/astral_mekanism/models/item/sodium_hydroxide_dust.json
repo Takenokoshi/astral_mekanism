@@ -1,6 +1,6 @@
 {
     "parent": "item/generated",
     "textures":{
-        "layer0": "astral_mekanism:item/sodium_hydroxide_dust"
+        "layer0": "astral_mekanism:item/dust/sodium_hydroxide_dust"
     }
 }

@@ -1,0 +1,15 @@
+{
+    "type": "mekanism:compressing",
+    "chemicalInput": {
+        "amount": 1,
+        "gas": "mekanism:osmium"
+    },
+    "itemInput": {
+        "ingredient": {
+            "tag": "forge:dusts/refined_emerald"
+        }
+    },
+    "output": {
+        "item": "astral_mekanism:refined_emerald_ingot"
+    }
+}

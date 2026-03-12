@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "redstone",
+  "key": {
+    "A": {
+      "item": "astral_mekanism:composite_processor"
+    },
+    "B": {
+      "item": "astral_mekanism:quantum_energy_cell"
+    }
+  },
+  "pattern": [
+    "BBB",
+    "BAB",
+    "BBB"
+  ],
+  "result": {
+    "item": "astral_mekanism:composite_energy_cell"
+  },
+  "show_notification": true
+}

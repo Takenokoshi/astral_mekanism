@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "fullness=0": {
+      "model": "astral_mekanism:block/energy_cell/engineering_0"
+    },
+    "fullness=1": {
+      "model": "astral_mekanism:block/energy_cell/engineering_1"
+    },
+    "fullness=2": {
+      "model": "astral_mekanism:block/energy_cell/engineering_2"
+    },
+    "fullness=3": {
+      "model": "astral_mekanism:block/energy_cell/engineering_3"
+    },
+    "fullness=4": {
+      "model": "astral_mekanism:block/energy_cell/engineering_4"
+    }
+  }
+}

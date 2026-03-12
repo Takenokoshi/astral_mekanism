@@ -103,29 +103,29 @@ public abstract class BEAbstractCompactMixingReactor extends TileEntityConfigura
     public IChemicalTankHolder<Gas, GasStack, IGasTank> getInitialGasTanks(IContentsListener listener) {
         ChemicalTankHelper<Gas, GasStack, IGasTank> builder = ChemicalTankHelper
                 .forSideGasWithConfig(this::getDirection, this::getConfig);
-        builder.addTank(leftFuelTank = ChemicalTankBuilder.GAS.create(tier.exToLong(),
+        builder.addTank(leftFuelTank = ChemicalTankBuilder.GAS.create(tier.longValue,
                 (gas, a) -> false,
                 (gas, a) -> leftFuel().getChemical() == gas,
                 gas -> leftFuel().getChemical() == gas,
                 ChemicalAttributeValidator.ALWAYS_ALLOW, listener));
-        builder.addTank(mixedFuelTank = ChemicalTankBuilder.GAS.create(tier.exToLong(),
+        builder.addTank(mixedFuelTank = ChemicalTankBuilder.GAS.create(tier.longValue,
                 (gas, a) -> false,
                 (gas, a) -> mixedFuel().getChemical() == gas,
                 gas -> mixedFuel().getChemical() == gas,
                 ChemicalAttributeValidator.ALWAYS_ALLOW, listener));
-        builder.addTank(rightFuelTank = ChemicalTankBuilder.GAS.create(tier.exToLong(),
+        builder.addTank(rightFuelTank = ChemicalTankBuilder.GAS.create(tier.longValue,
                 (gas, a) -> false,
                 (gas, a) -> rightFuel().getChemical() == gas,
                 gas -> rightFuel().getChemical() == gas,
                 ChemicalAttributeValidator.ALWAYS_ALLOW, listener));
-        builder.addTank(steamTank = ChemicalTankBuilder.GAS.output(tier.exToLong(), listener));
+        builder.addTank(steamTank = ChemicalTankBuilder.GAS.output(tier.longValue, listener));
         return builder.build();
     }
 
     @Override
     public IFluidTankHolder getInitialFluidTanks(IContentsListener listener) {
         FluidTankHelper builder = FluidTankHelper.forSideWithConfig(this::getDirection, this::getConfig);
-        builder.addTank(waterTank = BasicFluidTank.input((int) Math.min(0x7fffffff, tier.exToLong()),
+        builder.addTank(waterTank = BasicFluidTank.input((int) Math.min(0x7fffffff, tier.longValue),
                 stack -> stack.isFluidEqual(new FluidStack(Fluids.WATER, 1)), listener));
         return builder.build();
     }

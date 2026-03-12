@@ -8,6 +8,7 @@ import astral_mekanism.AstralMekanismTier;
 import astral_mekanism.OreTypeData;
 import astral_mekanism.recipe.builder.AstralMekanismRecipeBuilder.ItemCompressingRecipeBuilder;
 import astral_mekanism.recipe.builder.AstralMekanismRecipeBuilder.ItemUnzippingRecipeBuilder;
+import astral_mekanism.registries.AstralMekanismBlocks;
 import astral_mekanism.registries.AstralMekanismGases;
 import astral_mekanism.registries.AstralMekanismItems;
 import astral_mekanism.registries.AstralMekanismMachines;
@@ -58,6 +59,7 @@ public class AstralMekanismRecipeProvider extends RecipeProvider {
                 "compact_machine/tep");
         buildTierMachineUpgradeRecipes(AstralMekanismMachines.ENERGIZED_SMELTING_FACTORIES, consumer,
                 "normal_factory/energized_smelting");
+        buildEnergyCellRecipes(consumer);
     }
 
     private static void buildTierMachineUpgradeRecipes(EnumMap<AstralMekanismTier, ? extends IItemProvider> machines,
@@ -283,6 +285,19 @@ public class AstralMekanismRecipeProvider extends RecipeProvider {
                         .unlockedBy("unlock", has(typeData.processingTags.get(IntermediateState.RAW)))
                         .save(consumer, AstralMekanismID.rl(base + "/" + typeData.oreType.type));
             }
+        }
+    }
+
+    private static void buildEnergyCellRecipes(Consumer<FinishedRecipe> consumer) {
+        for (AstralMekanismTierRecipeData data : AstralMekanismTierRecipeData.values()) {
+            ShapedRecipeBuilder.shaped(RecipeCategory.REDSTONE, AstralMekanismBlocks.ENERGY_CELLS.get(data.afterTier))
+                    .pattern("BBB")
+                    .pattern("BAB")
+                    .pattern("BBB")
+                    .define('A', data.processor)
+                    .define('B', AstralMekanismBlocks.ENERGY_CELLS.get(data.beforeTier))
+                    .unlockedBy("has_before", has(AstralMekanismBlocks.ENERGY_CELLS.get(data.beforeTier)))
+                    .save(consumer, AstralMekanismID.rl("crafting/energy_cells/"+data.afterTier.nameForAE));
         }
     }
 

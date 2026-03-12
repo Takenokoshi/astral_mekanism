@@ -1,0 +1,15 @@
+{
+  "type": "ae2:inscriber",
+  "ingredients": {
+    "middle": {
+      "tag": "forge:ingots/astral_glowstone"
+    },
+    "top": {
+      "item": "astral_mekanism:photon_processor_press"
+    }
+  },
+  "mode": "inscribe",
+  "result": {
+    "item": "astral_mekanism:printed_photon_processor"
+  }
+}

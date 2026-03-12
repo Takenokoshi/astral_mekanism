@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "fullness=0": {
+      "model": "astral_mekanism:block/energy_cell/firmament_0"
+    },
+    "fullness=1": {
+      "model": "astral_mekanism:block/energy_cell/firmament_1"
+    },
+    "fullness=2": {
+      "model": "astral_mekanism:block/energy_cell/firmament_2"
+    },
+    "fullness=3": {
+      "model": "astral_mekanism:block/energy_cell/firmament_3"
+    },
+    "fullness=4": {
+      "model": "astral_mekanism:block/energy_cell/firmament_4"
+    }
+  }
+}

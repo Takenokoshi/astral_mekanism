@@ -5,51 +5,43 @@ import mekanism.api.tier.BaseTier;
 import mekanism.api.tier.ITier;
 
 public enum AstralMekanismTier implements ITier {
-    ESSENTIAL("essential", 12, 16, AstralMekanismBaseTier.ESSENTIAL),
-    BASIC("basic_standard", 16, 20, BaseTier.BASIC),
-    ADVANCED("advanced", 24, 24, BaseTier.ADVANCED),
-    ELITE("elite", 32, 28, BaseTier.ELITE),
-    ULTIMATE("enchanted_ultimate", 48, 32, BaseTier.ULTIMATE),
-    ABSOLUTE("absolute_overclocked", 64, 36, AstralMekanismBaseTier.ABSOLUTE),
-    SUPREME("supreme_quantum", 96, 40, AstralMekanismBaseTier.SUPREME),
-    COSMIC("cosmic_dense", 128, 48, AstralMekanismBaseTier.COSMIC),
-    INFINITE("infinite_multiversal", 192, 56, AstralMekanismBaseTier.INFINITE),
-    ASTRAL("astronomical", "astral", 256, 63, AstralMekanismBaseTier.ASTRAL);
+    ESSENTIAL("essential", "logic", 12, 65536, 65536, AstralMekanismBaseTier.ESSENTIAL),
+    BASIC("basic_standard", "calculation", 16, 131072, 1048576, BaseTier.BASIC),
+    ADVANCED("advanced", "engineering", 24, 262144, 1000000, BaseTier.ADVANCED),
+    ELITE("elite", "accumulation", 32, 0x100000, 268435456, BaseTier.ELITE),
+    ULTIMATE("enchanted_ultimate", "photon", 48, 0x200000, 4294967296l, BaseTier.ULTIMATE),
+    ABSOLUTE("absolute_overclocked", "quantum", 64, 0x400000, 68719476736l, AstralMekanismBaseTier.ABSOLUTE),
+    SUPREME("supreme_quantum", "composite", 96, 0x1000000, 1099511627776l, AstralMekanismBaseTier.SUPREME),
+    COSMIC("cosmic_dense", "origin", 128, 0x4000000, 281474976710656l, AstralMekanismBaseTier.COSMIC),
+    INFINITE("infinite_multiversal", "autonomy", 192, 0x20000000, 72057594037927936l, AstralMekanismBaseTier.INFINITE),
+    ASTRAL("astronomical", "astral", "firmament", 256, 0x7fffffff, 0x7fffffffffffffffl, AstralMekanismBaseTier.ASTRAL);
 
     public final String nameForAstral;
     public final String nameForNormal;
+    public final String nameForAE;
     public final int processes;
-    public final int ex;
+    public final int intValue;
+    public final long longValue;
     private final BaseTier tier;
 
-    private AstralMekanismTier(String nameForAstral, String nameForNormal, int processes, int ex, BaseTier tier) {
+    private AstralMekanismTier(String nameForAstral, String nameForNormal, String nameForAE,
+            int processes, int intValue, long longValue, BaseTier tier) {
         this.nameForNormal = nameForNormal;
         this.nameForAstral = nameForAstral;
+        this.nameForAE = nameForAE;
         this.processes = processes;
-        this.ex = ex;
+        this.intValue = intValue;
+        this.longValue = longValue;
         this.tier = tier;
     };
 
-    private AstralMekanismTier(String name, int processes, int ex, BaseTier tier) {
-        this(name, name, processes, ex, tier);
+    private AstralMekanismTier(String name, String nameForAE, int processes, int intValue, long longValue,
+            BaseTier tier) {
+        this(name, name, nameForAE, processes, intValue, longValue, tier);
     }
 
     @Override
     public BaseTier getBaseTier() {
         return tier;
-    }
-
-    public long exToLong() {
-        if (ex >= 63) {
-            return Long.MAX_VALUE;
-        }
-        return (long) Math.pow(2, ex);
-    }
-
-    public int exToInt() {
-        if (ex >= 62) {
-            return 0x7fffffff;
-        }
-        return (int) Math.pow(2, 16 + (ex - 16) / 3);
     }
 }

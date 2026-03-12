@@ -269,7 +269,7 @@ public abstract class BEAbstractTransformer extends TileEntityConfigurableMachin
                         inputTankA.getFluid(), stack),
                 stack -> mode && mekanicalLookUpObject.containsRecipeFB(stack),
                 this::saveCache));
-        builder.addTank(outputTank = BasicFluidTank.output(fluidTankCapacity(), listener));
+        builder.addTank(outputTank = BasicFluidTank.output(0x7fffffff, listener));
         return builder.build();
     }
 

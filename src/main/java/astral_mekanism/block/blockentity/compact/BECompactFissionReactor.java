@@ -126,13 +126,13 @@ public class BECompactFissionReactor extends TileEntityConfigurableMachine imple
     public IChemicalTankHolder<Gas, GasStack, IGasTank> getInitialGasTanks(IContentsListener listener) {
         ChemicalTankHelper<Gas, GasStack, IGasTank> builder = ChemicalTankHelper
                 .forSideGasWithConfig(this::getDirection, this::getConfig);
-        builder.addTank(fissionFuelTank = ChemicalTankBuilder.GAS.input(tier.exToLong(),
+        builder.addTank(fissionFuelTank = ChemicalTankBuilder.GAS.input(tier.longValue,
                 gas -> gas == MekanismGases.FISSILE_FUEL.get(), listener));
-        builder.addTank(nuclearWasteTank = ChemicalTankBuilder.GAS.output(tier.exToLong(), listener));
-        builder.addTank(coolantGasTank = ChemicalTankBuilder.GAS.input(tier.exToLong(),
+        builder.addTank(nuclearWasteTank = ChemicalTankBuilder.GAS.output(tier.longValue, listener));
+        builder.addTank(coolantGasTank = ChemicalTankBuilder.GAS.input(tier.longValue,
                 gas -> gas.has(CooledCoolant.class), listener));
-        builder.addTank(heatedFluidCoolantGasTank = ChemicalTankBuilder.GAS.output(tier.exToLong(), listener));
-        builder.addTank(heatedGasCoolantGasTank = ChemicalTankBuilder.GAS.output(tier.exToLong(), listener));
+        builder.addTank(heatedFluidCoolantGasTank = ChemicalTankBuilder.GAS.output(tier.longValue, listener));
+        builder.addTank(heatedGasCoolantGasTank = ChemicalTankBuilder.GAS.output(tier.longValue, listener));
         return builder.build();
     }
 
@@ -140,7 +140,7 @@ public class BECompactFissionReactor extends TileEntityConfigurableMachine imple
     @Override
     protected IFluidTankHolder getInitialFluidTanks(IContentsListener listener) {
         FluidTankHelper builder = FluidTankHelper.forSideWithConfig(this::getDirection, this::getConfig);
-        builder.addTank(coolantFluidTank = BasicFluidTank.input(tier.exToInt(),
+        builder.addTank(coolantFluidTank = BasicFluidTank.input(tier.intValue,
                 (fluid) -> fluid.isFluidEqual(new FluidStack(Fluids.WATER, 1)), listener));
         return builder.build();
     }
@@ -307,7 +307,7 @@ public class BECompactFissionReactor extends TileEntityConfigurableMachine imple
 
     @Override
     public void receive(int num, long value) {
-        efficiency = Math.min(tier.exToLong(), value);
+        efficiency = Math.min(tier.longValue, value);
         markForSave();
     }
 

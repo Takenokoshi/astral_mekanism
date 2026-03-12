@@ -1,12 +1,13 @@
 {
     "type": "evolvedmekanism:chemixing",
     "extraInput": {
+        "amount": 16,
         "ingredient": {
             "item": "ae2:singularity"
         }
     },
     "gasInput": {
-        "amount": 50,
+        "amount": 1000,
         "gas": "astral_mekanism:astral_ether"
     },
     "mainInput": {

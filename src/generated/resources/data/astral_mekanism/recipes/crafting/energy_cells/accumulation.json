@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "redstone",
+  "key": {
+    "A": {
+      "item": "megacells:accumulation_processor"
+    },
+    "B": {
+      "item": "astral_mekanism:engineering_energy_cell"
+    }
+  },
+  "pattern": [
+    "BBB",
+    "BAB",
+    "BBB"
+  ],
+  "result": {
+    "item": "astral_mekanism:accumulation_energy_cell"
+  },
+  "show_notification": true
+}

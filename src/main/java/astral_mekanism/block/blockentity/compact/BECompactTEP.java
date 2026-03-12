@@ -158,10 +158,10 @@ public class BECompactTEP extends TileEntityRecipeMachine<FluidToFluidRecipe>
     public IFluidTankHolder getInitialFluidTanks(IContentsListener listener,
             IContentsListener recipeCacheListener) {
         FluidTankHelper builder = FluidTankHelper.forSideWithConfig(this::getDirection, this::getConfig);
-        builder.addTank(inputTank = BasicFluidTank.input((int) Math.min(0x7fffffff, tier.exToInt() * 100l),
+        builder.addTank(inputTank = BasicFluidTank.input((int) Math.min(0x7fffffff, tier.intValue * 100l),
                 fluid -> containsRecipe(fluid),
                 recipeCacheListener));
-        builder.addTank(outputTank = BasicFluidTank.output(tier.exToInt(), recipeCacheListener));
+        builder.addTank(outputTank = BasicFluidTank.output(tier.intValue, recipeCacheListener));
         return builder.build();
     }
 
@@ -222,7 +222,7 @@ public class BECompactTEP extends TileEntityRecipeMachine<FluidToFluidRecipe>
             recheckSettings();
         }
         lastEnvironmentLoss = simulateEnvironment();
-        tempMultiplier = Math.floor(Math.min(tier.exToInt(), (heatCapacitor.getTemperature() - HeatAPI.AMBIENT_TEMP)
+        tempMultiplier = Math.floor(Math.min(tier.intValue, (heatCapacitor.getTemperature() - HeatAPI.AMBIENT_TEMP)
                 * MekanismConfig.general.evaporationTempMultiplier.get()));
         if (tempMultiplier > 0) {
             recipeCacheLookupMonitor.updateAndProcess();

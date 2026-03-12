@@ -100,7 +100,7 @@ public class DataTypeMixin {
         AstralMekDataType.RIGHT_FUEL = createNew("right_fuel", AstralMekanismLang.SIDE_DATA_RIGHT_FUEL,
                 EnumColor.BRIGHT_GREEN);
         AstralMekDataType.STEAM = createNew("steam", AstralMekanismLang.SIDE_DATA_STEAM,
-                EnumColor.WHITE);
+                EnumColor.BLACK);
     }
 
     @Unique

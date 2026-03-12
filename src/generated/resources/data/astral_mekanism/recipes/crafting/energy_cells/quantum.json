@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "redstone",
+  "key": {
+    "A": {
+      "item": "advanced_ae:quantum_processor"
+    },
+    "B": {
+      "item": "astral_mekanism:photon_energy_cell"
+    }
+  },
+  "pattern": [
+    "BBB",
+    "BAB",
+    "BBB"
+  ],
+  "result": {
+    "item": "astral_mekanism:quantum_energy_cell"
+  },
+  "show_notification": true
+}

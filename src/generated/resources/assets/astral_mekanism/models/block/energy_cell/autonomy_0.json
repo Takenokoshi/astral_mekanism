@@ -1,0 +1,7 @@
+{
+  "parent": "astral_mekanism:block/energy_cell/base",
+  "textures": {
+    "base": "astral_mekanism:block/energy_cell/base_0",
+    "frame": "astral_mekanism:block/energy_cell/autonomy_frame"
+  }
+}

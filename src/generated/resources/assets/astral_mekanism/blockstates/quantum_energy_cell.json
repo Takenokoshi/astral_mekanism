@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "fullness=0": {
+      "model": "astral_mekanism:block/energy_cell/quantum_0"
+    },
+    "fullness=1": {
+      "model": "astral_mekanism:block/energy_cell/quantum_1"
+    },
+    "fullness=2": {
+      "model": "astral_mekanism:block/energy_cell/quantum_2"
+    },
+    "fullness=3": {
+      "model": "astral_mekanism:block/energy_cell/quantum_3"
+    },
+    "fullness=4": {
+      "model": "astral_mekanism:block/energy_cell/quantum_4"
+    }
+  }
+}

@@ -6,10 +6,12 @@ import appeng.core.definitions.AEItems;
 import astral_mekanism.AstralMekanismTier;
 import astral_mekanism.registries.AstralMekanismItems;
 import fr.iglee42.evolvedmekanism.registries.EMItems;
+import gripe._90.megacells.definition.MEGAItems;
 import io.github.masyumero.emextras.common.registry.EMExtrasItem;
 import mekanism.common.registries.MekanismItems;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.ItemLike;
+import net.pedroksl.advanced_ae.common.definitions.AAEItems;
 
 public enum AstralMekanismTierRecipeData {
     ESSENTIAL_TO_BASIC(
@@ -19,19 +21,22 @@ public enum AstralMekanismTierRecipeData {
             AstralMekanismItems.CONVERGENT_ALLOY,
             AstralMekanismItems.RESONANCE_CONTROL_CIRCUIT,
             Items.IRON_INGOT,
-            MekanismItems.BASIC_CONTROL_CIRCUIT),
+            MekanismItems.BASIC_CONTROL_CIRCUIT,
+            AEItems.CALCULATION_PROCESSOR),
     BASIC_TO_ADVANCED(
             AstralMekanismTier.BASIC,
             AstralMekanismTier.ADVANCED,
             EMItems.REFINED_REDSTONE_INGOT,
             MekanismItems.INFUSED_ALLOY,
-            MekanismItems.ADVANCED_CONTROL_CIRCUIT),
+            MekanismItems.ADVANCED_CONTROL_CIRCUIT,
+            AEItems.ENGINEERING_PROCESSOR),
     ADVANCED_TO_ELITE(
             AstralMekanismTier.ADVANCED,
             AstralMekanismTier.ELITE,
             Items.GOLD_INGOT,
             MekanismItems.REINFORCED_ALLOY,
-            MekanismItems.ELITE_CONTROL_CIRCUIT),
+            MekanismItems.ELITE_CONTROL_CIRCUIT,
+            MEGAItems.ACCUMULATION_PROCESSOR),
     ELITE_TO_ULTIMATE(
             AstralMekanismTier.ELITE,
             AstralMekanismTier.ULTIMATE,
@@ -39,41 +44,47 @@ public enum AstralMekanismTierRecipeData {
             AstralMekanismItems.ENCHANTED_ALLOY,
             AstralMekanismItems.ENHANCED_CONTROL_CIRCUIT,
             MekanismItems.ATOMIC_ALLOY,
-            MekanismItems.ULTIMATE_CONTROL_CIRCUIT),
+            MekanismItems.ULTIMATE_CONTROL_CIRCUIT,
+            AstralMekanismItems.PHOTON_PROCESSOR),
     ULTIMATE_TO_ABSOLUTE(
             AstralMekanismTier.ULTIMATE,
             AstralMekanismTier.ABSOLUTE,
             Items.GLOWSTONE,
             EMItems.HYPERCHARGED_ALLOY,
             ExtraItem.RADIANCE_ALLOY,
-            EMExtrasItem.ABSOLUTE_OVERCLOCKED_CONTROL_CIRCUIT),
+            EMExtrasItem.ABSOLUTE_OVERCLOCKED_CONTROL_CIRCUIT,
+            AAEItems.QUANTUM_PROCESSOR),
     ABSOLUTE_TO_SUPREME(
             AstralMekanismTier.ABSOLUTE,
             AstralMekanismTier.SUPREME,
             Items.SHULKER_SHELL,
             EMItems.SUBATOMIC_ALLOY,
             ExtraItem.THERMONUCLEAR_ALLOY,
-            EMExtrasItem.SUPREME_QUANTUM_CONTROL_CIRCUIT),
+            EMExtrasItem.SUPREME_QUANTUM_CONTROL_CIRCUIT,
+            AstralMekanismItems.COMPOSITE_PROCESSOR),
     SUPREME_TO_COSMIC(
             AstralMekanismTier.SUPREME,
             AstralMekanismTier.COSMIC,
             MekanismItems.REFINED_OBSIDIAN_INGOT,
             EMItems.SINGULAR_ALLOY,
             ExtraItem.SHINING_ALLOY,
-            EMExtrasItem.COSMIC_DENSE_CONTROL_CIRCUIT),
+            EMExtrasItem.COSMIC_DENSE_CONTROL_CIRCUIT,
+            AstralMekanismItems.ORIGIN_PROCESSOR),
     COSMIC_TO_INFINITE(
             AstralMekanismTier.COSMIC,
             AstralMekanismTier.INFINITE,
             Items.NETHERITE_INGOT,
             EMItems.EXOVERSAL_ALLOY,
             ExtraItem.SPECTRUM_ALLOY,
-            EMExtrasItem.INFINITE_MULTIVERSAL_CONTROL_CIRCUIT),
+            EMExtrasItem.INFINITE_MULTIVERSAL_CONTROL_CIRCUIT,
+            AstralMekanismItems.AUTONOMY_PROCESSOR),
     INFINITE_TO_ASTRAL(
             AstralMekanismTier.INFINITE,
             AstralMekanismTier.ASTRAL,
             MekanismItems.POLONIUM_PELLET,
             AstralMekanismItems.STARDUST_ALLOY,
-            AstralMekanismItems.ILLUSION_CONTROL_CIRCUIT),
+            AstralMekanismItems.ILLUSION_CONTROL_CIRCUIT,
+            AstralMekanismItems.FIRMAMENT_PROCESSOR),
             ;
 
     private AstralMekanismTierRecipeData(
@@ -83,7 +94,8 @@ public enum AstralMekanismTierRecipeData {
             ItemLike leftAlloy,
             ItemLike leftCircuit,
             ItemLike rightAlloy,
-            ItemLike rightCircuit) {
+            ItemLike rightCircuit,
+            ItemLike processor) {
         this.beforeTier = beforeTier;
         this.afterTier = afterTier;
         this.centerItem = centerItem;
@@ -91,6 +103,7 @@ public enum AstralMekanismTierRecipeData {
         this.leftCircuit = leftCircuit;
         this.rightAlloy = rightAlloy;
         this.rightCircuit = rightCircuit;
+        this.processor = processor;
     }
 
     private AstralMekanismTierRecipeData(
@@ -98,8 +111,9 @@ public enum AstralMekanismTierRecipeData {
             AstralMekanismTier afterTier,
             ItemLike centerItem,
             ItemLike alloy,
-            ItemLike circuit) {
-        this(beforeTier, afterTier, centerItem, alloy, circuit, alloy, circuit);
+            ItemLike circuit,
+            ItemLike processor) {
+        this(beforeTier, afterTier, centerItem, alloy, circuit, alloy, circuit, processor);
     }
 
     private AstralMekanismTierRecipeData(
@@ -108,8 +122,9 @@ public enum AstralMekanismTierRecipeData {
             ItemLike centerItem,
             ItemLike leftAlloy,
             ItemLike rightAlloy,
-            ItemLike circuit) {
-        this(beforeTier, afterTier, centerItem, leftAlloy, circuit, rightAlloy, circuit);
+            ItemLike circuit,
+            ItemLike processor) {
+        this(beforeTier, afterTier, centerItem, leftAlloy, circuit, rightAlloy, circuit, processor);
     }
 
     public final AstralMekanismTier beforeTier;
@@ -119,4 +134,5 @@ public enum AstralMekanismTierRecipeData {
     public final ItemLike leftCircuit;
     public final ItemLike rightAlloy;
     public final ItemLike rightCircuit;
+    public final ItemLike processor;
 }

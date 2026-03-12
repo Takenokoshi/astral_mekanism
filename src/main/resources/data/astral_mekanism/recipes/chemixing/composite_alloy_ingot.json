@@ -1,0 +1,22 @@
+{
+    "type": "evolvedmekanism:chemixing",
+    "extraInput": {
+        "amount": 2,
+        "ingredient": {
+            "item": "advanced_ae:quantum_alloy"
+        }
+    },
+    "gasInput": {
+        "amount": 20000,
+        "gas": "mekanism:lithium"
+    },
+    "mainInput": {
+        "amount": 8,
+        "ingredient": {
+            "tag": "forge:ingots/refined_emerald"
+        }
+    },
+    "output": {
+        "item": "astral_mekanism:composite_alloy_ingot"
+    }
+}

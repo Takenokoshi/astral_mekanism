@@ -2,8 +2,10 @@ package astral_mekanism;
 
 import com.mojang.logging.LogUtils;
 
+import appeng.blockentity.networking.EnergyCellBlockEntity;
 import astral_mekanism.config.AstralMekanismConfig;
 import astral_mekanism.network.AstralMekanismPacketHandler;
+import astral_mekanism.registries.AstralMekanismAEBlockEntityTypes;
 import astral_mekanism.registries.AstralMekanismBlocks;
 import astral_mekanism.registries.AstralMekanismCreativeTab;
 import astral_mekanism.registries.AstralMekanismFluids;
@@ -26,6 +28,8 @@ import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import net.minecraftforge.registries.ForgeRegistries;
+import net.minecraftforge.registries.RegisterEvent;
 
 import org.slf4j.Logger;
 
@@ -39,7 +43,8 @@ public class AstralMekanism {
     private final AstralMekanismPacketHandler packetHandler;
     public final Version version;
 
-    public AstralMekanism(FMLJavaModLoadingContext context) {
+    public AstralMekanism() {
+        FMLJavaModLoadingContext context = FMLJavaModLoadingContext.get();
         context.registerConfig(ModConfig.Type.COMMON, AstralMekanismConfig.SPEC);
         AstralMekanismConfig.registerConfigs(context);
         instance = this;
@@ -62,6 +67,17 @@ public class AstralMekanism {
         this.packetHandler = new AstralMekanismPacketHandler();
     }
 
+    @SubscribeEvent
+    public static void register(RegisterEvent event) {
+        event.register(ForgeRegistries.Keys.BLOCK_ENTITY_TYPES, helper -> {
+            AstralMekanismAEBlockEntityTypes.init();
+            helper.register(AstralMekanismID.rl("tiered_energy_cell"), AstralMekanismAEBlockEntityTypes.ENERGY_CELL);
+            AstralMekanismBlocks.ENERGY_CELLS
+                    .forEach((t, object) -> object.getBlock().setBlockEntity(EnergyCellBlockEntity.class,
+                            AstralMekanismAEBlockEntityTypes.ENERGY_CELL, null, null));
+        });
+    }
+
     private void commonSetup(final FMLCommonSetupEvent event) {
         LOGGER.info(MODID);
         packetHandler.initialize();
@@ -78,7 +94,7 @@ public class AstralMekanism {
         }
     }
 
-    public static AstralMekanismPacketHandler packetHandler(){
+    public static AstralMekanismPacketHandler packetHandler() {
         return instance.packetHandler;
     }
 
