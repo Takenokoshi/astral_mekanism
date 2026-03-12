@@ -6,7 +6,7 @@ import java.util.function.BiFunction;
 import appeng.block.networking.EnergyCellBlock;
 import astral_mekanism.AstralMekanismTier;
 import astral_mekanism.AstralMekanismID;
-import astral_mekanism.registries.AstralMekanismBlocks;
+import astral_mekanism.registries.AstralMekanismBlockDefinitions;
 import astral_mekanism.registries.AstralMekanismMachines;
 import mekanism.api.providers.IBlockProvider;
 import net.minecraft.core.Direction;
@@ -168,8 +168,8 @@ public class AstralMekanismBlockStateProvider extends BlockStateProvider {
         }
     }
 
-    private void registerEnergyCells() {
-        AstralMekanismBlocks.ENERGY_CELLS.forEach((tier, object) -> {
+    private void registerEnergyCells() {/**/
+        AstralMekanismBlockDefinitions.ENERGY_CELLS.forEach((tier, object) -> {
             ModelFile[] files = new ModelFile[5];
             for (int i = 0; i < files.length; i++) {
                 files[i] = models().getBuilder("block/energy_cell/" + tier.nameForAE + "_" + i)
@@ -177,12 +177,12 @@ public class AstralMekanismBlockStateProvider extends BlockStateProvider {
                         .texture("frame", AstralMekanismID.rl("block/energy_cell/" + tier.nameForAE + "_frame"))
                         .texture("base", AstralMekanismID.rl("block/energy_cell/base_" + i));
             }
-            getVariantBuilder(object.getBlock()).forAllStates(state -> ConfiguredModel
+            getVariantBuilder(object.block()).forAllStates(state -> ConfiguredModel
                     .builder()
                     .modelFile(files[state.getValue(EnergyCellBlock.ENERGY_STORAGE)])
                     .build());
-            itemModels().getBuilder(object.getRegistryName().getPath()).parent(files[0]);
-        });
+            itemModels().getBuilder(object.id().getPath()).parent(files[0]);
+        }); 
     }
 
 }

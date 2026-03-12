@@ -138,6 +138,12 @@ description='''${mod_description}'''
     ordering="NONE"
     side="BOTH"
 [[dependencies.${mod_id}]]
+    modId="ae2addonlib"
+    mandatory=true
+    versionRange="[1.0.4,)"
+    ordering="NONE"
+    side="BOTH"
+[[dependencies.${mod_id}]]
     modId="megacells"
     mandatory=true
     versionRange="[2.4.6,)"

@@ -1,24 +1,16 @@
 package astral_mekanism.registries;
 
-import java.util.EnumMap;
-import java.util.function.Supplier;
-
-import appeng.block.networking.EnergyCellBlock;
-import appeng.block.networking.EnergyCellBlockItem;
 import astral_mekanism.AstralMekanismID;
 import astral_mekanism.AstralMekanismLang;
-import astral_mekanism.AstralMekanismTier;
 import astral_mekanism.block.block.BlockAstralUniversalcable;
 import astral_mekanism.block.block.BlockMekanicalLight;
 import astral_mekanism.block.block.BlockSimpleDiscription;
-import astral_mekanism.block.block.TieredEnergyCellBlock;
 import astral_mekanism.enumexpansion.AMCableTier;
 import mekanism.common.item.block.ItemBlockTooltip;
 import mekanism.common.item.block.transmitter.ItemBlockUniversalCable;
 import mekanism.common.registration.impl.BlockDeferredRegister;
 import mekanism.common.registration.impl.BlockRegistryObject;
 import net.minecraft.world.item.BlockItem;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
@@ -44,18 +36,6 @@ public class AstralMekanismBlocks {
                     .strength(1.5f, 6.0f)
                     .sound(SoundType.STONE)
                     .mapColor(MapColor.STONE));
-
-    public static final EnumMap<AstralMekanismTier, BlockRegistryObject<EnergyCellBlock, EnergyCellBlockItem>> ENERGY_CELLS = ((Supplier<EnumMap<AstralMekanismTier, BlockRegistryObject<EnergyCellBlock, EnergyCellBlockItem>>>) () -> {
-        EnumMap<AstralMekanismTier, BlockRegistryObject<EnergyCellBlock, EnergyCellBlockItem>> result = new EnumMap<>(
-                AstralMekanismTier.class);
-        for (AstralMekanismTier tier : AstralMekanismTier.values()) {
-            result.put(tier, BLOCKS.register(
-                    tier.nameForAE + "_energy_cell",
-                    () -> new TieredEnergyCellBlock(tier),
-                    block -> new EnergyCellBlockItem(block, new Item.Properties())));
-        }
-        return result;
-    }).get();
 
     public static final BlockRegistryObject<BlockMekanicalLight, BlockItem> MEKANICAL_LIGHT = BLOCKS
             .registerDefaultProperties("mekanical_light", BlockMekanicalLight::create, BlockItem::new);

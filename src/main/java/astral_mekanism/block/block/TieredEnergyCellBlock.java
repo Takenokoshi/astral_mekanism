@@ -1,17 +1,11 @@
 package astral_mekanism.block.block;
 
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
-
 import appeng.block.networking.EnergyCellBlock;
-import appeng.blockentity.networking.EnergyCellBlockEntity;
 import astral_mekanism.AstralMekanismTier;
 import astral_mekanism.block.shape.VoxelShapeBuilder;
-import astral_mekanism.registries.AstralMekanismAEBlockEntityTypes;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
@@ -52,14 +46,16 @@ public class TieredEnergyCellBlock extends EnergyCellBlock {
             @NotNull CollisionContext context) {
         return SHAPE;
     }
-/*
+/* 
     public BlockEntityType<EnergyCellBlockEntity> getBlockEntityType() {
-        return AstralMekanismAEBlockEntityTypes.ENERGY_CELL;
+        //setBlockEntity(EnergyCellBlockEntity.class, AstralMekanismAEBlockEntityTypes.ENERGY_CELLS.get(tier), null, null);
+        return AstralMekanismAEBlockEntityTypes.ENERGY_CELLS_AA.get(tier);
     }
 
     @Override
-    public @Nullable BlockEntity newBlockEntity(BlockPos pos, BlockState state){
-        return AstralMekanismAEBlockEntityTypes.ENERGY_CELL.create(pos, state);
-    } */
+    public @Nullable BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
+        //setBlockEntity(EnergyCellBlockEntity.class, AstralMekanismAEBlockEntityTypes.ENERGY_CELLS.get(tier), null, null);
+        return new EnergyCellBlockEntity(AstralMekanismAEBlockEntityTypes.ENERGY_CELLS_AA.get(tier), pos, state);
+    }*/
 
 }

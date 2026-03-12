@@ -100,7 +100,7 @@ import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.registries.RegisterEvent;
 
 @Mod.EventBusSubscriber(modid = AstralMekanismID.MODID, value = Dist.CLIENT, bus = Mod.EventBusSubscriber.Bus.MOD)
-public class AstralMekanismClient {
+public class AstralMekanismClientRegistry {
 
     @SubscribeEvent
     public static void init(FMLClientSetupEvent event) {
