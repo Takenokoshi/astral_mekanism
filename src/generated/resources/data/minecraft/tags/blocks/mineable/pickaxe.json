@@ -120,16 +120,6 @@
     "astral_mekanism:xp_tank",
     "astral_mekanism:astral_diamond_block",
     "astral_mekanism:utility_block",
-    "astral_mekanism:logic_energy_cell",
-    "astral_mekanism:calculation_energy_cell",
-    "astral_mekanism:engineering_energy_cell",
-    "astral_mekanism:accumulation_energy_cell",
-    "astral_mekanism:photon_energy_cell",
-    "astral_mekanism:quantum_energy_cell",
-    "astral_mekanism:composite_energy_cell",
-    "astral_mekanism:origin_energy_cell",
-    "astral_mekanism:autonomy_energy_cell",
-    "astral_mekanism:firmament_energy_cell",
     "astral_mekanism:mekanical_light",
     "astral_mekanism:astral_universal_cable"
   ]

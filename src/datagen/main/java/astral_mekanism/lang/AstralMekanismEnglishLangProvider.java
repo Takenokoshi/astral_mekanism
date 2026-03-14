@@ -2,6 +2,7 @@ package astral_mekanism.lang;
 
 import astral_mekanism.AstralMekanismID;
 import astral_mekanism.registration.MachineRegistryObject;
+import astral_mekanism.registries.AstralMekanismBlockDefinitions;
 import astral_mekanism.registries.AstralMekanismBlocks;
 import astral_mekanism.registries.AstralMekanismFluids;
 import astral_mekanism.registries.AstralMekanismGases;
@@ -19,6 +20,7 @@ import mekanism.common.registration.impl.SlurryRegistryObject;
 import mekanism.common.util.text.InputValidator;
 import net.minecraft.data.PackOutput;
 import net.minecraftforge.common.data.LanguageProvider;
+import net.pedroksl.ae2addonlib.registry.helpers.LibBlockDefinition;
 
 public class AstralMekanismEnglishLangProvider extends LanguageProvider {
 
@@ -34,6 +36,7 @@ public class AstralMekanismEnglishLangProvider extends LanguageProvider {
         for (IBlockProvider block : AstralMekanismBlocks.BLOCKS.getAllBlocks()) {
             addBlock(block);
         }
+        AstralMekanismBlockDefinitions.INSTANCE.getBlocks().forEach(this::addBlock);
         for (IItemProvider item : AstralMekanismItems.ITEMS.getAllItems()) {
             addItem(item);
         }
@@ -55,6 +58,10 @@ public class AstralMekanismEnglishLangProvider extends LanguageProvider {
         addBlock(machine);
         add("container.astral_mekanism." + machine.getRegistryName().getPath(),
                 toTitle(machine.getRegistryName().getPath()));
+    }
+
+    private void addBlock(LibBlockDefinition<?> definition) {
+        add(definition.block(), toTitle(definition.id().getPath()));
     }
 
     private void addBlock(IBlockProvider block) {

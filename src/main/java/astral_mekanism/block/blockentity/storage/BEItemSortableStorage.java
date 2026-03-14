@@ -1,4 +1,4 @@
-package astral_mekanism.block.blockentity.other;
+package astral_mekanism.block.blockentity.storage;
 
 import java.util.List;
 

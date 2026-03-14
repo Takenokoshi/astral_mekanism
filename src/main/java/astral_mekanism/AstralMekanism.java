@@ -14,6 +14,7 @@ import astral_mekanism.registries.AstralMekanismGases;
 import astral_mekanism.registries.AstralMekanismInfuseTypes;
 import astral_mekanism.registries.AstralMekanismItems;
 import astral_mekanism.registries.AstralMekanismMachines;
+import astral_mekanism.registries.AstralMekanismMenus;
 import astral_mekanism.registries.AstralMekanismRecipeSerializers;
 import astral_mekanism.registries.AstralMekanismRecipeTypes;
 import astral_mekanism.registries.AstralMekanismSlurries;
@@ -55,6 +56,7 @@ public class AstralMekanism {
         AstralMekanismItemDefinitions.INSTANCE.register(modEventBus);
         AstralMekanismBlockDefinitions.INSTANCE.register(modEventBus);
         AstralMekanismAEBlockEntityTypes.INSTANCE.register(modEventBus);
+        AstralMekanismMenus.INSTANCE.register(modEventBus);
         AstralMekanismCreativeTab.CREATIVE_TABS.register(modEventBus);
         MinecraftForge.EVENT_BUS.register(this);
         version = new Version(context.getActiveContainer());

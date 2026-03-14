@@ -10,6 +10,7 @@ import appeng.block.networking.EnergyCellBlock;
 import appeng.block.networking.EnergyCellBlockItem;
 import astral_mekanism.AstralMekanismID;
 import astral_mekanism.AstralMekanismTier;
+import astral_mekanism.block.block.TieredDriveBlock;
 import astral_mekanism.block.block.TieredEnergyCellBlock;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
@@ -26,6 +27,9 @@ public final class AstralMekanismBlockDefinitions extends BlockRegistry {
     }
 
     public static final EnumMap<AstralMekanismTier, LibBlockDefinition<EnergyCellBlock>> ENERGY_CELLS = new EnumMap<>(
+            AstralMekanismTier.class);
+
+    public static final EnumMap<AstralMekanismTier, LibBlockDefinition<TieredDriveBlock>> DRIVES = new EnumMap<>(
             AstralMekanismTier.class);
 
     public static final LibBlockDefinition<EnergyCellBlock> LOGIC_ENERGY_CELL = ENERGY_CELLS
@@ -58,6 +62,36 @@ public final class AstralMekanismBlockDefinitions extends BlockRegistry {
     public static final LibBlockDefinition<EnergyCellBlock> FIRMAMENT_ENERGY_CELL = ENERGY_CELLS
             .put(AstralMekanismTier.ASTRAL, energyCellBlock(AstralMekanismTier.ASTRAL));
 
+    public static final LibBlockDefinition<TieredDriveBlock> LOGIC_DRIVE = DRIVES
+            .put(AstralMekanismTier.ESSENTIAL, driveBlock(AstralMekanismTier.ESSENTIAL));
+
+    public static final LibBlockDefinition<TieredDriveBlock> CALCULATION_DRIVE = DRIVES
+            .put(AstralMekanismTier.BASIC, driveBlock(AstralMekanismTier.BASIC));
+
+    public static final LibBlockDefinition<TieredDriveBlock> ENGINEERING_DRIVE = DRIVES
+            .put(AstralMekanismTier.ADVANCED, driveBlock(AstralMekanismTier.ADVANCED));
+
+    public static final LibBlockDefinition<TieredDriveBlock> ACCUMULATION_DRIVE = DRIVES
+            .put(AstralMekanismTier.ELITE, driveBlock(AstralMekanismTier.ELITE));
+
+    public static final LibBlockDefinition<TieredDriveBlock> PHOTON_DRIVE = DRIVES
+            .put(AstralMekanismTier.ULTIMATE, driveBlock(AstralMekanismTier.ULTIMATE));
+
+    public static final LibBlockDefinition<TieredDriveBlock> QUANTUM_DRIVE = DRIVES
+            .put(AstralMekanismTier.ABSOLUTE, driveBlock(AstralMekanismTier.ABSOLUTE));
+
+    public static final LibBlockDefinition<TieredDriveBlock> COMPOSITE_DRIVE = DRIVES
+            .put(AstralMekanismTier.SUPREME, driveBlock(AstralMekanismTier.SUPREME));
+
+    public static final LibBlockDefinition<TieredDriveBlock> ORIGIN_DRIVE = DRIVES
+            .put(AstralMekanismTier.COSMIC, driveBlock(AstralMekanismTier.COSMIC));
+
+    public static final LibBlockDefinition<TieredDriveBlock> AUTONOMY_DRIVE = DRIVES
+            .put(AstralMekanismTier.INFINITE, driveBlock(AstralMekanismTier.INFINITE));
+
+    public static final LibBlockDefinition<TieredDriveBlock> FIRMAMENT_DRIVE = DRIVES
+            .put(AstralMekanismTier.ASTRAL, driveBlock(AstralMekanismTier.ASTRAL));
+
     protected static <T extends Block> LibBlockDefinition<T> block(String id, Supplier<T> blockSupplier) {
         return block(AstralMekanismID.MODID, id, id, blockSupplier, null);
     }
@@ -71,6 +105,10 @@ public final class AstralMekanismBlockDefinitions extends BlockRegistry {
 
     private static LibBlockDefinition<EnergyCellBlock> energyCellBlock(AstralMekanismTier tier) {
         return block(tier.nameForAE + "_energy_cell", () -> new TieredEnergyCellBlock(tier), EnergyCellBlockItem::new);
+    }
+
+    private static LibBlockDefinition<TieredDriveBlock> driveBlock(AstralMekanismTier tier) {
+        return block(tier.nameForAE + "_drive", TieredDriveBlock::new);
     }
 
 }

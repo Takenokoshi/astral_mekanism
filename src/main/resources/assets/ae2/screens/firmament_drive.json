@@ -1,0 +1,50 @@
+{
+  "$schema": "schema.json",
+  "background": {
+    "texture": "guis/firmament_drive.png",
+    "srcRect": [0, 0, 590, 253]
+  },
+  "slots": {
+    "STORAGE_CELL": {
+      "left": 8,
+      "top": 14,
+      "grid": "BREAK_AFTER_2COLS"
+    },
+    "PLAYER_INVENTORY": {
+      "left": 215,
+      "bottom": 82,
+      "grid": "BREAK_AFTER_9COLS"
+    },
+    "PLAYER_HOTBAR": {
+      "left": 215,
+      "bottom": 24,
+      "grid": "HORIZONTAL"
+    }
+  },
+  "text": {
+    "dialog_title": {
+      "text": {
+        "translate": "gui.ae2.Drive"
+      },
+      "position": {
+        "left": 8,
+        "top": 6
+      }
+    },
+    "player_inventory_title": {
+      "text": {
+        "translate": "container.inventory"
+      },
+      "position": {
+        "left": 215,
+        "bottom": 93
+      }
+    }
+  },
+  "widgets": {
+    "openPriority": {
+      "left": 568,
+      "top": 160
+    }
+  }
+}
