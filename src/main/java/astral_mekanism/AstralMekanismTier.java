@@ -1,5 +1,8 @@
 package astral_mekanism;
 
+import java.util.EnumMap;
+import java.util.function.Function;
+
 import astral_mekanism.enumexpansion.AstralMekanismBaseTier;
 import mekanism.api.tier.BaseTier;
 import mekanism.api.tier.ITier;
@@ -7,7 +10,7 @@ import mekanism.api.tier.ITier;
 public enum AstralMekanismTier implements ITier {
     ESSENTIAL("essential", "logic", 12, 65536, 65536, AstralMekanismBaseTier.ESSENTIAL),
     BASIC("basic_standard", "calculation", 16, 131072, 1048576, BaseTier.BASIC),
-    ADVANCED("advanced", "engineering", 24, 262144, 1000000, BaseTier.ADVANCED),
+    ADVANCED("advanced", "engineering", 24, 262144, 0x1000000, BaseTier.ADVANCED),
     ELITE("elite", "accumulation", 32, 0x100000, 268435456, BaseTier.ELITE),
     ULTIMATE("enchanted_ultimate", "photon", 48, 0x200000, 4294967296l, BaseTier.ULTIMATE),
     ABSOLUTE("absolute_overclocked", "quantum", 64, 0x400000, 68719476736l, AstralMekanismBaseTier.ABSOLUTE),
@@ -43,5 +46,16 @@ public enum AstralMekanismTier implements ITier {
     @Override
     public BaseTier getBaseTier() {
         return tier;
+    }
+
+    public static class AstralMekanismTierMap<T> extends EnumMap<AstralMekanismTier, T> {
+
+        public AstralMekanismTierMap(Function<AstralMekanismTier, T> creator) {
+            super(AstralMekanismTier.class);
+            for (AstralMekanismTier tier : AstralMekanismTier.values()) {
+                put(tier, creator.apply(tier));
+            }
+        }
+
     }
 }

@@ -35,25 +35,9 @@ public class AstralMekanismClient extends AstralMekanism {
     }
 
     private static void initScreens() {
-        InitScreens.register(AstralMekanismMenus.LOGIC_DRIVE.get(), TieredDriveScreen::new,
-                "/screens/logic_drive.json");
-        InitScreens.register(AstralMekanismMenus.CALCULATION_DRIVE.get(), TieredDriveScreen::new,
-                "/screens/calculation_drive.json");
-        InitScreens.register(AstralMekanismMenus.ENGINEERING_DRIVE.get(), TieredDriveScreen::new,
-                "/screens/engineering_drive.json");
-        InitScreens.register(AstralMekanismMenus.ACCUMULATION_DRIVE.get(), TieredDriveScreen::new,
-                "/screens/accumulation_drive.json");
-        InitScreens.register(AstralMekanismMenus.PHOTON_DRIVE.get(), TieredDriveScreen::new,
-                "/screens/photon_drive.json");
-        InitScreens.register(AstralMekanismMenus.QUANTUM_DRIVE.get(), TieredDriveScreen::new,
-                "/screens/quantum_drive.json");
-        InitScreens.register(AstralMekanismMenus.COMPOSITE_DRIVE.get(), TieredDriveScreen::new,
-                "/screens/composite_drive.json");
-        InitScreens.register(AstralMekanismMenus.ORIGIN_DRIVE.get(), TieredDriveScreen::new,
-                "/screens/origin_drive.json");
-        InitScreens.register(AstralMekanismMenus.AUTONOMY_DRIVE.get(), TieredDriveScreen::new,
-                "/screens/autonomy_drive.json");
-        InitScreens.register(AstralMekanismMenus.FIRMAMENT_DRIVE.get(), TieredDriveScreen::new,
-                "/screens/firmament_drive.json");
+        AstralMekanismMenus.DRIVES.forEach((tier, supplier) -> {
+            InitScreens.register(supplier.get(), TieredDriveScreen::new, "/screens/" + tier.nameForAE + "_drive.json");
+            LOGGER.info(tier.nameForAE + "_drive screen initialized.");
+        });
     }
 }
