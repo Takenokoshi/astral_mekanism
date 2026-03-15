@@ -23,7 +23,7 @@
         "amount": 50
     },
     "fluidInputB": {
-        "fluid": "mekanism:oxegen",
+        "fluid": "mekanism:oxygen",
         "amount": 10
     },
     "outputItem": {

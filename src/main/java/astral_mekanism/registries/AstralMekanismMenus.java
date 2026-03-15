@@ -7,7 +7,7 @@ import appeng.menu.AEBaseMenu;
 import appeng.menu.implementations.MenuTypeBuilder;
 import astral_mekanism.AstralMekanismID;
 import astral_mekanism.AstralMekanismTier;
-import astral_mekanism.block.blockentity.storage.TieredDriveBlockEntities.TieredDriveBlockEntity;
+import astral_mekanism.block.blockentity.storage.TieredDriveBlockEntities;
 import astral_mekanism.block.container.storage.TieredDriveMenu;
 import net.minecraft.world.inventory.MenuType;
 import net.pedroksl.ae2addonlib.registry.MenuRegistry;
@@ -23,26 +23,16 @@ public class AstralMekanismMenus extends MenuRegistry {
     public static final EnumMap<AstralMekanismTier, Supplier<MenuType<TieredDriveMenu>>> DRIVES = new EnumMap<>(
             AstralMekanismTier.class);
 
-    public static final Supplier<MenuType<TieredDriveMenu>> LOGIC_DRIVE = DRIVES.put(AstralMekanismTier.ESSENTIAL,
-            drive(AstralMekanismTier.ESSENTIAL));
-    public static final Supplier<MenuType<TieredDriveMenu>> CALCULATION_DRIVE = DRIVES.put(AstralMekanismTier.BASIC,
-            drive(AstralMekanismTier.BASIC));
-    public static final Supplier<MenuType<TieredDriveMenu>> ENGINEERING_DRIVE = DRIVES.put(AstralMekanismTier.ADVANCED,
-            drive(AstralMekanismTier.ADVANCED));
-    public static final Supplier<MenuType<TieredDriveMenu>> ACCUMULATION_DRIVE = DRIVES.put(AstralMekanismTier.ELITE,
-            drive(AstralMekanismTier.ELITE));
-    public static final Supplier<MenuType<TieredDriveMenu>> PHOTON_DRIVE = DRIVES.put(AstralMekanismTier.ULTIMATE,
-            drive(AstralMekanismTier.ULTIMATE));
-    public static final Supplier<MenuType<TieredDriveMenu>> QUANTUM_DRIVE = DRIVES.put(AstralMekanismTier.ABSOLUTE,
-            drive(AstralMekanismTier.ABSOLUTE));
-    public static final Supplier<MenuType<TieredDriveMenu>> COMPOSITE_DRIVE = DRIVES.put(AstralMekanismTier.SUPREME,
-            drive(AstralMekanismTier.SUPREME));
-    public static final Supplier<MenuType<TieredDriveMenu>> ORIGIN_DRIVE = DRIVES.put(AstralMekanismTier.COSMIC,
-            drive(AstralMekanismTier.COSMIC));
-    public static final Supplier<MenuType<TieredDriveMenu>> AUTONOMY_DRIVE = DRIVES.put(AstralMekanismTier.INFINITE,
-            drive(AstralMekanismTier.INFINITE));
-    public static final Supplier<MenuType<TieredDriveMenu>> FIRMAMENT_DRIVE = DRIVES.put(AstralMekanismTier.ASTRAL,
-            drive(AstralMekanismTier.ASTRAL));
+    public static final Supplier<MenuType<TieredDriveMenu>> LOGIC_DRIVE = drive(AstralMekanismTier.ESSENTIAL);
+    public static final Supplier<MenuType<TieredDriveMenu>> CALCULATION_DRIVE = drive(AstralMekanismTier.BASIC);
+    public static final Supplier<MenuType<TieredDriveMenu>> ENGINEERING_DRIVE = drive(AstralMekanismTier.ADVANCED);
+    public static final Supplier<MenuType<TieredDriveMenu>> ACCUMULATION_DRIVE = drive(AstralMekanismTier.ELITE);
+    public static final Supplier<MenuType<TieredDriveMenu>> PHOTON_DRIVE = drive(AstralMekanismTier.ULTIMATE);
+    public static final Supplier<MenuType<TieredDriveMenu>> QUANTUM_DRIVE = drive(AstralMekanismTier.ABSOLUTE);
+    public static final Supplier<MenuType<TieredDriveMenu>> COMPOSITE_DRIVE = drive(AstralMekanismTier.SUPREME);
+    public static final Supplier<MenuType<TieredDriveMenu>> ORIGIN_DRIVE = drive(AstralMekanismTier.COSMIC);
+    public static final Supplier<MenuType<TieredDriveMenu>> AUTONOMY_DRIVE = drive(AstralMekanismTier.INFINITE);
+    public static final Supplier<MenuType<TieredDriveMenu>> FIRMAMENT_DRIVE = drive(AstralMekanismTier.ASTRAL);
 
     private static <M extends AEBaseMenu, H> Supplier<MenuType<M>> create(
             String id, MenuTypeBuilder.MenuFactory<M, H> factory, Class<H> host) {
@@ -54,7 +44,9 @@ public class AstralMekanismMenus extends MenuRegistry {
     }
 
     private static Supplier<MenuType<TieredDriveMenu>> drive(AstralMekanismTier tier) {
-        return create(tier.nameForAE + "_drive", TieredDriveMenu::new, TieredDriveBlockEntity.class);
+        DRIVES.put(tier, create(tier.nameForAE + "_drive", TieredDriveMenu::new,
+                TieredDriveBlockEntities.TieredDriveBlockEntity.class));
+        return DRIVES.get(tier);
     }
 
 }

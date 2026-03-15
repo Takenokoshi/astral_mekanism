@@ -15,11 +15,12 @@ import net.minecraft.world.level.block.state.BlockState;
 
 public class TieredDriveBlockEntities {
 
-    public static final EnumMap<AstralMekanismTier, TieredDriveBlockEntities> INSTANCES = new EnumMap<>(
+    private static final EnumMap<AstralMekanismTier, TieredDriveBlockEntities> INSTANCES = new EnumMap<>(
             AstralMekanismTier.class);
 
     private static TieredDriveBlockEntities build(AstralMekanismTier tier) {
-        return INSTANCES.put(tier, new TieredDriveBlockEntities(tier));
+        INSTANCES.put(tier, new TieredDriveBlockEntities(tier));
+        return INSTANCES.get(tier);
     }
 
     private static final TieredDriveBlockEntities LOGIC = build(AstralMekanismTier.ESSENTIAL);
@@ -35,8 +36,12 @@ public class TieredDriveBlockEntities {
 
     public final AstralMekanismTier tier;
 
-    public TieredDriveBlockEntities(AstralMekanismTier tier) {
+    private TieredDriveBlockEntities(AstralMekanismTier tier) {
         this.tier = tier;
+    }
+
+    public static TieredDriveBlockEntities get(AstralMekanismTier tier) {
+        return INSTANCES.get(tier);
     }
 
     public TieredDriveBlockEntity create(BlockEntityType<?> blockEntityType, BlockPos pos, BlockState blockState) {

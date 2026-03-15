@@ -28,6 +28,7 @@ public class TieredDriveBlock extends AEBaseEntityBlock<TieredDriveBlockEntity> 
         super.createBlockStateDefinition(builder);
     }
 
+    @Override
     public InteractionResult onActivated(Level level, BlockPos pos, Player p, InteractionHand hand,
             @Nullable ItemStack heldItem, BlockHitResult hit) {
         if (InteractionUtil.isInAlternateUseMode(p)) {
@@ -38,7 +39,6 @@ public class TieredDriveBlock extends AEBaseEntityBlock<TieredDriveBlockEntity> 
                 if (!level.isClientSide()) {
                     be.openMenu(p);
                 }
-
                 return InteractionResult.sidedSuccess(level.isClientSide());
             } else {
                 return InteractionResult.PASS;
