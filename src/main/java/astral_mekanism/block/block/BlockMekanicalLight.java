@@ -40,7 +40,7 @@ public class BlockMekanicalLight extends Block {
             .build();
 
     public BlockMekanicalLight(Properties p) {
-        super(p.lightLevel((s) -> 15)
+        super(p.lightLevel(s -> 15)
                 .strength(1.5f, 6.0f)
                 .sound(SoundType.STONE)
                 .mapColor(MapColor.STONE));

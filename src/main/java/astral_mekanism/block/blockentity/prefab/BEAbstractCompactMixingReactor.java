@@ -2,7 +2,7 @@ package astral_mekanism.block.blockentity.prefab;
 
 import org.jetbrains.annotations.NotNull;
 
-import astral_mekanism.AstralMekanismTier;
+import astral_mekanism.AMETier;
 import astral_mekanism.block.blockentity.elements.AstralMekDataType;
 import astral_mekanism.block.blockentity.elements.ExtendedComponentEjector;
 import astral_mekanism.block.blockentity.interf.IPacketReceiverSetLong;
@@ -49,7 +49,7 @@ import net.minecraftforge.fluids.FluidStack;
 public abstract class BEAbstractCompactMixingReactor extends TileEntityConfigurableMachine
         implements IPacketReceiverSetLong {
 
-    private AstralMekanismTier tier;
+    private AMETier tier;
     private long mixingRate;
     public BasicHeatCapacitor heatCapacitor;
     private double lastEnvironmentLoss;
@@ -86,7 +86,7 @@ public abstract class BEAbstractCompactMixingReactor extends TileEntityConfigura
     @Override
     protected void presetVariables() {
         super.presetVariables();
-        tier = Attribute.getTier(getBlockType(), AstralMekanismTier.class);
+        tier = Attribute.getTier(getBlockType(), AMETier.class);
     }
 
     @NotNull

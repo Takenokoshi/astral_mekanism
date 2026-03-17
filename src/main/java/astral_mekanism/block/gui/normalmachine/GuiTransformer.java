@@ -8,8 +8,8 @@ import appeng.integration.modules.jei.TransformCategory;
 import astral_mekanism.AstralMekanism;
 import astral_mekanism.block.blockentity.prefab.BEAbstractTransformer;
 import astral_mekanism.block.container.normalmachine.ContainerTransformer;
-import astral_mekanism.jei.AstralMekanismJEIPlugin;
-import astral_mekanism.jei.AstralMekanismJEIRecipeType;
+import astral_mekanism.jei.AMEJEIPlugin;
+import astral_mekanism.jei.AMEJEIRecipeType;
 import astral_mekanism.network.to_server.PacketGuiTransformerMode;
 import mekanism.api.recipes.cache.CachedRecipe.OperationTracker.RecipeError;
 import mekanism.client.gui.GuiConfigurableTile;
@@ -56,7 +56,7 @@ public class GuiTransformer<BE extends BEAbstractTransformer>
         addRenderableWidget(new GuiProgress(tile::getScaledProgress, ProgressType.BAR, this, 100, 38))
                 .warning(WarningType.INPUT_DOESNT_PRODUCE_OUTPUT,
                         tile.getWarningCheck(RecipeError.INPUT_DOESNT_PRODUCE_OUTPUT))
-                .jeiCategories(AstralMekanismJEIRecipeType.MEKANICAL_TRANSFORM);
+                .jeiCategories(AMEJEIRecipeType.MEKANICAL_TRANSFORM);
         addRenderableWidget(new GuiVerticalPowerBar(this, tile.energyContainer, 200, 25))
                 .warning(WarningType.NOT_ENOUGH_ENERGY, tile.getWarningCheck(RecipeError.NOT_ENOUGH_ENERGY));
         addRenderableWidget(new MekanismImageButton(this, 100, 16, 18, 18, 16, 16,
@@ -89,11 +89,11 @@ public class GuiTransformer<BE extends BEAbstractTransformer>
     }
 
     private static void connectJEI() {
-        IJeiRuntime runtime = AstralMekanismJEIPlugin.getRuntime();
+        IJeiRuntime runtime = AMEJEIPlugin.getRuntime();
         if (runtime == null)
             return;
         runtime.getRecipesGui().showTypes(
-                List.of(AstralMekanismJEIRecipeType.TRANSFORM, TransformCategory.RECIPE_TYPE));
+                List.of(AMEJEIRecipeType.TRANSFORM, TransformCategory.RECIPE_TYPE));
     }
 
 }

@@ -4,9 +4,9 @@ import java.util.EnumMap;
 import java.util.function.BiFunction;
 
 import appeng.block.networking.EnergyCellBlock;
-import astral_mekanism.AstralMekanismTier;
-import astral_mekanism.AstralMekanismID;
-import astral_mekanism.registries.AstralMekanismBlockDefinitions;
+import astral_mekanism.AMETier;
+import astral_mekanism.AMEConstants;
+import astral_mekanism.registries.AMEBlockDefinitions;
 import astral_mekanism.registries.AstralMekanismMachines;
 import mekanism.api.providers.IBlockProvider;
 import net.minecraft.core.Direction;
@@ -24,7 +24,7 @@ import net.minecraftforge.common.data.ExistingFileHelper;
 public class AstralMekanismBlockStateProvider extends BlockStateProvider {
 
     public AstralMekanismBlockStateProvider(PackOutput output, ExistingFileHelper efh) {
-        super(output, AstralMekanismID.MODID, efh);
+        super(output, AMEConstants.MODID, efh);
     }
 
     @Override
@@ -46,8 +46,8 @@ public class AstralMekanismBlockStateProvider extends BlockStateProvider {
         registerEnergyCells();
     }
 
-    private void registerAstralFactories(EnumMap<AstralMekanismTier, ? extends IBlockProvider> map) {
-        for (AstralMekanismTier tier : AstralMekanismTier.values()) {
+    private void registerAstralFactories(EnumMap<AMETier, ? extends IBlockProvider> map) {
+        for (AMETier tier : AMETier.values()) {
             IBlockProvider factory = map.get(tier);
 
             String baseName = factory.getRegistryName().getPath()
@@ -56,16 +56,16 @@ public class AstralMekanismBlockStateProvider extends BlockStateProvider {
 
             BlockModelBuilder base = models().getBuilder("block/aaaaa/astral/" + baseName)
                     .parent(models().getExistingFile(
-                            AstralMekanismID.rl("block/astral_factory/" + baseName + "/base")));
+                            AMEConstants.rl("block/astral_factory/" + baseName + "/base")));
 
             BlockModelBuilder child = models().getBuilder("block/aaaaa/astral/" + baseName + "/" + tier.nameForNormal)
                     .parent(models().getExistingFile(
-                            AstralMekanismID.rl("block/factory/led/" + tier.nameForNormal)));
+                            AMEConstants.rl("block/factory/led/" + tier.nameForNormal)));
 
             ModelFile model = models().getBuilder(
                     "block/astral_factory/" + baseName + "/" + tier.nameForAstral)
                     .parent(models().getExistingFile(new ResourceLocation("block/block")))
-                    .texture("particle", AstralMekanismID.rl("block/factory/base"))
+                    .texture("particle", AMEConstants.rl("block/factory/base"))
                     .customLoader(CompositeModelBuilder::begin)
                     .child("base", base)
                     .child("front_led", child)
@@ -88,8 +88,8 @@ public class AstralMekanismBlockStateProvider extends BlockStateProvider {
         }
     }
 
-    private void registerNormalFactories(EnumMap<AstralMekanismTier, ? extends IBlockProvider> map) {
-        for (AstralMekanismTier tier : AstralMekanismTier.values()) {
+    private void registerNormalFactories(EnumMap<AMETier, ? extends IBlockProvider> map) {
+        for (AMETier tier : AMETier.values()) {
             IBlockProvider factory = map.get(tier);
 
             String baseName = factory.getRegistryName().getPath()
@@ -98,16 +98,16 @@ public class AstralMekanismBlockStateProvider extends BlockStateProvider {
 
             BlockModelBuilder base = models().getBuilder("block/aaaaa/" + baseName)
                     .parent(models().getExistingFile(
-                            AstralMekanismID.rl("block/normal_factory/" + baseName + "/base")));
+                            AMEConstants.rl("block/normal_factory/" + baseName + "/base")));
 
             BlockModelBuilder child = models().getBuilder("block/aaaaa/" + baseName + "/" + tier.nameForNormal)
                     .parent(models().getExistingFile(
-                            AstralMekanismID.rl("block/factory/led/" + tier.nameForNormal)));
+                            AMEConstants.rl("block/factory/led/" + tier.nameForNormal)));
 
             ModelFile model = models().getBuilder(
                     "block/normal_factory/" + baseName + "/" + tier.nameForNormal)
                     .parent(models().getExistingFile(new ResourceLocation("block/block")))
-                    .texture("particle", AstralMekanismID.rl("block/factory/base"))
+                    .texture("particle", AMEConstants.rl("block/factory/base"))
                     .customLoader(CompositeModelBuilder::begin)
                     .child("base", base)
                     .child("front_led", child)
@@ -131,21 +131,21 @@ public class AstralMekanismBlockStateProvider extends BlockStateProvider {
     }
 
     private void registerTierdMachines(
-            EnumMap<AstralMekanismTier, ? extends IBlockProvider> map,
-            BiFunction<AstralMekanismTier, String, String> resultModelPathFunction,
+            EnumMap<AMETier, ? extends IBlockProvider> map,
+            BiFunction<AMETier, String, String> resultModelPathFunction,
             String baseName,
             String baseModelPath) {
         BlockModelBuilder base = models().getBuilder("block/aaaaa/" + baseName)
-                .parent(models().getExistingFile(AstralMekanismID.rl(baseModelPath)));
-        for (AstralMekanismTier tier : AstralMekanismTier.values()) {
+                .parent(models().getExistingFile(AMEConstants.rl(baseModelPath)));
+        for (AMETier tier : AMETier.values()) {
             IBlockProvider machine = map.get(tier);
             BlockModelBuilder child = models().getBuilder("block/aaaaa/" + baseName + "/" + tier.nameForNormal)
                     .parent(models().getExistingFile(
-                            AstralMekanismID.rl("block/factory/led/" + tier.nameForNormal)));
+                            AMEConstants.rl("block/factory/led/" + tier.nameForNormal)));
 
             ModelFile model = models().getBuilder(resultModelPathFunction.apply(tier, baseName))
                     .parent(models().getExistingFile(new ResourceLocation("block/block")))
-                    .texture("particle", AstralMekanismID.rl("block/factory/base"))
+                    .texture("particle", AMEConstants.rl("block/factory/base"))
                     .customLoader(CompositeModelBuilder::begin)
                     .child("base", base)
                     .child("front_led", child)
@@ -169,13 +169,13 @@ public class AstralMekanismBlockStateProvider extends BlockStateProvider {
     }
 
     private void registerEnergyCells() {/**/
-        AstralMekanismBlockDefinitions.ENERGY_CELLS.forEach((tier, object) -> {
+        AMEBlockDefinitions.ENERGY_CELLS.forEach((tier, object) -> {
             ModelFile[] files = new ModelFile[5];
             for (int i = 0; i < files.length; i++) {
                 files[i] = models().getBuilder("block/energy_cell/" + tier.nameForAE + "_" + i)
-                        .parent(models().getExistingFile(AstralMekanismID.rl("block/energy_cell/base")))
-                        .texture("frame", AstralMekanismID.rl("block/energy_cell/" + tier.nameForAE + "_frame"))
-                        .texture("base", AstralMekanismID.rl("block/energy_cell/base_" + i));
+                        .parent(models().getExistingFile(AMEConstants.rl("block/energy_cell/base")))
+                        .texture("frame", AMEConstants.rl("block/energy_cell/" + tier.nameForAE + "_frame"))
+                        .texture("base", AMEConstants.rl("block/energy_cell/base_" + i));
             }
             getVariantBuilder(object.block()).forAllStates(state -> ConfiguredModel
                     .builder()

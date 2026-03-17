@@ -1,6 +1,6 @@
 package astral_mekanism.network.to_server;
 
-import astral_mekanism.block.blockentity.other.BEXpTank;
+import astral_mekanism.block.blockentity.storage.BEXpTank;
 import mekanism.common.network.IMekanismPacket;
 import mekanism.common.util.WorldUtils;
 import net.minecraft.core.BlockPos;

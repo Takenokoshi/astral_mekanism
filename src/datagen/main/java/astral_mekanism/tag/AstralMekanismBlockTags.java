@@ -6,7 +6,7 @@ import java.util.concurrent.CompletableFuture;
 
 import org.jetbrains.annotations.Nullable;
 
-import astral_mekanism.AstralMekanismID;
+import astral_mekanism.AMEConstants;
 import astral_mekanism.registries.AstralMekanismBlocks;
 import astral_mekanism.registries.AstralMekanismMachines;
 import mekanism.api.providers.IBlockProvider;
@@ -21,7 +21,7 @@ public class AstralMekanismBlockTags extends BlockTagsProvider {
 
     public AstralMekanismBlockTags(PackOutput output, CompletableFuture<Provider> lookupProvider,
             @Nullable ExistingFileHelper existingFileHelper) {
-        super(output, lookupProvider, AstralMekanismID.MODID, existingFileHelper);
+        super(output, lookupProvider, AMEConstants.MODID, existingFileHelper);
     }
 
     @Override

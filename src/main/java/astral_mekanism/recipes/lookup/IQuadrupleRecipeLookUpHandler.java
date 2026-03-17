@@ -3,7 +3,7 @@ package astral_mekanism.recipes.lookup;
 import org.jetbrains.annotations.Nullable;
 
 import astral_mekanism.recipes.inputRecipeCache.QuadrupleInputRecipeCache;
-import astral_mekanism.util.AMInterface.QuadPredicate;
+import astral_mekanism.util.AMEInterface.QuadPredicate;
 import mekanism.api.recipes.MekanismRecipe;
 import mekanism.api.recipes.inputs.IInputHandler;
 import mekanism.common.recipe.lookup.IRecipeLookupHandler;

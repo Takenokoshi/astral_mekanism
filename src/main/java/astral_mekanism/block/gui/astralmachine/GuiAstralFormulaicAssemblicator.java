@@ -5,7 +5,7 @@ import org.jetbrains.annotations.NotNull;
 import astral_mekanism.AstralMekanismLang;
 import astral_mekanism.block.blockentity.astralmachine.BEAstralFormulaicAssemblicator;
 import astral_mekanism.block.container.astralmachine.ContainerAstralFAssemblicator;
-import astral_mekanism.jei.AstralMekanismJEIPlugin;
+import astral_mekanism.jei.AMEJEIPlugin;
 import mekanism.client.gui.GuiConfigurableTile;
 import mekanism.client.gui.element.bar.GuiVerticalPowerBar;
 import mekanism.client.gui.element.button.MekanismImageButton;
@@ -58,7 +58,7 @@ public class GuiAstralFormulaicAssemblicator extends
     }
 
     private void viewSavedRecipeInJEI() {
-        IJeiRuntime jeiRuntime = AstralMekanismJEIPlugin.getRuntime();
+        IJeiRuntime jeiRuntime = AMEJEIPlugin.getRuntime();
         if (jeiRuntime != null && tile.getSavedRecipe() != null) {
             jeiRuntime.getRecipesGui().showRecipes(
                     jeiRuntime.getRecipeManager().getRecipeCategory(RecipeTypes.CRAFTING),

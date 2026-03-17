@@ -1,6 +1,6 @@
 package astral_mekanism.registries;
 
-import astral_mekanism.AstralMekanismID;
+import astral_mekanism.AMEConstants;
 import astral_mekanism.AstralMekanismLang;
 import astral_mekanism.block.block.BlockAstralUniversalcable;
 import astral_mekanism.block.block.BlockMekanicalLight;
@@ -20,7 +20,7 @@ public class AstralMekanismBlocks {
     private AstralMekanismBlocks() {
     }
 
-    public static final BlockDeferredRegister BLOCKS = new BlockDeferredRegister(AstralMekanismID.MODID);
+    public static final BlockDeferredRegister BLOCKS = new BlockDeferredRegister(AMEConstants.MODID);
 
     public static final BlockRegistryObject<BlockSimpleDiscription, ItemBlockTooltip<BlockSimpleDiscription>> ASTRAL_DIAMOND_BLOCK = BLOCKS
             .register(

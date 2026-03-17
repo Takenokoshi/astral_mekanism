@@ -3,9 +3,9 @@ package astral_mekanism.lang;
 import java.util.HashMap;
 import java.util.function.Supplier;
 
-import astral_mekanism.AstralMekanismID;
+import astral_mekanism.AMEConstants;
 import astral_mekanism.registration.MachineRegistryObject;
-import astral_mekanism.registries.AstralMekanismBlockDefinitions;
+import astral_mekanism.registries.AMEBlockDefinitions;
 import astral_mekanism.registries.AstralMekanismBlocks;
 import astral_mekanism.registries.AstralMekanismFluids;
 import astral_mekanism.registries.AstralMekanismGases;
@@ -27,14 +27,14 @@ import net.pedroksl.ae2addonlib.registry.helpers.LibBlockDefinition;
 public class AstralMekanismJapaneseLangProvider extends LanguageProvider {
 
     public AstralMekanismJapaneseLangProvider(PackOutput output) {
-        super(output, AstralMekanismID.MODID, "ja_jp_generated");
+        super(output, AMEConstants.MODID, "ja_jp_generated");
     }
 
     @Override
     protected void addTranslations() {
         AstralMekanismMachines.MACHINES.getAllMachines().forEach(this::addMachine);
         AstralMekanismBlocks.BLOCKS.getAllBlocks().forEach(this::addBlock);
-        AstralMekanismBlockDefinitions.INSTANCE.getBlocks().forEach(this::addBlock);
+        AMEBlockDefinitions.INSTANCE.getBlocks().forEach(this::addBlock);
         AstralMekanismItems.ITEMS.getAllItems().forEach(this::addItem);
         AstralMekanismFluids.FLUIDS.getAllFluids().forEach(this::addFluid);
         AstralMekanismGases.GASES.getAllGases().forEach(this::addGas);

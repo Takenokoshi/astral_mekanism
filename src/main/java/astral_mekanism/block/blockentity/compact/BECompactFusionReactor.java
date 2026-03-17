@@ -1,6 +1,6 @@
 package astral_mekanism.block.blockentity.compact;
 
-import astral_mekanism.AstralMekanismID;
+import astral_mekanism.AMEConstants;
 import astral_mekanism.block.blockentity.prefab.BEAbstractCompactMixingReactor;
 import mekanism.api.Action;
 import mekanism.api.AutomationType;
@@ -61,7 +61,7 @@ public class BECompactFusionReactor extends BEAbstractCompactMixingReactor {
 
     @Override
     public ResourceLocation getJEICategoryName() {
-        return AstralMekanismID.rl("astral_compact_fusion_reactor");
+        return AMEConstants.rl("astral_compact_fusion_reactor");
     }
 
 }

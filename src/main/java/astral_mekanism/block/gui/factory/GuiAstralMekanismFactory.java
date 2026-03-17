@@ -6,7 +6,7 @@ import java.util.List;
 import org.jetbrains.annotations.NotNull;
 
 import astral_mekanism.block.blockentity.base.BlockEntityProgressFactory;
-import astral_mekanism.block.blockentity.base.IAstralMekanismFactory;
+import astral_mekanism.block.blockentity.base.IAMEFactory;
 import astral_mekanism.block.container.factory.ContainerAstralMekanismFactory;
 import astral_mekanism.block.container.slot.PagedInventoryContainerSlot;
 import astral_mekanism.block.gui.element.GuiAMSortingTab;
@@ -27,7 +27,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.inventory.Slot;
 
-public class GuiAstralMekanismFactory<BE extends TileEntityConfigurableMachine & IAstralMekanismFactory<BE>>
+public class GuiAstralMekanismFactory<BE extends TileEntityConfigurableMachine & IAMEFactory<BE>>
         extends GuiConfigurableTile<BE, ContainerAstralMekanismFactory<BE>> {
 
     protected int page;

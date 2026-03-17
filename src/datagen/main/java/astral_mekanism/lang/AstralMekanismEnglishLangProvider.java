@@ -1,8 +1,8 @@
 package astral_mekanism.lang;
 
-import astral_mekanism.AstralMekanismID;
+import astral_mekanism.AMEConstants;
 import astral_mekanism.registration.MachineRegistryObject;
-import astral_mekanism.registries.AstralMekanismBlockDefinitions;
+import astral_mekanism.registries.AMEBlockDefinitions;
 import astral_mekanism.registries.AstralMekanismBlocks;
 import astral_mekanism.registries.AstralMekanismFluids;
 import astral_mekanism.registries.AstralMekanismGases;
@@ -25,7 +25,7 @@ import net.pedroksl.ae2addonlib.registry.helpers.LibBlockDefinition;
 public class AstralMekanismEnglishLangProvider extends LanguageProvider {
 
     public AstralMekanismEnglishLangProvider(PackOutput output) {
-        super(output, AstralMekanismID.MODID, "en_us_generated");
+        super(output, AMEConstants.MODID, "en_us_generated");
     }
 
     @Override
@@ -36,7 +36,7 @@ public class AstralMekanismEnglishLangProvider extends LanguageProvider {
         for (IBlockProvider block : AstralMekanismBlocks.BLOCKS.getAllBlocks()) {
             addBlock(block);
         }
-        AstralMekanismBlockDefinitions.INSTANCE.getBlocks().forEach(this::addBlock);
+        AMEBlockDefinitions.INSTANCE.getBlocks().forEach(this::addBlock);
         for (IItemProvider item : AstralMekanismItems.ITEMS.getAllItems()) {
             addItem(item);
         }

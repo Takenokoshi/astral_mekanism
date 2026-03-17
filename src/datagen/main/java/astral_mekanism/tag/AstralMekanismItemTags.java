@@ -4,7 +4,7 @@ import java.util.concurrent.CompletableFuture;
 
 import org.jetbrains.annotations.Nullable;
 
-import astral_mekanism.AstralMekanismID;
+import astral_mekanism.AMEConstants;
 import astral_mekanism.OreTypeData;
 import astral_mekanism.registries.AstralMekanismItems;
 import astral_mekanism.registries.OreType;
@@ -20,7 +20,7 @@ public class AstralMekanismItemTags extends ItemTagsProvider {
     public AstralMekanismItemTags(PackOutput output, CompletableFuture<Provider> providerFuture,
             CompletableFuture<TagLookup<Block>> tagLookupFuture,
             @Nullable ExistingFileHelper existingFileHelper) {
-        super(output, providerFuture, tagLookupFuture, AstralMekanismID.MODID, existingFileHelper);
+        super(output, providerFuture, tagLookupFuture, AMEConstants.MODID, existingFileHelper);
     }
 
     @Override

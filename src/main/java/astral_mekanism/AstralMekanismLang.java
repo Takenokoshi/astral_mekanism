@@ -62,7 +62,7 @@ public enum AstralMekanismLang implements ILangEntry {
     private final String key;
 
     AstralMekanismLang(String type, String path) {
-        this(Util.makeDescriptionId(type, AstralMekanismID.rl(path)));
+        this(Util.makeDescriptionId(type, AMEConstants.rl(path)));
     }
 
     AstralMekanismLang(String key) {

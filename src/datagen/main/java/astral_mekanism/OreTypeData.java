@@ -91,11 +91,11 @@ public enum OreTypeData {
             new ResourceLocation("item/netherite_ingot"),
             ((Supplier<EnumMap<IntermediateState, ResourceLocation>>) () -> {
                 EnumMap<IntermediateState, ResourceLocation> map = new EnumMap<>(IntermediateState.class);
-                map.put(IntermediateState.CLUMP, AstralMekanismID.rl("item/netherite/clump_netherite"));
-                map.put(IntermediateState.CRUSHED, AstralMekanismID.rl("item/netherite/dirty_dust_netherite"));
-                map.put(IntermediateState.CRYSTAL, AstralMekanismID.rl("item/netherite/crystal_netherite"));
+                map.put(IntermediateState.CLUMP, AMEConstants.rl("item/netherite/clump_netherite"));
+                map.put(IntermediateState.CRUSHED, AMEConstants.rl("item/netherite/dirty_dust_netherite"));
+                map.put(IntermediateState.CRYSTAL, AMEConstants.rl("item/netherite/crystal_netherite"));
                 map.put(IntermediateState.RAW, Mekanism.rl("item/dust_netherite"));
-                map.put(IntermediateState.SHARD, AstralMekanismID.rl("item/netherite/shard_netherite"));
+                map.put(IntermediateState.SHARD, AMEConstants.rl("item/netherite/shard_netherite"));
                 return map;
             }).get()),
     NAQUADAH(OreType.NAQUADAH, 1,
@@ -144,11 +144,11 @@ public enum OreTypeData {
         this(oreType, recipeMultiply, finalItem, oreItem, resultTexture,
                 ((Supplier<EnumMap<IntermediateState, ResourceLocation>>) () -> {
                     EnumMap<IntermediateState, ResourceLocation> map = new EnumMap<>(IntermediateState.class);
-                    map.put(IntermediateState.CLUMP, AstralMekanismID.rl("item/clump_gem/clump_" + oreType.type));
-                    map.put(IntermediateState.CRUSHED, AstralMekanismID.rl("item/crushed_gem/crushed_" + oreType.type));
-                    map.put(IntermediateState.CRYSTAL, AstralMekanismID.rl("item/crystal_gem/crystal_" + oreType.type));
-                    map.put(IntermediateState.RAW, AstralMekanismID.rl("item/raw_gem/raw_" + oreType.type));
-                    map.put(IntermediateState.SHARD, AstralMekanismID.rl("item/shard_gem/shard_" + oreType.type));
+                    map.put(IntermediateState.CLUMP, AMEConstants.rl("item/clump_gem/clump_" + oreType.type));
+                    map.put(IntermediateState.CRUSHED, AMEConstants.rl("item/crushed_gem/crushed_" + oreType.type));
+                    map.put(IntermediateState.CRYSTAL, AMEConstants.rl("item/crystal_gem/crystal_" + oreType.type));
+                    map.put(IntermediateState.RAW, AMEConstants.rl("item/raw_gem/raw_" + oreType.type));
+                    map.put(IntermediateState.SHARD, AMEConstants.rl("item/shard_gem/shard_" + oreType.type));
                     return map;
                 }).get());
     }

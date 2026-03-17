@@ -5,7 +5,7 @@ import java.util.List;
 
 import org.jetbrains.annotations.NotNull;
 
-import astral_mekanism.block.blockentity.base.IAstralMekanismFactory;
+import astral_mekanism.block.blockentity.base.IAMEFactory;
 import astral_mekanism.block.container.slot.PagedInventoryContainerSlot;
 import mekanism.common.inventory.container.tile.MekanismTileContainer;
 import mekanism.common.registration.impl.ContainerTypeRegistryObject;
@@ -13,7 +13,7 @@ import mekanism.common.tile.base.TileEntityMekanism;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.inventory.Slot;
 
-public class ContainerAstralMekanismFactory<BE extends TileEntityMekanism & IAstralMekanismFactory<BE>>
+public class ContainerAstralMekanismFactory<BE extends TileEntityMekanism & IAMEFactory<BE>>
         extends MekanismTileContainer<BE> {
 
     public List<PagedInventoryContainerSlot> pagedSlots;

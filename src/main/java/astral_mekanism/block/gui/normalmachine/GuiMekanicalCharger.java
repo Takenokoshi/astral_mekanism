@@ -8,7 +8,7 @@ import appeng.integration.modules.jei.ChargerCategory;
 import appeng.recipes.handlers.ChargerRecipe;
 import astral_mekanism.block.blockentity.base.BlockEntityRecipeMachine;
 import astral_mekanism.block.blockentity.interf.IEnergizedMachine;
-import astral_mekanism.jei.AstralMekanismJEIPlugin;
+import astral_mekanism.jei.AMEJEIPlugin;
 import mekanism.api.recipes.cache.CachedRecipe.OperationTracker.RecipeError;
 import mekanism.client.gui.GuiConfigurableTile;
 import mekanism.client.gui.element.GuiUpArrow;
@@ -60,7 +60,7 @@ public class GuiMekanicalCharger<BE extends BlockEntityRecipeMachine<ChargerReci
     }
 
     public static void connectJEI() {
-        IJeiRuntime runtime = AstralMekanismJEIPlugin.getRuntime();
+        IJeiRuntime runtime = AMEJEIPlugin.getRuntime();
         if (runtime == null)
             return;
         runtime.getRecipesGui().showTypes(

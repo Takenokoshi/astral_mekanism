@@ -5,7 +5,7 @@ import java.util.List;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-import astral_mekanism.AstralMekanismTier;
+import astral_mekanism.AMETier;
 import astral_mekanism.block.blockentity.elements.ExtendedComponentEjector;
 import astral_mekanism.block.blockentity.elements.slot.paged.PagedEnergyInventorySlot;
 import astral_mekanism.block.blockentity.elements.slot.paged.PagedFluidInventorySlot;
@@ -94,7 +94,7 @@ public class BECompactTEP extends TileEntityRecipeMachine<FluidToFluidRecipe>
 
     private FloatingLong clientEnergyUsed = FloatingLong.ZERO;
 
-    private AstralMekanismTier tier;
+    private AMETier tier;
 
     public BECompactTEP(IBlockProvider blockProvider, BlockPos pos, BlockState state) {
         super(blockProvider, pos, state, TRACKED_ERROR_TYPES);
@@ -129,7 +129,7 @@ public class BECompactTEP extends TileEntityRecipeMachine<FluidToFluidRecipe>
     @Override
     protected void presetVariables() {
         super.presetVariables();
-        tier = Attribute.getTier(getBlockType(), AstralMekanismTier.class);
+        tier = Attribute.getTier(getBlockType(), AMETier.class);
     }
 
     @NotNull

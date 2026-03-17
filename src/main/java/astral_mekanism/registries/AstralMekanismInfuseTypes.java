@@ -1,6 +1,6 @@
 package astral_mekanism.registries;
 
-import astral_mekanism.AstralMekanismID;
+import astral_mekanism.AMEConstants;
 import astral_mekanism.registration.ExtendedInfuseTypeDeferredRegister;
 import mekanism.api.chemical.infuse.InfuseType;
 import mekanism.common.registration.impl.InfuseTypeRegistryObject;
@@ -8,7 +8,7 @@ import mekanism.common.registration.impl.InfuseTypeRegistryObject;
 public class AstralMekanismInfuseTypes {
 
     public static final ExtendedInfuseTypeDeferredRegister INFUSE_TYPES = new ExtendedInfuseTypeDeferredRegister(
-            AstralMekanismID.MODID);
+            AMEConstants.MODID);
 
     public static final InfuseTypeRegistryObject<InfuseType> UTILITY_INFUSE = INFUSE_TYPES
             .register("utility_infuse", 0xA54080);

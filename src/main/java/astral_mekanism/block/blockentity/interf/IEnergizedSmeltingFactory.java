@@ -3,7 +3,7 @@ package astral_mekanism.block.blockentity.interf;
 import java.util.List;
 import java.util.Set;
 
-import astral_mekanism.block.blockentity.base.IAstralMekanismFactory;
+import astral_mekanism.block.blockentity.base.IAMEFactory;
 import astral_mekanism.generalrecipe.lookup.cache.recipe.SingleInputGeneralRecipeCache.GeneralSingleItem;
 import astral_mekanism.generalrecipe.lookup.handler.IUnifiedSingelRecipeLookupHandler;
 import astral_mekanism.registries.AstralMekanismInfuseTypes;
@@ -22,7 +22,7 @@ import net.minecraft.world.item.crafting.SmeltingRecipe;
 public interface IEnergizedSmeltingFactory<BE extends TileEntityMekanism & IEnergizedSmeltingFactory<BE> & IEnergizedMachine<BE>>
         extends
         IUnifiedSingelRecipeLookupHandler<ItemStack, SmeltingRecipe, GeneralSingleItem<Container, SmeltingRecipe>>,
-        IEnergizedMachine<BE>, IHasGasMode, ISustainedData, IAstralMekanismFactory<BE> {
+        IEnergizedMachine<BE>, IHasGasMode, ISustainedData, IAMEFactory<BE> {
 
     public static final List<RecipeError> TRACKED_ERROR_TYPES = List.of(
             RecipeError.NOT_ENOUGH_INPUT,

@@ -3,7 +3,7 @@ package astral_mekanism.block.gui.normalmachine;
 import org.jetbrains.annotations.NotNull;
 
 import astral_mekanism.block.blockentity.prefab.BEAbstractFluidInfuser;
-import astral_mekanism.jei.AstralMekanismJEIRecipeType;
+import astral_mekanism.jei.AMEJEIRecipeType;
 import mekanism.api.recipes.cache.CachedRecipe.OperationTracker.RecipeError;
 import mekanism.client.gui.GuiConfigurableTile;
 import mekanism.client.gui.element.bar.GuiHorizontalPowerBar;
@@ -52,11 +52,11 @@ public class GuiFluidInfuser<BE extends BEAbstractFluidInfuser>
         addRenderableWidget(new GuiProgress(tile::getActive, ProgressType.SMALL_RIGHT, this, 47, 39))
                 .warning(WarningType.INPUT_DOESNT_PRODUCE_OUTPUT,
                         tile.getWarningCheck(RecipeError.INPUT_DOESNT_PRODUCE_OUTPUT))
-                .jeiCategories(AstralMekanismJEIRecipeType.FLUID_INFUSER_RECIPE);
+                .jeiCategories(AMEJEIRecipeType.FLUID_INFUSER_RECIPE);
         addRenderableWidget(new GuiProgress(tile::getActive, ProgressType.SMALL_LEFT, this, 101, 39))
                 .warning(WarningType.INPUT_DOESNT_PRODUCE_OUTPUT,
                         tile.getWarningCheck(RecipeError.INPUT_DOESNT_PRODUCE_OUTPUT))
-                .jeiCategories(AstralMekanismJEIRecipeType.FLUID_INFUSER_RECIPE);
+                .jeiCategories(AMEJEIRecipeType.FLUID_INFUSER_RECIPE);
 
     }
 

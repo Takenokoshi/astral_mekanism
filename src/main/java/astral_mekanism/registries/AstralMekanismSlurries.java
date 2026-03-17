@@ -6,12 +6,12 @@ import net.minecraft.resources.ResourceLocation;
 import java.util.EnumMap;
 import java.util.function.Supplier;
 
-import astral_mekanism.AstralMekanismID;
+import astral_mekanism.AMEConstants;
 import astral_mekanism.registration.ExtendedSlurryDeferredRegister;
 
 public class AstralMekanismSlurries {
     public static final ExtendedSlurryDeferredRegister SLURRIES = new ExtendedSlurryDeferredRegister(
-            AstralMekanismID.MODID);
+            AMEConstants.MODID);
 
     public static final EnumMap<OreType, SlurryRegistryObject<Slurry, Slurry>> GEM_SLURRIES = ((Supplier<EnumMap<OreType, SlurryRegistryObject<Slurry, Slurry>>>) (() -> {
         EnumMap<OreType, SlurryRegistryObject<Slurry, Slurry>> result = new EnumMap<>(OreType.class);

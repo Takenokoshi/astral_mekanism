@@ -3,7 +3,7 @@ package astral_mekanism.block.blockentity.compact;
 import java.util.List;
 import org.jetbrains.annotations.NotNull;
 
-import astral_mekanism.AstralMekanismTier;
+import astral_mekanism.AMETier;
 import astral_mekanism.block.blockentity.core.BlockEntityUtils;
 import astral_mekanism.block.blockentity.elements.AstralMekDataType;
 import astral_mekanism.block.blockentity.interf.IPacketReceiverSetLong;
@@ -74,7 +74,7 @@ public class BECompactFissionReactor extends TileEntityConfigurableMachine imple
     private GasInventorySlot gasCoolantSlot;
     private GasInventorySlot heatedFluidSlot;
     private GasInventorySlot heatedGasSlot;
-    private AstralMekanismTier tier;
+    private AMETier tier;
 
     public BECompactFissionReactor(IBlockProvider blockProvider, BlockPos pos, BlockState state) {
         super(blockProvider, pos, state);
@@ -108,7 +108,7 @@ public class BECompactFissionReactor extends TileEntityConfigurableMachine imple
     @Override
     protected void presetVariables() {
         super.presetVariables();
-        tier = Attribute.getTier(getBlockType(), AstralMekanismTier.class);
+        tier = Attribute.getTier(getBlockType(), AMETier.class);
     }
 
     @NotNull

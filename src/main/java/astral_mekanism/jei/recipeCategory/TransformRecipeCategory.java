@@ -4,7 +4,7 @@ import java.util.List;
 
 import appeng.core.localization.ItemModText;
 import appeng.recipes.transform.TransformRecipe;
-import astral_mekanism.AstralMekanismID;
+import astral_mekanism.AMEConstants;
 import mekanism.api.providers.IItemProvider;
 import mekanism.client.gui.element.GuiDownArrow;
 import mekanism.client.gui.element.bar.GuiVerticalPowerBar;
@@ -59,7 +59,7 @@ public class TransformRecipeCategory extends BaseGeneralRecipeCategory<Transform
             return;
         }
         initFluid(builder, RecipeIngredientRole.CATALYST, inputTankA,
-                AstralMekanismID.transformFluidExtractor.apply(recipe).getRepresentations());
+                AMEConstants.transformFluidExtractor.apply(recipe).getRepresentations());
         initItem(builder, RecipeIngredientRole.INPUT, inputSlotA, List.of(recipe.ingredients.get(0).getItems()));
         if (size > 1) {
             initItem(builder, RecipeIngredientRole.INPUT, inputSlotB, List.of(recipe.ingredients.get(1).getItems()));

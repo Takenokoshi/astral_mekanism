@@ -5,9 +5,10 @@ import java.util.EnumSet;
 import java.util.function.Function;
 import java.util.function.UnaryOperator;
 
-import astral_mekanism.AstralMekanismTier;
-import astral_mekanism.AstralMekanismID;
+import astral_mekanism.AMETier;
+import astral_mekanism.AMEConstants;
 import astral_mekanism.AstralMekanismLang;
+import astral_mekanism.AMETier.AMETierMap;
 import astral_mekanism.block.blockentity.astralfactory.BEAstralEnergizedSmeltingFactory;
 import astral_mekanism.block.blockentity.astralmachine.BEAstralAPT;
 import astral_mekanism.block.blockentity.astralmachine.BEAstralAlloyer;
@@ -67,9 +68,10 @@ import astral_mekanism.block.blockentity.normalmachine.BEMekanicalCharger;
 import astral_mekanism.block.blockentity.normalmachine.BEMekanicalInscriber;
 import astral_mekanism.block.blockentity.normalmachine.BEMekanicalTransformer;
 import astral_mekanism.block.blockentity.normalmachine.BETransformer;
-import astral_mekanism.block.blockentity.other.BEXpTank;
 import astral_mekanism.block.blockentity.storage.BEItemSortableStorage;
+import astral_mekanism.block.blockentity.storage.BEMekanicalDrive;
 import astral_mekanism.block.blockentity.storage.BEUniversalStorage;
+import astral_mekanism.block.blockentity.storage.BEXpTank;
 import astral_mekanism.block.container.astralmachine.ContainerAstralFAssemblicator;
 import astral_mekanism.block.container.factory.ContainerAstralMekanismFactory;
 import astral_mekanism.block.container.normalmachine.ContainerAstralCrafter;
@@ -101,21 +103,21 @@ import mekanism.common.tile.base.TileEntityMekanism;
 import mekanism.generators.common.registries.GeneratorsSounds;
 
 public class AstralMekanismMachines {
-    public static final MachineDeferredRegister MACHINES = new MachineDeferredRegister(AstralMekanismID.MODID);
+    public static final MachineDeferredRegister MACHINES = new MachineDeferredRegister(AMEConstants.MODID);
 
     public static final FloatingLongSupplier MAX_SUPPLIER = () -> {
         return FloatingLong.MAX_VALUE;
     };
 
-    private static <BE extends BlockEntityRecipeFactory<?, BE>> EnumMap<AstralMekanismTier, MachineRegistryObject<BE, BlockTileModel<BE, BlockTypeMachine<BE>>, ContainerAstralMekanismFactory<BE>, ItemBlockMachine>> registerFactories(
-            Function<AstralMekanismTier, String> nameBuilder,
+    private static <BE extends BlockEntityRecipeFactory<?, BE>> EnumMap<AMETier, MachineRegistryObject<BE, BlockTileModel<BE, BlockTypeMachine<BE>>, ContainerAstralMekanismFactory<BE>, ItemBlockMachine>> registerFactories(
+            Function<AMETier, String> nameBuilder,
             BlockEntityConstructor<BE, BlockTypeMachine<BE>, BlockTileModel<BE, BlockTypeMachine<BE>>> constructor,
             Class<BE> beClass,
             ILangEntry langEntry,
-            Function<AstralMekanismTier, UnaryOperator<BlockMachineBuilder<BlockTypeMachine<BE>, BE>>> operator) {
-        EnumMap<AstralMekanismTier, MachineRegistryObject<BE, BlockTileModel<BE, BlockTypeMachine<BE>>, ContainerAstralMekanismFactory<BE>, ItemBlockMachine>> result = new EnumMap<>(
-                AstralMekanismTier.class);
-        for (AstralMekanismTier tier : AstralMekanismTier.values()) {
+            Function<AMETier, UnaryOperator<BlockMachineBuilder<BlockTypeMachine<BE>, BE>>> operator) {
+        EnumMap<AMETier, MachineRegistryObject<BE, BlockTileModel<BE, BlockTypeMachine<BE>>, ContainerAstralMekanismFactory<BE>, ItemBlockMachine>> result = new EnumMap<>(
+                AMETier.class);
+        for (AMETier tier : AMETier.values()) {
             result.put(tier, MACHINES.registerDefaultBlockItem(nameBuilder.apply(tier),
                     constructor, beClass, ContainerAstralMekanismFactory<BE>::new, langEntry,
                     builder -> operator.apply(tier).apply(builder.with(new AttributeTier<>(tier)))));
@@ -123,15 +125,15 @@ public class AstralMekanismMachines {
         return result;
     }
 
-    private static <BE extends TileEntityMekanism> EnumMap<AstralMekanismTier, MachineRegistryObject<BE, BlockTileModel<BE, BlockTypeMachine<BE>>, ContainerPagedMachine<BE>, ItemBlockMachine>> registerPagedMachines(
-            Function<AstralMekanismTier, String> nameBuilder,
+    private static <BE extends TileEntityMekanism> EnumMap<AMETier, MachineRegistryObject<BE, BlockTileModel<BE, BlockTypeMachine<BE>>, ContainerPagedMachine<BE>, ItemBlockMachine>> registerPagedMachines(
+            Function<AMETier, String> nameBuilder,
             BlockEntityConstructor<BE, BlockTypeMachine<BE>, BlockTileModel<BE, BlockTypeMachine<BE>>> constructor,
             Class<BE> beClass,
             ILangEntry langEntry,
-            Function<AstralMekanismTier, UnaryOperator<BlockMachineBuilder<BlockTypeMachine<BE>, BE>>> operator) {
-        EnumMap<AstralMekanismTier, MachineRegistryObject<BE, BlockTileModel<BE, BlockTypeMachine<BE>>, ContainerPagedMachine<BE>, ItemBlockMachine>> result = new EnumMap<>(
-                AstralMekanismTier.class);
-        for (AstralMekanismTier tier : AstralMekanismTier.values()) {
+            Function<AMETier, UnaryOperator<BlockMachineBuilder<BlockTypeMachine<BE>, BE>>> operator) {
+        EnumMap<AMETier, MachineRegistryObject<BE, BlockTileModel<BE, BlockTypeMachine<BE>>, ContainerPagedMachine<BE>, ItemBlockMachine>> result = new EnumMap<>(
+                AMETier.class);
+        for (AMETier tier : AMETier.values()) {
             result.put(tier, MACHINES.registerDefaultBlockItem(
                     nameBuilder.apply(tier), constructor, beClass, ContainerPagedMachine<BE>::new, langEntry,
                     builder -> operator.apply(tier).apply(builder).with(new AttributeTier<>(tier))));
@@ -139,22 +141,22 @@ public class AstralMekanismMachines {
         return result;
     }
 
-    private static <BE extends TileEntityMekanism> EnumMap<AstralMekanismTier, MachineRegistryObject<BE, BlockTileModel<BE, BlockTypeMachine<BE>>, MekanismTileContainer<BE>, ItemBlockMachine>> registerMachines(
-            Function<AstralMekanismTier, String> nameBuilder,
+    private static <BE extends TileEntityMekanism> EnumMap<AMETier, MachineRegistryObject<BE, BlockTileModel<BE, BlockTypeMachine<BE>>, MekanismTileContainer<BE>, ItemBlockMachine>> registerMachines(
+            Function<AMETier, String> nameBuilder,
             BlockEntityConstructor<BE, BlockTypeMachine<BE>, BlockTileModel<BE, BlockTypeMachine<BE>>> constructor,
             Class<BE> beClass,
             ILangEntry langEntry,
-            Function<AstralMekanismTier, UnaryOperator<BlockMachineBuilder<BlockTypeMachine<BE>, BE>>> operator) {
-        EnumMap<AstralMekanismTier, MachineRegistryObject<BE, BlockTileModel<BE, BlockTypeMachine<BE>>, MekanismTileContainer<BE>, ItemBlockMachine>> result = new EnumMap<>(
-                AstralMekanismTier.class);
-        for (AstralMekanismTier tier : AstralMekanismTier.values()) {
+            Function<AMETier, UnaryOperator<BlockMachineBuilder<BlockTypeMachine<BE>, BE>>> operator) {
+        EnumMap<AMETier, MachineRegistryObject<BE, BlockTileModel<BE, BlockTypeMachine<BE>>, MekanismTileContainer<BE>, ItemBlockMachine>> result = new EnumMap<>(
+                AMETier.class);
+        for (AMETier tier : AMETier.values()) {
             result.put(tier, MACHINES.registerSimple(nameBuilder.apply(tier), constructor, beClass, langEntry,
                     builder -> operator.apply(tier).apply(builder).with(new AttributeTier<>(tier))));
         }
         return result;
     }
 
-    public static final EnumMap<AstralMekanismTier, MachineRegistryObject<BEAstralEnergizedSmeltingFactory, BlockTileModel<BEAstralEnergizedSmeltingFactory, BlockTypeMachine<BEAstralEnergizedSmeltingFactory>>, ContainerAstralMekanismFactory<BEAstralEnergizedSmeltingFactory>, ItemBlockMachine>> ASTRAL_ENERGIZED_SMELTING_FACTRIES = registerFactories(
+    public static final EnumMap<AMETier, MachineRegistryObject<BEAstralEnergizedSmeltingFactory, BlockTileModel<BEAstralEnergizedSmeltingFactory, BlockTypeMachine<BEAstralEnergizedSmeltingFactory>>, ContainerAstralMekanismFactory<BEAstralEnergizedSmeltingFactory>, ItemBlockMachine>> ASTRAL_ENERGIZED_SMELTING_FACTRIES = registerFactories(
             t -> t.nameForAstral + "_astral_energized_smelting_factory",
             BEAstralEnergizedSmeltingFactory::new,
             BEAstralEnergizedSmeltingFactory.class,
@@ -498,21 +500,21 @@ public class AstralMekanismMachines {
                             .withEnergyConfig(EMConfig.general.aptEnergyConsumption, EMConfig.general.aptEnergyStorage)
                             .removeAttributeUpgrade());
 
-    public static final EnumMap<AstralMekanismTier, MachineRegistryObject<BECompactFissionReactor, BlockTileModel<BECompactFissionReactor, BlockTypeMachine<BECompactFissionReactor>>, MekanismTileContainer<BECompactFissionReactor>, ItemBlockMachine>> COMPACT_FIR = registerMachines(
+    public static final EnumMap<AMETier, MachineRegistryObject<BECompactFissionReactor, BlockTileModel<BECompactFissionReactor, BlockTypeMachine<BECompactFissionReactor>>, MekanismTileContainer<BECompactFissionReactor>, ItemBlockMachine>> COMPACT_FIR = registerMachines(
             tier -> tier.nameForNormal + "_compact_fir",
             BECompactFissionReactor::new,
             BECompactFissionReactor.class,
             AstralMekanismLang.DESCRIPTION_COMPACT_MACHINE,
             tier -> BlockMachineBuilder::removeAttributeUpgrade);
 
-    public static final EnumMap<AstralMekanismTier, MachineRegistryObject<BECompactFusionReactor, BlockTileModel<BECompactFusionReactor, BlockTypeMachine<BECompactFusionReactor>>, MekanismTileContainer<BECompactFusionReactor>, ItemBlockMachine>> COMPACT_FUSION_REACTOR = registerMachines(
+    public static final EnumMap<AMETier, MachineRegistryObject<BECompactFusionReactor, BlockTileModel<BECompactFusionReactor, BlockTypeMachine<BECompactFusionReactor>>, MekanismTileContainer<BECompactFusionReactor>, ItemBlockMachine>> COMPACT_FUSION_REACTOR = registerMachines(
             tier -> tier.nameForNormal + "_compact_fusion_reactor",
             BECompactFusionReactor::new,
             BECompactFusionReactor.class,
             AstralMekanismLang.DESCRIPTION_COMPACT_MACHINE,
             tier -> BlockMachineBuilder::removeAttributeUpgrade);
 
-    public static final EnumMap<AstralMekanismTier, MachineRegistryObject<BECompactNaquadahReactor, BlockTileModel<BECompactNaquadahReactor, BlockTypeMachine<BECompactNaquadahReactor>>, MekanismTileContainer<BECompactNaquadahReactor>, ItemBlockMachine>> COMPACT_NAQUADAH_REACTOR = registerMachines(
+    public static final EnumMap<AMETier, MachineRegistryObject<BECompactNaquadahReactor, BlockTileModel<BECompactNaquadahReactor, BlockTypeMachine<BECompactNaquadahReactor>>, MekanismTileContainer<BECompactNaquadahReactor>, ItemBlockMachine>> COMPACT_NAQUADAH_REACTOR = registerMachines(
             tier -> tier.nameForNormal + "_compact_naquadah_reactor",
             BECompactNaquadahReactor::new,
             BECompactNaquadahReactor.class,
@@ -531,7 +533,7 @@ public class AstralMekanismMachines {
                             .removeAttributeUpgrade()
                             .withSupportedUpgrades(EnumSet.of(Upgrade.MUFFLING)));
 
-    public static final EnumMap<AstralMekanismTier, MachineRegistryObject<BECompactTEP, BlockTileModel<BECompactTEP, BlockTypeMachine<BECompactTEP>>, ContainerPagedMachine<BECompactTEP>, ItemBlockMachine>> COMPACT_TEP = registerPagedMachines(
+    public static final EnumMap<AMETier, MachineRegistryObject<BECompactTEP, BlockTileModel<BECompactTEP, BlockTypeMachine<BECompactTEP>>, ContainerPagedMachine<BECompactTEP>, ItemBlockMachine>> COMPACT_TEP = registerPagedMachines(
             tier -> tier.nameForNormal + "_compact_tep",
             BECompactTEP::new,
             BECompactTEP.class,
@@ -564,7 +566,7 @@ public class AstralMekanismMachines {
                             .removeAttributeUpgrade(),
                     AstralMekGeneratorTier.class);
 
-    public static final EnumMap<AstralMekanismTier, MachineRegistryObject<BEEnergizedSmeltingFactory, BlockTileModel<BEEnergizedSmeltingFactory, BlockTypeMachine<BEEnergizedSmeltingFactory>>, ContainerAstralMekanismFactory<BEEnergizedSmeltingFactory>, ItemBlockMachine>> ENERGIZED_SMELTING_FACTORIES = registerFactories(
+    public static final EnumMap<AMETier, MachineRegistryObject<BEEnergizedSmeltingFactory, BlockTileModel<BEEnergizedSmeltingFactory, BlockTypeMachine<BEEnergizedSmeltingFactory>>, ContainerAstralMekanismFactory<BEEnergizedSmeltingFactory>, ItemBlockMachine>> ENERGIZED_SMELTING_FACTORIES = registerFactories(
             tier -> tier.nameForNormal + "_energized_smelting_factory",
             BEEnergizedSmeltingFactory::new,
             BEEnergizedSmeltingFactory.class,
@@ -710,6 +712,17 @@ public class AstralMekanismMachines {
                     ContainerItemSortableStorage<BEItemSortableStorage>::new,
                     AstralMekanismLang.DESCRIPTION_ITEM_SORTABLE_STORAGE,
                     builder -> builder.removeAttributeUpgrade());
+
+    public static final AMETierMap<MachineRegistryObject<BEMekanicalDrive, BlockTileModel<BEMekanicalDrive, BlockTypeMachine<BEMekanicalDrive>>, ContainerPagedMachine<BEMekanicalDrive>, ItemBlockMachine>> MEKANICAL_DRIVES = new AMETierMap<>(
+            t -> MACHINES.registerDefaultBlockItem(
+                    t.nameForAE + "_mekanical_drive",
+                    BEMekanicalDrive::new,
+                    BEMekanicalDrive.class,
+                    ContainerPagedMachine<BEMekanicalDrive>::new,
+                    AstralMekanismLang.DESCRIPTION_UNIVERSAL_STORAGE,
+                    builder -> builder
+                            .with(new AttributeTier<>(t))
+                            .removeAttributeUpgrade()));
 
     public static final MachineRegistryObject<BEXpTank, BlockTileModel<BEXpTank, BlockTypeMachine<BEXpTank>>, MekanismTileContainer<BEXpTank>, ItemBlockMachine> XP_TANK = MACHINES
             .registerSimple("xp_tank",

@@ -2,7 +2,7 @@ package astral_mekanism.registries;
 
 import java.util.function.Function;
 
-import astral_mekanism.AstralMekanismID;
+import astral_mekanism.AMEConstants;
 import astral_mekanism.mixin.mekanism.recipe.MekanismRecipeTypeMixin;
 import astral_mekanism.recipes.inputRecipeCache.AMInputRecipeCache;
 import astral_mekanism.recipes.inputRecipeCache.AstralCraftingRecipeCache;
@@ -31,7 +31,7 @@ import mekanism.common.registration.impl.RecipeTypeRegistryObject;
 public class AstralMekanismRecipeTypes {
 
     public static final RecipeTypeDeferredRegister RECIPE_TYPES = new RecipeTypeDeferredRegister(
-            AstralMekanismID.MODID);
+            AMEConstants.MODID);
 
     private static <MR extends MekanismRecipe, IIRC extends IInputRecipeCache> RecipeTypeRegistryObject<MR, IIRC> register(
             String name, Function<MekanismRecipeType<MR, IIRC>, IIRC> inputCacheCreator) {
@@ -40,7 +40,7 @@ public class AstralMekanismRecipeTypes {
                     (t) -> null);
             @SuppressWarnings("unchecked")
             MekanismRecipeTypeMixin<MR, IIRC> rtMixin = (MekanismRecipeTypeMixin<MR, IIRC>) (Object) recipeType;
-            rtMixin.setRegistryName(AstralMekanismID.rl(name));
+            rtMixin.setRegistryName(AMEConstants.rl(name));
             rtMixin.setInputCache(inputCacheCreator.apply(recipeType));
             return recipeType;
         });

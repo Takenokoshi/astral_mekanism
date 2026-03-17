@@ -7,7 +7,7 @@ import astral_mekanism.recipes.inputRecipeCache.AMInputRecipeCache.ItemFluid;
 import astral_mekanism.recipes.inputRecipeCache.AMInputRecipeCache.ItemItemFluid;
 import astral_mekanism.recipes.inputRecipeCache.AMInputRecipeCache.QuadItem;
 import astral_mekanism.recipes.inputRecipeCache.AMInputRecipeCache.TripleItem;
-import astral_mekanism.util.AMInterface.QuadPredicate;
+import astral_mekanism.util.AMEInterface.QuadPredicate;
 import mekanism.api.recipes.MekanismRecipe;
 import mekanism.common.recipe.lookup.IDoubleRecipeLookupHandler;
 import mekanism.common.recipe.lookup.ITripleRecipeLookupHandler;

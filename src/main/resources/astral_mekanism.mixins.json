@@ -21,8 +21,6 @@
 		"mekanism.TileComponentEjectorMixin"
 	],
 	"client": [
-		"ae2.AEBaseScreenMixin",
-		"astral_mekanism.TieredDriveScreenMixin"
 	],
 	"server": []
 }

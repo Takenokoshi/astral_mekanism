@@ -6,7 +6,7 @@ import com.google.gson.JsonObject;
 
 import astral_mekanism.AstralMekanism;
 import astral_mekanism.recipes.recipe.TripleItemToItemRecipe;
-import astral_mekanism.util.AMJsonUtils;
+import astral_mekanism.util.AMEJsonUtils;
 import mekanism.api.SerializerHelper;
 import mekanism.api.recipes.ingredients.ItemStackIngredient;
 import mekanism.api.recipes.ingredients.creator.IngredientCreatorAccess;
@@ -27,9 +27,9 @@ public class TripleItemToItemRecipeSerializer<RECIPE extends TripleItemToItemRec
     @Override
     public RECIPE fromJson(ResourceLocation id, JsonObject json) {
         return factory.create(id,
-                IngredientCreatorAccess.item().deserialize(AMJsonUtils.read(json, "itemInputA")),
-                IngredientCreatorAccess.item().deserialize(AMJsonUtils.read(json, "itemInputB")),
-                IngredientCreatorAccess.item().deserialize(AMJsonUtils.read(json, "itemInputC")),
+                IngredientCreatorAccess.item().deserialize(AMEJsonUtils.read(json, "itemInputA")),
+                IngredientCreatorAccess.item().deserialize(AMEJsonUtils.read(json, "itemInputB")),
+                IngredientCreatorAccess.item().deserialize(AMEJsonUtils.read(json, "itemInputC")),
                 SerializerHelper.getItemStack(json, "output"));
     }
 

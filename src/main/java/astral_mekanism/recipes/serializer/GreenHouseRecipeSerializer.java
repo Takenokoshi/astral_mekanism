@@ -5,7 +5,7 @@ import org.jetbrains.annotations.Nullable;
 import com.google.gson.JsonObject;
 import astral_mekanism.recipes.output.TripleItemOutput;
 import astral_mekanism.recipes.recipe.GreenhouseRecipe;
-import astral_mekanism.util.AMJsonUtils;
+import astral_mekanism.util.AMEJsonUtils;
 import mekanism.api.SerializerHelper;
 import mekanism.api.recipes.ingredients.FluidStackIngredient;
 import mekanism.api.recipes.ingredients.ItemStackIngredient;
@@ -33,9 +33,9 @@ public class GreenHouseRecipeSerializer<RECIPE extends GreenhouseRecipe> impleme
     @Override
     public RECIPE fromJson(ResourceLocation id, JsonObject json) {
         return factory.create(id,
-                IngredientCreatorAccess.item().deserialize(AMJsonUtils.read(json, ISEED)),
-                IngredientCreatorAccess.item().deserialize(AMJsonUtils.read(json, FARMLAND)),
-                IngredientCreatorAccess.fluid().deserialize(AMJsonUtils.read(json, FLUID)),
+                IngredientCreatorAccess.item().deserialize(AMEJsonUtils.read(json, ISEED)),
+                IngredientCreatorAccess.item().deserialize(AMEJsonUtils.read(json, FARMLAND)),
+                IngredientCreatorAccess.fluid().deserialize(AMEJsonUtils.read(json, FLUID)),
                 new TripleItemOutput(
                         SerializerHelper.getItemStack(json, HARVEST),
                         SerializerHelper.getItemStack(json, OSEED),

@@ -1,6 +1,6 @@
 package astral_mekanism.registries;
 
-import astral_mekanism.AstralMekanismID;
+import astral_mekanism.AMEConstants;
 import astral_mekanism.registration.ExtendedGasDeferredRegister;
 import mekanism.api.chemical.gas.Gas;
 import mekanism.api.chemical.gas.GasBuilder;
@@ -8,7 +8,7 @@ import mekanism.common.registration.impl.GasRegistryObject;
 import net.minecraft.resources.ResourceLocation;
 
 public class AstralMekanismGases {
-    public static final ExtendedGasDeferredRegister GASES = new ExtendedGasDeferredRegister(AstralMekanismID.MODID);
+    public static final ExtendedGasDeferredRegister GASES = new ExtendedGasDeferredRegister(AMEConstants.MODID);
     public static final GasRegistryObject<Gas> UTILITY_GAS = GASES.register("utility_gas", 0xFF55FF);
     public static final GasRegistryObject<Gas> AMMONIA = GASES.register("ammonia", 0x6699FF);
     public static final GasRegistryObject<Gas> NITRIC_ACID = GASES.register("nitric_acid", 0xFFF5CC);

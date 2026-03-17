@@ -7,8 +7,8 @@ import org.jetbrains.annotations.NotNull;
 import appeng.recipes.handlers.InscriberRecipe;
 import astral_mekanism.block.blockentity.base.BlockEntityRecipeMachine;
 import astral_mekanism.block.blockentity.interf.IMekanicalInscriber;
-import astral_mekanism.jei.AstralMekanismJEIPlugin;
-import astral_mekanism.jei.AstralMekanismJEIRecipeType;
+import astral_mekanism.jei.AMEJEIPlugin;
+import astral_mekanism.jei.AMEJEIRecipeType;
 import mekanism.api.recipes.cache.CachedRecipe.OperationTracker.RecipeError;
 import mekanism.client.gui.GuiConfigurableTile;
 import mekanism.client.gui.element.bar.GuiVerticalPowerBar;
@@ -54,11 +54,11 @@ public class GuiMekanicalInscriber<BE extends BlockEntityRecipeMachine<Inscriber
     }
 
     private static void connectJEI() {
-        IJeiRuntime runtime = AstralMekanismJEIPlugin.getRuntime();
+        IJeiRuntime runtime = AMEJEIPlugin.getRuntime();
         if (runtime == null)
             return;
         runtime.getRecipesGui().showTypes(
-                List.of(AstralMekanismJEIRecipeType.MEKANICAL_INSCRIBING));
+                List.of(AMEJEIRecipeType.MEKANICAL_INSCRIBING));
     }
 
     @Override

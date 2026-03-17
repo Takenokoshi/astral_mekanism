@@ -3,7 +3,7 @@ package astral_mekanism.registries;
 import java.util.EnumMap;
 import java.util.function.Supplier;
 
-import astral_mekanism.AstralMekanismID;
+import astral_mekanism.AMEConstants;
 import astral_mekanism.items.GlintItem;
 import astral_mekanism.items.GlintItemNameColored;
 import astral_mekanism.items.upgrade.ItemSingularityUpgrade;
@@ -15,7 +15,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Rarity;
 
 public class AstralMekanismItems {
-    public static final ItemDeferredRegister ITEMS = new ItemDeferredRegister(AstralMekanismID.MODID);
+    public static final ItemDeferredRegister ITEMS = new ItemDeferredRegister(AMEConstants.MODID);
 
     public static final ItemRegistryObject<Item> ASTRAL_DIAMOND = ITEMS
             .register("astral_diamond", Rarity.RARE);

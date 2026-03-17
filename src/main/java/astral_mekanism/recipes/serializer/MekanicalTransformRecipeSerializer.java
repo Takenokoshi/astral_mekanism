@@ -6,7 +6,7 @@ import com.google.gson.JsonObject;
 
 import astral_mekanism.recipes.output.ItemFluidOutput;
 import astral_mekanism.recipes.recipe.MekanicalTransformRecipe;
-import astral_mekanism.util.AMJsonUtils;
+import astral_mekanism.util.AMEJsonUtils;
 import mekanism.api.SerializerHelper;
 import mekanism.api.recipes.ingredients.FluidStackIngredient;
 import mekanism.api.recipes.ingredients.ItemStackIngredient;
@@ -34,11 +34,11 @@ public class MekanicalTransformRecipeSerializer<RECIPE extends MekanicalTransfor
         IItemStackIngredientCreator creatorI = IngredientCreatorAccess.item();
         IFluidStackIngredientCreator creatorF = IngredientCreatorAccess.fluid();
         return factory.create(id,
-                creatorI.deserialize(AMJsonUtils.read(json, "itemInputA")),
-                creatorI.deserialize(AMJsonUtils.read(json, "itemInputB")),
-                creatorI.deserialize(AMJsonUtils.read(json, "itemInputC")),
-                creatorF.deserialize(AMJsonUtils.read(json, "fluidInputA")),
-                creatorF.deserialize(AMJsonUtils.read(json, "fluidInputB")),
+                creatorI.deserialize(AMEJsonUtils.read(json, "itemInputA")),
+                creatorI.deserialize(AMEJsonUtils.read(json, "itemInputB")),
+                creatorI.deserialize(AMEJsonUtils.read(json, "itemInputC")),
+                creatorF.deserialize(AMEJsonUtils.read(json, "fluidInputA")),
+                creatorF.deserialize(AMEJsonUtils.read(json, "fluidInputB")),
                 new ItemFluidOutput(
                         json.has("outputItem") ? SerializerHelper.getItemStack(json, "outputItem") : ItemStack.EMPTY,
                         json.has("outputFluid") ? SerializerHelper.getFluidStack(json, "outputFluid")

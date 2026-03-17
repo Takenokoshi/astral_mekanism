@@ -2,7 +2,7 @@ package astral_mekanism.item;
 
 import java.util.List;
 
-import astral_mekanism.AstralMekanismID;
+import astral_mekanism.AMEConstants;
 import astral_mekanism.OreTypeData;
 import astral_mekanism.registries.AstralMekanismItems;
 import net.minecraft.data.PackOutput;
@@ -12,7 +12,7 @@ import net.minecraftforge.common.data.ExistingFileHelper;
 public class AstralMekanismItemModelProvider extends ItemModelProvider {
 
     public AstralMekanismItemModelProvider(PackOutput output, ExistingFileHelper existingFileHelper) {
-        super(output, AstralMekanismID.MODID, existingFileHelper);
+        super(output, AMEConstants.MODID, existingFileHelper);
     }
 
     @Override

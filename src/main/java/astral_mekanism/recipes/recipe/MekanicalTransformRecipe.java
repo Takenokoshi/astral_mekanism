@@ -4,7 +4,7 @@ import java.util.Collections;
 import java.util.List;
 
 import astral_mekanism.recipes.output.ItemFluidOutput;
-import astral_mekanism.util.AMInterface.PentaPredicate;
+import astral_mekanism.util.AMEInterface.PentaPredicate;
 import mekanism.api.recipes.MekanismRecipe;
 import mekanism.api.recipes.ingredients.FluidStackIngredient;
 import mekanism.api.recipes.ingredients.ItemStackIngredient;

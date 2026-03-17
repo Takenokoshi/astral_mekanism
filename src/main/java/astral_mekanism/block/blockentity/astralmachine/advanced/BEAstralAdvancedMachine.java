@@ -4,7 +4,7 @@ import java.util.List;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-import astral_mekanism.AstralMekanismID;
+import astral_mekanism.AMEConstants;
 import astral_mekanism.recipes.cachedRecipe.FormulizedItemGasToItemCachedRecipe;
 import mekanism.api.IContentsListener;
 import mekanism.api.chemical.ChemicalTankBuilder;
@@ -149,7 +149,7 @@ public abstract class BEAstralAdvancedMachine
                 .setActive(this::setActive)
                 .setEnergyRequirements(energyContainer::getEnergyPerTick, energyContainer)
                 .setRequiredTicks(() -> 1)
-                .setBaselineMaxOperations(() -> AstralMekanismID.Int1B)
+                .setBaselineMaxOperations(() -> AMEConstants.Int1B)
                 .setOnFinish(this::markForSave);
         return cachedRecipe;
     }

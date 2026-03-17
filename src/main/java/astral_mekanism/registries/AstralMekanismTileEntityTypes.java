@@ -1,6 +1,6 @@
 package astral_mekanism.registries;
 
-import astral_mekanism.AstralMekanismID;
+import astral_mekanism.AMEConstants;
 import astral_mekanism.registration.RegistrationInterfaces.BlockEntityConstructor;
 import mekanism.common.block.prefab.BlockTile.BlockTileModel;
 import mekanism.common.content.blocktype.BlockTypeTile;
@@ -18,7 +18,7 @@ public class AstralMekanismTileEntityTypes {
     }
 
     public static final TileEntityTypeDeferredRegister TILE_ENTITY_TYPES = new TileEntityTypeDeferredRegister(
-            AstralMekanismID.MODID);
+            AMEConstants.MODID);
 
     private static <MACHINE extends TileEntityMekanism, BLOCKTYPE extends BlockTypeTile<MACHINE>, BLOCK extends BlockTileModel<MACHINE, BLOCKTYPE>> TileEntityTypeRegistryObject<MACHINE> reg(
             BlockRegistryObject<BLOCK, ? extends ItemBlockMachine> blockRegistryObject,

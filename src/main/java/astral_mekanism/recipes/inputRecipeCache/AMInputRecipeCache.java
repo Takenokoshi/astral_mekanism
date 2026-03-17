@@ -3,7 +3,7 @@ package astral_mekanism.recipes.inputRecipeCache;
 import java.util.function.BiPredicate;
 import java.util.function.Function;
 
-import astral_mekanism.util.AMInterface.QuadPredicate;
+import astral_mekanism.util.AMEInterface.QuadPredicate;
 import mekanism.api.recipes.MekanismRecipe;
 import mekanism.api.recipes.ingredients.FluidStackIngredient;
 import mekanism.api.recipes.ingredients.ItemStackIngredient;

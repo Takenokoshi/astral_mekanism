@@ -27,7 +27,7 @@ import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.data.event.GatherDataEvent;
 
 @SuppressWarnings("unused")
-@Mod.EventBusSubscriber(modid = AstralMekanismID.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
+@Mod.EventBusSubscriber(modid = AMEConstants.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class AstralMekanismDataGenerator {
 
     private AstralMekanismDataGenerator() {

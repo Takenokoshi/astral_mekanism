@@ -1,6 +1,6 @@
 package astral_mekanism.registries;
 
-import astral_mekanism.AstralMekanismID;
+import astral_mekanism.AMEConstants;
 import mekanism.common.Mekanism;
 import mekanism.common.registration.impl.FluidDeferredRegister;
 import mekanism.common.registration.impl.FluidRegistryObject;
@@ -12,7 +12,7 @@ import net.minecraftforge.fluids.ForgeFlowingFluid.Flowing;
 import net.minecraftforge.fluids.ForgeFlowingFluid.Source;
 
 public class AstralMekanismFluids {
-    public static final FluidDeferredRegister FLUIDS = new FluidDeferredRegister(AstralMekanismID.MODID);
+    public static final FluidDeferredRegister FLUIDS = new FluidDeferredRegister(AMEConstants.MODID);
 
     public static final FluidRegistryObject<MekanismFluidType, Source, Flowing, LiquidBlock, BucketItem> RED_LAVA = FLUIDS
             .register("red_lava", renderProperties -> renderProperties.texture(

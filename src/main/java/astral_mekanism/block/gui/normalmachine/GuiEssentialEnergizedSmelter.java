@@ -7,8 +7,8 @@ import org.jetbrains.annotations.NotNull;
 import astral_mekanism.AstralMekanism;
 import astral_mekanism.block.blockentity.base.BlockEntityRecipeMachine;
 import astral_mekanism.block.blockentity.interf.IEssentialEnergizedSmelter;
-import astral_mekanism.jei.AstralMekanismJEIPlugin;
-import astral_mekanism.jei.AstralMekanismJEIRecipeType;
+import astral_mekanism.jei.AMEJEIPlugin;
+import astral_mekanism.jei.AMEJEIRecipeType;
 import astral_mekanism.network.to_server.PacketGuiEssentialSmelter;
 import mekanism.api.recipes.cache.CachedRecipe.OperationTracker.RecipeError;
 import mekanism.client.gui.GuiConfigurableTile;
@@ -76,11 +76,11 @@ public class GuiEssentialEnergizedSmelter<BE extends BlockEntityRecipeMachine<Sm
     }
 
     public static void connectJEI() {
-        IJeiRuntime runtime = AstralMekanismJEIPlugin.getRuntime();
+        IJeiRuntime runtime = AMEJEIPlugin.getRuntime();
         if (runtime == null)
             return;
         runtime.getRecipesGui().showTypes(
-                List.of(AstralMekanismJEIRecipeType.ESSENTIAL_SMELTING));
+                List.of(AMEJEIRecipeType.ESSENTIAL_SMELTING));
     }
 
 }

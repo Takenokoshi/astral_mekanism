@@ -8,7 +8,7 @@ import java.util.function.Predicate;
 
 import org.jetbrains.annotations.Nullable;
 
-import astral_mekanism.util.AMInterface.QuadPredicate;
+import astral_mekanism.util.AMEInterface.QuadPredicate;
 import mekanism.api.recipes.MekanismRecipe;
 import mekanism.api.recipes.ingredients.InputIngredient;
 import mekanism.common.recipe.MekanismRecipeType;

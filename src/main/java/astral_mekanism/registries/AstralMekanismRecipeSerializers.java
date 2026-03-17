@@ -1,6 +1,6 @@
 package astral_mekanism.registries;
 
-import astral_mekanism.AstralMekanismID;
+import astral_mekanism.AMEConstants;
 import astral_mekanism.recipes.irecipe.AstralCraftingIRecipe;
 import astral_mekanism.recipes.irecipe.FluidInfuserIRecipe;
 import astral_mekanism.recipes.irecipe.GreenhouseIRecipe;
@@ -32,7 +32,7 @@ public class AstralMekanismRecipeSerializers {
     }
 
     public static final RecipeSerializerDeferredRegister RECIPE_SERIALIZERS = new RecipeSerializerDeferredRegister(
-            AstralMekanismID.MODID);
+            AMEConstants.MODID);
 
     public static final RecipeSerializerRegistryObject<GreenhouseRecipe> GREENHOUSE_RECIPE = RECIPE_SERIALIZERS
             .register("greenhouse", () -> new GreenHouseRecipeSerializer<>(GreenhouseIRecipe::new));

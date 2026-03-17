@@ -4,7 +4,7 @@ import com.jerry.generator_extras.common.config.GenLoadConfig;
 import com.jerry.generator_extras.common.genregistry.ExtraGenGases;
 import com.jerry.mekanism_extras.common.registry.ExtraGases;
 
-import astral_mekanism.AstralMekanismID;
+import astral_mekanism.AMEConstants;
 import astral_mekanism.block.blockentity.prefab.BEAbstractCompactMixingReactor;
 import mekanism.api.Action;
 import mekanism.api.AutomationType;
@@ -63,7 +63,7 @@ public class BECompactNaquadahReactor extends BEAbstractCompactMixingReactor {
 
     @Override
     public ResourceLocation getJEICategoryName() {
-        return AstralMekanismID.rl("astral_compact_naquadah_reactor");
+        return AMEConstants.rl("astral_compact_naquadah_reactor");
     }
 
 }
