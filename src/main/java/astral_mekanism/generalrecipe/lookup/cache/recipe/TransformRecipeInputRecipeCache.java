@@ -5,7 +5,7 @@ import org.jetbrains.annotations.Nullable;
 
 import appeng.recipes.AERecipeTypes;
 import appeng.recipes.transform.TransformRecipe;
-import astral_mekanism.generalrecipe.AstMekRecipeConstants;
+import astral_mekanism.generalrecipe.AMERecipeConstants;
 import astral_mekanism.generalrecipe.IUnifiedRecipeType;
 import net.minecraft.world.Container;
 import net.minecraft.world.item.ItemStack;
@@ -42,7 +42,7 @@ public class TransformRecipeInputRecipeCache extends GeneralInputRecipeCache<Con
             ItemStack first, ItemStack second, ItemStack third) {
         int size = recipe.ingredients.size();
         boolean result = size < 4;
-        result &= fluid.isEmpty() || AstMekRecipeConstants.TRANSFORM_FLUID_PREDICATE.test(recipe, fluid);
+        result &= fluid.isEmpty() || AMERecipeConstants.TRANSFORM_FLUID_PREDICATE.test(recipe, fluid);
         result &= first.isEmpty() || recipe.ingredients.get(0).test(first);
         result &= second.isEmpty() || (size > 1 && recipe.ingredients.get(1).test(second));
         result &= third.isEmpty() || (size > 2 && recipe.ingredients.get(2).test(third));
@@ -52,7 +52,7 @@ public class TransformRecipeInputRecipeCache extends GeneralInputRecipeCache<Con
     private static boolean testInputs(TransformRecipe recipe, FluidStack fluid,
             ItemStack first, ItemStack second, ItemStack third) {
         int size = recipe.ingredients.size();
-        boolean result = !fluid.isEmpty() && AstMekRecipeConstants.TRANSFORM_FLUID_PREDICATE.test(recipe, fluid)
+        boolean result = !fluid.isEmpty() && AMERecipeConstants.TRANSFORM_FLUID_PREDICATE.test(recipe, fluid)
                 && !first.isEmpty() && recipe.ingredients.get(0).test(first);
         result &= size > 1 ? (!second.isEmpty() && recipe.ingredients.get(1).test(second)) : second.isEmpty();
         result &= size > 2 ? (!third.isEmpty() && recipe.ingredients.get(2).test(third)) : third.isEmpty();
@@ -65,7 +65,7 @@ public class TransformRecipeInputRecipeCache extends GeneralInputRecipeCache<Con
         }
         createCache(world);
         return allRecipesCache.stream()
-                .anyMatch(r -> r.ingredients.size() < 4 && AstMekRecipeConstants.TRANSFORM_FLUID_PREDICATE.test(r, stack));
+                .anyMatch(r -> r.ingredients.size() < 4 && AMERecipeConstants.TRANSFORM_FLUID_PREDICATE.test(r, stack));
     }
 
     public boolean containsInputFirst(Level world, ItemStack stack) {

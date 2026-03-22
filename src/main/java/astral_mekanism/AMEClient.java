@@ -6,7 +6,8 @@ import astral_mekanism.block.blockentity.astralmachine.BEAstralCombiner;
 import astral_mekanism.block.blockentity.astralmachine.BEAstralEnergizedSmelter;
 import astral_mekanism.block.blockentity.astralmachine.BEAstralFluidInfuser;
 import astral_mekanism.block.blockentity.astralmachine.BEAstralGNA;
-import astral_mekanism.block.blockentity.astralmachine.BEAstralGreenhouse;
+import astral_mekanism.block.blockentity.astralmachine.BEAstralGreenHouse;
+import astral_mekanism.block.blockentity.astralmachine.BEOldAstralGreenhouse;
 import astral_mekanism.block.blockentity.astralmachine.BEAstralIsotopicCentrifuge;
 import astral_mekanism.block.blockentity.astralmachine.BEAstralMekanicalCharger;
 import astral_mekanism.block.blockentity.astralmachine.BEAstralMekanicalInscriber;
@@ -26,7 +27,8 @@ import astral_mekanism.block.blockentity.normalfactory.BEEnergizedSmeltingFactor
 import astral_mekanism.block.blockentity.normalmachine.BEEssentialEnergizedSmelter;
 import astral_mekanism.block.blockentity.normalmachine.BEFluidInfuser;
 import astral_mekanism.block.blockentity.normalmachine.BEGlowstoneNeutronActivator;
-import astral_mekanism.block.blockentity.normalmachine.BEGreenhouse;
+import astral_mekanism.block.blockentity.normalmachine.BEGreenHouse;
+import astral_mekanism.block.blockentity.normalmachine.BEOldGreenhouse;
 import astral_mekanism.block.blockentity.normalmachine.BEItemCompressor;
 import astral_mekanism.block.blockentity.normalmachine.BEItemUnzipper;
 import astral_mekanism.block.blockentity.normalmachine.BEMekanicalCharger;
@@ -67,7 +69,8 @@ import astral_mekanism.block.gui.normalmachine.GuiEssentialEnergizedSmelter;
 import astral_mekanism.block.gui.normalmachine.GuiEssentialMetallurgicInfuser;
 import astral_mekanism.block.gui.normalmachine.GuiFluidInfuser;
 import astral_mekanism.block.gui.normalmachine.GuiGasSynthesizer;
-import astral_mekanism.block.gui.normalmachine.GuiGreenhouse;
+import astral_mekanism.block.gui.normalmachine.GuiGreenHouse;
+import astral_mekanism.block.gui.normalmachine.GuiOldGreenhouse;
 import astral_mekanism.block.gui.normalmachine.GuiInfuseSynthesizer;
 import astral_mekanism.block.gui.normalmachine.GuiMekanicalCharger;
 import astral_mekanism.block.gui.normalmachine.GuiMekanicalInscriber;
@@ -78,7 +81,6 @@ import astral_mekanism.block.gui.prefab.GuiDoubleItemToItemRecipeMachine;
 import astral_mekanism.block.gui.prefab.GuiGasToGasBlock;
 import astral_mekanism.block.gui.prefab.GuiGasToGasMachine;
 import astral_mekanism.block.gui.prefab.GuiItemToItemBlock;
-import astral_mekanism.block.gui.storage.GuiMekanicalDrive;
 import astral_mekanism.block.gui.storage.GuiXpTank;
 import astral_mekanism.registration.MachineRegistryObject;
 import astral_mekanism.registries.AstralMekanismFluids;
@@ -154,7 +156,8 @@ public class AMEClient extends AstralMekanism {
         registerScreenMek(AstralMekanismMachines.ASTRAL_FLUID_INFUSER, GuiFluidInfuser<BEAstralFluidInfuser>::new);
         registerScreenMek(AstralMekanismMachines.ASTRAL_FORMULAIC_ASSEMBLICATOR, GuiAstralFormulaicAssemblicator::new);
         registerScreenMek(AstralMekanismMachines.ASTRAL_GNA, GuiGasToGasBlock<BEAstralGNA>::new);
-        registerScreenMek(AstralMekanismMachines.ASTRAL_GREENHOUSE, GuiGreenhouse<BEAstralGreenhouse>::new);
+        registerScreenMek(AstralMekanismMachines.ASTRAL_GREEN_HOUSE, GuiGreenHouse<BEAstralGreenHouse>::new);
+        registerScreenMek(AstralMekanismMachines.ASTRAL_GREENHOUSE, GuiOldGreenhouse<BEOldAstralGreenhouse>::new);
         registerScreenMek(AstralMekanismMachines.ASTRAL_ISOTOPIC_CENTRIFUGE,
                 GuiGasToGasMachine<BEAstralIsotopicCentrifuge>::new);
         registerScreenMek(AstralMekanismMachines.ASTRAL_MEKANICAL_CHARGER,
@@ -193,7 +196,8 @@ public class AMEClient extends AstralMekanism {
         registerScreenMek(AstralMekanismMachines.GAS_SYNTHESIZER, GuiGasSynthesizer::new);
         registerScreenMek(AstralMekanismMachines.GLOWSTONE_NEUTRON_ACTIVATOR,
                 GuiGasToGasBlock<BEGlowstoneNeutronActivator>::new);
-        registerScreenMek(AstralMekanismMachines.GREENHOUSE, GuiGreenhouse<BEGreenhouse>::new);
+        registerScreenMek(AstralMekanismMachines.GREEN_HOUSE, GuiGreenHouse<BEGreenHouse>::new);
+        registerScreenMek(AstralMekanismMachines.GREENHOUSE, GuiOldGreenhouse<BEOldGreenhouse>::new);
         registerScreenMek(AstralMekanismMachines.INFUSE_SYNTHESIZER, GuiInfuseSynthesizer::new);
         registerScreenMek(AstralMekanismMachines.ITEM_COMPRESSOR,
                 GuiItemToItemBlock<BEItemCompressor>::new);
@@ -209,7 +213,6 @@ public class AMEClient extends AstralMekanism {
                 GuiAbstractStorage<BEUniversalStorage, ContainerAbstractStorage<BEUniversalStorage>>::new);
         registerScreenMek(AstralMekanismMachines.ITEM_SORTABLE_STORAGE,
                 GuiAbstractStorage<BEItemSortableStorage, ContainerItemSortableStorage<BEItemSortableStorage>>::new);
-        AstralMekanismMachines.MEKANICAL_DRIVES.forEach((t, ro) -> registerScreenMek(ro, GuiMekanicalDrive::new));
         registerScreenMek(AstralMekanismMachines.XP_TANK, GuiXpTank::new);
     }
 

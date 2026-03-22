@@ -2,7 +2,7 @@
     "type": "minecraft:crafting_shaped",
     "key": {
         "X": {
-            "item": "mekanism:steel_casing"
+            "item": "botanypots:terracotta_hopper_botany_pot"
         },
         "A": {
             "item": "astral_mekanism:alloy_elastic"
@@ -20,7 +20,7 @@
         "ACA"
     ],
     "result": {
-        "item": "astral_mekanism:greenhouse",
+        "item": "astral_mekanism:green_house",
         "count": 1
     }
 }

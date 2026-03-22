@@ -9,7 +9,7 @@ import net.minecraftforge.fml.config.ModConfig.Type;
 public class AstMekStorageConfig extends BaseMekanismConfig {
 
     private final ForgeConfigSpec configSpec;
-    public final CachedFloatingLongValue greenhouse;
+    public final CachedFloatingLongValue greenHouse;
     public final CachedFloatingLongValue mekanicalCherger;
     public final CachedFloatingLongValue mekanicalInscriber;
     public final CachedFloatingLongValue transformer;
@@ -19,8 +19,8 @@ public class AstMekStorageConfig extends BaseMekanismConfig {
     AstMekStorageConfig() {
         ForgeConfigSpec.Builder builder = new ForgeConfigSpec.Builder();
         builder.comment("Machine Energy Storage Config. This config is synced from server to client.").push("storage");
-        greenhouse = CachedFloatingLongValue.define(this, builder, "Base energy storage (Joules).",
-                "greenhouse", FloatingLong.createConst(20000));
+        greenHouse = CachedFloatingLongValue.define(this, builder, "Base energy storage (Joules).",
+                "greenHouse", FloatingLong.createConst(20000));
         mekanicalCherger = CachedFloatingLongValue.define(this, builder, "Base energy storage (Joules).",
                 "mekanicalCherger", FloatingLong.createConst(20000));
         mekanicalInscriber = CachedFloatingLongValue.define(this, builder, "Base energy storage (Joules).",

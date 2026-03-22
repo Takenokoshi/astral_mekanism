@@ -16,7 +16,7 @@ import net.minecraft.world.item.crafting.ShapedRecipe;
 import net.minecraftforge.common.util.TriPredicate;
 import net.minecraftforge.fluids.FluidStack;
 
-public class AstMekRecipeConstants {
+public class AMERecipeConstants {
 
     public static final BiFunction<CraftingRecipe, Integer, ItemStackIngredient> CRAFTING_ITEM_EXTRACTOR = (
             recipe, index) -> {

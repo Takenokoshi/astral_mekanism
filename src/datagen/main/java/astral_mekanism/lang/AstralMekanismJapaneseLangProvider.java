@@ -261,6 +261,8 @@ public class AstralMekanismJapaneseLangProvider extends LanguageProvider {
         result.put("sortable", "仕分け");
         result.put("tank", "タンク");
         result.put("drive", "MEドライブ");
+        result.put("green", "グリーン");
+        result.put("house", "ハウス");
         // materal types
         result.put("coal", "石炭");
         result.put("diamond", "ダイヤモンド");

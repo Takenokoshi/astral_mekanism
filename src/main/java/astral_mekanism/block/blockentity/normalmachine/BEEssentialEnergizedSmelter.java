@@ -1,5 +1,6 @@
 package astral_mekanism.block.blockentity.normalmachine;
 
+import java.util.List;
 import java.util.Map;
 
 import org.jetbrains.annotations.NotNull;
@@ -19,6 +20,7 @@ import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
 import mekanism.api.IContentsListener;
 import mekanism.api.NBTConstants;
 import mekanism.api.RelativeSide;
+import mekanism.api.Upgrade;
 import mekanism.api.chemical.ChemicalTankBuilder;
 import mekanism.api.chemical.infuse.IInfusionTank;
 import mekanism.api.chemical.infuse.InfuseType;
@@ -47,8 +49,10 @@ import mekanism.common.tile.component.TileComponentConfig;
 import mekanism.common.tile.component.TileComponentEjector;
 import mekanism.common.util.MekanismUtils;
 import mekanism.common.util.NBTUtils;
+import mekanism.common.util.UpgradeUtils;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.chat.Component;
 import net.minecraft.world.Container;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.SmeltingRecipe;
@@ -195,6 +199,12 @@ public class BEEssentialEnergizedSmelter extends BlockEntityProgressMachine<Smel
         Map<String, String> remap = new Object2ObjectOpenHashMap<>();
         remap.put(NBTConstants.DUMP_MODE, NBTConstants.DUMP_MODE);
         return remap;
+    }
+
+    @NotNull
+    @Override
+    public List<Component> getInfo(@NotNull Upgrade upgrade) {
+        return UpgradeUtils.getMultScaledInfo(this, upgrade);
     }
 
 }

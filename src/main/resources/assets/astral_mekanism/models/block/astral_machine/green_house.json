@@ -1,7 +1,7 @@
 {
     "parent": "astral_mekanism:block/machine_base",
     "textures": {
-        "front": "astral_mekanism:block/astral_machine/greenhouse_front",
+        "front": "astral_mekanism:block/astral_machine/green_house_front",
         "up": "astral_mekanism:block/machine_base/up_astral"
     }
 }

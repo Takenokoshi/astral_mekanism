@@ -18,7 +18,8 @@
 		"mekanism.CableTierMixin",
 		"mekanism.DataTypeMixin",
 		"mekanism.OperationTrackerMixin",
-		"mekanism.TileComponentEjectorMixin"
+		"mekanism.TileComponentEjectorMixin",
+		"minecraft.LootBonusEnchantmentMixin"
 	],
 	"client": [
 	],

@@ -75,7 +75,7 @@
     "itemInputC3": {
         "amount": 1,
         "ingredient": {
-            "item": "astral_mekanism:greenhouse"
+            "item": "astral_mekanism:green_house"
         }
     },
     "itemInputC4": {
@@ -159,7 +159,7 @@
         "amount": 10000
     },
     "output": {
-        "item": "astral_mekanism:astral_greenhouse",
+        "item": "astral_mekanism:astral_green_house",
         "count": 1
     }
 }

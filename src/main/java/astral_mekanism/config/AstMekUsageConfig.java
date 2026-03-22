@@ -8,7 +8,7 @@ import net.minecraftforge.fml.config.ModConfig.Type;
 
 public class AstMekUsageConfig extends BaseMekanismConfig {
     private final ForgeConfigSpec configSpec;
-    public final CachedFloatingLongValue greenhouse;
+    public final CachedFloatingLongValue greenHouse;
     public final CachedFloatingLongValue mekanicalCherger;
     public final CachedFloatingLongValue mekanicalInscriber;
     public final CachedFloatingLongValue transformer;
@@ -18,8 +18,8 @@ public class AstMekUsageConfig extends BaseMekanismConfig {
     AstMekUsageConfig() {
         ForgeConfigSpec.Builder builder = new ForgeConfigSpec.Builder();
         builder.comment("Machine Energy Usage Config. This config is synced from server to client.").push("usage");
-        greenhouse = CachedFloatingLongValue.define(this, builder, "Energy per operation tick (Joules).",
-                "greenhouse", FloatingLong.createConst(50));
+        greenHouse = CachedFloatingLongValue.define(this, builder, "Energy per operation tick (Joules).",
+                "greenHouse", FloatingLong.createConst(50));
         mekanicalCherger = CachedFloatingLongValue.define(this, builder, "Energy per operation tick (Joules).",
                 "mekanicalCherger", FloatingLong.createConst(50));
         mekanicalInscriber = CachedFloatingLongValue.define(this, builder, "Energy per operation tick (Joules).",

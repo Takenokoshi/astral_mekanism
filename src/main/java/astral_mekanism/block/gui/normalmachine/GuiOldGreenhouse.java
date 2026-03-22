@@ -1,31 +1,28 @@
 package astral_mekanism.block.gui.normalmachine;
 
-import java.util.List;
-
 import org.jetbrains.annotations.NotNull;
 
-import astral_mekanism.block.blockentity.interf.IGreenHouse;
-import astral_mekanism.jei.AMEJEIPlugin;
-import astral_mekanism.jei.AMEJEIRecipeType;
+import astral_mekanism.block.blockentity.interf.IOldGreenhouse;
+import astral_mekanism.recipes.recipe.GreenhouseRecipe;
+import mekanism.api.recipes.cache.CachedRecipe.OperationTracker.RecipeError;
 import mekanism.client.gui.GuiConfigurableTile;
 import mekanism.client.gui.element.bar.GuiVerticalPowerBar;
-import mekanism.client.gui.element.button.MekanismImageButton;
 import mekanism.client.gui.element.gauge.GaugeType;
 import mekanism.client.gui.element.gauge.GuiFluidGauge;
 import mekanism.client.gui.element.progress.GuiProgress;
 import mekanism.client.gui.element.progress.ProgressType;
 import mekanism.client.gui.element.tab.GuiEnergyTab;
 import mekanism.common.inventory.container.tile.MekanismTileContainer;
-import mekanism.common.tile.prefab.TileEntityConfigurableMachine;
+import mekanism.common.inventory.warning.WarningTracker.WarningType;
+import mekanism.common.tile.prefab.TileEntityRecipeMachine;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Inventory;
 
-public class GuiGreenHouse<BE extends TileEntityConfigurableMachine & IGreenHouse<BE>>
+public class GuiOldGreenhouse<BE extends TileEntityRecipeMachine<GreenhouseRecipe> & IOldGreenhouse<BE>>
         extends GuiConfigurableTile<BE, MekanismTileContainer<BE>> {
 
-    public GuiGreenHouse(MekanismTileContainer<BE> container, Inventory inv, Component title) {
+    public GuiOldGreenhouse(MekanismTileContainer<BE> container, Inventory inv, Component title) {
         super(container, inv, title);
         dynamicSlots = true;
     }
@@ -34,17 +31,14 @@ public class GuiGreenHouse<BE extends TileEntityConfigurableMachine & IGreenHous
     protected void addGuiElements() {
         super.addGuiElements();
         addRenderableWidget(new GuiFluidGauge(tile::getFluidTank, () -> tile.getFluidTanks(null),
-                GaugeType.STANDARD, this, 27, 12));
-        addRenderableWidget(new GuiVerticalPowerBar(this, tile.getEnergyContainer(), 170, 16));
-        addRenderableWidget(new GuiProgress(tile::getScaledProgress, ProgressType.BAR, this, 68, 38));
+                GaugeType.SMALL, this, 27, 15))
+                .warning(WarningType.INPUT_DOESNT_PRODUCE_OUTPUT, tile.getWarningCheck(tile.notEnoughFluid()));
+        addRenderableWidget(new GuiVerticalPowerBar(this, tile.getEnergyContainer(), 164, 15))
+                .warning(WarningType.NOT_ENOUGH_ENERGY, tile.getWarningCheck(RecipeError.NOT_ENOUGH_ENERGY));
         addRenderableWidget(new GuiEnergyTab(this, tile.getEnergyContainer(), tile::getActive));
-        addRenderableWidget(new MekanismImageButton(
-                this,
-                68, 53,
-                18, 18,
-                16, 16,
-                new ResourceLocation("minecraft", "textures/item/knowledge_book.png"),
-                this::accessJEI));
+        addRenderableWidget(new GuiProgress(tile::getProgressScaled, ProgressType.BAR, this, 82, 38))
+                .warning(WarningType.INPUT_DOESNT_PRODUCE_OUTPUT,
+                        tile.getWarningCheck(RecipeError.INPUT_DOESNT_PRODUCE_OUTPUT));
     }
 
     @Override
@@ -54,7 +48,4 @@ public class GuiGreenHouse<BE extends TileEntityConfigurableMachine & IGreenHous
         super.drawForegroundText(guiGraphics, mouseX, mouseY);
     }
 
-    private void accessJEI() {
-        AMEJEIPlugin.getRecipesGui().showTypes(List.of(AMEJEIRecipeType.CROP_SOIL));
-    }
 }

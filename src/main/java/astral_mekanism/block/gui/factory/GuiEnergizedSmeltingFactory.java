@@ -1,13 +1,11 @@
 package astral_mekanism.block.gui.factory;
 
-import astral_mekanism.AstralMekanism;
 import astral_mekanism.block.blockentity.base.BlockEntityRecipeFactory;
 import astral_mekanism.block.blockentity.interf.IEnergizedSmeltingFactory;
 import astral_mekanism.block.blockentity.interf.IEssentialEnergizedSmelter;
 import astral_mekanism.block.container.factory.ContainerAstralMekanismFactory;
 import astral_mekanism.block.gui.element.PagedGuiProgress;
 import astral_mekanism.block.gui.normalmachine.GuiEssentialEnergizedSmelter;
-import astral_mekanism.network.to_server.PacketGuiEssentialSmelter;
 import mekanism.api.recipes.cache.CachedRecipe.OperationTracker.RecipeError;
 import mekanism.client.gui.element.bar.GuiVerticalPowerBar;
 import mekanism.client.gui.element.button.GuiGasMode;
@@ -47,8 +45,6 @@ public class GuiEnergizedSmeltingFactory<BE extends BlockEntityRecipeFactory<Sme
                     new PagedGuiProgress(() -> tile.getProgressScaled(cacheIndex), ProgressType.DOWN, this, x, y, page))
                     .jeiCategories(MekanismJEIRecipeType.SMELTING);
         }
-        addRenderableWidget(new MekanismImageButton(this, imageWidth - 36, 18, 18, 18, 16, 16,
-                new ResourceLocation("minecraft", "textures/item/experience_bottle.png"), this::onPush));
         addRenderableWidget(new GuiInfusionGauge(tile::getInfusionTank, () -> tile.getInfusionTanks(null),
                 GaugeType.SMALL, this, imageWidth - 36, 36))
                 .warning(WarningType.NO_SPACE_IN_OUTPUT,
@@ -63,10 +59,6 @@ public class GuiEnergizedSmeltingFactory<BE extends BlockEntityRecipeFactory<Sme
                     new ResourceLocation("minecraft", "textures/item/knowledge_book.png"),
                     GuiEssentialEnergizedSmelter::connectJEI));
         }
-    }
-
-    private void onPush() {
-        AstralMekanism.packetHandler().sendToServer(new PacketGuiEssentialSmelter(tile.getBlockPos()));
     }
 
 }

@@ -10,10 +10,11 @@ import appeng.integration.modules.jei.ChargerCategory;
 import appeng.integration.modules.jei.TransformCategory;
 import astral_mekanism.AMEConstants;
 import astral_mekanism.generalrecipe.GeneralRecipeType;
+import astral_mekanism.generalrecipe.recipe.CropSoilRecipe;
 import astral_mekanism.jei.recipeCategory.AstralCraftingRecipeCategory;
+import astral_mekanism.jei.recipeCategory.CropSoilRecipeCategory;
 import astral_mekanism.jei.recipeCategory.EssentialSmeltingRecipeCategory;
 import astral_mekanism.jei.recipeCategory.FluidInfuserRecipeCategory;
-import astral_mekanism.jei.recipeCategory.GreenhouseRecipeCategory;
 import astral_mekanism.jei.recipeCategory.MekanicalInscribingRecipeCategory;
 import astral_mekanism.jei.recipeCategory.MekanicalTransformRecipeCategory;
 import astral_mekanism.jei.recipeCategory.MixingReactorRecipeCategory;
@@ -68,9 +69,6 @@ public class AMEJEIPlugin implements IModPlugin {
                                 AstralMekanismMachines.COMPACT_SPS),
                         new AstralCraftingRecipeCategory(guiHelper, AMEJEIRecipeType.ASTRAL_CRAFTING,
                                 AstralMekanismMachines.ASTRAL_CRAFTER),
-                        new GreenhouseRecipeCategory(guiHelper,
-                                AMEJEIRecipeType.GREENHOUSE_RECIPE,
-                                AstralMekanismMachines.GREENHOUSE),
                         new EssentialSmeltingRecipeCategory(guiHelper, AMEJEIRecipeType.ESSENTIAL_SMELTING,
                                 AstralMekanismMachines.ESSENTIAL_ENERGIZED_SMELTER),
                         new MekanicalInscribingRecipeCategory(guiHelper,
@@ -96,6 +94,9 @@ public class AMEJEIPlugin implements IModPlugin {
                                 AMEJEIRecipeType.NAQUADAH_REACTOR,
                                 ExtraGenLang.NAQUADAH_REACTOR.translate(),
                                 ExtraGenBlocks.NAQUADAH_REACTOR_CONTROLLER),
+                        new CropSoilRecipeCategory(guiHelper,
+                                AMEJEIRecipeType.CROP_SOIL,
+                                AstralMekanismMachines.GREEN_HOUSE),
                 });
     }
 
@@ -107,8 +108,6 @@ public class AMEJEIPlugin implements IModPlugin {
                 AstralMekanismRecipeTypes.SPS_RECIPE);
         RecipeRegistryHelper.register(registry, AMEJEIRecipeType.ASTRAL_CRAFTING,
                 AstralMekanismRecipeTypes.ASTRAL_CRAFTING);
-        RecipeRegistryHelper.register(registry, AMEJEIRecipeType.GREENHOUSE_RECIPE,
-                AstralMekanismRecipeTypes.GREENHOUSE_RECIPE);
         RecipeRegistryHelper.register(registry, AMEJEIRecipeType.ITEM_COMPRESSING,
                 AstralMekanismRecipeTypes.ITEM_COMPRESSING);
         RecipeRegistryHelper.register(registry, AMEJEIRecipeType.ITEM_UNZIPPING,
@@ -125,6 +124,8 @@ public class AMEJEIPlugin implements IModPlugin {
                 GeneralRecipeType.INSCRIBE.getRecipes(Minecraft.getInstance().level));
         registry.addRecipes(AMEJEIRecipeType.TRANSFORM,
                 GeneralRecipeType.TRANSFORM.getRecipes(Minecraft.getInstance().level));
+        registry.addRecipes(AMEJEIRecipeType.CROP_SOIL,
+                CropSoilRecipe.getAllRecipes(Minecraft.getInstance().level.getRecipeManager()));
     }
 
     @Override
@@ -235,9 +236,6 @@ public class AMEJEIPlugin implements IModPlugin {
         CatalystRegistryHelper.register(registry, AMEJEIRecipeType.FLUID_INFUSER_RECIPE,
                 AstralMekanismMachines.FLUID_INFUSER,
                 AstralMekanismMachines.ASTRAL_FLUID_INFUSER);
-        CatalystRegistryHelper.register(registry, AMEJEIRecipeType.GREENHOUSE_RECIPE,
-                AstralMekanismMachines.GREENHOUSE,
-                AstralMekanismMachines.ASTRAL_GREENHOUSE);
         CatalystRegistryHelper.register(registry, AMEJEIRecipeType.ITEM_COMPRESSING,
                 AstralMekanismMachines.ITEM_COMPRESSOR);
         CatalystRegistryHelper.register(registry, AMEJEIRecipeType.ITEM_UNZIPPING,
@@ -252,14 +250,17 @@ public class AMEJEIPlugin implements IModPlugin {
                 AstralMekanismMachines.ENERGIZED_SMELTING_FACTORIES.values().toArray(ItemLike[]::new));
         registry.addRecipeCatalysts(AMEJEIRecipeType.ESSENTIAL_SMELTING,
                 AstralMekanismMachines.ASTRAL_ENERGIZED_SMELTING_FACTRIES.values().toArray(ItemLike[]::new));
+        registry.addRecipeCatalysts(AMEJEIRecipeType.CROP_SOIL,
+                AstralMekanismMachines.GREEN_HOUSE,
+                AstralMekanismMachines.ASTRAL_GREEN_HOUSE);
 
         // minecraft
         registry.addRecipeCatalysts(RecipeTypes.SMELTING,
                 AstralMekanismMachines.ENERGIZED_SMELTING_FACTORIES.values().toArray(ItemLike[]::new));
         registry.addRecipeCatalysts(RecipeTypes.SMELTING,
                 AstralMekanismMachines.ASTRAL_ENERGIZED_SMELTING_FACTRIES.values().toArray(ItemLike[]::new));
-        CatalystRegistryHelper.registerRecipeItem(registry, AstralMekanismMachines.ASTRAL_FORMULAIC_ASSEMBLICATOR, 
-            MekanismJEIRecipeType.VANILLA_CRAFTING,RecipeTypes.CRAFTING);
+        CatalystRegistryHelper.registerRecipeItem(registry, AstralMekanismMachines.ASTRAL_FORMULAIC_ASSEMBLICATOR,
+                MekanismJEIRecipeType.VANILLA_CRAFTING, RecipeTypes.CRAFTING);
     }
 
     @Override
@@ -277,7 +278,7 @@ public class AMEJEIPlugin implements IModPlugin {
         return runtime;
     }
 
-    public static @Nullable IRecipesGui getRecipesGui(){
+    public static @Nullable IRecipesGui getRecipesGui() {
         return recipesGui;
     }
 }

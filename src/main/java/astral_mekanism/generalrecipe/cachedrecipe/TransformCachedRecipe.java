@@ -4,7 +4,7 @@ import java.util.function.BooleanSupplier;
 import appeng.blockentity.qnb.QuantumBridgeBlockEntity;
 import appeng.core.definitions.AEItems;
 import appeng.recipes.transform.TransformRecipe;
-import astral_mekanism.generalrecipe.AstMekRecipeConstants;
+import astral_mekanism.generalrecipe.AMERecipeConstants;
 import mekanism.api.Action;
 import mekanism.api.AutomationType;
 import mekanism.api.inventory.IInventorySlot;
@@ -44,7 +44,7 @@ public class TransformCachedRecipe extends GeneralCachedRecipe<TransformRecipe> 
         this.inputHandlerIC = inputHandlerIC;
         this.inputHandlerF = inputHandlerF;
         this.outputHandler = outputHandler;
-        this.fIngredient = AstMekRecipeConstants.TRANSFORM_FLUID_EXTRACTOR.apply(recipe);
+        this.fIngredient = AMERecipeConstants.TRANSFORM_FLUID_EXTRACTOR.apply(recipe);
         IItemStackIngredientCreator creatorI = IngredientCreatorAccess.item();
         int size = this.recipe.ingredients.size();
         this.iAIngredient = 0 < size && size < 4 ? creatorI.from(this.recipe.ingredients.get(0)) : null;

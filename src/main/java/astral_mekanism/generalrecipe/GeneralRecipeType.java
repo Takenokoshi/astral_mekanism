@@ -2,6 +2,7 @@ package astral_mekanism.generalrecipe;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.function.BiFunction;
 import java.util.function.Function;
 
 import org.jetbrains.annotations.NotNull;
@@ -12,9 +13,11 @@ import appeng.recipes.handlers.ChargerRecipe;
 import appeng.recipes.handlers.InscriberRecipe;
 import appeng.recipes.transform.TransformRecipe;
 import astral_mekanism.AstralMekanism;
+import astral_mekanism.generalrecipe.lookup.cache.recipe.CropSoilInputRecipeCache;
 import astral_mekanism.generalrecipe.lookup.cache.recipe.InscriberRecipeInputRecipeCache;
 import astral_mekanism.generalrecipe.lookup.cache.recipe.TransformRecipeInputRecipeCache;
 import astral_mekanism.generalrecipe.lookup.cache.recipe.SingleInputGeneralRecipeCache.GeneralSingleItem;
+import astral_mekanism.generalrecipe.recipe.CropSoilRecipe;
 import mekanism.api.recipes.ingredients.creator.IngredientCreatorAccess;
 import mekanism.api.recipes.ingredients.ItemStackIngredient;
 import mekanism.client.MekanismClient;
@@ -92,7 +95,7 @@ public class GeneralRecipeType<C extends Container, RECIPE extends Recipe<C>, IN
         return cachedRecipes;
     }
 
-    private @NotNull List<RECIPE> getRecipesUncached(RecipeManager recipeManager, RegistryAccess registryAccess) {
+    protected @NotNull List<RECIPE> getRecipesUncached(RecipeManager recipeManager, RegistryAccess registryAccess) {
         List<RECIPE> recipes = recipeManager.getAllRecipesFor(recipeType);
         return recipes;
     }
@@ -107,6 +110,25 @@ public class GeneralRecipeType<C extends Container, RECIPE extends Recipe<C>, IN
             incomplete = true;
         }
         return incomplete;
+    }
+
+    private static class BaseIsFake<C extends Container, RECIPE extends Recipe<C>, INPUT_CACHE extends IInputRecipeCache>
+            extends GeneralRecipeType<C, RECIPE, INPUT_CACHE> {
+
+        private final BiFunction<RecipeManager, RegistryAccess, List<RECIPE>> uncachedRecipeGetter;
+
+        public BaseIsFake(RecipeType<RECIPE> recipeType,
+                Function<GeneralRecipeType<C, RECIPE, INPUT_CACHE>, INPUT_CACHE> function,
+                BiFunction<RecipeManager, RegistryAccess, List<RECIPE>> uncachedRecipeGetter) {
+            super(recipeType, function);
+            this.uncachedRecipeGetter = uncachedRecipeGetter;
+        }
+
+        @Override
+        protected @NotNull List<RECIPE> getRecipesUncached(RecipeManager manager, RegistryAccess access) {
+            return uncachedRecipeGetter.apply(manager, access);
+        }
+
     }
 
     public static final GeneralRecipeType<Container, SmeltingRecipe, GeneralSingleItem<Container, SmeltingRecipe>> SMELTING = new GeneralRecipeType<>(
@@ -131,4 +153,7 @@ public class GeneralRecipeType<C extends Container, RECIPE extends Recipe<C>, IN
 
     public static final GeneralRecipeType<Container, TransformRecipe, TransformRecipeInputRecipeCache> TRANSFORM = new GeneralRecipeType<>(
             AERecipeTypes.TRANSFORM, TransformRecipeInputRecipeCache::new);
+
+    public static final GeneralRecipeType<Container, CropSoilRecipe, CropSoilInputRecipeCache> CROP_SOIL = new GeneralRecipeType<>(
+            AMEFakeRecipeType.CROP_SOIL_FLUID, CropSoilInputRecipeCache::new);
 }

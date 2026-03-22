@@ -4,12 +4,10 @@ import java.util.List;
 
 import org.jetbrains.annotations.NotNull;
 
-import astral_mekanism.AstralMekanism;
 import astral_mekanism.block.blockentity.base.BlockEntityRecipeMachine;
 import astral_mekanism.block.blockentity.interf.IEssentialEnergizedSmelter;
 import astral_mekanism.jei.AMEJEIPlugin;
 import astral_mekanism.jei.AMEJEIRecipeType;
-import astral_mekanism.network.to_server.PacketGuiEssentialSmelter;
 import mekanism.api.recipes.cache.CachedRecipe.OperationTracker.RecipeError;
 import mekanism.client.gui.GuiConfigurableTile;
 import mekanism.client.gui.element.bar.GuiVerticalPowerBar;
@@ -52,8 +50,6 @@ public class GuiEssentialEnergizedSmelter<BE extends BlockEntityRecipeMachine<Sm
                 .warning(WarningType.INPUT_DOESNT_PRODUCE_OUTPUT,
                         tile.getWarningCheck(RecipeError.INPUT_DOESNT_PRODUCE_OUTPUT))
                 .jeiCategories(MekanismJEIRecipeType.SMELTING);
-        addRenderableWidget(new MekanismImageButton(this, 117, 13, 18, 18, 16, 16,
-                new ResourceLocation("minecraft", "textures/item/experience_bottle.png"), this::onPush));
         addRenderableWidget(new GuiGasMode(this, 143, 76, true, tile::getGasMode, tile.getBlockPos(), 0));
         addRenderableWidget(new MekanismImageButton(
                 this,
@@ -69,10 +65,6 @@ public class GuiEssentialEnergizedSmelter<BE extends BlockEntityRecipeMachine<Sm
         renderTitleText(guiGraphics);
         drawString(guiGraphics, playerInventoryTitle, inventoryLabelX, inventoryLabelY, titleTextColor());
         super.drawForegroundText(guiGraphics, mouseX, mouseY);
-    }
-
-    private void onPush() {
-        AstralMekanism.packetHandler().sendToServer(new PacketGuiEssentialSmelter(tile.getBlockPos()));
     }
 
     public static void connectJEI() {

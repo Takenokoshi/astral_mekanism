@@ -4,9 +4,9 @@ import appeng.recipes.handlers.InscriberRecipe;
 import appeng.recipes.transform.TransformRecipe;
 import astral_mekanism.AMEConstants;
 import astral_mekanism.AMETier;
+import astral_mekanism.generalrecipe.recipe.CropSoilRecipe;
 import astral_mekanism.recipes.recipe.AstralCraftingRecipe;
 import astral_mekanism.recipes.recipe.FluidFluidToFluidRecipe;
-import astral_mekanism.recipes.recipe.GreenhouseRecipe;
 import astral_mekanism.recipes.recipe.MekanicalTransformRecipe;
 import astral_mekanism.registries.AstralMekanismMachines;
 import mekanism.api.recipes.GasToGasRecipe;
@@ -22,8 +22,6 @@ public final class AMEJEIRecipeType {
             AstralMekanismMachines.COMPACT_SPS, GasToGasRecipe.class);
     public static final MekanismJEIRecipeType<AstralCraftingRecipe> ASTRAL_CRAFTING = new MekanismJEIRecipeType<>(
             AstralMekanismMachines.ASTRAL_CRAFTER, AstralCraftingRecipe.class);
-    public static final MekanismJEIRecipeType<GreenhouseRecipe> GREENHOUSE_RECIPE = new MekanismJEIRecipeType<>(
-            AstralMekanismMachines.GREENHOUSE, GreenhouseRecipe.class);
     public static final MekanismJEIRecipeType<ItemStackToItemStackRecipe> ITEM_COMPRESSING = new MekanismJEIRecipeType<>(
             AstralMekanismMachines.ITEM_COMPRESSOR, ItemStackToItemStackRecipe.class);
     public static final MekanismJEIRecipeType<ItemStackToItemStackRecipe> ITEM_UNZIPPING = new MekanismJEIRecipeType<>(
@@ -41,4 +39,6 @@ public final class AMEJEIRecipeType {
             "mekanical_inscriber", InscriberRecipe.class);
     public static final RecipeType<TransformRecipe> TRANSFORM = RecipeType.create(AMEConstants.MODID,
             "item_transformation", TransformRecipe.class);
+    public static final RecipeType<CropSoilRecipe> CROP_SOIL = RecipeType.create(AMEConstants.MODID,
+            "crop_soil", CropSoilRecipe.class);
 }

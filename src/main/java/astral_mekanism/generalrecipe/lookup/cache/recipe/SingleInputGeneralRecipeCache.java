@@ -6,6 +6,7 @@ import java.util.Set;
 import java.util.function.BiPredicate;
 import java.util.function.Function;
 import java.util.function.Predicate;
+import java.util.stream.Stream;
 
 import org.jetbrains.annotations.Nullable;
 
@@ -70,6 +71,15 @@ public abstract class SingleInputGeneralRecipeCache<INPUT, INGREDIENT extends In
         return recipe == null
                 ? findFirstRecipe(complexRecipes, r -> inputExtractor.apply(r).testType(input) && matchCriteria.test(r))
                 : recipe;
+    }
+
+    public Stream<RECIPE> findAllRecipes(@Nullable Level world,INPUT input){
+        if (cache.isEmpty(input)) {
+            return Stream.empty();
+        }
+        initCacheIfNeeded(world);
+        Predicate<RECIPE> matchPredicate = recipe -> biPredicate.test(input, recipe);
+        return complexRecipes.stream().filter(matchPredicate);
     }
 
     @Override

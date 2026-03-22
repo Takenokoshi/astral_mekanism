@@ -6,7 +6,6 @@ import java.util.Set;
 import astral_mekanism.block.blockentity.base.IAMEFactory;
 import astral_mekanism.generalrecipe.lookup.cache.recipe.SingleInputGeneralRecipeCache.GeneralSingleItem;
 import astral_mekanism.generalrecipe.lookup.handler.IUnifiedSingelRecipeLookupHandler;
-import astral_mekanism.registries.AstralMekanismInfuseTypes;
 import mekanism.api.Action;
 import mekanism.api.chemical.infuse.IInfusionTank;
 import mekanism.api.recipes.cache.CachedRecipe.OperationTracker.RecipeError;
@@ -14,7 +13,6 @@ import mekanism.common.tile.TileEntityChemicalTank.GasMode;
 import mekanism.common.tile.base.TileEntityMekanism;
 import mekanism.common.tile.interfaces.IHasGasMode;
 import mekanism.common.tile.interfaces.ISustainedData;
-import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.Container;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.SmeltingRecipe;
@@ -32,14 +30,6 @@ public interface IEnergizedSmeltingFactory<BE extends TileEntityMekanism & IEner
             IEssentialEnergizedSmelter.NOT_ENOUGH_INFUSE_OUTPUT_SPACE);
 
     public IInfusionTank getInfusionTank();
-
-    public default void receive(ServerPlayer player) {
-        IInfusionTank infusionTank = getInfusionTank();
-        if (!infusionTank.isEmpty() && infusionTank.getType() == AstralMekanismInfuseTypes.XP.get()) {
-            IEssentialEnergizedSmelter.giveXp(player, infusionTank.getStored() / 100);
-            infusionTank.setStackSize(infusionTank.getStored() % 100, Action.EXECUTE);
-        }
-    }
 
     public default void handleTank() {
         IInfusionTank infusionTank = getInfusionTank();
