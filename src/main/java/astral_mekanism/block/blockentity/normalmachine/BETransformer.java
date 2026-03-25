@@ -7,6 +7,7 @@ import org.jetbrains.annotations.NotNull;
 import appeng.recipes.transform.TransformRecipe;
 import astral_mekanism.block.blockentity.prefab.BEAbstractTransformer;
 import astral_mekanism.generalrecipe.cachedrecipe.GeneralCachedRecipe;
+import astral_mekanism.integration.AMEEmpowered;
 import astral_mekanism.recipes.recipe.MekanicalTransformRecipe;
 import mekanism.api.NBTConstants;
 import mekanism.api.Upgrade;
@@ -94,6 +95,9 @@ public class BETransformer extends BEAbstractTransformer {
     @Override
     protected GeneralCachedRecipe<TransformRecipe> operateCachedRecipe(
             GeneralCachedRecipe<TransformRecipe> cachedRecipe) {
+        if (AMEEmpowered.empoweredIsLoaded()) {
+            cachedRecipe.setBaselineMaxOperations(() -> 1 << AMEEmpowered.getEmpoweredSpeeds(this));
+        }
         return cachedRecipe
                 .setRequiredTicks(this::getTicksRequired)
                 .setOperatingTicksChanged(this::setOperatingTicks);

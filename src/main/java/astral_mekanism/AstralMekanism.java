@@ -64,7 +64,7 @@ public class AstralMekanism {
     }
 
     private void commonSetup(final FMLCommonSetupEvent event) {
-        LOGGER.info(MODID+" was initialized.");
+        LOGGER.info(MODID + " was initialized.");
         packetHandler.initialize();
     }
 

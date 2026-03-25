@@ -66,4 +66,9 @@ public class BECompactNaquadahReactor extends BEAbstractCompactMixingReactor {
         return AMEConstants.rl("astral_compact_naquadah_reactor");
     }
 
+    @Override
+    protected double getInverseConductionCoefficient() {
+        return 1 / GenLoadConfig.generatorConfig.reactorCasingThermalConductivity.get();
+    }
+
 }

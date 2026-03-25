@@ -155,6 +155,12 @@ description='''${mod_description}'''
     versionRange="[13.0.41,)"
     ordering="NONE"
     side="BOTH"
+[[dependencies.${mod_id}]]
+    modId="mekanism_empowered"
+    mandatory=false
+    versionRange="[20.1.1.2.2,)"
+    ordering="AFTER"
+    side="BOTH"
 
 
 [[mixin]]

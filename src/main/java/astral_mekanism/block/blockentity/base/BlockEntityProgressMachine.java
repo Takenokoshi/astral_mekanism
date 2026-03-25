@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.jetbrains.annotations.NotNull;
 
+import astral_mekanism.integration.AMEEmpowered;
 import mekanism.api.NBTConstants;
 import mekanism.api.Upgrade;
 import mekanism.api.providers.IBlockProvider;
@@ -38,9 +39,11 @@ public abstract class BlockEntityProgressMachine<RECIPE extends Recipe<?>> exten
     protected void setOperatingTicks(int ticks) {
         this.operatingTicks = ticks;
     }
+
     public int getOperatingTicks() {
         return operatingTicks;
     }
+
     public int getTicksRequired() {
         return ticksRequired;
     }
@@ -65,7 +68,9 @@ public abstract class BlockEntityProgressMachine<RECIPE extends Recipe<?>> exten
     @Override
     public void recalculateUpgrades(Upgrade upgrade) {
         super.recalculateUpgrades(upgrade);
-        if (upgrade == Upgrade.SPEED) {
+        if (AMEEmpowered.empoweredIsLoaded()) {
+            AMEEmpowered.recalculateUpgrades(this, upgrade, baseTicksRequired, v -> ticksRequired = v);
+        } else if (upgrade == Upgrade.SPEED) {
             ticksRequired = MekanismUtils.getTicks(this, baseTicksRequired);
         }
     }
@@ -82,5 +87,5 @@ public abstract class BlockEntityProgressMachine<RECIPE extends Recipe<?>> exten
         container.track(SyncableInt.create(this::getOperatingTicks, this::setOperatingTicks));
         container.track(SyncableInt.create(this::getTicksRequired, value -> ticksRequired = value));
     }
-    
+
 }

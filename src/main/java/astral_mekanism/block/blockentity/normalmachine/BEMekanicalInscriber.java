@@ -53,7 +53,7 @@ public class BEMekanicalInscriber extends BlockEntityProgressMachine<InscriberRe
     private final IOutputHandler<ItemStack> outputHandler;
 
     public BEMekanicalInscriber(IBlockProvider blockProvider, BlockPos pos, BlockState state) {
-        super(blockProvider, pos, state, TRACKED_ERROR_TYPES, 200);
+        super(blockProvider, pos, state, TRACKED_ERROR_TYPES, 80);
         configComponent = new TileComponentConfig(this, TransmissionType.ITEM, TransmissionType.ENERGY);
         ConfigInfo itemConfig = configComponent.getConfig(TransmissionType.ITEM);
         itemConfig.addSlotInfo(DataType.INPUT_1, new InventorySlotInfo(true, false, middleSlot));

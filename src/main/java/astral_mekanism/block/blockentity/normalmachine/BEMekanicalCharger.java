@@ -59,7 +59,7 @@ public class BEMekanicalCharger extends BlockEntityProgressMachine<ChargerRecipe
     private MachineEnergyContainer<BEMekanicalCharger> energyContainer;
 
     public BEMekanicalCharger(IBlockProvider blockProvider, BlockPos pos, BlockState state) {
-        super(blockProvider, pos, state, TRACKED_ERROR_TYPES, 200);
+        super(blockProvider, pos, state, TRACKED_ERROR_TYPES, 40);
         configComponent = new TileComponentConfig(this, TransmissionType.ITEM, TransmissionType.ENERGY);
         configComponent.setupItemIOConfig(inputSlot, outputSlot, energySlot);
         configComponent.setupInputConfig(TransmissionType.ENERGY, energyContainer);

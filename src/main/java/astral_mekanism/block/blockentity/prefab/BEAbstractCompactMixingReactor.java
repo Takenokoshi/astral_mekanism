@@ -16,13 +16,15 @@ import mekanism.api.chemical.gas.Gas;
 import mekanism.api.chemical.gas.GasStack;
 import mekanism.api.chemical.gas.IGasTank;
 import mekanism.api.fluid.IExtendedFluidTank;
+import mekanism.api.heat.IHeatCapacitor;
+import mekanism.api.heat.HeatAPI;
 import mekanism.api.heat.HeatAPI.HeatTransfer;
 import mekanism.api.providers.IBlockProvider;
 import mekanism.api.providers.IGasProvider;
 import mekanism.common.block.attribute.Attribute;
 import mekanism.common.capabilities.fluid.BasicFluidTank;
-import mekanism.common.capabilities.heat.BasicHeatCapacitor;
 import mekanism.common.capabilities.heat.CachedAmbientTemperature;
+import mekanism.common.capabilities.heat.VariableHeatCapacitor;
 import mekanism.common.capabilities.holder.chemical.ChemicalTankHelper;
 import mekanism.common.capabilities.holder.chemical.IChemicalTankHolder;
 import mekanism.common.capabilities.holder.fluid.FluidTankHelper;
@@ -48,10 +50,13 @@ import net.minecraftforge.fluids.FluidStack;
 
 public abstract class BEAbstractCompactMixingReactor extends TileEntityConfigurableMachine
         implements IPacketReceiverSetLong {
+            
+    private static final double caseHeatCapacity = 1;
+    private static final double inverseInsulation = 100_000;
 
     private AMETier tier;
     private long mixingRate;
-    public BasicHeatCapacitor heatCapacitor;
+    public IHeatCapacitor heatCapacitor;
     private double lastEnvironmentLoss;
     private double lastTransferLoss;
     protected IGasTank leftFuelTank;
@@ -94,8 +99,10 @@ public abstract class BEAbstractCompactMixingReactor extends TileEntityConfigura
     protected IHeatCapacitorHolder getInitialHeatCapacitors(IContentsListener listener,
             CachedAmbientTemperature ambientTemperature) {
         HeatCapacitorHelper builder = HeatCapacitorHelper.forSideWithConfig(this::getDirection, this::getConfig);
+        double biomeAmbientTemp = HeatAPI.getAmbientTemp(getLevel(),getTilePos());
         builder.addCapacitor(
-                heatCapacitor = BasicHeatCapacitor.create(1000000d, 20d, 10d, ambientTemperature, listener));
+                heatCapacitor = VariableHeatCapacitor.create(caseHeatCapacity, this::getInverseConductionCoefficient,
+                () -> inverseInsulation, () -> biomeAmbientTemp, this));
         return builder.build();
     }
 
@@ -234,6 +241,8 @@ public abstract class BEAbstractCompactMixingReactor extends TileEntityConfigura
     public IExtendedFluidTank getWaterTank() {
         return waterTank;
     }
+
+    protected abstract double getInverseConductionCoefficient();
 
     public abstract ResourceLocation getJEICategoryName();
 

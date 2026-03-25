@@ -10,6 +10,7 @@ import org.jetbrains.annotations.NotNull;
 
 import astral_mekanism.generalrecipe.lookup.monitor.UnifiedFactoryRecipeCacheLookupMonitor;
 import astral_mekanism.generalrecipe.lookup.monitor.UnifiedRecipeCacheLookupMonitor;
+import astral_mekanism.integration.AMEEmpowered;
 import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
 import mekanism.api.IContentsListener;
 import mekanism.api.NBTConstants;
@@ -137,7 +138,9 @@ public abstract class BlockEntityProgressFactory<RECIPE extends Recipe<?>, BE ex
     @Override
     public void recalculateUpgrades(Upgrade upgrade) {
         super.recalculateUpgrades(upgrade);
-        if (upgrade == Upgrade.SPEED) {
+        if (AMEEmpowered.empoweredIsLoaded()) {
+            AMEEmpowered.recalculateUpgrades(getSelf(), upgrade, baseTicksRequired, v -> ticksRequired = v);
+        } else if (upgrade == Upgrade.SPEED) {
             ticksRequired = MekanismUtils.getTicks(this, baseTicksRequired);
         }
     }

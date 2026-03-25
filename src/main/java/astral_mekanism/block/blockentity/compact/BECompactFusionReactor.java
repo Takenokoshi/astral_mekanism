@@ -45,7 +45,7 @@ public class BECompactFusionReactor extends BEAbstractCompactMixingReactor {
     protected void generateSteam(long usedFuel) {
         if (heatCapacitor.getTemperature() > 400 && !waterTank.isEmpty() && steamTank.getNeeded() > 1) {
             int amount = (int) Math.min(waterTank.getFluidAmount(), Math.min(
-                    (heatCapacitor.getHeat() - heatCapacitor.getHeatCapacity() * 400)
+                    (heatCapacitor.getHeat() - heatCapacitor.getHeatCapacity() * workableTemp())
                             / HeatUtils.getWaterThermalEnthalpy(),
                     steamTank.getNeeded()));
             waterTank.shrinkStack(amount, Action.EXECUTE);
@@ -62,6 +62,11 @@ public class BECompactFusionReactor extends BEAbstractCompactMixingReactor {
     @Override
     public ResourceLocation getJEICategoryName() {
         return AMEConstants.rl("astral_compact_fusion_reactor");
+    }
+
+    @Override
+    protected double getInverseConductionCoefficient() {
+        return 1 / MekanismGeneratorsConfig.generators.fusionCasingThermalConductivity.get();
     }
 
 }

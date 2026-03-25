@@ -3,6 +3,8 @@ package astral_mekanism.registration;
 
 import java.util.EnumSet;
 import java.util.function.Supplier;
+
+import astral_mekanism.integration.AMEEmpowered;
 import mekanism.api.Upgrade;
 import mekanism.api.text.ILangEntry;
 import mekanism.common.block.attribute.AttributeFactoryType;
@@ -35,7 +37,11 @@ public class BlockTypeMachine<TILE extends TileEntityMekanism> extends BlockType
                         rand -> new Pos3D(rand.nextFloat() * 0.6F - 0.3F, rand.nextFloat() * 6.0F / 16.0F, 0.52)));
         add(Attributes.ACTIVE_LIGHT, new AttributeStateFacing(), Attributes.INVENTORY, Attributes.SECURITY,
                 Attributes.REDSTONE, Attributes.COMPARATOR);
-        add(new AttributeUpgradeSupport(EnumSet.of(Upgrade.SPEED, Upgrade.ENERGY, Upgrade.MUFFLING)));
+        EnumSet<Upgrade> upgrades = EnumSet.of(Upgrade.SPEED, Upgrade.ENERGY, Upgrade.MUFFLING);
+        if (AMEEmpowered.empoweredIsLoaded()) {
+            upgrades = AMEEmpowered.getEmpoweredUpgrades(upgrades);
+        }
+        add(new AttributeUpgradeSupport(upgrades));
     }
 
     public static class FactoryMachine<TILE extends TileEntityMekanism> extends BlockTypeMachine<TILE> {
@@ -77,6 +83,9 @@ public class BlockTypeMachine<TILE extends TileEntityMekanism> extends BlockType
 
         public BlockMachineBuilder<MACHINE, TILE> changeAttributeUpgrade(EnumSet<Upgrade> upgrades) {
             this.without(AttributeUpgradeSupport.class);
+            if (AMEEmpowered.empoweredIsLoaded()) {
+                upgrades = AMEEmpowered.getEmpoweredUpgrades(upgrades);
+            }
             this.withSupportedUpgrades(upgrades);
             return this;
         }

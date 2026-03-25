@@ -1,6 +1,7 @@
 package astral_mekanism.block.blockentity.normalmachine;
 
 import astral_mekanism.block.blockentity.prefab.BEAbstractFluidInfuser;
+import astral_mekanism.integration.AMEEmpowered;
 import mekanism.api.Upgrade;
 import mekanism.api.providers.IBlockProvider;
 import net.minecraft.core.BlockPos;
@@ -28,7 +29,9 @@ public class BEFluidInfuser extends BEAbstractFluidInfuser {
     @Override
     public void recalculateUpgrades(Upgrade upgrade) {
         super.recalculateUpgrades(upgrade);
-        if (upgrade == Upgrade.SPEED) {
+        if (AMEEmpowered.empoweredIsLoaded()) {
+            baselineMaxOperations = 5 << AMEEmpowered.getAllSpeeds(this);
+        } else if (upgrade == Upgrade.SPEED) {
             baselineMaxOperations = (int) Math.pow(2, upgradeComponent.getUpgrades(Upgrade.SPEED)) * 5;
         }
     }

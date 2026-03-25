@@ -593,7 +593,8 @@ public class AstralMekanismMachines {
                     AstralMekanismLang.DESCRIPTION_ASTRAL_CRAFTER,
                     builder -> builder
                             .withEnergyConfig(AstralMekanismConfig.usage.essentialCrafter,
-                                    AstralMekanismConfig.storage.essentialCrafter));
+                                    AstralMekanismConfig.storage.essentialCrafter)
+                            .removeAttributeUpgrade());
 
     public static final MachineRegistryObject<BEEssentialEnergizedSmelter, BlockTileModel<BEEssentialEnergizedSmelter, BlockTypeMachine<BEEssentialEnergizedSmelter>>, MekanismTileContainer<BEEssentialEnergizedSmelter>, ItemBlockMachine> ESSENTIAL_ENERGIZED_SMELTER = MACHINES
             .registerSimple("essential_energized_smelter",
