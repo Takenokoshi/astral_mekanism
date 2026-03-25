@@ -646,7 +646,7 @@ public class AstralMekanismMachines {
                     AstralMekanismLang.DESCRIPTION_GREENHOUSE, builder -> builder
                             .withEnergyConfig(AstralMekanismConfig.usage.greenHouse,
                                     AstralMekanismConfig.storage.greenHouse)
-                            .changeAttributeUpgrade(EnumSet.of(Upgrade.ENERGY)));
+                            .changeAttributeUpgrade(EnumSet.of(Upgrade.ENERGY, Upgrade.SPEED)));
 
     public static final MachineRegistryObject<BEOldGreenhouse, BlockTileModel<BEOldGreenhouse, BlockTypeMachine<BEOldGreenhouse>>, MekanismTileContainer<BEOldGreenhouse>, ItemBlockMachine> GREENHOUSE = MACHINES
             .registerSimple("greenhouse",

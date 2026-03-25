@@ -24,7 +24,7 @@ import net.minecraft.world.level.block.state.BlockState;
 public class BETransformer extends BEAbstractTransformer {
 
     private int operatingTicks;
-    protected int baseTicksRequired = 200;
+    protected int baseTicksRequired = 10;
     public int ticksRequired;
 
     public BETransformer(IBlockProvider blockProvider, BlockPos pos, BlockState state) {

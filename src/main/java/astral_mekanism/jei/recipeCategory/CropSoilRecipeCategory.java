@@ -4,6 +4,7 @@ import java.util.List;
 
 import astral_mekanism.generalrecipe.recipe.CropSoilRecipe;
 import mekanism.api.providers.IItemProvider;
+import mekanism.client.SpecialColors;
 import mekanism.client.gui.element.bar.GuiVerticalPowerBar;
 import mekanism.client.gui.element.gauge.GaugeType;
 import mekanism.client.gui.element.gauge.GuiFluidGauge;
@@ -13,11 +14,13 @@ import mekanism.client.gui.element.slot.GuiSlot;
 import mekanism.client.gui.element.slot.SlotType;
 import mekanism.common.inventory.container.slot.SlotOverlay;
 import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
+import mezz.jei.api.gui.ingredient.IRecipeSlotsView;
 import mezz.jei.api.helpers.IGuiHelper;
 import mezz.jei.api.recipe.IFocusGroup;
 import mezz.jei.api.recipe.RecipeIngredientRole;
 import mezz.jei.api.recipe.RecipeType;
 import net.darkhax.botanypots.data.recipes.crop.HarvestEntry;
+import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.ItemStack;
 
@@ -29,7 +32,7 @@ public class CropSoilRecipeCategory extends BaseGeneralRecipeCategory<CropSoilRe
     private final GuiSlot[] outputSlots;
 
     public CropSoilRecipeCategory(IGuiHelper helper, RecipeType<CropSoilRecipe> recipeType, IItemProvider provider) {
-        super(helper, recipeType, provider, 10, 10, 200, 60);
+        super(helper, recipeType, provider, 10, 10, 200, 80);
         this.cropSlot = addSlot(SlotType.INPUT, 46, 26);
         this.soilSlot = addSlot(SlotType.INPUT, 46, 44);
         this.fluidGauge = addElement(GuiFluidGauge.getDummy(GaugeType.STANDARD, this, 27, 12));
@@ -60,6 +63,17 @@ public class CropSoilRecipeCategory extends BaseGeneralRecipeCategory<CropSoilRe
                         tooltip.add(Component.literal("Rolls: " + entry.getMinRolls() + " - " + entry.getMaxRolls()));
                     });
         }
+    }
+
+    @Override
+    public void draw(CropSoilRecipe recipe,
+            IRecipeSlotsView recipeSlotsView,
+            GuiGraphics guiGraphics,
+            double mouseX,
+            double mouseY) {
+        super.draw(recipe, recipeSlotsView, guiGraphics, mouseX, mouseY);
+        guiGraphics.drawString(getFont(), Component.literal("Required ticks:" + recipe.requiredTicks),
+                98, 60, SpecialColors.TEXT_TITLE.argb());
     }
 
 }

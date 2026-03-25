@@ -12,6 +12,7 @@ import astral_mekanism.generalrecipe.cachedrecipe.CropSoilCachedRecipe;
 import astral_mekanism.generalrecipe.cachedrecipe.ICachedRecipe;
 import astral_mekanism.generalrecipe.recipe.CropSoilRecipe;
 import mekanism.api.IContentsListener;
+import mekanism.api.Upgrade;
 import mekanism.api.fluid.IExtendedFluidTank;
 import mekanism.api.inventory.IInventorySlot;
 import mekanism.api.providers.IBlockProvider;
@@ -136,7 +137,8 @@ public class BEGreenHouse extends BlockEntityProgressMachine<CropSoilRecipe> imp
                 .setCanHolderFunction(() -> MekanismUtils.canFunction(this))
                 .setEnergyRequirements(energyContainer::getEnergyPerTick, energyContainer)
                 .setActive(this::setActive)
-                .setRequiredTicks(() -> recipe.requiredTicks)
+                .setRequiredTicks(() -> (int) Math
+                        .round(Math.pow(0.75, upgradeComponent.getUpgrades(Upgrade.SPEED)) * recipe.requiredTicks))
                 .setOnFinish(this::markForSave)
                 .setOperatingTicksChanged(this::setOperatingTicks);
     }

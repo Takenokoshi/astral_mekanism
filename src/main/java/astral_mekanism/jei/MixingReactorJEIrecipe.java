@@ -12,7 +12,7 @@ import net.minecraft.world.level.material.Fluids;
 import net.minecraftforge.fluids.FluidStack;
 
 public record MixingReactorJEIrecipe(GasStack leftFuel, GasStack rightFuel, GasStack mixedFuel,
-        FluidStack water, GasStack steam) {
+        FluidStack water, GasStack steam, String requierdTemp) {
 
     public static final List<MixingReactorJEIrecipe> fusionRecipes = List.of(
             new MixingReactorJEIrecipe(
@@ -20,7 +20,8 @@ public record MixingReactorJEIrecipe(GasStack leftFuel, GasStack rightFuel, GasS
                     GeneratorsGases.TRITIUM.getStack(1),
                     GeneratorsGases.FUSION_FUEL.getStack(2),
                     new FluidStack(Fluids.WATER, 2),
-                    MekanismGases.STEAM.getStack(2)));
+                    MekanismGases.STEAM.getStack(2),
+                    "100MK"));
 
     public static final List<MixingReactorJEIrecipe> naquadahRecipes = List.of(
             new MixingReactorJEIrecipe(
@@ -28,5 +29,6 @@ public record MixingReactorJEIrecipe(GasStack leftFuel, GasStack rightFuel, GasS
                     ExtraGases.RICH_URANIUM_FUEL.getStack(1),
                     ExtraGases.NAQUADAH_URANIUM_FUEL.getStack(2),
                     new FluidStack(Fluids.WATER, 2),
-                    ExtraGenGases.POLONIUM_CONTAINING_STEAM.getStack(2)));
+                    ExtraGenGases.POLONIUM_CONTAINING_STEAM.getStack(2),
+                    "400MK"));
 }

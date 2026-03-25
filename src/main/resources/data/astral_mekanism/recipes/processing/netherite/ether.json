@@ -21,7 +21,7 @@
         }
     },
     "itemOutput": {
-        "count": 2,
+        "count": 64,
         "item": "minecraft:blaze_powder"
     }
 }

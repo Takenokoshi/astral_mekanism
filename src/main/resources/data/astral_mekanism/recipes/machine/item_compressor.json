@@ -11,10 +11,10 @@
             "item": "astral_mekanism:vibration_control_circuit"
         },
         "I": {
-            "item": "mekanism:enriched_gold"
+            "item": "mekanism:enriched_tin"
         },
         "J": {
-            "item": "mekanism:dust_gold"
+            "item": "mekanism:dust_tin"
         }
     },
     "pattern": [

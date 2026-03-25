@@ -202,36 +202,38 @@ public class ExtendedComponentEjector extends TileComponentEjector {
         }
     }
 
+    /**
+     * @apiNote Ensure that it can eject before calling this method.
+     */
     private void outputItems(ConfigInfo info) {
         for (DataType dataType : info.getSupportedDataTypes()) {
-            if (canTypeEject != null && !canTypeEject.test(TransmissionType.ITEM, dataType)) {
+            if (!dataType.canOutput()) {
                 continue;
             }
             ISlotInfo slotInfo = info.getSlotInfo(dataType);
             if (slotInfo instanceof InventorySlotInfo inventorySlotInfo) {
+                //Validate the slot info is of the correct type
                 Set<Direction> outputs = info.getSidesForData(dataType);
                 if (!outputs.isEmpty()) {
-                    EjectTransitRequest ejectMap = InventoryUtils.getEjectItemMap(
-                            new EjectTransitRequest(tile, outputs.iterator().next()),
-                            canInventorySlotEject == null ? inventorySlotInfo.getSlots()
-                                    : inventorySlotInfo.getSlots().stream()
-                                            .filter(slot -> canInventorySlotEject.test(slot, dataType)).toList());
+                    EjectTransitRequest ejectMap = InventoryUtils.getEjectItemMap(new EjectTransitRequest(tile, outputs.iterator().next()), inventorySlotInfo.getSlots());
                     if (!ejectMap.isEmpty()) {
                         for (Direction side : outputs) {
-                            BlockEntity target = WorldUtils.getTileEntity(tile.getLevel(),
-                                    tile.getBlockPos().relative(side));
+                            BlockEntity target = WorldUtils.getTileEntity(tile.getLevel(), tile.getBlockPos().relative(side));
                             if (target != null) {
+                                //Update the side so that if/when the response uses it, it makes sure it is grabbing from the correct side
                                 ejectMap.side = side;
+                                //If the spot is not loaded just skip trying to eject to it
                                 TransitResponse response;
                                 if (target instanceof TileEntityLogisticalTransporterBase transporter) {
-                                    response = transporter.getTransmitter().insert(tile, ejectMap, outputColor, true,
-                                            0);
+                                    response = transporter.getTransmitter().insert(tile, ejectMap, outputColor, true, 0);
                                 } else {
                                     response = ejectMap.addToInventory(target, side, 0, false);
                                 }
                                 if (!response.isEmpty()) {
+                                    // use the items returned by the TransitResponse; will be visible next loop
                                     response.useAll();
                                     if (ejectMap.isEmpty()) {
+                                        //If we are out of items to eject, break
                                         break;
                                     }
                                 }

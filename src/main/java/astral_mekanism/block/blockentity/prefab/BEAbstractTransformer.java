@@ -127,12 +127,6 @@ public abstract class BEAbstractTransformer extends TileEntityConfigurableMachin
         itemInfo.addSlotInfo(DataType.INPUT_1, new InventorySlotInfo(true, false, inputSlotA));
         itemInfo.addSlotInfo(DataType.INPUT_2, new InventorySlotInfo(true, false, inputSlotB));
         itemInfo.addSlotInfo(AstralMekDataType.INPUT3, new InventorySlotInfo(true, false, inputSlotC));
-        itemInfo.addSlotInfo(AstralMekDataType.INPUT1_OUTPUT, new InventorySlotInfo(true, true,
-                inputSlotA, outputSlot));
-        itemInfo.addSlotInfo(AstralMekDataType.INPUT2_OUTPUT, new InventorySlotInfo(true, true,
-                inputSlotB, outputSlot));
-        itemInfo.addSlotInfo(AstralMekDataType.INPUT3_OUTPUT, new InventorySlotInfo(true, true,
-                inputSlotC, outputSlot));
         itemInfo.setCanEject(true);
         ConfigInfo fluidInfo = configComponent.getConfig(TransmissionType.FLUID);
         fluidInfo.addSlotInfo(DataType.INPUT, new FluidSlotInfo(true, false, inputTankA, inputTankB));
@@ -164,15 +158,6 @@ public abstract class BEAbstractTransformer extends TileEntityConfigurableMachin
                     } else {
                         return false;
                     }
-                })
-                .setCanInventorySlotEject((slot, type) -> {
-                    boolean result = slot == outputSlot;
-                    result &= type == DataType.OUTPUT
-                            || type == DataType.INPUT_OUTPUT
-                            || type == AstralMekDataType.INPUT1_OUTPUT
-                            || type == AstralMekDataType.INPUT2_OUTPUT
-                            || type == AstralMekDataType.INPUT3_OUTPUT;
-                    return result;
                 })
                 .setCanFluidTankEject((tank, type) -> {
                     boolean result = tank == outputTank;

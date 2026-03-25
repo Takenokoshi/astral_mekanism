@@ -118,14 +118,14 @@ public abstract class BEAbstractCompactMixingReactor extends TileEntityConfigura
                 (gas, a) -> rightFuel().getChemical() == gas,
                 gas -> rightFuel().getChemical() == gas,
                 ChemicalAttributeValidator.ALWAYS_ALLOW, listener));
-        builder.addTank(steamTank = ChemicalTankBuilder.GAS.output(tier.longValue, listener));
+        builder.addTank(steamTank = ChemicalTankBuilder.GAS.output(Math.max(tier.longValue, 0x7fffffff), listener));
         return builder.build();
     }
 
     @Override
     public IFluidTankHolder getInitialFluidTanks(IContentsListener listener) {
         FluidTankHelper builder = FluidTankHelper.forSideWithConfig(this::getDirection, this::getConfig);
-        builder.addTank(waterTank = BasicFluidTank.input((int) Math.min(0x7fffffff, tier.longValue),
+        builder.addTank(waterTank = BasicFluidTank.input(0x7fffffff,
                 stack -> stack.isFluidEqual(new FluidStack(Fluids.WATER, 1)), listener));
         return builder.build();
     }

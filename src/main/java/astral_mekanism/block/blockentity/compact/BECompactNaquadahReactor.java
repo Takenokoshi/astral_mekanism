@@ -46,7 +46,7 @@ public class BECompactNaquadahReactor extends BEAbstractCompactMixingReactor {
     protected void generateSteam(long usedFuel) {
         if (heatCapacitor.getTemperature() > 400 && !waterTank.isEmpty() && steamTank.getNeeded() > 1 && usedFuel > 0) {
             int amount = (int) Math.min(waterTank.getFluidAmount(), Math.min(
-                    (heatCapacitor.getHeat() - heatCapacitor.getHeatCapacity() * 400)
+                    (heatCapacitor.getHeat() - heatCapacitor.getHeatCapacity() * workableTemp())
                             / HeatUtils.getWaterThermalEnthalpy(),
                     Math.min(steamTank.getNeeded(), Math.min(usedFuel, 9223372036854l) * 1000000)));
             waterTank.shrinkStack(amount, Action.EXECUTE);
