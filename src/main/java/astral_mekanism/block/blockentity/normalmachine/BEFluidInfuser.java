@@ -32,7 +32,7 @@ public class BEFluidInfuser extends BEAbstractFluidInfuser {
         if (AMEEmpowered.empoweredIsLoaded()) {
             baselineMaxOperations = 5 << AMEEmpowered.getAllSpeeds(this);
         } else if (upgrade == Upgrade.SPEED) {
-            baselineMaxOperations = (int) Math.pow(2, upgradeComponent.getUpgrades(Upgrade.SPEED)) * 5;
+            baselineMaxOperations = 5 << upgradeComponent.getUpgrades(Upgrade.SPEED);
         }
     }
 }
