@@ -1,0 +1,20 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "key": {
+        "A": {
+            "item": "astral_mekanism:alloy_elastic"
+        },
+        "I": {
+            "item": "minecraft:composter"
+        }
+    },
+    "pattern": [
+        " A ",
+        "AIA",
+        " A "
+    ],
+    "result": {
+        "item": "astral_mekanism:mekanical_composter",
+        "count": 1
+    }
+}

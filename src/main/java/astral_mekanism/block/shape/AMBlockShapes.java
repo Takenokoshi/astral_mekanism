@@ -59,4 +59,9 @@ public final class AMBlockShapes {
             .addShape(4, 4, 14, 12, 12, 16)
             .addShape(4, 14, 4, 12, 16, 12)
             .build4();
+
+    public static final VoxelShape[] COMPOSTER = VoxelShapeBuilder.create()
+            .addShape(0, 0, 0, 16, 16, 16)
+            .removeShape(2, 2, 2, 14, 16, 14)
+            .build4();
 }

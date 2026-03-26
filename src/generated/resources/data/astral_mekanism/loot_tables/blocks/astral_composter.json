@@ -41,21 +41,6 @@
                 },
                 {
                   "op": "replace",
-                  "source": "EnergyContainers",
-                  "target": "mekData.EnergyContainers"
-                },
-                {
-                  "op": "replace",
-                  "source": "FluidTanks",
-                  "target": "mekData.FluidTanks"
-                },
-                {
-                  "op": "replace",
-                  "source": "GasTanks",
-                  "target": "mekData.GasTanks"
-                },
-                {
-                  "op": "replace",
                   "source": "Items",
                   "target": "mekData.Items"
                 }
@@ -63,12 +48,12 @@
               "source": "block_entity"
             }
           ],
-          "name": "astral_mekanism:essential_crafter"
+          "name": "astral_mekanism:astral_composter"
         }
       ],
       "name": "main",
       "rolls": 1.0
     }
   ],
-  "random_sequence": "astral_mekanism:blocks/essential_crafter"
+  "random_sequence": "astral_mekanism:blocks/astral_composter"
 }

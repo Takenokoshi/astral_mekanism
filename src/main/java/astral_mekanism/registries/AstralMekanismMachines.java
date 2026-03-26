@@ -17,6 +17,7 @@ import astral_mekanism.block.blockentity.astralmachine.BEAstralChemicalOxidizer;
 import astral_mekanism.block.blockentity.astralmachine.BEAstralChemicalWasher;
 import astral_mekanism.block.blockentity.astralmachine.BEAstralChemixer;
 import astral_mekanism.block.blockentity.astralmachine.BEAstralCombiner;
+import astral_mekanism.block.blockentity.astralmachine.BEAstralComposter;
 import astral_mekanism.block.blockentity.astralmachine.BEAstralCrystallizer;
 import astral_mekanism.block.blockentity.astralmachine.BEAstralDissolutionChamber;
 import astral_mekanism.block.blockentity.astralmachine.BEAstralElectrolyticSeparator;
@@ -66,6 +67,7 @@ import astral_mekanism.block.blockentity.normalmachine.BEInfuseSynthesizer;
 import astral_mekanism.block.blockentity.normalmachine.BEItemCompressor;
 import astral_mekanism.block.blockentity.normalmachine.BEItemUnzipper;
 import astral_mekanism.block.blockentity.normalmachine.BEMekanicalCharger;
+import astral_mekanism.block.blockentity.normalmachine.BEMekanicalComposter;
 import astral_mekanism.block.blockentity.normalmachine.BEMekanicalInscriber;
 import astral_mekanism.block.blockentity.normalmachine.BEMekanicalTransformer;
 import astral_mekanism.block.blockentity.normalmachine.BETransformer;
@@ -294,6 +296,14 @@ public class AstralMekanismMachines {
                             .withEnergyConfig(MekanismConfig.usage.combiner, MAX_SUPPLIER)
                             .changeAttributeUpgrade(EnumSet.of(Upgrade.MUFFLING, Upgrade.ENERGY))
                             .withSound(MekanismSounds.COMBINER));
+
+    public static final MachineRegistryObject<BEAstralComposter, BlockTileModel<BEAstralComposter, BlockTypeMachine<BEAstralComposter>>, MekanismTileContainer<BEAstralComposter>, ItemBlockMachine> ASTRAL_COMPOSTER = MACHINES
+            .registerSimple("astral_composter",
+                    BEAstralComposter::new,
+                    BEAstralComposter.class,
+                    AstralMekanismLang.DESCRIPTION_ASTRAL_MACHINE,
+                    builder -> builder.removeAttributeUpgrade()
+                            .withCustomShape(AMBlockShapes.COMPOSTER));
 
     public static final MachineRegistryObject<BEAstralCrystallizer, BlockTileModel<BEAstralCrystallizer, BlockTypeMachine<BEAstralCrystallizer>>, MekanismTileContainer<BEAstralCrystallizer>, ItemBlockMachine> ASTRAL_CRYSTALLIZER = MACHINES
             .registerSimple("astral_crystallizer",
@@ -687,6 +697,15 @@ public class AstralMekanismMachines {
                     builder -> builder
                             .withEnergyConfig(AstralMekanismConfig.usage.mekanicalCherger,
                                     AstralMekanismConfig.storage.mekanicalCherger));
+
+    public static final MachineRegistryObject<BEMekanicalComposter, BlockTileModel<BEMekanicalComposter, BlockTypeMachine<BEMekanicalComposter>>, MekanismTileContainer<BEMekanicalComposter>, ItemBlockMachine> MEKANICAL_COMPOSTER = MACHINES
+            .registerSimple("mekanical_composter",
+                    BEMekanicalComposter::new,
+                    BEMekanicalComposter.class,
+                    AstralMekanismLang.ITEM_GROUP,
+                    builder -> builder
+                            .changeAttributeUpgrade(EnumSet.of(Upgrade.SPEED))
+                            .withCustomShape(AMBlockShapes.COMPOSTER));
 
     public static final MachineRegistryObject<BEMekanicalInscriber, BlockTileModel<BEMekanicalInscriber, BlockTypeMachine<BEMekanicalInscriber>>, MekanismTileContainer<BEMekanicalInscriber>, ItemBlockMachine> MEKANICAL_INSCRIBER = MACHINES
             .registerSimple("mekanical_inscriber",

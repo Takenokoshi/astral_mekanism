@@ -3,6 +3,7 @@ package astral_mekanism;
 import astral_mekanism.block.blockentity.astralfactory.BEAstralEnergizedSmeltingFactory;
 import astral_mekanism.block.blockentity.astralmachine.BEAstralAPT;
 import astral_mekanism.block.blockentity.astralmachine.BEAstralCombiner;
+import astral_mekanism.block.blockentity.astralmachine.BEAstralComposter;
 import astral_mekanism.block.blockentity.astralmachine.BEAstralEnergizedSmelter;
 import astral_mekanism.block.blockentity.astralmachine.BEAstralFluidInfuser;
 import astral_mekanism.block.blockentity.astralmachine.BEAstralGNA;
@@ -32,6 +33,7 @@ import astral_mekanism.block.blockentity.normalmachine.BEOldGreenhouse;
 import astral_mekanism.block.blockentity.normalmachine.BEItemCompressor;
 import astral_mekanism.block.blockentity.normalmachine.BEItemUnzipper;
 import astral_mekanism.block.blockentity.normalmachine.BEMekanicalCharger;
+import astral_mekanism.block.blockentity.normalmachine.BEMekanicalComposter;
 import astral_mekanism.block.blockentity.normalmachine.BEMekanicalInscriber;
 import astral_mekanism.block.blockentity.normalmachine.BEMekanicalTransformer;
 import astral_mekanism.block.blockentity.normalmachine.BETransformer;
@@ -73,6 +75,7 @@ import astral_mekanism.block.gui.normalmachine.GuiGreenHouse;
 import astral_mekanism.block.gui.normalmachine.GuiOldGreenhouse;
 import astral_mekanism.block.gui.normalmachine.GuiInfuseSynthesizer;
 import astral_mekanism.block.gui.normalmachine.GuiMekanicalCharger;
+import astral_mekanism.block.gui.normalmachine.GuiMekanicalComposter;
 import astral_mekanism.block.gui.normalmachine.GuiMekanicalInscriber;
 import astral_mekanism.block.gui.normalmachine.GuiMekanicalTransformer;
 import astral_mekanism.block.gui.normalmachine.GuiTransformer;
@@ -148,6 +151,7 @@ public class AMEClient extends AstralMekanism {
         registerScreenMek(AstralMekanismMachines.ASTRAL_CHEMIXER, GuiAstralChemixer::new);
         registerScreenMek(AstralMekanismMachines.ASTRAL_COMBINER,
                 GuiDoubleItemToItemRecipeMachine<BEAstralCombiner>::new);
+        registerScreenMek(AstralMekanismMachines.ASTRAL_COMPOSTER, GuiMekanicalComposter<BEAstralComposter>::new);
         registerScreenMek(AstralMekanismMachines.ASTRAL_CRYSTALLIZER, GuiAstralCrystallizer::new);
         registerScreenMek(AstralMekanismMachines.ASTRAL_DISSOLUTION_CHAMBER, GuiAstralDissolutionChamber::new);
         registerScreenMek(AstralMekanismMachines.ASTRAL_ELECTROLYTIC_SEPARATOR, GuiAstralElectrolyticSeparator::new);
@@ -205,6 +209,7 @@ public class AMEClient extends AstralMekanism {
                 GuiItemToItemBlock<BEItemUnzipper>::new);
         registerScreenMek(AstralMekanismMachines.MEKANICAL_CHARGER,
                 GuiMekanicalCharger<BEMekanicalCharger>::new);
+        registerScreenMek(AstralMekanismMachines.MEKANICAL_COMPOSTER, GuiMekanicalComposter<BEMekanicalComposter>::new);
         registerScreenMek(AstralMekanismMachines.MEKANICAL_INSCRIBER, GuiMekanicalInscriber<BEMekanicalInscriber>::new);
         registerScreenMek(AstralMekanismMachines.MEKANICAL_TRANSFORMER,
                 GuiMekanicalTransformer<BEMekanicalTransformer>::new);

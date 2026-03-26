@@ -32,6 +32,8 @@ public final class AMEJEIRecipeType {
             AstralMekanismMachines.COMPACT_FUSION_REACTOR.get(AMETier.ASTRAL), MixingReactorJEIrecipe.class);
     public static final MekanismJEIRecipeType<MixingReactorJEIrecipe> NAQUADAH_REACTOR = new MekanismJEIRecipeType<>(
             AstralMekanismMachines.COMPACT_NAQUADAH_REACTOR.get(AMETier.ASTRAL), MixingReactorJEIrecipe.class);
+    public static final MekanismJEIRecipeType<MekanicalComposterJEIRecipe> MEKANICAL_COMPOSTER = new MekanismJEIRecipeType<>(
+            AstralMekanismMachines.MEKANICAL_COMPOSTER, MekanicalComposterJEIRecipe.class);
 
     public static final RecipeType<SmeltingRecipe> ESSENTIAL_SMELTING = RecipeType.create(AMEConstants.MODID,
             "essential_smelter", SmeltingRecipe.class);

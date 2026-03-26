@@ -2,6 +2,7 @@ package astral_mekanism.block.shape;
 
 import mekanism.common.util.VoxelShapeUtils;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.phys.shapes.BooleanOp;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
@@ -30,6 +31,11 @@ public class VoxelShapeBuilder {
 
     public VoxelShapeBuilder addShape(double fx, double fy, double fz, double tx, double ty, double tz) {
         shape = Shapes.or(shape, Block.box(fx, fy, fz, tx, ty, tz));
+        return this;
+    }
+
+    public VoxelShapeBuilder removeShape(double fx, double fy, double fz, double tx, double ty, double tz){
+        shape= Shapes.join(shape, Block.box(fx, fy, fz, tx, ty, tz), BooleanOp.ONLY_FIRST);
         return this;
     }
 

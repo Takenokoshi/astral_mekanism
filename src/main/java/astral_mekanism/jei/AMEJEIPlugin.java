@@ -15,6 +15,7 @@ import astral_mekanism.jei.recipeCategory.AstralCraftingRecipeCategory;
 import astral_mekanism.jei.recipeCategory.CropSoilRecipeCategory;
 import astral_mekanism.jei.recipeCategory.EssentialSmeltingRecipeCategory;
 import astral_mekanism.jei.recipeCategory.FluidInfuserRecipeCategory;
+import astral_mekanism.jei.recipeCategory.MekanicalComposterRecipeCategory;
 import astral_mekanism.jei.recipeCategory.MekanicalInscribingRecipeCategory;
 import astral_mekanism.jei.recipeCategory.MekanicalTransformRecipeCategory;
 import astral_mekanism.jei.recipeCategory.MixingReactorRecipeCategory;
@@ -80,6 +81,9 @@ public class AMEJEIPlugin implements IModPlugin {
                         new ItemStackToItemStackRecipeCategory(guiHelper,
                                 AMEJEIRecipeType.ITEM_UNZIPPING,
                                 AstralMekanismMachines.ITEM_UNZIPPER),
+                        new MekanicalComposterRecipeCategory(guiHelper,
+                                AMEJEIRecipeType.MEKANICAL_COMPOSTER,
+                                AstralMekanismMachines.MEKANICAL_COMPOSTER),
                         new MekanicalTransformRecipeCategory(guiHelper,
                                 AMEJEIRecipeType.MEKANICAL_TRANSFORM,
                                 AstralMekanismMachines.TRANSFORMER),
@@ -118,6 +122,8 @@ public class AMEJEIPlugin implements IModPlugin {
                 MixingReactorJEIrecipe.fusionRecipes);
         RecipeRegistryHelper.register(registry, AMEJEIRecipeType.NAQUADAH_REACTOR,
                 MixingReactorJEIrecipe.naquadahRecipes);
+        RecipeRegistryHelper.register(registry, AMEJEIRecipeType.MEKANICAL_COMPOSTER,
+                MekanicalComposterJEIRecipe.getRecipes());
         registry.addRecipes(AMEJEIRecipeType.ESSENTIAL_SMELTING,
                 GeneralRecipeType.SMELTING.getRecipes(Minecraft.getInstance().level));
         registry.addRecipes(AMEJEIRecipeType.MEKANICAL_INSCRIBING,
@@ -253,6 +259,8 @@ public class AMEJEIPlugin implements IModPlugin {
         registry.addRecipeCatalysts(AMEJEIRecipeType.CROP_SOIL,
                 AstralMekanismMachines.GREEN_HOUSE,
                 AstralMekanismMachines.ASTRAL_GREEN_HOUSE);
+        CatalystRegistryHelper.register(registry, AMEJEIRecipeType.MEKANICAL_COMPOSTER,
+                AstralMekanismMachines.MEKANICAL_COMPOSTER, AstralMekanismMachines.ASTRAL_COMPOSTER);
 
         // minecraft
         registry.addRecipeCatalysts(RecipeTypes.SMELTING,
@@ -261,6 +269,8 @@ public class AMEJEIPlugin implements IModPlugin {
                 AstralMekanismMachines.ASTRAL_ENERGIZED_SMELTING_FACTRIES.values().toArray(ItemLike[]::new));
         CatalystRegistryHelper.registerRecipeItem(registry, AstralMekanismMachines.ASTRAL_FORMULAIC_ASSEMBLICATOR,
                 MekanismJEIRecipeType.VANILLA_CRAFTING, RecipeTypes.CRAFTING);
+        registry.addRecipeCatalysts(RecipeTypes.COMPOSTING,
+                AstralMekanismMachines.MEKANICAL_COMPOSTER, AstralMekanismMachines.ASTRAL_COMPOSTER);
     }
 
     @Override
