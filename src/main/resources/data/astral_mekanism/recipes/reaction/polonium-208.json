@@ -3,25 +3,25 @@
     "duration": 100,
     "energyRequired": 200,
     "fluidInput": {
-        "fluid": "astral_mekanism:utility_fluid",
+        "tag": "minecraft:water",
         "amount": 100
     },
     "gasInput": {
-        "amount": 200,
-        "gas": "mekanism:oxygen"
+        "amount": 100,
+        "gas": "astral_mekanism:polonium_containing_utility_gas"
     },
     "gasOutput": {
-        "amount": 200,
-        "gas": "mekanism:sulfur_trioxide"
+        "amount": 1000,
+        "gas": "mekanism_extras:polonium-208"
     },
     "itemInput": {
         "ingredient": {
-            "tag": "forge:dusts/sulfur"
+            "item": "astral_mekanism:polonium_containing_utility_dust"
         },
-        "amount": 2
+        "amount": 1
     },
     "itemOutput": {
-        "count": 1,
+        "count": 2,
         "item": "astral_mekanism:utility_dust"
     }
 }

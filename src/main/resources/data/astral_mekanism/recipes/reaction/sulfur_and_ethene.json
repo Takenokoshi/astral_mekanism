@@ -4,24 +4,24 @@
     "energyRequired": 200,
     "fluidInput": {
         "tag": "minecraft:water",
-        "amount": 40
+        "amount": 10
     },
     "gasInput": {
-        "amount": 400,
+        "amount": 100,
         "gas": "mekanism:hydrogen"
     },
     "gasOutput": {
-        "amount": 600,
+        "amount": 400,
         "gas": "mekanism:ethene"
     },
     "itemInput": {
         "ingredient": {
             "item": "astral_mekanism:biomass_paste"
         },
-        "amount": 4
+        "amount": 1
     },
     "itemOutput": {
-        "count": 1,
+        "count": 2,
         "item": "mekanism:dust_sulfur"
     }
 }

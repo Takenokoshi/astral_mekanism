@@ -1,0 +1,15 @@
+{
+    "type": "mekanism:chemical_infusing",
+    "leftInput": {
+        "amount": 10000,
+        "gas": "mekanism_extras:polonium_containing_steam"
+    },
+    "output": {
+        "amount": 100,
+        "gas": "astral_mekanism:polonium_containing_utility_gas"
+    },
+    "rightInput": {
+        "amount": 100,
+        "gas": "astral_mekanism:utility_gas"
+    }
+}

@@ -53,6 +53,7 @@ public class AstralMekanismItems {
     public static final ItemRegistryObject<Item> FIRMAMENT_PROCESSOR_PRESS = ITEMS
             .register("firmament_processor_press");
     public static final ItemRegistryObject<Item> UTILITY_DUST = ITEMS.register("utility_dust");
+    public static final ItemRegistryObject<Item> POLONIUM_CONTAINING_UTILITY_DUST = ITEMS.register("polonium_containig_utility_dust");
     public static final ItemRegistryObject<Item> RIFINED_EMERALD_DUST = ITEMS.register("refined_emerald_dust");
     public static final ItemRegistryObject<Item> GOLDEN_REDSTONE = ITEMS.register("golden_redstone");
     public static final ItemRegistryObject<Item> AMETHYST_DUST = ITEMS.register("amethyst_dust");

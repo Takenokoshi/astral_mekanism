@@ -26,11 +26,9 @@ import astral_mekanism.block.blockentity.astralmachine.BEAstralFluidInfuser;
 import astral_mekanism.block.blockentity.astralmachine.BEAstralFormulaicAssemblicator;
 import astral_mekanism.block.blockentity.astralmachine.BEAstralGNA;
 import astral_mekanism.block.blockentity.astralmachine.BEAstralGreenHouse;
-import astral_mekanism.block.blockentity.astralmachine.BEOldAstralGreenhouse;
 import astral_mekanism.block.blockentity.astralmachine.BEAstralIsotopicCentrifuge;
 import astral_mekanism.block.blockentity.astralmachine.BEAstralMekanicalCharger;
 import astral_mekanism.block.blockentity.astralmachine.BEAstralMekanicalInscriber;
-import astral_mekanism.block.blockentity.astralmachine.BEAstralMekanicalTransformer;
 import astral_mekanism.block.blockentity.astralmachine.BEAstralMelter;
 import astral_mekanism.block.blockentity.astralmachine.BEAstralMetallurgicInfuser;
 import astral_mekanism.block.blockentity.astralmachine.BEAstralPRC;
@@ -62,14 +60,12 @@ import astral_mekanism.block.blockentity.normalmachine.BEFluidInfuser;
 import astral_mekanism.block.blockentity.normalmachine.BEGasSynthesizer;
 import astral_mekanism.block.blockentity.normalmachine.BEGlowstoneNeutronActivator;
 import astral_mekanism.block.blockentity.normalmachine.BEGreenHouse;
-import astral_mekanism.block.blockentity.normalmachine.BEOldGreenhouse;
 import astral_mekanism.block.blockentity.normalmachine.BEInfuseSynthesizer;
 import astral_mekanism.block.blockentity.normalmachine.BEItemCompressor;
 import astral_mekanism.block.blockentity.normalmachine.BEItemUnzipper;
 import astral_mekanism.block.blockentity.normalmachine.BEMekanicalCharger;
 import astral_mekanism.block.blockentity.normalmachine.BEMekanicalComposter;
 import astral_mekanism.block.blockentity.normalmachine.BEMekanicalInscriber;
-import astral_mekanism.block.blockentity.normalmachine.BEMekanicalTransformer;
 import astral_mekanism.block.blockentity.normalmachine.BETransformer;
 import astral_mekanism.block.blockentity.storage.BEItemSortableStorage;
 import astral_mekanism.block.blockentity.storage.BEUniversalStorage;
@@ -382,15 +378,6 @@ public class AstralMekanismMachines {
                             .withEnergyConfig(AstralMekanismConfig.usage.greenHouse, MAX_SUPPLIER)
                             .changeAttributeUpgrade(EnumSet.of(Upgrade.MUFFLING, Upgrade.ENERGY)));
 
-    public static final MachineRegistryObject<BEOldAstralGreenhouse, BlockTileModel<BEOldAstralGreenhouse, BlockTypeMachine<BEOldAstralGreenhouse>>, MekanismTileContainer<BEOldAstralGreenhouse>, ItemBlockMachine> ASTRAL_GREENHOUSE = MACHINES
-            .registerSimple("astral_greenhouse",
-                    BEOldAstralGreenhouse::new,
-                    BEOldAstralGreenhouse.class,
-                    AstralMekanismLang.DESCRIPTION_ASTRAL_MACHINE,
-                    builder -> builder
-                            .withEnergyConfig(AstralMekanismConfig.usage.greenHouse, MAX_SUPPLIER)
-                            .changeAttributeUpgrade(EnumSet.of(Upgrade.MUFFLING, Upgrade.ENERGY)));
-
     public static final MachineRegistryObject<BEAstralIsotopicCentrifuge, BlockTileModel<BEAstralIsotopicCentrifuge, BlockTypeMachine<BEAstralIsotopicCentrifuge>>, MekanismTileContainer<BEAstralIsotopicCentrifuge>, ItemBlockMachine> ASTRAL_ISOTOPIC_CENTRIFUGE = MACHINES
             .registerSimple("astral_isotopic_centrifuge",
                     BEAstralIsotopicCentrifuge::new,
@@ -417,15 +404,6 @@ public class AstralMekanismMachines {
                     AstralMekanismLang.DESCRIPTION_ASTRAL_MACHINE,
                     builder -> builder
                             .withEnergyConfig(AstralMekanismConfig.usage.mekanicalInscriber, MAX_SUPPLIER)
-                            .changeAttributeUpgrade(EnumSet.of(Upgrade.MUFFLING, Upgrade.ENERGY)));
-
-    public static final MachineRegistryObject<BEAstralMekanicalTransformer, BlockTileModel<BEAstralMekanicalTransformer, BlockTypeMachine<BEAstralMekanicalTransformer>>, MekanismTileContainer<BEAstralMekanicalTransformer>, ItemBlockMachine> ASTRAL_MEKANICAL_TRANSFOMER = MACHINES
-            .registerSimple("astral_mekanical_transformer",
-                    BEAstralMekanicalTransformer::new,
-                    BEAstralMekanicalTransformer.class,
-                    AstralMekanismLang.DESCRIPTION_ASTRAL_MACHINE,
-                    builder -> builder
-                            .withEnergyConfig(AstralMekanismConfig.usage.transformer, MAX_SUPPLIER)
                             .changeAttributeUpgrade(EnumSet.of(Upgrade.MUFFLING, Upgrade.ENERGY)));
 
     public static final MachineRegistryObject<BEAstralMelter, BlockTileModel<BEAstralMelter, BlockTypeMachine<BEAstralMelter>>, MekanismTileContainer<BEAstralMelter>, ItemBlockMachine> ASTRAL_THERMALIZER = MACHINES
@@ -516,8 +494,9 @@ public class AstralMekanismMachines {
                     BECompactAPT.class,
                     AstralMekanismLang.DESCRIPTION_COMPACT_MACHINE,
                     builder -> builder
+                            .withSound(MekanismSounds.SPS)
                             .withEnergyConfig(EMConfig.general.aptEnergyConsumption, EMConfig.general.aptEnergyStorage)
-                            .removeAttributeUpgrade());
+                            .changeAttributeUpgrade(EnumSet.of(Upgrade.MUFFLING)));
 
     public static final EnumMap<AMETier, MachineRegistryObject<BECompactFissionReactor, BlockTileModel<BECompactFissionReactor, BlockTypeMachine<BECompactFissionReactor>>, MekanismTileContainer<BECompactFissionReactor>, ItemBlockMachine>> COMPACT_FIR = registerMachines(
             tier -> tier.nameForNormal + "_compact_fir",
@@ -648,7 +627,7 @@ public class AstralMekanismMachines {
                     BEGlowstoneNeutronActivator::new,
                     BEGlowstoneNeutronActivator.class,
                     AstralMekanismLang.DESCRIPTION_GLOWSTONE_NEUTRON_ACTIVATOR,
-                    BlockMachineBuilder::removeAttributeUpgrade);
+                    builder -> builder.changeAttributeUpgrade(EnumSet.of(Upgrade.SPEED)));
 
     public static final MachineRegistryObject<BEGreenHouse, BlockTileModel<BEGreenHouse, BlockTypeMachine<BEGreenHouse>>, MekanismTileContainer<BEGreenHouse>, ItemBlockMachine> GREEN_HOUSE = MACHINES
             .registerSimple("green_house",
@@ -658,15 +637,6 @@ public class AstralMekanismMachines {
                             .withEnergyConfig(AstralMekanismConfig.usage.greenHouse,
                                     AstralMekanismConfig.storage.greenHouse)
                             .changeAttributeUpgrade(EnumSet.of(Upgrade.ENERGY, Upgrade.SPEED)));
-
-    public static final MachineRegistryObject<BEOldGreenhouse, BlockTileModel<BEOldGreenhouse, BlockTypeMachine<BEOldGreenhouse>>, MekanismTileContainer<BEOldGreenhouse>, ItemBlockMachine> GREENHOUSE = MACHINES
-            .registerSimple("greenhouse",
-                    BEOldGreenhouse::new,
-                    BEOldGreenhouse.class,
-                    AstralMekanismLang.DESCRIPTION_GREENHOUSE,
-                    builder -> builder
-                            .withEnergyConfig(AstralMekanismConfig.usage.greenHouse,
-                                    AstralMekanismConfig.storage.greenHouse));
 
     public static final MachineRegistryObject<BEInfuseSynthesizer, BlockTileModel<BEInfuseSynthesizer, BlockTypeMachine<BEInfuseSynthesizer>>, MekanismTileContainer<BEInfuseSynthesizer>, ItemBlockMachine> INFUSE_SYNTHESIZER = MACHINES
             .registerSimple("infuse_synthesizer",
@@ -715,15 +685,6 @@ public class AstralMekanismMachines {
                     builder -> builder
                             .withEnergyConfig(AstralMekanismConfig.usage.mekanicalInscriber,
                                     AstralMekanismConfig.storage.mekanicalInscriber));
-
-    public static final MachineRegistryObject<BEMekanicalTransformer, BlockTileModel<BEMekanicalTransformer, BlockTypeMachine<BEMekanicalTransformer>>, MekanismTileContainer<BEMekanicalTransformer>, ItemBlockMachine> MEKANICAL_TRANSFORMER = MACHINES
-            .registerSimple("mekanical_transformer",
-                    BEMekanicalTransformer::new,
-                    BEMekanicalTransformer.class,
-                    AstralMekanismLang.DESCRIPTION_MEKANICAL_TRANSFORMER,
-                    builder -> builder
-                            .withEnergyConfig(AstralMekanismConfig.usage.transformer,
-                                    AstralMekanismConfig.storage.transformer));
 
     public static final MachineRegistryObject<BETransformer, BlockTileModel<BETransformer, BlockTypeMachine<BETransformer>>, ContainerTransformer<BETransformer>, ItemBlockMachine> TRANSFORMER = MACHINES
             .registerDefaultBlockItem("transformer",

@@ -1,0 +1,15 @@
+{
+    "type": "mekanism:compressing",
+    "chemicalInput": {
+        "amount": 50,
+        "gas": "mekanism_extras:polonium_containing_steam"
+    },
+    "itemInput": {
+        "ingredient": {
+            "item": "astral_mekanism:utility_dust"
+        }
+    },
+    "output": {
+        "item": "astral_mekanism:polonium_containing_utility_dust"
+    }
+}

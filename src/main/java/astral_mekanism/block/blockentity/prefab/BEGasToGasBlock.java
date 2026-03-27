@@ -47,7 +47,7 @@ public abstract class BEGasToGasBlock extends TileEntityRecipeMachine<GasToGasRe
     protected IGasTank outputTank;
     protected GasInventorySlot inputSlot;
     protected GasInventorySlot outputSlot;
-    private int baselineMaxOperations = 1;
+    protected int baselineMaxOperations = 1;
 
     private final IOutputHandler<@NotNull GasStack> outputHandler;
     private final IInputHandler<@NotNull GasStack> inputHandler;
@@ -117,7 +117,7 @@ public abstract class BEGasToGasBlock extends TileEntityRecipeMachine<GasToGasRe
     @Nullable
     @Override
     public GasToGasRecipe getRecipe(int cacheIndex) {
-        return (GasToGasRecipe) findFirstRecipe(inputHandler);
+        return findFirstRecipe(inputHandler);
     }
 
     public abstract String getJEI();
