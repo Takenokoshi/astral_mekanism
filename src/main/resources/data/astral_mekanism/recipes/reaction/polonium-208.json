@@ -11,7 +11,7 @@
         "gas": "astral_mekanism:polonium_containing_utility_gas"
     },
     "gasOutput": {
-        "amount": 1000,
+        "amount": 2000,
         "gas": "mekanism_extras:polonium-208"
     },
     "itemInput": {
