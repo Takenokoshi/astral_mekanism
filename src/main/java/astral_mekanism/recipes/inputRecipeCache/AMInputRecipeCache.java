@@ -9,6 +9,7 @@ import mekanism.api.recipes.ingredients.FluidStackIngredient;
 import mekanism.api.recipes.ingredients.ItemStackIngredient;
 import mekanism.common.recipe.MekanismRecipeType;
 import mekanism.common.recipe.lookup.cache.DoubleInputRecipeCache;
+import mekanism.common.recipe.lookup.cache.EitherSideInputRecipeCache;
 import mekanism.common.recipe.lookup.cache.TripleInputRecipeCache;
 import mekanism.common.recipe.lookup.cache.type.FluidInputCache;
 import mekanism.common.recipe.lookup.cache.type.ItemInputCache;
@@ -30,14 +31,14 @@ public class AMInputRecipeCache {
     }
 
     public static class FluidFluid<RECIPE extends MekanismRecipe & BiPredicate<FluidStack, FluidStack>> extends
-            DoubleInputRecipeCache<FluidStack, FluidStackIngredient, FluidStack, FluidStackIngredient, RECIPE, FluidInputCache<RECIPE>, FluidInputCache<RECIPE>> {
+            EitherSideInputRecipeCache<FluidStack, FluidStackIngredient, RECIPE, FluidInputCache<RECIPE>> {
 
         public FluidFluid(MekanismRecipeType<RECIPE, ?> recipeType,
                 Function<RECIPE, FluidStackIngredient> inputAExtractor,
                 Function<RECIPE, FluidStackIngredient> inputBExtractor) {
-            super(recipeType, inputAExtractor, new FluidInputCache<>(), inputBExtractor,
-                    new FluidInputCache<>());
-        }
+            super(recipeType, inputAExtractor, inputBExtractor, new FluidInputCache<>());
+            }
+
     }
 
     public static class TripleItem<RECIPE extends MekanismRecipe & TriPredicate<ItemStack, ItemStack, ItemStack>>

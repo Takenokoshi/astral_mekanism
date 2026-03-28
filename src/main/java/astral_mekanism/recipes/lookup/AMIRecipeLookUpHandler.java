@@ -10,6 +10,7 @@ import astral_mekanism.recipes.inputRecipeCache.AMInputRecipeCache.TripleItem;
 import astral_mekanism.util.AMEInterface.QuadPredicate;
 import mekanism.api.recipes.MekanismRecipe;
 import mekanism.common.recipe.lookup.IDoubleRecipeLookupHandler;
+import mekanism.common.recipe.lookup.IEitherSideRecipeLookupHandler;
 import mekanism.common.recipe.lookup.ITripleRecipeLookupHandler;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.common.util.TriPredicate;
@@ -22,7 +23,8 @@ public class AMIRecipeLookUpHandler {
     }
 
     public static interface FluidFluidRecipeLookupHandler<RECIPE extends MekanismRecipe & BiPredicate<FluidStack, FluidStack>>
-            extends IDoubleRecipeLookupHandler<FluidStack, FluidStack, RECIPE, FluidFluid<RECIPE>> {
+            extends
+            IEitherSideRecipeLookupHandler<FluidStack, RECIPE, FluidFluid<RECIPE>> {
     }
 
     public static interface TripleItemRecipeLookUpHandler<RECIPE extends MekanismRecipe & TriPredicate<ItemStack, ItemStack, ItemStack>>
@@ -35,7 +37,8 @@ public class AMIRecipeLookUpHandler {
     }
 
     public static interface QuadrupleItemRecipeLookUpHandler<RECIPE extends MekanismRecipe & QuadPredicate<ItemStack, ItemStack, ItemStack, ItemStack>>
-            extends IQuadrupleRecipeLookUpHandler<ItemStack, ItemStack, ItemStack, ItemStack, RECIPE, QuadItem<RECIPE>> {
+            extends
+            IQuadrupleRecipeLookUpHandler<ItemStack, ItemStack, ItemStack, ItemStack, RECIPE, QuadItem<RECIPE>> {
     }
 
 }

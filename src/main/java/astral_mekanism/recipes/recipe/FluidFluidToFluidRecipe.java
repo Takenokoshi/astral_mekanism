@@ -13,56 +13,57 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.fluids.FluidStack;
 
 public abstract class FluidFluidToFluidRecipe extends MekanismRecipe
-		implements BiPredicate<@NotNull FluidStack, @NotNull FluidStack> {
+        implements BiPredicate<@NotNull FluidStack, @NotNull FluidStack> {
 
-	protected FluidFluidToFluidRecipe(ResourceLocation id, FluidStackIngredient inputFluidA,
-			FluidStackIngredient inputFluidB, FluidStack outputFluid) {
-		super(id);
-		this.inputFluidA = inputFluidA;
-		this.inputFluidB = inputFluidB;
-		this.outputFluid = outputFluid.copy();
-	}
+    protected FluidFluidToFluidRecipe(ResourceLocation id, FluidStackIngredient inputFluidA,
+            FluidStackIngredient inputFluidB, FluidStack outputFluid) {
+        super(id);
+        this.inputFluidA = inputFluidA;
+        this.inputFluidB = inputFluidB;
+        this.outputFluid = outputFluid.copy();
+    }
 
-	private final FluidStackIngredient inputFluidA;
-	private final FluidStackIngredient inputFluidB;
-	private final FluidStack outputFluid;
+    private final FluidStackIngredient inputFluidA;
+    private final FluidStackIngredient inputFluidB;
+    private final FluidStack outputFluid;
 
-	@Override
-	public boolean test(FluidStack input1, FluidStack input2) {
-		return (inputFluidA.test(input1) && inputFluidB.test(input2));
-	}
+    @Override
+    public boolean test(FluidStack input1, FluidStack input2) {
+        return (inputFluidA.test(input1) && inputFluidB.test(input2))
+                || (inputFluidA.test(input2) && inputFluidB.test(input1));
+    }
 
-	public FluidStack getOutput(FluidStack input1, FluidStack input2) {
-		return outputFluid.copy();
-	}
+    public FluidStack getOutput(FluidStack input1, FluidStack input2) {
+        return outputFluid.copy();
+    }
 
-	public FluidStackIngredient getInputA() {
-		return inputFluidA;
-	}
+    public FluidStackIngredient getInputA() {
+        return inputFluidA;
+    }
 
-	public FluidStackIngredient getInputB() {
-		return inputFluidB;
-	}
+    public FluidStackIngredient getInputB() {
+        return inputFluidB;
+    }
 
-	public List<FluidStack> getOutputDefinition(){
-		return Collections.singletonList(outputFluid);
-	}
+    public List<FluidStack> getOutputDefinition() {
+        return Collections.singletonList(outputFluid);
+    }
 
-	@Override
-	public boolean isIncomplete(){
-		return inputFluidA.hasNoMatchingInstances()||inputFluidB.hasNoMatchingInstances();
-	}
+    @Override
+    public boolean isIncomplete() {
+        return inputFluidA.hasNoMatchingInstances() || inputFluidB.hasNoMatchingInstances();
+    }
 
-	@Override
-	public void logMissingTags(){
-		inputFluidA.logMissingTags();
-		inputFluidB.logMissingTags();
-	}
+    @Override
+    public void logMissingTags() {
+        inputFluidA.logMissingTags();
+        inputFluidB.logMissingTags();
+    }
 
-	@Override
-	public void write(FriendlyByteBuf buffer){
-		inputFluidA.write(buffer);
-		inputFluidB.write(buffer);
-		outputFluid.writeToPacket(buffer);
-	}
+    @Override
+    public void write(FriendlyByteBuf buffer) {
+        inputFluidA.write(buffer);
+        inputFluidB.write(buffer);
+        outputFluid.writeToPacket(buffer);
+    }
 }

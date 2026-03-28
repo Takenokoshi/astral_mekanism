@@ -129,10 +129,10 @@ public abstract class BEAbstractFluidInfuser extends TileEntityRecipeMachine<Flu
             IContentsListener recipeCacheListener) {
         FluidTankHelper builder = FluidTankHelper.forSideWithConfig(this::getDirection, this::getConfig);
         builder.addTank(inputTankA = BasicFluidTank.input(getFluidTankCapacity(),
-                fluid -> containsRecipeAB(fluid, inputTankB.getFluid()), this::containsRecipeA,
+                fluid -> containsRecipe(fluid, inputTankB.getFluid()), this::containsRecipe,
                 recipeCacheListener));
         builder.addTank(inputTankB = BasicFluidTank.input(getFluidTankCapacity(),
-                fluid -> containsRecipeBA(inputTankA.getFluid(), fluid), this::containsRecipeB,
+                fluid -> containsRecipe(inputTankA.getFluid(), fluid), this::containsRecipe,
                 recipeCacheListener));
         builder.addTank(outputTank = BasicFluidTank.output(getFluidTankCapacity(), recipeCacheListener));
         return builder.build();

@@ -49,6 +49,7 @@ public class FluidInfuserRecipeCategory extends BaseRecipeCategory<FluidFluidToF
 		initFluid(builder, RecipeIngredientRole.INPUT, inputGaugeA, recipe.getInputA().getRepresentations());
 		initFluid(builder, RecipeIngredientRole.INPUT, inputGaugeB, recipe.getInputB().getRepresentations());
 		initFluid(builder, RecipeIngredientRole.OUTPUT, outputGauge, recipe.getOutputDefinition());
+        builder.setShapeless();
 	}
 
 }
