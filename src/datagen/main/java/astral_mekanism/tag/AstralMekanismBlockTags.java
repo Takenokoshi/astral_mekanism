@@ -7,6 +7,7 @@ import java.util.concurrent.CompletableFuture;
 import org.jetbrains.annotations.Nullable;
 
 import astral_mekanism.AMEConstants;
+import astral_mekanism.registries.AMEBlockDefinitions;
 import astral_mekanism.registries.AstralMekanismBlocks;
 import astral_mekanism.registries.AstralMekanismMachines;
 import mekanism.api.providers.IBlockProvider;
@@ -16,6 +17,7 @@ import net.minecraft.tags.BlockTags;
 import net.minecraft.world.level.block.Block;
 import net.minecraftforge.common.data.BlockTagsProvider;
 import net.minecraftforge.common.data.ExistingFileHelper;
+import net.pedroksl.ae2addonlib.registry.helpers.LibBlockDefinition;
 
 public class AstralMekanismBlockTags extends BlockTagsProvider {
 
@@ -30,7 +32,9 @@ public class AstralMekanismBlockTags extends BlockTagsProvider {
         MINEABLE_WITH_PICKAXE.addAll(AstralMekanismMachines.MACHINES.getAllMachines());
         MINEABLE_WITH_PICKAXE.addAll(AstralMekanismBlocks.BLOCKS.getAllBlocks());
         tag(BlockTags.MINEABLE_WITH_PICKAXE)
-                .add(MINEABLE_WITH_PICKAXE.stream().map(IBlockProvider::getBlock).toArray(Block[]::new));
+                .add(MINEABLE_WITH_PICKAXE.stream().map(IBlockProvider::getBlock).toArray(Block[]::new))
+                .add(AMEBlockDefinitions.INSTANCE.getBlocks().stream().map(LibBlockDefinition::block)
+                        .toArray(Block[]::new));
     }
 
 }

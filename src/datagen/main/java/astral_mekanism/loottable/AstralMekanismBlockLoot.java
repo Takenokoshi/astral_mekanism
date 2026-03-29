@@ -6,6 +6,7 @@ import java.util.Map.Entry;
 import java.util.Set;
 
 import astral_mekanism.registration.MachineRegistryObject;
+import astral_mekanism.registries.AMEBlockDefinitions;
 import astral_mekanism.registries.AstralMekanismBlocks;
 import astral_mekanism.registries.AstralMekanismMachines;
 import mekanism.api.NBTConstants;
@@ -44,6 +45,7 @@ import net.minecraft.world.level.storage.loot.providers.nbt.ContextNbtProvider;
 import net.minecraft.world.level.storage.loot.providers.nbt.NbtProvider;
 import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
 import net.minecraftforge.items.IItemHandler;
+import net.pedroksl.ae2addonlib.registry.helpers.LibBlockDefinition;
 
 public class AstralMekanismBlockLoot extends BlockLootSubProvider {
 
@@ -54,9 +56,10 @@ public class AstralMekanismBlockLoot extends BlockLootSubProvider {
     @Override
     protected void generate() {
         AstralMekanismMachines.MACHINES.getAllMachines().forEach(this::createMachineDrop);
-        AstralMekanismBlocks.BLOCKS.getAllBlocks().forEach(b->{
+        AstralMekanismBlocks.BLOCKS.getAllBlocks().forEach(b -> {
             dropSelf(b.getBlock());
         });
+        AMEBlockDefinitions.INSTANCE.getBlocks().forEach(this::createLibBlockDrop);
     }
 
     @Override
@@ -68,7 +71,17 @@ public class AstralMekanismBlockLoot extends BlockLootSubProvider {
         for (IBlockProvider blockProvider : AstralMekanismBlocks.BLOCKS.getAllBlocks()) {
             list.add(blockProvider.getBlock());
         }
+        for (LibBlockDefinition<?> definition : AMEBlockDefinitions.INSTANCE.getBlocks()) {
+            list.add(definition.block());
+        }
         return list;
+    }
+
+    private void createLibBlockDrop(LibBlockDefinition<?> definition) {
+        add(definition.block(), LootTable.lootTable().withPool(LootPool.lootPool()
+                .setRolls(ConstantValue.exactly(1))
+                .add(LootItem.lootTableItem(definition))
+                .when(ExplosionCondition.survivesExplosion())));
     }
 
     protected void createMachineDrop(MachineRegistryObject<?, ?, ?, ?> machine) {
@@ -118,20 +131,23 @@ public class AstralMekanismBlockLoot extends BlockLootSubProvider {
         }
         @SuppressWarnings("unchecked")
         AttributeInventory<DelayedLootItemBuilder> attributeInventory = Attribute.get(block, AttributeInventory.class);
-            if (attributeInventory != null) {
-                if (attributeInventory.hasCustomLoot()) {
-                    attributeInventory.applyLoot(delayedPool, nbtBuilder);
-                }
-                //If the block has an inventory and no custom loot function, copy the inventory slots,
-                // but if it is an IItemHandler, which for most cases of ours it will be,
-                // then only copy the slots if we actually have any slots because otherwise maybe something just went wrong
-                else if (!(be instanceof IItemHandler handler) || handler.getSlots() > 0) {
-                    //If we don't actually handle saving an inventory (such as the quantum entangloporter, don't actually add it as something to copy)
-                    if (!(be instanceof TileEntityMekanism tileMek) || tileMek.persistInventory()) {
-                        nbtBuilder.copy(NBTConstants.ITEMS, NBTConstants.MEK_DATA + "." + NBTConstants.ITEMS);
-                    }
+        if (attributeInventory != null) {
+            if (attributeInventory.hasCustomLoot()) {
+                attributeInventory.applyLoot(delayedPool, nbtBuilder);
+            }
+            // If the block has an inventory and no custom loot function, copy the inventory
+            // slots,
+            // but if it is an IItemHandler, which for most cases of ours it will be,
+            // then only copy the slots if we actually have any slots because otherwise
+            // maybe something just went wrong
+            else if (!(be instanceof IItemHandler handler) || handler.getSlots() > 0) {
+                // If we don't actually handle saving an inventory (such as the quantum
+                // entangloporter, don't actually add it as something to copy)
+                if (!(be instanceof TileEntityMekanism tileMek) || tileMek.persistInventory()) {
+                    nbtBuilder.copy(NBTConstants.ITEMS, NBTConstants.MEK_DATA + "." + NBTConstants.ITEMS);
                 }
             }
+        }
         if (nbtBuilder.hasData()) {
             itemLootPool.apply(nbtBuilder);
         }

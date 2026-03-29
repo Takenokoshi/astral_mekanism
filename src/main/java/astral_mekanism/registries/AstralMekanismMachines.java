@@ -56,6 +56,7 @@ import astral_mekanism.block.blockentity.normalfactory.BEEnergizedSmeltingFactor
 import astral_mekanism.block.blockentity.normalmachine.BEAstralCrafter;
 import astral_mekanism.block.blockentity.normalmachine.BEEssentialEnergizedSmelter;
 import astral_mekanism.block.blockentity.normalmachine.BEEssentialMetallurgicInfuser;
+import astral_mekanism.block.blockentity.normalmachine.BEEssentialOsmiumCompressor;
 import astral_mekanism.block.blockentity.normalmachine.BEFluidInfuser;
 import astral_mekanism.block.blockentity.normalmachine.BEGasSynthesizer;
 import astral_mekanism.block.blockentity.normalmachine.BEGlowstoneNeutronActivator;
@@ -67,7 +68,9 @@ import astral_mekanism.block.blockentity.normalmachine.BEMekanicalCharger;
 import astral_mekanism.block.blockentity.normalmachine.BEMekanicalComposter;
 import astral_mekanism.block.blockentity.normalmachine.BEMekanicalInscriber;
 import astral_mekanism.block.blockentity.normalmachine.BETransformer;
+import astral_mekanism.block.blockentity.storage.BEEvenlyInserter;
 import astral_mekanism.block.blockentity.storage.BEItemSortableStorage;
+import astral_mekanism.block.blockentity.storage.BERatioSeparator;
 import astral_mekanism.block.blockentity.storage.BEUniversalStorage;
 import astral_mekanism.block.blockentity.storage.BEXpTank;
 import astral_mekanism.block.container.astralmachine.ContainerAstralFAssemblicator;
@@ -606,6 +609,16 @@ public class AstralMekanismMachines {
                             .withCustomShape(BlockShapes.METALLURGIC_INFUSER)
                             .withSound(MekanismSounds.METALLURGIC_INFUSER));
 
+    public static final MachineRegistryObject<BEEssentialOsmiumCompressor, BlockTileModel<BEEssentialOsmiumCompressor, BlockTypeMachine<BEEssentialOsmiumCompressor>>, MekanismTileContainer<BEEssentialOsmiumCompressor>, ItemBlockMachine> ESSENTIAL_OSMIUM_COMPRESSOR = MACHINES
+            .registerSimple("essential_osmium_compressor",
+                    BEEssentialOsmiumCompressor::new,
+                    BEEssentialOsmiumCompressor.class,
+                    MekanismLang.DESCRIPTION_OSMIUM_COMPRESSOR,
+                    builder -> builder
+                            .withEnergyConfig(MekanismConfig.usage.osmiumCompressor,
+                                    MekanismConfig.storage.osmiumCompressor)
+                            .withSound(MekanismSounds.OSMIUM_COMPRESSOR));
+
     public static final MachineRegistryObject<BEFluidInfuser, BlockTileModel<BEFluidInfuser, BlockTypeMachine<BEFluidInfuser>>, MekanismTileContainer<BEFluidInfuser>, ItemBlockMachine> FLUID_INFUSER = MACHINES
             .registerSimple("fluid_infuser",
                     BEFluidInfuser::new,
@@ -696,6 +709,13 @@ public class AstralMekanismMachines {
                             .withEnergyConfig(AstralMekanismConfig.usage.transformer,
                                     AstralMekanismConfig.storage.transformer));
 
+    public static final MachineRegistryObject<BEEvenlyInserter, BlockTileModel<BEEvenlyInserter, BlockTypeMachine<BEEvenlyInserter>>, MekanismTileContainer<BEEvenlyInserter>, ItemBlockMachine> EVENLY_INSERTER = MACHINES
+            .registerSimple("evenly_inserter",
+                    BEEvenlyInserter::new,
+                    BEEvenlyInserter.class,
+                    AstralMekanismLang.ITEM_GROUP,
+                    BlockMachineBuilder::removeAttributeUpgrade);
+
     public static final MachineRegistryObject<BEUniversalStorage, BlockTileModel<BEUniversalStorage, BlockTypeMachine<BEUniversalStorage>>, ContainerAbstractStorage<BEUniversalStorage>, ItemBlockMachine> UNIVERSAL_STORAGE = MACHINES
             .registerDefaultBlockItem("universal_storage",
                     BEUniversalStorage::new,
@@ -711,6 +731,14 @@ public class AstralMekanismMachines {
                     ContainerItemSortableStorage<BEItemSortableStorage>::new,
                     AstralMekanismLang.DESCRIPTION_ITEM_SORTABLE_STORAGE,
                     builder -> builder.removeAttributeUpgrade());
+
+    public static final MachineRegistryObject<BERatioSeparator, BlockTileModel<BERatioSeparator, BlockTypeMachine<BERatioSeparator>>, ContainerPagedMachine<BERatioSeparator>, ItemBlockMachine> RATIO_SEPARATOR = MACHINES
+            .registerDefaultBlockItem("ratio_separator",
+                    BERatioSeparator::new,
+                    BERatioSeparator.class,
+                    ContainerPagedMachine<BERatioSeparator>::new,
+                    AstralMekanismLang.ITEM_GROUP,
+                    BlockMachineBuilder::removeAttributeUpgrade);
 
     public static final MachineRegistryObject<BEXpTank, BlockTileModel<BEXpTank, BlockTypeMachine<BEXpTank>>, MekanismTileContainer<BEXpTank>, ItemBlockMachine> XP_TANK = MACHINES
             .registerSimple("xp_tank",

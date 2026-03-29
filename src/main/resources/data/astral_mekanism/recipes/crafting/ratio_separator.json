@@ -1,0 +1,23 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "key": {
+        "A": {
+            "item": "minecraft:chest"
+        },
+        "C": {
+            "item": "astral_mekanism:alloy_elastic"
+        },
+        "B": {
+            "tag": "forge:ingots/bronze"
+        }
+    },
+    "pattern": [
+        "CBC",
+        "BAB",
+        "CBC"
+    ],
+    "result": {
+        "item": "astral_mekanism:ratio_separator",
+        "count": 1
+    }
+}

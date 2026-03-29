@@ -24,6 +24,7 @@ import astral_mekanism.block.blockentity.compact.BECompactNaquadahReactor;
 import astral_mekanism.block.blockentity.compact.BECompactSPS;
 import astral_mekanism.block.blockentity.normalfactory.BEEnergizedSmeltingFactory;
 import astral_mekanism.block.blockentity.normalmachine.BEEssentialEnergizedSmelter;
+import astral_mekanism.block.blockentity.normalmachine.BEEssentialOsmiumCompressor;
 import astral_mekanism.block.blockentity.normalmachine.BEFluidInfuser;
 import astral_mekanism.block.blockentity.normalmachine.BEGlowstoneNeutronActivator;
 import astral_mekanism.block.blockentity.normalmachine.BEGreenHouse;
@@ -64,6 +65,7 @@ import astral_mekanism.block.gui.generator.GuiGasBurningGenerator;
 import astral_mekanism.block.gui.generator.GuiHeatGenerator;
 import astral_mekanism.block.gui.normalmachine.GuiAstralCrafter;
 import astral_mekanism.block.gui.normalmachine.GuiEssentialEnergizedSmelter;
+import astral_mekanism.block.gui.normalmachine.GuiEssentialItemGasToItem;
 import astral_mekanism.block.gui.normalmachine.GuiEssentialMetallurgicInfuser;
 import astral_mekanism.block.gui.normalmachine.GuiFluidInfuser;
 import astral_mekanism.block.gui.normalmachine.GuiGasSynthesizer;
@@ -78,6 +80,8 @@ import astral_mekanism.block.gui.prefab.GuiDoubleItemToItemRecipeMachine;
 import astral_mekanism.block.gui.prefab.GuiGasToGasBlock;
 import astral_mekanism.block.gui.prefab.GuiGasToGasMachine;
 import astral_mekanism.block.gui.prefab.GuiItemToItemBlock;
+import astral_mekanism.block.gui.storage.GuiEvenlyInserter;
+import astral_mekanism.block.gui.storage.GuiRatioSeparator;
 import astral_mekanism.block.gui.storage.GuiXpTank;
 import astral_mekanism.registration.MachineRegistryObject;
 import astral_mekanism.registries.AstralMekanismFluids;
@@ -187,6 +191,7 @@ public class AMEClient extends AstralMekanism {
                 GuiEssentialEnergizedSmelter<BEEssentialEnergizedSmelter>::new);
         registerScreenMek(AstralMekanismMachines.ESSENTIAL_METALLURGIC_INFUSER,
                 GuiEssentialMetallurgicInfuser::new);
+        registerScreenMek(AstralMekanismMachines.ESSENTIAL_OSMIUM_COMPRESSOR, GuiEssentialItemGasToItem<BEEssentialOsmiumCompressor>::new);
         registerScreenMek(AstralMekanismMachines.FLUID_INFUSER, GuiFluidInfuser<BEFluidInfuser>::new);
         registerScreenMek(AstralMekanismMachines.GAS_SYNTHESIZER, GuiGasSynthesizer::new);
         registerScreenMek(AstralMekanismMachines.GLOWSTONE_NEUTRON_ACTIVATOR,
@@ -202,10 +207,12 @@ public class AMEClient extends AstralMekanism {
         registerScreenMek(AstralMekanismMachines.MEKANICAL_COMPOSTER, GuiMekanicalComposter<BEMekanicalComposter>::new);
         registerScreenMek(AstralMekanismMachines.MEKANICAL_INSCRIBER, GuiMekanicalInscriber<BEMekanicalInscriber>::new);
         registerScreenMek(AstralMekanismMachines.TRANSFORMER, GuiTransformer<BETransformer>::new);
+        registerScreenMek(AstralMekanismMachines.EVENLY_INSERTER, GuiEvenlyInserter::new);
         registerScreenMek(AstralMekanismMachines.UNIVERSAL_STORAGE,
                 GuiAbstractStorage<BEUniversalStorage, ContainerAbstractStorage<BEUniversalStorage>>::new);
         registerScreenMek(AstralMekanismMachines.ITEM_SORTABLE_STORAGE,
                 GuiAbstractStorage<BEItemSortableStorage, ContainerItemSortableStorage<BEItemSortableStorage>>::new);
+        registerScreenMek(AstralMekanismMachines.RATIO_SEPARATOR, GuiRatioSeparator::new);
         registerScreenMek(AstralMekanismMachines.XP_TANK, GuiXpTank::new);
     }
 

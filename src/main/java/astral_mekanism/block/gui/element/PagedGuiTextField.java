@@ -1,5 +1,7 @@
 package astral_mekanism.block.gui.element;
 
+import java.util.function.Consumer;
+
 import mekanism.client.gui.IGuiWrapper;
 import mekanism.client.gui.element.text.GuiTextField;
 
@@ -17,6 +19,11 @@ public class PagedGuiTextField extends GuiTextField implements IPagedGuiElement 
     public void setPage(int page) {
         visible = this.page == page;
         setVisible(visible);
+    }
+
+    public PagedGuiTextField configureDigitalInput(Consumer<String> consumer) {
+        super.configureDigitalInput(() -> consumer.accept(getText()));
+        return this;
     }
 
 }
