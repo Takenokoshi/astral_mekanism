@@ -91,7 +91,9 @@ public class GeneralRecipeType<C extends Container, RECIPE extends Recipe<C>, IN
         if (cachedRecipes.isEmpty()) {
             List<RECIPE> recipes = getRecipesUncached(world.getRecipeManager(), world.registryAccess());
             cachedRecipes = recipes.stream()
-                    .filter(recipe -> !recipe.isIncomplete() || recipe instanceof InscriberRecipe)
+                    .filter(recipe -> !recipe.isIncomplete()
+                            || recipe instanceof InscriberRecipe
+                            || recipe instanceof ReactionChamberRecipe)
                     .toList();
         }
         return cachedRecipes;

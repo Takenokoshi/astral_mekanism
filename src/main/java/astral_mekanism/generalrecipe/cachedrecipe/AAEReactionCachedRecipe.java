@@ -60,13 +60,18 @@ public class AAEReactionCachedRecipe extends GeneralCachedRecipe<ReactionChamber
                 fluidInputHandler.calculateOperationsCanSupport(tracker, fluidInput);
             }
             itemInputs = new ItemStack[itemStackIngredients.length];
-            for (int i = 0; i < itemStackIngredients.length; i++) {
-                itemInputs[i] = itemInputHandlers[i].getRecipeInput(itemStackIngredients[i]);
-                if (itemInputs[i].isEmpty()) {
+            for (int i = 0; i < itemInputHandlers.length; i++) {
+                if (i <= itemStackIngredients.length) {
+                    itemInputs[i] = itemInputHandlers[i].getRecipeInput(itemStackIngredients[i]);
+                    if (itemInputs[i].isEmpty()) {
+                        tracker.mismatchedRecipe();
+                        return;
+                    }
+                    itemInputHandlers[i].calculateOperationsCanSupport(tracker, itemInputs[i]);
+                } else if (!itemInputHandlers[i].getInput().isEmpty()) {
                     tracker.mismatchedRecipe();
                     return;
                 }
-                itemInputHandlers[i].calculateOperationsCanSupport(tracker, itemInputs[i]);
             }
             recipeOutput = new ItemFluidOutput(recipe.getResultItem(), recipe.getResultFluid());
             outputHandler.calculateOperationsCanSupport(tracker, recipeOutput);

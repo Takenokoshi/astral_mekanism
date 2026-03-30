@@ -42,7 +42,7 @@ public class AAEReactionRecipeCache extends GeneralInputRecipeCache<Container, R
         }
         initCacheIfNeeded(world);
         return complexRecipes.stream().filter(r -> {
-            if (index > r.inputs.size()) {
+            if (index >= r.inputs.size()) {
                 return false;
             }
             return r.inputs.get(index).test(itemStack);
@@ -118,7 +118,7 @@ public class AAEReactionRecipeCache extends GeneralInputRecipeCache<Container, R
                     if (itemStacks[i].isEmpty()) {
                         return false;
                     }
-                    if (!r.inputs.get(i).test(itemStacks[i])) {
+                    if (!r.inputs.get(i).getIngredient().test(itemStacks[i])) {
                         return false;
                     }
                 } else if (!itemStacks[i].isEmpty()) {// out of recipe inputs range, input stack must be empty.

@@ -1,5 +1,7 @@
 package astral_mekanism.block.blockentity.normalmachine;
 
+import java.util.List;
+
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -15,7 +17,9 @@ import astral_mekanism.integration.AMEEmpowered;
 import astral_mekanism.recipes.output.AMOutputHelper;
 import astral_mekanism.recipes.output.ItemFluidOutput;
 import mekanism.api.IContentsListener;
+import mekanism.api.RelativeSide;
 import mekanism.api.fluid.IExtendedFluidTank;
+import mekanism.api.inventory.IInventorySlot;
 import mekanism.api.math.FloatingLong;
 import mekanism.api.providers.IBlockProvider;
 import mekanism.api.recipes.cache.CachedRecipe.OperationTracker.RecipeError;
@@ -33,6 +37,9 @@ import mekanism.common.capabilities.holder.slot.InventorySlotHelper;
 import mekanism.common.inventory.slot.EnergyInventorySlot;
 import mekanism.common.inventory.slot.InputInventorySlot;
 import mekanism.common.inventory.slot.OutputInventorySlot;
+import mekanism.common.lib.transmitter.TransmissionType;
+import mekanism.common.tile.component.TileComponentConfig;
+import mekanism.common.tile.component.TileComponentEjector;
 import mekanism.common.util.MekanismUtils;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.item.ItemStack;
@@ -61,6 +68,14 @@ public class BEEssentialReactionChamber extends BlockEntityProgressMachine<React
     @SuppressWarnings("unchecked")
     public BEEssentialReactionChamber(IBlockProvider blockProvider, BlockPos pos, BlockState state) {
         super(blockProvider, pos, state, TRACKED_ERROR_TYPES, 10);
+        configComponent = new TileComponentConfig(this, TransmissionType.ITEM, TransmissionType.FLUID,
+                TransmissionType.ENERGY);
+        configComponent.setupItemIOConfig(List.<IInventorySlot>of(inputSlots), List.<IInventorySlot>of(outputSlot),
+                energySlot, false);
+        configComponent.setupIOConfig(TransmissionType.FLUID, inputTank, outputTank, RelativeSide.RIGHT);
+        configComponent.setupInputConfig(TransmissionType.ENERGY, energyContainer);
+        ejectorComponent = new TileComponentEjector(this, () -> 0x7fffffff)
+                .setOutputData(configComponent, TransmissionType.ITEM, TransmissionType.FLUID);
         itemHandlers = new IInputHandler[9];
         for (int index = 0; index < 9; index++) {
             itemHandlers[index] = InputHelper.getInputHandler(inputSlots[index], RecipeError.NOT_ENOUGH_INPUT);
