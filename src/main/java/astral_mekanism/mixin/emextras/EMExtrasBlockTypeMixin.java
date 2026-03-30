@@ -27,27 +27,27 @@ public class EMExtrasBlockTypeMixin {
 
     @Inject(method = "<clinit>", at = @At("TAIL"))
     private static void clinitInject(CallbackInfo ci) {
-        addSupportedUpgrade(EMExtrasBlockType.ALLOYER, AMEUpgrade.COBBLESTONE_SUPPLY);
-        addSupportedUpgrade(EMExtrasBlockType.ADVANCED_ALLOYER, AMEUpgrade.COBBLESTONE_SUPPLY);
-        addSupportedUpgrade(EMExtrasBlockType.ENERGIZED_SMELTER, AMEUpgrade.COBBLESTONE_SUPPLY);
-        addSupportedUpgrade(EMExtrasBlockType.ENRICHMENT_CHAMBER, AMEUpgrade.COBBLESTONE_SUPPLY);
-        addSupportedUpgrade(EMExtrasBlockType.CRUSHER, AMEUpgrade.COBBLESTONE_SUPPLY);
-        addSupportedUpgrade(EMExtrasBlockType.OSMIUM_COMPRESSOR, AMEUpgrade.COBBLESTONE_SUPPLY);
-        addSupportedUpgrade(EMExtrasBlockType.COMBINER, AMEUpgrade.COBBLESTONE_SUPPLY);
-        addSupportedUpgrade(EMExtrasBlockType.PURIFICATION_CHAMBER, AMEUpgrade.COBBLESTONE_SUPPLY);
-        addSupportedUpgrade(EMExtrasBlockType.CHEMICAL_INJECTION_CHAMBER, AMEUpgrade.COBBLESTONE_SUPPLY);
-        addSupportedUpgrade(EMExtrasBlockType.METALLURGIC_INFUSER, AMEUpgrade.COBBLESTONE_SUPPLY);
-        addSupportedUpgrade(EMExtrasBlockType.PRECISION_SAWMILL, AMEUpgrade.COBBLESTONE_SUPPLY);
+        addSupportedUpgrade(EMExtrasBlockType.ALLOYER, AMEUpgrade.COBBLESTONE_SUPPLY.getValue());
+        addSupportedUpgrade(EMExtrasBlockType.ADVANCED_ALLOYER, AMEUpgrade.COBBLESTONE_SUPPLY.getValue());
+        addSupportedUpgrade(EMExtrasBlockType.ENERGIZED_SMELTER, AMEUpgrade.COBBLESTONE_SUPPLY.getValue());
+        addSupportedUpgrade(EMExtrasBlockType.ENRICHMENT_CHAMBER, AMEUpgrade.COBBLESTONE_SUPPLY.getValue());
+        addSupportedUpgrade(EMExtrasBlockType.CRUSHER, AMEUpgrade.COBBLESTONE_SUPPLY.getValue());
+        addSupportedUpgrade(EMExtrasBlockType.OSMIUM_COMPRESSOR, AMEUpgrade.COBBLESTONE_SUPPLY.getValue());
+        addSupportedUpgrade(EMExtrasBlockType.COMBINER, AMEUpgrade.COBBLESTONE_SUPPLY.getValue());
+        addSupportedUpgrade(EMExtrasBlockType.PURIFICATION_CHAMBER, AMEUpgrade.COBBLESTONE_SUPPLY.getValue());
+        addSupportedUpgrade(EMExtrasBlockType.CHEMICAL_INJECTION_CHAMBER, AMEUpgrade.COBBLESTONE_SUPPLY.getValue());
+        addSupportedUpgrade(EMExtrasBlockType.METALLURGIC_INFUSER, AMEUpgrade.COBBLESTONE_SUPPLY.getValue());
+        addSupportedUpgrade(EMExtrasBlockType.PRECISION_SAWMILL, AMEUpgrade.COBBLESTONE_SUPPLY.getValue());
         for (EMExtraFactoryTier tier : EMExtraEnumUtils.EMEXTRA_FACTORY_TIERS) {
             for (EMExtraFactoryType type : EMExtraEnumUtils.EMEXTRA_FACTORY_TYPES) {
                 if (type != EMExtraFactoryType.ADVANCED_ALLOYING) {
-                    addSupportedUpgrade(EMExtrasBlockType.getEMExtraFactory(tier, type), AMEUpgrade.COBBLESTONE_SUPPLY);
+                    addSupportedUpgrade(EMExtrasBlockType.getEMExtraFactory(tier, type), AMEUpgrade.COBBLESTONE_SUPPLY.getValue());
                 }
             }
         }
         for (AdvancedFactoryTier tier : ExtraEnumUtils.ADVANCED_FACTORY_TIERS) {
             addSupportedUpgrade(EMExtrasBlockType.getAdvancedFactory(tier, EMFactoryType.ALLOYING),
-                    AMEUpgrade.COBBLESTONE_SUPPLY);
+                    AMEUpgrade.COBBLESTONE_SUPPLY.getValue());
         }
     }
 

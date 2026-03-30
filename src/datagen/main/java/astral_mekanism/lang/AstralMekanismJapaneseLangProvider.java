@@ -112,6 +112,7 @@ public class AstralMekanismJapaneseLangProvider extends LanguageProvider {
     private static String toTitle(String path) {
         path = path.contains("_compact_") ? "compact_" + path.replace("_compact_", "_") : path;
         path = path.contains("_naquadah_reactor") ? path.replace("_naquadah_reactor", "_ナクアダリアクター") : path;
+        path = path.contains("metallurgic_infuser") ? path.replace("metallurgic_infuser", "冶金吹込機") : path;
         String[] parts = path.split("_");
         StringBuilder sb = new StringBuilder();
         if (parts[0].equals("alloy")
@@ -120,7 +121,6 @@ public class AstralMekanismJapaneseLangProvider extends LanguageProvider {
                 || parts[0].equals("shard")
                 || parts[0].equals("dust")
                 || parts[0].equals("starlight")
-                || parts[0].equals("crushed")
                 || parts[0].equals("raw")) {// move first to last
             String moving = parts[0];
             for (int i = 0; i < parts.length - 1; i++) {
@@ -319,6 +319,8 @@ public class AstralMekanismJapaneseLangProvider extends LanguageProvider {
         result.put("ether", "エーテル");
         result.put("oleum", "発煙硫酸");
         result.put("polonium", "ポロニウム");
+        result.put("cobblestone", "丸石");
+        result.put("water", "水");
         // material states
         result.put("astral", "アストラル");
         result.put("ingot", "インゴット");
@@ -332,6 +334,7 @@ public class AstralMekanismJapaneseLangProvider extends LanguageProvider {
         result.put("enriched", "濃縮");
         result.put("control", "制御");
         result.put("circuit", "回路");
+        result.put("supply", "供給");
         result.put("upgrade", "アップグレード");
         result.put("starlight", "のための星の耀き");
         result.put("dirty", "汚れた");
@@ -360,6 +363,9 @@ public class AstralMekanismJapaneseLangProvider extends LanguageProvider {
         result.put("light", "ライト");
         result.put("cable", "ケーブル");
         result.put("bucket", "入りバケツ");
+        result.put("ratio", "比率");
+        result.put("evenly", "均等");
+        result.put("inserter", "搬入機構");
         return result;
     }).get();
 

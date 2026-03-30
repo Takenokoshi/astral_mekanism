@@ -99,9 +99,9 @@ public class AstralMekanismItems {
             "spacetime_modulation_core",
             p -> new GlintItem(p.rarity(Rarity.EPIC)));
     public static final ItemRegistryObject<ItemUpgrade> COBBLESTONE_SUPPLY_UPGRADE = registerUpgrade(
-            AMEUpgrade.COBBLESTONE_SUPPLY);
-    public static final ItemRegistryObject<ItemUpgrade> WATER_SUPPLY_UPGRADE = registerUpgrade(AMEUpgrade.WATER_SUPPLY);
-    public static final ItemRegistryObject<ItemUpgrade> XP_UPGRADE = registerUpgrade(AMEUpgrade.XP);
+            AMEUpgrade.COBBLESTONE_SUPPLY.getValue());
+    public static final ItemRegistryObject<ItemUpgrade> WATER_SUPPLY_UPGRADE = registerUpgrade(AMEUpgrade.WATER_SUPPLY.getValue());
+    public static final ItemRegistryObject<ItemUpgrade> XP_UPGRADE = registerUpgrade(AMEUpgrade.XP.getValue());
     public static final ItemRegistryObject<Item> INSERT_UPGRADE = ITEMS.register("insert_upgrade");
     public static final ItemRegistryObject<ItemSingularityUpgrade> SINGULARITY_UPGRADE = ITEMS
             .register("singularity_upgrade", ItemSingularityUpgrade::new);

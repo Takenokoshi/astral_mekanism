@@ -26,15 +26,15 @@ public class TileEntityMekanismMixin {
     @Inject(method = "onUpdateServer", at = @At("HEAD"))
     private void onUpdateServerInject(CallbackInfo ci) {
         if (((IUpgradeTile) (Object) this).supportsUpgrades()) {
-            if (upgradeComponent.isUpgradeInstalled(AMEUpgrade.COBBLESTONE_SUPPLY)) {
+            if (upgradeComponent.isUpgradeInstalled(AMEUpgrade.COBBLESTONE_SUPPLY.getValue())) {
                 ItemStack toInsert = Items.COBBLESTONE.getDefaultInstance();
                 toInsert.setCount(Math.min(Items.COBBLESTONE.getMaxStackSize(toInsert),
-                        (1 << upgradeComponent.getUpgrades(AMEUpgrade.COBBLESTONE_SUPPLY) * 2 - 1) - 1));
+                        (1 << upgradeComponent.getUpgrades(AMEUpgrade.COBBLESTONE_SUPPLY.getValue()) * 2 - 1) - 1));
                 ((TileEntityMekanism) (Object) this).getInventorySlots(null).forEach(slot -> {
                     slot.insertItem(toInsert, Action.EXECUTE, AutomationType.EXTERNAL);
                 });
             }
-            if (upgradeComponent.isUpgradeInstalled(AMEUpgrade.WATER_SUPPLY)) {
+            if (upgradeComponent.isUpgradeInstalled(AMEUpgrade.WATER_SUPPLY.getValue())) {
                 ((TileEntityMekanism) (Object) this).getFluidTanks(null).forEach(tank -> {
                     tank.insert(new FluidStack(Fluids.WATER, 0x7fffffff), Action.EXECUTE, AutomationType.EXTERNAL);
                 });

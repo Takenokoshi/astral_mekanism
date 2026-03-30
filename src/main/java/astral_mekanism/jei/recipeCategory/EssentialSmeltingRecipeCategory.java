@@ -12,22 +12,23 @@ import mekanism.client.gui.element.gauge.GuiInfusionGauge;
 import mekanism.client.gui.element.progress.ProgressType;
 import mekanism.client.gui.element.slot.GuiSlot;
 import mekanism.client.gui.element.slot.SlotType;
+import mekanism.client.jei.BaseRecipeCategory;
 import mekanism.client.jei.MekanismJEI;
+import mekanism.client.jei.MekanismJEIRecipeType;
 import mekanism.common.inventory.container.slot.SlotOverlay;
 import mekanism.common.tile.component.config.DataType;
 import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
 import mezz.jei.api.helpers.IGuiHelper;
 import mezz.jei.api.recipe.IFocusGroup;
 import mezz.jei.api.recipe.RecipeIngredientRole;
-import mezz.jei.api.recipe.RecipeType;
 import net.minecraft.world.item.crafting.SmeltingRecipe;
 
-public class EssentialSmeltingRecipeCategory extends BaseGeneralRecipeCategory<SmeltingRecipe> {
+public class EssentialSmeltingRecipeCategory extends BaseRecipeCategory<SmeltingRecipe>{
     private final GuiGauge<?> xpGauge;
     private final GuiSlot output;
     private final GuiSlot input;
 
-    public EssentialSmeltingRecipeCategory(IGuiHelper helper, RecipeType<SmeltingRecipe> recipeType,
+    public EssentialSmeltingRecipeCategory(IGuiHelper helper, MekanismJEIRecipeType<SmeltingRecipe> recipeType,
             IItemProvider provider) {
         super(helper, recipeType, provider, 28, 16, 144, 54);
         this.xpGauge = this

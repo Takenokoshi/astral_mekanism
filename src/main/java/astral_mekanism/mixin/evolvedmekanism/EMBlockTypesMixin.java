@@ -20,9 +20,9 @@ public class EMBlockTypesMixin {
 
     @Inject(method = "<clinit>", at = @At("TAIL"))
     private static void clinitInject(CallbackInfo ci) {
-        addSupportedUpgrade(EMBlockTypes.ALLOYER, AMEUpgrade.COBBLESTONE_SUPPLY);
-        addSupportedUpgrade(EMBlockTypes.CHEMIXER, AMEUpgrade.COBBLESTONE_SUPPLY);
-        addSupportedUpgrade(EMBlockTypes.MELTER, AMEUpgrade.COBBLESTONE_SUPPLY);
+        addSupportedUpgrade(EMBlockTypes.ALLOYER, AMEUpgrade.COBBLESTONE_SUPPLY.getValue());
+        addSupportedUpgrade(EMBlockTypes.CHEMIXER, AMEUpgrade.COBBLESTONE_SUPPLY.getValue());
+        addSupportedUpgrade(EMBlockTypes.MELTER, AMEUpgrade.COBBLESTONE_SUPPLY.getValue());
     }
 
     @Unique

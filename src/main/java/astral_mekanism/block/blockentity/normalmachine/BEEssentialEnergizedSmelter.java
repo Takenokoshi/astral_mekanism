@@ -140,7 +140,7 @@ public class BEEssentialEnergizedSmelter extends BlockEntityProgressMachine<Smel
     public @NotNull GeneralCachedRecipe<SmeltingRecipe> createNewCachedRecipe(@NotNull SmeltingRecipe recipe,
             int cacheIndex) {
         return new EssentialSmeltingCachedRecipe(recipe, recheckAllRecipeErrors, inputHandler, outputHandler,
-                () -> upgradeComponent.getUpgrades(AMEUpgrade.XP))
+                () -> upgradeComponent.getUpgrades(AMEUpgrade.XP.getValue()))
                 .setErrorsChanged(this::onErrorsChanged)
                 .setCanHolderFunction(() -> MekanismUtils.canFunction(this))
                 .setActive(this::setActive)

@@ -1,18 +1,14 @@
 package astral_mekanism.block.gui.normalmachine;
 
-import java.util.List;
-
 import org.jetbrains.annotations.NotNull;
 
 import astral_mekanism.block.blockentity.base.BlockEntityRecipeMachine;
 import astral_mekanism.block.blockentity.interf.IEssentialEnergizedSmelter;
-import astral_mekanism.jei.AMEJEIPlugin;
 import astral_mekanism.jei.AMEJEIRecipeType;
 import mekanism.api.recipes.cache.CachedRecipe.OperationTracker.RecipeError;
 import mekanism.client.gui.GuiConfigurableTile;
 import mekanism.client.gui.element.bar.GuiVerticalPowerBar;
 import mekanism.client.gui.element.button.GuiGasMode;
-import mekanism.client.gui.element.button.MekanismImageButton;
 import mekanism.client.gui.element.gauge.GaugeType;
 import mekanism.client.gui.element.gauge.GuiInfusionGauge;
 import mekanism.client.gui.element.progress.GuiProgress;
@@ -21,10 +17,8 @@ import mekanism.client.gui.element.tab.GuiEnergyTab;
 import mekanism.client.jei.MekanismJEIRecipeType;
 import mekanism.common.inventory.container.tile.MekanismTileContainer;
 import mekanism.common.inventory.warning.WarningTracker.WarningType;
-import mezz.jei.api.runtime.IJeiRuntime;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.item.crafting.SmeltingRecipe;
 
@@ -49,15 +43,8 @@ public class GuiEssentialEnergizedSmelter<BE extends BlockEntityRecipeMachine<Sm
         addRenderableWidget(new GuiProgress(tile::getProgressScaled, ProgressType.BAR, this, 82, 38))
                 .warning(WarningType.INPUT_DOESNT_PRODUCE_OUTPUT,
                         tile.getWarningCheck(RecipeError.INPUT_DOESNT_PRODUCE_OUTPUT))
-                .jeiCategories(MekanismJEIRecipeType.SMELTING);
+                .jeiCategories(AMEJEIRecipeType.ESSENTIAL_SMELTING, MekanismJEIRecipeType.SMELTING);
         addRenderableWidget(new GuiGasMode(this, 143, 76, true, tile::getGasMode, tile.getBlockPos(), 0));
-        addRenderableWidget(new MekanismImageButton(
-                this,
-                90, 53,
-                18, 18,
-                16, 16,
-                new ResourceLocation("minecraft", "textures/item/knowledge_book.png"),
-                GuiEssentialEnergizedSmelter::connectJEI));
     }
 
     @Override
@@ -65,14 +52,6 @@ public class GuiEssentialEnergizedSmelter<BE extends BlockEntityRecipeMachine<Sm
         renderTitleText(guiGraphics);
         drawString(guiGraphics, playerInventoryTitle, inventoryLabelX, inventoryLabelY, titleTextColor());
         super.drawForegroundText(guiGraphics, mouseX, mouseY);
-    }
-
-    public static void connectJEI() {
-        IJeiRuntime runtime = AMEJEIPlugin.getRuntime();
-        if (runtime == null)
-            return;
-        runtime.getRecipesGui().showTypes(
-                List.of(AMEJEIRecipeType.ESSENTIAL_SMELTING));
     }
 
 }

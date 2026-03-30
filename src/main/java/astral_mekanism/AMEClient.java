@@ -25,6 +25,7 @@ import astral_mekanism.block.blockentity.compact.BECompactSPS;
 import astral_mekanism.block.blockentity.normalfactory.BEEnergizedSmeltingFactory;
 import astral_mekanism.block.blockentity.normalmachine.BEEssentialEnergizedSmelter;
 import astral_mekanism.block.blockentity.normalmachine.BEEssentialOsmiumCompressor;
+import astral_mekanism.block.blockentity.normalmachine.BEEssentialReactionChamber;
 import astral_mekanism.block.blockentity.normalmachine.BEFluidInfuser;
 import astral_mekanism.block.blockentity.normalmachine.BEGlowstoneNeutronActivator;
 import astral_mekanism.block.blockentity.normalmachine.BEGreenHouse;
@@ -63,6 +64,7 @@ import astral_mekanism.block.gui.compact.GuiCompactTEP;
 import astral_mekanism.block.gui.factory.GuiEnergizedSmeltingFactory;
 import astral_mekanism.block.gui.generator.GuiGasBurningGenerator;
 import astral_mekanism.block.gui.generator.GuiHeatGenerator;
+import astral_mekanism.block.gui.normalmachine.GuiAAEReactionChamber;
 import astral_mekanism.block.gui.normalmachine.GuiAstralCrafter;
 import astral_mekanism.block.gui.normalmachine.GuiEssentialEnergizedSmelter;
 import astral_mekanism.block.gui.normalmachine.GuiEssentialItemGasToItem;
@@ -191,7 +193,10 @@ public class AMEClient extends AstralMekanism {
                 GuiEssentialEnergizedSmelter<BEEssentialEnergizedSmelter>::new);
         registerScreenMek(AstralMekanismMachines.ESSENTIAL_METALLURGIC_INFUSER,
                 GuiEssentialMetallurgicInfuser::new);
-        registerScreenMek(AstralMekanismMachines.ESSENTIAL_OSMIUM_COMPRESSOR, GuiEssentialItemGasToItem<BEEssentialOsmiumCompressor>::new);
+        registerScreenMek(AstralMekanismMachines.ESSENTIAL_OSMIUM_COMPRESSOR,
+                GuiEssentialItemGasToItem<BEEssentialOsmiumCompressor>::new);
+        registerScreenMek(AstralMekanismMachines.ESSENTIAL_REACTION_CHAMBER,
+                GuiAAEReactionChamber<BEEssentialReactionChamber>::new);
         registerScreenMek(AstralMekanismMachines.FLUID_INFUSER, GuiFluidInfuser<BEFluidInfuser>::new);
         registerScreenMek(AstralMekanismMachines.GAS_SYNTHESIZER, GuiGasSynthesizer::new);
         registerScreenMek(AstralMekanismMachines.GLOWSTONE_NEUTRON_ACTIVATOR,

@@ -25,17 +25,17 @@ public class MoreMachineBlockTypesMixin {
 
     @Inject(method = "<clinit>", at = @At("TAIL"))
     private static void clinitInject(CallbackInfo ci) {
-        addSupportedUpgrade(MoreMachineBlockTypes.RECYCLER, AMEUpgrade.COBBLESTONE_SUPPLY);
-        addSupportedUpgrade(MoreMachineBlockTypes.PLANTING_STATION, AMEUpgrade.COBBLESTONE_SUPPLY);
-        addSupportedUpgrade(MoreMachineBlockTypes.CNC_STAMPER, AMEUpgrade.COBBLESTONE_SUPPLY);
-        addSupportedUpgrade(MoreMachineBlockTypes.CNC_LATHE, AMEUpgrade.COBBLESTONE_SUPPLY);
-        addSupportedUpgrade(MoreMachineBlockTypes.CNC_ROLLING_MILL, AMEUpgrade.COBBLESTONE_SUPPLY);
-        addSupportedUpgrade(MoreMachineBlockTypes.REPLICATOR, AMEUpgrade.COBBLESTONE_SUPPLY);
-        addSupportedUpgrade(MoreMachineBlockTypes.FLUID_REPLICATOR, AMEUpgrade.WATER_SUPPLY);
+        addSupportedUpgrade(MoreMachineBlockTypes.RECYCLER, AMEUpgrade.COBBLESTONE_SUPPLY.getValue());
+        addSupportedUpgrade(MoreMachineBlockTypes.PLANTING_STATION, AMEUpgrade.COBBLESTONE_SUPPLY.getValue());
+        addSupportedUpgrade(MoreMachineBlockTypes.CNC_STAMPER, AMEUpgrade.COBBLESTONE_SUPPLY.getValue());
+        addSupportedUpgrade(MoreMachineBlockTypes.CNC_LATHE, AMEUpgrade.COBBLESTONE_SUPPLY.getValue());
+        addSupportedUpgrade(MoreMachineBlockTypes.CNC_ROLLING_MILL, AMEUpgrade.COBBLESTONE_SUPPLY.getValue());
+        addSupportedUpgrade(MoreMachineBlockTypes.REPLICATOR, AMEUpgrade.COBBLESTONE_SUPPLY.getValue());
+        addSupportedUpgrade(MoreMachineBlockTypes.FLUID_REPLICATOR, AMEUpgrade.WATER_SUPPLY.getValue());
         for (FactoryTier tier : EnumUtils.FACTORY_TIERS) {
             for (MoreMachineFactoryType type : MoreMachineEnumUtils.MM_FACTORY_TYPES) {
                 addSupportedUpgrade(MoreMachineBlockTypes.getMoreMachineFactory(tier, type),
-                        AMEUpgrade.COBBLESTONE_SUPPLY);
+                        AMEUpgrade.COBBLESTONE_SUPPLY.getValue());
             }
         }
     }

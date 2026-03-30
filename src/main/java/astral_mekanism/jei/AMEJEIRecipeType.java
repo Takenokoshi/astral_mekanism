@@ -1,5 +1,7 @@
 package astral_mekanism.jei;
 
+import appeng.integration.modules.jei.ChargerCategory;
+import appeng.recipes.handlers.ChargerRecipe;
 import appeng.recipes.handlers.InscriberRecipe;
 import appeng.recipes.transform.TransformRecipe;
 import astral_mekanism.AMEConstants;
@@ -14,6 +16,8 @@ import mekanism.api.recipes.ItemStackToItemStackRecipe;
 import mekanism.client.jei.MekanismJEIRecipeType;
 import mezz.jei.api.recipe.RecipeType;
 import net.minecraft.world.item.crafting.SmeltingRecipe;
+import net.pedroksl.advanced_ae.recipes.ReactionChamberRecipe;
+import net.pedroksl.advanced_ae.xmod.jei.ReactionChamberCategory;
 
 public final class AMEJEIRecipeType {
     public static final MekanismJEIRecipeType<FluidFluidToFluidRecipe> FLUID_INFUSER_RECIPE = new MekanismJEIRecipeType<>(
@@ -34,9 +38,13 @@ public final class AMEJEIRecipeType {
             AstralMekanismMachines.COMPACT_NAQUADAH_REACTOR.get(AMETier.ASTRAL), MixingReactorJEIrecipe.class);
     public static final MekanismJEIRecipeType<MekanicalComposterJEIRecipe> MEKANICAL_COMPOSTER = new MekanismJEIRecipeType<>(
             AstralMekanismMachines.MEKANICAL_COMPOSTER, MekanicalComposterJEIRecipe.class);
+    public static final MekanismJEIRecipeType<ReactionChamberRecipe> AAE_REACTION = new MekanismJEIRecipeType<>(
+            ReactionChamberCategory.RECIPE_TYPE.getUid(), ReactionChamberRecipe.class);
+    public static final MekanismJEIRecipeType<SmeltingRecipe> ESSENTIAL_SMELTING = new MekanismJEIRecipeType<>(
+            AMEConstants.rl("essential_smelter"), SmeltingRecipe.class);
+    public static final MekanismJEIRecipeType<ChargerRecipe> AE_CHARGER = new MekanismJEIRecipeType<>(
+            ChargerCategory.RECIPE_TYPE.getUid(), ChargerRecipe.class);
 
-    public static final RecipeType<SmeltingRecipe> ESSENTIAL_SMELTING = RecipeType.create(AMEConstants.MODID,
-            "essential_smelter", SmeltingRecipe.class);
     public static final RecipeType<InscriberRecipe> MEKANICAL_INSCRIBING = RecipeType.create(AMEConstants.MODID,
             "mekanical_inscriber", InscriberRecipe.class);
     public static final RecipeType<TransformRecipe> TRANSFORM = RecipeType.create(AMEConstants.MODID,

@@ -47,6 +47,7 @@ import mezz.jei.api.runtime.IJeiRuntime;
 import mezz.jei.api.runtime.IRecipesGui;
 import net.minecraft.client.Minecraft;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.level.ItemLike;
 
 @JeiPlugin
@@ -124,8 +125,8 @@ public class AMEJEIPlugin implements IModPlugin {
                 MixingReactorJEIrecipe.naquadahRecipes);
         RecipeRegistryHelper.register(registry, AMEJEIRecipeType.MEKANICAL_COMPOSTER,
                 MekanicalComposterJEIRecipe.getRecipes());
-        registry.addRecipes(AMEJEIRecipeType.ESSENTIAL_SMELTING,
-                GeneralRecipeType.SMELTING.getRecipes(Minecraft.getInstance().level));
+        RecipeRegistryHelper.register(registry, AMEJEIRecipeType.ESSENTIAL_SMELTING,
+                Minecraft.getInstance().level.getRecipeManager().getAllRecipesFor(RecipeType.SMELTING));
         registry.addRecipes(AMEJEIRecipeType.MEKANICAL_INSCRIBING,
                 GeneralRecipeType.INSCRIBE.getRecipes(Minecraft.getInstance().level));
         registry.addRecipes(AMEJEIRecipeType.TRANSFORM,
@@ -249,13 +250,13 @@ public class AMEJEIPlugin implements IModPlugin {
         CatalystRegistryHelper.register(registry, AMEJEIRecipeType.MEKANICAL_TRANSFORM,
                 AstralMekanismMachines.TRANSFORMER,
                 AstralMekanismMachines.ASTRAL_TRANSFORMER);
-        registry.addRecipeCatalysts(AMEJEIRecipeType.ESSENTIAL_SMELTING,
+        CatalystRegistryHelper.register(registry, AMEJEIRecipeType.ESSENTIAL_SMELTING,
                 AstralMekanismMachines.ESSENTIAL_ENERGIZED_SMELTER,
                 AstralMekanismMachines.ASTRAL_ENERGIZED_SMELTER);
-        registry.addRecipeCatalysts(AMEJEIRecipeType.ESSENTIAL_SMELTING,
-                AstralMekanismMachines.ENERGIZED_SMELTING_FACTORIES.values().toArray(ItemLike[]::new));
-        registry.addRecipeCatalysts(AMEJEIRecipeType.ESSENTIAL_SMELTING,
-                AstralMekanismMachines.ASTRAL_ENERGIZED_SMELTING_FACTRIES.values().toArray(ItemLike[]::new));
+        CatalystRegistryHelper.register(registry, AMEJEIRecipeType.ESSENTIAL_SMELTING,
+                AstralMekanismMachines.ENERGIZED_SMELTING_FACTORIES.values().toArray(IItemProvider[]::new));
+        CatalystRegistryHelper.register(registry, AMEJEIRecipeType.ESSENTIAL_SMELTING,
+                AstralMekanismMachines.ASTRAL_ENERGIZED_SMELTING_FACTRIES.values().toArray(IItemProvider[]::new));
         registry.addRecipeCatalysts(AMEJEIRecipeType.CROP_SOIL,
                 AstralMekanismMachines.GREEN_HOUSE,
                 AstralMekanismMachines.ASTRAL_GREEN_HOUSE);
