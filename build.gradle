@@ -162,9 +162,14 @@ dependencies {
     implementation fg.deobf("curse.maven:botany-pots-353928:7612402")
     implementation fg.deobf("curse.maven:bookshelf-228525:5423987")
     implementation fg.deobf("curse.maven:jade-324717:6855440")
+
+
     implementation fg.deobf("curse.maven:mekanism-empowered-1256390:7545276")
     implementation fg.deobf("curse.maven:mekanism-empowered-core-1256399:7545277")
     implementation fg.deobf("curse.maven:kotlin-for-forge-351264:7291067")
+    implementation fg.deobf("curse.maven:mekanism-more-machine-1275257:7485850")
+
+
     annotationProcessor "org.spongepowered:mixin:0.8.5:processor"
     compileOnly "org.spongepowered:mixin:0.8.5"
     compileOnly fg.deobf("curse.maven:jei-238222:6075247")

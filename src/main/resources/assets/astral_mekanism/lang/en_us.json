@@ -955,5 +955,11 @@
     "side_data.astral_mekanism.left_fuel": "Left Fuel",
     "side_data.astral_mekanism.right_fuel": "Right Fuel",
     "side_data.astral_mekanism.steam": "Steam",
+    "upgrade.astral_mekanism.cobblestone_supply": "Cobblestone Supply",
+    "upgrade.astral_mekanism.water_supply": "Water Supply",
+    "upgrade.astral_mekanism.xp": "Xp",
+    "upgrade.astral_mekanism.cobblestone_supply.description": "Supply Cobblestone to Machine's slots.\nThis only works if the target slot accepts cobblestone.",
+    "upgrade.astral_mekanism.water_supply.description": "Supply Water to Machine's fluid tanks.\nThis only works if the target tank accepts water.",
+    "upgrade.astral_mekanism.xp.description": "Increase Xp Produced By AME's Energized Smelters.",
     "item_group.astral_mekanism.modid": "Astral Mekanism & Energistics"
 }

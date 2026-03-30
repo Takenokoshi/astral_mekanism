@@ -28,7 +28,7 @@ public class BEGlowstoneNeutronActivator extends BEGasToGasBlock {
 
     @Override
     protected long tankCapacity() {
-        return 0x1000000;
+        return 0x100000000l;
     }
 
     @Override

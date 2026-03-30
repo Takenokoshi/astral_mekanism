@@ -11,6 +11,7 @@ import astral_mekanism.block.blockentity.elements.slot.paged.PagedInputInventory
 import astral_mekanism.block.blockentity.elements.slot.paged.PagedOutputInventorySlot;
 import astral_mekanism.block.blockentity.interf.IEnergizedSmeltingFactory;
 import astral_mekanism.block.blockentity.interf.IEssentialEnergizedSmelter;
+import astral_mekanism.enumexpansion.AMEUpgrade;
 import astral_mekanism.generalrecipe.GeneralRecipeType;
 import astral_mekanism.generalrecipe.IUnifiedRecipeTypeProvider;
 import astral_mekanism.generalrecipe.cachedrecipe.EssentialSmeltingCachedRecipe;
@@ -95,7 +96,7 @@ public class BEAstralEnergizedSmeltingFactory
     public @NotNull GeneralCachedRecipe<SmeltingRecipe> createNewCachedRecipe(@NotNull SmeltingRecipe recipe,
             int cacheIndex) {
         return new EssentialSmeltingCachedRecipe(recipe, recheckAllRecipeErrors[cacheIndex], inputHandlers[cacheIndex],
-                outputHandlers[cacheIndex])
+                outputHandlers[cacheIndex], () -> upgradeComponent.getUpgrades(AMEUpgrade.XP))
                 .setErrorsChanged(errors -> errorTracker.onErrorsChanged(errors, cacheIndex))
                 .setCanHolderFunction(() -> MekanismUtils.canFunction(this))
                 .setActive(active -> setActiveState(active, cacheIndex))

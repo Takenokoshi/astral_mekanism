@@ -9,6 +9,7 @@ import org.jetbrains.annotations.Nullable;
 import astral_mekanism.block.blockentity.base.BlockEntityRecipeMachine;
 import astral_mekanism.block.blockentity.elements.slot.DrainInfusionSlot;
 import astral_mekanism.block.blockentity.interf.IEssentialEnergizedSmelter;
+import astral_mekanism.enumexpansion.AMEUpgrade;
 import astral_mekanism.generalrecipe.GeneralRecipeType;
 import astral_mekanism.generalrecipe.IUnifiedRecipeTypeProvider;
 import astral_mekanism.generalrecipe.cachedrecipe.EssentialSmeltingCachedRecipe;
@@ -70,7 +71,8 @@ public class BEAstralEnergizedSmelter extends BlockEntityRecipeMachine<SmeltingR
 
     public BEAstralEnergizedSmelter(IBlockProvider blockProvider, BlockPos pos, BlockState state) {
         super(blockProvider, pos, state, TRACKED_ERROR_TYPES);
-        configComponent = new TileComponentConfig(this, TransmissionType.ITEM, TransmissionType.INFUSION,TransmissionType.ENERGY);
+        configComponent = new TileComponentConfig(this, TransmissionType.ITEM, TransmissionType.INFUSION,
+                TransmissionType.ENERGY);
         configComponent.setupItemIOExtraConfig(inputSlot, outputSlot, infusionSlot, energySlot);
         configComponent.setupOutputConfig(TransmissionType.INFUSION, infusionTank, RelativeSide.values());
         configComponent.setupInputConfig(TransmissionType.ENERGY, energyContainer);
@@ -134,13 +136,14 @@ public class BEAstralEnergizedSmelter extends BlockEntityRecipeMachine<SmeltingR
     @Override
     public @NotNull GeneralCachedRecipe<SmeltingRecipe> createNewCachedRecipe(@NotNull SmeltingRecipe recipe,
             int cacheIndex) {
-        return new EssentialSmeltingCachedRecipe(recipe, recheckAllRecipeErrors, inputHandler, outputHandler)
+        return new EssentialSmeltingCachedRecipe(recipe, recheckAllRecipeErrors, inputHandler, outputHandler,
+                () -> upgradeComponent.getUpgrades(AMEUpgrade.XP))
                 .setErrorsChanged(this::onErrorsChanged)
                 .setCanHolderFunction(() -> MekanismUtils.canFunction(this))
                 .setActive(this::setActive)
                 .setEnergyRequirements(energyContainer::getEnergyPerTick, energyContainer)
                 .setOnFinish(this::markForSave)
-                .setBaselineMaxOperations(()->0x7fffffff);
+                .setBaselineMaxOperations(() -> 0x7fffffff);
     }
 
     @Override
@@ -160,7 +163,7 @@ public class BEAstralEnergizedSmelter extends BlockEntityRecipeMachine<SmeltingR
 
     @Override
     public double getProgressScaled() {
-        return getActive()?1:0;
+        return getActive() ? 1 : 0;
     }
 
     @Override

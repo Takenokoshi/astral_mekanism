@@ -4,10 +4,13 @@ import java.util.EnumMap;
 import java.util.function.Supplier;
 
 import astral_mekanism.AMEConstants;
+import astral_mekanism.enumexpansion.AMEUpgrade;
 import astral_mekanism.items.GlintItem;
 import astral_mekanism.items.GlintItemNameColored;
 import astral_mekanism.items.upgrade.ItemSingularityUpgrade;
+import mekanism.api.Upgrade;
 import mekanism.api.text.EnumColor;
+import mekanism.common.item.ItemUpgrade;
 import mekanism.common.registration.impl.ItemDeferredRegister;
 import mekanism.common.registration.impl.ItemRegistryObject;
 import mekanism.common.registries.MekanismItems;
@@ -53,7 +56,8 @@ public class AstralMekanismItems {
     public static final ItemRegistryObject<Item> FIRMAMENT_PROCESSOR_PRESS = ITEMS
             .register("firmament_processor_press");
     public static final ItemRegistryObject<Item> UTILITY_DUST = ITEMS.register("utility_dust");
-    public static final ItemRegistryObject<Item> POLONIUM_CONTAINING_UTILITY_DUST = ITEMS.register("polonium_containing_utility_dust");
+    public static final ItemRegistryObject<Item> POLONIUM_CONTAINING_UTILITY_DUST = ITEMS
+            .register("polonium_containing_utility_dust");
     public static final ItemRegistryObject<Item> RIFINED_EMERALD_DUST = ITEMS.register("refined_emerald_dust");
     public static final ItemRegistryObject<Item> GOLDEN_REDSTONE = ITEMS.register("golden_redstone");
     public static final ItemRegistryObject<Item> AMETHYST_DUST = ITEMS.register("amethyst_dust");
@@ -94,6 +98,10 @@ public class AstralMekanismItems {
     public static final ItemRegistryObject<GlintItem> SPACETIME_MODULATION_CORE = ITEMS.register(
             "spacetime_modulation_core",
             p -> new GlintItem(p.rarity(Rarity.EPIC)));
+    public static final ItemRegistryObject<ItemUpgrade> COBBLESTONE_SUPPLY_UPGRADE = registerUpgrade(
+            AMEUpgrade.COBBLESTONE_SUPPLY);
+    public static final ItemRegistryObject<ItemUpgrade> WATER_SUPPLY_UPGRADE = registerUpgrade(AMEUpgrade.WATER_SUPPLY);
+    public static final ItemRegistryObject<ItemUpgrade> XP_UPGRADE = registerUpgrade(AMEUpgrade.XP);
     public static final ItemRegistryObject<Item> INSERT_UPGRADE = ITEMS.register("insert_upgrade");
     public static final ItemRegistryObject<ItemSingularityUpgrade> SINGULARITY_UPGRADE = ITEMS
             .register("singularity_upgrade", ItemSingularityUpgrade::new);
@@ -160,6 +168,10 @@ public class AstralMekanismItems {
         }
         return result;
     }).get();
+
+    private static ItemRegistryObject<ItemUpgrade> registerUpgrade(Upgrade type) {
+        return ITEMS.register(type.getRawName() + "_upgrade", properties -> new ItemUpgrade(type, properties));
+    }
 
     public static enum IntermediateState {
         CLUMP("clump"),

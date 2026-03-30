@@ -1,6 +1,7 @@
 package astral_mekanism.generalrecipe.cachedrecipe;
 
 import java.util.function.BooleanSupplier;
+import java.util.function.IntSupplier;
 
 import org.jetbrains.annotations.Nullable;
 
@@ -21,13 +22,15 @@ public class EssentialSmeltingCachedRecipe extends GeneralCachedRecipe<SmeltingR
     private final IInputHandler<ItemStack> inputHandler;
     private final IOutputHandler<ItemInfuseOutput> outputHandler;
     private final ItemStackIngredient inputIngredient;
+    private final IntSupplier xpUpgrade;
     @Nullable
     private ItemStack recipeInput;
     @Nullable
     private ItemInfuseOutput recipeOutput;
 
     public EssentialSmeltingCachedRecipe(SmeltingRecipe recipe, BooleanSupplier recheckAllErrors,
-            IInputHandler<ItemStack> inputHandler, IOutputHandler<ItemInfuseOutput> outputHandler) {
+            IInputHandler<ItemStack> inputHandler, IOutputHandler<ItemInfuseOutput> outputHandler,
+            IntSupplier xpUpgrade) {
         super(recipe, recheckAllErrors);
         this.inputHandler = inputHandler;
         this.outputHandler = outputHandler;
@@ -36,6 +39,7 @@ public class EssentialSmeltingCachedRecipe extends GeneralCachedRecipe<SmeltingR
                 recipe.getIngredients().stream()
                         .map(creator::from)
                         .toArray(ItemStackIngredient[]::new));
+        this.xpUpgrade = xpUpgrade;
     }
 
     @Override
@@ -46,7 +50,7 @@ public class EssentialSmeltingCachedRecipe extends GeneralCachedRecipe<SmeltingR
             if (inputStack.isEmpty()) {
                 tracker.mismatchedRecipe();
             } else {
-                long xp = (long) (recipe.getExperience() * 100);
+                long xp = (long) (recipe.getExperience() * 100 * (1l << xpUpgrade.getAsInt() * 2));
                 recipeInput = inputHandler.getRecipeInput(inputIngredient);
                 recipeOutput = new ItemInfuseOutput(recipe.getResultItem(null),
                         xp <= 0 ? InfusionStack.EMPTY : AstralMekanismInfuseTypes.XP.getStack(xp));

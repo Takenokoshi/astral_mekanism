@@ -9,6 +9,7 @@ import org.jetbrains.annotations.Nullable;
 import astral_mekanism.block.blockentity.base.BlockEntityProgressMachine;
 import astral_mekanism.block.blockentity.elements.slot.DrainInfusionSlot;
 import astral_mekanism.block.blockentity.interf.IEssentialEnergizedSmelter;
+import astral_mekanism.enumexpansion.AMEUpgrade;
 import astral_mekanism.generalrecipe.GeneralRecipeType;
 import astral_mekanism.generalrecipe.IUnifiedRecipeTypeProvider;
 import astral_mekanism.generalrecipe.cachedrecipe.EssentialSmeltingCachedRecipe;
@@ -73,7 +74,8 @@ public class BEEssentialEnergizedSmelter extends BlockEntityProgressMachine<Smel
 
     public BEEssentialEnergizedSmelter(IBlockProvider blockProvider, BlockPos pos, BlockState state) {
         super(blockProvider, pos, state, TRACKED_ERROR_TYPES, 200);
-        configComponent = new TileComponentConfig(this, TransmissionType.ITEM, TransmissionType.INFUSION,TransmissionType.ENERGY);
+        configComponent = new TileComponentConfig(this, TransmissionType.ITEM, TransmissionType.INFUSION,
+                TransmissionType.ENERGY);
         configComponent.setupItemIOExtraConfig(inputSlot, outputSlot, infusionSlot, energySlot);
         configComponent.setupOutputConfig(TransmissionType.INFUSION, infusionTank, RelativeSide.values());
         configComponent.setupInputConfig(TransmissionType.ENERGY, energyContainer);
@@ -137,7 +139,8 @@ public class BEEssentialEnergizedSmelter extends BlockEntityProgressMachine<Smel
     @Override
     public @NotNull GeneralCachedRecipe<SmeltingRecipe> createNewCachedRecipe(@NotNull SmeltingRecipe recipe,
             int cacheIndex) {
-        return new EssentialSmeltingCachedRecipe(recipe, recheckAllRecipeErrors, inputHandler, outputHandler)
+        return new EssentialSmeltingCachedRecipe(recipe, recheckAllRecipeErrors, inputHandler, outputHandler,
+                () -> upgradeComponent.getUpgrades(AMEUpgrade.XP))
                 .setErrorsChanged(this::onErrorsChanged)
                 .setCanHolderFunction(() -> MekanismUtils.canFunction(this))
                 .setActive(this::setActive)
