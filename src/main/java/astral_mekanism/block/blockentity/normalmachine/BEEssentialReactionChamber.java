@@ -134,6 +134,12 @@ public class BEEssentialReactionChamber extends BlockEntityProgressMachine<React
     }
 
     @Override
+    protected void onUpdateServer() {
+        super.onUpdateServer();
+        recipeCacheLookupMonitor.updateAndProcess();
+    }
+
+    @Override
     public @NotNull IUnifiedRecipeTypeProvider<ReactionChamberRecipe, AAEReactionRecipeCache> getRecipeType() {
         return GeneralRecipeType.AAE_REACTION;
     }
