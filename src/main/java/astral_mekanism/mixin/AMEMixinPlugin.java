@@ -7,6 +7,8 @@ import org.objectweb.asm.tree.ClassNode;
 import org.spongepowered.asm.mixin.extensibility.IMixinConfigPlugin;
 import org.spongepowered.asm.mixin.extensibility.IMixinInfo;
 
+import net.minecraftforge.fml.loading.LoadingModList;
+
 public class AMEMixinPlugin implements IMixinConfigPlugin {
 
     @Override
@@ -20,17 +22,8 @@ public class AMEMixinPlugin implements IMixinConfigPlugin {
 
     @Override
     public boolean shouldApplyMixin(String targetClassName, String mixinClassName) {
-        if (mixinClassName.startsWith("astral_mekanism.mixin.mekmm")) {
-            return isClassPresent(targetClassName);
-        }
-        return true;
-    }
-
-    private boolean isClassPresent(String className) {
-        try {
-            Class.forName(className, false, Thread.currentThread().getContextClassLoader());
-        } catch (ClassNotFoundException e) {
-            return false;
+        if (mixinClassName.contains(".mekmm.")) {
+            return LoadingModList.get().getModFileById("mekmm") != null;
         }
         return true;
     }
