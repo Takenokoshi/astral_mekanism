@@ -17,7 +17,7 @@ public enum AMEUpgrade {
     ;
 
     private static final Map<Upgrade, AMEUpgrade> map = new HashMap<>();// don't use EnumMap.
-    private static final String AME_UPGRADE_NBT = "ame_upgrades";
+    public static final String AME_UPGRADE_NBT = "ame_upgrades";
     private static final AMEUpgrade[] AME_UPGRADES = values();
 
     private Upgrade upgrade;
