@@ -1,5 +1,6 @@
 package astral_mekanism.block.blockentity.normalmachine;
 
+import java.util.Arrays;
 import java.util.List;
 
 import org.jetbrains.annotations.NotNull;
@@ -94,8 +95,8 @@ public class BEEssentialReactionChamber extends BlockEntityProgressMachine<React
         for (int i = 0; i < 9; i++) {
             int p = i;
             builder.addSlot(inputSlots[p] = InputInventorySlot.at(
-                    stack -> containsItemOtherByIndex(stack, p, getSlotItems(), inputTank.getFluid()),
-                    stack -> containsItemByIndex(stack, p),
+                    stack -> containsItemOther(stack, getItems(), inputTank.getFluid()),
+                    this::containsItem,
                     recipeCacheListener, p % 3 * 18 + 28, p / 3 * 18 + 17));
         }
         builder.addSlot(outputSlot = OutputInventorySlot.at(listener, 116, 35));
@@ -110,7 +111,7 @@ public class BEEssentialReactionChamber extends BlockEntityProgressMachine<React
             IContentsListener recipeCacheListener) {
         FluidTankHelper builder = FluidTankHelper.forSideWithConfig(this::getDirection, this::getConfig);
         builder.addTank(inputTank = BasicFluidTank.input(40000,
-                stack -> containsFluidOther(getSlotItems(), stack),
+                stack -> containsFluidOther(getItems(), stack),
                 this::containsFluid, recipeCacheListener));
         builder.addTank(outputTank = BasicFluidTank.output(40000, listener));
         return builder.build();
@@ -133,6 +134,10 @@ public class BEEssentialReactionChamber extends BlockEntityProgressMachine<React
         return result;
     }
 
+    private List<ItemStack> getItems() {
+        return Arrays.stream(inputSlots).map(IInventorySlot::getStack).filter(stack -> !stack.isEmpty()).toList();
+    }
+
     @Override
     protected void onUpdateServer() {
         super.onUpdateServer();
@@ -146,7 +151,7 @@ public class BEEssentialReactionChamber extends BlockEntityProgressMachine<React
 
     @Override
     public @Nullable ReactionChamberRecipe getRecipe(int cacheIndex) {
-        return findFirstRecipe(itemHandlers, fluidHandler);
+        return findFirstRecipe(List.of(itemHandlers), fluidHandler);
     }
 
     @Override

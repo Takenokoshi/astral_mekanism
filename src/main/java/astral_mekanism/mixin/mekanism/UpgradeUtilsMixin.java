@@ -31,5 +31,10 @@ public class UpgradeUtilsMixin {
             cir.cancel();
             return;
         }
+        if (upgrade==AMEUpgrade.RADIOACTIVE_SEALING.getValue()) {
+            cir.setReturnValue(AstralMekanismItems.RADIOACTIVE_SEALING_UPGRADE.getItemStack(count));
+            cir.cancel();
+            return;
+        }
     }
 }

@@ -23,35 +23,32 @@ public interface IAAEReactionChamber<BE extends BlockEntityRecipeMachine<Reactio
             RecipeError.NOT_ENOUGH_SECONDARY_INPUT,
             RecipeError.NOT_ENOUGH_OUTPUT_SPACE);
 
-    default boolean containsItemByIndex(ItemStack stack, int index) {
-        return getRecipeType().getInputCache().containsItemByIndex(getHandlerWorld(), stack, index);
+    default boolean containsItem(ItemStack stack) {
+        return getRecipeType().getInputCache().containsItem(getHandlerWorld(), stack);
     }
 
     default boolean containsFluid(FluidStack stack) {
         return getRecipeType().getInputCache().containsFluid(getHandlerWorld(), stack);
     }
 
-    default boolean containsItemOtherByIndex(ItemStack itemStack, int index, ItemStack[] itemStacks,
-            FluidStack fluidStack) {
-        return getRecipeType().getInputCache().containsItemOtherByIndex(getHandlerWorld(), itemStack, index, itemStacks,
-                fluidStack);
+    default boolean containsItemOther(ItemStack itemStack, List<ItemStack> itemStacks, FluidStack fluidStack) {
+        return getRecipeType().getInputCache().containsItemOther(getHandlerWorld(), itemStack, itemStacks, fluidStack);
     }
 
-    default boolean containsFluidOther(ItemStack[] itemStacks, FluidStack fluidStack) {
+    default boolean containsFluidOther(List<ItemStack> itemStacks, FluidStack fluidStack) {
         return getRecipeType().getInputCache().containsFluidOther(getHandlerWorld(), itemStacks, fluidStack);
     }
 
-    default ReactionChamberRecipe findFirstRecipe(ItemStack[] itemStacks, FluidStack fluidStack) {
+    default ReactionChamberRecipe findFirstRecipe(List<ItemStack> itemStacks, FluidStack fluidStack) {
         return getRecipeType().getInputCache().findFirstRecipe(getHandlerWorld(), itemStacks, fluidStack);
     }
 
-    default ReactionChamberRecipe findFirstRecipe(IInputHandler<ItemStack>[] itemHandlers,
+    default ReactionChamberRecipe findFirstRecipe(List<IInputHandler<ItemStack>> itemHandlers,
             IInputHandler<FluidStack> fluidHandler) {
-        ItemStack[] inputs = new ItemStack[itemHandlers.length];
-        for (int i = 0; i < inputs.length; i++) {
-            inputs[i] = itemHandlers[i].getInput();
-        }
-        return findFirstRecipe(inputs, fluidHandler.getInput());
+        return findFirstRecipe(itemHandlers.stream()
+                .map(IInputHandler<ItemStack>::getInput)
+                .filter(stack -> !stack.isEmpty())
+                .toList(), fluidHandler.getInput());
     }
 
     IExtendedFluidTank getInputTank();

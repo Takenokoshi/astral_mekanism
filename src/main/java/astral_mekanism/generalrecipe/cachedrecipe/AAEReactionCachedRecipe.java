@@ -13,6 +13,12 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.fluids.FluidStack;
 import net.pedroksl.advanced_ae.recipes.ReactionChamberRecipe;
 
+// NOTE:
+// This matching uses a greedy algorithm assuming:
+// - No duplicate ingredients
+// - No overlapping ingredient conditions
+// If these assumptions break, matching may fail.
+
 public class AAEReactionCachedRecipe extends GeneralCachedRecipe<ReactionChamberRecipe> {
 
     private final IInputHandler<ItemStack>[] itemInputHandlers;
@@ -22,8 +28,9 @@ public class AAEReactionCachedRecipe extends GeneralCachedRecipe<ReactionChamber
     private final FluidStackIngredient fluidStackIngredient;
 
     private ItemStack[] itemInputs;
-    private FluidStack fluidInput;
-    private ItemFluidOutput recipeOutput;
+    private FluidStack fluidInput = FluidStack.EMPTY;
+    private ItemFluidOutput recipeOutput = ItemFluidOutput.EMPTY;
+    private IInputHandler<ItemStack>[] arrangedHandlers;
 
     public AAEReactionCachedRecipe(ReactionChamberRecipe recipe, BooleanSupplier recheckAllErrors,
             IInputHandler<ItemStack>[] itemInputHandlers, IInputHandler<FluidStack> fluidInputHandler,
@@ -41,10 +48,15 @@ public class AAEReactionCachedRecipe extends GeneralCachedRecipe<ReactionChamber
         this.fluidStackIngredient = inputFluid.isEmpty() ? null : IngredientCreatorAccess.fluid().from(inputFluid);
     }
 
+    @SuppressWarnings("unchecked")
     @Override
     protected void calculateOperationsThisTick(OperationTracker tracker) {
         super.calculateOperationsThisTick(tracker);
         if (tracker.shouldContinueChecking()) {
+            itemInputs = null;
+            arrangedHandlers = null;
+            recipeOutput = ItemFluidOutput.EMPTY;
+            fluidInput = FluidStack.EMPTY;
             if (itemInputHandlers.length < itemStackIngredients.length) {
                 tracker.mismatchedRecipe();
                 return;
@@ -60,15 +72,25 @@ public class AAEReactionCachedRecipe extends GeneralCachedRecipe<ReactionChamber
                 fluidInputHandler.calculateOperationsCanSupport(tracker, fluidInput);
             }
             itemInputs = new ItemStack[itemStackIngredients.length];
-            for (int i = 0; i < itemInputHandlers.length; i++) {
-                if (i <= itemStackIngredients.length) {
-                    itemInputs[i] = itemInputHandlers[i].getRecipeInput(itemStackIngredients[i]);
-                    if (itemInputs[i].isEmpty()) {
-                        tracker.mismatchedRecipe();
-                        return;
+            boolean[] used = new boolean[itemInputHandlers.length];
+            arrangedHandlers = new IInputHandler[itemStackIngredients.length];
+            for (int ingIndex = 0; ingIndex < itemStackIngredients.length; ingIndex++) {
+                boolean found = false;
+                for (int hanIndex = 0; hanIndex < itemInputHandlers.length; hanIndex++) {
+                    if (used[hanIndex]) {
+                        continue;
                     }
-                    itemInputHandlers[i].calculateOperationsCanSupport(tracker, itemInputs[i]);
-                } else if (!itemInputHandlers[i].getInput().isEmpty()) {
+                    ItemStack input = itemInputHandlers[hanIndex].getRecipeInput(itemStackIngredients[ingIndex]);
+                    if (input.isEmpty()) {
+                        continue;
+                    }
+                    found = true;
+                    used[hanIndex] = true;
+                    arrangedHandlers[ingIndex] = itemInputHandlers[hanIndex];
+                    itemInputs[ingIndex] = input;
+                    break;
+                }
+                if (!found) {
                     tracker.mismatchedRecipe();
                     return;
                 }
@@ -80,11 +102,11 @@ public class AAEReactionCachedRecipe extends GeneralCachedRecipe<ReactionChamber
 
     @Override
     protected void finishProcessing(int operations) {
-        if (itemInputs == null || fluidInput == null || recipeOutput == null) {
+        if (itemInputs == null || recipeOutput == ItemFluidOutput.EMPTY || arrangedHandlers == null) {
             return;
         }
         for (int i = 0; i < itemInputs.length; i++) {
-            itemInputHandlers[i].use(itemInputs[i], operations);
+            arrangedHandlers[i].use(itemInputs[i], operations);
         }
         if (!fluidInput.isEmpty()) {
             fluidInputHandler.use(fluidInput, operations);
@@ -99,12 +121,20 @@ public class AAEReactionCachedRecipe extends GeneralCachedRecipe<ReactionChamber
                 : !fluidInputHandler.getRecipeInput(fluidStackIngredient).isEmpty();
         result &= itemInputHandlers.length >= itemStackIngredients.length;
         if (result) {
-            for (int i = 0; i < itemInputHandlers.length; i++) {
-                if (i < itemStackIngredients.length) {
-                    result &= !itemInputHandlers[i].getRecipeInput(itemStackIngredients[i]).isEmpty();
-                } else {
-                    result &= itemInputHandlers[i].getInput().isEmpty();
+            boolean[] used = new boolean[itemInputHandlers.length];
+            for (int i = 0; i < itemStackIngredients.length; i++) {
+                boolean found = false;
+                for (int j = 0; j < itemInputHandlers.length; j++) {
+                    if (used[j]) {
+                        continue;
+                    }
+                    if (itemStackIngredients[i].test(itemInputHandlers[j].getInput())) {
+                        found = true;
+                        used[j] = true;
+                        break;
+                    }
                 }
+                result &= found;
             }
         }
         return result;

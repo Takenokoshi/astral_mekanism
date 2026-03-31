@@ -56,5 +56,7 @@ public class APILangMixin {
         AMEAPILang.UPGRADE_WATER_SUPPLY_DESCRIPTION = createNew("upgrade", "water_supply.description");
         AMEAPILang.UPGRADE_XP = createNew("upgrade", "xp");
         AMEAPILang.UPGRADE_XP_DESCRIPTION = createNew("upgrade", "xp.description");
+        AMEAPILang.UPGRADE_RADIOACTIVE_SEALING = createNew("upgrade", "radioactive_sealing");
+        AMEAPILang.UPGRADE_RADIOACTIVE_SEALING_DESCRIPTION = createNew("upgrade", "radioactive_sealing.description");
     }
 }

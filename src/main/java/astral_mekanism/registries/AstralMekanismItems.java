@@ -100,8 +100,11 @@ public class AstralMekanismItems {
             p -> new GlintItem(p.rarity(Rarity.EPIC)));
     public static final ItemRegistryObject<ItemUpgrade> COBBLESTONE_SUPPLY_UPGRADE = registerUpgrade(
             AMEUpgrade.COBBLESTONE_SUPPLY.getValue());
-    public static final ItemRegistryObject<ItemUpgrade> WATER_SUPPLY_UPGRADE = registerUpgrade(AMEUpgrade.WATER_SUPPLY.getValue());
+    public static final ItemRegistryObject<ItemUpgrade> WATER_SUPPLY_UPGRADE = registerUpgrade(
+            AMEUpgrade.WATER_SUPPLY.getValue());
     public static final ItemRegistryObject<ItemUpgrade> XP_UPGRADE = registerUpgrade(AMEUpgrade.XP.getValue());
+    public static final ItemRegistryObject<ItemUpgrade> RADIOACTIVE_SEALING_UPGRADE = registerUpgrade(
+            AMEUpgrade.RADIOACTIVE_SEALING.getValue());
     public static final ItemRegistryObject<Item> INSERT_UPGRADE = ITEMS.register("insert_upgrade");
     public static final ItemRegistryObject<ItemSingularityUpgrade> SINGULARITY_UPGRADE = ITEMS
             .register("singularity_upgrade", ItemSingularityUpgrade::new);

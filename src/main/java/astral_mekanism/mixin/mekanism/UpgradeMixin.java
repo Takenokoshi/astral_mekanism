@@ -69,6 +69,9 @@ public class UpgradeMixin {
         AMEUpgrade.XP
                 .setValue(astral_mekanism$createNew("xp", AMEAPILang.UPGRADE_XP, AMEAPILang.UPGRADE_XP_DESCRIPTION, 4,
                         EnumColor.BRIGHT_GREEN));
+        AMEUpgrade.RADIOACTIVE_SEALING
+                .setValue(astral_mekanism$createNew("radioactive_sealing", AMEAPILang.UPGRADE_RADIOACTIVE_SEALING,
+                        AMEAPILang.UPGRADE_RADIOACTIVE_SEALING_DESCRIPTION, 1, EnumColor.RED));
         AMEUpgrade.initializeMap();
     }
 

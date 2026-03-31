@@ -5,6 +5,7 @@ import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 import astral_mekanism.enumexpansion.AMEUpgrade;
 import mekanism.api.Action;
@@ -39,6 +40,14 @@ public class TileEntityMekanismMixin {
                     tank.insert(new FluidStack(Fluids.WATER, 0x7fffffff), Action.EXECUTE, AutomationType.EXTERNAL);
                 });
             }
+        }
+    }
+
+    @Inject(method = "shouldDumpRadiation", at = @At("HEAD"), cancellable = true)
+    private void astral_mekanism$shouldDumpRadiationInject(CallbackInfoReturnable<Boolean> cir) {
+        if (((IUpgradeTile) (Object) this).supportsUpgrades()) {
+            cir.setReturnValue(!upgradeComponent.isUpgradeInstalled(AMEUpgrade.RADIOACTIVE_SEALING.getValue()));
+            cir.cancel();
         }
     }
 }
