@@ -8,15 +8,18 @@ import com.jerry.generator_extras.common.genregistry.ExtraGenItem;
 
 import appeng.integration.modules.jei.ChargerCategory;
 import appeng.integration.modules.jei.TransformCategory;
+import appeng.recipes.AERecipeTypes;
 import astral_mekanism.AMEConstants;
-import astral_mekanism.generalrecipe.GeneralRecipeType;
 import astral_mekanism.generalrecipe.recipe.CropSoilRecipe;
+import astral_mekanism.jei.jeirecipe.GasBurningJEIRecipe;
+import astral_mekanism.jei.jeirecipe.MekanicalComposterJEIRecipe;
+import astral_mekanism.jei.jeirecipe.MixingReactorJEIrecipe;
 import astral_mekanism.jei.recipeCategory.AstralCraftingRecipeCategory;
 import astral_mekanism.jei.recipeCategory.CropSoilRecipeCategory;
 import astral_mekanism.jei.recipeCategory.EssentialSmeltingRecipeCategory;
 import astral_mekanism.jei.recipeCategory.FluidInfuserRecipeCategory;
+import astral_mekanism.jei.recipeCategory.GasBurningRecipeCategory;
 import astral_mekanism.jei.recipeCategory.MekanicalComposterRecipeCategory;
-import astral_mekanism.jei.recipeCategory.MekanicalInscribingRecipeCategory;
 import astral_mekanism.jei.recipeCategory.MekanicalTransformRecipeCategory;
 import astral_mekanism.jei.recipeCategory.MixingReactorRecipeCategory;
 import astral_mekanism.jei.recipeCategory.TransformRecipeCategory;
@@ -73,9 +76,6 @@ public class AMEJEIPlugin implements IModPlugin {
                                 AstralMekanismMachines.ASTRAL_CRAFTER),
                         new EssentialSmeltingRecipeCategory(guiHelper, AMEJEIRecipeType.ESSENTIAL_SMELTING,
                                 AstralMekanismMachines.ESSENTIAL_ENERGIZED_SMELTER),
-                        new MekanicalInscribingRecipeCategory(guiHelper,
-                                AMEJEIRecipeType.MEKANICAL_INSCRIBING,
-                                AstralMekanismMachines.MEKANICAL_INSCRIBER),
                         new ItemStackToItemStackRecipeCategory(guiHelper,
                                 AMEJEIRecipeType.ITEM_COMPRESSING,
                                 AstralMekanismMachines.ITEM_COMPRESSOR),
@@ -102,6 +102,9 @@ public class AMEJEIPlugin implements IModPlugin {
                         new CropSoilRecipeCategory(guiHelper,
                                 AMEJEIRecipeType.CROP_SOIL,
                                 AstralMekanismMachines.GREEN_HOUSE),
+                        new GasBurningRecipeCategory(guiHelper,
+                                AMEJEIRecipeType.GAS_BURNING,
+                                GeneratorsBlocks.GAS_BURNING_GENERATOR),
                 });
     }
 
@@ -127,26 +130,29 @@ public class AMEJEIPlugin implements IModPlugin {
                 MekanicalComposterJEIRecipe.getRecipes());
         RecipeRegistryHelper.register(registry, AMEJEIRecipeType.ESSENTIAL_SMELTING,
                 Minecraft.getInstance().level.getRecipeManager().getAllRecipesFor(RecipeType.SMELTING));
-        registry.addRecipes(AMEJEIRecipeType.MEKANICAL_INSCRIBING,
-                GeneralRecipeType.INSCRIBE.getRecipes(Minecraft.getInstance().level));
-        registry.addRecipes(AMEJEIRecipeType.TRANSFORM,
-                GeneralRecipeType.TRANSFORM.getRecipes(Minecraft.getInstance().level));
-        registry.addRecipes(AMEJEIRecipeType.CROP_SOIL,
+        RecipeRegistryHelper.register(registry, AMEJEIRecipeType.TRANSFORM,
+                Minecraft.getInstance().level.getRecipeManager().getAllRecipesFor(AERecipeTypes.TRANSFORM));
+        RecipeRegistryHelper.register(registry, AMEJEIRecipeType.CROP_SOIL,
                 CropSoilRecipe.getAllRecipes(Minecraft.getInstance().level.getRecipeManager()));
+        RecipeRegistryHelper.register(registry, AMEJEIRecipeType.GAS_BURNING,
+                GasBurningJEIRecipe.getRecipes());
     }
 
     @Override
     public void registerRecipeCatalysts(IRecipeCatalystRegistration registry) {
-        // ae2 Note:Inscriber's JEI class is package-private.
+        // ae2
         registry.addRecipeCatalysts(ChargerCategory.RECIPE_TYPE,
                 AstralMekanismMachines.MEKANICAL_CHARGER, AstralMekanismMachines.ASTRAL_MEKANICAL_CHARGER);
-        registry.addRecipeCatalysts(AMEJEIRecipeType.MEKANICAL_INSCRIBING,
+        CatalystRegistryHelper.register(registry, AMEJEIRecipeType.INSCRIBE,
                 AstralMekanismMachines.MEKANICAL_INSCRIBER,
                 AstralMekanismMachines.ASTRAL_MEKANICAL_INSCRIBER);
         registry.addRecipeCatalysts(TransformCategory.RECIPE_TYPE,
                 AstralMekanismMachines.TRANSFORMER, AstralMekanismMachines.ASTRAL_TRANSFORMER);
-        registry.addRecipeCatalysts(AMEJEIRecipeType.TRANSFORM,
+        CatalystRegistryHelper.register(registry, AMEJEIRecipeType.TRANSFORM,
                 AstralMekanismMachines.TRANSFORMER, AstralMekanismMachines.ASTRAL_TRANSFORMER);
+        // advanced ae
+        CatalystRegistryHelper.register(registry, AMEJEIRecipeType.AAE_REACTION,
+                AstralMekanismMachines.ESSENTIAL_REACTION_CHAMBER, AstralMekanismMachines.ASTRAL_REACTION_CHAMBER);
         // mekanism
         CatalystRegistryHelper.register(registry, MekanismJEIRecipeType.INJECTING,
                 AstralMekanismMachines.ASTRAL_CHEMICAL_INJECTION_CHAMBER);
@@ -214,6 +220,10 @@ public class AMEJEIPlugin implements IModPlugin {
                 GeneratorsBlocks.FUSION_REACTOR_PORT,
                 GeneratorsBlocks.REACTOR_GLASS,
                 GeneratorsItems.HOHLRAUM);
+        CatalystRegistryHelper.register(registry, AMEJEIRecipeType.GAS_BURNING,
+                GeneratorsBlocks.GAS_BURNING_GENERATOR);
+        CatalystRegistryHelper.register(registry, AMEJEIRecipeType.GAS_BURNING,
+                AstralMekanismMachines.GAS_BURNING_GENERATORS.values().toArray(IItemProvider[]::new));
 
         // Evolved Mekanism
         CatalystRegistryHelper.register(registry, EMJEI.APT,
@@ -257,9 +267,8 @@ public class AMEJEIPlugin implements IModPlugin {
                 AstralMekanismMachines.ENERGIZED_SMELTING_FACTORIES.values().toArray(IItemProvider[]::new));
         CatalystRegistryHelper.register(registry, AMEJEIRecipeType.ESSENTIAL_SMELTING,
                 AstralMekanismMachines.ASTRAL_ENERGIZED_SMELTING_FACTRIES.values().toArray(IItemProvider[]::new));
-        registry.addRecipeCatalysts(AMEJEIRecipeType.CROP_SOIL,
-                AstralMekanismMachines.GREEN_HOUSE,
-                AstralMekanismMachines.ASTRAL_GREEN_HOUSE);
+        CatalystRegistryHelper.register(registry, AMEJEIRecipeType.CROP_SOIL,
+                AstralMekanismMachines.GREEN_HOUSE, AstralMekanismMachines.ASTRAL_GREEN_HOUSE);
         CatalystRegistryHelper.register(registry, AMEJEIRecipeType.MEKANICAL_COMPOSTER,
                 AstralMekanismMachines.MEKANICAL_COMPOSTER, AstralMekanismMachines.ASTRAL_COMPOSTER);
 

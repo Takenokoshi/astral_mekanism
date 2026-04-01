@@ -27,12 +27,12 @@ public class APILangMixin {
     static APILang[] $VALUES;
 
     @Invoker("<init>")
-    private static APILang invokeInit(String name, int i, String arg) {
+    private static APILang astral_mekanism$invokeInit(String name, int i, String arg) {
         return null;
     }
 
     @Unique
-    private static APILang createNew(String type, String path) {
+    private static APILang astral_mekanism$createNew(String type, String path) {
         int index = $VALUES.length;
         String name = Util.makeDescriptionId(type, AMEConstants.rl(path));
         String internal = type.toUpperCase();
@@ -41,7 +41,7 @@ public class APILangMixin {
             internal += "_";
             internal += string.toUpperCase();
         }
-        APILang result = invokeInit(internal, index, name);
+        APILang result = astral_mekanism$invokeInit(internal, index, name);
         APILang[] newVALUES = Arrays.copyOf($VALUES, index + 1);
         newVALUES[index] = result;
         $VALUES = newVALUES;
@@ -49,14 +49,14 @@ public class APILangMixin {
     }
 
     @Inject(method = "<clinit>", at = @At("TAIL"))
-    private static void clinitInject(CallbackInfo ci) {
-        AMEAPILang.UPGRADE_COBBLESTONE_SUPPLY = createNew("upgrade", "cobblestone_supply");
-        AMEAPILang.UPGRADE_COBBLESTONE_SUPPLY_DESCRIPTION = createNew("upgrade", "cobblestone_supply.description");
-        AMEAPILang.UPGRADE_WATER_SUPPLY = createNew("upgrade", "water_supply");
-        AMEAPILang.UPGRADE_WATER_SUPPLY_DESCRIPTION = createNew("upgrade", "water_supply.description");
-        AMEAPILang.UPGRADE_XP = createNew("upgrade", "xp");
-        AMEAPILang.UPGRADE_XP_DESCRIPTION = createNew("upgrade", "xp.description");
-        AMEAPILang.UPGRADE_RADIOACTIVE_SEALING = createNew("upgrade", "radioactive_sealing");
-        AMEAPILang.UPGRADE_RADIOACTIVE_SEALING_DESCRIPTION = createNew("upgrade", "radioactive_sealing.description");
+    private static void astral_mekanism$clinitInject(CallbackInfo ci) {
+        AMEAPILang.UPGRADE_COBBLESTONE_SUPPLY = astral_mekanism$createNew("upgrade", "cobblestone_supply");
+        AMEAPILang.UPGRADE_COBBLESTONE_SUPPLY_DESCRIPTION = astral_mekanism$createNew("upgrade", "cobblestone_supply.description");
+        AMEAPILang.UPGRADE_WATER_SUPPLY = astral_mekanism$createNew("upgrade", "water_supply");
+        AMEAPILang.UPGRADE_WATER_SUPPLY_DESCRIPTION = astral_mekanism$createNew("upgrade", "water_supply.description");
+        AMEAPILang.UPGRADE_XP = astral_mekanism$createNew("upgrade", "xp");
+        AMEAPILang.UPGRADE_XP_DESCRIPTION = astral_mekanism$createNew("upgrade", "xp.description");
+        AMEAPILang.UPGRADE_RADIOACTIVE_SEALING = astral_mekanism$createNew("upgrade", "radioactive_sealing");
+        AMEAPILang.UPGRADE_RADIOACTIVE_SEALING_DESCRIPTION = astral_mekanism$createNew("upgrade", "radioactive_sealing.description");
     }
 }

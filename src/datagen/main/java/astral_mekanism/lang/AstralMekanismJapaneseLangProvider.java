@@ -321,6 +321,7 @@ public class AstralMekanismJapaneseLangProvider extends LanguageProvider {
         result.put("polonium", "ポロニウム");
         result.put("cobblestone", "丸石");
         result.put("water", "水");
+        result.put("radioactive", "放射能");
         // material states
         result.put("astral", "アストラル");
         result.put("ingot", "インゴット");
@@ -355,6 +356,7 @@ public class AstralMekanismJapaneseLangProvider extends LanguageProvider {
         result.put("clean", "きれいな");
         result.put("paste", "ペースト");
         result.put("containing", "含有");
+        result.put("sealing", "密封");
         // other
         result.put("item", "アイテム");
         result.put("spacetime", "スペース・タイム");
@@ -366,6 +368,8 @@ public class AstralMekanismJapaneseLangProvider extends LanguageProvider {
         result.put("ratio", "比率");
         result.put("evenly", "均等");
         result.put("inserter", "搬入機構");
+        result.put("base", "ベース");
+        result.put("ame", "AME");
         return result;
     }).get();
 

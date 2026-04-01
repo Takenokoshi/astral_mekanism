@@ -26,27 +26,46 @@ public class MekanismBlockTypesMixin {
         addSupportedUpgrade(MekanismBlockTypes.CRUSHER, AMEUpgrade.COBBLESTONE_SUPPLY.getValue());
         addSupportedUpgrade(MekanismBlockTypes.ENERGIZED_SMELTER, AMEUpgrade.COBBLESTONE_SUPPLY.getValue());
         addSupportedUpgrade(MekanismBlockTypes.PRECISION_SAWMILL, AMEUpgrade.COBBLESTONE_SUPPLY.getValue());
-        addSupportedUpgrade(MekanismBlockTypes.OSMIUM_COMPRESSOR, AMEUpgrade.COBBLESTONE_SUPPLY.getValue());
+        addSupportedUpgrade(MekanismBlockTypes.OSMIUM_COMPRESSOR,
+                AMEUpgrade.COBBLESTONE_SUPPLY.getValue(), AMEUpgrade.RADIOACTIVE_SEALING.getValue());
         addSupportedUpgrade(MekanismBlockTypes.COMBINER, AMEUpgrade.COBBLESTONE_SUPPLY.getValue());
-        addSupportedUpgrade(MekanismBlockTypes.METALLURGIC_INFUSER, AMEUpgrade.COBBLESTONE_SUPPLY.getValue());
-        addSupportedUpgrade(MekanismBlockTypes.PURIFICATION_CHAMBER, AMEUpgrade.COBBLESTONE_SUPPLY.getValue());
-        addSupportedUpgrade(MekanismBlockTypes.CHEMICAL_INJECTION_CHAMBER, AMEUpgrade.COBBLESTONE_SUPPLY.getValue());
+        addSupportedUpgrade(MekanismBlockTypes.METALLURGIC_INFUSER,
+                AMEUpgrade.COBBLESTONE_SUPPLY.getValue(), AMEUpgrade.RADIOACTIVE_SEALING.getValue());
+        addSupportedUpgrade(MekanismBlockTypes.CHEMICAL_INJECTION_CHAMBER,
+                AMEUpgrade.COBBLESTONE_SUPPLY.getValue(), AMEUpgrade.RADIOACTIVE_SEALING.getValue());
         addSupportedUpgrade(MekanismBlockTypes.PRESSURIZED_REACTION_CHAMBER,
                 AMEUpgrade.COBBLESTONE_SUPPLY.getValue(), AMEUpgrade.WATER_SUPPLY.getValue());
-        addSupportedUpgrade(MekanismBlockTypes.CHEMICAL_DISSOLUTION_CHAMBER, AMEUpgrade.COBBLESTONE_SUPPLY.getValue());
-        addSupportedUpgrade(MekanismBlockTypes.CHEMICAL_OXIDIZER, AMEUpgrade.COBBLESTONE_SUPPLY.getValue());
-        addSupportedUpgrade(MekanismBlockTypes.CHEMICAL_WASHER, AMEUpgrade.WATER_SUPPLY.getValue());
-        addSupportedUpgrade(MekanismBlockTypes.ROTARY_CONDENSENTRATOR, AMEUpgrade.WATER_SUPPLY.getValue());
-        addSupportedUpgrade(MekanismBlockTypes.ELECTROLYTIC_SEPARATOR, AMEUpgrade.WATER_SUPPLY.getValue());
+        addSupportedUpgrade(MekanismBlockTypes.CHEMICAL_CRYSTALLIZER, AMEUpgrade.RADIOACTIVE_SEALING.getValue());
+        addSupportedUpgrade(MekanismBlockTypes.CHEMICAL_DISSOLUTION_CHAMBER,
+                AMEUpgrade.COBBLESTONE_SUPPLY.getValue(), AMEUpgrade.RADIOACTIVE_SEALING.getValue());
+        addSupportedUpgrade(MekanismBlockTypes.CHEMICAL_OXIDIZER,
+                AMEUpgrade.COBBLESTONE_SUPPLY.getValue(), AMEUpgrade.RADIOACTIVE_SEALING.getValue());
+        addSupportedUpgrade(MekanismBlockTypes.CHEMICAL_WASHER,
+                AMEUpgrade.WATER_SUPPLY.getValue(), AMEUpgrade.RADIOACTIVE_SEALING.getValue());
+        addSupportedUpgrade(MekanismBlockTypes.ROTARY_CONDENSENTRATOR,
+                AMEUpgrade.WATER_SUPPLY.getValue(), AMEUpgrade.RADIOACTIVE_SEALING.getValue());
+        addSupportedUpgrade(MekanismBlockTypes.ELECTROLYTIC_SEPARATOR,
+                AMEUpgrade.WATER_SUPPLY.getValue(), AMEUpgrade.RADIOACTIVE_SEALING.getValue());
         addSupportedUpgrade(MekanismBlockTypes.DIGITAL_MINER, AMEUpgrade.COBBLESTONE_SUPPLY.getValue());
         addSupportedUpgrade(MekanismBlockTypes.FLUIDIC_PLENISHER, AMEUpgrade.COBBLESTONE_SUPPLY.getValue());
         addSupportedUpgrade(MekanismBlockTypes.NUTRITIONAL_LIQUIFIER, AMEUpgrade.COBBLESTONE_SUPPLY.getValue());
-        addSupportedUpgrade(MekanismBlockTypes.ANTIPROTONIC_NUCLEOSYNTHESIZER, AMEUpgrade.COBBLESTONE_SUPPLY.getValue());
-        addSupportedUpgrade(MekanismBlockTypes.PAINTING_MACHINE, AMEUpgrade.COBBLESTONE_SUPPLY.getValue());
+        addSupportedUpgrade(MekanismBlockTypes.ANTIPROTONIC_NUCLEOSYNTHESIZER,
+                AMEUpgrade.COBBLESTONE_SUPPLY.getValue(), AMEUpgrade.RADIOACTIVE_SEALING.getValue());
+        addSupportedUpgrade(MekanismBlockTypes.PAINTING_MACHINE,
+                AMEUpgrade.COBBLESTONE_SUPPLY.getValue(), AMEUpgrade.RADIOACTIVE_SEALING.getValue());
 
         for (FactoryTier tier : EnumUtils.FACTORY_TIERS) {
             for (FactoryType type : EnumUtils.FACTORY_TYPES) {
-                addSupportedUpgrade(MekanismBlockTypes.getFactory(tier, type), AMEUpgrade.COBBLESTONE_SUPPLY.getValue());
+                if (type == FactoryType.COMPRESSING
+                        || type == FactoryType.INFUSING
+                        || type == FactoryType.INJECTING
+                        || type == FactoryType.PURIFYING) {
+                    addSupportedUpgrade(MekanismBlockTypes.getFactory(tier, type),
+                            AMEUpgrade.COBBLESTONE_SUPPLY.getValue(), AMEUpgrade.RADIOACTIVE_SEALING.getValue());
+                } else {
+                    addSupportedUpgrade(MekanismBlockTypes.getFactory(tier, type),
+                            AMEUpgrade.COBBLESTONE_SUPPLY.getValue());
+                }
             }
         }
     }

@@ -1,0 +1,20 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "key": {
+        "G": {
+            "item": "minecraft:glass"
+        },
+        "A": {
+            "item": "astral_mekanism:alloy_elastic"
+        }
+    },
+    "pattern": [
+        " G ",
+        "A A",
+        " G "
+    ],
+    "result": {
+        "item": "astral_mekanism:ame_upgrade_base",
+        "count": 1
+    }
+}

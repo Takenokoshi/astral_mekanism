@@ -1,8 +1,9 @@
 package astral_mekanism.block.shape;
 
+import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
-public final class AMBlockShapes {
+public final class AMEBlockShapes {
     public static final VoxelShape[] GAS_BURNING_GENERATOR = VoxelShapeBuilder.create()
             .addShape(2, 4, 2, 14, 5, 14) // base_platform
             .addShape(1, 5, 4, 2, 5, 12) // bottom_connector1
@@ -63,5 +64,9 @@ public final class AMBlockShapes {
     public static final VoxelShape[] COMPOSTER = VoxelShapeBuilder.create()
             .addShape(0, 0, 0, 16, 16, 16)
             .removeShape(2, 2, 2, 14, 16, 14)
+            .build4();
+
+    public static final VoxelShape[] AAE_REACTION_CHAMBER = VoxelShapeBuilder.create()
+            .addShape(Shapes.block())
             .build4();
 }

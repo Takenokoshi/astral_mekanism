@@ -6,7 +6,7 @@ import mekanism.common.config.value.CachedFloatingLongValue;
 import net.minecraftforge.common.ForgeConfigSpec;
 import net.minecraftforge.fml.config.ModConfig.Type;
 
-public class AstMekUsageConfig extends BaseMekanismConfig {
+public class AMEUsageConfig extends BaseMekanismConfig {
     private final ForgeConfigSpec configSpec;
     public final CachedFloatingLongValue greenHouse;
     public final CachedFloatingLongValue mekanicalCherger;
@@ -14,8 +14,9 @@ public class AstMekUsageConfig extends BaseMekanismConfig {
     public final CachedFloatingLongValue transformer;
     public final CachedFloatingLongValue essentialCrafter;
     public final CachedFloatingLongValue fluidInfuser;
+    public final CachedFloatingLongValue aaeReactionChamber;
 
-    AstMekUsageConfig() {
+    AMEUsageConfig() {
         ForgeConfigSpec.Builder builder = new ForgeConfigSpec.Builder();
         builder.comment("Machine Energy Usage Config. This config is synced from server to client.").push("usage");
         greenHouse = CachedFloatingLongValue.define(this, builder, "Energy per operation tick (Joules).",
@@ -30,6 +31,9 @@ public class AstMekUsageConfig extends BaseMekanismConfig {
                 "essentialCrafter", FloatingLong.createConst(50));
         fluidInfuser = CachedFloatingLongValue.define(this, builder, "Energy per operation tick (Joules).",
                 "fluidInfuser", FloatingLong.createConst(200));
+        aaeReactionChamber = CachedFloatingLongValue.define(this, builder,
+                "Energy per operation tick (Joules). Recipe require energy will added to Actual consumption. ",
+                "aaeReactionChamber", FloatingLong.createConst(1));
 
         builder.pop();
         configSpec = builder.build();

@@ -2,7 +2,7 @@ package astral_mekanism;
 
 import com.mojang.logging.LogUtils;
 
-import astral_mekanism.config.AstralMekanismConfig;
+import astral_mekanism.config.AMEConfig;
 import astral_mekanism.network.AMEPacketHandler;
 import astral_mekanism.registries.AMEBlockEntityRegistry;
 import astral_mekanism.registries.AMEItemDefinitions;
@@ -38,8 +38,8 @@ public class AstralMekanism {
 
     public AstralMekanism() {
         FMLJavaModLoadingContext context = FMLJavaModLoadingContext.get();
-        context.registerConfig(ModConfig.Type.COMMON, AstralMekanismConfig.SPEC);
-        AstralMekanismConfig.registerConfigs(context);
+        context.registerConfig(ModConfig.Type.COMMON, AMEConfig.SPEC);
+        AMEConfig.registerConfigs(context);
         instance = this;
         IEventBus modEventBus = context.getModEventBus();
         AMEItemDefinitions.INSTANCE.register(modEventBus);

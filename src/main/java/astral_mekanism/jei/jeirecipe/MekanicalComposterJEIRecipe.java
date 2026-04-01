@@ -1,4 +1,4 @@
-package astral_mekanism.jei;
+package astral_mekanism.jei.jeirecipe;
 
 import java.util.List;
 

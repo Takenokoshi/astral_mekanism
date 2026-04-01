@@ -149,6 +149,8 @@ public class AstralMekanismEnglishLangProvider extends LanguageProvider {
                 sb.append("Pressurized Reaction Chamber");
             } else if (parts[i].equals("gna")) {
                 sb.append("Glowstone Neutron Activator");
+            } else if (parts[i].equals("ame")) {
+                sb.append("AME");
             } else if (InputValidator.DIGIT.test(parts[i].charAt(0))) {
                 sb.append(parts[i]);
             } else {

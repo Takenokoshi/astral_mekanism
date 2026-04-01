@@ -1,0 +1,11 @@
+{
+    "type": "mekanism:crushing",
+    "input": {
+        "ingredient": {
+            "item": "minecraft:amethyst_shard"
+        }
+    },
+    "output": {
+        "item": "astral_mekanism:amethyst_dust"
+    }
+}

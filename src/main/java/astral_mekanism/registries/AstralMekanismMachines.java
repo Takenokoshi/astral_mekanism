@@ -33,6 +33,7 @@ import astral_mekanism.block.blockentity.astralmachine.BEAstralMelter;
 import astral_mekanism.block.blockentity.astralmachine.BEAstralMetallurgicInfuser;
 import astral_mekanism.block.blockentity.astralmachine.BEAstralPRC;
 import astral_mekanism.block.blockentity.astralmachine.BEAstralPrecisionSawmill;
+import astral_mekanism.block.blockentity.astralmachine.BEAstralReactionChamber;
 import astral_mekanism.block.blockentity.astralmachine.BEAstralRotaryCondensentrator;
 import astral_mekanism.block.blockentity.astralmachine.BEAstralSPS;
 import astral_mekanism.block.blockentity.astralmachine.BEAstralSolidifier;
@@ -81,8 +82,8 @@ import astral_mekanism.block.container.normalmachine.ContainerTransformer;
 import astral_mekanism.block.container.other.ContainerItemSortableStorage;
 import astral_mekanism.block.container.prefab.ContainerAbstractStorage;
 import astral_mekanism.block.container.prefab.ContainerPagedMachine;
-import astral_mekanism.block.shape.AMBlockShapes;
-import astral_mekanism.config.AstralMekanismConfig;
+import astral_mekanism.block.shape.AMEBlockShapes;
+import astral_mekanism.config.AMEConfig;
 import astral_mekanism.enumexpansion.AMEUpgrade;
 import astral_mekanism.registration.BlockTypeMachine;
 import astral_mekanism.registration.MachineDeferredRegister;
@@ -333,8 +334,8 @@ public class AstralMekanismMachines {
                     BEAstralComposter::new,
                     BEAstralComposter.class,
                     AstralMekanismLang.DESCRIPTION_ASTRAL_MACHINE,
-                    builder -> builder.removeAttributeUpgrade()
-                            .withCustomShape(AMBlockShapes.COMPOSTER));
+                    builder -> builder.changeAttributeUpgrade(EnumSet.of(AMEUpgrade.COBBLESTONE_SUPPLY.getValue()))
+                            .withCustomShape(AMEBlockShapes.COMPOSTER));
 
     public static final MachineRegistryObject<BEAstralCrystallizer, BlockTileModel<BEAstralCrystallizer, BlockTypeMachine<BEAstralCrystallizer>>, MekanismTileContainer<BEAstralCrystallizer>, ItemBlockMachine> ASTRAL_CRYSTALLIZER = MACHINES
             .registerSimple("astral_crystallizer",
@@ -390,7 +391,7 @@ public class AstralMekanismMachines {
                     BEAstralFluidInfuser.class,
                     AstralMekanismLang.DESCRIPTION_ASTRAL_MACHINE,
                     builder -> builder
-                            .withEnergyConfig(AstralMekanismConfig.usage.fluidInfuser, MAX_SUPPLIER)
+                            .withEnergyConfig(AMEConfig.usage.fluidInfuser, MAX_SUPPLIER)
                             .changeAttributeUpgrade(
                                     EnumSet.of(Upgrade.MUFFLING, Upgrade.ENERGY, AMEUpgrade.WATER_SUPPLY.getValue()))
                             .withSound(MekanismSounds.CHEMICAL_INFUSER));
@@ -419,7 +420,7 @@ public class AstralMekanismMachines {
                     BEAstralGreenHouse.class,
                     AstralMekanismLang.DESCRIPTION_ASTRAL_MACHINE,
                     builder -> builder
-                            .withEnergyConfig(AstralMekanismConfig.usage.greenHouse, MAX_SUPPLIER)
+                            .withEnergyConfig(AMEConfig.usage.greenHouse, MAX_SUPPLIER)
                             .changeAttributeUpgrade(EnumSet.of(Upgrade.MUFFLING, Upgrade.ENERGY,
                                     AMEUpgrade.COBBLESTONE_SUPPLY.getValue(), AMEUpgrade.WATER_SUPPLY.getValue())));
 
@@ -440,7 +441,7 @@ public class AstralMekanismMachines {
                     BEAstralMekanicalCharger.class,
                     AstralMekanismLang.DESCRIPTION_ASTRAL_MACHINE,
                     builder -> builder
-                            .withEnergyConfig(AstralMekanismConfig.usage.mekanicalCherger, MAX_SUPPLIER)
+                            .withEnergyConfig(AMEConfig.usage.mekanicalCherger, MAX_SUPPLIER)
                             .changeAttributeUpgrade(
                                     EnumSet.of(Upgrade.MUFFLING, Upgrade.ENERGY,
                                             AMEUpgrade.COBBLESTONE_SUPPLY.getValue())));
@@ -451,7 +452,7 @@ public class AstralMekanismMachines {
                     BEAstralMekanicalInscriber.class,
                     AstralMekanismLang.DESCRIPTION_ASTRAL_MACHINE,
                     builder -> builder
-                            .withEnergyConfig(AstralMekanismConfig.usage.mekanicalInscriber, MAX_SUPPLIER)
+                            .withEnergyConfig(AMEConfig.usage.mekanicalInscriber, MAX_SUPPLIER)
                             .changeAttributeUpgrade(
                                     EnumSet.of(Upgrade.MUFFLING, Upgrade.ENERGY,
                                             AMEUpgrade.COBBLESTONE_SUPPLY.getValue())));
@@ -505,6 +506,20 @@ public class AstralMekanismMachines {
                                             AMEUpgrade.COBBLESTONE_SUPPLY.getValue()))
                             .withSound(MekanismSounds.PRECISION_SAWMILL));
 
+    public static final MachineRegistryObject<BEAstralReactionChamber, BlockTileModel<BEAstralReactionChamber, BlockTypeMachine<BEAstralReactionChamber>>, MekanismTileContainer<BEAstralReactionChamber>, ItemBlockMachine> ASTRAL_REACTION_CHAMBER = MACHINES
+            .registerSimple("astral_reaction_chamber",
+                    BEAstralReactionChamber::new,
+                    BEAstralReactionChamber.class,
+                    AstralMekanismLang.DESCRIPTION_ASTRAL_MACHINE,
+                    builder -> builder
+                            .withEnergyConfig(AMEConfig.usage.aaeReactionChamber, MAX_SUPPLIER)
+                            .withCustomShape(AMEBlockShapes.AAE_REACTION_CHAMBER)
+                            .changeAttributeUpgrade(
+                                    EnumSet.of(Upgrade.MUFFLING, Upgrade.ENERGY,
+                                            AMEUpgrade.COBBLESTONE_SUPPLY.getValue(),
+                                            AMEUpgrade.WATER_SUPPLY.getValue()))
+                            .withSound(MekanismSounds.PRECISION_SAWMILL));
+
     public static final MachineRegistryObject<BEAstralRotaryCondensentrator, BlockTileModel<BEAstralRotaryCondensentrator, BlockTypeMachine<BEAstralRotaryCondensentrator>>, MekanismTileContainer<BEAstralRotaryCondensentrator>, ItemBlockMachine> ASTRAL_ROTARY_CONDENSENTRATOR = MACHINES
             .registerSimple("astral_rotary_condensentrator",
                     BEAstralRotaryCondensentrator::new,
@@ -547,7 +562,7 @@ public class AstralMekanismMachines {
                     ContainerTransformer<BEAstralTransformer>::new,
                     AstralMekanismLang.DESCRIPTION_ASTRAL_MACHINE,
                     builder -> builder
-                            .withEnergyConfig(AstralMekanismConfig.usage.transformer, MAX_SUPPLIER)
+                            .withEnergyConfig(AMEConfig.usage.transformer, MAX_SUPPLIER)
                             .changeAttributeUpgrade(EnumSet.of(Upgrade.ENERGY, AMEUpgrade.COBBLESTONE_SUPPLY.getValue(),
                                     AMEUpgrade.WATER_SUPPLY.getValue())));
 
@@ -619,7 +634,7 @@ public class AstralMekanismMachines {
                     BEGasBurningGenerator.class,
                     AstralMekanismLang.DESCRIPTION_AM_GENERATOR,
                     (key, btm) -> btm.with(new AttributeTier<>(key))
-                            .withCustomShape(AMBlockShapes.GAS_BURNING_GENERATOR)
+                            .withCustomShape(AMEBlockShapes.GAS_BURNING_GENERATOR)
                             .withSound(GeneratorsSounds.GAS_BURNING_GENERATOR)
                             .removeAttributeUpgrade()
                             .changeAttributeUpgrade(EnumSet.of(Upgrade.MUFFLING,
@@ -632,7 +647,7 @@ public class AstralMekanismMachines {
                     BEHeatGenerator.class,
                     AstralMekanismLang.DESCRIPTION_AM_GENERATOR,
                     (key, btm) -> btm.with(new AttributeTier<>(key))
-                            .withCustomShape(AMBlockShapes.HEAT_GENERATOR)
+                            .withCustomShape(AMEBlockShapes.HEAT_GENERATOR)
                             .removeAttributeUpgrade(),
                     AstralMekGeneratorTier.class);
 
@@ -656,8 +671,7 @@ public class AstralMekanismMachines {
                     ContainerAstralCrafter::new,
                     AstralMekanismLang.DESCRIPTION_ASTRAL_CRAFTER,
                     builder -> builder
-                            .withEnergyConfig(AstralMekanismConfig.usage.essentialCrafter,
-                                    AstralMekanismConfig.storage.essentialCrafter)
+                            .withEnergyConfig(AMEConfig.usage.essentialCrafter, AMEConfig.storage.essentialCrafter)
                             .changeAttributeUpgrade(EnumSet.of(AMEUpgrade.RADIOACTIVE_SEALING.getValue())));
 
     public static final MachineRegistryObject<BEEssentialEnergizedSmelter, BlockTileModel<BEEssentialEnergizedSmelter, BlockTypeMachine<BEEssentialEnergizedSmelter>>, MekanismTileContainer<BEEssentialEnergizedSmelter>, ItemBlockMachine> ESSENTIAL_ENERGIZED_SMELTER = MACHINES
@@ -707,8 +721,8 @@ public class AstralMekanismMachines {
                     BEEssentialReactionChamber.class,
                     AstralMekanismLang.ITEM_GROUP,
                     builder -> builder
-                            .withEnergyConfig(MekanismConfig.usage.osmiumCompressor,
-                                    MekanismConfig.storage.osmiumCompressor)
+                            .withEnergyConfig(AMEConfig.usage.aaeReactionChamber, AMEConfig.storage.aaeReactionChamber)
+                            .withCustomShape(AMEBlockShapes.AAE_REACTION_CHAMBER)
                             .changeAttributeUpgrade(
                                     EnumSet.of(Upgrade.SPEED, Upgrade.ENERGY, Upgrade.MUFFLING,
                                             AMEUpgrade.COBBLESTONE_SUPPLY.getValue(),
@@ -723,8 +737,7 @@ public class AstralMekanismMachines {
                     builder -> builder
                             .changeAttributeUpgrade(
                                     EnumSet.of(Upgrade.SPEED, Upgrade.ENERGY, AMEUpgrade.WATER_SUPPLY.getValue()))
-                            .withEnergyConfig(AstralMekanismConfig.usage.fluidInfuser,
-                                    AstralMekanismConfig.storage.fluidInfuser));
+                            .withEnergyConfig(AMEConfig.usage.fluidInfuser, AMEConfig.storage.fluidInfuser));
 
     public static final MachineRegistryObject<BEGasSynthesizer, BlockTileModel<BEGasSynthesizer, BlockTypeMachine<BEGasSynthesizer>>, MekanismTileContainer<BEGasSynthesizer>, ItemBlockMachine> GAS_SYNTHESIZER = MACHINES
             .registerSimple("gas_synthesizer",
@@ -746,8 +759,7 @@ public class AstralMekanismMachines {
                     BEGreenHouse::new,
                     BEGreenHouse.class,
                     AstralMekanismLang.DESCRIPTION_GREENHOUSE, builder -> builder
-                            .withEnergyConfig(AstralMekanismConfig.usage.greenHouse,
-                                    AstralMekanismConfig.storage.greenHouse)
+                            .withEnergyConfig(AMEConfig.usage.greenHouse, AMEConfig.storage.greenHouse)
                             .changeAttributeUpgrade(EnumSet.of(Upgrade.ENERGY, Upgrade.SPEED,
                                     AMEUpgrade.COBBLESTONE_SUPPLY.getValue(), AMEUpgrade.WATER_SUPPLY.getValue())));
 
@@ -781,8 +793,7 @@ public class AstralMekanismMachines {
                     builder -> builder
                             .changeAttributeUpgrade(
                                     EnumSet.of(Upgrade.SPEED, Upgrade.ENERGY, AMEUpgrade.COBBLESTONE_SUPPLY.getValue()))
-                            .withEnergyConfig(AstralMekanismConfig.usage.mekanicalCherger,
-                                    AstralMekanismConfig.storage.mekanicalCherger));
+                            .withEnergyConfig(AMEConfig.usage.mekanicalCherger, AMEConfig.storage.mekanicalCherger));
 
     public static final MachineRegistryObject<BEMekanicalComposter, BlockTileModel<BEMekanicalComposter, BlockTypeMachine<BEMekanicalComposter>>, MekanismTileContainer<BEMekanicalComposter>, ItemBlockMachine> MEKANICAL_COMPOSTER = MACHINES
             .registerSimple("mekanical_composter",
@@ -790,8 +801,8 @@ public class AstralMekanismMachines {
                     BEMekanicalComposter.class,
                     AstralMekanismLang.ITEM_GROUP,
                     builder -> builder
-                            .changeAttributeUpgrade(EnumSet.of(Upgrade.SPEED))
-                            .withCustomShape(AMBlockShapes.COMPOSTER));
+                            .changeAttributeUpgrade(EnumSet.of(Upgrade.SPEED, AMEUpgrade.COBBLESTONE_SUPPLY.getValue()))
+                            .withCustomShape(AMEBlockShapes.COMPOSTER));
 
     public static final MachineRegistryObject<BEMekanicalInscriber, BlockTileModel<BEMekanicalInscriber, BlockTypeMachine<BEMekanicalInscriber>>, MekanismTileContainer<BEMekanicalInscriber>, ItemBlockMachine> MEKANICAL_INSCRIBER = MACHINES
             .registerSimple("mekanical_inscriber",
@@ -801,8 +812,8 @@ public class AstralMekanismMachines {
                     builder -> builder
                             .changeAttributeUpgrade(
                                     EnumSet.of(Upgrade.SPEED, Upgrade.ENERGY, AMEUpgrade.COBBLESTONE_SUPPLY.getValue()))
-                            .withEnergyConfig(AstralMekanismConfig.usage.mekanicalInscriber,
-                                    AstralMekanismConfig.storage.mekanicalInscriber));
+                            .withEnergyConfig(AMEConfig.usage.mekanicalInscriber,
+                                    AMEConfig.storage.mekanicalInscriber));
 
     public static final MachineRegistryObject<BETransformer, BlockTileModel<BETransformer, BlockTypeMachine<BETransformer>>, ContainerTransformer<BETransformer>, ItemBlockMachine> TRANSFORMER = MACHINES
             .registerDefaultBlockItem("transformer",
@@ -814,8 +825,7 @@ public class AstralMekanismMachines {
                             .changeAttributeUpgrade(
                                     EnumSet.of(Upgrade.SPEED, Upgrade.ENERGY, AMEUpgrade.COBBLESTONE_SUPPLY.getValue(),
                                             AMEUpgrade.WATER_SUPPLY.getValue()))
-                            .withEnergyConfig(AstralMekanismConfig.usage.transformer,
-                                    AstralMekanismConfig.storage.transformer));
+                            .withEnergyConfig(AMEConfig.usage.transformer, AMEConfig.storage.transformer));
 
     public static final MachineRegistryObject<BEEvenlyInserter, BlockTileModel<BEEvenlyInserter, BlockTypeMachine<BEEvenlyInserter>>, MekanismTileContainer<BEEvenlyInserter>, ItemBlockMachine> EVENLY_INSERTER = MACHINES
             .registerSimple("evenly_inserter",

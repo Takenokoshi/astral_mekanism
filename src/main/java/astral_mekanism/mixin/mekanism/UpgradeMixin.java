@@ -63,7 +63,7 @@ public class UpgradeMixin {
     private static void astral_mekanism$clinitInject(CallbackInfo ci) {
         AMEUpgrade.COBBLESTONE_SUPPLY
                 .setValue(astral_mekanism$createNew("cobblestone_supply", AMEAPILang.UPGRADE_COBBLESTONE_SUPPLY,
-                        AMEAPILang.UPGRADE_COBBLESTONE_SUPPLY_DESCRIPTION, 16, EnumColor.GRAY));
+                        AMEAPILang.UPGRADE_COBBLESTONE_SUPPLY_DESCRIPTION, 32, EnumColor.GRAY));
         AMEUpgrade.WATER_SUPPLY.setValue(astral_mekanism$createNew("water_supply", AMEAPILang.UPGRADE_WATER_SUPPLY,
                 AMEAPILang.UPGRADE_WATER_SUPPLY_DESCRIPTION, 1, EnumColor.AQUA));
         AMEUpgrade.XP

@@ -18,19 +18,19 @@ public abstract class TileEntityRotaryCondensentratorMixin {
 
     @Mutable
     @Accessor("baselineMaxOperations")
-    abstract void setBaselineMaxOperations(int value);
+    abstract void astral_mekanism$setBaselineMaxOperations(int value);
 
     @Inject(method = "<init>", at = @At("TAIL"))
-    void injectInit(BlockPos pos, BlockState state, CallbackInfo ci) {
-        setBaselineMaxOperations(200);
+    void astral_mekanism$injectInit(BlockPos pos, BlockState state, CallbackInfo ci) {
+        astral_mekanism$setBaselineMaxOperations(200);
     }
 
     @Inject(method = "recalculateUpgrades", at = @At("TAIL"))
-    void injectRecalculateUpgrades(Upgrade upgrade, CallbackInfo ci) {
+    void astral_mekanism$injectRecalculateUpgrades(Upgrade upgrade, CallbackInfo ci) {
         if (AMEEmpowered.empoweredIsLoaded()) {
-            setBaselineMaxOperations(200 << AMEEmpowered.getAllSpeeds((IUpgradeTile) (Object) this));
+            astral_mekanism$setBaselineMaxOperations(200 << AMEEmpowered.getAllSpeeds((IUpgradeTile) (Object) this));
         } else if (upgrade == Upgrade.SPEED) {
-            setBaselineMaxOperations(200 << ((IUpgradeTile) (Object) this).getComponent().getUpgrades(Upgrade.SPEED));
+            astral_mekanism$setBaselineMaxOperations(200 << ((IUpgradeTile) (Object) this).getComponent().getUpgrades(Upgrade.SPEED));
         }
     }
 }

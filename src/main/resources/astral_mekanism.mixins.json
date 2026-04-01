@@ -10,6 +10,7 @@
 	"compatibilityLevel": "JAVA_17",
 	"mixins": [
 		"ae2.AppEngInternalInventoryMixin",
+		"compactmekanismmachines.CompactBlockTypesMixin",
 		"emextras.EMExtrasBlockTypeMixin",
 		"evolvedmekanism.EMBlockTypesMixin",
 		"mekanism.blockentity.TileEntityMekanismMixin",

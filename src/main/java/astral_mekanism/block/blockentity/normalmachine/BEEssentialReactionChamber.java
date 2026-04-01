@@ -101,7 +101,7 @@ public class BEEssentialReactionChamber extends BlockEntityProgressMachine<React
         }
         builder.addSlot(outputSlot = OutputInventorySlot.at(listener, 116, 35));
         builder.addSlot(
-                energySlot = EnergyInventorySlot.fillOrConvert(energyContainer, this::getLevel, listener, 21, 35));
+                energySlot = EnergyInventorySlot.fillOrConvert(energyContainer, this::getLevel, listener, 116, 17));
         return builder.build();
     }
 
@@ -141,6 +141,7 @@ public class BEEssentialReactionChamber extends BlockEntityProgressMachine<React
     @Override
     protected void onUpdateServer() {
         super.onUpdateServer();
+        energySlot.fillContainerOrConvert();
         recipeCacheLookupMonitor.updateAndProcess();
     }
 

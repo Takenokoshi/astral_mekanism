@@ -14,16 +14,17 @@ import mekanism.client.gui.element.gauge.GuiGauge;
 import mekanism.client.gui.element.progress.ProgressType;
 import mekanism.client.gui.element.slot.GuiSlot;
 import mekanism.client.gui.element.slot.SlotType;
+import mekanism.client.jei.BaseRecipeCategory;
+import mekanism.client.jei.MekanismJEIRecipeType;
 import mekanism.common.inventory.container.slot.SlotOverlay;
 import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
 import mezz.jei.api.helpers.IGuiHelper;
 import mezz.jei.api.recipe.IFocusGroup;
 import mezz.jei.api.recipe.RecipeIngredientRole;
-import mezz.jei.api.recipe.RecipeType;
 import net.minecraft.network.chat.Component;
 import net.minecraftforge.fluids.FluidStack;
 
-public class TransformRecipeCategory extends BaseGeneralRecipeCategory<TransformRecipe> {
+public class TransformRecipeCategory extends BaseRecipeCategory<TransformRecipe> {
 
     private final GuiSlot inputSlotA = addSlot(SlotType.INPUT, 46, 17);
     private final GuiSlot inputSlotB = addSlot(SlotType.INPUT, 46, 35);
@@ -36,7 +37,7 @@ public class TransformRecipeCategory extends BaseGeneralRecipeCategory<Transform
     private final GuiGauge<FluidStack> outputTank = addElement(
             GuiFluidGauge.getDummy(GaugeType.STANDARD, this, 150, 10));
 
-    public TransformRecipeCategory(IGuiHelper helper, RecipeType<TransformRecipe> recipeType, IItemProvider provider) {
+    public TransformRecipeCategory(IGuiHelper helper, MekanismJEIRecipeType<TransformRecipe> recipeType, IItemProvider provider) {
         super(helper, recipeType, provider, 10, 10, 200, 60);
         addSlot(SlotType.NORMAL, 10, 17).with(SlotOverlay.MINUS);
         addSlot(SlotType.NORMAL, 10, 53);

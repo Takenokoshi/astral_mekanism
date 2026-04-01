@@ -2,7 +2,7 @@ package astral_mekanism.jei.recipeCategory;
 
 import java.util.List;
 
-import astral_mekanism.jei.MixingReactorJEIrecipe;
+import astral_mekanism.jei.jeirecipe.MixingReactorJEIrecipe;
 import mekanism.api.providers.IItemProvider;
 import mekanism.client.SpecialColors;
 import mekanism.client.gui.element.GuiInnerScreen;

@@ -1,0 +1,16 @@
+{
+    "type": "mekanism:metallurgic_infusing",
+    "itemInput": {
+        "ingredient": {
+            "item": "astral_mekanism:ame_upgrade_base"
+        },
+        "amount": 1
+    },
+    "chemicalInput": {
+        "infuse_type": "astral_mekanism:xp",
+        "amount": 1000000
+    },
+    "output": {
+        "item": "astral_mekanism:xp_upgrade"
+    }
+}

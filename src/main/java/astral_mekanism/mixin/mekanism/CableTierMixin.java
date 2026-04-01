@@ -27,14 +27,14 @@ public class CableTierMixin {
     static CableTier[] $VALUES;
 
     @Invoker("<init>")
-    private static CableTier invokeNew(String name, int num, BaseTier tier, FloatingLong capacity) {
+    private static CableTier astral_mekanism$invokeNew(String name, int num, BaseTier tier, FloatingLong capacity) {
         return null;
     }
 
     @Unique
-    private static CableTier createNew(BaseTier tier, FloatingLong capacity) {
+    private static CableTier astral_mekanism$createNew(BaseTier tier, FloatingLong capacity) {
         int index = $VALUES.length;
-        CableTier result = invokeNew(tier.name(), index, tier, capacity);
+        CableTier result = astral_mekanism$invokeNew(tier.name(), index, tier, capacity);
         CableTier[] newValues = Arrays.copyOf($VALUES, index + 1);
         newValues[index] = result;
         $VALUES = newValues;
@@ -42,7 +42,7 @@ public class CableTierMixin {
     }
 
     @Inject(method = "<clinit>", at = @At("TAIL"))
-    private static void clinitInject(CallbackInfo ci) {
-        AMCableTier.ASTRAL = createNew(AstralMekanismBaseTier.ASTRAL, FloatingLong.MAX_VALUE);
+    private static void astral_mekanism$clinitInject(CallbackInfo ci) {
+        AMCableTier.ASTRAL = astral_mekanism$createNew(AstralMekanismBaseTier.ASTRAL, FloatingLong.MAX_VALUE);
     }
 }

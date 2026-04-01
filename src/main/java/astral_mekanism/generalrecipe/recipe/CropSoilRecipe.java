@@ -143,7 +143,7 @@ public class CropSoilRecipe implements Recipe<Container>, TriPredicate<ItemStack
                             new FluidStack(Fluids.WATER, 100),
                             Math.round(800 / basicSoil.getGrowthModifier()), 2));
                     result.add(new CropSoilRecipe(basicCrop, basicSoil,
-                            MekanismFluids.NUTRITIONAL_PASTE.getFluidStack(100),
+                            MekanismFluids.NUTRITIONAL_PASTE.getFluidStack(25),
                             Math.round(400 / basicSoil.getGrowthModifier()), 6));
                 }
             }

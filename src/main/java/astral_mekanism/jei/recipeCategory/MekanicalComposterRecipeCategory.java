@@ -2,7 +2,7 @@ package astral_mekanism.jei.recipeCategory;
 
 import java.util.List;
 
-import astral_mekanism.jei.MekanicalComposterJEIRecipe;
+import astral_mekanism.jei.jeirecipe.MekanicalComposterJEIRecipe;
 import mekanism.api.providers.IItemProvider;
 import mekanism.client.gui.element.progress.ProgressType;
 import mekanism.client.gui.element.slot.GuiSlot;

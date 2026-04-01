@@ -36,12 +36,12 @@ public class AstralMekanismRecipeTypes {
     private static <MR extends MekanismRecipe, IIRC extends IInputRecipeCache> RecipeTypeRegistryObject<MR, IIRC> register(
             String name, Function<MekanismRecipeType<MR, IIRC>, IIRC> inputCacheCreator) {
         return RECIPE_TYPES.register(name, () -> {
-            MekanismRecipeType<MR, IIRC> recipeType = MekanismRecipeTypeMixin.invokeNew(name,
+            MekanismRecipeType<MR, IIRC> recipeType = MekanismRecipeTypeMixin.astral_mekanism$invokeNew(name,
                     (t) -> null);
             @SuppressWarnings("unchecked")
             MekanismRecipeTypeMixin<MR, IIRC> rtMixin = (MekanismRecipeTypeMixin<MR, IIRC>) (Object) recipeType;
-            rtMixin.setRegistryName(AMEConstants.rl(name));
-            rtMixin.setInputCache(inputCacheCreator.apply(recipeType));
+            rtMixin.astral_mekanism$setRegistryName(AMEConstants.rl(name));
+            rtMixin.astral_mekanism$setInputCache(inputCacheCreator.apply(recipeType));
             return recipeType;
         });
     }

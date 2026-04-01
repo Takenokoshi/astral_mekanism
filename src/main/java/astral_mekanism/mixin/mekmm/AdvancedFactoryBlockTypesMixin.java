@@ -23,30 +23,47 @@ import mekanism.common.util.EnumUtils;
 public class AdvancedFactoryBlockTypesMixin {
 
     @Inject(method = "<clinit>", at = @At("TAIL"))
-    private static void clinitInject(CallbackInfo ci) {
-        addSupportedUpgrade(AdvancedFactoryBlockTypes.CHEMICAL_DISSOLUTION_CHAMBER, AMEUpgrade.COBBLESTONE_SUPPLY.getValue());
-        addSupportedUpgrade(AdvancedFactoryBlockTypes.CHEMICAL_OXIDIZER, AMEUpgrade.COBBLESTONE_SUPPLY.getValue());
-        addSupportedUpgrade(AdvancedFactoryBlockTypes.CHEMICAL_WASHER, AMEUpgrade.WATER_SUPPLY.getValue());
-        addSupportedUpgrade(AdvancedFactoryBlockTypes.NUTRITIONAL_LIQUIFIER, AMEUpgrade.COBBLESTONE_SUPPLY.getValue());
-        addSupportedUpgrade(AdvancedFactoryBlockTypes.PRESSURIZED_REACTION_CHAMBER, AMEUpgrade.COBBLESTONE_SUPPLY.getValue(),
-                AMEUpgrade.WATER_SUPPLY.getValue());
+    private static void astral_mekanism$clinitInject(CallbackInfo ci) {
+        astral_mekanism$addSupportedUpgrade(AdvancedFactoryBlockTypes.CHEMICAL_DISSOLUTION_CHAMBER,
+                AMEUpgrade.COBBLESTONE_SUPPLY.getValue(), AMEUpgrade.RADIOACTIVE_SEALING.getValue());
+        astral_mekanism$addSupportedUpgrade(AdvancedFactoryBlockTypes.CHEMICAL_OXIDIZER,
+                AMEUpgrade.COBBLESTONE_SUPPLY.getValue(), AMEUpgrade.RADIOACTIVE_SEALING.getValue());
+        astral_mekanism$addSupportedUpgrade(AdvancedFactoryBlockTypes.CHEMICAL_WASHER,
+                AMEUpgrade.WATER_SUPPLY.getValue(), AMEUpgrade.RADIOACTIVE_SEALING.getValue());
+        astral_mekanism$addSupportedUpgrade(AdvancedFactoryBlockTypes.NUTRITIONAL_LIQUIFIER,
+                AMEUpgrade.COBBLESTONE_SUPPLY.getValue());
+        astral_mekanism$addSupportedUpgrade(AdvancedFactoryBlockTypes.PRESSURIZED_REACTION_CHAMBER,
+                AMEUpgrade.COBBLESTONE_SUPPLY.getValue(),
+                AMEUpgrade.WATER_SUPPLY.getValue(),
+                AMEUpgrade.RADIOACTIVE_SEALING.getValue());
         for (FactoryTier tier : EnumUtils.FACTORY_TIERS) {
-            addSupportedUpgrade(AdvancedFactoryBlockTypes.getAdvancedFactory(tier, AdvancedFactoryType.DISSOLVING),
+            astral_mekanism$addSupportedUpgrade(
+                    AdvancedFactoryBlockTypes.getAdvancedFactory(tier, AdvancedFactoryType.DISSOLVING),
+                    AMEUpgrade.COBBLESTONE_SUPPLY.getValue(), AMEUpgrade.RADIOACTIVE_SEALING.getValue());
+            astral_mekanism$addSupportedUpgrade(
+                    AdvancedFactoryBlockTypes.getAdvancedFactory(tier, AdvancedFactoryType.OXIDIZING),
+                    AMEUpgrade.COBBLESTONE_SUPPLY.getValue(), AMEUpgrade.RADIOACTIVE_SEALING.getValue());
+            astral_mekanism$addSupportedUpgrade(
+                    AdvancedFactoryBlockTypes.getAdvancedFactory(tier, AdvancedFactoryType.WASHING),
+                    AMEUpgrade.WATER_SUPPLY.getValue(), AMEUpgrade.RADIOACTIVE_SEALING.getValue());
+            astral_mekanism$addSupportedUpgrade(
+                    AdvancedFactoryBlockTypes.getAdvancedFactory(tier, AdvancedFactoryType.LIQUIFYING),
                     AMEUpgrade.COBBLESTONE_SUPPLY.getValue());
-            addSupportedUpgrade(AdvancedFactoryBlockTypes.getAdvancedFactory(tier, AdvancedFactoryType.OXIDIZING),
-                    AMEUpgrade.COBBLESTONE_SUPPLY.getValue());
-            addSupportedUpgrade(AdvancedFactoryBlockTypes.getAdvancedFactory(tier, AdvancedFactoryType.WASHING),
-                    AMEUpgrade.WATER_SUPPLY.getValue());
-            addSupportedUpgrade(AdvancedFactoryBlockTypes.getAdvancedFactory(tier, AdvancedFactoryType.LIQUIFYING),
-                    AMEUpgrade.COBBLESTONE_SUPPLY.getValue());
-            addSupportedUpgrade(
+            astral_mekanism$addSupportedUpgrade(
                     AdvancedFactoryBlockTypes.getAdvancedFactory(tier, AdvancedFactoryType.PRESSURISED_REACTING),
-                    AMEUpgrade.COBBLESTONE_SUPPLY.getValue(), AMEUpgrade.WATER_SUPPLY.getValue());
+                    AMEUpgrade.COBBLESTONE_SUPPLY.getValue(), AMEUpgrade.WATER_SUPPLY.getValue(),
+                    AMEUpgrade.RADIOACTIVE_SEALING.getValue());
+            astral_mekanism$addSupportedUpgrade(
+                    AdvancedFactoryBlockTypes.getAdvancedFactory(tier, AdvancedFactoryType.CENTRIFUGING),
+                    AMEUpgrade.RADIOACTIVE_SEALING.getValue());
+            astral_mekanism$addSupportedUpgrade(
+                    AdvancedFactoryBlockTypes.getAdvancedFactory(tier, AdvancedFactoryType.CRYSTALLIZING),
+                    AMEUpgrade.RADIOACTIVE_SEALING.getValue());
         }
     }
 
     @Unique
-    private static void addSupportedUpgrade(BlockTypeTile<?> tile, Upgrade... additionalUpgrades) {
+    private static void astral_mekanism$addSupportedUpgrade(BlockTypeTile<?> tile, Upgrade... additionalUpgrades) {
         if (tile == null) {
             return;
         }

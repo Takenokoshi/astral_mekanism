@@ -13,7 +13,7 @@ import net.minecraft.world.item.enchantment.UntouchingEnchantment;
 @Mixin(value = LootBonusEnchantment.class, remap = true)
 public class LootBonusEnchantmentMixin {
     @Inject(method = "checkCompatibility", at = @At("HEAD"), cancellable = true)
-    public void checkCompatibilityInject(Enchantment enchantment, CallbackInfoReturnable<Boolean> cir) {
+    public void astral_mekanism$checkCompatibilityInject(Enchantment enchantment, CallbackInfoReturnable<Boolean> cir) {
         if (enchantment == Enchantments.SILK_TOUCH && enchantment instanceof UntouchingEnchantment silk) {
             cir.setReturnValue(silk.checkCompatibility((LootBonusEnchantment) (Object) this));
         }

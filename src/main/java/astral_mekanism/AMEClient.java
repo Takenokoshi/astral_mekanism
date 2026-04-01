@@ -11,6 +11,7 @@ import astral_mekanism.block.blockentity.astralmachine.BEAstralGreenHouse;
 import astral_mekanism.block.blockentity.astralmachine.BEAstralIsotopicCentrifuge;
 import astral_mekanism.block.blockentity.astralmachine.BEAstralMekanicalCharger;
 import astral_mekanism.block.blockentity.astralmachine.BEAstralMekanicalInscriber;
+import astral_mekanism.block.blockentity.astralmachine.BEAstralReactionChamber;
 import astral_mekanism.block.blockentity.astralmachine.BEAstralSPS;
 import astral_mekanism.block.blockentity.astralmachine.BEAstralTransformer;
 import astral_mekanism.block.blockentity.astralmachine.advanced.BEAstralChemicalInjectionChamber;
@@ -171,6 +172,7 @@ public class AMEClient extends AstralMekanism {
         registerScreenMek(AstralMekanismMachines.ASTRAL_METALLURGIC_INFUSER, GuiAstralMetallurgicInfuser::new);
         registerScreenMek(AstralMekanismMachines.ASTRAL_PRC, GuiAstralPRC::new);
         registerScreenMek(AstralMekanismMachines.ASTRAL_PRECISION_SAWMILL, GuiAstralPrecisionSawmill::new);
+        registerScreenMek(AstralMekanismMachines.ASTRAL_REACTION_CHAMBER, GuiAAEReactionChamber<BEAstralReactionChamber>::new);
         registerScreenMek(AstralMekanismMachines.ASTRAL_ROTARY_CONDENSENTRATOR, GuiAstralRotaryCondensentrator::new);
         registerScreenMek(AstralMekanismMachines.ASTRAL_SPS, GuiGasToGasMachine<BEAstralSPS>::new);
         registerScreenMek(AstralMekanismMachines.ASTRAL_SOLIDIFICATION_CHAMBER, GuiAstralSolidifier::new);

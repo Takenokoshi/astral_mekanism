@@ -19,15 +19,16 @@ import mekanism.common.content.blocktype.BlockTypeTile;
 public class EMBlockTypesMixin {
 
     @Inject(method = "<clinit>", at = @At("TAIL"))
-    private static void clinitInject(CallbackInfo ci) {
-        addSupportedUpgrade(EMBlockTypes.ALLOYER, AMEUpgrade.COBBLESTONE_SUPPLY.getValue());
-        addSupportedUpgrade(EMBlockTypes.CHEMIXER, AMEUpgrade.COBBLESTONE_SUPPLY.getValue());
-        addSupportedUpgrade(EMBlockTypes.MELTER, AMEUpgrade.COBBLESTONE_SUPPLY.getValue());
+    private static void astral_mekanism$clinitInject(CallbackInfo ci) {
+        astral_mekanism$addSupportedUpgrade(EMBlockTypes.ALLOYER, AMEUpgrade.COBBLESTONE_SUPPLY.getValue());
+        astral_mekanism$addSupportedUpgrade(EMBlockTypes.CHEMIXER,
+                AMEUpgrade.COBBLESTONE_SUPPLY.getValue(), AMEUpgrade.RADIOACTIVE_SEALING.getValue());
+        astral_mekanism$addSupportedUpgrade(EMBlockTypes.MELTER, AMEUpgrade.COBBLESTONE_SUPPLY.getValue());
     }
 
     @Unique
-    private static void addSupportedUpgrade(BlockTypeTile<?> tile, Upgrade... additionalUpgrades) {
-        if (tile==null) {
+    private static void astral_mekanism$addSupportedUpgrade(BlockTypeTile<?> tile, Upgrade... additionalUpgrades) {
+        if (tile == null) {
             return;
         }
         boolean has = tile.has(AttributeUpgradeSupport.class);

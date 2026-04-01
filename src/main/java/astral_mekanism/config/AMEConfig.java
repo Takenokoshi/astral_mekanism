@@ -18,10 +18,10 @@ import astral_mekanism.AstralMekanism;
 import mekanism.common.config.MekanismConfigHelper;
 
 @Mod.EventBusSubscriber(modid = AstralMekanism.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
-public class AstralMekanismConfig {
+public class AMEConfig {
 
-    public static final AstMekStorageConfig storage = new AstMekStorageConfig();
-    public static final AstMekUsageConfig usage = new AstMekUsageConfig();
+    public static final AMEStorageConfig storage = new AMEStorageConfig();
+    public static final AMEUsageConfig usage = new AMEUsageConfig();
 
     private static final ForgeConfigSpec.Builder BUILDER = new ForgeConfigSpec.Builder();
 
@@ -39,7 +39,7 @@ public class AstralMekanismConfig {
 
     private static final ForgeConfigSpec.ConfigValue<List<? extends String>> ITEM_STRINGS = BUILDER
             .comment("A list of items to log on common setup.")
-            .defineListAllowEmpty("items", List.of("minecraft:iron_ingot"), AstralMekanismConfig::validateItemName);
+            .defineListAllowEmpty("items", List.of("minecraft:iron_ingot"), AMEConfig::validateItemName);
 
     public static final ForgeConfigSpec SPEC = BUILDER.build();
 

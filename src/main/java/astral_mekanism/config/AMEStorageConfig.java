@@ -6,7 +6,7 @@ import mekanism.common.config.value.CachedFloatingLongValue;
 import net.minecraftforge.common.ForgeConfigSpec;
 import net.minecraftforge.fml.config.ModConfig.Type;
 
-public class AstMekStorageConfig extends BaseMekanismConfig {
+public class AMEStorageConfig extends BaseMekanismConfig {
 
     private final ForgeConfigSpec configSpec;
     public final CachedFloatingLongValue greenHouse;
@@ -15,8 +15,9 @@ public class AstMekStorageConfig extends BaseMekanismConfig {
     public final CachedFloatingLongValue transformer;
     public final CachedFloatingLongValue essentialCrafter;
     public final CachedFloatingLongValue fluidInfuser;
+    public final CachedFloatingLongValue aaeReactionChamber;
 
-    AstMekStorageConfig() {
+    AMEStorageConfig() {
         ForgeConfigSpec.Builder builder = new ForgeConfigSpec.Builder();
         builder.comment("Machine Energy Storage Config. This config is synced from server to client.").push("storage");
         greenHouse = CachedFloatingLongValue.define(this, builder, "Base energy storage (Joules).",
@@ -31,6 +32,9 @@ public class AstMekStorageConfig extends BaseMekanismConfig {
                 "essentialCrafter", FloatingLong.createConst(20000));
         fluidInfuser = CachedFloatingLongValue.define(this, builder, "Base energy storage (Joules).",
                 "fluidInfuser", FloatingLong.createConst(80000));
+        aaeReactionChamber = CachedFloatingLongValue.define(this, builder,
+                "Base energy storage (Joules).",
+                "aaeReactionChamber", FloatingLong.createConst(80000));
 
         builder.pop();
         configSpec = builder.build();

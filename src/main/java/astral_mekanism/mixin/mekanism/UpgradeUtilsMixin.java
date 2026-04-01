@@ -15,7 +15,7 @@ import net.minecraft.world.item.ItemStack;
 public class UpgradeUtilsMixin {
 
     @Inject(method = "getStack(Lmekanism/api/Upgrade;I)Lnet/minecraft/world/item/ItemStack;", at = @At("HEAD"),cancellable = true)
-    private static void getStackInject(Upgrade upgrade, int count, CallbackInfoReturnable<ItemStack> cir) {
+    private static void astral_mekanism$getStackInject(Upgrade upgrade, int count, CallbackInfoReturnable<ItemStack> cir) {
         if (upgrade==AMEUpgrade.COBBLESTONE_SUPPLY.getValue()) {
             cir.setReturnValue(AstralMekanismItems.COBBLESTONE_SUPPLY_UPGRADE.getItemStack(count));
             cir.cancel();

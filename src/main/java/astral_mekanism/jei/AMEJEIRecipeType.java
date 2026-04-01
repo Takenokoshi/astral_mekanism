@@ -1,5 +1,6 @@
 package astral_mekanism.jei;
 
+import appeng.core.AppEng;
 import appeng.integration.modules.jei.ChargerCategory;
 import appeng.recipes.handlers.ChargerRecipe;
 import appeng.recipes.handlers.InscriberRecipe;
@@ -7,6 +8,9 @@ import appeng.recipes.transform.TransformRecipe;
 import astral_mekanism.AMEConstants;
 import astral_mekanism.AMETier;
 import astral_mekanism.generalrecipe.recipe.CropSoilRecipe;
+import astral_mekanism.jei.jeirecipe.GasBurningJEIRecipe;
+import astral_mekanism.jei.jeirecipe.MekanicalComposterJEIRecipe;
+import astral_mekanism.jei.jeirecipe.MixingReactorJEIrecipe;
 import astral_mekanism.recipes.recipe.AstralCraftingRecipe;
 import astral_mekanism.recipes.recipe.FluidFluidToFluidRecipe;
 import astral_mekanism.recipes.recipe.MekanicalTransformRecipe;
@@ -14,6 +18,7 @@ import astral_mekanism.registries.AstralMekanismMachines;
 import mekanism.api.recipes.GasToGasRecipe;
 import mekanism.api.recipes.ItemStackToItemStackRecipe;
 import mekanism.client.jei.MekanismJEIRecipeType;
+import mekanism.generators.common.registries.GeneratorsBlocks;
 import mezz.jei.api.recipe.RecipeType;
 import net.minecraft.world.item.crafting.SmeltingRecipe;
 import net.pedroksl.advanced_ae.recipes.ReactionChamberRecipe;
@@ -44,11 +49,14 @@ public final class AMEJEIRecipeType {
             AMEConstants.rl("essential_smelter"), SmeltingRecipe.class);
     public static final MekanismJEIRecipeType<ChargerRecipe> AE_CHARGER = new MekanismJEIRecipeType<>(
             ChargerCategory.RECIPE_TYPE.getUid(), ChargerRecipe.class);
-
-    public static final RecipeType<InscriberRecipe> MEKANICAL_INSCRIBING = RecipeType.create(AMEConstants.MODID,
-            "mekanical_inscriber", InscriberRecipe.class);
-    public static final RecipeType<TransformRecipe> TRANSFORM = RecipeType.create(AMEConstants.MODID,
-            "item_transformation", TransformRecipe.class);
-    public static final RecipeType<CropSoilRecipe> CROP_SOIL = RecipeType.create(AMEConstants.MODID,
-            "crop_soil", CropSoilRecipe.class);
+    public static final MekanismJEIRecipeType<InscriberRecipe> INSCRIBE = new MekanismJEIRecipeType<>(
+            AppEng.makeId("inscriber"), InscriberRecipe.class);
+    public static final MekanismJEIRecipeType<TransformRecipe> TRANSFORM = new MekanismJEIRecipeType<>(
+            AMEConstants.rl("ae2_transform"), TransformRecipe.class);
+    public static final MekanismJEIRecipeType<CropSoilRecipe> CROP_SOIL = new MekanismJEIRecipeType<>(
+            AMEConstants.rl("crop_soil_fluid"), CropSoilRecipe.class);
+    public static final RecipeType<CropSoilRecipe> CROP_SOIL_FAKE = RecipeType.create(AMEConstants.MODID,
+            "crop_soil_fluid", CropSoilRecipe.class);
+    public static final MekanismJEIRecipeType<GasBurningJEIRecipe> GAS_BURNING = new MekanismJEIRecipeType<>(
+            GeneratorsBlocks.GAS_BURNING_GENERATOR, GasBurningJEIRecipe.class);
 }
