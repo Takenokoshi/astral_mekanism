@@ -1,12 +1,12 @@
 {
     "type":"astral_mekanism:infusing_condense",
     "inputGas": {
-        "amount": 1,
+        "amount": 10,
         "gas": "mekanism:sodium"
     },
     "inputInfusion": {
         "infuse_type": "astral_mekanism:xp",
-        "amount": 1000
+        "amount": 100000
     },
     "output": {
         "fluid": "astral_mekanism:wisdom_rivulet",

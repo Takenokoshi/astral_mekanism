@@ -51,6 +51,8 @@ It references, interacts with, or was inspired by the following open-source proj
 
 - [EvolvedMekanismExtras](https://github.com/masyumero/EvolvedMekanismExtras) - MIT
 
+- [Mekanism:Elements](https://github.com/fixdol/Mekanism-Elements) - MIT
+
 ---
 
 ### Applied Energistics 2
@@ -103,3 +105,7 @@ Each project is licensed under the MIT License:
 
 These projects remain the property of their respective authors and are not included
 in Astral Mekanism’s distributed codebase.
+
+### Idea Inspiration
+
+[1000xMek](https://github.com/Valine3gDev/1000x-mekanism) - MIT

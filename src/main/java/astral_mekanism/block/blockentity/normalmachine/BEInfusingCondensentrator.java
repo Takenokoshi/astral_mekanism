@@ -40,7 +40,7 @@ public class BEInfusingCondensentrator extends BEAbstractInfusingCondensentrator
 
     @Override
     protected long getChemicalTankCapacity() {
-        return 10000000;
+        return 1000000000l;
     }
 
     @Override
