@@ -27,7 +27,8 @@ public class MoreMachineBlockTypesMixin {
     private static void astral_mekanism$clinitInject(CallbackInfo ci) {
         astral_mekanism$addSupportedUpgrade(MoreMachineBlockTypes.RECYCLER, AMEUpgrade.COBBLESTONE_SUPPLY.getValue());
         astral_mekanism$addSupportedUpgrade(MoreMachineBlockTypes.PLANTING_STATION,
-                AMEUpgrade.COBBLESTONE_SUPPLY.getValue(), AMEUpgrade.RADIOACTIVE_SEALING.getValue());
+                AMEUpgrade.COBBLESTONE_SUPPLY.getValue(), AMEUpgrade.RADIOACTIVE_SEALING.getValue(),
+                                            AMEUpgrade.AIR_INTAKE.getValue());
         astral_mekanism$addSupportedUpgrade(MoreMachineBlockTypes.CNC_STAMPER, AMEUpgrade.COBBLESTONE_SUPPLY.getValue());
         astral_mekanism$addSupportedUpgrade(MoreMachineBlockTypes.CNC_LATHE, AMEUpgrade.COBBLESTONE_SUPPLY.getValue());
         astral_mekanism$addSupportedUpgrade(MoreMachineBlockTypes.CNC_ROLLING_MILL, AMEUpgrade.COBBLESTONE_SUPPLY.getValue());
@@ -39,7 +40,8 @@ public class MoreMachineBlockTypesMixin {
             for (MoreMachineFactoryType type : MoreMachineEnumUtils.MM_FACTORY_TYPES) {
                 if (type == MoreMachineFactoryType.PLANTING || type == MoreMachineFactoryType.REPLICATING) {
                     astral_mekanism$addSupportedUpgrade(MoreMachineBlockTypes.getMoreMachineFactory(tier, type),
-                            AMEUpgrade.COBBLESTONE_SUPPLY.getValue(), AMEUpgrade.RADIOACTIVE_SEALING.getValue());
+                            AMEUpgrade.COBBLESTONE_SUPPLY.getValue(), AMEUpgrade.RADIOACTIVE_SEALING.getValue(),
+                                            AMEUpgrade.AIR_INTAKE.getValue());
                 }
                 astral_mekanism$addSupportedUpgrade(MoreMachineBlockTypes.getMoreMachineFactory(tier, type),
                         AMEUpgrade.COBBLESTONE_SUPPLY.getValue());

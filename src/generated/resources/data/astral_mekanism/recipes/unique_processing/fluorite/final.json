@@ -1,0 +1,12 @@
+{
+  "type": "mekanism:enriching",
+  "input": {
+    "ingredient": {
+      "tag": "astral_mekanism:shining_gems/fluorite"
+    }
+  },
+  "output": {
+    "count": 48,
+    "item": "mekanism:fluorite_gem"
+  }
+}

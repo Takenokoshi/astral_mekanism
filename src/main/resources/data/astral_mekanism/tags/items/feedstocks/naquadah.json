@@ -1,0 +1,7 @@
+{
+  "replace": false,
+  "values": [
+    "#forge:raw_materials/naquadah",
+    "#forge:ores/naquadah"
+  ]
+}

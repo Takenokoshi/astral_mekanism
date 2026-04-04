@@ -13,7 +13,8 @@ public enum AMEUpgrade {
     COBBLESTONE_SUPPLY,
     WATER_SUPPLY,
     XP,
-    RADIOACTIVE_SEALING
+    RADIOACTIVE_SEALING,
+    AIR_INTAKE
     ;
 
     private static final Map<Upgrade, AMEUpgrade> map = new HashMap<>();// don't use EnumMap.

@@ -1,0 +1,15 @@
+{
+  "type": "mekanism:washing",
+  "fluidInput": {
+    "amount": 1,
+    "fluid": "astral_mekanism:wisdom_rivulet"
+  },
+  "output": {
+    "amount": 10,
+    "slurry": "astral_mekanism:shining_diamond_slurry"
+  },
+  "slurryInput": {
+    "amount": 1,
+    "slurry": "astral_mekanism:specific_diamond_slurry"
+  }
+}

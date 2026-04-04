@@ -1,0 +1,26 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "key": {
+        "X": {
+            "item": "mekanism:metallurgic_infuser"
+        },
+        "A": {
+            "item": "astral_mekanism:alloy_elastic"
+        },
+        "C": {
+            "item": "astral_mekanism:vibration_control_circuit"
+        },
+        "I": {
+            "item": "mekanism:dynamic_tank"
+        }
+    },
+    "pattern": [
+        "ACA",
+        "IXI",
+        "ACA"
+    ],
+    "result": {
+        "item": "astral_mekanism:infusing_condensentrator",
+        "count": 1
+    }
+}

@@ -36,5 +36,10 @@ public class UpgradeUtilsMixin {
             cir.cancel();
             return;
         }
+        if (upgrade==AMEUpgrade.AIR_INTAKE.getValue()) {
+            cir.setReturnValue(AstralMekanismItems.AIR_INTAKE_UPGRADE.getItemStack(count));
+            cir.cancel();
+            return;
+        }
     }
 }

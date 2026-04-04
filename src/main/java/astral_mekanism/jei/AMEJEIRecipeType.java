@@ -1,5 +1,6 @@
 package astral_mekanism.jei;
 
+import appeng.api.config.CondenserOutput;
 import appeng.core.AppEng;
 import appeng.integration.modules.jei.ChargerCategory;
 import appeng.recipes.handlers.ChargerRecipe;
@@ -13,6 +14,7 @@ import astral_mekanism.jei.jeirecipe.MekanicalComposterJEIRecipe;
 import astral_mekanism.jei.jeirecipe.MixingReactorJEIrecipe;
 import astral_mekanism.recipes.recipe.AstralCraftingRecipe;
 import astral_mekanism.recipes.recipe.FluidFluidToFluidRecipe;
+import astral_mekanism.recipes.recipe.GasInfusionToFluidRecipe;
 import astral_mekanism.recipes.recipe.MekanicalTransformRecipe;
 import astral_mekanism.registries.AstralMekanismMachines;
 import mekanism.api.recipes.GasToGasRecipe;
@@ -55,8 +57,15 @@ public final class AMEJEIRecipeType {
             AMEConstants.rl("ae2_transform"), TransformRecipe.class);
     public static final MekanismJEIRecipeType<CropSoilRecipe> CROP_SOIL = new MekanismJEIRecipeType<>(
             AMEConstants.rl("crop_soil_fluid"), CropSoilRecipe.class);
+    public static final MekanismJEIRecipeType<CondenserOutput> MATTER_CONDENSER = new MekanismJEIRecipeType<>(
+            AppEng.makeId("condenser"), CondenserOutput.class);
+
     public static final RecipeType<CropSoilRecipe> CROP_SOIL_FAKE = RecipeType.create(AMEConstants.MODID,
             "crop_soil_fluid", CropSoilRecipe.class);
     public static final MekanismJEIRecipeType<GasBurningJEIRecipe> GAS_BURNING = new MekanismJEIRecipeType<>(
             GeneratorsBlocks.GAS_BURNING_GENERATOR, GasBurningJEIRecipe.class);
+    public static final MekanismJEIRecipeType<GasInfusionToFluidRecipe> INFUSING_CONDENSE = new MekanismJEIRecipeType<>(
+            AstralMekanismMachines.INFUSING_CONDENSENTRATOR, GasInfusionToFluidRecipe.class);
+    public static final MekanismJEIRecipeType<GasToGasRecipe> GAS_CONVERSION = new MekanismJEIRecipeType<>(
+            AstralMekanismMachines.GAS_CONVERTER, GasToGasRecipe.class);
 }

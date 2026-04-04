@@ -1,0 +1,19 @@
+{
+  "type": "mekanism:crushing",
+  "input": [
+    {
+      "ingredient": {
+        "tag": "astral_mekanism:feedstocks/lead"
+      }
+    },
+    {
+      "ingredient": {
+        "tag": "astral_mekanism:shining_clumps/lead"
+      }
+    }
+  ],
+  "output": {
+    "count": 8,
+    "item": "astral_mekanism:shining_lead_dust"
+  }
+}

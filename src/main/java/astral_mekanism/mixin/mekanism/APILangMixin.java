@@ -58,5 +58,7 @@ public class APILangMixin {
         AMEAPILang.UPGRADE_XP_DESCRIPTION = astral_mekanism$createNew("upgrade", "xp.description");
         AMEAPILang.UPGRADE_RADIOACTIVE_SEALING = astral_mekanism$createNew("upgrade", "radioactive_sealing");
         AMEAPILang.UPGRADE_RADIOACTIVE_SEALING_DESCRIPTION = astral_mekanism$createNew("upgrade", "radioactive_sealing.description");
+        AMEAPILang.UPGRADE_AIR_INTAKE = astral_mekanism$createNew("upgrade", "air_intake");
+        AMEAPILang.UPGRADE_AIR_INTAKE_DESCRIPTION = astral_mekanism$createNew("upgrade", "air_intake.description");
     }
 }

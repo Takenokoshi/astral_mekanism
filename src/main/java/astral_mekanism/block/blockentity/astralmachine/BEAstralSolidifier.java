@@ -14,10 +14,13 @@ import fr.iglee42.evolvedmekanism.registries.EMRecipeType;
 import mekanism.api.IContentsListener;
 import mekanism.api.RelativeSide;
 import mekanism.api.fluid.IExtendedFluidTank;
+import mekanism.api.inventory.IInventorySlot;
 import mekanism.api.math.FloatingLong;
 import mekanism.api.providers.IBlockProvider;
 import mekanism.api.recipes.cache.CachedRecipe;
+import mekanism.api.recipes.cache.CachedRecipe.OperationTracker;
 import mekanism.api.recipes.cache.CachedRecipe.OperationTracker.RecipeError;
+import mekanism.api.recipes.ingredients.InputIngredient;
 import mekanism.api.recipes.inputs.IInputHandler;
 import mekanism.api.recipes.inputs.InputHelper;
 import mekanism.api.recipes.outputs.IOutputHandler;
@@ -93,7 +96,7 @@ public class BEAstralSolidifier extends TileEntityRecipeMachine<SolidificationRe
         ejectorComponent = new TileComponentEjector(this);
         ejectorComponent.setOutputData(configComponent, TransmissionType.ITEM);
 
-        itemInputHandler = InputHelper.getInputHandler(inputSlot, NOT_ENOUGH_ITEM_INPUT_ERROR);
+        itemInputHandler = new SolidiferItemInputHandler(inputSlot, NOT_ENOUGH_ITEM_INPUT_ERROR);
         fluidInputHandler = InputHelper.getInputHandler(inputFluidTank, NOT_ENOUGH_FLUID_INPUT_ERROR);
         fluidExtraInputHandler = InputHelper.getInputHandler(inputFluidExtraTank, NOT_ENOUGH_EXTRA_FLUID_INPUT_ERROR);
         outputHandler = OutputHelper.getOutputHandler(outputSlot, NOT_ENOUGH_SPACE_ITEM_OUTPUT_ERROR);
@@ -197,12 +200,54 @@ public class BEAstralSolidifier extends TileEntityRecipeMachine<SolidificationRe
         return getActive() ? energyContainer.getEnergyPerTick() : FloatingLong.ZERO;
     }
 
-    public IExtendedFluidTank getInputFluidTank(){
+    public IExtendedFluidTank getInputFluidTank() {
         return inputFluidTank;
     }
 
-    public IExtendedFluidTank getInputFluidExtraTank(){
+    public IExtendedFluidTank getInputFluidExtraTank() {
         return inputFluidExtraTank;
+    }
+
+    private static class SolidiferItemInputHandler implements IInputHandler<ItemStack> {
+
+        private final IInventorySlot slot;
+        private final RecipeError notEnoughError;
+
+        private SolidiferItemInputHandler(IInventorySlot slot, RecipeError notEnoughError) {
+            this.slot = slot;
+            this.notEnoughError = notEnoughError;
+        }
+
+        @Override
+        public ItemStack getInput() {
+            return slot.getStack();
+        }
+
+        @Override
+        public ItemStack getRecipeInput(InputIngredient<ItemStack> recipeIngredient) {
+            return recipeIngredient.getMatchingInstance(slot.getStack());
+        }
+
+        @Override
+        public void use(ItemStack recipeInput, int operations) {
+        }
+
+        @Override
+        public void calculateOperationsCanSupport(OperationTracker tracker, ItemStack recipeInput,
+                int usageMultiplier) {
+            if (slot.isEmpty()) {
+                tracker.updateOperations(0);
+                tracker.addError(notEnoughError);
+                return;
+            }
+            if (ItemStack.isSameItemSameTags(slot.getStack(), recipeInput)
+                    && slot.getCount() >= recipeInput.getCount()) {
+                return;
+            }
+            tracker.mismatchedRecipe();
+            return;
+        }
+
     }
 
 }

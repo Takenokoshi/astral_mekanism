@@ -1,0 +1,29 @@
+{
+  "type": "mekanism:purifying",
+  "chemicalInput": [
+    {
+      "amount": 1,
+      "gas": "mekanismelements:nitric_acid"
+    },
+    {
+      "amount": 1,
+      "gas": "astral_mekanism:nitric_acid"
+    }
+  ],
+  "itemInput": [
+    {
+      "ingredient": {
+        "tag": "astral_mekanism:feedstocks/lapis_lazuli"
+      }
+    },
+    {
+      "ingredient": {
+        "tag": "astral_mekanism:shining_shards/lapis_lazuli"
+      }
+    }
+  ],
+  "output": {
+    "count": 64,
+    "item": "astral_mekanism:shining_lapis_lazuli"
+  }
+}

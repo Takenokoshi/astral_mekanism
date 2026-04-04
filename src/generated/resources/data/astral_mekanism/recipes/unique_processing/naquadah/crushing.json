@@ -1,0 +1,19 @@
+{
+  "type": "mekanism:crushing",
+  "input": [
+    {
+      "ingredient": {
+        "tag": "astral_mekanism:feedstocks/naquadah"
+      }
+    },
+    {
+      "ingredient": {
+        "tag": "astral_mekanism:shining_clumps/naquadah"
+      }
+    }
+  ],
+  "output": {
+    "count": 8,
+    "item": "astral_mekanism:shining_naquadah_dust"
+  }
+}

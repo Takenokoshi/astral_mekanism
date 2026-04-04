@@ -2,7 +2,7 @@
     "type": "mekanism:injecting",
     "chemicalInput": {
         "amount": 4,
-        "gas": "astral_mekanism:aqua_regia"
+        "gas": "mekanismelements:aqua_regia"
     },
     "itemInput": {
         "ingredient": {

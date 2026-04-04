@@ -1,0 +1,28 @@
+{
+  "type": "mekanism:purifying",
+  "chemicalInput": [
+    {
+      "amount": 1,
+      "gas": "mekanismelements:nitric_acid"
+    },
+    {
+      "amount": 1,
+      "gas": "astral_mekanism:nitric_acid"
+    }
+  ],
+  "itemInput": [
+    {
+      "ingredient": {
+        "tag": "astral_mekanism:feedstocks/gold"
+      }
+    },
+    {
+      "ingredient": {
+        "tag": "astral_mekanism:shining_shards/gold"
+      }
+    }
+  ],
+  "output": {
+    "item": "astral_mekanism:shining_gold_clump"
+  }
+}

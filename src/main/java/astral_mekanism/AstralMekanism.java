@@ -14,7 +14,6 @@ import astral_mekanism.registries.AstralMekanismGases;
 import astral_mekanism.registries.AstralMekanismInfuseTypes;
 import astral_mekanism.registries.AstralMekanismItems;
 import astral_mekanism.registries.AstralMekanismMachines;
-import astral_mekanism.registries.AMEMenus;
 import astral_mekanism.registries.AstralMekanismRecipeSerializers;
 import astral_mekanism.registries.AstralMekanismRecipeTypes;
 import astral_mekanism.registries.AstralMekanismSlurries;
@@ -45,7 +44,6 @@ public class AstralMekanism {
         AMEItemDefinitions.INSTANCE.register(modEventBus);
         AMEBlockDefinitions.INSTANCE.register(modEventBus);
         AMEBlockEntityRegistry.INSTANCE.register(modEventBus);
-        AMEMenus.INSTANCE.register(modEventBus);
         modEventBus.addListener(this::commonSetup);
         AstralMekanismMachines.MACHINES.register(modEventBus);
         AstralMekanismGases.GASES.register(modEventBus);

@@ -5,6 +5,7 @@ import java.util.function.Supplier;
 
 import astral_mekanism.AMEConstants;
 import astral_mekanism.registration.MachineRegistryObject;
+import astral_mekanism.registration.SingleSlurryRegistryObject;
 import astral_mekanism.registries.AMEBlockDefinitions;
 import astral_mekanism.registries.AstralMekanismBlocks;
 import astral_mekanism.registries.AstralMekanismFluids;
@@ -40,6 +41,7 @@ public class AstralMekanismJapaneseLangProvider extends LanguageProvider {
         AstralMekanismGases.GASES.getAllGases().forEach(this::addGas);
         AstralMekanismInfuseTypes.INFUSE_TYPES.getAllInfuseType().forEach(this::addInfuse);
         AstralMekanismSlurries.SLURRIES.getAllSlurries().forEach(this::addSlurry);
+        AstralMekanismSlurries.SLURRIES.getAllSingleSlurries().forEach(this::addSlurry);
     }
 
     private void addMachine(MachineRegistryObject<?, ?, ?, ?> machine) {
@@ -109,10 +111,15 @@ public class AstralMekanismJapaneseLangProvider extends LanguageProvider {
                 toTitle(slurry.getDirtySlurry().getRegistryName().getPath()) + "の懸濁液");
     }
 
+    private void addSlurry(SingleSlurryRegistryObject<?> slurry) {
+        add(slurry.getTranslationKey(), toTitle(slurry.getRegistryName().getPath()));
+    }
+
     private static String toTitle(String path) {
         path = path.contains("_compact_") ? "compact_" + path.replace("_compact_", "_") : path;
         path = path.contains("_naquadah_reactor") ? path.replace("_naquadah_reactor", "_ナクアダリアクター") : path;
         path = path.contains("metallurgic_infuser") ? path.replace("metallurgic_infuser", "冶金吹込機") : path;
+        path = path.contains("sodium_hydroxide") ? path.replace("sodium_hydroxide", "水酸化ナトリウム") : path;
         String[] parts = path.split("_");
         StringBuilder sb = new StringBuilder();
         if (parts[0].equals("alloy")
@@ -264,6 +271,9 @@ public class AstralMekanismJapaneseLangProvider extends LanguageProvider {
         result.put("green", "グリーン");
         result.put("house", "ハウス");
         result.put("composter", "コンポスター");
+        result.put("matter", "マター");
+        result.put("condenser", "コンデンサー");
+        result.put("irradiator", "照射機");
         // materal types
         result.put("coal", "石炭");
         result.put("diamond", "ダイヤモンド");
@@ -322,6 +332,10 @@ public class AstralMekanismJapaneseLangProvider extends LanguageProvider {
         result.put("cobblestone", "丸石");
         result.put("water", "水");
         result.put("radioactive", "放射能");
+        result.put("fertilizer", "肥料");
+        result.put("air", "空気");
+        result.put("wisdom", "知恵");
+        result.put("radiation", "放射線");
         // material states
         result.put("astral", "アストラル");
         result.put("ingot", "インゴット");
@@ -338,7 +352,10 @@ public class AstralMekanismJapaneseLangProvider extends LanguageProvider {
         result.put("supply", "供給");
         result.put("upgrade", "アップグレード");
         result.put("starlight", "のための星の耀き");
+        result.put("rivulet", "のせせらぎ");
         result.put("dirty", "汚れた");
+        result.put("shining", "輝く");
+        result.put("specific", "特異的な");
         result.put("compressed", "圧縮された");
         result.put("clump", "の凝塊");
         result.put("crushed", "粉砕された");
@@ -357,6 +374,7 @@ public class AstralMekanismJapaneseLangProvider extends LanguageProvider {
         result.put("paste", "ペースト");
         result.put("containing", "含有");
         result.put("sealing", "密封");
+        result.put("intake", "吸引");
         // other
         result.put("item", "アイテム");
         result.put("spacetime", "スペース・タイム");

@@ -1,0 +1,11 @@
+{
+  "type": "mekanism:crystallizing",
+  "chemicalType": "slurry",
+  "input": {
+    "amount": 100,
+    "slurry": "astral_mekanism:shining_redstone_slurry"
+  },
+  "output": {
+    "item": "astral_mekanism:shining_redstone_crystal"
+  }
+}

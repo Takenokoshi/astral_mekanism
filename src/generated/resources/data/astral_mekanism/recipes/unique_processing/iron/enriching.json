@@ -1,0 +1,12 @@
+{
+  "type": "mekanism:enriching",
+  "input": {
+    "ingredient": {
+      "tag": "astral_mekanism:shining_dusts/iron"
+    }
+  },
+  "output": {
+    "count": 6,
+    "item": "mekanism:dust_iron"
+  }
+}

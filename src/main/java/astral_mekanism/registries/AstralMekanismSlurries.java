@@ -8,10 +8,28 @@ import java.util.function.Supplier;
 
 import astral_mekanism.AMEConstants;
 import astral_mekanism.registration.ExtendedSlurryDeferredRegister;
+import astral_mekanism.registration.SingleSlurryRegistryObject;
+import astral_mekanism.registryenum.AMEProcessableMaterialType;
 
 public class AstralMekanismSlurries {
     public static final ExtendedSlurryDeferredRegister SLURRIES = new ExtendedSlurryDeferredRegister(
             AMEConstants.MODID);
+
+    public static final EnumMap<AMEProcessableMaterialType, SingleSlurryRegistryObject<Slurry>> SPECIFIC_SLURRIES = createUniqueSlurries(
+            "specific");
+    public static final EnumMap<AMEProcessableMaterialType, SingleSlurryRegistryObject<Slurry>> SHINING_SLURRIES = createUniqueSlurries(
+            "shining");
+
+    private static EnumMap<AMEProcessableMaterialType, SingleSlurryRegistryObject<Slurry>> createUniqueSlurries(
+            String additionalName) {
+        EnumMap<AMEProcessableMaterialType, SingleSlurryRegistryObject<Slurry>> result = new EnumMap<>(
+                AMEProcessableMaterialType.class);
+        for (AMEProcessableMaterialType type : AMEProcessableMaterialType.values()) {
+            result.put(type, SLURRIES.registerSingle(additionalName + "_" + type.name + "_slurry",
+                    builder -> builder.ore(AMEConstants.rl("feedstocks/" + type.name))));
+        }
+        return result;
+    }
 
     public static final EnumMap<OreType, SlurryRegistryObject<Slurry, Slurry>> GEM_SLURRIES = ((Supplier<EnumMap<OreType, SlurryRegistryObject<Slurry, Slurry>>>) (() -> {
         EnumMap<OreType, SlurryRegistryObject<Slurry, Slurry>> result = new EnumMap<>(OreType.class);

@@ -2,7 +2,7 @@
     "type": "mekanism:purifying",
     "chemicalInput": {
         "amount": 4,
-        "gas": "astral_mekanism:nitric_acid"
+        "gas": "mekanismelements:nitric_acid"
     },
     "itemInput": {
         "ingredient": {

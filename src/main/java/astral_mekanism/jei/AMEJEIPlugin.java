@@ -2,6 +2,7 @@ package astral_mekanism.jei;
 
 import org.jetbrains.annotations.Nullable;
 
+import com.fxd927.mekanismelements.client.MSJEIRecipeType;
 import com.jerry.generator_extras.common.ExtraGenLang;
 import com.jerry.generator_extras.common.genregistry.ExtraGenBlocks;
 import com.jerry.generator_extras.common.genregistry.ExtraGenItem;
@@ -19,6 +20,7 @@ import astral_mekanism.jei.recipeCategory.CropSoilRecipeCategory;
 import astral_mekanism.jei.recipeCategory.EssentialSmeltingRecipeCategory;
 import astral_mekanism.jei.recipeCategory.FluidInfuserRecipeCategory;
 import astral_mekanism.jei.recipeCategory.GasBurningRecipeCategory;
+import astral_mekanism.jei.recipeCategory.GasInfusionToFluidRecipeCategory;
 import astral_mekanism.jei.recipeCategory.MekanicalComposterRecipeCategory;
 import astral_mekanism.jei.recipeCategory.MekanicalTransformRecipeCategory;
 import astral_mekanism.jei.recipeCategory.MixingReactorRecipeCategory;
@@ -76,12 +78,8 @@ public class AMEJEIPlugin implements IModPlugin {
                                 AstralMekanismMachines.ASTRAL_CRAFTER),
                         new EssentialSmeltingRecipeCategory(guiHelper, AMEJEIRecipeType.ESSENTIAL_SMELTING,
                                 AstralMekanismMachines.ESSENTIAL_ENERGIZED_SMELTER),
-                        new ItemStackToItemStackRecipeCategory(guiHelper,
-                                AMEJEIRecipeType.ITEM_COMPRESSING,
-                                AstralMekanismMachines.ITEM_COMPRESSOR),
-                        new ItemStackToItemStackRecipeCategory(guiHelper,
-                                AMEJEIRecipeType.ITEM_UNZIPPING,
-                                AstralMekanismMachines.ITEM_UNZIPPER),
+                        new GasInfusionToFluidRecipeCategory(guiHelper, AMEJEIRecipeType.INFUSING_CONDENSE,
+                                AstralMekanismMachines.INFUSING_CONDENSENTRATOR),
                         new MekanicalComposterRecipeCategory(guiHelper,
                                 AMEJEIRecipeType.MEKANICAL_COMPOSTER,
                                 AstralMekanismMachines.MEKANICAL_COMPOSTER),
@@ -105,6 +103,15 @@ public class AMEJEIPlugin implements IModPlugin {
                         new GasBurningRecipeCategory(guiHelper,
                                 AMEJEIRecipeType.GAS_BURNING,
                                 GeneratorsBlocks.GAS_BURNING_GENERATOR),
+                        new ItemStackToItemStackRecipeCategory(guiHelper,
+                                AMEJEIRecipeType.ITEM_COMPRESSING,
+                                AstralMekanismMachines.ITEM_COMPRESSOR),
+                        new ItemStackToItemStackRecipeCategory(guiHelper,
+                                AMEJEIRecipeType.ITEM_UNZIPPING,
+                                AstralMekanismMachines.ITEM_UNZIPPER),
+                        new GasToGasRecipeCategory(guiHelper,
+                                AMEJEIRecipeType.GAS_CONVERSION,
+                                AstralMekanismMachines.GAS_CONVERTER),
                 });
     }
 
@@ -122,6 +129,8 @@ public class AMEJEIPlugin implements IModPlugin {
                 AstralMekanismRecipeTypes.ITEM_UNZIPPING);
         RecipeRegistryHelper.register(registry, AMEJEIRecipeType.MEKANICAL_TRANSFORM,
                 AstralMekanismRecipeTypes.MEKANICAL_TRAMSFORM);
+        RecipeRegistryHelper.register(registry, AMEJEIRecipeType.INFUSING_CONDENSE,
+                AstralMekanismRecipeTypes.INFUSING_CONDENSE);
         RecipeRegistryHelper.register(registry, AMEJEIRecipeType.FUSION_REACTOR,
                 MixingReactorJEIrecipe.fusionRecipes);
         RecipeRegistryHelper.register(registry, AMEJEIRecipeType.NAQUADAH_REACTOR,
@@ -136,6 +145,8 @@ public class AMEJEIPlugin implements IModPlugin {
                 CropSoilRecipe.getAllRecipes(Minecraft.getInstance().level.getRecipeManager()));
         RecipeRegistryHelper.register(registry, AMEJEIRecipeType.GAS_BURNING,
                 GasBurningJEIRecipe.getRecipes());
+        RecipeRegistryHelper.register(registry, AMEJEIRecipeType.GAS_CONVERSION,
+                AstralMekanismRecipeTypes.GAS_CONVERSION);
     }
 
     @Override
@@ -150,6 +161,8 @@ public class AMEJEIPlugin implements IModPlugin {
                 AstralMekanismMachines.TRANSFORMER, AstralMekanismMachines.ASTRAL_TRANSFORMER);
         CatalystRegistryHelper.register(registry, AMEJEIRecipeType.TRANSFORM,
                 AstralMekanismMachines.TRANSFORMER, AstralMekanismMachines.ASTRAL_TRANSFORMER);
+        CatalystRegistryHelper.register(registry, AMEJEIRecipeType.MATTER_CONDENSER,
+                AstralMekanismMachines.MEKANICAL_MATTER_CONDENSER);
         // advanced ae
         CatalystRegistryHelper.register(registry, AMEJEIRecipeType.AAE_REACTION,
                 AstralMekanismMachines.ESSENTIAL_REACTION_CHAMBER, AstralMekanismMachines.ASTRAL_REACTION_CHAMBER);
@@ -247,6 +260,10 @@ public class AMEJEIPlugin implements IModPlugin {
                 ExtraGenBlocks.LEAD_COATED_LASER_FOCUS_MATRIX,
                 ExtraGenItem.HOHLRAUM);
 
+        // mekanism elements
+        CatalystRegistryHelper.register(registry, MSJEIRecipeType.RADIATION_IRRADIATOR,
+                AstralMekanismMachines.ASTRAL_RADIATION_IRRADIATOR);
+
         // astral_mekanism
         CatalystRegistryHelper.register(registry, AMEJEIRecipeType.ASTRAL_CRAFTING,
                 AstralMekanismMachines.ASTRAL_CRAFTER);
@@ -271,6 +288,10 @@ public class AMEJEIPlugin implements IModPlugin {
                 AstralMekanismMachines.GREEN_HOUSE, AstralMekanismMachines.ASTRAL_GREEN_HOUSE);
         CatalystRegistryHelper.register(registry, AMEJEIRecipeType.MEKANICAL_COMPOSTER,
                 AstralMekanismMachines.MEKANICAL_COMPOSTER, AstralMekanismMachines.ASTRAL_COMPOSTER);
+        CatalystRegistryHelper.register(registry, AMEJEIRecipeType.INFUSING_CONDENSE,
+                AstralMekanismMachines.INFUSING_CONDENSENTRATOR);
+        CatalystRegistryHelper.register(registry, AMEJEIRecipeType.GAS_CONVERSION,
+                AstralMekanismMachines.GAS_CONVERTER);
 
         // minecraft
         registry.addRecipeCatalysts(RecipeTypes.SMELTING,

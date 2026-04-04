@@ -88,6 +88,7 @@ public class AAEReactionCachedRecipe extends GeneralCachedRecipe<ReactionChamber
                     used[hanIndex] = true;
                     arrangedHandlers[ingIndex] = itemInputHandlers[hanIndex];
                     itemInputs[ingIndex] = input;
+                    arrangedHandlers[ingIndex].calculateOperationsCanSupport(tracker, itemInputs[ingIndex]);
                     break;
                 }
                 if (!found) {

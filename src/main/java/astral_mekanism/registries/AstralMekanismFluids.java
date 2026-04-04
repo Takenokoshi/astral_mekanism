@@ -48,4 +48,19 @@ public class AstralMekanismFluids {
             .register("utility_fluid", p -> p.texture(
                     Mekanism.rl("liquid/liquid"),
                     Mekanism.rl("liquid/liquid_flow")).tint(0x80ff55ff));
+
+    public static final FluidRegistryObject<MekanismFluidType, Source, Flowing, LiquidBlock, BucketItem> ANTIMATTER_FERTILIZER = FLUIDS
+            .register("antimatter_fertilizer", p -> p.texture(
+                    Mekanism.rl("liquid/liquid"),
+                    Mekanism.rl("liquid/liquid_flow")).tint(0x807CFC00));
+
+    public static final FluidRegistryObject<MekanismFluidType, Source, Flowing, LiquidBlock, BucketItem> LIQUID_AIR = FLUIDS
+            .register("liquid_air", p -> p.texture(
+                    Mekanism.rl("liquid/liquid"),
+                    Mekanism.rl("liquid/liquid_flow")).tint(0x08000000));
+
+    public static final FluidRegistryObject<MekanismFluidType, Source, Flowing, LiquidBlock, BucketItem> WISDOM_RIVULET = FLUIDS
+            .register("wisdom_rivulet", p -> p.texture(
+                    Mekanism.rl("liquid/liquid"),
+                    Mekanism.rl("liquid/liquid_flow")).tint(0x807C4DFF));
 }

@@ -22,7 +22,8 @@ public class EMBlockTypesMixin {
     private static void astral_mekanism$clinitInject(CallbackInfo ci) {
         astral_mekanism$addSupportedUpgrade(EMBlockTypes.ALLOYER, AMEUpgrade.COBBLESTONE_SUPPLY.getValue());
         astral_mekanism$addSupportedUpgrade(EMBlockTypes.CHEMIXER,
-                AMEUpgrade.COBBLESTONE_SUPPLY.getValue(), AMEUpgrade.RADIOACTIVE_SEALING.getValue());
+                AMEUpgrade.COBBLESTONE_SUPPLY.getValue(), AMEUpgrade.RADIOACTIVE_SEALING.getValue(),
+                                            AMEUpgrade.AIR_INTAKE.getValue());
         astral_mekanism$addSupportedUpgrade(EMBlockTypes.MELTER, AMEUpgrade.COBBLESTONE_SUPPLY.getValue());
     }
 

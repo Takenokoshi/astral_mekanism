@@ -14,6 +14,7 @@ import astral_mekanism.generalrecipe.cachedrecipe.GeneralCachedRecipe;
 import astral_mekanism.generalrecipe.cachedrecipe.MekanicalChargingCachedRecipe;
 import astral_mekanism.generalrecipe.lookup.cache.recipe.SingleInputGeneralRecipeCache.GeneralSingleItem;
 import astral_mekanism.generalrecipe.lookup.handler.IUnifiedSingelRecipeLookupHandler;
+import astral_mekanism.integration.AMEEmpowered;
 import mekanism.api.IContentsListener;
 import mekanism.api.math.FloatingLong;
 import mekanism.api.providers.IBlockProvider;
@@ -59,7 +60,7 @@ public class BEMekanicalCharger extends BlockEntityProgressMachine<ChargerRecipe
     private MachineEnergyContainer<BEMekanicalCharger> energyContainer;
 
     public BEMekanicalCharger(IBlockProvider blockProvider, BlockPos pos, BlockState state) {
-        super(blockProvider, pos, state, TRACKED_ERROR_TYPES, 40);
+        super(blockProvider, pos, state, TRACKED_ERROR_TYPES, 10);
         configComponent = new TileComponentConfig(this, TransmissionType.ITEM, TransmissionType.ENERGY);
         configComponent.setupItemIOConfig(inputSlot, outputSlot, energySlot);
         configComponent.setupInputConfig(TransmissionType.ENERGY, energyContainer);
@@ -121,7 +122,7 @@ public class BEMekanicalCharger extends BlockEntityProgressMachine<ChargerRecipe
     }
 
     @Override
-    public @NotNull IUnifiedRecipeTypeProvider<ChargerRecipe,GeneralSingleItem<Container,ChargerRecipe>> getRecipeType() {
+    public @NotNull IUnifiedRecipeTypeProvider<ChargerRecipe, GeneralSingleItem<Container, ChargerRecipe>> getRecipeType() {
         return GeneralRecipeType.CHARGING;
     }
 
@@ -139,6 +140,9 @@ public class BEMekanicalCharger extends BlockEntityProgressMachine<ChargerRecipe
                 .setActive(this::setActive)
                 .setEnergyRequirements(energyContainer::getEnergyPerTick, energyContainer)
                 .setRequiredTicks(this::getTicksRequired)
+                .setBaselineMaxOperations(() -> AMEEmpowered.empoweredIsLoaded()
+                        ? 1 << AMEEmpowered.getEmpoweredSpeeds(this)
+                        : 1)
                 .setOnFinish(this::markForSave)
                 .setOperatingTicksChanged(this::setOperatingTicks);
     }

@@ -25,7 +25,8 @@ public class AdvancedFactoryBlockTypesMixin {
     @Inject(method = "<clinit>", at = @At("TAIL"))
     private static void astral_mekanism$clinitInject(CallbackInfo ci) {
         astral_mekanism$addSupportedUpgrade(AdvancedFactoryBlockTypes.CHEMICAL_DISSOLUTION_CHAMBER,
-                AMEUpgrade.COBBLESTONE_SUPPLY.getValue(), AMEUpgrade.RADIOACTIVE_SEALING.getValue());
+                AMEUpgrade.COBBLESTONE_SUPPLY.getValue(), AMEUpgrade.RADIOACTIVE_SEALING.getValue(),
+                AMEUpgrade.AIR_INTAKE.getValue());
         astral_mekanism$addSupportedUpgrade(AdvancedFactoryBlockTypes.CHEMICAL_OXIDIZER,
                 AMEUpgrade.COBBLESTONE_SUPPLY.getValue(), AMEUpgrade.RADIOACTIVE_SEALING.getValue());
         astral_mekanism$addSupportedUpgrade(AdvancedFactoryBlockTypes.CHEMICAL_WASHER,
@@ -35,11 +36,13 @@ public class AdvancedFactoryBlockTypesMixin {
         astral_mekanism$addSupportedUpgrade(AdvancedFactoryBlockTypes.PRESSURIZED_REACTION_CHAMBER,
                 AMEUpgrade.COBBLESTONE_SUPPLY.getValue(),
                 AMEUpgrade.WATER_SUPPLY.getValue(),
-                AMEUpgrade.RADIOACTIVE_SEALING.getValue());
+                AMEUpgrade.RADIOACTIVE_SEALING.getValue(),
+                AMEUpgrade.AIR_INTAKE.getValue());
         for (FactoryTier tier : EnumUtils.FACTORY_TIERS) {
             astral_mekanism$addSupportedUpgrade(
                     AdvancedFactoryBlockTypes.getAdvancedFactory(tier, AdvancedFactoryType.DISSOLVING),
-                    AMEUpgrade.COBBLESTONE_SUPPLY.getValue(), AMEUpgrade.RADIOACTIVE_SEALING.getValue());
+                    AMEUpgrade.COBBLESTONE_SUPPLY.getValue(), AMEUpgrade.RADIOACTIVE_SEALING.getValue(),
+                    AMEUpgrade.AIR_INTAKE.getValue());
             astral_mekanism$addSupportedUpgrade(
                     AdvancedFactoryBlockTypes.getAdvancedFactory(tier, AdvancedFactoryType.OXIDIZING),
                     AMEUpgrade.COBBLESTONE_SUPPLY.getValue(), AMEUpgrade.RADIOACTIVE_SEALING.getValue());
@@ -52,13 +55,16 @@ public class AdvancedFactoryBlockTypesMixin {
             astral_mekanism$addSupportedUpgrade(
                     AdvancedFactoryBlockTypes.getAdvancedFactory(tier, AdvancedFactoryType.PRESSURISED_REACTING),
                     AMEUpgrade.COBBLESTONE_SUPPLY.getValue(), AMEUpgrade.WATER_SUPPLY.getValue(),
-                    AMEUpgrade.RADIOACTIVE_SEALING.getValue());
+                    AMEUpgrade.RADIOACTIVE_SEALING.getValue(),
+                    AMEUpgrade.AIR_INTAKE.getValue());
             astral_mekanism$addSupportedUpgrade(
                     AdvancedFactoryBlockTypes.getAdvancedFactory(tier, AdvancedFactoryType.CENTRIFUGING),
-                    AMEUpgrade.RADIOACTIVE_SEALING.getValue());
+                    AMEUpgrade.RADIOACTIVE_SEALING.getValue(),
+                    AMEUpgrade.AIR_INTAKE.getValue());
             astral_mekanism$addSupportedUpgrade(
                     AdvancedFactoryBlockTypes.getAdvancedFactory(tier, AdvancedFactoryType.CRYSTALLIZING),
-                    AMEUpgrade.RADIOACTIVE_SEALING.getValue());
+                    AMEUpgrade.RADIOACTIVE_SEALING.getValue(),
+                    AMEUpgrade.AIR_INTAKE.getValue());
         }
     }
 
