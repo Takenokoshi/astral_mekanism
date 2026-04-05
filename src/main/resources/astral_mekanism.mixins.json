@@ -13,6 +13,7 @@
 		"compactmekanismmachines.CompactBlockTypesMixin",
 		"emextras.EMExtrasBlockTypeMixin",
 		"evolvedmekanism.EMBlockTypesMixin",
+		"mekanism.blockentity.TileEntityAntiprotonicNucleosynthesizerMixin",
 		"mekanism.blockentity.TileEntityMekanismMixin",
 		"mekanism.blockentity.TileEntityRotaryCondensentratorMixin",
 		"mekanism.recipe.MekanismRecipeTypeMixin",

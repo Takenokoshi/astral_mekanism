@@ -4,10 +4,12 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import astral_mekanism.block.blockentity.interf.IItemGasToItemMachine;
+import astral_mekanism.enumexpansion.AMEUpgrade;
 import fr.iglee42.evolvedmekanism.config.EMConfig;
 import fr.iglee42.evolvedmekanism.registries.EMBlocks;
 import fr.iglee42.evolvedmekanism.registries.EMRecipeType;
 import mekanism.api.IContentsListener;
+import mekanism.api.Upgrade;
 import mekanism.api.chemical.ChemicalTankBuilder;
 import mekanism.api.chemical.attribute.ChemicalAttributeValidator;
 import mekanism.api.chemical.gas.Gas;
@@ -30,8 +32,10 @@ import mekanism.common.capabilities.holder.energy.EnergyContainerHelper;
 import mekanism.common.capabilities.holder.energy.IEnergyContainerHolder;
 import mekanism.common.capabilities.holder.slot.IInventorySlotHolder;
 import mekanism.common.capabilities.holder.slot.InventorySlotHelper;
+import mekanism.common.config.MekanismConfig;
 import mekanism.common.inventory.container.MekanismContainer;
 import mekanism.common.inventory.container.sync.SyncableFloatingLong;
+import mekanism.common.inventory.container.sync.SyncableInt;
 import mekanism.common.inventory.slot.BasicInventorySlot;
 import mekanism.common.inventory.slot.EnergyInventorySlot;
 import mekanism.common.inventory.slot.InputInventorySlot;
@@ -57,6 +61,7 @@ public class BECompactAPT extends TileEntityProgressMachine<ItemStackGasToItemSt
     private MachineEnergyContainer<BECompactAPT> energyContainer;
     private EnergyInventorySlot energySlot;
     private FloatingLong lastEnergyUsed = FloatingLong.ZERO;
+    private int recipeTicksRequired = 400;
 
     private final IInputHandler<ItemStack> itemInputHandler;
     private final IInputHandler<GasStack> gasInputHandler;
@@ -70,6 +75,7 @@ public class BECompactAPT extends TileEntityProgressMachine<ItemStackGasToItemSt
         configComponent.setupInputConfig(TransmissionType.GAS, inputTank);
         configComponent.setupInputConfig(TransmissionType.ENERGY, energyContainer);
         ejectorComponent = new TileComponentEjector(this).setOutputData(configComponent, TransmissionType.ITEM);
+        recipeTicksRequired = baseTicksRequired;
         itemInputHandler = InputHelper.getInputHandler(inputSlot, RecipeError.NOT_ENOUGH_INPUT);
         gasInputHandler = InputHelper.getInputHandler(inputTank, RecipeError.NOT_ENOUGH_SECONDARY_INPUT);
         outputHandler = OutputHelper.getOutputHandler(outputSlot, RecipeError.NOT_ENOUGH_OUTPUT_SPACE);
@@ -85,7 +91,10 @@ public class BECompactAPT extends TileEntityProgressMachine<ItemStackGasToItemSt
         builder.addSlot(outputSlot = OutputInventorySlot.at(listener, 132, 40));
         builder.addSlot(energySlot = EnergyInventorySlot.fill(energyContainer, listener, 132, 18));
         builder.addSlot(superChargingSlot = BasicInventorySlot.at(
-                stack -> ItemStack.isSameItem(stack, EMBlocks.SUPERCHARGING_ELEMENT.getItemStack()), listener, 28, 18));
+                stack -> ItemStack.isSameItem(stack, EMBlocks.SUPERCHARGING_ELEMENT.getItemStack()), () -> {
+                    listener.onContentsChanged();
+                    recaluculateTicksRequired();
+                }, 28, 18));
         return builder.build();
     }
 
@@ -140,14 +149,31 @@ public class BECompactAPT extends TileEntityProgressMachine<ItemStackGasToItemSt
                 .setOnFinish(this::markForSave)
                 .setEnergyRequirements(energyContainer::getEnergyPerTick, energyContainer)
                 .setOperatingTicksChanged(this::setOperatingTicks)
-                .setRequiredTicks(() -> calculateTicksRequired(recipe));
+                .setRequiredTicks(this::getTicksRequired);
     }
 
-    private int calculateTicksRequired(ItemStackGasToItemStackRecipe r) {
-        ticksRequired = (int) ((EMConfig.general.aptDefaultDuration.getOrDefault()
-                * (r.getChemicalInput().getNeededAmount(inputTank.getStack()) / 100))
-                / (Math.min(superChargingSlot.getCount() + 1, 26)));
-        return ticksRequired;
+    @Override
+    public void onCachedRecipeChanged(CachedRecipe<ItemStackGasToItemStackRecipe> cachedRecipe, int cacheIndex) {
+        super.onCachedRecipeChanged(cachedRecipe, cacheIndex);
+        recipeTicksRequired = (int) (EMConfig.general.aptDefaultDuration.getOrDefault()
+                * (cachedRecipe.getRecipe().getChemicalInput().getNeededAmount(inputTank.getStack()) / 100));
+        recaluculateTicksRequired();
+    }
+
+    @Override
+    public void recalculateUpgrades(Upgrade upgrade) {
+        super.recalculateUpgrades(upgrade);
+        if (upgrade == AMEUpgrade.HYPER_SPEED.getValue()) {
+            recaluculateTicksRequired();
+        }
+    }
+
+    private void recaluculateTicksRequired() {
+        int hyperSpeed = upgradeComponent.getUpgrades(AMEUpgrade.HYPER_SPEED.getValue());
+        int superCharging = Math.min(25, superChargingSlot.getCount());
+        ticksRequired = (int) (recipeTicksRequired
+                * Math.pow(MekanismConfig.general.maxUpgradeMultiplier.getAsInt(), -hyperSpeed / 8d)
+                / (superCharging + 1));
     }
 
     @Override
@@ -174,6 +200,7 @@ public class BECompactAPT extends TileEntityProgressMachine<ItemStackGasToItemSt
     public void addContainerTrackers(MekanismContainer container) {
         super.addContainerTrackers(container);
         container.track(SyncableFloatingLong.create(() -> lastEnergyUsed, v -> lastEnergyUsed = v));
+        container.track(SyncableInt.create(() -> recipeTicksRequired, v -> recipeTicksRequired = v));
     }
 
 }

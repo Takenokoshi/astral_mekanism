@@ -60,7 +60,7 @@ public abstract class BEGasToGasMachine extends TileEntityRecipeMachine<GasToGas
     GasInventorySlot inputSlot;
     GasInventorySlot outputSlot;
     private FloatingLong clientEnergyUsed = FloatingLong.ZERO;
-    private int baselineMaxOperations = 1;
+    protected int baselineMaxOperations = 1;
 
     private final IOutputHandler<@NotNull GasStack> outputHandler;
     private final IInputHandler<@NotNull GasStack> inputHandler;

@@ -3,7 +3,9 @@ package astral_mekanism.block.blockentity.compact;
 import org.jetbrains.annotations.NotNull;
 
 import astral_mekanism.block.blockentity.prefab.BEGasToGasMachine;
+import astral_mekanism.enumexpansion.AMEUpgrade;
 import astral_mekanism.registries.AstralMekanismRecipeTypes;
+import mekanism.api.Upgrade;
 import mekanism.api.chemical.gas.Gas;
 import mekanism.api.chemical.gas.GasStack;
 import mekanism.api.providers.IBlockProvider;
@@ -32,11 +34,20 @@ public class BECompactSPS extends BEGasToGasMachine {
 
     @Override
     protected long tankCapacity() {
-        return 2000;
+        return 40000000;
     }
 
     @Override
     protected int maxOperation() {
         return 2;
+    }
+
+    @Override
+    public void recalculateUpgrades(Upgrade upgrade) {
+        super.recalculateUpgrades(upgrade);
+        if (upgrade == AMEUpgrade.HYPER_SPEED.getValue()) {
+            int hyperSpeed = upgradeComponent.getUpgrades(AMEUpgrade.HYPER_SPEED.getValue());
+            baselineMaxOperations = (hyperSpeed % 2 + 2) << (hyperSpeed / 2);
+        }
     }
 }

@@ -607,10 +607,12 @@ public class AstralMekanismMachines {
                     builder -> builder
                             .withSound(MekanismSounds.SPS)
                             .withEnergyConfig(EMConfig.general.aptEnergyConsumption, EMConfig.general.aptEnergyStorage)
-                            .changeAttributeUpgrade(
-                                    EnumSet.of(Upgrade.MUFFLING, AMEUpgrade.COBBLESTONE_SUPPLY.getValue(),
-                                            AMEUpgrade.RADIOACTIVE_SEALING.getValue(),
-                                            AMEUpgrade.AIR_INTAKE.getValue())));
+                            .changeAttributeUpgrade(EnumSet.of(
+                                    Upgrade.MUFFLING,
+                                    AMEUpgrade.COBBLESTONE_SUPPLY.getValue(),
+                                    AMEUpgrade.RADIOACTIVE_SEALING.getValue(),
+                                    AMEUpgrade.AIR_INTAKE.getValue(),
+                                    AMEUpgrade.HYPER_SPEED.getValue())));
 
     public static final EnumMap<AMETier, MachineRegistryObject<BECompactFissionReactor, BlockTileModel<BECompactFissionReactor, BlockTypeMachine<BECompactFissionReactor>>, MekanismTileContainer<BECompactFissionReactor>, ItemBlockMachine>> COMPACT_FIR = registerMachines(
             tier -> tier.nameForNormal + "_compact_fir",
@@ -646,12 +648,14 @@ public class AstralMekanismMachines {
                     AstralMekanismLang.DESCRIPTION_COMPACT_MACHINE,
                     builder -> builder
                             .withEnergyConfig(() -> MekanismConfig.general.spsEnergyPerInput.get().multiply(1000),
-                                    () -> MekanismConfig.general.spsEnergyPerInput.get().multiply(2000))
+                                    () -> MekanismConfig.general.spsEnergyPerInput.get().multiply(64000))
                             .withSound(MekanismSounds.SPS)
                             .removeAttributeUpgrade()
-                            .changeAttributeUpgrade(EnumSet.of(Upgrade.MUFFLING,
+                            .changeAttributeUpgrade(EnumSet.of(
+                                    Upgrade.MUFFLING,
                                     AMEUpgrade.RADIOACTIVE_SEALING.getValue(),
-                                    AMEUpgrade.AIR_INTAKE.getValue())));
+                                    AMEUpgrade.AIR_INTAKE.getValue(),
+                                    AMEUpgrade.HYPER_SPEED.getValue())));
 
     public static final EnumMap<AMETier, MachineRegistryObject<BECompactTEP, BlockTileModel<BECompactTEP, BlockTypeMachine<BECompactTEP>>, ContainerPagedMachine<BECompactTEP>, ItemBlockMachine>> COMPACT_TEP = registerPagedMachines(
             tier -> tier.nameForNormal + "_compact_tep",

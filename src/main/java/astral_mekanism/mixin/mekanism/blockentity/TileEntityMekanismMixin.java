@@ -71,7 +71,7 @@ public class TileEntityMekanismMixin {
     }
 
     @Inject(method = "recalculateUpgrades", at = @At("HEAD"))
-    private void astral_mekanism$recalculateUpgradesInject(Upgrade upgrade, CallbackInfo ci) {
+    protected void astral_mekanism$recalculateUpgradesInject(Upgrade upgrade, CallbackInfo ci) {
         if (upgrade == AMEUpgrade.COBBLESTONE_SUPPLY.getValue()) {
             astral_mekanism$cobblestoneUpgrades = upgradeComponent
                     .getUpgrades(AMEUpgrade.COBBLESTONE_SUPPLY.getValue());// 0~32

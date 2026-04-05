@@ -27,39 +27,52 @@ public class MekanismBlockTypesMixin {
         addSupportedUpgrade(MekanismBlockTypes.ENERGIZED_SMELTER, AMEUpgrade.COBBLESTONE_SUPPLY.getValue());
         addSupportedUpgrade(MekanismBlockTypes.PRECISION_SAWMILL, AMEUpgrade.COBBLESTONE_SUPPLY.getValue());
         addSupportedUpgrade(MekanismBlockTypes.OSMIUM_COMPRESSOR,
-                AMEUpgrade.COBBLESTONE_SUPPLY.getValue(), AMEUpgrade.RADIOACTIVE_SEALING.getValue(),
-                                            AMEUpgrade.AIR_INTAKE.getValue());
+                AMEUpgrade.COBBLESTONE_SUPPLY.getValue(),
+                AMEUpgrade.RADIOACTIVE_SEALING.getValue(),
+                AMEUpgrade.AIR_INTAKE.getValue());
         addSupportedUpgrade(MekanismBlockTypes.COMBINER, AMEUpgrade.COBBLESTONE_SUPPLY.getValue());
         addSupportedUpgrade(MekanismBlockTypes.METALLURGIC_INFUSER,
-                AMEUpgrade.COBBLESTONE_SUPPLY.getValue(), AMEUpgrade.RADIOACTIVE_SEALING.getValue());
+                AMEUpgrade.COBBLESTONE_SUPPLY.getValue(),
+                AMEUpgrade.RADIOACTIVE_SEALING.getValue());
         addSupportedUpgrade(MekanismBlockTypes.CHEMICAL_INJECTION_CHAMBER,
-                AMEUpgrade.COBBLESTONE_SUPPLY.getValue(), AMEUpgrade.RADIOACTIVE_SEALING.getValue(),
-                                            AMEUpgrade.AIR_INTAKE.getValue());
+                AMEUpgrade.COBBLESTONE_SUPPLY.getValue(),
+                AMEUpgrade.RADIOACTIVE_SEALING.getValue(),
+                AMEUpgrade.AIR_INTAKE.getValue());
         addSupportedUpgrade(MekanismBlockTypes.PRESSURIZED_REACTION_CHAMBER,
-                AMEUpgrade.COBBLESTONE_SUPPLY.getValue(), AMEUpgrade.WATER_SUPPLY.getValue(),
-                                            AMEUpgrade.AIR_INTAKE.getValue());
-        addSupportedUpgrade(MekanismBlockTypes.CHEMICAL_CRYSTALLIZER, AMEUpgrade.RADIOACTIVE_SEALING.getValue(),
-                                            AMEUpgrade.AIR_INTAKE.getValue());
+                AMEUpgrade.COBBLESTONE_SUPPLY.getValue(),
+                AMEUpgrade.WATER_SUPPLY.getValue(),
+                AMEUpgrade.AIR_INTAKE.getValue());
+        addSupportedUpgrade(MekanismBlockTypes.CHEMICAL_CRYSTALLIZER,
+                AMEUpgrade.RADIOACTIVE_SEALING.getValue(),
+                AMEUpgrade.AIR_INTAKE.getValue());
         addSupportedUpgrade(MekanismBlockTypes.CHEMICAL_DISSOLUTION_CHAMBER,
-                AMEUpgrade.COBBLESTONE_SUPPLY.getValue(), AMEUpgrade.RADIOACTIVE_SEALING.getValue(),
-                                            AMEUpgrade.AIR_INTAKE.getValue());
+                AMEUpgrade.COBBLESTONE_SUPPLY.getValue(),
+                AMEUpgrade.RADIOACTIVE_SEALING.getValue(),
+                AMEUpgrade.AIR_INTAKE.getValue());
         addSupportedUpgrade(MekanismBlockTypes.CHEMICAL_OXIDIZER,
-                AMEUpgrade.COBBLESTONE_SUPPLY.getValue(), AMEUpgrade.RADIOACTIVE_SEALING.getValue());
+                AMEUpgrade.COBBLESTONE_SUPPLY.getValue(),
+                AMEUpgrade.RADIOACTIVE_SEALING.getValue());
         addSupportedUpgrade(MekanismBlockTypes.CHEMICAL_WASHER,
-                AMEUpgrade.WATER_SUPPLY.getValue(), AMEUpgrade.RADIOACTIVE_SEALING.getValue());
+                AMEUpgrade.WATER_SUPPLY.getValue(),
+                AMEUpgrade.RADIOACTIVE_SEALING.getValue());
         addSupportedUpgrade(MekanismBlockTypes.ROTARY_CONDENSENTRATOR,
-                AMEUpgrade.WATER_SUPPLY.getValue(), AMEUpgrade.RADIOACTIVE_SEALING.getValue(),
-                                            AMEUpgrade.AIR_INTAKE.getValue());
+                AMEUpgrade.WATER_SUPPLY.getValue(),
+                AMEUpgrade.RADIOACTIVE_SEALING.getValue(),
+                AMEUpgrade.AIR_INTAKE.getValue());
         addSupportedUpgrade(MekanismBlockTypes.ELECTROLYTIC_SEPARATOR,
-                AMEUpgrade.WATER_SUPPLY.getValue(), AMEUpgrade.RADIOACTIVE_SEALING.getValue());
+                AMEUpgrade.WATER_SUPPLY.getValue(),
+                AMEUpgrade.RADIOACTIVE_SEALING.getValue());
         addSupportedUpgrade(MekanismBlockTypes.DIGITAL_MINER, AMEUpgrade.COBBLESTONE_SUPPLY.getValue());
         addSupportedUpgrade(MekanismBlockTypes.FLUIDIC_PLENISHER, AMEUpgrade.COBBLESTONE_SUPPLY.getValue());
         addSupportedUpgrade(MekanismBlockTypes.NUTRITIONAL_LIQUIFIER, AMEUpgrade.COBBLESTONE_SUPPLY.getValue());
         addSupportedUpgrade(MekanismBlockTypes.ANTIPROTONIC_NUCLEOSYNTHESIZER,
-                AMEUpgrade.COBBLESTONE_SUPPLY.getValue(), AMEUpgrade.RADIOACTIVE_SEALING.getValue(),
-                                            AMEUpgrade.AIR_INTAKE.getValue());
+                AMEUpgrade.COBBLESTONE_SUPPLY.getValue(),
+                AMEUpgrade.RADIOACTIVE_SEALING.getValue(),
+                AMEUpgrade.AIR_INTAKE.getValue(),
+                AMEUpgrade.HYPER_SPEED.getValue());
         addSupportedUpgrade(MekanismBlockTypes.PAINTING_MACHINE,
-                AMEUpgrade.COBBLESTONE_SUPPLY.getValue(), AMEUpgrade.RADIOACTIVE_SEALING.getValue());
+                AMEUpgrade.COBBLESTONE_SUPPLY.getValue(),
+                AMEUpgrade.RADIOACTIVE_SEALING.getValue());
 
         for (FactoryTier tier : EnumUtils.FACTORY_TIERS) {
             for (FactoryType type : EnumUtils.FACTORY_TYPES) {
@@ -69,7 +82,7 @@ public class MekanismBlockTypesMixin {
                         || type == FactoryType.PURIFYING) {
                     addSupportedUpgrade(MekanismBlockTypes.getFactory(tier, type),
                             AMEUpgrade.COBBLESTONE_SUPPLY.getValue(), AMEUpgrade.RADIOACTIVE_SEALING.getValue(),
-                                            AMEUpgrade.AIR_INTAKE.getValue());
+                            AMEUpgrade.AIR_INTAKE.getValue());
                 } else {
                     addSupportedUpgrade(MekanismBlockTypes.getFactory(tier, type),
                             AMEUpgrade.COBBLESTONE_SUPPLY.getValue());

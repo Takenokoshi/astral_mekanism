@@ -41,5 +41,10 @@ public class UpgradeUtilsMixin {
             cir.cancel();
             return;
         }
+        if (upgrade==AMEUpgrade.HYPER_SPEED.getValue()) {
+            cir.setReturnValue(AstralMekanismItems.HYPER_SPEED_UPGRADE.getItemStack(count));
+            cir.cancel();
+            return;
+        }
     }
 }
