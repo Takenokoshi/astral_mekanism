@@ -26,4 +26,6 @@ public record ItemFluidOutput(ItemStack item, FluidStack fluid) {
     public boolean isEmpty() {
         return item.isEmpty() && fluid.isEmpty();
     }
+
+    public static final ItemFluidOutput EMPTY = new ItemFluidOutput(ItemStack.EMPTY, FluidStack.EMPTY);
 }

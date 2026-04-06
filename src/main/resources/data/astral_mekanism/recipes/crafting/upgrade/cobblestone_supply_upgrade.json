@@ -1,0 +1,26 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "key": {
+        "B": {
+            "item": "astral_mekanism:ame_upgrade_base"
+        },
+        "P": {
+            "item": "minecraft:golden_pickaxe"
+        },
+        "W": {
+            "item": "minecraft:water_bucket"
+        },
+        "L": {
+            "item": "minecraft:lava_bucket"
+        }
+    },
+    "pattern": [
+        " P ",
+        "WBL",
+        " P "
+    ],
+    "result": {
+        "item": "astral_mekanism:cobblestone_supply_upgrade",
+        "count": 1
+    }
+}

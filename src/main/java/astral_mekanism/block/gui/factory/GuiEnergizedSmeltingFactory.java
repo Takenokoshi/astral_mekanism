@@ -5,11 +5,10 @@ import astral_mekanism.block.blockentity.interf.IEnergizedSmeltingFactory;
 import astral_mekanism.block.blockentity.interf.IEssentialEnergizedSmelter;
 import astral_mekanism.block.container.factory.ContainerAstralMekanismFactory;
 import astral_mekanism.block.gui.element.PagedGuiProgress;
-import astral_mekanism.block.gui.normalmachine.GuiEssentialEnergizedSmelter;
+import astral_mekanism.jei.AMEJEIRecipeType;
 import mekanism.api.recipes.cache.CachedRecipe.OperationTracker.RecipeError;
 import mekanism.client.gui.element.bar.GuiVerticalPowerBar;
 import mekanism.client.gui.element.button.GuiGasMode;
-import mekanism.client.gui.element.button.MekanismImageButton;
 import mekanism.client.gui.element.gauge.GaugeType;
 import mekanism.client.gui.element.gauge.GuiInfusionGauge;
 import mekanism.client.gui.element.progress.ProgressType;
@@ -17,10 +16,8 @@ import mekanism.client.gui.element.tab.GuiEnergyTab;
 import mekanism.client.jei.MekanismJEIRecipeType;
 import mekanism.common.inventory.warning.WarningTracker.WarningType;
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.item.crafting.SmeltingRecipe;
-import net.minecraftforge.fml.ModList;
 
 public class GuiEnergizedSmeltingFactory<BE extends BlockEntityRecipeFactory<SmeltingRecipe, BE> & IEnergizedSmeltingFactory<BE>>
         extends GuiAstralMekanismFactory<BE> {
@@ -43,22 +40,13 @@ public class GuiEnergizedSmeltingFactory<BE extends BlockEntityRecipeFactory<Sme
             int cacheIndex = index;
             addRenderableWidget(
                     new PagedGuiProgress(() -> tile.getProgressScaled(cacheIndex), ProgressType.DOWN, this, x, y, page))
-                    .jeiCategories(MekanismJEIRecipeType.SMELTING);
+                    .jeiCategories(AMEJEIRecipeType.ESSENTIAL_SMELTING, MekanismJEIRecipeType.SMELTING);
         }
         addRenderableWidget(new GuiInfusionGauge(tile::getInfusionTank, () -> tile.getInfusionTanks(null),
                 GaugeType.SMALL, this, imageWidth - 36, 36))
                 .warning(WarningType.NO_SPACE_IN_OUTPUT,
                         tile.getWarningCheck(IEssentialEnergizedSmelter.NOT_ENOUGH_INFUSE_OUTPUT_SPACE, 0));
         addRenderableWidget(new GuiGasMode(this, imageWidth - 36, 80, true, tile::getGasMode, tile.getBlockPos(), 0));
-        if (ModList.get().isLoaded("jei")) {
-            addRenderableWidget(new MekanismImageButton(
-                    this,
-                    3, 60,
-                    18, 18,
-                    16, 16,
-                    new ResourceLocation("minecraft", "textures/item/knowledge_book.png"),
-                    GuiEssentialEnergizedSmelter::connectJEI));
-        }
     }
 
 }

@@ -1,0 +1,11 @@
+{
+  "type": "astral_mekanism:ame_gas_conversion",
+  "output": {
+    "amount": 1,
+    "gas": "astral_mekanism:aqua_regia"
+  },
+  "input": {
+    "amount": 1,
+    "gas": "mekanismelements:aqua_regia"
+  }
+}

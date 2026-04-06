@@ -1,0 +1,26 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "key": {
+        "X": {
+            "item": "ae2:condenser"
+        },
+        "A": {
+            "item": "astral_mekanism:alloy_convergent"
+        },
+        "C": {
+            "item": "astral_mekanism:resonance_control_circuit"
+        },
+        "I": {
+            "item": "ae2:cell_component_256k"
+        }
+    },
+    "pattern": [
+        "ACA",
+        "IXI",
+        "ACA"
+    ],
+    "result": {
+        "item": "astral_mekanism:mekanical_matter_condenser",
+        "count": 1
+    }
+}

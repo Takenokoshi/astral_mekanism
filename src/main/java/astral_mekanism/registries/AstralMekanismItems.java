@@ -8,6 +8,8 @@ import astral_mekanism.enumexpansion.AMEUpgrade;
 import astral_mekanism.items.GlintItem;
 import astral_mekanism.items.GlintItemNameColored;
 import astral_mekanism.items.upgrade.ItemSingularityUpgrade;
+import astral_mekanism.registryenum.AMEProcessableMaterialType;
+import astral_mekanism.registryenum.AMEProcessingItemStates;
 import mekanism.api.Upgrade;
 import mekanism.api.text.EnumColor;
 import mekanism.common.item.ItemUpgrade;
@@ -98,13 +100,48 @@ public class AstralMekanismItems {
     public static final ItemRegistryObject<GlintItem> SPACETIME_MODULATION_CORE = ITEMS.register(
             "spacetime_modulation_core",
             p -> new GlintItem(p.rarity(Rarity.EPIC)));
+    public static final ItemRegistryObject<Item> UPGRADE_BASE = ITEMS.register("ame_upgrade_base");
+    public static final ItemRegistryObject<Item> HYPER_UPGRADE_BASE = ITEMS.register("hyper_upgrade_base");
     public static final ItemRegistryObject<ItemUpgrade> COBBLESTONE_SUPPLY_UPGRADE = registerUpgrade(
-            AMEUpgrade.COBBLESTONE_SUPPLY);
-    public static final ItemRegistryObject<ItemUpgrade> WATER_SUPPLY_UPGRADE = registerUpgrade(AMEUpgrade.WATER_SUPPLY);
-    public static final ItemRegistryObject<ItemUpgrade> XP_UPGRADE = registerUpgrade(AMEUpgrade.XP);
+            AMEUpgrade.COBBLESTONE_SUPPLY.getValue());
+    public static final ItemRegistryObject<ItemUpgrade> WATER_SUPPLY_UPGRADE = registerUpgrade(
+            AMEUpgrade.WATER_SUPPLY.getValue());
+    public static final ItemRegistryObject<ItemUpgrade> XP_UPGRADE = registerUpgrade(AMEUpgrade.XP.getValue());
+    public static final ItemRegistryObject<ItemUpgrade> RADIOACTIVE_SEALING_UPGRADE = registerUpgrade(
+            AMEUpgrade.RADIOACTIVE_SEALING.getValue());
+    public static final ItemRegistryObject<ItemUpgrade> AIR_INTAKE_UPGRADE = registerUpgrade(
+            AMEUpgrade.AIR_INTAKE.getValue());
+    public static final ItemRegistryObject<ItemUpgrade> HYPER_SPEED_UPGRADE = registerUpgrade(
+            AMEUpgrade.HYPER_SPEED.getValue());
     public static final ItemRegistryObject<Item> INSERT_UPGRADE = ITEMS.register("insert_upgrade");
     public static final ItemRegistryObject<ItemSingularityUpgrade> SINGULARITY_UPGRADE = ITEMS
             .register("singularity_upgrade", ItemSingularityUpgrade::new);
+
+    public static final EnumMap<AMEProcessableMaterialType, EnumMap<AMEProcessingItemStates, ItemRegistryObject<?>>> AME_MATERIAL_PROCESSING_ITEMS = createMaterialProcessItemMap();
+
+    private static EnumMap<AMEProcessableMaterialType, EnumMap<AMEProcessingItemStates, ItemRegistryObject<?>>> createMaterialProcessItemMap() {
+        EnumMap<AMEProcessableMaterialType, EnumMap<AMEProcessingItemStates, ItemRegistryObject<?>>> result = new EnumMap<>(
+                AMEProcessableMaterialType.class);
+        for (AMEProcessableMaterialType type : AMEProcessableMaterialType.values()) {
+            EnumMap<AMEProcessingItemStates, ItemRegistryObject<?>> map = new EnumMap<>(AMEProcessingItemStates.class);
+            map.put(AMEProcessingItemStates.SHINING_CRYSTAL,
+                    ITEMS.register("shining_" + type.name + "_crystal", GlintItem::new));
+            map.put(AMEProcessingItemStates.SHINING_SHARD,
+                    ITEMS.register("shining_" + type.name + "_shard", GlintItem::new));
+            map.put(AMEProcessingItemStates.SHINING_DUST, ITEMS.register(type == AMEProcessableMaterialType.REDSTONE
+                    ? "shining_redstone"
+                    : "shining_" + type.name + "_dust",
+                    GlintItem::new));
+            map.put(AMEProcessingItemStates.SHINING_CLUMP_GEM,
+                    ITEMS.register(type.isMetal || type == AMEProcessableMaterialType.REDSTONE
+                            ? "shining_" + type.name + "_clump"
+                            : "shining_" + type.name,
+                            GlintItem::new));
+            result.put(type, map);
+        }
+        return result;
+    }
+
     public static final EnumMap<OreType, ItemRegistryObject<GlintItem>> STARLIGHTS = ((Supplier<EnumMap<OreType, ItemRegistryObject<GlintItem>>>) (() -> {
         EnumMap<OreType, ItemRegistryObject<GlintItem>> result = new EnumMap<>(OreType.class);
         for (OreType oreType : OreType.values()) {

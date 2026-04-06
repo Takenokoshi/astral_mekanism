@@ -119,19 +119,19 @@ public abstract class GeneralCachedRecipe<RECIPE extends Recipe<?>> implements I
         int operations;
         if (canHolderFunction.getAsBoolean()) {
             setupVariableValues();
-            OperationTracker tracker = OperationTrackerMixin.invokeInit(errors, recheckAllErrors.getAsBoolean(),
+            OperationTracker tracker = OperationTrackerMixin.astral_mekanism$invokeInit(errors, recheckAllErrors.getAsBoolean(),
                     baselineMaxOperations.getAsInt());
             calculateOperationsThisTick(tracker);
             if (tracker.shouldContinueChecking()) {
                 postProcessOperations.accept(tracker);
                 if (tracker.shouldContinueChecking()
-                        && ((OperationTrackerMixin) (Object) tracker).invokeCapAtMaxForEnergy()) {
+                        && ((OperationTrackerMixin) (Object) tracker).astral_mekanism$invokeCapAtMaxForEnergy()) {
                     tracker.addError(RecipeError.NOT_ENOUGH_ENERGY_REDUCED_RATE);
                 }
             }
-            operations = ((OperationTrackerMixin) (Object) tracker).getCurrentMax();
-            if (((OperationTrackerMixin) (Object) tracker).invokeHasErrorsToCopy()) {
-                updateErrors(((OperationTrackerMixin) (Object) tracker).getErrors());
+            operations = ((OperationTrackerMixin) (Object) tracker).astral_mekanism$getCurrentMax();
+            if (((OperationTrackerMixin) (Object) tracker).astral_mekanism$invokeHasErrorsToCopy()) {
+                updateErrors(((OperationTrackerMixin) (Object) tracker).astral_mekanism$getErrors());
             }
         } else {
             operations = 0;
@@ -187,7 +187,7 @@ public abstract class GeneralCachedRecipe<RECIPE extends Recipe<?>> implements I
             FloatingLong energyPerTick = perTickEnergy.get();
             if (!energyPerTick.isZero()) {
                 int operations = storedEnergy.get().divideToInt(energyPerTick);
-                ((OperationTrackerMixin) (Object) tracker).setMaxForEnergy(operations);
+                ((OperationTrackerMixin) (Object) tracker).astral_mekanism$setMaxForEnergy(operations);
                 if (operations == 0) {
                     tracker.updateOperations(operations);
                     tracker.addError(RecipeError.NOT_ENOUGH_ENERGY);

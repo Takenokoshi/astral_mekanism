@@ -6,7 +6,7 @@
   },
   "leftGasOutput": {
     "amount": 1,
-    "gas": "astral_mekanism:ammonia"
+    "gas": "mekanismelements:ammonia"
   },
   "rightGasOutput": {
     "amount": 5,

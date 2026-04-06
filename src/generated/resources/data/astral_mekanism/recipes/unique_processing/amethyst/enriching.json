@@ -1,0 +1,12 @@
+{
+  "type": "mekanism:enriching",
+  "input": {
+    "ingredient": {
+      "tag": "astral_mekanism:shining_dusts/amethyst"
+    }
+  },
+  "output": {
+    "count": 6,
+    "item": "astral_mekanism:amethyst_dust"
+  }
+}

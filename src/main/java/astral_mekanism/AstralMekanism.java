@@ -2,7 +2,7 @@ package astral_mekanism;
 
 import com.mojang.logging.LogUtils;
 
-import astral_mekanism.config.AstralMekanismConfig;
+import astral_mekanism.config.AMEConfig;
 import astral_mekanism.network.AMEPacketHandler;
 import astral_mekanism.registries.AMEBlockEntityRegistry;
 import astral_mekanism.registries.AMEItemDefinitions;
@@ -14,7 +14,6 @@ import astral_mekanism.registries.AstralMekanismGases;
 import astral_mekanism.registries.AstralMekanismInfuseTypes;
 import astral_mekanism.registries.AstralMekanismItems;
 import astral_mekanism.registries.AstralMekanismMachines;
-import astral_mekanism.registries.AMEMenus;
 import astral_mekanism.registries.AstralMekanismRecipeSerializers;
 import astral_mekanism.registries.AstralMekanismRecipeTypes;
 import astral_mekanism.registries.AstralMekanismSlurries;
@@ -38,14 +37,13 @@ public class AstralMekanism {
 
     public AstralMekanism() {
         FMLJavaModLoadingContext context = FMLJavaModLoadingContext.get();
-        context.registerConfig(ModConfig.Type.COMMON, AstralMekanismConfig.SPEC);
-        AstralMekanismConfig.registerConfigs(context);
+        context.registerConfig(ModConfig.Type.COMMON, AMEConfig.SPEC);
+        AMEConfig.registerConfigs(context);
         instance = this;
         IEventBus modEventBus = context.getModEventBus();
         AMEItemDefinitions.INSTANCE.register(modEventBus);
         AMEBlockDefinitions.INSTANCE.register(modEventBus);
         AMEBlockEntityRegistry.INSTANCE.register(modEventBus);
-        AMEMenus.INSTANCE.register(modEventBus);
         modEventBus.addListener(this::commonSetup);
         AstralMekanismMachines.MACHINES.register(modEventBus);
         AstralMekanismGases.GASES.register(modEventBus);

@@ -5,10 +5,11 @@ import java.util.List;
 import org.jetbrains.annotations.NotNull;
 
 import astral_mekanism.block.blockentity.generator.BEGasBurningGenerator;
+import astral_mekanism.block.gui.element.GuiJEIRecipeAreaGasGauge;
+import astral_mekanism.jei.AMEJEIRecipeType;
 import mekanism.client.gui.GuiConfigurableTile;
 import mekanism.client.gui.element.bar.GuiVerticalPowerBar;
 import mekanism.client.gui.element.gauge.GaugeType;
-import mekanism.client.gui.element.gauge.GuiGasGauge;
 import mekanism.client.gui.element.tab.GuiEnergyTab;
 import mekanism.common.MekanismLang;
 import mekanism.common.inventory.container.tile.MekanismTileContainer;
@@ -33,8 +34,8 @@ public class GuiGasBurningGenerator
         addRenderableWidget(new GuiEnergyTab(this, () -> List.of(
                 GeneratorsLang.PRODUCING_AMOUNT.translate(EnergyDisplay.of(tile.getProduced())),
                 MekanismLang.MAX_OUTPUT.translate(EnergyDisplay.of(tile.getTier().energyCapacity)))));
-        addRenderableWidget(new GuiGasGauge(tile::getFuelTank, () -> tile.getGasTanks(null),
-                GaugeType.WIDE, this, 55, 18));
+        addRenderableWidget(new GuiJEIRecipeAreaGasGauge(tile::getFuelTank, () -> tile.getGasTanks(null),
+                GaugeType.WIDE, this, 55, 18)).jeiCategories(AMEJEIRecipeType.GAS_BURNING);
         addRenderableWidget(new GuiVerticalPowerBar(this, tile.getEnergyContainer(), 164, 15));
     }
 

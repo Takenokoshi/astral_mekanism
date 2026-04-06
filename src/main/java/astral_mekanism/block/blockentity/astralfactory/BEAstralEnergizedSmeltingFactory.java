@@ -96,7 +96,7 @@ public class BEAstralEnergizedSmeltingFactory
     public @NotNull GeneralCachedRecipe<SmeltingRecipe> createNewCachedRecipe(@NotNull SmeltingRecipe recipe,
             int cacheIndex) {
         return new EssentialSmeltingCachedRecipe(recipe, recheckAllRecipeErrors[cacheIndex], inputHandlers[cacheIndex],
-                outputHandlers[cacheIndex], () -> upgradeComponent.getUpgrades(AMEUpgrade.XP))
+                outputHandlers[cacheIndex], () -> upgradeComponent.getUpgrades(AMEUpgrade.XP.getValue()))
                 .setErrorsChanged(errors -> errorTracker.onErrorsChanged(errors, cacheIndex))
                 .setCanHolderFunction(() -> MekanismUtils.canFunction(this))
                 .setActive(active -> setActiveState(active, cacheIndex))

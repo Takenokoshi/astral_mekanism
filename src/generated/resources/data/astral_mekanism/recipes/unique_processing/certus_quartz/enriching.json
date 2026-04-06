@@ -1,0 +1,12 @@
+{
+  "type": "mekanism:enriching",
+  "input": {
+    "ingredient": {
+      "tag": "astral_mekanism:shining_dusts/certus_quartz"
+    }
+  },
+  "output": {
+    "count": 6,
+    "item": "ae2:certus_quartz_dust"
+  }
+}

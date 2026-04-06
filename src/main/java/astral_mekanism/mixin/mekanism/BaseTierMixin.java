@@ -26,14 +26,14 @@ public class BaseTierMixin {
     static BaseTier[] $VALUES;
 
     @Invoker("<init>")
-    private static BaseTier invokeNew(String name, int num, String name2, int[] rgbCode, MapColor mapColor) {
+    private static BaseTier astral_mekanism$invokeNew(String name, int num, String name2, int[] rgbCode, MapColor mapColor) {
         return null;
     }
 
     @Unique
-    private static BaseTier createNew(String name, int[] rgbCode, MapColor mapColor) {
+    private static BaseTier astral_mekanism$createNew(String name, int[] rgbCode, MapColor mapColor) {
         int index = $VALUES.length;
-        BaseTier result = invokeNew(name, index, name, rgbCode, mapColor);
+        BaseTier result = astral_mekanism$invokeNew(name, index, name, rgbCode, mapColor);
         BaseTier[] newValues = Arrays.copyOf($VALUES, index + 1);
         newValues[index] = result;
         $VALUES = newValues;
@@ -41,16 +41,16 @@ public class BaseTierMixin {
     }
 
     @Inject(method = "<clinit>", at = @At("TAIL"))
-    private static void clinitInject(CallbackInfo ci) {
-        AstralMekanismBaseTier.ESSENTIAL = createNew("essential", new int[] { 0xff, 0x22, 0xF9 },
+    private static void astral_mekanism$clinitInject(CallbackInfo ci) {
+        AstralMekanismBaseTier.ESSENTIAL = astral_mekanism$createNew("essential", new int[] { 0xff, 0x22, 0xF9 },
                 MapColor.TERRACOTTA_MAGENTA);
-        AstralMekanismBaseTier.ABSOLUTE = createNew("absolute_overclocked", new int[] { 95, 255, 184 },
+        AstralMekanismBaseTier.ABSOLUTE = astral_mekanism$createNew("absolute_overclocked", new int[] { 95, 255, 184 },
                 MapColor.COLOR_LIGHT_GREEN);
-        AstralMekanismBaseTier.SUPREME = createNew("supreme_quantum", new int[] { 255, 128, 106 },
+        AstralMekanismBaseTier.SUPREME = astral_mekanism$createNew("supreme_quantum", new int[] { 255, 128, 106 },
                 MapColor.TERRACOTTA_PINK);
-        AstralMekanismBaseTier.COSMIC = createNew("cosmic_dense", new int[] { 75, 248, 255 }, MapColor.DIAMOND);
-        AstralMekanismBaseTier.INFINITE = createNew("infinite_multiversal", new int[] { 247, 135, 255 },
+        AstralMekanismBaseTier.COSMIC = astral_mekanism$createNew("cosmic_dense", new int[] { 75, 248, 255 }, MapColor.DIAMOND);
+        AstralMekanismBaseTier.INFINITE = astral_mekanism$createNew("infinite_multiversal", new int[] { 247, 135, 255 },
                 MapColor.COLOR_MAGENTA);
-        AstralMekanismBaseTier.ASTRAL = createNew("astral", new int[] { 0xD4, 0xA1, 0xFF }, MapColor.SAND);
+        AstralMekanismBaseTier.ASTRAL = astral_mekanism$createNew("astral", new int[] { 0xD4, 0xA1, 0xFF }, MapColor.SAND);
     }
 }

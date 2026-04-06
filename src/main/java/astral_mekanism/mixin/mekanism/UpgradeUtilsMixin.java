@@ -15,19 +15,34 @@ import net.minecraft.world.item.ItemStack;
 public class UpgradeUtilsMixin {
 
     @Inject(method = "getStack(Lmekanism/api/Upgrade;I)Lnet/minecraft/world/item/ItemStack;", at = @At("HEAD"),cancellable = true)
-    private static void getStackInject(Upgrade upgrade, int count, CallbackInfoReturnable<ItemStack> cir) {
-        if (upgrade==AMEUpgrade.COBBLESTONE_SUPPLY) {
+    private static void astral_mekanism$getStackInject(Upgrade upgrade, int count, CallbackInfoReturnable<ItemStack> cir) {
+        if (upgrade==AMEUpgrade.COBBLESTONE_SUPPLY.getValue()) {
             cir.setReturnValue(AstralMekanismItems.COBBLESTONE_SUPPLY_UPGRADE.getItemStack(count));
             cir.cancel();
             return;
         }
-        if (upgrade==AMEUpgrade.WATER_SUPPLY) {
+        if (upgrade==AMEUpgrade.WATER_SUPPLY.getValue()) {
             cir.setReturnValue(AstralMekanismItems.WATER_SUPPLY_UPGRADE.getItemStack(count));
             cir.cancel();
             return;
         }
-        if (upgrade==AMEUpgrade.XP) {
+        if (upgrade==AMEUpgrade.XP.getValue()) {
             cir.setReturnValue(AstralMekanismItems.XP_UPGRADE.getItemStack(count));
+            cir.cancel();
+            return;
+        }
+        if (upgrade==AMEUpgrade.RADIOACTIVE_SEALING.getValue()) {
+            cir.setReturnValue(AstralMekanismItems.RADIOACTIVE_SEALING_UPGRADE.getItemStack(count));
+            cir.cancel();
+            return;
+        }
+        if (upgrade==AMEUpgrade.AIR_INTAKE.getValue()) {
+            cir.setReturnValue(AstralMekanismItems.AIR_INTAKE_UPGRADE.getItemStack(count));
+            cir.cancel();
+            return;
+        }
+        if (upgrade==AMEUpgrade.HYPER_SPEED.getValue()) {
+            cir.setReturnValue(AstralMekanismItems.HYPER_SPEED_UPGRADE.getItemStack(count));
             cir.cancel();
             return;
         }

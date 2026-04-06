@@ -1,0 +1,26 @@
+{
+    "type": "mekanism:reaction",
+    "duration": 60,
+    "energyRequired": 10000,
+    "fluidInput": {
+        "amount": 100,
+        "tag": "forge:sodium"
+    },
+    "gasInput": {
+        "amount": 100,
+        "gas": "astral_mekanism:singularity_acid"
+    },
+    "gasOutput": {
+        "amount": 200,
+        "gas": "mekanismelements:beryllium"
+    },
+    "itemInput": {
+        "ingredient": {
+            "item": "minecraft:emerald"
+        }
+    },
+    "itemOutput": {
+        "item": "minecraft:glass",
+        "count": 64
+    }
+}

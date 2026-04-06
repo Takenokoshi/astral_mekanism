@@ -6,7 +6,7 @@
     },
     "itemInput": {
         "ingredient": {
-            "tag": "forge:ores/netherite"
+      "tag": "astral_mekanism:feedstocks/netherite"
         }
     },
     "output": {

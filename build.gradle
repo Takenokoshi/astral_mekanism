@@ -147,6 +147,7 @@ dependencies {
     implementation fg.deobf("curse.maven:applied-mekanistics-574300:4842281")
     implementation fg.deobf("curse.maven:evolved-mekanism-1230085:7321385")
     implementation fg.deobf("curse.maven:evolved-mekanism-extras-1268159:7471169")
+    implementation fg.deobf("curse.maven:mekanism-elements-1103224:6537553")
     implementation fg.deobf("curse.maven:mekanism-extras-1026040:6936409")
     implementation fg.deobf("curse.maven:iglee-library-541199:6987117")
     implementation fg.deobf("curse.maven:compact-mekanism-machines-1161015:7388773")
@@ -162,6 +163,12 @@ dependencies {
     implementation fg.deobf("curse.maven:botany-pots-353928:7612402")
     implementation fg.deobf("curse.maven:bookshelf-228525:5423987")
     implementation fg.deobf("curse.maven:jade-324717:6855440")
+
+    
+    compileOnly(annotationProcessor("io.github.llamalad7:mixinextras-common:0.5.3"))
+    implementation(jarJar("io.github.llamalad7:mixinextras-forge:0.5.3")) {
+        jarJar.ranged(it, "[0.5.3,)")
+    }
 
 
     implementation fg.deobf("curse.maven:mekanism-empowered-1256390:7545276")

@@ -19,7 +19,7 @@ public class TileComponentEjectorMixin {
     private int tickDelay;
 
     @Inject(method = "outputItems", at = @At("RETURN"))
-    private void outputItemsInject(ConfigInfo info, CallbackInfo ci) {
+    private void astral_mekanism$outputItemsInject(ConfigInfo info, CallbackInfo ci) {
         tickDelay = 0;
     }
 

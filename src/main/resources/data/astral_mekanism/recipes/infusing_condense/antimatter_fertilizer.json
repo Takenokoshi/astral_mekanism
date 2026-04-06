@@ -1,0 +1,15 @@
+{
+    "type":"astral_mekanism:infusing_condense",
+    "inputGas": {
+        "amount": 1,
+        "gas": "mekanism:antimatter"
+    },
+    "inputInfusion": {
+        "infuse_type": "mekanism:bio",
+        "amount": 5
+    },
+    "output": {
+        "fluid": "astral_mekanism:antimatter_fertilizer",
+        "amount": 1
+    }
+}

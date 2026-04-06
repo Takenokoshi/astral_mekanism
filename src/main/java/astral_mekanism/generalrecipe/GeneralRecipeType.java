@@ -13,6 +13,7 @@ import appeng.recipes.handlers.ChargerRecipe;
 import appeng.recipes.handlers.InscriberRecipe;
 import appeng.recipes.transform.TransformRecipe;
 import astral_mekanism.AstralMekanism;
+import astral_mekanism.generalrecipe.lookup.cache.recipe.AAEReactionRecipeCache;
 import astral_mekanism.generalrecipe.lookup.cache.recipe.CropSoilInputRecipeCache;
 import astral_mekanism.generalrecipe.lookup.cache.recipe.InscriberRecipeInputRecipeCache;
 import astral_mekanism.generalrecipe.lookup.cache.recipe.TransformRecipeInputRecipeCache;
@@ -32,6 +33,7 @@ import net.minecraft.world.item.crafting.SmeltingRecipe;
 import net.minecraft.world.level.Level;
 import net.minecraftforge.fml.loading.FMLEnvironment;
 import net.minecraftforge.server.ServerLifecycleHooks;
+import net.pedroksl.advanced_ae.recipes.ReactionChamberRecipe;
 
 public class GeneralRecipeType<C extends Container, RECIPE extends Recipe<C>, INPUT_CACHE extends IInputRecipeCache>
         implements IUnifiedRecipeType<RECIPE, INPUT_CACHE>, IUnifiedRecipeTypeProvider<RECIPE, INPUT_CACHE> {
@@ -89,7 +91,9 @@ public class GeneralRecipeType<C extends Container, RECIPE extends Recipe<C>, IN
         if (cachedRecipes.isEmpty()) {
             List<RECIPE> recipes = getRecipesUncached(world.getRecipeManager(), world.registryAccess());
             cachedRecipes = recipes.stream()
-                    .filter(recipe -> !recipe.isIncomplete() || recipe instanceof InscriberRecipe)
+                    .filter(recipe -> !recipe.isIncomplete()
+                            || recipe instanceof InscriberRecipe
+                            || recipe instanceof ReactionChamberRecipe)
                     .toList();
         }
         return cachedRecipes;
@@ -156,4 +160,7 @@ public class GeneralRecipeType<C extends Container, RECIPE extends Recipe<C>, IN
 
     public static final GeneralRecipeType<Container, CropSoilRecipe, CropSoilInputRecipeCache> CROP_SOIL = new GeneralRecipeType<>(
             AMEFakeRecipeType.CROP_SOIL_FLUID, CropSoilInputRecipeCache::new);
+
+    public static final GeneralRecipeType<Container, ReactionChamberRecipe, AAEReactionRecipeCache> AAE_REACTION = new GeneralRecipeType<>(
+            ReactionChamberRecipe.TYPE, AAEReactionRecipeCache::new);
 }

@@ -12,26 +12,27 @@ import mekanism.client.gui.element.gauge.GuiGauge;
 import mekanism.client.gui.element.progress.ProgressType;
 import mekanism.client.gui.element.slot.GuiSlot;
 import mekanism.client.gui.element.slot.SlotType;
+import mekanism.client.jei.BaseRecipeCategory;
+import mekanism.client.jei.MekanismJEIRecipeType;
 import mekanism.common.inventory.container.slot.SlotOverlay;
 import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
 import mezz.jei.api.gui.ingredient.IRecipeSlotsView;
 import mezz.jei.api.helpers.IGuiHelper;
 import mezz.jei.api.recipe.IFocusGroup;
 import mezz.jei.api.recipe.RecipeIngredientRole;
-import mezz.jei.api.recipe.RecipeType;
 import net.darkhax.botanypots.data.recipes.crop.HarvestEntry;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.ItemStack;
 
-public class CropSoilRecipeCategory extends BaseGeneralRecipeCategory<CropSoilRecipe> {
+public class CropSoilRecipeCategory extends BaseRecipeCategory<CropSoilRecipe> {
 
     private final GuiSlot cropSlot;
     private final GuiSlot soilSlot;
     private final GuiGauge<?> fluidGauge;
     private final GuiSlot[] outputSlots;
 
-    public CropSoilRecipeCategory(IGuiHelper helper, RecipeType<CropSoilRecipe> recipeType, IItemProvider provider) {
+    public CropSoilRecipeCategory(IGuiHelper helper, MekanismJEIRecipeType<CropSoilRecipe> recipeType, IItemProvider provider) {
         super(helper, recipeType, provider, 10, 10, 200, 80);
         this.cropSlot = addSlot(SlotType.INPUT, 46, 26);
         this.soilSlot = addSlot(SlotType.INPUT, 46, 44);

@@ -17,7 +17,7 @@ public abstract class AppEngInternalInventoryMixin {
     private int[] maxStack;
 
     @Inject(method = "<init>", at = @At("TAIL"))
-    private void astral$modifyMaxStack(CallbackInfo ci) {
+    private void astral_mekanism$modifyMaxStack(CallbackInfo ci) {
         Arrays.fill(this.maxStack, 0x7fffffff);
     }
 }

@@ -6,6 +6,7 @@ import java.util.List;
 
 import astral_mekanism.AMEConstants;
 import astral_mekanism.generalrecipe.AMEFakeRecipeType;
+import astral_mekanism.registries.AstralMekanismFluids;
 import mekanism.api.recipes.ingredients.FluidStackIngredient;
 import mekanism.api.recipes.ingredients.ItemStackIngredient;
 import mekanism.api.recipes.ingredients.creator.IngredientCreatorAccess;
@@ -26,6 +27,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.material.Fluids;
 import net.minecraftforge.common.util.TriPredicate;
 import net.minecraftforge.fluids.FluidStack;
+import net.minecraftforge.fml.ModList;
 import net.minecraftforge.registries.ForgeRegistries;
 
 public class CropSoilRecipe implements Recipe<Container>, TriPredicate<ItemStack, ItemStack, FluidStack> {
@@ -143,8 +145,13 @@ public class CropSoilRecipe implements Recipe<Container>, TriPredicate<ItemStack
                             new FluidStack(Fluids.WATER, 100),
                             Math.round(800 / basicSoil.getGrowthModifier()), 2));
                     result.add(new CropSoilRecipe(basicCrop, basicSoil,
-                            MekanismFluids.NUTRITIONAL_PASTE.getFluidStack(100),
+                            MekanismFluids.NUTRITIONAL_PASTE.getFluidStack(25),
                             Math.round(400 / basicSoil.getGrowthModifier()), 6));
+                    if (ModList.get().isLoaded("biggerstacks")) {
+                        result.add(new CropSoilRecipe(basicCrop, basicSoil,
+                                AstralMekanismFluids.ANTIMATTER_FERTILIZER.getFluidStack(5),
+                                Math.round(200 / basicSoil.getGrowthModifier()), 192000));
+                    }
                 }
             }
         }

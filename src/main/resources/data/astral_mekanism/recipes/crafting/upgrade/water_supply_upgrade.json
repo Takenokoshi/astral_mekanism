@@ -1,0 +1,20 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "key": {
+        "B": {
+            "item": "astral_mekanism:ame_upgrade_base"
+        },
+        "W": {
+            "item": "minecraft:water_bucket"
+        }
+    },
+    "pattern": [
+        " W ",
+        "WBW",
+        " W "
+    ],
+    "result": {
+        "item": "astral_mekanism:water_supply_upgrade",
+        "count": 1
+    }
+}

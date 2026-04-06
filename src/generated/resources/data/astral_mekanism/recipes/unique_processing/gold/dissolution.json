@@ -1,0 +1,17 @@
+{
+  "type": "mekanism:dissolution",
+  "gasInput": {
+    "amount": 1,
+    "gas": "astral_mekanism:singularity_acid"
+  },
+  "itemInput": {
+    "ingredient": {
+      "tag": "astral_mekanism:feedstocks/gold"
+    }
+  },
+  "output": {
+    "amount": 160,
+    "chemicalType": "slurry",
+    "slurry": "astral_mekanism:specific_gold_slurry"
+  }
+}

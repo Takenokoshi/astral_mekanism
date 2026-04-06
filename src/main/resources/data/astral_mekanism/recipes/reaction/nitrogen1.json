@@ -1,0 +1,30 @@
+{
+    "type": "mekanism:reaction",
+    "duration": 900,
+    "fluidInput": {
+        "amount": 1000,
+        "tag": "minecraft:water"
+    },
+    "gasInput": {
+        "amount": 5000,
+        "gas": "astral_mekanism:air"
+    },
+    "gasOutput": {
+        "amount": 4000,
+        "gas": "mekanismelements:nitrogen"
+    },
+    "itemInput": {
+        "ingredient": [
+            {
+                "tag": "forge:storage_blocks/coal"
+            },
+            {
+                "tag": "forge:storage_blocks/charcoal"
+            }
+        ]
+    },
+    "itemOutput": {
+        "count": 9,
+        "item": "mekanism:dust_sulfur"
+    }
+}

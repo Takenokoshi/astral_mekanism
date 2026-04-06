@@ -1,0 +1,12 @@
+{
+  "type": "mekanism:enriching",
+  "input": {
+    "ingredient": {
+      "tag": "astral_mekanism:shining_gems/amethyst"
+    }
+  },
+  "output": {
+    "count": 48,
+    "item": "minecraft:amethyst_shard"
+  }
+}

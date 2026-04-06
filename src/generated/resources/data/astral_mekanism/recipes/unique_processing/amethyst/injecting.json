@@ -1,0 +1,29 @@
+{
+  "type": "mekanism:injecting",
+  "chemicalInput": [
+    {
+      "amount": 1,
+      "gas": "mekanismelements:aqua_regia"
+    },
+    {
+      "amount": 1,
+      "gas": "astral_mekanism:aqua_regia"
+    }
+  ],
+  "itemInput": [
+    {
+      "ingredient": {
+        "tag": "astral_mekanism:feedstocks/amethyst"
+      }
+    },
+    {
+      "ingredient": {
+        "tag": "astral_mekanism:shining_crystals/amethyst"
+      }
+    }
+  ],
+  "output": {
+    "count": 10,
+    "item": "astral_mekanism:shining_amethyst_shard"
+  }
+}

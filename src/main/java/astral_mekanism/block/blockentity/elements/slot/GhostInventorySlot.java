@@ -27,6 +27,7 @@ public class GhostInventorySlot extends BasicInventorySlot {
                 this.current = stack.copyWithCount(1);
             }
         }
+        this.onContentsChanged();
         return stack;
     }
 

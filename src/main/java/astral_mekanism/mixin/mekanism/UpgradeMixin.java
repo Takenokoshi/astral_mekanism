@@ -1,7 +1,10 @@
 package astral_mekanism.mixin.mekanism;
 
 import java.util.Arrays;
+import java.util.Map;
+import java.util.Set;
 
+import org.jetbrains.annotations.Nullable;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Mutable;
@@ -10,13 +13,18 @@ import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.gen.Invoker;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.ModifyVariable;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+
+import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
+import com.llamalad7.mixinextras.sugar.Local;
 
 import astral_mekanism.enumexpansion.AMEAPILang;
 import astral_mekanism.enumexpansion.AMEUpgrade;
 import mekanism.api.Upgrade;
 import mekanism.api.text.APILang;
 import mekanism.api.text.EnumColor;
+import net.minecraft.nbt.CompoundTag;
 
 @Mixin(value = Upgrade.class, remap = false)
 public class UpgradeMixin {
@@ -32,16 +40,18 @@ public class UpgradeMixin {
     static Upgrade[] UPGRADES;
 
     @Invoker("<init>")
-    private static Upgrade invokeInit(String string, int i, String name, APILang langKey, APILang descLangKey,
+    private static Upgrade astral_mekanism$invokeInit(String string, int i, String name, APILang langKey,
+            APILang descLangKey,
             int maxStack, EnumColor color) {
         return null;
     }
 
     @Unique
-    private static Upgrade createNew(String name, APILang langKey, APILang descLangKey,
+    private static Upgrade astral_mekanism$createNew(String name, APILang langKey, APILang descLangKey,
             int maxStack, EnumColor color) {
         int index = $VALUES.length;
-        Upgrade result = invokeInit(name.toUpperCase(), index, name, langKey, descLangKey, maxStack, color);
+        Upgrade result = astral_mekanism$invokeInit(name.toUpperCase(), index, name, langKey, descLangKey, maxStack,
+                color);
         Upgrade[] newVALUES = Arrays.copyOf($VALUES, index + 1);
         newVALUES[index] = result;
         $VALUES = newVALUES;
@@ -50,13 +60,35 @@ public class UpgradeMixin {
     }
 
     @Inject(method = "<clinit>", at = @At("TAIL"))
-    private static void clinitInject(CallbackInfo ci) {
-        AMEUpgrade.COBBLESTONE_SUPPLY = createNew("cobblestone_supply", AMEAPILang.UPGRADE_COBBLESTONE_SUPPLY,
-                AMEAPILang.UPGRADE_COBBLESTONE_SUPPLY_DESCRIPTION, 16, EnumColor.GRAY);
-        AMEUpgrade.WATER_SUPPLY = createNew("water_supply", AMEAPILang.UPGRADE_WATER_SUPPLY,
-                AMEAPILang.UPGRADE_WATER_SUPPLY_DESCRIPTION, 1, EnumColor.AQUA);
-        AMEUpgrade.XP = createNew("xp", AMEAPILang.UPGRADE_XP, AMEAPILang.UPGRADE_XP_DESCRIPTION, 4,
-                EnumColor.BRIGHT_GREEN);
+    private static void astral_mekanism$clinitInject(CallbackInfo ci) {
+        AMEUpgrade.COBBLESTONE_SUPPLY
+                .setValue(astral_mekanism$createNew("cobblestone_supply", AMEAPILang.UPGRADE_COBBLESTONE_SUPPLY,
+                        AMEAPILang.UPGRADE_COBBLESTONE_SUPPLY_DESCRIPTION, 32, EnumColor.GRAY));
+        AMEUpgrade.WATER_SUPPLY.setValue(astral_mekanism$createNew("water_supply", AMEAPILang.UPGRADE_WATER_SUPPLY,
+                AMEAPILang.UPGRADE_WATER_SUPPLY_DESCRIPTION, 1, EnumColor.AQUA));
+        AMEUpgrade.XP
+                .setValue(astral_mekanism$createNew("xp", AMEAPILang.UPGRADE_XP, AMEAPILang.UPGRADE_XP_DESCRIPTION, 4,
+                        EnumColor.BRIGHT_GREEN));
+        AMEUpgrade.RADIOACTIVE_SEALING
+                .setValue(astral_mekanism$createNew("radioactive_sealing", AMEAPILang.UPGRADE_RADIOACTIVE_SEALING,
+                        AMEAPILang.UPGRADE_RADIOACTIVE_SEALING_DESCRIPTION, 1, EnumColor.RED));
+        AMEUpgrade.AIR_INTAKE.setValue(astral_mekanism$createNew("air_intake", AMEAPILang.UPGRADE_AIR_INTAKE,
+                AMEAPILang.UPGRADE_AIR_INTAKE_DESCRIPTION, 1, EnumColor.DARK_BLUE));
+        AMEUpgrade.HYPER_SPEED
+                .setValue(astral_mekanism$createNew("hyper_speed", AMEAPILang.UPGRADE_HYPER_SPEED,
+                        AMEAPILang.UPGRADE_HYPER_SPEED_DESCRIPTION, 8, EnumColor.PURPLE));
+        AMEUpgrade.initializeMap();
     }
 
+    @ModifyVariable(method = "buildMap", at = @At(value = "STORE", ordinal = 0), name = "upgrades")
+    private static Map<Upgrade, Integer> astral_mekanism$buildMapModify(@Nullable Map<Upgrade, Integer> upgrades,
+            @Nullable CompoundTag nbtTags) {
+        return AMEUpgrade.buildMap(upgrades, nbtTags);
+    }
+
+    @ModifyExpressionValue(method = "saveMap", at = @At(value = "INVOKE", target = "Ljava/util/Map;entrySet()Ljava/util/Set;"))
+    private static Set<Map.Entry<Upgrade, Integer>> astral_mekanism$saveMapModify(
+            Set<Map.Entry<Upgrade, Integer>> original, @Local(argsOnly = true, name = "arg1") CompoundTag nbtTags) {
+        return AMEUpgrade.saveMap(original, nbtTags);
+    }
 }

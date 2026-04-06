@@ -4,13 +4,19 @@ import java.util.function.BiPredicate;
 import java.util.function.Function;
 
 import astral_mekanism.util.AMEInterface.QuadPredicate;
+import mekanism.api.chemical.gas.Gas;
+import mekanism.api.chemical.gas.GasStack;
+import mekanism.api.chemical.infuse.InfuseType;
+import mekanism.api.chemical.infuse.InfusionStack;
 import mekanism.api.recipes.MekanismRecipe;
+import mekanism.api.recipes.ingredients.ChemicalStackIngredient;
 import mekanism.api.recipes.ingredients.FluidStackIngredient;
 import mekanism.api.recipes.ingredients.ItemStackIngredient;
 import mekanism.common.recipe.MekanismRecipeType;
 import mekanism.common.recipe.lookup.cache.DoubleInputRecipeCache;
 import mekanism.common.recipe.lookup.cache.EitherSideInputRecipeCache;
 import mekanism.common.recipe.lookup.cache.TripleInputRecipeCache;
+import mekanism.common.recipe.lookup.cache.type.ChemicalInputCache;
 import mekanism.common.recipe.lookup.cache.type.FluidInputCache;
 import mekanism.common.recipe.lookup.cache.type.ItemInputCache;
 import net.minecraft.world.item.ItemStack;
@@ -37,7 +43,7 @@ public class AMInputRecipeCache {
                 Function<RECIPE, FluidStackIngredient> inputAExtractor,
                 Function<RECIPE, FluidStackIngredient> inputBExtractor) {
             super(recipeType, inputAExtractor, inputBExtractor, new FluidInputCache<>());
-            }
+        }
 
     }
 
@@ -86,5 +92,16 @@ public class AMInputRecipeCache {
                     new ItemInputCache<>(), new ItemInputCache<>(), new ItemInputCache<>(), new ItemInputCache<>());
         }
 
+    }
+
+    public static class GasInfusion<RECIPE extends MekanismRecipe & BiPredicate<GasStack, InfusionStack>>
+            extends
+            DoubleInputRecipeCache<GasStack, ChemicalStackIngredient<Gas, GasStack>, InfusionStack, ChemicalStackIngredient<InfuseType, InfusionStack>, RECIPE, ChemicalInputCache<Gas, GasStack, RECIPE>, ChemicalInputCache<InfuseType, InfusionStack, RECIPE>> {
+
+        public GasInfusion(MekanismRecipeType<RECIPE, ?> recipeType,
+                Function<RECIPE, ChemicalStackIngredient<Gas, GasStack>> inputAExtractor,
+                Function<RECIPE, ChemicalStackIngredient<InfuseType, InfusionStack>> inputBExtractor) {
+            super(recipeType, inputAExtractor, new ChemicalInputCache<>(), inputBExtractor, new ChemicalInputCache<>());
+        }
     }
 }

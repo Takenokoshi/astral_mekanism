@@ -14,7 +14,7 @@ import java.util.Set;
 public interface OperationTrackerMixin {
 
     @Invoker("<init>")
-    static OperationTracker invokeInit(
+    static OperationTracker astral_mekanism$invokeInit(
             Set<RecipeError> lastErrors,
             boolean checkAll,
             int startingMax) {
@@ -22,17 +22,17 @@ public interface OperationTrackerMixin {
     }
 
     @Invoker("capAtMaxForEnergy")
-    boolean invokeCapAtMaxForEnergy();
+    boolean astral_mekanism$invokeCapAtMaxForEnergy();
 
     @Invoker("hasErrorsToCopy")
-    boolean invokeHasErrorsToCopy();
+    boolean astral_mekanism$invokeHasErrorsToCopy();
 
     @Accessor("currentMax")
-    int getCurrentMax();
+    int astral_mekanism$getCurrentMax();
 
     @Accessor("errors")
-    Set<RecipeError> getErrors();
+    Set<RecipeError> astral_mekanism$getErrors();
 
     @Accessor("maxForEnergy")
-    void setMaxForEnergy(int value);
+    void astral_mekanism$setMaxForEnergy(int value);
 }

@@ -1,0 +1,7 @@
+{
+  "replace": false,
+  "values": [
+    "#forge:raw_materials/osmium",
+    "#forge:ores/osmium"
+  ]
+}

@@ -2,6 +2,7 @@ package astral_mekanism.lang;
 
 import astral_mekanism.AMEConstants;
 import astral_mekanism.registration.MachineRegistryObject;
+import astral_mekanism.registration.SingleSlurryRegistryObject;
 import astral_mekanism.registries.AMEBlockDefinitions;
 import astral_mekanism.registries.AstralMekanismBlocks;
 import astral_mekanism.registries.AstralMekanismFluids;
@@ -52,6 +53,7 @@ public class AstralMekanismEnglishLangProvider extends LanguageProvider {
         for (SlurryRegistryObject<?, ?> slurry : AstralMekanismSlurries.SLURRIES.getAllSlurries()) {
             addSlurry(slurry);
         }
+        AstralMekanismSlurries.SLURRIES.getAllSingleSlurries().forEach(this::addSlurry);
     }
 
     private void addMachine(MachineRegistryObject<?, ?, ?, ?> machine) {
@@ -97,6 +99,10 @@ public class AstralMekanismEnglishLangProvider extends LanguageProvider {
     private void addSlurry(SlurryRegistryObject<?, ?> slurry) {
         add(slurry.getCleanSlurry().getTranslationKey(), toTitle(slurry.getCleanSlurry().getRegistryName().getPath()));
         add(slurry.getDirtySlurry().getTranslationKey(), toTitle(slurry.getDirtySlurry().getRegistryName().getPath()));
+    }
+
+    private void addSlurry(SingleSlurryRegistryObject<?> slurry) {
+        add(slurry.getTranslationKey(), toTitle(slurry.getRegistryName().getPath()));
     }
 
     private static String toTitle(String path) {
@@ -149,6 +155,8 @@ public class AstralMekanismEnglishLangProvider extends LanguageProvider {
                 sb.append("Pressurized Reaction Chamber");
             } else if (parts[i].equals("gna")) {
                 sb.append("Glowstone Neutron Activator");
+            } else if (parts[i].equals("ame")) {
+                sb.append("AME");
             } else if (InputValidator.DIGIT.test(parts[i].charAt(0))) {
                 sb.append(parts[i]);
             } else {
