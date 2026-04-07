@@ -8,8 +8,8 @@ import org.jetbrains.annotations.Nullable;
 
 import astral_mekanism.AMEConstants;
 import astral_mekanism.registries.AMEBlockDefinitions;
-import astral_mekanism.registries.AstralMekanismBlocks;
-import astral_mekanism.registries.AstralMekanismMachines;
+import astral_mekanism.registries.AMEBlocks;
+import astral_mekanism.registries.AMEMachines;
 import mekanism.api.providers.IBlockProvider;
 import net.minecraft.core.HolderLookup.Provider;
 import net.minecraft.data.PackOutput;
@@ -29,8 +29,8 @@ public class AstralMekanismBlockTags extends BlockTagsProvider {
     @Override
     protected void addTags(Provider provider) {
         final List<IBlockProvider> MINEABLE_WITH_PICKAXE = new ArrayList<>();
-        MINEABLE_WITH_PICKAXE.addAll(AstralMekanismMachines.MACHINES.getAllMachines());
-        MINEABLE_WITH_PICKAXE.addAll(AstralMekanismBlocks.BLOCKS.getAllBlocks());
+        MINEABLE_WITH_PICKAXE.addAll(AMEMachines.MACHINES.getAllMachines());
+        MINEABLE_WITH_PICKAXE.addAll(AMEBlocks.BLOCKS.getAllBlocks());
         tag(BlockTags.MINEABLE_WITH_PICKAXE)
                 .add(MINEABLE_WITH_PICKAXE.stream().map(IBlockProvider::getBlock).toArray(Block[]::new))
                 .add(AMEBlockDefinitions.INSTANCE.getBlocks().stream().map(LibBlockDefinition::block)

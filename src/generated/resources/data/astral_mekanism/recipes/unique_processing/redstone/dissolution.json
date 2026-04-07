@@ -4,11 +4,18 @@
     "amount": 1,
     "gas": "astral_mekanism:singularity_acid"
   },
-  "itemInput": {
-    "ingredient": {
-      "tag": "astral_mekanism:feedstocks/redstone"
+  "itemInput": [
+    {
+      "ingredient": {
+        "tag": "astral_mekanism:feedstocks/redstone"
+      }
+    },
+    {
+      "ingredient": {
+        "tag": "astral_mekanism:sparkling_ores/redstone"
+      }
     }
-  },
+  ],
   "output": {
     "amount": 160,
     "chemicalType": "slurry",

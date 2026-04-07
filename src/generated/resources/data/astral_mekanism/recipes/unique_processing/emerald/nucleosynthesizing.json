@@ -1,0 +1,24 @@
+{
+  "type": "mekanism:nucleosynthesizing",
+  "duration": 2,
+  "gasInput": {
+    "amount": 5,
+    "gas": "mekanism:antimatter"
+  },
+  "itemInput": [
+    {
+      "ingredient": {
+        "tag": "astral_mekanism:feedstocks/emerald"
+      }
+    },
+    {
+      "ingredient": {
+        "tag": "astral_mekanism:reconstructed_ores/emerald"
+      }
+    }
+  ],
+  "output": {
+    "count": 25,
+    "item": "astral_mekanism:enriched_emerald_ore"
+  }
+}

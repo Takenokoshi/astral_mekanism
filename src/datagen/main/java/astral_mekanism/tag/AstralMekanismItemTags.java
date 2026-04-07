@@ -7,9 +7,10 @@ import org.jetbrains.annotations.Nullable;
 import astral_mekanism.AMEConstants;
 import astral_mekanism.AMEProcessingData;
 import astral_mekanism.OreTypeData;
-import astral_mekanism.registries.AstralMekanismItems;
+import astral_mekanism.registries.AMEBlocks;
+import astral_mekanism.registries.AMEItems;
 import astral_mekanism.registries.OreType;
-import astral_mekanism.registries.AstralMekanismItems.IntermediateState;
+import astral_mekanism.registries.AMEItems.IntermediateState;
 import astral_mekanism.registryenum.AMEProcessableMaterialType;
 import astral_mekanism.registryenum.AMEProcessingItemStates;
 import net.minecraft.core.HolderLookup.Provider;
@@ -35,7 +36,7 @@ public class AstralMekanismItemTags extends ItemTagsProvider {
             if (!type.hasMekprocessing) {
                 for (IntermediateState state : IntermediateState.values()) {
                     tag(typeData.processingTags.get(state))
-                            .add(AstralMekanismItems.GEM_INTERMEDIATE_ITEMS.get(type).get(state).asItem());
+                            .add(AMEItems.GEM_INTERMEDIATE_ITEMS.get(type).get(state).asItem());
                 }
             } else if (type == OreType.NETHERITE) {
                 for (IntermediateState state : IntermediateState.values()) {
@@ -43,7 +44,7 @@ public class AstralMekanismItemTags extends ItemTagsProvider {
                         continue;
                     }
                     tag(typeData.processingTags.get(state))
-                            .add(AstralMekanismItems.GEM_INTERMEDIATE_ITEMS.get(type).get(state).asItem());
+                            .add(AMEItems.GEM_INTERMEDIATE_ITEMS.get(type).get(state).asItem());
                 }
             }
         }
@@ -52,19 +53,29 @@ public class AstralMekanismItemTags extends ItemTagsProvider {
     private void addProcessingTags() {
         for (AMEProcessingData pData : AMEProcessingData.values()) {
             tag(ItemTags.create(AMEConstants.rl("shining_crystals/" + pData.type.name)))
-                    .add(AstralMekanismItems.AME_MATERIAL_PROCESSING_ITEMS.get(pData.type)
+                    .add(AMEItems.AME_MATERIAL_PROCESSING_ITEMS.get(pData.type)
                             .get(AMEProcessingItemStates.SHINING_CRYSTAL).asItem());
             tag(ItemTags.create(AMEConstants.rl("shining_shards/" + pData.type.name)))
-                    .add(AstralMekanismItems.AME_MATERIAL_PROCESSING_ITEMS.get(pData.type)
+                    .add(AMEItems.AME_MATERIAL_PROCESSING_ITEMS.get(pData.type)
                             .get(AMEProcessingItemStates.SHINING_SHARD).asItem());
             tag(ItemTags.create(AMEConstants.rl("shining_dusts/" + pData.type.name)))
-                    .add(AstralMekanismItems.AME_MATERIAL_PROCESSING_ITEMS.get(pData.type)
+                    .add(AMEItems.AME_MATERIAL_PROCESSING_ITEMS.get(pData.type)
                             .get(AMEProcessingItemStates.SHINING_DUST).asItem());
             tag(ItemTags.create(AMEConstants.rl(pData.type.isMetal || pData.type == AMEProcessableMaterialType.REDSTONE
                     ? "shining_clumps/" + pData.type.name
                     : "shining_gems/" + pData.type.name)))
-                    .add(AstralMekanismItems.AME_MATERIAL_PROCESSING_ITEMS.get(pData.type)
+                    .add(AMEItems.AME_MATERIAL_PROCESSING_ITEMS.get(pData.type)
                             .get(AMEProcessingItemStates.SHINING_CLUMP_GEM).asItem());
+            tag(ItemTags.create(AMEConstants.rl("compressed_ores/" + pData.type.name)))
+                    .add(AMEBlocks.COMPRESSED_ORE.get(pData.type).asItem());
+            tag(ItemTags.create(AMEConstants.rl("reconstructed_ores/" + pData.type.name)))
+                    .add(AMEBlocks.RECONSTRUCTED_ORE.get(pData.type).asItem());
+            tag(ItemTags.create(AMEConstants.rl("enriched_ores/" + pData.type.name)))
+                    .add(AMEBlocks.ENRICHED_ORE.get(pData.type).asItem());
+            tag(ItemTags.create(AMEConstants.rl("sparkling_ores/" + pData.type.name)))
+                    .add(AMEBlocks.SPARKLING_ORE.get(pData.type).asItem());
+            tag(ItemTags.create(AMEConstants.rl("final_materials/" + pData.type.name)))
+                    .add(pData.finalItem.asItem());
         }
     }
 

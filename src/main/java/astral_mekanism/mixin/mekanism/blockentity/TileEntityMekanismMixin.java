@@ -9,7 +9,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 import astral_mekanism.enumexpansion.AMEUpgrade;
-import astral_mekanism.registries.AstralMekanismGases;
+import astral_mekanism.registries.AMEGases;
 import mekanism.api.Action;
 import mekanism.api.AutomationType;
 import mekanism.api.Upgrade;
@@ -50,7 +50,7 @@ public class TileEntityMekanismMixin {
             }
             if (upgradeComponent.isUpgradeInstalled(AMEUpgrade.AIR_INTAKE.getValue())) {
                 ((TileEntityMekanism) (Object) this).getGasTanks(null).forEach(tank -> {
-                    tank.insert(AstralMekanismGases.AIR.getStack(Long.MAX_VALUE), Action.EXECUTE,
+                    tank.insert(AMEGases.AIR.getStack(Long.MAX_VALUE), Action.EXECUTE,
                             AutomationType.EXTERNAL);
                 });
             }

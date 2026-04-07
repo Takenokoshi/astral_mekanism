@@ -8,7 +8,7 @@ import org.jetbrains.annotations.NotNull;
 
 import astral_mekanism.block.blockentity.core.BlockEntityUtils;
 import astral_mekanism.block.blockentity.elements.AstralMekDataType;
-import astral_mekanism.registries.AstralMekanismItems;
+import astral_mekanism.registries.AMEItems;
 import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
 import mekanism.api.Action;
 import mekanism.api.IContentsListener;
@@ -103,10 +103,7 @@ public abstract class BEAbstractStorage extends TileEntityConfigurableMachine
     BasicHeatCapacitor heatCapacitor;
 
     protected static final Predicate<ItemStack> isInsertUpgrade = item -> ItemStack.isSameItem(item,
-            AstralMekanismItems.INSERT_UPGRADE.getItemStack());
-    protected static final Predicate<ItemStack> isSingularityUpgrade = item -> ItemStack.isSameItem(item,
-            AstralMekanismItems.SINGULARITY_UPGRADE.getItemStack());
-
+            AMEItems.INSERT_UPGRADE.getItemStack());
     public BEAbstractStorage(IBlockProvider blockProvider, BlockPos pos, BlockState state) {
         super(blockProvider, pos, state);
         this.dumping0 = GasMode.IDLE;

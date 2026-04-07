@@ -7,8 +7,11 @@ import appeng.block.networking.EnergyCellBlock;
 import astral_mekanism.AMETier;
 import astral_mekanism.AMEConstants;
 import astral_mekanism.registries.AMEBlockDefinitions;
-import astral_mekanism.registries.AstralMekanismMachines;
+import astral_mekanism.registries.AMEBlocks;
+import astral_mekanism.registries.AMEMachines;
+import astral_mekanism.registryenum.AMEProcessableMaterialType;
 import mekanism.api.providers.IBlockProvider;
+import mekanism.common.registration.impl.BlockRegistryObject;
 import net.minecraft.core.Direction;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
@@ -22,28 +25,45 @@ import net.minecraftforge.client.model.generators.loaders.CompositeModelBuilder;
 import net.minecraftforge.common.data.ExistingFileHelper;
 
 public class AstralMekanismBlockStateProvider extends BlockStateProvider {
+    private final ExistingFileHelper efh;
 
     public AstralMekanismBlockStateProvider(PackOutput output, ExistingFileHelper efh) {
         super(output, AMEConstants.MODID, efh);
+        this.efh = efh;
     }
 
     @Override
     protected void registerStatesAndModels() {
-        registerAstralFactories(AstralMekanismMachines.ASTRAL_ENERGIZED_SMELTING_FACTRIES);
-        registerNormalFactories(AstralMekanismMachines.ENERGIZED_SMELTING_FACTORIES);
-        registerTierdMachines(AstralMekanismMachines.COMPACT_FIR,
+        registerOres(AMEBlocks.RECONSTRUCTED_ORE);
+        registerOres(AMEBlocks.ENRICHED_ORE);
+        registerOres(AMEBlocks.SPARKLING_ORE);
+        registerOres(AMEBlocks.COMPRESSED_ORE);
+        registerAstralFactories(AMEMachines.ASTRAL_ENERGIZED_SMELTING_FACTRIES);
+        registerNormalFactories(AMEMachines.ENERGIZED_SMELTING_FACTORIES);
+        registerTierdMachines(AMEMachines.COMPACT_FIR,
                 (t, s) -> "block/compact_machine/" + s + "/" + t.nameForNormal, "fir",
                 "block/compact_machine/fir/base");
-        registerTierdMachines(AstralMekanismMachines.COMPACT_TEP,
+        registerTierdMachines(AMEMachines.COMPACT_TEP,
                 (t, s) -> "block/compact_machine/" + s + "/" + t.nameForNormal, "tep",
                 "block/compact_machine/tep/base");
-        registerTierdMachines(AstralMekanismMachines.COMPACT_FUSION_REACTOR,
+        registerTierdMachines(AMEMachines.COMPACT_FUSION_REACTOR,
                 (t, s) -> "block/compact_machine/" + s + "/" + t.nameForNormal, "fusion_reactor",
                 "block/compact_machine/fusion_reactor/base");
-        registerTierdMachines(AstralMekanismMachines.COMPACT_NAQUADAH_REACTOR,
+        registerTierdMachines(AMEMachines.COMPACT_NAQUADAH_REACTOR,
                 (t, s) -> "block/compact_machine/" + s + "/" + t.nameForNormal, "naquadah_reactor",
                 "block/compact_machine/naquadah_reactor/base");
         registerEnergyCells();
+    }
+
+    private void registerOres(EnumMap<AMEProcessableMaterialType, BlockRegistryObject<?, ?>> ores) {
+        ores.forEach((type, obj) -> {
+            getVariantBuilder(obj.getBlock()).forAllStates(state -> ConfiguredModel
+                    .builder()
+                    .modelFile(models().getExistingFile(AMEConstants.rl("block/ore/" + type.name)))
+                    .build());
+            itemModels().getBuilder(obj.getRegistryName().getPath())
+                    .parent(models().getExistingFile(AMEConstants.rl("block/ore/" + type.name)));
+        });
     }
 
     private void registerAstralFactories(EnumMap<AMETier, ? extends IBlockProvider> map) {
@@ -168,7 +188,7 @@ public class AstralMekanismBlockStateProvider extends BlockStateProvider {
         }
     }
 
-    private void registerEnergyCells() {/**/
+    private void registerEnergyCells() {
         AMEBlockDefinitions.ENERGY_CELLS.forEach((tier, object) -> {
             ModelFile[] files = new ModelFile[5];
             for (int i = 0; i < files.length; i++) {
@@ -182,7 +202,7 @@ public class AstralMekanismBlockStateProvider extends BlockStateProvider {
                     .modelFile(files[state.getValue(EnergyCellBlock.ENERGY_STORAGE)])
                     .build());
             itemModels().getBuilder(object.id().getPath()).parent(files[0]);
-        }); 
+        });
     }
 
 }

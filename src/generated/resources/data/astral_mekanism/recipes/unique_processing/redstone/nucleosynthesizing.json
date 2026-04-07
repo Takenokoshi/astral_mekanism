@@ -1,0 +1,24 @@
+{
+  "type": "mekanism:nucleosynthesizing",
+  "duration": 2,
+  "gasInput": {
+    "amount": 5,
+    "gas": "mekanism:antimatter"
+  },
+  "itemInput": [
+    {
+      "ingredient": {
+        "tag": "astral_mekanism:feedstocks/redstone"
+      }
+    },
+    {
+      "ingredient": {
+        "tag": "astral_mekanism:reconstructed_ores/redstone"
+      }
+    }
+  ],
+  "output": {
+    "count": 25,
+    "item": "astral_mekanism:enriched_redstone_ore"
+  }
+}

@@ -1,0 +1,11 @@
+{
+    "type": "astral_mekanism:sps",
+    "input": {
+        "amount": 1000,
+        "gas": "mekanism:antimatter"
+    },
+    "output": {
+        "amount": 1,
+        "gas": "astral_mekanism:interstellar_antimatter"
+    }
+}

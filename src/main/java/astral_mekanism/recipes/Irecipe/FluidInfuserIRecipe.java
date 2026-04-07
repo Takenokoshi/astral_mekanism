@@ -1,8 +1,8 @@
 package astral_mekanism.recipes.irecipe;
 
 import astral_mekanism.recipes.recipe.FluidFluidToFluidRecipe;
-import astral_mekanism.registries.AstralMekanismRecipeSerializers;
-import astral_mekanism.registries.AstralMekanismRecipeTypes;
+import astral_mekanism.registries.AMERecipeSerializers;
+import astral_mekanism.registries.AMERecipeTypes;
 import mekanism.api.recipes.ingredients.FluidStackIngredient;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.crafting.RecipeSerializer;
@@ -18,12 +18,12 @@ public class FluidInfuserIRecipe extends FluidFluidToFluidRecipe {
 
 	@Override
 	public RecipeSerializer<FluidFluidToFluidRecipe> getSerializer() {
-		return AstralMekanismRecipeSerializers.FLUID_INFUSER_RECIPE.get();
+		return AMERecipeSerializers.FLUID_INFUSER_RECIPE.get();
 	}
 
 	@Override
 	public RecipeType<FluidFluidToFluidRecipe> getType() {
-		return AstralMekanismRecipeTypes.FLUID_INFUSER_RECIPE.get();
+		return AMERecipeTypes.FLUID_INFUSER_RECIPE.get();
 	}
 	
 }

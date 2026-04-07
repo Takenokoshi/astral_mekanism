@@ -1,0 +1,25 @@
+{
+  "type": "astral_mekanism:reconstruction",
+  "duration": 4000,
+  "fluidInput": {
+    "amount": 2000000000,
+    "fluid": "astral_mekanism:refined_astral_ether"
+  },
+  "gasInput": {
+    "amount": 1000000000000000,
+    "gas": "astral_mekanism:reconstructed_diamond"
+  },
+  "gasOutput": {
+    "amount": 1000000000,
+    "gas": "mekanismelements:beryllium"
+  },
+  "itemInput": {
+    "ingredient": {
+      "item": "astral_mekanism:sparkling_nova"
+    }
+  },
+  "itemNotConsumed": false,
+  "itemOutput": {
+    "item": "astral_mekanism:diamond_starlight"
+  }
+}

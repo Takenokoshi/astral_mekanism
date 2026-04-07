@@ -7,7 +7,6 @@ import astral_mekanism.block.blockentity.elements.AstralMekDataType;
 import astral_mekanism.block.blockentity.elements.slot.GhostInventorySlot;
 import astral_mekanism.block.blockentity.prefab.BEAbstractItemSortble;
 import astral_mekanism.block.blockentity.prefab.BEAbstractStorage;
-import astral_mekanism.items.upgrade.ItemSingularityUpgrade;
 import mekanism.api.IContentsListener;
 import mekanism.api.inventory.IInventorySlot;
 import mekanism.api.math.FloatingLong;
@@ -34,9 +33,6 @@ public class BEItemSortableStorage extends BEAbstractStorage implements BEAbstra
     private GhostInventorySlot[] filterInventorySlotsA;
     private GhostInventorySlot[] filterInventorySlotsB;
     private BasicInventorySlot insertUpgradeSlot;
-    private BasicInventorySlot singularityUpgradeSlotA;
-    private BasicInventorySlot singularityUpgradeSlotB;
-    private BasicInventorySlot singularityUpgradeSlotC;
 
     public BEItemSortableStorage(IBlockProvider blockProvider, BlockPos pos, BlockState state) {
         super(blockProvider, pos, state);
@@ -74,9 +70,6 @@ public class BEItemSortableStorage extends BEAbstractStorage implements BEAbstra
             builder.addSlot(outputInventorySlotsC[i] = BasicInventorySlot.at(listener, 8 + 18 * i, 162));
         }
         builder.addSlot(insertUpgradeSlot = BasicInventorySlot.at(listener, 170, 18));
-        builder.addSlot(singularityUpgradeSlotA = BasicInventorySlot.at(listener, 170, 72));
-        builder.addSlot(singularityUpgradeSlotB = BasicInventorySlot.at(listener, 170, 126));
-        builder.addSlot(singularityUpgradeSlotC = BasicInventorySlot.at(listener, 170, 162));
         return builder;
     }
 
@@ -87,9 +80,6 @@ public class BEItemSortableStorage extends BEAbstractStorage implements BEAbstra
                     AstralMekDataType.INPUT_OUTPUT2, AstralMekDataType.INPUT_OUTPUTleft));
         }
         filtering();
-        ItemSingularityUpgrade.running(singularityUpgradeSlotA, isSingularityUpgrade, outputInventorySlotsA);
-        ItemSingularityUpgrade.running(singularityUpgradeSlotB, isSingularityUpgrade, outputInventorySlotsB);
-        ItemSingularityUpgrade.running(singularityUpgradeSlotC, isSingularityUpgrade, outputInventorySlotsC);
         BlockEntityUtils.itemEject(this, List.of(AstralMekDataType.INPUT_OUTPUT1), DataType.OUTPUT_1);
         BlockEntityUtils.itemEject(this, List.of(AstralMekDataType.INPUT_OUTPUT2), DataType.OUTPUT_2);
         BlockEntityUtils.itemEject(this, List.of(AstralMekDataType.INPUT_OUTPUTleft, AstralMekDataType.OUTPUTleft),

@@ -1,0 +1,26 @@
+{
+  "type": "astral_mekanism:reconstruction",
+  "duration": 1,
+  "fluidInput": {
+    "amount": 1,
+    "fluid": "astral_mekanism:refined_astral_ether"
+  },
+  "gasInput": {
+    "amount": 1,
+    "gas": "astral_mekanism:interstellar_antimatter"
+  },
+  "gasOutput": {
+    "amount": 1000000,
+    "gas": "mekanismgenerators:fusion_fuel"
+  },
+  "itemInput": {
+    "ingredient": {
+      "tag": "astral_mekanism:feedstocks/copper"
+    }
+  },
+  "itemNotConsumed": false,
+  "itemOutput": {
+    "count": 50,
+    "item": "astral_mekanism:reconstructed_copper_ore"
+  }
+}

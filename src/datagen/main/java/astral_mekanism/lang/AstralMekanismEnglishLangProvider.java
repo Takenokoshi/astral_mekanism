@@ -4,13 +4,13 @@ import astral_mekanism.AMEConstants;
 import astral_mekanism.registration.MachineRegistryObject;
 import astral_mekanism.registration.SingleSlurryRegistryObject;
 import astral_mekanism.registries.AMEBlockDefinitions;
-import astral_mekanism.registries.AstralMekanismBlocks;
-import astral_mekanism.registries.AstralMekanismFluids;
-import astral_mekanism.registries.AstralMekanismGases;
-import astral_mekanism.registries.AstralMekanismInfuseTypes;
-import astral_mekanism.registries.AstralMekanismItems;
-import astral_mekanism.registries.AstralMekanismMachines;
-import astral_mekanism.registries.AstralMekanismSlurries;
+import astral_mekanism.registries.AMEBlocks;
+import astral_mekanism.registries.AMEFluids;
+import astral_mekanism.registries.AMEGases;
+import astral_mekanism.registries.AMEInfuseTypes;
+import astral_mekanism.registries.AMEItems;
+import astral_mekanism.registries.AMEMachines;
+import astral_mekanism.registries.AMESlurries;
 import mekanism.api.providers.IBlockProvider;
 import mekanism.api.providers.IItemProvider;
 import mekanism.api.text.ILangEntry;
@@ -31,29 +31,29 @@ public class AstralMekanismEnglishLangProvider extends LanguageProvider {
 
     @Override
     protected void addTranslations() {
-        for (MachineRegistryObject<?, ?, ?, ?> machine : AstralMekanismMachines.MACHINES.getAllMachines()) {
+        for (MachineRegistryObject<?, ?, ?, ?> machine : AMEMachines.MACHINES.getAllMachines()) {
             addMachine(machine);
         }
-        for (IBlockProvider block : AstralMekanismBlocks.BLOCKS.getAllBlocks()) {
+        for (IBlockProvider block : AMEBlocks.BLOCKS.getAllBlocks()) {
             addBlock(block);
         }
         AMEBlockDefinitions.INSTANCE.getBlocks().forEach(this::addBlock);
-        for (IItemProvider item : AstralMekanismItems.ITEMS.getAllItems()) {
+        for (IItemProvider item : AMEItems.ITEMS.getAllItems()) {
             addItem(item);
         }
-        for (FluidRegistryObject<?, ?, ?, ?, ?> fluid : AstralMekanismFluids.FLUIDS.getAllFluids()) {
+        for (FluidRegistryObject<?, ?, ?, ?, ?> fluid : AMEFluids.FLUIDS.getAllFluids()) {
             addFluid(fluid);
         }
-        for (GasRegistryObject<?> gas : AstralMekanismGases.GASES.getAllGases()) {
+        for (GasRegistryObject<?> gas : AMEGases.GASES.getAllGases()) {
             addGas(gas);
         }
-        for (InfuseTypeRegistryObject<?> infuseType : AstralMekanismInfuseTypes.INFUSE_TYPES.getAllInfuseType()) {
+        for (InfuseTypeRegistryObject<?> infuseType : AMEInfuseTypes.INFUSE_TYPES.getAllInfuseType()) {
             addInfuse(infuseType);
         }
-        for (SlurryRegistryObject<?, ?> slurry : AstralMekanismSlurries.SLURRIES.getAllSlurries()) {
+        for (SlurryRegistryObject<?, ?> slurry : AMESlurries.SLURRIES.getAllSlurries()) {
             addSlurry(slurry);
         }
-        AstralMekanismSlurries.SLURRIES.getAllSingleSlurries().forEach(this::addSlurry);
+        AMESlurries.SLURRIES.getAllSingleSlurries().forEach(this::addSlurry);
     }
 
     private void addMachine(MachineRegistryObject<?, ?, ?, ?> machine) {

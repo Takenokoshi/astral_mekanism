@@ -1,0 +1,23 @@
+{
+  "type": "mekanism:compressing",
+  "chemicalInput": {
+    "amount": 5,
+    "gas": "astral_mekanism:sparkling_singularity_rivulet"
+  },
+  "itemInput": [
+    {
+      "ingredient": {
+        "tag": "astral_mekanism:feedstocks/coal"
+      }
+    },
+    {
+      "ingredient": {
+        "tag": "astral_mekanism:enriched_ores/coal"
+      }
+    }
+  ],
+  "output": {
+    "count": 20,
+    "item": "astral_mekanism:sparkling_coal_ore"
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "type": "astral_mekanism:reconstruction",
+  "duration": 1,
+  "fluidInput": {
+    "amount": 7680,
+    "fluid": "astral_mekanism:refined_astral_ether"
+  },
+  "gasInput": {
+    "amount": 7680,
+    "gas": "astral_mekanism:interstellar_antimatter"
+  },
+  "gasOutput": {
+    "amount": 7680,
+    "gas": "astral_mekanism:reconstructed_quartz"
+  },
+  "itemInput": {
+    "ingredient": {
+      "tag": "astral_mekanism:sparkling_ores/quartz"
+    }
+  },
+  "itemNotConsumed": false
+}

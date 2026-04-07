@@ -16,7 +16,8 @@ import astral_mekanism.recipes.recipe.AstralCraftingRecipe;
 import astral_mekanism.recipes.recipe.FluidFluidToFluidRecipe;
 import astral_mekanism.recipes.recipe.GasInfusionToFluidRecipe;
 import astral_mekanism.recipes.recipe.MekanicalTransformRecipe;
-import astral_mekanism.registries.AstralMekanismMachines;
+import astral_mekanism.recipes.recipe.ReconstructionRecipe;
+import astral_mekanism.registries.AMEMachines;
 import mekanism.api.recipes.GasToGasRecipe;
 import mekanism.api.recipes.ItemStackToItemStackRecipe;
 import mekanism.client.jei.MekanismJEIRecipeType;
@@ -28,23 +29,23 @@ import net.pedroksl.advanced_ae.xmod.jei.ReactionChamberCategory;
 
 public final class AMEJEIRecipeType {
     public static final MekanismJEIRecipeType<FluidFluidToFluidRecipe> FLUID_INFUSER_RECIPE = new MekanismJEIRecipeType<>(
-            AstralMekanismMachines.FLUID_INFUSER, FluidFluidToFluidRecipe.class);
+            AMEMachines.FLUID_INFUSER, FluidFluidToFluidRecipe.class);
     public static final MekanismJEIRecipeType<GasToGasRecipe> SPS_RECIPE = new MekanismJEIRecipeType<>(
-            AstralMekanismMachines.COMPACT_SPS, GasToGasRecipe.class);
+            AMEMachines.COMPACT_SPS, GasToGasRecipe.class);
     public static final MekanismJEIRecipeType<AstralCraftingRecipe> ASTRAL_CRAFTING = new MekanismJEIRecipeType<>(
-            AstralMekanismMachines.ASTRAL_CRAFTER, AstralCraftingRecipe.class);
+            AMEMachines.ASTRAL_CRAFTER, AstralCraftingRecipe.class);
     public static final MekanismJEIRecipeType<ItemStackToItemStackRecipe> ITEM_COMPRESSING = new MekanismJEIRecipeType<>(
-            AstralMekanismMachines.ITEM_COMPRESSOR, ItemStackToItemStackRecipe.class);
+            AMEMachines.ITEM_COMPRESSOR, ItemStackToItemStackRecipe.class);
     public static final MekanismJEIRecipeType<ItemStackToItemStackRecipe> ITEM_UNZIPPING = new MekanismJEIRecipeType<>(
-            AstralMekanismMachines.ITEM_UNZIPPER, ItemStackToItemStackRecipe.class);
+            AMEMachines.ITEM_UNZIPPER, ItemStackToItemStackRecipe.class);
     public static final MekanismJEIRecipeType<MekanicalTransformRecipe> MEKANICAL_TRANSFORM = new MekanismJEIRecipeType<>(
-            AstralMekanismMachines.TRANSFORMER, MekanicalTransformRecipe.class);
+            AMEMachines.TRANSFORMER, MekanicalTransformRecipe.class);
     public static final MekanismJEIRecipeType<MixingReactorJEIrecipe> FUSION_REACTOR = new MekanismJEIRecipeType<>(
-            AstralMekanismMachines.COMPACT_FUSION_REACTOR.get(AMETier.ASTRAL), MixingReactorJEIrecipe.class);
+            AMEMachines.COMPACT_FUSION_REACTOR.get(AMETier.ASTRAL), MixingReactorJEIrecipe.class);
     public static final MekanismJEIRecipeType<MixingReactorJEIrecipe> NAQUADAH_REACTOR = new MekanismJEIRecipeType<>(
-            AstralMekanismMachines.COMPACT_NAQUADAH_REACTOR.get(AMETier.ASTRAL), MixingReactorJEIrecipe.class);
+            AMEMachines.COMPACT_NAQUADAH_REACTOR.get(AMETier.ASTRAL), MixingReactorJEIrecipe.class);
     public static final MekanismJEIRecipeType<MekanicalComposterJEIRecipe> MEKANICAL_COMPOSTER = new MekanismJEIRecipeType<>(
-            AstralMekanismMachines.MEKANICAL_COMPOSTER, MekanicalComposterJEIRecipe.class);
+            AMEMachines.MEKANICAL_COMPOSTER, MekanicalComposterJEIRecipe.class);
     public static final MekanismJEIRecipeType<ReactionChamberRecipe> AAE_REACTION = new MekanismJEIRecipeType<>(
             ReactionChamberCategory.RECIPE_TYPE.getUid(), ReactionChamberRecipe.class);
     public static final MekanismJEIRecipeType<SmeltingRecipe> ESSENTIAL_SMELTING = new MekanismJEIRecipeType<>(
@@ -65,7 +66,9 @@ public final class AMEJEIRecipeType {
     public static final MekanismJEIRecipeType<GasBurningJEIRecipe> GAS_BURNING = new MekanismJEIRecipeType<>(
             GeneratorsBlocks.GAS_BURNING_GENERATOR, GasBurningJEIRecipe.class);
     public static final MekanismJEIRecipeType<GasInfusionToFluidRecipe> INFUSING_CONDENSE = new MekanismJEIRecipeType<>(
-            AstralMekanismMachines.INFUSING_CONDENSENTRATOR, GasInfusionToFluidRecipe.class);
+            AMEMachines.INFUSING_CONDENSENTRATOR, GasInfusionToFluidRecipe.class);
     public static final MekanismJEIRecipeType<GasToGasRecipe> GAS_CONVERSION = new MekanismJEIRecipeType<>(
-            AstralMekanismMachines.GAS_CONVERTER, GasToGasRecipe.class);
+            AMEMachines.GAS_CONVERTER, GasToGasRecipe.class);
+    public static final MekanismJEIRecipeType<ReconstructionRecipe> RECONSTRUCTION = new MekanismJEIRecipeType<>(
+            AMEMachines.INTERSTELLAR_POSITRONIC_MATTER_RECONSTRUCTION_APPARATUS, ReconstructionRecipe.class);
 }

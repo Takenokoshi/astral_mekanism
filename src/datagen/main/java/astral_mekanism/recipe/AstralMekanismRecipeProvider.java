@@ -7,7 +7,7 @@ import astral_mekanism.AMEConstants;
 import astral_mekanism.AMEProcessingData;
 import astral_mekanism.AMETier;
 import astral_mekanism.registries.AMEBlockDefinitions;
-import astral_mekanism.registries.AstralMekanismMachines;
+import astral_mekanism.registries.AMEMachines;
 import mekanism.api.providers.IItemProvider;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.FinishedRecipe;
@@ -24,17 +24,17 @@ public class AstralMekanismRecipeProvider extends RecipeProvider {
     @Override
     protected void buildRecipes(Consumer<FinishedRecipe> consumer) {
         AMEProcessingData.buildRecipes(consumer);
-        buildTierMachineUpgradeRecipes(AstralMekanismMachines.ASTRAL_ENERGIZED_SMELTING_FACTRIES, consumer,
+        buildTierMachineUpgradeRecipes(AMEMachines.ASTRAL_ENERGIZED_SMELTING_FACTRIES, consumer,
                 "astral_factory/energized_smelting");
-        buildTierMachineUpgradeRecipes(AstralMekanismMachines.COMPACT_FIR, consumer,
+        buildTierMachineUpgradeRecipes(AMEMachines.COMPACT_FIR, consumer,
                 "compact_machine/fir");
-        buildTierMachineUpgradeRecipes(AstralMekanismMachines.COMPACT_FUSION_REACTOR, consumer,
+        buildTierMachineUpgradeRecipes(AMEMachines.COMPACT_FUSION_REACTOR, consumer,
                 "compact_machine/fusion_reactor");
-        buildTierMachineUpgradeRecipes(AstralMekanismMachines.COMPACT_NAQUADAH_REACTOR, consumer,
+        buildTierMachineUpgradeRecipes(AMEMachines.COMPACT_NAQUADAH_REACTOR, consumer,
                 "compact_machine/naquadah_reactor");
-        buildTierMachineUpgradeRecipes(AstralMekanismMachines.COMPACT_TEP, consumer,
+        buildTierMachineUpgradeRecipes(AMEMachines.COMPACT_TEP, consumer,
                 "compact_machine/tep");
-        buildTierMachineUpgradeRecipes(AstralMekanismMachines.ENERGIZED_SMELTING_FACTORIES, consumer,
+        buildTierMachineUpgradeRecipes(AMEMachines.ENERGIZED_SMELTING_FACTORIES, consumer,
                 "normal_factory/energized_smelting");
         buildEnergyCellRecipes(consumer);
     }

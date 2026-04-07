@@ -1,10 +1,13 @@
 package astral_mekanism.block.blockentity.compact;
 
+import java.util.List;
+
 import org.jetbrains.annotations.NotNull;
 
 import astral_mekanism.block.blockentity.prefab.BEGasToGasMachine;
 import astral_mekanism.enumexpansion.AMEUpgrade;
-import astral_mekanism.registries.AstralMekanismRecipeTypes;
+import astral_mekanism.registries.AMEMachines;
+import astral_mekanism.registries.AMERecipeTypes;
 import mekanism.api.Upgrade;
 import mekanism.api.chemical.gas.Gas;
 import mekanism.api.chemical.gas.GasStack;
@@ -12,7 +15,9 @@ import mekanism.api.providers.IBlockProvider;
 import mekanism.api.recipes.GasToGasRecipe;
 import mekanism.common.recipe.IMekanismRecipeTypeProvider;
 import mekanism.common.recipe.lookup.cache.InputRecipeCache.SingleChemical;
+import mekanism.common.registries.MekanismBlocks;
 import net.minecraft.core.BlockPos;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.state.BlockState;
 
 public class BECompactSPS extends BEGasToGasMachine {
@@ -24,12 +29,13 @@ public class BECompactSPS extends BEGasToGasMachine {
     @NotNull
     @Override
     public IMekanismRecipeTypeProvider<GasToGasRecipe, SingleChemical<Gas, GasStack, GasToGasRecipe>> getRecipeType() {
-        return AstralMekanismRecipeTypes.SPS_RECIPE;
+        return AMERecipeTypes.SPS_RECIPE;
     }
 
     @Override
-    public String getJEI() {
-        return "mekanism:sps_casing";
+    public List<ResourceLocation> getJEI() {
+        return List.of(MekanismBlocks.SPS_CASING.getRegistryName(),
+                AMEMachines.COMPACT_SPS.getRegistryName());
     }
 
     @Override

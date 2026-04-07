@@ -5,7 +5,7 @@ import java.util.List;
 import org.jetbrains.annotations.NotNull;
 
 import astral_mekanism.AstralMekanism;
-import astral_mekanism.AstralMekanismLang;
+import astral_mekanism.AMELang;
 import astral_mekanism.block.blockentity.prefab.BEAbstractCompactMixingReactor;
 import astral_mekanism.network.to_server.PacketGuiSetLong;
 import mekanism.api.text.EnumColor;
@@ -43,13 +43,13 @@ public class GuiCompactMixingReactor<BE extends BEAbstractCompactMixingReactor>
         super.addGuiElements();
         addRenderableWidget(new GuiGasGauge(tile::getLeftFuelTank, () -> tile.getGasTanks(null),
                 GaugeType.STANDARD, this, 7, 4))
-                .setLabel(AstralMekanismLang.LABEL_LEFT_FUEL.translateColored(EnumColor.RED));
+                .setLabel(AMELang.LABEL_LEFT_FUEL.translateColored(EnumColor.RED));
         addRenderableWidget(new GuiGasGauge(tile::getMixedFuelTank, () -> tile.getGasTanks(null),
                 GaugeType.STANDARD, this, 25, 4))
-                .setLabel(AstralMekanismLang.LABEL_MIXED_FUEL.translateColored(EnumColor.PURPLE));
+                .setLabel(AMELang.LABEL_MIXED_FUEL.translateColored(EnumColor.PURPLE));
         addRenderableWidget(new GuiGasGauge(tile::getRightFuelTank, () -> tile.getGasTanks(null),
                 GaugeType.STANDARD, this, 43, 4))
-                .setLabel(AstralMekanismLang.LABEL_RIGHT_FUEL.translateColored(EnumColor.BRIGHT_GREEN));
+                .setLabel(AMELang.LABEL_RIGHT_FUEL.translateColored(EnumColor.BRIGHT_GREEN));
         addRenderableWidget(new GuiFluidGauge(tile::getWaterTank, () -> tile.getFluidTanks(null),
                 GaugeType.SMALL, this, 115, 34))
                 .setLabel(GeneratorsLang.FISSION_COOLANT_TANK.translateColored(EnumColor.AQUA));

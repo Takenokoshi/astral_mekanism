@@ -4,7 +4,7 @@ import com.jerry.mekanism_extras.common.registry.ExtraItem;
 
 import appeng.core.definitions.AEItems;
 import astral_mekanism.AMETier;
-import astral_mekanism.registries.AstralMekanismItems;
+import astral_mekanism.registries.AMEItems;
 import fr.iglee42.evolvedmekanism.registries.EMItems;
 import gripe._90.megacells.definition.MEGAItems;
 import io.github.masyumero.emextras.common.registry.EMExtrasItem;
@@ -18,8 +18,8 @@ public enum AstralMekanismTierRecipeData {
             AMETier.ESSENTIAL,
             AMETier.BASIC,
             MekanismItems.BRONZE_INGOT,
-            AstralMekanismItems.CONVERGENT_ALLOY,
-            AstralMekanismItems.RESONANCE_CONTROL_CIRCUIT,
+            AMEItems.CONVERGENT_ALLOY,
+            AMEItems.RESONANCE_CONTROL_CIRCUIT,
             Items.IRON_INGOT,
             MekanismItems.BASIC_CONTROL_CIRCUIT,
             AEItems.CALCULATION_PROCESSOR),
@@ -41,11 +41,11 @@ public enum AstralMekanismTierRecipeData {
             AMETier.ELITE,
             AMETier.ULTIMATE,
             AEItems.CERTUS_QUARTZ_CRYSTAL_CHARGED,
-            AstralMekanismItems.ENCHANTED_ALLOY,
-            AstralMekanismItems.ENHANCED_CONTROL_CIRCUIT,
+            AMEItems.ENCHANTED_ALLOY,
+            AMEItems.ENHANCED_CONTROL_CIRCUIT,
             MekanismItems.ATOMIC_ALLOY,
             MekanismItems.ULTIMATE_CONTROL_CIRCUIT,
-            AstralMekanismItems.PHOTON_PROCESSOR),
+            AMEItems.PHOTON_PROCESSOR),
     ULTIMATE_TO_ABSOLUTE(
             AMETier.ULTIMATE,
             AMETier.ABSOLUTE,
@@ -61,7 +61,7 @@ public enum AstralMekanismTierRecipeData {
             EMItems.SUBATOMIC_ALLOY,
             ExtraItem.THERMONUCLEAR_ALLOY,
             EMExtrasItem.SUPREME_QUANTUM_CONTROL_CIRCUIT,
-            AstralMekanismItems.COMPOSITE_PROCESSOR),
+            AMEItems.COMPOSITE_PROCESSOR),
     SUPREME_TO_COSMIC(
             AMETier.SUPREME,
             AMETier.COSMIC,
@@ -69,7 +69,7 @@ public enum AstralMekanismTierRecipeData {
             EMItems.SINGULAR_ALLOY,
             ExtraItem.SHINING_ALLOY,
             EMExtrasItem.COSMIC_DENSE_CONTROL_CIRCUIT,
-            AstralMekanismItems.ORIGIN_PROCESSOR),
+            AMEItems.ORIGIN_PROCESSOR),
     COSMIC_TO_INFINITE(
             AMETier.COSMIC,
             AMETier.INFINITE,
@@ -77,14 +77,14 @@ public enum AstralMekanismTierRecipeData {
             EMItems.EXOVERSAL_ALLOY,
             ExtraItem.SPECTRUM_ALLOY,
             EMExtrasItem.INFINITE_MULTIVERSAL_CONTROL_CIRCUIT,
-            AstralMekanismItems.AUTONOMY_PROCESSOR),
+            AMEItems.AUTONOMY_PROCESSOR),
     INFINITE_TO_ASTRAL(
             AMETier.INFINITE,
             AMETier.ASTRAL,
             MekanismItems.POLONIUM_PELLET,
-            AstralMekanismItems.STARDUST_ALLOY,
-            AstralMekanismItems.ILLUSION_CONTROL_CIRCUIT,
-            AstralMekanismItems.FIRMAMENT_PROCESSOR),
+            AMEItems.STARDUST_ALLOY,
+            AMEItems.ILLUSION_CONTROL_CIRCUIT,
+            AMEItems.FIRMAMENT_PROCESSOR),
             ;
 
     private AstralMekanismTierRecipeData(

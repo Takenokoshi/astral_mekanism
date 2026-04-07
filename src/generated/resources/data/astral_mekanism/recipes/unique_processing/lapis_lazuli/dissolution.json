@@ -4,11 +4,18 @@
     "amount": 1,
     "gas": "astral_mekanism:singularity_acid"
   },
-  "itemInput": {
-    "ingredient": {
-      "tag": "astral_mekanism:feedstocks/lapis_lazuli"
+  "itemInput": [
+    {
+      "ingredient": {
+        "tag": "astral_mekanism:feedstocks/lapis_lazuli"
+      }
+    },
+    {
+      "ingredient": {
+        "tag": "astral_mekanism:sparkling_ores/lapis_lazuli"
+      }
     }
-  },
+  ],
   "output": {
     "amount": 160,
     "chemicalType": "slurry",

@@ -3,7 +3,7 @@ package astral_mekanism.jei.recipeCategory;
 import java.util.Arrays;
 import java.util.List;
 
-import astral_mekanism.registries.AstralMekanismInfuseTypes;
+import astral_mekanism.registries.AMEInfuseTypes;
 import mekanism.api.providers.IItemProvider;
 import mekanism.client.gui.element.bar.GuiVerticalPowerBar;
 import mekanism.client.gui.element.gauge.GaugeType;
@@ -50,7 +50,7 @@ public class EssentialSmeltingRecipeCategory extends BaseRecipeCategory<Smelting
         float xp = recipe.getExperience();
         if (xp != 0) {
             initChemical(builder, MekanismJEI.TYPE_INFUSION, RecipeIngredientRole.OUTPUT, xpGauge,
-                    List.of(AstralMekanismInfuseTypes.XP.getStack((long) (xp * 100))));
+                    List.of(AMEInfuseTypes.XP.getStack((long) (xp * 100))));
         }
     }
 

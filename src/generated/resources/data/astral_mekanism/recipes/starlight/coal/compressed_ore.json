@@ -1,0 +1,26 @@
+{
+  "type": "astral_mekanism:reconstruction",
+  "duration": 1,
+  "fluidInput": {
+    "amount": 2000000000,
+    "fluid": "minecraft:lava"
+  },
+  "gasInput": {
+    "amount": 100,
+    "gas": "astral_mekanism:astral_ether"
+  },
+  "gasOutput": {
+    "amount": 100000,
+    "gas": "mekanismelements:americium"
+  },
+  "itemInput": {
+    "ingredient": {
+      "item": "astral_mekanism:coal_starlight"
+    }
+  },
+  "itemNotConsumed": true,
+  "itemOutput": {
+    "count": 64,
+    "item": "astral_mekanism:compressed_coal_ore"
+  }
+}

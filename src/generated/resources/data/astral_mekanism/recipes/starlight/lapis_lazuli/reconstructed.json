@@ -1,0 +1,22 @@
+{
+  "type": "astral_mekanism:reconstruction",
+  "duration": 1,
+  "fluidInput": {
+    "amount": 1,
+    "fluid": "astral_mekanism:refined_astral_ether"
+  },
+  "gasInput": {
+    "amount": 1,
+    "gas": "astral_mekanism:interstellar_antimatter"
+  },
+  "gasOutput": {
+    "amount": 1,
+    "gas": "astral_mekanism:reconstructed_lapis_lazuli"
+  },
+  "itemInput": {
+    "ingredient": {
+      "tag": "astral_mekanism:final_materials/lapis_lazuli"
+    }
+  },
+  "itemNotConsumed": false
+}

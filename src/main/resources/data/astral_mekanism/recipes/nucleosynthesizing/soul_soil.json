@@ -1,0 +1,16 @@
+{
+    "type": "mekanism:nucleosynthesizing",
+    "duration": 100,
+    "gasInput": {
+        "amount": 5,
+        "gas": "mekanism:antimatter"
+    },
+    "itemInput": {
+        "ingredient": {
+            "item": "minecraft:clay"
+        }
+    },
+    "output": {
+        "item": "minecraft:soul_soil"
+    }
+}

@@ -2,8 +2,8 @@ package astral_mekanism.recipes.irecipe;
 
 import astral_mekanism.recipes.output.ItemFluidOutput;
 import astral_mekanism.recipes.recipe.MekanicalTransformRecipe;
-import astral_mekanism.registries.AstralMekanismRecipeSerializers;
-import astral_mekanism.registries.AstralMekanismRecipeTypes;
+import astral_mekanism.registries.AMERecipeSerializers;
+import astral_mekanism.registries.AMERecipeTypes;
 import mekanism.api.recipes.ingredients.FluidStackIngredient;
 import mekanism.api.recipes.ingredients.ItemStackIngredient;
 import net.minecraft.resources.ResourceLocation;
@@ -23,12 +23,12 @@ public class MekanicalTransformIRecipe extends MekanicalTransformRecipe {
 
     @Override
     public RecipeSerializer<?> getSerializer() {
-        return AstralMekanismRecipeSerializers.MEKANICAL_TRANSFORM.get();
+        return AMERecipeSerializers.MEKANICAL_TRANSFORM.get();
     }
 
     @Override
     public RecipeType<?> getType() {
-        return AstralMekanismRecipeTypes.MEKANICAL_TRAMSFORM.get();
+        return AMERecipeTypes.MEKANICAL_TRAMSFORM.get();
     }
 
 }

@@ -24,7 +24,7 @@ import astral_mekanism.recipes.lookup.MekanicalTransformRecipeLookUpHandler;
 import astral_mekanism.recipes.output.AMOutputHelper;
 import astral_mekanism.recipes.output.ItemFluidOutput;
 import astral_mekanism.recipes.recipe.MekanicalTransformRecipe;
-import astral_mekanism.registries.AstralMekanismRecipeTypes;
+import astral_mekanism.registries.AMERecipeTypes;
 import mekanism.api.IContentsListener;
 import mekanism.api.fluid.IExtendedFluidTank;
 import mekanism.api.providers.IBlockProvider;
@@ -475,7 +475,7 @@ public abstract class BEAbstractTransformer extends TileEntityConfigurableMachin
 
         @Override
         public @NotNull IMekanismRecipeTypeProvider<MekanicalTransformRecipe, MekanicalTransformRecipeCache> getRecipeType() {
-            return AstralMekanismRecipeTypes.MEKANICAL_TRAMSFORM;
+            return AMERecipeTypes.MEKANICAL_TRAMSFORM;
         }
 
         @Override

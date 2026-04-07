@@ -3,7 +3,7 @@ package astral_mekanism.block.blockentity.normalmachine;
 import org.jetbrains.annotations.NotNull;
 
 import astral_mekanism.block.blockentity.prefab.BEItemToItemBlock;
-import astral_mekanism.registries.AstralMekanismRecipeTypes;
+import astral_mekanism.registries.AMERecipeTypes;
 import mekanism.api.providers.IBlockProvider;
 import mekanism.api.recipes.ItemStackToItemStackRecipe;
 import mekanism.common.recipe.IMekanismRecipeTypeProvider;
@@ -19,7 +19,7 @@ public class BEItemUnzipper extends BEItemToItemBlock {
 
     @Override
     public @NotNull IMekanismRecipeTypeProvider<ItemStackToItemStackRecipe, SingleItem<ItemStackToItemStackRecipe>> getRecipeType() {
-        return AstralMekanismRecipeTypes.ITEM_UNZIPPING;
+        return AMERecipeTypes.ITEM_UNZIPPING;
     }
     
 }

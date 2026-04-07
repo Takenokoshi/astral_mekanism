@@ -4,11 +4,18 @@
     "amount": 1,
     "gas": "astral_mekanism:singularity_acid"
   },
-  "itemInput": {
-    "ingredient": {
-      "tag": "astral_mekanism:feedstocks/tin"
+  "itemInput": [
+    {
+      "ingredient": {
+        "tag": "astral_mekanism:feedstocks/tin"
+      }
+    },
+    {
+      "ingredient": {
+        "tag": "astral_mekanism:sparkling_ores/tin"
+      }
     }
-  },
+  ],
   "output": {
     "amount": 160,
     "chemicalType": "slurry",

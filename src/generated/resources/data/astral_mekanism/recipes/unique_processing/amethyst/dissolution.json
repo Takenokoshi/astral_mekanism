@@ -4,11 +4,18 @@
     "amount": 1,
     "gas": "astral_mekanism:singularity_acid"
   },
-  "itemInput": {
-    "ingredient": {
-      "tag": "astral_mekanism:feedstocks/amethyst"
+  "itemInput": [
+    {
+      "ingredient": {
+        "tag": "astral_mekanism:feedstocks/amethyst"
+      }
+    },
+    {
+      "ingredient": {
+        "tag": "astral_mekanism:sparkling_ores/amethyst"
+      }
     }
-  },
+  ],
   "output": {
     "amount": 160,
     "chemicalType": "slurry",

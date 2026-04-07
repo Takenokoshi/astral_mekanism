@@ -1,0 +1,16 @@
+{
+  "type": "mekanism:metallurgic_infusing",
+  "chemicalInput": {
+    "amount": 100,
+    "infuse_type": "astral_mekanism:xp"
+  },
+  "itemInput": {
+    "ingredient": {
+      "item": "astral_mekanism:compressed_tin_ore"
+    }
+  },
+  "output": {
+    "count": 64,
+    "item": "mekanism:tin_ore"
+  }
+}

@@ -1,6 +1,6 @@
 package astral_mekanism.block.blockentity.storage;
 
-import astral_mekanism.registries.AstralMekanismInfuseTypes;
+import astral_mekanism.registries.AMEInfuseTypes;
 import mekanism.api.Action;
 import mekanism.api.AutomationType;
 import mekanism.api.IContentsListener;
@@ -38,7 +38,7 @@ public class BEXpTank extends TileEntityConfigurableMachine {
         ChemicalTankHelper<InfuseType, InfusionStack, IInfusionTank> builder = ChemicalTankHelper
                 .forSideInfusionWithConfig(this::getDirection, this::getConfig);
         builder.addTank(infusionTank = ChemicalTankBuilder.INFUSION.create(Long.MAX_VALUE,
-                type -> AstralMekanismInfuseTypes.XP.getStack(1).isTypeEqual(type), listener));
+                type -> AMEInfuseTypes.XP.getStack(1).isTypeEqual(type), listener));
         return builder.build();
     }
 
@@ -63,7 +63,7 @@ public class BEXpTank extends TileEntityConfigurableMachine {
         long amount = Math.min(Math.min(getXpToDecreaseLevels(player, value), infusionTank.getNeeded() / 100),
                 playerXp);
         setTotalXpOfPlayer(player, playerXp - amount);
-        infusionTank.insert(new InfusionStack(AstralMekanismInfuseTypes.XP, amount * 100), Action.EXECUTE,
+        infusionTank.insert(new InfusionStack(AMEInfuseTypes.XP, amount * 100), Action.EXECUTE,
                 AutomationType.MANUAL);
         markForSave();
     }

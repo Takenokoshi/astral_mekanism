@@ -11,7 +11,7 @@ import astral_mekanism.recipes.cachedRecipe.FluidFluidToFluidCachedRecipe;
 import astral_mekanism.recipes.inputRecipeCache.AMInputRecipeCache.FluidFluid;
 import astral_mekanism.recipes.lookup.AMIRecipeLookUpHandler;
 import astral_mekanism.recipes.recipe.FluidFluidToFluidRecipe;
-import astral_mekanism.registries.AstralMekanismRecipeTypes;
+import astral_mekanism.registries.AMERecipeTypes;
 import mekanism.api.IContentsListener;
 import mekanism.api.fluid.IExtendedFluidTank;
 import mekanism.api.math.FloatingLong;
@@ -178,7 +178,7 @@ public abstract class BEAbstractFluidInfuser extends TileEntityRecipeMachine<Flu
 
     @Override
     public @NotNull IMekanismRecipeTypeProvider<FluidFluidToFluidRecipe, FluidFluid<FluidFluidToFluidRecipe>> getRecipeType() {
-        return AstralMekanismRecipeTypes.FLUID_INFUSER_RECIPE;
+        return AMERecipeTypes.FLUID_INFUSER_RECIPE;
     }
 
     protected abstract int getBaselineMaxOperations();

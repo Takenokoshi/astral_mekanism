@@ -9,7 +9,7 @@ import astral_mekanism.recipes.cachedRecipe.GasInfusionToFluidCachedRecipe;
 import astral_mekanism.recipes.inputRecipeCache.AMInputRecipeCache.GasInfusion;
 import astral_mekanism.recipes.lookup.AMIRecipeLookUpHandler.GasInfusionRecipeLookUpHandler;
 import astral_mekanism.recipes.recipe.GasInfusionToFluidRecipe;
-import astral_mekanism.registries.AstralMekanismRecipeTypes;
+import astral_mekanism.registries.AMERecipeTypes;
 import mekanism.api.IContentsListener;
 import mekanism.api.RelativeSide;
 import mekanism.api.chemical.ChemicalTankBuilder;
@@ -171,7 +171,7 @@ public abstract class BEAbstractInfusingCondensentrator extends TileEntityRecipe
 
     @Override
     public @NotNull IMekanismRecipeTypeProvider<GasInfusionToFluidRecipe, GasInfusion<GasInfusionToFluidRecipe>> getRecipeType() {
-        return AstralMekanismRecipeTypes.INFUSING_CONDENSE;
+        return AMERecipeTypes.INFUSING_CONDENSE;
     }
 
     @Override

@@ -2,7 +2,7 @@ package astral_mekanism.block.gui.astralmachine;
 
 import java.util.List;
 import org.jetbrains.annotations.NotNull;
-import astral_mekanism.AstralMekanismLang;
+import astral_mekanism.AMELang;
 import astral_mekanism.block.blockentity.astralmachine.BEAstralFormulaicAssemblicator;
 import astral_mekanism.block.container.astralmachine.ContainerAstralFAssemblicator;
 import astral_mekanism.jei.AMEJEIPlugin;
@@ -43,11 +43,11 @@ public class GuiAstralFormulaicAssemblicator extends
                 new ResourceLocation("minecraft", "textures/block/redstone_torch_off.png"),
                 new ResourceLocation("minecraft", "textures/block/redstone_torch.png"),
                 () -> tile.getSavedRecipe() != null, () -> {
-                }, getOnHover(AstralMekanismLang.EXPLAIN_ASSEMBLICATOR_TORCHBUTTON)));
+                }, getOnHover(AMELang.EXPLAIN_ASSEMBLICATOR_TORCHBUTTON)));
         addRenderableWidget(new MekanismImageButton(this, 86, 53,
                 18, 18, 16, 16,
                 new ResourceLocation("minecraft", "textures/item/knowledge_book.png"),
-                this::viewSavedRecipeInJEI, getOnHover(AstralMekanismLang.EXPLAIN_ASSEMBLICATOR_BOOKBUTTON)));
+                this::viewSavedRecipeInJEI, getOnHover(AMELang.EXPLAIN_ASSEMBLICATOR_BOOKBUTTON)));
     }
 
     @Override

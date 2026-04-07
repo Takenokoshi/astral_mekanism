@@ -1,8 +1,8 @@
 package astral_mekanism.recipes.irecipe;
 
 import astral_mekanism.recipes.recipe.GasInfusionToFluidRecipe;
-import astral_mekanism.registries.AstralMekanismRecipeSerializers;
-import astral_mekanism.registries.AstralMekanismRecipeTypes;
+import astral_mekanism.registries.AMERecipeSerializers;
+import astral_mekanism.registries.AMERecipeTypes;
 import mekanism.api.recipes.ingredients.ChemicalStackIngredient.GasStackIngredient;
 import mekanism.api.recipes.ingredients.ChemicalStackIngredient.InfusionStackIngredient;
 import net.minecraft.resources.ResourceLocation;
@@ -19,12 +19,12 @@ public class InfusingCondenseIRecipe extends GasInfusionToFluidRecipe {
 
     @Override
     public RecipeSerializer<?> getSerializer() {
-        return AstralMekanismRecipeSerializers.INFUSING_CONDENSE.get();
+        return AMERecipeSerializers.INFUSING_CONDENSE.get();
     }
 
     @Override
     public RecipeType<?> getType() {
-        return AstralMekanismRecipeTypes.INFUSING_CONDENSE.get();
+        return AMERecipeTypes.INFUSING_CONDENSE.get();
     }
 
 }

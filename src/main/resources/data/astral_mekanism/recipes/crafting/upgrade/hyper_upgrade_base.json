@@ -1,0 +1,23 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "key": {
+        "B": {
+            "item": "astral_mekanism:ame_upgrade_base"
+        },
+        "G": {
+            "item": "mekanism_extras:lead_coated_glass"
+        },
+        "A": {
+            "item": "astral_mekanism:alloy_enchanted"
+        }
+    },
+    "pattern": [
+        " G ",
+        "ABA",
+        " G "
+    ],
+    "result": {
+        "item": "astral_mekanism:hyper_upgrade_base",
+        "count": 1
+    }
+}

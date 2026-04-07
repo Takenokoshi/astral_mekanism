@@ -15,8 +15,8 @@ import appeng.api.ids.AEConstants;
 import appeng.core.definitions.AEBlocks;
 import appeng.core.definitions.AEItems;
 import astral_mekanism.registries.OreType;
-import astral_mekanism.registries.AstralMekanismItems;
-import astral_mekanism.registries.AstralMekanismItems.IntermediateState;
+import astral_mekanism.registries.AMEItems;
+import astral_mekanism.registries.AMEItems.IntermediateState;
 import mekanism.common.Mekanism;
 import mekanism.common.registries.MekanismBlocks;
 import mekanism.common.registries.MekanismItems;
@@ -87,7 +87,7 @@ public enum OreTypeData {
             Mekanism::rl),
     NETHERITE(OreType.NETHERITE, 1,
             new ItemStack(Items.NETHERITE_INGOT.asItem()),
-            AstralMekanismItems.NETHERITE_CLUSTER.getItemStack(),
+            AMEItems.NETHERITE_CLUSTER.getItemStack(),
             new ResourceLocation("item/netherite_ingot"),
             ((Supplier<EnumMap<IntermediateState, ResourceLocation>>) () -> {
                 EnumMap<IntermediateState, ResourceLocation> map = new EnumMap<>(IntermediateState.class);

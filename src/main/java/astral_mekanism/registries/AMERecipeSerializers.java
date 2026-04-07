@@ -1,0 +1,69 @@
+package astral_mekanism.registries;
+
+import astral_mekanism.AMEConstants;
+import astral_mekanism.recipes.irecipe.AstralCraftingIRecipe;
+import astral_mekanism.recipes.irecipe.FluidInfuserIRecipe;
+import astral_mekanism.recipes.irecipe.AMEGasConversionIRecipe;
+import astral_mekanism.recipes.irecipe.InfusingCondenseIRecipe;
+import astral_mekanism.recipes.irecipe.ItemCompressingIRecipe;
+import astral_mekanism.recipes.irecipe.ItemUnzippingIRecipe;
+import astral_mekanism.recipes.irecipe.MekanicalTransformIRecipe;
+import astral_mekanism.recipes.irecipe.ReconstructionIRecipe;
+import astral_mekanism.recipes.irecipe.SPSIRecipe;
+import astral_mekanism.recipes.recipe.AstralCraftingRecipe;
+import astral_mekanism.recipes.recipe.FluidFluidToFluidRecipe;
+import astral_mekanism.recipes.recipe.GasInfusionToFluidRecipe;
+import astral_mekanism.recipes.recipe.MekanicalTransformRecipe;
+import astral_mekanism.recipes.recipe.ReconstructionRecipe;
+import astral_mekanism.recipes.serializer.AstralCraftingRecipeSerializer;
+import astral_mekanism.recipes.serializer.FluidFluidToFluidRecipeSerializer;
+import astral_mekanism.recipes.serializer.GasInfusionToFluidRecipeSerializer;
+import astral_mekanism.recipes.serializer.MekanicalTransformRecipeSerializer;
+import astral_mekanism.recipes.serializer.ReconstructionRecipeSerializer;
+import mekanism.api.recipes.GasToGasRecipe;
+import mekanism.api.recipes.ItemStackToItemStackRecipe;
+import mekanism.common.recipe.serializer.GasToGasRecipeSerializer;
+import mekanism.common.recipe.serializer.ItemStackToItemStackRecipeSerializer;
+import mekanism.common.registration.impl.RecipeSerializerDeferredRegister;
+import mekanism.common.registration.impl.RecipeSerializerRegistryObject;
+
+public class AMERecipeSerializers {
+
+    private AMERecipeSerializers() {
+    }
+
+    public static final RecipeSerializerDeferredRegister RECIPE_SERIALIZERS = new RecipeSerializerDeferredRegister(
+            AMEConstants.MODID);
+
+    public static final RecipeSerializerRegistryObject<FluidFluidToFluidRecipe> FLUID_INFUSER_RECIPE = RECIPE_SERIALIZERS
+            .register("fluid_infuser",
+                    () -> new FluidFluidToFluidRecipeSerializer<>(FluidInfuserIRecipe::new));
+
+    public static final RecipeSerializerRegistryObject<GasToGasRecipe> SPS_RECIPE = RECIPE_SERIALIZERS
+            .register("sps", () -> new GasToGasRecipeSerializer<>(SPSIRecipe::new));
+
+    public static final RecipeSerializerRegistryObject<AstralCraftingRecipe> ASTRAL_CRAFTING = RECIPE_SERIALIZERS
+            .register("astral_crafting", () -> new AstralCraftingRecipeSerializer<>(AstralCraftingIRecipe::new));
+
+    public static final RecipeSerializerRegistryObject<MekanicalTransformRecipe> MEKANICAL_TRANSFORM = RECIPE_SERIALIZERS
+            .register("mekanical_transform",
+                    () -> new MekanicalTransformRecipeSerializer<>(MekanicalTransformIRecipe::new));
+
+    public static final RecipeSerializerRegistryObject<ItemStackToItemStackRecipe> ITEM_COMPRESSING = RECIPE_SERIALIZERS
+            .register("item_compressing",
+                    () -> new ItemStackToItemStackRecipeSerializer<>(ItemCompressingIRecipe::new));
+
+    public static final RecipeSerializerRegistryObject<ItemStackToItemStackRecipe> ITEM_UNZIPPING = RECIPE_SERIALIZERS
+            .register("item_unzipping",
+                    () -> new ItemStackToItemStackRecipeSerializer<>(ItemUnzippingIRecipe::new));
+
+    public static final RecipeSerializerRegistryObject<GasInfusionToFluidRecipe> INFUSING_CONDENSE = RECIPE_SERIALIZERS
+            .register("infusing_condense",
+                    () -> new GasInfusionToFluidRecipeSerializer<>(InfusingCondenseIRecipe::new));
+
+    public static final RecipeSerializerRegistryObject<GasToGasRecipe> GAS_CONVERSION = RECIPE_SERIALIZERS
+            .register("ame_gas_conversion", () -> new GasToGasRecipeSerializer<>(AMEGasConversionIRecipe::new));
+
+    public static final RecipeSerializerRegistryObject<ReconstructionRecipe> RECONSTRUCTION = RECIPE_SERIALIZERS
+            .register("reconstruction", () -> new ReconstructionRecipeSerializer<>(ReconstructionIRecipe::new));
+}
