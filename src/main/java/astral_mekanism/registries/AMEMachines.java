@@ -839,7 +839,9 @@ public class AMEMachines {
                     builder -> builder
                             .withEnergyConfig(() -> FloatingLong.create(2000000000), MAX_SUPPLIER)
                             .withSound(MekanismSounds.SPS)
-                            .changeAttributeUpgrade(EnumSet.of(Upgrade.MUFFLING)));
+                            .changeAttributeUpgrade(EnumSet.of(
+                                    Upgrade.MUFFLING,
+                                    AMEUpgrade.RADIOACTIVE_SEALING.getValue())));
 
     public static final MachineRegistryObject<BEItemCompressor, BlockTileModel<BEItemCompressor, BlockTypeMachine<BEItemCompressor>>, MekanismTileContainer<BEItemCompressor>, ItemBlockMachine> ITEM_COMPRESSOR = MACHINES
             .registerSimple("item_compressor",

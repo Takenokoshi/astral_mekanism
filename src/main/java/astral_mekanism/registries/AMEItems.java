@@ -7,6 +7,7 @@ import astral_mekanism.AMEConstants;
 import astral_mekanism.enumexpansion.AMEUpgrade;
 import astral_mekanism.items.GlintItem;
 import astral_mekanism.items.GlintItemNameColored;
+import astral_mekanism.items.cell.bulkcell.AMEBulkCellItem;
 import astral_mekanism.registryenum.AMEProcessableMaterialType;
 import astral_mekanism.registryenum.AMEProcessingItemStates;
 import mekanism.api.Upgrade;
@@ -33,31 +34,33 @@ public class AMEItems {
             .register("composite_alloy_ingot", Rarity.RARE);
     public static final ItemRegistryObject<Item> FIRMAMENT_ALLOY_INGOT = ITEMS
             .register("firmament_alloy_ingot", Rarity.RARE);
+    public static final ItemRegistryObject<Item> STARRY_SKY_ALLOY_INGOT = ITEMS
+            .register("starry_sky_alloy_ingot", Rarity.EPIC);
     public static final ItemRegistryObject<Item> PRINTED_PHOTON_PROCESSOR = ITEMS
             .register("printed_photon_processor", Rarity.RARE);
     public static final ItemRegistryObject<Item> PRINTED_COMPOSITE_PROCESSOR = ITEMS
-            .register("printed_composite_processor");
+            .register("printed_composite_processor", Rarity.RARE);
     public static final ItemRegistryObject<Item> PRINTED_ORIGIN_PROCESSOR = ITEMS
-            .register("printed_origin_processor");
+            .register("printed_origin_processor", Rarity.RARE);
     public static final ItemRegistryObject<Item> PRINTED_AUTONOMY_PROCESSOR = ITEMS.register(
             "printed_autonomy_processor",
-            p -> new Item(p.fireResistant()));
+            p -> new Item(p.fireResistant().rarity(Rarity.RARE)));
     public static final ItemRegistryObject<Item> PRINTED_FIRMAMENT_PROCESSOR = ITEMS
-            .register("printed_firmament_processor");
+            .register("printed_firmament_processor", Rarity.RARE);
     public static final ItemRegistryObject<Item> PHOTON_PROCESSOR = ITEMS
-            .register("photon_processor");
+            .register("photon_processor", Rarity.RARE);
     public static final ItemRegistryObject<Item> COMPOSITE_PROCESSOR = ITEMS
-            .register("composite_processor");
+            .register("composite_processor", Rarity.RARE);
     public static final ItemRegistryObject<Item> ORIGIN_PROCESSOR = ITEMS
-            .register("origin_processor");
+            .register("origin_processor", Rarity.RARE);
     public static final ItemRegistryObject<Item> AUTONOMY_PROCESSOR = ITEMS
-            .register("autonomy_processor");
+            .register("autonomy_processor", Rarity.RARE);
     public static final ItemRegistryObject<Item> FIRMAMENT_PROCESSOR = ITEMS
-            .register("firmament_processor");
+            .register("firmament_processor", Rarity.RARE);
     public static final ItemRegistryObject<Item> PHOTON_PROCESSOR_PRESS = ITEMS
-            .register("photon_processor_press");
+            .register("photon_processor_press", Rarity.RARE);
     public static final ItemRegistryObject<Item> FIRMAMENT_PROCESSOR_PRESS = ITEMS
-            .register("firmament_processor_press");
+            .register("firmament_processor_press", Rarity.RARE);
     public static final ItemRegistryObject<Item> UTILITY_DUST = ITEMS.register("utility_dust");
     public static final ItemRegistryObject<Item> POLONIUM_CONTAINING_UTILITY_DUST = ITEMS
             .register("polonium_containing_utility_dust");
@@ -101,6 +104,10 @@ public class AMEItems {
     public static final ItemRegistryObject<GlintItem> SPACETIME_MODULATION_CORE = ITEMS.register(
             "spacetime_modulation_core",
             p -> new GlintItem(p.rarity(Rarity.EPIC)));
+    public static final ItemRegistryObject<AMEBulkCellItem<?>> BULK_FLUID_CELL = ITEMS.register(
+            "bulk_fluid_cell", AMEBulkCellItem::createFluid);
+    public static final ItemRegistryObject<AMEBulkCellItem<?>> BULK_CHEMICAL_CELL = ITEMS.register(
+            "bulk_chemical_cell", AMEBulkCellItem::createChemical);
     public static final ItemRegistryObject<Item> UPGRADE_BASE = ITEMS.register("ame_upgrade_base");
     public static final ItemRegistryObject<Item> HYPER_UPGRADE_BASE = ITEMS.register("hyper_upgrade_base");
     public static final ItemRegistryObject<ItemUpgrade> COBBLESTONE_SUPPLY_UPGRADE = registerUpgrade(

@@ -1,0 +1,22 @@
+{
+    "type": "evolvedmekanism:chemixing",
+    "extraInput": {
+        "amount": 16,
+        "ingredient": {
+            "item": "astral_mekanism:alloy_stardust"
+        }
+    },
+    "gasInput": {
+        "amount": 10000,
+        "gas": "astral_mekanism:interstellar_antimatter"
+    },
+    "mainInput": {
+        "amount": 16,
+        "ingredient": {
+            "item": "astral_mekanism:firmament_alloy_ingot"
+        }
+    },
+    "output": {
+        "item": "astral_mekanism:starry_sky_alloy_ingot"
+    }
+}

@@ -180,12 +180,11 @@ public enum AMEProcessingData {
                             .get(AMEProcessingItemStates.SHINING_CLUMP_GEM)
                             .getItemStack(pData.type.additionalMultiply))
                     .build(consumer, AMEConstants.rl(processingLoc + "/purifying"));
-            ItemStackToItemStackRecipeBuilder.crushing(iCreator.createMulti(
-                    feedstock,
+            ItemStackToItemStackRecipeBuilder.crushing(
                     iCreator.from(ItemTags.create(AMEConstants
                             .rl(pData.type.isMetal || pData.type == AMEProcessableMaterialType.REDSTONE
                                     ? "shining_clumps/" + pData.type.name
-                                    : "shining_gems/" + pData.type.name)))),
+                                    : "shining_gems/" + pData.type.name))),
                     AMEItems.AME_MATERIAL_PROCESSING_ITEMS.get(pData.type)
                             .get(AMEProcessingItemStates.SHINING_DUST).getItemStack(8))
                     .build(consumer, AMEConstants.rl(processingLoc + "/crushing"));
