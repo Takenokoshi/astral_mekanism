@@ -11,7 +11,7 @@ public class AMECreativeTab {
             AMEConstants.MODID);
 
     public static final CreativeTabRegistryObject ASTRAL_MEKANISM_TAB = CREATIVE_TABS.register("astral_mekanism_tab",
-            AMELang.ITEM_GROUP, AMEItems.ASTRAL_DIAMOND,
+            AMELang.ITEM_GROUP, AMEItems.STARRY_SKY_ALLOY_INGOT,
             builder -> builder.displayItems((displayParameters, output) -> {
                 CreativeTabDeferredRegister.addToDisplay(AMEMachines.MACHINES.blockRegister, output);
                 CreativeTabDeferredRegister.addToDisplay(AMEBlocks.BLOCKS, output);

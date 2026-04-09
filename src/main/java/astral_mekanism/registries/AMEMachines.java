@@ -69,7 +69,7 @@ import astral_mekanism.block.blockentity.normalmachine.BEGlowstoneNeutronActivat
 import astral_mekanism.block.blockentity.normalmachine.BEGreenHouse;
 import astral_mekanism.block.blockentity.normalmachine.BEInfuseSynthesizer;
 import astral_mekanism.block.blockentity.normalmachine.BEInfusingCondensentrator;
-import astral_mekanism.block.blockentity.normalmachine.BEInterstellarPositronicMatterReconstructionApparatus;
+import astral_mekanism.block.blockentity.normalmachine.BEInterstellarAntineutronicMatterReconstructionApparatus;
 import astral_mekanism.block.blockentity.normalmachine.BEItemCompressor;
 import astral_mekanism.block.blockentity.normalmachine.BEItemUnzipper;
 import astral_mekanism.block.blockentity.normalmachine.BEMekanicalCharger;
@@ -830,11 +830,11 @@ public class AMEMachines {
                                     AMEUpgrade.RADIOACTIVE_SEALING.getValue(),
                                     AMEUpgrade.AIR_INTAKE.getValue())));
 
-    public static final MachineRegistryObject<BEInterstellarPositronicMatterReconstructionApparatus, BlockTileModel<BEInterstellarPositronicMatterReconstructionApparatus, BlockTypeMachine<BEInterstellarPositronicMatterReconstructionApparatus>>, ContainerMachineCustomSize<BEInterstellarPositronicMatterReconstructionApparatus>, ItemBlockMachine> INTERSTELLAR_POSITRONIC_MATTER_RECONSTRUCTION_APPARATUS = MACHINES
-            .registerDefaultBlockItem("interstellar_positronic_matter_reconstruction_apparatus",
-                    BEInterstellarPositronicMatterReconstructionApparatus::new,
-                    BEInterstellarPositronicMatterReconstructionApparatus.class,
-                    ContainerMachineCustomSize<BEInterstellarPositronicMatterReconstructionApparatus>::new,
+    public static final MachineRegistryObject<BEInterstellarAntineutronicMatterReconstructionApparatus, BlockTileModel<BEInterstellarAntineutronicMatterReconstructionApparatus, BlockTypeMachine<BEInterstellarAntineutronicMatterReconstructionApparatus>>, ContainerMachineCustomSize<BEInterstellarAntineutronicMatterReconstructionApparatus>, ItemBlockMachine> INTERSTELLAR_POSITRONIC_MATTER_RECONSTRUCTION_APPARATUS = MACHINES
+            .registerDefaultBlockItem("interstellar_antineutronic_matter_reconstruction_apparatus",
+                    BEInterstellarAntineutronicMatterReconstructionApparatus::new,
+                    BEInterstellarAntineutronicMatterReconstructionApparatus.class,
+                    ContainerMachineCustomSize<BEInterstellarAntineutronicMatterReconstructionApparatus>::new,
                     AMELang.ITEM_GROUP,
                     builder -> builder
                             .withEnergyConfig(() -> FloatingLong.create(2000000000), MAX_SUPPLIER)

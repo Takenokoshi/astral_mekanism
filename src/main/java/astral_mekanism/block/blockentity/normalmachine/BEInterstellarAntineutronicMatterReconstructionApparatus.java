@@ -55,7 +55,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.fluids.FluidStack;
 
-public class BEInterstellarPositronicMatterReconstructionApparatus
+public class BEInterstellarAntineutronicMatterReconstructionApparatus
         extends TileEntityProgressMachine<ReconstructionRecipe> implements
         ItemFluidChemicalRecipeLookupHandler<Gas, GasStack, ReconstructionRecipe>,
         IHasCustomSizeContainer {
@@ -87,9 +87,9 @@ public class BEInterstellarPositronicMatterReconstructionApparatus
     private boolean itemNotComsumed = false;
     InputInventorySlot inputSlot;
     OutputInventorySlot outputSlot;
-    MachineEnergyContainer<BEInterstellarPositronicMatterReconstructionApparatus> energyContainer;
+    MachineEnergyContainer<BEInterstellarAntineutronicMatterReconstructionApparatus> energyContainer;
 
-    public BEInterstellarPositronicMatterReconstructionApparatus(IBlockProvider blockProvider, BlockPos pos,
+    public BEInterstellarAntineutronicMatterReconstructionApparatus(IBlockProvider blockProvider, BlockPos pos,
             BlockState state) {
         super(blockProvider, pos, state, TRACKED_ERROR_TYPES, 1000);
         configComponent = new TileComponentConfig(this, TransmissionType.ITEM, TransmissionType.ENERGY,
@@ -256,7 +256,7 @@ public class BEInterstellarPositronicMatterReconstructionApparatus
         return outputGasTank;
     }
 
-    public MachineEnergyContainer<BEInterstellarPositronicMatterReconstructionApparatus> getEnergyContainer() {
+    public MachineEnergyContainer<BEInterstellarAntineutronicMatterReconstructionApparatus> getEnergyContainer() {
         return energyContainer;
     }
 

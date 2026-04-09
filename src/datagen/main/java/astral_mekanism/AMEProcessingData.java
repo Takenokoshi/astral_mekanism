@@ -220,7 +220,7 @@ public enum AMEProcessingData {
             ReconstructionRecipeBuilder.reconstruction(
                     iCreator.from(AMEItems.SPARKLING_NOVA),
                     fCreator.from(AMEFluids.REFINED_ASTRAL_ETHER.getFluidStack(2000000000)),
-                    gCreator.from(AMEGases.RECONSTRUCTED_MATERIALS.get(pData.type).getStack(1000000000000000l)),
+                    gCreator.from(AMEGases.RECONSTRUCTED_MATERIALS.get(pData.type).getStack(50000000000000l)),
                     4000,
                     AMEItems.STARLIGHTS.get(pData.type).getItemStack(1),
                     MSGases.BERYLLIUM.getStack(1000000000))

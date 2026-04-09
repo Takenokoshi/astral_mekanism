@@ -1,4 +1,4 @@
-package astral_mekanism.items;
+package astral_mekanism.item;
 
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;

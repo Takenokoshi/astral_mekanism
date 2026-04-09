@@ -1,4 +1,4 @@
-package astral_mekanism.items.cell.bulkcell;
+package astral_mekanism.item.cell.bulkcell;
 
 import java.math.BigInteger;
 import java.util.function.Function;

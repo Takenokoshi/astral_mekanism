@@ -68,12 +68,12 @@
               "source": "block_entity"
             }
           ],
-          "name": "astral_mekanism:interstellar_positronic_matter_reconstruction_apparatus"
+          "name": "astral_mekanism:interstellar_antineutronic_matter_reconstruction_apparatus"
         }
       ],
       "name": "main",
       "rolls": 1.0
     }
   ],
-  "random_sequence": "astral_mekanism:blocks/interstellar_positronic_matter_reconstruction_apparatus"
+  "random_sequence": "astral_mekanism:blocks/interstellar_antineutronic_matter_reconstruction_apparatus"
 }

@@ -1,4 +1,4 @@
-package astral_mekanism.items.cell.bulkcell;
+package astral_mekanism.item.cell.bulkcell;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -71,7 +71,7 @@ public class AMEBulkCellItem<AEKEY extends AEKey> extends AEBaseItem implements 
 
     @Override
     public IUpgradeInventory getUpgrades(ItemStack is) {
-        return UpgradeInventories.forItem(is, 1);
+        return UpgradeInventories.empty();
     }
 
     @Override
@@ -102,8 +102,6 @@ public class AMEBulkCellItem<AEKEY extends AEKey> extends AEBaseItem implements 
                                 ? MEGATranslations.MismatchedFilter.text().withStyle(ChatFormatting.DARK_RED)
                                 : Tooltips.of(MEGATranslations.NotPartitioned.text()));
             }
-            lines.add(Tooltips.of(
-                    MEGATranslations.Compression.text(MEGATranslations.Disabled.text().withStyle(ChatFormatting.RED))));
         }
     }
 

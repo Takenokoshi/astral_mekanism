@@ -28,9 +28,9 @@ public class AMEGases {
     public static final GasRegistryObject<Gas> AIR = GASES.register("air", 0xffffff);
     public static final GasRegistryObject<Gas> SINGULARITY_ACID = GASES.register("singularity_acid", 0x1800a8);
     public static final GasRegistryObject<Gas> INTERSTELLAR_ANTIMATTER = GASES
-            .register("interstellar_antimatter", 0xA464B3);
+            .register("interstellar_antimatter", 0xBC83D9);
     public static final GasRegistryObject<Gas> SPARKLING_SINGULARITY_RIVULET = GASES
-            .register("sparkling_singularity_rivulet", 0xffffff);
+            .register("sparkling_singularity_rivulet", 0x4A27D4);
 
     public static final EnumMap<AMEProcessableMaterialType, GasRegistryObject<Gas>> RECONSTRUCTED_MATERIALS = createReconstructed();
 

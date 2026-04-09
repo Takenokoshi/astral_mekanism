@@ -36,6 +36,9 @@ public class ReconstructionRecipeCategory extends BaseRecipeCategory<Reconstruct
     private final GuiSlot outputSlot;
     private final GuiInnerScreen innerScreen;
     private final GuiCustomDynamicHorizontalRateBar bar;
+    private Color chemicalColor = Color.WHITE;
+    private boolean itemNotConsumed = false;
+    private int ticksRequired = 1000;
 
     public ReconstructionRecipeCategory(IGuiHelper helper, MekanismJEIRecipeType<ReconstructionRecipe> recipeType,
             IItemProvider provider) {
@@ -46,8 +49,22 @@ public class ReconstructionRecipeCategory extends BaseRecipeCategory<Reconstruct
         energyGauge = addElement(GuiEnergyGauge.getDummy(GaugeType.STANDARD, this, 197, 17));
         inputSlot = addSlot(SlotType.INPUT, 51, 40);
         outputSlot = addSlot(SlotType.OUTPUT, 155, 40);
-        innerScreen = addElement(new GuiInnerScreen(this, 70, 17, 82, 60));
+        innerScreen = addElement(new GuiInnerScreen(this, 70, 17, 82, 60, this::getComponents));
         bar = addElement(new GuiCustomDynamicHorizontalRateBar(this, getBarProgressTimer(), 30, 79, 160));
+        bar.setColorFunction(this::getColor);
+    }
+
+    private Color getColor(float value) {
+        return chemicalColor.blend(Color.WHITE, value);
+    }
+
+    private List<Component> getComponents() {
+        if (itemNotConsumed) {
+            return List.of(Component.literal("Item won't be consumed."),
+                    Component.literal(ticksRequired + " ticks required."));
+        }
+        return List.of(Component.literal("Item will be consumed."),
+                Component.literal(ticksRequired + " ticks required."));
     }
 
     @Override
@@ -65,7 +82,8 @@ public class ReconstructionRecipeCategory extends BaseRecipeCategory<Reconstruct
             initChemical(builder, MekanismJEI.TYPE_GAS, RecipeIngredientRole.OUTPUT, outputGasGauge,
                     List.of(output.gas()));
         }
-        bar.setColorFunction(p -> Color.rgb(recipe.getInputGas().getRepresentations().get(0).getChemicalTint()));
+        chemicalColor = Color.rgb(recipe.getInputGas().getRepresentations().get(0).getType().getTint());
+        itemNotConsumed = recipe.getItemNotConsumed();
     }
 
     @Override

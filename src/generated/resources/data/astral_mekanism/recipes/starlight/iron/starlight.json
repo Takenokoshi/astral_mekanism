@@ -6,7 +6,7 @@
     "fluid": "astral_mekanism:refined_astral_ether"
   },
   "gasInput": {
-    "amount": 1000000000000000,
+    "amount": 50000000000000,
     "gas": "astral_mekanism:reconstructed_iron"
   },
   "gasOutput": {

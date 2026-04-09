@@ -5,7 +5,7 @@ import java.util.List;
 
 import org.jetbrains.annotations.NotNull;
 
-import astral_mekanism.block.blockentity.normalmachine.BEInterstellarPositronicMatterReconstructionApparatus;
+import astral_mekanism.block.blockentity.normalmachine.BEInterstellarAntineutronicMatterReconstructionApparatus;
 import astral_mekanism.block.container.prefab.ContainerMachineCustomSize;
 import astral_mekanism.jei.AMEJEIRecipeType;
 import fr.iglee42.evolvedmekanism.client.bars.GuiCustomDynamicHorizontalRateBar;
@@ -22,11 +22,11 @@ import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.player.Inventory;
 
-public class GuiInterstellarPositronicMatterReconstructionApparatus extends
-        GuiConfigurableTile<BEInterstellarPositronicMatterReconstructionApparatus, ContainerMachineCustomSize<BEInterstellarPositronicMatterReconstructionApparatus>> {
+public class GuiInterstellarAntineutronicMatterReconstructionApparatus extends
+        GuiConfigurableTile<BEInterstellarAntineutronicMatterReconstructionApparatus, ContainerMachineCustomSize<BEInterstellarAntineutronicMatterReconstructionApparatus>> {
 
-    public GuiInterstellarPositronicMatterReconstructionApparatus(
-            ContainerMachineCustomSize<BEInterstellarPositronicMatterReconstructionApparatus> container, Inventory inv,
+    public GuiInterstellarAntineutronicMatterReconstructionApparatus(
+            ContainerMachineCustomSize<BEInterstellarAntineutronicMatterReconstructionApparatus> container, Inventory inv,
             Component title) {
         super(container, inv, title);
         dynamicSlots = true;

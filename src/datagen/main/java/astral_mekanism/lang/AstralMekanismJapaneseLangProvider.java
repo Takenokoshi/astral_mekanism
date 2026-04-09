@@ -120,8 +120,8 @@ public class AstralMekanismJapaneseLangProvider extends LanguageProvider {
         path = path.contains("_naquadah_reactor") ? path.replace("_naquadah_reactor", "_ナクアダリアクター") : path;
         path = path.contains("metallurgic_infuser") ? path.replace("metallurgic_infuser", "冶金吹込機") : path;
         path = path.contains("sodium_hydroxide") ? path.replace("sodium_hydroxide", "水酸化ナトリウム") : path;
-        path = path.contains("interstellar_positronic_matter_reconstruction_apparatus")
-                ? path.replace("interstellar_positronic_matter_reconstruction_apparatus", "星間陽電子式物質再構築装置")
+        path = path.contains("interstellar_antineutronic_matter_reconstruction_apparatus")
+                ? path.replace("interstellar_antineutronic_matter_reconstruction_apparatus", "星間反中性子式物質再構築装置")
                 : path;
         String[] parts = path.split("_");
         StringBuilder sb = new StringBuilder();

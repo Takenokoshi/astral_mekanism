@@ -78,7 +78,7 @@ import astral_mekanism.block.gui.normalmachine.GuiGasSynthesizer;
 import astral_mekanism.block.gui.normalmachine.GuiGreenHouse;
 import astral_mekanism.block.gui.normalmachine.GuiInfuseSynthesizer;
 import astral_mekanism.block.gui.normalmachine.GuiInfusingCondensentrator;
-import astral_mekanism.block.gui.normalmachine.GuiInterstellarPositronicMatterReconstructionApparatus;
+import astral_mekanism.block.gui.normalmachine.GuiInterstellarAntineutronicMatterReconstructionApparatus;
 import astral_mekanism.block.gui.normalmachine.GuiMekanicalCharger;
 import astral_mekanism.block.gui.normalmachine.GuiMekanicalComposter;
 import astral_mekanism.block.gui.normalmachine.GuiMekanicalInscriber;
@@ -217,7 +217,7 @@ public class AMEClient extends AstralMekanism {
         registerScreenMek(AMEMachines.INFUSING_CONDENSENTRATOR,
                 GuiInfusingCondensentrator<BEInfusingCondensentrator>::new);
         registerScreenMek(AMEMachines.INTERSTELLAR_POSITRONIC_MATTER_RECONSTRUCTION_APPARATUS,
-                GuiInterstellarPositronicMatterReconstructionApparatus::new);
+                GuiInterstellarAntineutronicMatterReconstructionApparatus::new);
         registerScreenMek(AMEMachines.ITEM_COMPRESSOR,
                 GuiItemToItemBlock<BEItemCompressor>::new);
         registerScreenMek(AMEMachines.ITEM_UNZIPPER,

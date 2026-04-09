@@ -4,7 +4,7 @@ import com.mojang.logging.LogUtils;
 
 import appeng.api.storage.StorageCells;
 import astral_mekanism.config.AMEConfig;
-import astral_mekanism.items.cell.bulkcell.AMEBulkCellHandler;
+import astral_mekanism.item.cell.bulkcell.AMEBulkCellHandler;
 import astral_mekanism.network.AMEPacketHandler;
 import astral_mekanism.registries.AMEBlockEntityRegistry;
 import astral_mekanism.registries.AMEItemDefinitions;
