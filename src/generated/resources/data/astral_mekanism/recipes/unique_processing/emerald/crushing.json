@@ -1,17 +1,10 @@
 {
   "type": "mekanism:crushing",
-  "input": [
-    {
-      "ingredient": {
-        "tag": "astral_mekanism:feedstocks/emerald"
-      }
-    },
-    {
-      "ingredient": {
-        "tag": "astral_mekanism:shining_gems/emerald"
-      }
+  "input": {
+    "ingredient": {
+      "tag": "astral_mekanism:shining_gems/emerald"
     }
-  ],
+  },
   "output": {
     "count": 8,
     "item": "astral_mekanism:shining_emerald_dust"

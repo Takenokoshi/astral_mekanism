@@ -2,16 +2,16 @@
   "type": "astral_mekanism:reconstruction",
   "duration": 1,
   "fluidInput": {
-    "amount": 2000000,
+    "amount": 1,
     "fluid": "astral_mekanism:mixed_lava"
   },
   "gasInput": {
-    "amount": 100,
+    "amount": 1,
     "gas": "astral_mekanism:astral_ether"
   },
   "gasOutput": {
-    "amount": 100000,
-    "gas": "mekanismelements:americium"
+    "amount": 1,
+    "gas": "astral_mekanism:astral_ether"
   },
   "itemInput": {
     "ingredient": {

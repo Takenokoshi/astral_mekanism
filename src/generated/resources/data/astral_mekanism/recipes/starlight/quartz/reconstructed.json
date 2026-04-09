@@ -7,7 +7,7 @@
   },
   "gasInput": {
     "amount": 1,
-    "gas": "astral_mekanism:interstellar_antimatter"
+    "gas": "mekanism:antimatter"
   },
   "gasOutput": {
     "amount": 1,

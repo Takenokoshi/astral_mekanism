@@ -1,0 +1,164 @@
+{
+    "type": "astral_mekanism:astral_crafting",
+    "itemInputA1": {
+        "amount": 2,
+        "ingredient": {
+            "item": "astral_mekanism:starry_sky_alloy_ingot"
+        }
+    },
+    "itemInputA2": {
+        "amount": 8,
+        "ingredient": {
+            "item": "mekanismelements:pellet_neutron_source"
+        }
+    },
+    "itemInputA3": {
+        "amount": 2,
+        "ingredient": {
+            "item": "megacells:bulk_cell_component"
+        }
+    },
+    "itemInputA4": {
+        "amount": 8,
+        "ingredient": {
+            "item": "mekanismelements:pellet_neutron_source"
+        }
+    },
+    "itemInputA5": {
+        "amount": 2,
+        "ingredient": {
+            "item": "astral_mekanism:starry_sky_alloy_ingot"
+        }
+    },
+    "itemInputB1": {
+        "amount": 1,
+        "ingredient": {
+            "item": "astral_mekanism:crystal_antimatter_charged"
+        }
+    },
+    "itemInputB2": {
+        "amount": 1,
+        "ingredient": {
+            "item": "evolvedmekanism:qio_drive_black_hole"
+        }
+    },
+    "itemInputB3": {
+        "amount": 2,
+        "ingredient": {
+            "item": "megacells:cell_component_256m"
+        }
+    },
+    "itemInputB4": {
+        "amount": 1,
+        "ingredient": {
+            "item": "mekanism_extras:qio_drive_singularity"
+        }
+    },
+    "itemInputB5": {
+        "amount": 1,
+        "ingredient": {
+            "item": "astral_mekanism:crystal_antimatter_charged"
+        }
+    },
+    "itemInputC1": {
+        "amount": 16,
+        "ingredient": {
+            "item": "astral_mekanism:polonium_containing_utility_dust"
+        }
+    },
+    "itemInputC2": {
+        "amount": 1,
+        "ingredient": {
+            "item": "astral_mekanism:firmament_processor"
+        }
+    },
+    "itemInputC3": {
+        "amount": 16,
+        "ingredient": {
+            "item": "minecraft:end_crystal"
+        }
+    },
+    "itemInputC4": {
+        "amount": 1,
+        "ingredient": {
+            "item": "astral_mekanism:illusion_control_circuit"
+        }
+    },
+    "itemInputC5": {
+        "amount": 16,
+        "ingredient": {
+            "item": "astral_mekanism:polonium_containing_utility_dust"
+        }
+    },
+    "itemInputD1": {
+        "amount": 1,
+        "ingredient": {
+            "item": "astral_mekanism:crystal_antimatter_charged"
+        }
+    },
+    "itemInputD2": {
+        "amount": 1,
+        "ingredient": {
+            "item": "mekanism_extras:qio_drive_singularity"
+        }
+    },
+    "itemInputD3": {
+        "amount": 2,
+        "ingredient": {
+            "item": "advanced_ae:quantum_storage_component"
+        }
+    },
+    "itemInputD4": {
+        "amount": 1,
+        "ingredient": {
+            "item": "evolvedmekanism:qio_drive_black_hole"
+        }
+    },
+    "itemInputD5": {
+        "amount": 1,
+        "ingredient": {
+            "item": "astral_mekanism:crystal_antimatter_charged"
+        }
+    },
+    "itemInputE1": {
+        "amount": 2,
+        "ingredient": {
+            "item": "astral_mekanism:starry_sky_alloy_ingot"
+        }
+    },
+    "itemInputE2": {
+        "amount": 8,
+        "ingredient": {
+            "item": "minecraft:nether_star"
+        }
+    },
+    "itemInputE3": {
+        "amount": 2,
+        "ingredient": {
+            "item": "advanced_ae:quantum_alloy_plate"
+        }
+    },
+    "itemInputE4": {
+        "amount": 8,
+        "ingredient": {
+            "item": "minecraft:nether_star"
+        }
+    },
+    "itemInputE5": {
+        "amount": 2,
+        "ingredient": {
+            "item": "astral_mekanism:starry_sky_alloy_ingot"
+        }
+    },
+    "fluidInput": {
+        "fluid": "astral_mekanism:mixed_lava",
+        "amount": 10000
+    },
+    "gasInput": {
+        "gas": "astral_mekanism:sparkling_singularity_rivulet",
+        "amount": 10000
+    },
+    "output": {
+        "item": "astral_mekanism:starry_sky_control_processor"
+    }
+}

@@ -2,7 +2,9 @@ package astral_mekanism;
 
 import com.mojang.logging.LogUtils;
 
+import appeng.api.storage.StorageCells;
 import astral_mekanism.config.AMEConfig;
+import astral_mekanism.items.cell.bulkcell.AMEBulkCellHandler;
 import astral_mekanism.network.AMEPacketHandler;
 import astral_mekanism.registries.AMEBlockEntityRegistry;
 import astral_mekanism.registries.AMEItemDefinitions;
@@ -56,6 +58,7 @@ public class AstralMekanism {
         AMERecipeSerializers.RECIPE_SERIALIZERS.register(modEventBus);
         AMERecipeTypes.RECIPE_TYPES.register(modEventBus);
         AMECreativeTab.CREATIVE_TABS.register(modEventBus);
+        modEventBus.addListener(this::initCell);
         MinecraftForge.EVENT_BUS.register(this);
         version = new Version(context.getActiveContainer());
         this.packetHandler = new AMEPacketHandler();
@@ -64,6 +67,11 @@ public class AstralMekanism {
     private void commonSetup(final FMLCommonSetupEvent event) {
         LOGGER.info(MODID + " was initialized.");
         packetHandler.initialize();
+    }
+
+    private void initCell(final FMLCommonSetupEvent event) {
+        StorageCells.addCellHandler(AMEBulkCellHandler.CHEMICAL_HANDLER);
+        StorageCells.addCellHandler(AMEBulkCellHandler.FLUID_HANDLER);
     }
 
     public static AMEPacketHandler packetHandler() {

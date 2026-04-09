@@ -39,7 +39,7 @@ public class ReconstructionRecipeCategory extends BaseRecipeCategory<Reconstruct
 
     public ReconstructionRecipeCategory(IGuiHelper helper, MekanismJEIRecipeType<ReconstructionRecipe> recipeType,
             IItemProvider provider) {
-        super(helper, recipeType, provider, 3, 12, 114, 74);
+        super(helper, recipeType, provider, 3, 12, 222, 74);
         fluidGauge = addElement(GuiFluidGauge.getDummy(GaugeType.STANDARD, this, 7, 17));
         inputGasGauge = addElement(GuiGasGauge.getDummy(GaugeType.STANDARD, this, 30, 17));
         outputGasGauge = addElement(GuiGasGauge.getDummy(GaugeType.STANDARD, this, 174, 17));

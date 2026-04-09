@@ -202,7 +202,7 @@ public enum AMEProcessingData {
             ReconstructionRecipeBuilder.reconstruction(
                     iCreator.from(ItemTags.create(AMEConstants.rl("final_materials/" + pData.type.name))),
                     REFINED_ASTRAL_ETHER,
-                    INTERSTELLER_ANTIMATTER,
+                    gCreator.from(MekanismGases.ANTIMATTER.getStack(1)),
                     1,
                     ItemStack.EMPTY,
                     AMEGases.RECONSTRUCTED_MATERIALS.get(pData.type).getStack(1))
@@ -211,21 +211,12 @@ public enum AMEProcessingData {
             ReconstructionRecipeBuilder.reconstruction(
                     iCreator.from(ItemTags.create(AMEConstants.rl("shining_crystals/" + pData.type.name))),
                     fCreator.from(AMEFluids.REFINED_ASTRAL_ETHER.getFluidStack(480 * pData.type.additionalMultiply)),
-                    gCreator.from(AMEGases.INTERSTELLAR_ANTIMATTER.getStack(480 * pData.type.additionalMultiply)),
+                    gCreator.from(MekanismGases.ANTIMATTER.getStack(480 * pData.type.additionalMultiply)),
                     1,
                     ItemStack.EMPTY,
                     AMEGases.RECONSTRUCTED_MATERIALS.get(pData.type).getStack(480 * pData.type.additionalMultiply))
                     .setItemNotConsumed(false)
                     .build(consumer, AMEConstants.rl(starlightLoc + "/reconstructed_from_crystal"));
-            ReconstructionRecipeBuilder.reconstruction(
-                    iCreator.from(ItemTags.create(AMEConstants.rl("sparkling_ores/" + pData.type.name))),
-                    fCreator.from(AMEFluids.REFINED_ASTRAL_ETHER.getFluidStack(7680 * pData.type.additionalMultiply)),
-                    gCreator.from(AMEGases.INTERSTELLAR_ANTIMATTER.getStack(7680 * pData.type.additionalMultiply)),
-                    1,
-                    ItemStack.EMPTY,
-                    AMEGases.RECONSTRUCTED_MATERIALS.get(pData.type).getStack(7680 * pData.type.additionalMultiply))
-                    .setItemNotConsumed(false)
-                    .build(consumer, AMEConstants.rl(starlightLoc + "/reconstructed_from_sparkling"));
             ReconstructionRecipeBuilder.reconstruction(
                     iCreator.from(AMEItems.SPARKLING_NOVA),
                     fCreator.from(AMEFluids.REFINED_ASTRAL_ETHER.getFluidStack(2000000000)),
@@ -238,12 +229,12 @@ public enum AMEProcessingData {
             ReconstructionRecipeBuilder.reconstruction(
                     iCreator.from(AMEItems.STARLIGHTS.get(pData.type).getItemStack(1)),
                     pData != AMEProcessingData.NETHERITE
-                            ? fCreator.from(new FluidStack(Fluids.LAVA, 2000000000))
-                            : fCreator.from(AMEFluids.MIXED_LAVA.getFluidStack(2000000)),
-                    gCreator.from(AMEGases.ASTRAL_ETHER.getStack(100)),
+                            ? fCreator.from(new FluidStack(Fluids.LAVA, 1))
+                            : fCreator.from(AMEFluids.MIXED_LAVA.getFluidStack(1)),
+                    gCreator.from(AMEGases.ASTRAL_ETHER.getStack(1)),
                     1,
                     AMEBlocks.COMPRESSED_ORE.get(pData.type).getItemStack(64),
-                    MSGases.AMERICIUM.getStack(100000))
+                    AMEGases.ASTRAL_ETHER.getStack(1))
                     .setItemNotConsumed(true)
                     .build(consumer, AMEConstants.rl(starlightLoc + "/compressed_ore"));
             ItemStackChemicalToItemStackRecipeBuilder.metallurgicInfusing(

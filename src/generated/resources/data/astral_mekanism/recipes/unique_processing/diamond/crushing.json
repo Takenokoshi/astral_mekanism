@@ -1,17 +1,10 @@
 {
   "type": "mekanism:crushing",
-  "input": [
-    {
-      "ingredient": {
-        "tag": "astral_mekanism:feedstocks/diamond"
-      }
-    },
-    {
-      "ingredient": {
-        "tag": "astral_mekanism:shining_gems/diamond"
-      }
+  "input": {
+    "ingredient": {
+      "tag": "astral_mekanism:shining_gems/diamond"
     }
-  ],
+  },
   "output": {
     "count": 8,
     "item": "astral_mekanism:shining_diamond_dust"

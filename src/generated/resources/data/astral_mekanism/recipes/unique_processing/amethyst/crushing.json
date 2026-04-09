@@ -1,17 +1,10 @@
 {
   "type": "mekanism:crushing",
-  "input": [
-    {
-      "ingredient": {
-        "tag": "astral_mekanism:feedstocks/amethyst"
-      }
-    },
-    {
-      "ingredient": {
-        "tag": "astral_mekanism:shining_gems/amethyst"
-      }
+  "input": {
+    "ingredient": {
+      "tag": "astral_mekanism:shining_gems/amethyst"
     }
-  ],
+  },
   "output": {
     "count": 8,
     "item": "astral_mekanism:shining_amethyst_dust"

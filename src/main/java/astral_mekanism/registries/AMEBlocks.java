@@ -28,7 +28,7 @@ public class AMEBlocks {
     public static final BlockDeferredRegister BLOCKS = new BlockDeferredRegister(AMEConstants.MODID);
 
     public static final BlockRegistryObject<BlockSimpleDiscription, ItemBlockTooltip<BlockSimpleDiscription>> ASTRAL_DIAMOND_BLOCK = BLOCKS
-            .register(
+            .registerDefaultProperties(
                     "astral_diamond_block", () -> new BlockSimpleDiscription(
                             BlockBehaviour.Properties.of()
                                     .strength(1.5f, 18000000.0f)
@@ -43,7 +43,7 @@ public class AMEBlocks {
                     .mapColor(MapColor.STONE));
 
     public static final BlockRegistryObject<BlockSimpleDiscription, ItemBlockTooltip<BlockSimpleDiscription>> AMETHYST_ORE = BLOCKS
-            .register("amethyst_ore",
+            .registerDefaultProperties("amethyst_ore",
                     () -> new BlockSimpleDiscription(
                             BlockBehaviour.Properties.of()
                                     .strength(1.5f, 18000000.0f)
@@ -53,7 +53,7 @@ public class AMEBlocks {
                     ItemBlockTooltip::new);
 
     public static final BlockRegistryObject<BlockSimpleDiscription, ItemBlockTooltip<BlockSimpleDiscription>> CERTUS_QUARTS_ORE = BLOCKS
-            .register("certus_quartz_ore",
+            .registerDefaultProperties("certus_quartz_ore",
                     () -> new BlockSimpleDiscription(
                             BlockBehaviour.Properties.of()
                                     .strength(1.5f, 18000000.0f)
@@ -63,7 +63,7 @@ public class AMEBlocks {
                     ItemBlockTooltip::new);
 
     public static final BlockRegistryObject<BlockSimpleDiscription, ItemBlockTooltip<BlockSimpleDiscription>> NETHERITE_ORE = BLOCKS
-            .register("netherite_ore",
+            .registerDefaultProperties("netherite_ore",
                     () -> new BlockSimpleDiscription(
                             BlockBehaviour.Properties.of()
                                     .strength(1.5f, 18000000.0f)

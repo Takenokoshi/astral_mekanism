@@ -1,17 +1,10 @@
 {
   "type": "mekanism:crushing",
-  "input": [
-    {
-      "ingredient": {
-        "tag": "astral_mekanism:feedstocks/osmium"
-      }
-    },
-    {
-      "ingredient": {
-        "tag": "astral_mekanism:shining_clumps/osmium"
-      }
+  "input": {
+    "ingredient": {
+      "tag": "astral_mekanism:shining_clumps/osmium"
     }
-  ],
+  },
   "output": {
     "count": 8,
     "item": "astral_mekanism:shining_osmium_dust"

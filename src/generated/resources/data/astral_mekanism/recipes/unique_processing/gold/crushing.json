@@ -1,17 +1,10 @@
 {
   "type": "mekanism:crushing",
-  "input": [
-    {
-      "ingredient": {
-        "tag": "astral_mekanism:feedstocks/gold"
-      }
-    },
-    {
-      "ingredient": {
-        "tag": "astral_mekanism:shining_clumps/gold"
-      }
+  "input": {
+    "ingredient": {
+      "tag": "astral_mekanism:shining_clumps/gold"
     }
-  ],
+  },
   "output": {
     "count": 8,
     "item": "astral_mekanism:shining_gold_dust"

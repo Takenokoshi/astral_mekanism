@@ -2,15 +2,15 @@
   "type": "astral_mekanism:reconstruction",
   "duration": 1,
   "fluidInput": {
-    "amount": 480,
+    "amount": 30720,
     "fluid": "astral_mekanism:refined_astral_ether"
   },
   "gasInput": {
-    "amount": 480,
-    "gas": "astral_mekanism:interstellar_antimatter"
+    "amount": 30720,
+    "gas": "mekanism:antimatter"
   },
   "gasOutput": {
-    "amount": 480,
+    "amount": 30720,
     "gas": "astral_mekanism:reconstructed_amethyst"
   },
   "itemInput": {
