@@ -6,6 +6,7 @@ import java.util.function.Function;
 import java.util.function.UnaryOperator;
 
 import com.fxd927.mekanismelements.common.config.MSConfig;
+import com.jerry.mekanism_extras.api.ExtraUpgrade;
 
 import astral_mekanism.AMETier;
 import astral_mekanism.AMEConstants;
@@ -700,7 +701,8 @@ public class AMEMachines {
             tier -> builder -> builder
                     .withSound(MekanismSounds.ENERGIZED_SMELTER)
                     .changeAttributeUpgrade(
-                            EnumSet.of(Upgrade.SPEED, Upgrade.ENERGY, AMEUpgrade.COBBLESTONE_SUPPLY.getValue(),
+                            EnumSet.of(Upgrade.SPEED, Upgrade.ENERGY, ExtraUpgrade.STACK,
+                                    AMEUpgrade.COBBLESTONE_SUPPLY.getValue(),
                                     AMEUpgrade.XP.getValue()))
                     .withEnergyConfig(MekanismConfig.usage.energizedSmelter,
                             () -> MekanismConfig.storage.energizedSmelter.get().multiply(tier.processes)));
@@ -724,7 +726,8 @@ public class AMEMachines {
                             .withEnergyConfig(MekanismConfig.usage.energizedSmelter,
                                     MekanismConfig.storage.energizedSmelter)
                             .changeAttributeUpgrade(
-                                    EnumSet.of(Upgrade.SPEED, Upgrade.ENERGY, AMEUpgrade.COBBLESTONE_SUPPLY.getValue(),
+                                    EnumSet.of(Upgrade.SPEED, Upgrade.ENERGY, ExtraUpgrade.STACK,
+                                            AMEUpgrade.COBBLESTONE_SUPPLY.getValue(),
                                             AMEUpgrade.XP.getValue()))
                             .withSound(MekanismSounds.ENERGIZED_SMELTER));
 
@@ -737,7 +740,8 @@ public class AMEMachines {
                             .withEnergyConfig(MekanismConfig.usage.metallurgicInfuser,
                                     MekanismConfig.storage.metallurgicInfuser)
                             .changeAttributeUpgrade(
-                                    EnumSet.of(Upgrade.SPEED, Upgrade.ENERGY, AMEUpgrade.COBBLESTONE_SUPPLY.getValue(),
+                                    EnumSet.of(Upgrade.SPEED, Upgrade.ENERGY, ExtraUpgrade.STACK,
+                                            AMEUpgrade.COBBLESTONE_SUPPLY.getValue(),
                                             AMEUpgrade.RADIOACTIVE_SEALING.getValue()))
                             .withCustomShape(BlockShapes.METALLURGIC_INFUSER)
                             .withSound(MekanismSounds.METALLURGIC_INFUSER));
@@ -751,7 +755,7 @@ public class AMEMachines {
                             .withEnergyConfig(MekanismConfig.usage.osmiumCompressor,
                                     MekanismConfig.storage.osmiumCompressor)
                             .changeAttributeUpgrade(
-                                    EnumSet.of(Upgrade.SPEED, Upgrade.ENERGY, Upgrade.MUFFLING,
+                                    EnumSet.of(Upgrade.SPEED, Upgrade.ENERGY, Upgrade.MUFFLING, ExtraUpgrade.STACK,
                                             AMEUpgrade.COBBLESTONE_SUPPLY.getValue(),
                                             AMEUpgrade.RADIOACTIVE_SEALING.getValue(),
                                             AMEUpgrade.AIR_INTAKE.getValue()))
@@ -766,7 +770,7 @@ public class AMEMachines {
                             .withEnergyConfig(AMEConfig.usage.aaeReactionChamber, AMEConfig.storage.aaeReactionChamber)
                             .withCustomShape(AMEBlockShapes.AAE_REACTION_CHAMBER)
                             .changeAttributeUpgrade(
-                                    EnumSet.of(Upgrade.SPEED, Upgrade.ENERGY, Upgrade.MUFFLING,
+                                    EnumSet.of(Upgrade.SPEED, Upgrade.ENERGY, Upgrade.MUFFLING, ExtraUpgrade.STACK,
                                             AMEUpgrade.COBBLESTONE_SUPPLY.getValue(),
                                             AMEUpgrade.WATER_SUPPLY.getValue()))
                             .withSound(MekanismSounds.OSMIUM_COMPRESSOR));
@@ -809,7 +813,7 @@ public class AMEMachines {
                     BEGreenHouse.class,
                     AMELang.DESCRIPTION_GREENHOUSE, builder -> builder
                             .withEnergyConfig(AMEConfig.usage.greenHouse, AMEConfig.storage.greenHouse)
-                            .changeAttributeUpgrade(EnumSet.of(Upgrade.ENERGY, Upgrade.SPEED,
+                            .changeAttributeUpgrade(EnumSet.of(Upgrade.ENERGY, Upgrade.SPEED, ExtraUpgrade.STACK,
                                     AMEUpgrade.COBBLESTONE_SUPPLY.getValue(), AMEUpgrade.WATER_SUPPLY.getValue())));
 
     public static final MachineRegistryObject<BEInfuseSynthesizer, BlockTileModel<BEInfuseSynthesizer, BlockTypeMachine<BEInfuseSynthesizer>>, MekanismTileContainer<BEInfuseSynthesizer>, ItemBlockMachine> INFUSE_SYNTHESIZER = MACHINES
@@ -865,7 +869,8 @@ public class AMEMachines {
                     AMELang.DESCRIPTION_MEKANICAL_CHARGER,
                     builder -> builder
                             .changeAttributeUpgrade(
-                                    EnumSet.of(Upgrade.SPEED, Upgrade.ENERGY, AMEUpgrade.COBBLESTONE_SUPPLY.getValue()))
+                                    EnumSet.of(Upgrade.SPEED, Upgrade.ENERGY, ExtraUpgrade.STACK,
+                                            AMEUpgrade.COBBLESTONE_SUPPLY.getValue()))
                             .withEnergyConfig(AMEConfig.usage.mekanicalCherger, AMEConfig.storage.mekanicalCherger));
 
     public static final MachineRegistryObject<BEMekanicalComposter, BlockTileModel<BEMekanicalComposter, BlockTypeMachine<BEMekanicalComposter>>, MekanismTileContainer<BEMekanicalComposter>, ItemBlockMachine> MEKANICAL_COMPOSTER = MACHINES
@@ -884,7 +889,8 @@ public class AMEMachines {
                     AMELang.DESCRIPTION_MEKANICAL_INSCRIBER,
                     builder -> builder
                             .changeAttributeUpgrade(
-                                    EnumSet.of(Upgrade.SPEED, Upgrade.ENERGY, AMEUpgrade.COBBLESTONE_SUPPLY.getValue()))
+                                    EnumSet.of(Upgrade.SPEED, Upgrade.ENERGY, ExtraUpgrade.STACK,
+                                            AMEUpgrade.COBBLESTONE_SUPPLY.getValue()))
                             .withEnergyConfig(AMEConfig.usage.mekanicalInscriber,
                                     AMEConfig.storage.mekanicalInscriber));
 
@@ -904,7 +910,8 @@ public class AMEMachines {
                     AMELang.DESCRIPTION_MEKANICAL_TRANSFORMER,
                     builder -> builder
                             .changeAttributeUpgrade(
-                                    EnumSet.of(Upgrade.SPEED, Upgrade.ENERGY, AMEUpgrade.COBBLESTONE_SUPPLY.getValue(),
+                                    EnumSet.of(Upgrade.SPEED, Upgrade.ENERGY, ExtraUpgrade.STACK,
+                                            AMEUpgrade.COBBLESTONE_SUPPLY.getValue(),
                                             AMEUpgrade.WATER_SUPPLY.getValue()))
                             .withEnergyConfig(AMEConfig.usage.transformer, AMEConfig.storage.transformer));
 

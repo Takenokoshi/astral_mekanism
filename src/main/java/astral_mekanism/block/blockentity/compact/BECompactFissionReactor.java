@@ -5,8 +5,8 @@ import org.jetbrains.annotations.NotNull;
 
 import astral_mekanism.AMETier;
 import astral_mekanism.block.blockentity.core.BlockEntityUtils;
-import astral_mekanism.block.blockentity.elements.AstralMekDataType;
 import astral_mekanism.block.blockentity.interf.IPacketReceiverSetLong;
+import astral_mekanism.enumexpansion.AMEDataType;
 import mekanism.api.Action;
 import mekanism.api.AutomationType;
 import mekanism.api.IContentsListener;
@@ -82,19 +82,19 @@ public class BECompactFissionReactor extends TileEntityConfigurableMachine imple
                 TransmissionType.HEAT);
         ConfigInfo gasConfig = configComponent.getConfig(TransmissionType.GAS);
         if (gasConfig != null) {
-            gasConfig.addSlotInfo(AstralMekDataType.FISSION_FUEL, new GasSlotInfo(true, false, fissionFuelTank));
-            gasConfig.addSlotInfo(AstralMekDataType.NUCLEAR_WASTE, new GasSlotInfo(false, true, nuclearWasteTank));
-            gasConfig.addSlotInfo(AstralMekDataType.GAS_COOLANT, new GasSlotInfo(true, false, coolantGasTank));
-            gasConfig.addSlotInfo(AstralMekDataType.HEATED_FLUID_COOLANT,
+            gasConfig.addSlotInfo(AMEDataType.FISSION_FUEL, new GasSlotInfo(true, false, fissionFuelTank));
+            gasConfig.addSlotInfo(AMEDataType.NUCLEAR_WASTE, new GasSlotInfo(false, true, nuclearWasteTank));
+            gasConfig.addSlotInfo(AMEDataType.GAS_COOLANT, new GasSlotInfo(true, false, coolantGasTank));
+            gasConfig.addSlotInfo(AMEDataType.HEATED_FLUID_COOLANT,
                     new GasSlotInfo(false, true, heatedFluidCoolantGasTank));
-            gasConfig.addSlotInfo(AstralMekDataType.HEATED_GAS_COOLANT,
+            gasConfig.addSlotInfo(AMEDataType.HEATED_GAS_COOLANT,
                     new GasSlotInfo(false, true, heatedGasCoolantGasTank));
-            gasConfig.addSlotInfo(AstralMekDataType.DOUBLE_GAS_COOLANT, new GasSlotInfo(true, false, coolantGasTank));
+            gasConfig.addSlotInfo(AMEDataType.DOUBLE_GAS_COOLANT, new GasSlotInfo(true, false, coolantGasTank));
             gasConfig.setCanEject(true);
         }
         ConfigInfo fluidConfig = configComponent.getConfig(TransmissionType.FLUID);
         if (fluidConfig != null) {
-            fluidConfig.addSlotInfo(AstralMekDataType.FLUID_COOLANT, new FluidSlotInfo(true, false, coolantFluidTank));
+            fluidConfig.addSlotInfo(AMEDataType.FLUID_COOLANT, new FluidSlotInfo(true, false, coolantFluidTank));
             fluidConfig.setCanEject(false);
         }
         configComponent.setupOutputConfig(TransmissionType.HEAT, heatCapacitor);
@@ -183,10 +183,10 @@ public class BECompactFissionReactor extends TileEntityConfigurableMachine imple
         }
         heatFluid();
         heatGas();
-        BlockEntityUtils.gasEject(this, List.of(AstralMekDataType.NUCLEAR_WASTE), nuclearWasteTank);
-        BlockEntityUtils.gasEject(this, List.of(AstralMekDataType.HEATED_FLUID_COOLANT), heatedFluidCoolantGasTank);
+        BlockEntityUtils.gasEject(this, List.of(AMEDataType.NUCLEAR_WASTE), nuclearWasteTank);
+        BlockEntityUtils.gasEject(this, List.of(AMEDataType.HEATED_FLUID_COOLANT), heatedFluidCoolantGasTank);
         BlockEntityUtils.gasEject(this,
-                List.of(AstralMekDataType.HEATED_GAS_COOLANT, AstralMekDataType.DOUBLE_GAS_COOLANT),
+                List.of(AMEDataType.HEATED_GAS_COOLANT, AMEDataType.DOUBLE_GAS_COOLANT),
                 heatedGasCoolantGasTank);
     }
 

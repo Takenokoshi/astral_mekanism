@@ -3,10 +3,10 @@ package astral_mekanism.block.blockentity.storage;
 import java.util.List;
 
 import astral_mekanism.block.blockentity.core.BlockEntityUtils;
-import astral_mekanism.block.blockentity.elements.AstralMekDataType;
 import astral_mekanism.block.blockentity.elements.slot.GhostInventorySlot;
 import astral_mekanism.block.blockentity.prefab.BEAbstractItemSortble;
 import astral_mekanism.block.blockentity.prefab.BEAbstractStorage;
+import astral_mekanism.enumexpansion.AMEDataType;
 import mekanism.api.IContentsListener;
 import mekanism.api.inventory.IInventorySlot;
 import mekanism.api.math.FloatingLong;
@@ -43,12 +43,12 @@ public class BEItemSortableStorage extends BEAbstractStorage implements BEAbstra
         itemConfig.addSlotInfo(DataType.INPUT, new InventorySlotInfo(true, false, inputInventorySlots));
         itemConfig.addSlotInfo(DataType.OUTPUT_1, new InventorySlotInfo(false, true, outputInventorySlotsA));
         itemConfig.addSlotInfo(DataType.OUTPUT_2, new InventorySlotInfo(false, true, outputInventorySlotsB));
-        itemConfig.addSlotInfo(AstralMekDataType.OUTPUTleft, new InventorySlotInfo(false, true, outputInventorySlotsC));
-        itemConfig.addSlotInfo(AstralMekDataType.INPUT_OUTPUT1,
+        itemConfig.addSlotInfo(AMEDataType.OUTPUTleft, new InventorySlotInfo(false, true, outputInventorySlotsC));
+        itemConfig.addSlotInfo(AMEDataType.INPUT_OUTPUT1,
                 new InventorySlotInfo(true, false, inputInventorySlots));
-        itemConfig.addSlotInfo(AstralMekDataType.INPUT_OUTPUT2,
+        itemConfig.addSlotInfo(AMEDataType.INPUT_OUTPUT2,
                 new InventorySlotInfo(true, false, inputInventorySlots));
-        itemConfig.addSlotInfo(AstralMekDataType.INPUT_OUTPUTleft,
+        itemConfig.addSlotInfo(AMEDataType.INPUT_OUTPUTleft,
                 new InventorySlotInfo(true, false, inputInventorySlots));
         itemConfig.setCanEject(true);
     }
@@ -76,14 +76,14 @@ public class BEItemSortableStorage extends BEAbstractStorage implements BEAbstra
     @Override
     protected void onUSUnique() {
         if (isInsertUpgrade.test(insertUpgradeSlot.getStack())) {
-            BlockEntityUtils.itemInsert(this, List.of(DataType.INPUT, AstralMekDataType.INPUT_OUTPUT1,
-                    AstralMekDataType.INPUT_OUTPUT2, AstralMekDataType.INPUT_OUTPUTleft));
+            BlockEntityUtils.itemInsert(this, List.of(DataType.INPUT, AMEDataType.INPUT_OUTPUT1,
+                    AMEDataType.INPUT_OUTPUT2, AMEDataType.INPUT_OUTPUTleft));
         }
         filtering();
-        BlockEntityUtils.itemEject(this, List.of(AstralMekDataType.INPUT_OUTPUT1), DataType.OUTPUT_1);
-        BlockEntityUtils.itemEject(this, List.of(AstralMekDataType.INPUT_OUTPUT2), DataType.OUTPUT_2);
-        BlockEntityUtils.itemEject(this, List.of(AstralMekDataType.INPUT_OUTPUTleft, AstralMekDataType.OUTPUTleft),
-                AstralMekDataType.OUTPUTleft);
+        BlockEntityUtils.itemEject(this, List.of(AMEDataType.INPUT_OUTPUT1), DataType.OUTPUT_1);
+        BlockEntityUtils.itemEject(this, List.of(AMEDataType.INPUT_OUTPUT2), DataType.OUTPUT_2);
+        BlockEntityUtils.itemEject(this, List.of(AMEDataType.INPUT_OUTPUTleft, AMEDataType.OUTPUTleft),
+                AMEDataType.OUTPUTleft);
     }
 
     private void filtering() {

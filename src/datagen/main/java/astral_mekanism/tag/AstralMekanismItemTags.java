@@ -6,11 +6,8 @@ import org.jetbrains.annotations.Nullable;
 
 import astral_mekanism.AMEConstants;
 import astral_mekanism.AMEProcessingData;
-import astral_mekanism.OreTypeData;
 import astral_mekanism.registries.AMEBlocks;
 import astral_mekanism.registries.AMEItems;
-import astral_mekanism.registries.OreType;
-import astral_mekanism.registries.AMEItems.IntermediateState;
 import astral_mekanism.registryenum.AMEProcessableMaterialType;
 import astral_mekanism.registryenum.AMEProcessingItemStates;
 import net.minecraft.core.HolderLookup.Provider;
@@ -31,23 +28,6 @@ public class AstralMekanismItemTags extends ItemTagsProvider {
     @Override
     protected void addTags(Provider provider) {
         addProcessingTags();
-        for (OreTypeData typeData : OreTypeData.values()) {
-            OreType type = typeData.oreType;
-            if (!type.hasMekprocessing) {
-                for (IntermediateState state : IntermediateState.values()) {
-                    tag(typeData.processingTags.get(state))
-                            .add(AMEItems.GEM_INTERMEDIATE_ITEMS.get(type).get(state).asItem());
-                }
-            } else if (type == OreType.NETHERITE) {
-                for (IntermediateState state : IntermediateState.values()) {
-                    if (state == IntermediateState.RAW) {
-                        continue;
-                    }
-                    tag(typeData.processingTags.get(state))
-                            .add(AMEItems.GEM_INTERMEDIATE_ITEMS.get(type).get(state).asItem());
-                }
-            }
-        }
     }
 
     private void addProcessingTags() {

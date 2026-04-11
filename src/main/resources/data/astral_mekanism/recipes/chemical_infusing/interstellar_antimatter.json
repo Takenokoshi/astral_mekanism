@@ -1,0 +1,15 @@
+{
+    "type": "mekanism:chemical_infusing",
+    "leftInput": {
+        "amount": 1,
+        "gas": "mekanism:antimatter"
+    },
+    "output": {
+        "amount": 1,
+        "gas": "astral_mekanism:interstellar_antimatter"
+    },
+    "rightInput": {
+        "amount": 1,
+        "gas": "astral_mekanism:astral_ether"
+    }
+}

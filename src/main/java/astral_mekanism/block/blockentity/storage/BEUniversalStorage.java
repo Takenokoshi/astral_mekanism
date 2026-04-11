@@ -3,8 +3,8 @@ package astral_mekanism.block.blockentity.storage;
 import java.util.List;
 
 import astral_mekanism.block.blockentity.core.BlockEntityUtils;
-import astral_mekanism.block.blockentity.elements.AstralMekDataType;
 import astral_mekanism.block.blockentity.prefab.BEAbstractStorage;
+import astral_mekanism.enumexpansion.AMEDataType;
 import astral_mekanism.registries.AMEItems;
 import mekanism.api.IContentsListener;
 import mekanism.api.math.FloatingLong;
@@ -40,10 +40,10 @@ public class BEUniversalStorage extends BEAbstractStorage {
         itemConfig.addSlotInfo(DataType.INPUT_2, new InventorySlotInfo(true, false, inventorySlotsB));
         itemConfig.addSlotInfo(DataType.OUTPUT_1, new InventorySlotInfo(false, true, inventorySlotsA));
         itemConfig.addSlotInfo(DataType.OUTPUT_2, new InventorySlotInfo(false, true, inventorySlotsB));
-        itemConfig.addSlotInfo(AstralMekDataType.INPUT1_OUTPUT1, new InventorySlotInfo(true, false, inventorySlotsA));
-        itemConfig.addSlotInfo(AstralMekDataType.INPUT1_OUTPUT2, new InventorySlotInfo(true, false, inventorySlotsA));
-        itemConfig.addSlotInfo(AstralMekDataType.INPUT2_OUTPUT1, new InventorySlotInfo(true, false, inventorySlotsB));
-        itemConfig.addSlotInfo(AstralMekDataType.INPUT2_OUTPUT2, new InventorySlotInfo(true, false, inventorySlotsB));
+        itemConfig.addSlotInfo(AMEDataType.INPUT1_OUTPUT1, new InventorySlotInfo(true, false, inventorySlotsA));
+        itemConfig.addSlotInfo(AMEDataType.INPUT1_OUTPUT2, new InventorySlotInfo(true, false, inventorySlotsA));
+        itemConfig.addSlotInfo(AMEDataType.INPUT2_OUTPUT1, new InventorySlotInfo(true, false, inventorySlotsB));
+        itemConfig.addSlotInfo(AMEDataType.INPUT2_OUTPUT2, new InventorySlotInfo(true, false, inventorySlotsB));
         itemConfig.setCanEject(true);
     }
 
@@ -82,18 +82,18 @@ public class BEUniversalStorage extends BEAbstractStorage {
     @Override
     protected void onUSUnique() {
         if (ItemStack.isSameItem(insertUpgradeSlotA.getStack(), AMEItems.INSERT_UPGRADE.getItemStack())) {
-            BlockEntityUtils.itemInsert(this, List.<DataType>of(DataType.INPUT_1, AstralMekDataType.INPUT1_OUTPUT1,
-                    AstralMekDataType.INPUT1_OUTPUT2));
+            BlockEntityUtils.itemInsert(this, List.<DataType>of(DataType.INPUT_1, AMEDataType.INPUT1_OUTPUT1,
+                    AMEDataType.INPUT1_OUTPUT2));
         }
         if (ItemStack.isSameItem(insertUpgradeSlotB.getStack(), AMEItems.INSERT_UPGRADE.getItemStack())) {
-            BlockEntityUtils.itemInsert(this, List.<DataType>of(DataType.INPUT_2, AstralMekDataType.INPUT2_OUTPUT1,
-                    AstralMekDataType.INPUT2_OUTPUT2));
+            BlockEntityUtils.itemInsert(this, List.<DataType>of(DataType.INPUT_2, AMEDataType.INPUT2_OUTPUT1,
+                    AMEDataType.INPUT2_OUTPUT2));
         }
         BlockEntityUtils.itemEject(this,
-                List.<DataType>of(AstralMekDataType.INPUT1_OUTPUT1, AstralMekDataType.INPUT2_OUTPUT1),
+                List.<DataType>of(AMEDataType.INPUT1_OUTPUT1, AMEDataType.INPUT2_OUTPUT1),
                 DataType.OUTPUT_1);
         BlockEntityUtils.itemEject(this,
-                List.<DataType>of(AstralMekDataType.INPUT1_OUTPUT2, AstralMekDataType.INPUT2_OUTPUT2),
+                List.<DataType>of(AMEDataType.INPUT1_OUTPUT2, AMEDataType.INPUT2_OUTPUT2),
                 DataType.OUTPUT_2);
     }
 

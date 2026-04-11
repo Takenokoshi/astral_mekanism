@@ -7,7 +7,7 @@ import java.util.function.Predicate;
 import org.jetbrains.annotations.NotNull;
 
 import astral_mekanism.block.blockentity.core.BlockEntityUtils;
-import astral_mekanism.block.blockentity.elements.AstralMekDataType;
+import astral_mekanism.enumexpansion.AMEDataType;
 import astral_mekanism.registries.AMEItems;
 import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
 import mekanism.api.Action;
@@ -123,17 +123,17 @@ public abstract class BEAbstractStorage extends TileEntityConfigurableMachine
             fluidConfig.addSlotInfo(DataType.OUTPUT_2, new FluidSlotInfo(false, true, fluidTank1));
             fluidConfig.addSlotInfo(DataType.INPUT_1, new FluidSlotInfo(true, false, fluidTank0));
             fluidConfig.addSlotInfo(DataType.INPUT_2, new FluidSlotInfo(true, false, fluidTank1));
-            fluidConfig.addSlotInfo(AstralMekDataType.INPUT1_OUTPUT1,
+            fluidConfig.addSlotInfo(AMEDataType.INPUT1_OUTPUT1,
                     new FluidSlotInfo(true, false, fluidTank0));
-            fluidConfig.addSlotInfo(AstralMekDataType.INPUT1_OUTPUT2,
+            fluidConfig.addSlotInfo(AMEDataType.INPUT1_OUTPUT2,
                     new FluidSlotInfo(true, false, fluidTank0));
-            fluidConfig.addSlotInfo(AstralMekDataType.INPUT2_OUTPUT1,
+            fluidConfig.addSlotInfo(AMEDataType.INPUT2_OUTPUT1,
                     new FluidSlotInfo(true, false, fluidTank1));
-            fluidConfig.addSlotInfo(AstralMekDataType.INPUT2_OUTPUT2,
+            fluidConfig.addSlotInfo(AMEDataType.INPUT2_OUTPUT2,
                     new FluidSlotInfo(true, false, fluidTank1));
-            fluidConfig.addSlotInfo(AstralMekDataType.OUTPUT1low,
+            fluidConfig.addSlotInfo(AMEDataType.OUTPUT1low,
                     new FluidSlotInfo(false, false, fluidTank0));
-            fluidConfig.addSlotInfo(AstralMekDataType.OUTPUT2low,
+            fluidConfig.addSlotInfo(AMEDataType.OUTPUT2low,
                     new FluidSlotInfo(false, false, fluidTank1));
             fluidConfig.setEjecting(true);
         }
@@ -147,17 +147,17 @@ public abstract class BEAbstractStorage extends TileEntityConfigurableMachine
                     new GasSlotInfo(true, false, mergedChemicalTank0.getGasTank()));
             gasConfig.addSlotInfo(DataType.INPUT_2,
                     new GasSlotInfo(true, false, mergedChemicalTank1.getGasTank()));
-            gasConfig.addSlotInfo(AstralMekDataType.INPUT1_OUTPUT1,
+            gasConfig.addSlotInfo(AMEDataType.INPUT1_OUTPUT1,
                     new GasSlotInfo(true, false, mergedChemicalTank0.getGasTank()));
-            gasConfig.addSlotInfo(AstralMekDataType.INPUT1_OUTPUT2,
+            gasConfig.addSlotInfo(AMEDataType.INPUT1_OUTPUT2,
                     new GasSlotInfo(true, false, mergedChemicalTank0.getGasTank()));
-            gasConfig.addSlotInfo(AstralMekDataType.INPUT2_OUTPUT1,
+            gasConfig.addSlotInfo(AMEDataType.INPUT2_OUTPUT1,
                     new GasSlotInfo(true, false, mergedChemicalTank1.getGasTank()));
-            gasConfig.addSlotInfo(AstralMekDataType.INPUT2_OUTPUT2,
+            gasConfig.addSlotInfo(AMEDataType.INPUT2_OUTPUT2,
                     new GasSlotInfo(true, false, mergedChemicalTank1.getGasTank()));
-            gasConfig.addSlotInfo(AstralMekDataType.OUTPUT1low,
+            gasConfig.addSlotInfo(AMEDataType.OUTPUT1low,
                     new GasSlotInfo(false, false, mergedChemicalTank0.getGasTank()));
-            gasConfig.addSlotInfo(AstralMekDataType.OUTPUT2low,
+            gasConfig.addSlotInfo(AMEDataType.OUTPUT2low,
                     new GasSlotInfo(false, false, mergedChemicalTank1.getGasTank()));
             gasConfig.setEjecting(true);
         }
@@ -171,17 +171,17 @@ public abstract class BEAbstractStorage extends TileEntityConfigurableMachine
                     new InfusionSlotInfo(true, false, mergedChemicalTank0.getInfusionTank()));
             infusionConfig.addSlotInfo(DataType.INPUT_2,
                     new InfusionSlotInfo(true, false, mergedChemicalTank1.getInfusionTank()));
-            infusionConfig.addSlotInfo(AstralMekDataType.INPUT1_OUTPUT1,
+            infusionConfig.addSlotInfo(AMEDataType.INPUT1_OUTPUT1,
                     new InfusionSlotInfo(true, false, mergedChemicalTank0.getInfusionTank()));
-            infusionConfig.addSlotInfo(AstralMekDataType.INPUT1_OUTPUT2,
+            infusionConfig.addSlotInfo(AMEDataType.INPUT1_OUTPUT2,
                     new InfusionSlotInfo(true, false, mergedChemicalTank0.getInfusionTank()));
-            infusionConfig.addSlotInfo(AstralMekDataType.INPUT2_OUTPUT1,
+            infusionConfig.addSlotInfo(AMEDataType.INPUT2_OUTPUT1,
                     new InfusionSlotInfo(true, false, mergedChemicalTank1.getInfusionTank()));
-            infusionConfig.addSlotInfo(AstralMekDataType.INPUT2_OUTPUT2,
+            infusionConfig.addSlotInfo(AMEDataType.INPUT2_OUTPUT2,
                     new InfusionSlotInfo(true, false, mergedChemicalTank1.getInfusionTank()));
-            infusionConfig.addSlotInfo(AstralMekDataType.OUTPUT1low,
+            infusionConfig.addSlotInfo(AMEDataType.OUTPUT1low,
                     new InfusionSlotInfo(false, false, mergedChemicalTank0.getInfusionTank()));
-            infusionConfig.addSlotInfo(AstralMekDataType.OUTPUT2low,
+            infusionConfig.addSlotInfo(AMEDataType.OUTPUT2low,
                     new InfusionSlotInfo(false, false, mergedChemicalTank1.getInfusionTank()));
             infusionConfig.setEjecting(true);
         }
@@ -195,17 +195,17 @@ public abstract class BEAbstractStorage extends TileEntityConfigurableMachine
                     new PigmentSlotInfo(true, false, mergedChemicalTank0.getPigmentTank()));
             pigmentConfig.addSlotInfo(DataType.INPUT_2,
                     new PigmentSlotInfo(true, false, mergedChemicalTank1.getPigmentTank()));
-            pigmentConfig.addSlotInfo(AstralMekDataType.INPUT1_OUTPUT1,
+            pigmentConfig.addSlotInfo(AMEDataType.INPUT1_OUTPUT1,
                     new PigmentSlotInfo(true, false, mergedChemicalTank0.getPigmentTank()));
-            pigmentConfig.addSlotInfo(AstralMekDataType.INPUT1_OUTPUT2,
+            pigmentConfig.addSlotInfo(AMEDataType.INPUT1_OUTPUT2,
                     new PigmentSlotInfo(true, false, mergedChemicalTank0.getPigmentTank()));
-            pigmentConfig.addSlotInfo(AstralMekDataType.INPUT2_OUTPUT1,
+            pigmentConfig.addSlotInfo(AMEDataType.INPUT2_OUTPUT1,
                     new PigmentSlotInfo(true, false, mergedChemicalTank1.getPigmentTank()));
-            pigmentConfig.addSlotInfo(AstralMekDataType.INPUT2_OUTPUT2,
+            pigmentConfig.addSlotInfo(AMEDataType.INPUT2_OUTPUT2,
                     new PigmentSlotInfo(true, false, mergedChemicalTank1.getPigmentTank()));
-            pigmentConfig.addSlotInfo(AstralMekDataType.OUTPUT1low,
+            pigmentConfig.addSlotInfo(AMEDataType.OUTPUT1low,
                     new PigmentSlotInfo(false, false, mergedChemicalTank0.getPigmentTank()));
-            pigmentConfig.addSlotInfo(AstralMekDataType.OUTPUT2low,
+            pigmentConfig.addSlotInfo(AMEDataType.OUTPUT2low,
                     new PigmentSlotInfo(false, false, mergedChemicalTank1.getPigmentTank()));
             pigmentConfig.setEjecting(true);
         }
@@ -219,17 +219,17 @@ public abstract class BEAbstractStorage extends TileEntityConfigurableMachine
                     new SlurrySlotInfo(true, false, mergedChemicalTank0.getSlurryTank()));
             slurryConfig.addSlotInfo(DataType.INPUT_2,
                     new SlurrySlotInfo(true, false, mergedChemicalTank1.getSlurryTank()));
-            slurryConfig.addSlotInfo(AstralMekDataType.INPUT1_OUTPUT1,
+            slurryConfig.addSlotInfo(AMEDataType.INPUT1_OUTPUT1,
                     new SlurrySlotInfo(true, false, mergedChemicalTank0.getSlurryTank()));
-            slurryConfig.addSlotInfo(AstralMekDataType.INPUT1_OUTPUT2,
+            slurryConfig.addSlotInfo(AMEDataType.INPUT1_OUTPUT2,
                     new SlurrySlotInfo(true, false, mergedChemicalTank0.getSlurryTank()));
-            slurryConfig.addSlotInfo(AstralMekDataType.INPUT2_OUTPUT1,
+            slurryConfig.addSlotInfo(AMEDataType.INPUT2_OUTPUT1,
                     new SlurrySlotInfo(true, false, mergedChemicalTank1.getSlurryTank()));
-            slurryConfig.addSlotInfo(AstralMekDataType.INPUT2_OUTPUT2,
+            slurryConfig.addSlotInfo(AMEDataType.INPUT2_OUTPUT2,
                     new SlurrySlotInfo(true, false, mergedChemicalTank1.getSlurryTank()));
-            slurryConfig.addSlotInfo(AstralMekDataType.OUTPUT1low,
+            slurryConfig.addSlotInfo(AMEDataType.OUTPUT1low,
                     new SlurrySlotInfo(false, false, mergedChemicalTank0.getSlurryTank()));
-            slurryConfig.addSlotInfo(AstralMekDataType.OUTPUT2low,
+            slurryConfig.addSlotInfo(AMEDataType.OUTPUT2low,
                     new SlurrySlotInfo(false, false, mergedChemicalTank1.getSlurryTank()));
             slurryConfig.setEjecting(true);
         }
@@ -400,44 +400,44 @@ public abstract class BEAbstractStorage extends TileEntityConfigurableMachine
         super.onUpdateServer();
         onUSUnique();
         BlockEntityUtils.fluidEject(this,
-                List.of(AstralMekDataType.INPUT1_OUTPUT1, AstralMekDataType.INPUT2_OUTPUT1,
-                        AstralMekDataType.OUTPUT1low),
+                List.of(AMEDataType.INPUT1_OUTPUT1, AMEDataType.INPUT2_OUTPUT1,
+                        AMEDataType.OUTPUT1low),
                 fluidTank0);
         BlockEntityUtils.fluidEject(this,
-                List.of(AstralMekDataType.INPUT1_OUTPUT2, AstralMekDataType.INPUT2_OUTPUT2,
-                        AstralMekDataType.OUTPUT2low),
+                List.of(AMEDataType.INPUT1_OUTPUT2, AMEDataType.INPUT2_OUTPUT2,
+                        AMEDataType.OUTPUT2low),
                 fluidTank1);
         BlockEntityUtils.gasEject(this,
-                List.of(AstralMekDataType.INPUT1_OUTPUT1, AstralMekDataType.INPUT2_OUTPUT1,
-                        AstralMekDataType.OUTPUT1low),
+                List.of(AMEDataType.INPUT1_OUTPUT1, AMEDataType.INPUT2_OUTPUT1,
+                        AMEDataType.OUTPUT1low),
                 mergedChemicalTank0.getGasTank());
         BlockEntityUtils.gasEject(this,
-                List.of(AstralMekDataType.INPUT1_OUTPUT2, AstralMekDataType.INPUT2_OUTPUT2,
-                        AstralMekDataType.OUTPUT2low),
+                List.of(AMEDataType.INPUT1_OUTPUT2, AMEDataType.INPUT2_OUTPUT2,
+                        AMEDataType.OUTPUT2low),
                 mergedChemicalTank1.getGasTank());
         BlockEntityUtils.infusionEject(this,
-                List.of(AstralMekDataType.INPUT1_OUTPUT1, AstralMekDataType.INPUT2_OUTPUT1,
-                        AstralMekDataType.OUTPUT1low),
+                List.of(AMEDataType.INPUT1_OUTPUT1, AMEDataType.INPUT2_OUTPUT1,
+                        AMEDataType.OUTPUT1low),
                 mergedChemicalTank0.getInfusionTank());
         BlockEntityUtils.infusionEject(this,
-                List.of(AstralMekDataType.INPUT1_OUTPUT2, AstralMekDataType.INPUT2_OUTPUT2,
-                        AstralMekDataType.OUTPUT2low),
+                List.of(AMEDataType.INPUT1_OUTPUT2, AMEDataType.INPUT2_OUTPUT2,
+                        AMEDataType.OUTPUT2low),
                 mergedChemicalTank1.getInfusionTank());
         BlockEntityUtils.pigmentEject(this,
-                List.of(AstralMekDataType.INPUT1_OUTPUT1, AstralMekDataType.INPUT2_OUTPUT1,
-                        AstralMekDataType.OUTPUT1low),
+                List.of(AMEDataType.INPUT1_OUTPUT1, AMEDataType.INPUT2_OUTPUT1,
+                        AMEDataType.OUTPUT1low),
                 mergedChemicalTank0.getPigmentTank());
         BlockEntityUtils.pigmentEject(this,
-                List.of(AstralMekDataType.INPUT1_OUTPUT2, AstralMekDataType.INPUT2_OUTPUT2,
-                        AstralMekDataType.OUTPUT2low),
+                List.of(AMEDataType.INPUT1_OUTPUT2, AMEDataType.INPUT2_OUTPUT2,
+                        AMEDataType.OUTPUT2low),
                 mergedChemicalTank1.getPigmentTank());
         BlockEntityUtils.slurryEject(this,
-                List.of(AstralMekDataType.INPUT1_OUTPUT1, AstralMekDataType.INPUT2_OUTPUT1,
-                        AstralMekDataType.OUTPUT1low),
+                List.of(AMEDataType.INPUT1_OUTPUT1, AMEDataType.INPUT2_OUTPUT1,
+                        AMEDataType.OUTPUT1low),
                 mergedChemicalTank0.getSlurryTank());
         BlockEntityUtils.slurryEject(this,
-                List.of(AstralMekDataType.INPUT1_OUTPUT2, AstralMekDataType.INPUT2_OUTPUT2,
-                        AstralMekDataType.OUTPUT2low),
+                List.of(AMEDataType.INPUT1_OUTPUT2, AMEDataType.INPUT2_OUTPUT2,
+                        AMEDataType.OUTPUT2low),
                 mergedChemicalTank1.getSlurryTank());
         this.handleTank(this.mergedChemicalTank0.getGasTank(), dumping0);
         this.handleTank(this.mergedChemicalTank1.getGasTank(), dumping1);

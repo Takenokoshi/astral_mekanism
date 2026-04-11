@@ -7,7 +7,7 @@
         }
     },
     "gasInput": {
-        "amount": 10000,
+        "amount": 1000,
         "gas": "astral_mekanism:interstellar_antimatter"
     },
     "mainInput": {

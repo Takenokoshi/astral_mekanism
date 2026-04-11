@@ -15,7 +15,6 @@ import mekanism.api.text.EnumColor;
 import mekanism.common.item.ItemUpgrade;
 import mekanism.common.registration.impl.ItemDeferredRegister;
 import mekanism.common.registration.impl.ItemRegistryObject;
-import mekanism.common.registries.MekanismItems;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Rarity;
 
@@ -35,7 +34,7 @@ public class AMEItems {
     public static final ItemRegistryObject<Item> FIRMAMENT_ALLOY_INGOT = ITEMS
             .register("firmament_alloy_ingot", Rarity.RARE);
     public static final ItemRegistryObject<GlintItem> STARRY_SKY_ALLOY_INGOT = ITEMS
-            .register("starry_sky_alloy_ingot", p -> new GlintItem(p.rarity(Rarity.RARE)));
+            .register("starry_sky_alloy_ingot", p -> new GlintItem(p.rarity(Rarity.EPIC)));
     public static final ItemRegistryObject<Item> ELASTIC_ALLOY = ITEMS.register("alloy_elastic", Rarity.UNCOMMON);
     public static final ItemRegistryObject<Item> CONVERGENT_ALLOY = ITEMS.register("alloy_convergent", Rarity.RARE);
     public static final ItemRegistryObject<GlintItem> ENCHANTED_ALLOY = ITEMS
@@ -152,86 +151,7 @@ public class AMEItems {
         return result;
     })).get();
 
-    public static final EnumMap<OreType, ItemRegistryObject<GlintItem>> OLD_STARLIGHTS = ((Supplier<EnumMap<OreType, ItemRegistryObject<GlintItem>>>) (() -> {
-        EnumMap<OreType, ItemRegistryObject<GlintItem>> result = new EnumMap<>(OreType.class);
-        for (OreType oreType : OreType.values()) {
-            if (oreType == OreType.NETHERITE) {
-                continue;
-            }
-            result.put(oreType, ITEMS.register("starlight_" + oreType.type, GlintItem::new));
-        }
-        return result;
-    })).get();
-
-    public static final EnumMap<OreType, EnumMap<IntermediateState, ItemRegistryObject<Item>>> GEM_INTERMEDIATE_ITEMS = ((Supplier<EnumMap<OreType, EnumMap<IntermediateState, ItemRegistryObject<Item>>>>) (() -> {
-        EnumMap<OreType, EnumMap<IntermediateState, ItemRegistryObject<Item>>> result = new EnumMap<>(OreType.class);
-        for (OreType type : OreType.values()) {
-            if (!type.hasMekprocessing) {
-                EnumMap<IntermediateState, ItemRegistryObject<Item>> stateMap = new EnumMap<>(IntermediateState.class);
-                for (IntermediateState state : IntermediateState.values()) {
-                    stateMap.put(state, ITEMS.register(state.state + "_" + type.type));
-                }
-                result.put(type, stateMap);
-            }
-        }
-        EnumMap<IntermediateState, ItemRegistryObject<Item>> netheriteMap = new EnumMap<>(IntermediateState.class);
-        for (IntermediateState state : IntermediateState.values()) {
-            String stateType = state == IntermediateState.RAW ? "dirty_dust" : state.state;
-            netheriteMap.put(state,
-                    state == IntermediateState.CRUSHED ? MekanismItems.NETHERITE_DUST
-                            : ITEMS.register(stateType + "_" + OreType.NETHERITE.type));
-        }
-        result.put(OreType.NETHERITE, netheriteMap);
-        return result;
-    })).get();
-
-    public static final EnumMap<OreType, EnumMap<IntermediateState, ItemRegistryObject<Item>>> COMPRESSED_PROCESSING_ITEMS = ((Supplier<EnumMap<OreType, EnumMap<IntermediateState, ItemRegistryObject<Item>>>>) () -> {
-        EnumMap<OreType, EnumMap<IntermediateState, ItemRegistryObject<Item>>> result = new EnumMap<>(OreType.class);
-        for (OreType type : OreType.values()) {
-            EnumMap<IntermediateState, ItemRegistryObject<Item>> processings = new EnumMap<>(IntermediateState.class);
-            for (IntermediateState state : IntermediateState.values()) {
-                String process = type.hasMekprocessing
-                        ? state == IntermediateState.RAW
-                                ? "dust"
-                                : state == IntermediateState.CRUSHED
-                                        ? "dirty_dust"
-                                        : state.state
-                        : state.state;
-                processings.put(state, ITEMS.register(process + "_compressed_" + type.type));
-            }
-            result.put(type, processings);
-        }
-        return result;
-    }).get();
-
-    public static final EnumMap<OreType, ItemRegistryObject<?>[]> COMPRESSED_INGOTS_GEMS = ((Supplier<EnumMap<OreType, ItemRegistryObject<?>[]>>) () -> {
-        EnumMap<OreType, ItemRegistryObject<?>[]> result = new EnumMap<>(OreType.class);
-        for (OreType type : OreType.values()) {
-            ItemRegistryObject<?>[] items = new ItemRegistryObject[20];
-            for (int i = 0; i < 20; i++) {
-                items[i] = ITEMS.register((i + 1) + "x_compressed_" + type.type);
-            }
-            result.put(type, items);
-        }
-        return result;
-    }).get();
-
     private static ItemRegistryObject<ItemUpgrade> registerUpgrade(Upgrade type) {
         return ITEMS.register(type.getRawName() + "_upgrade", properties -> new ItemUpgrade(type, properties));
-    }
-
-    public static enum IntermediateState {
-        CLUMP("clump"),
-        CRUSHED("crushed"),
-        CRYSTAL("crystal"),
-        RAW("raw"),
-        SHARD("shard"),
-        ;
-
-        private IntermediateState(String state) {
-            this.state = state;
-        }
-
-        public final String state;
     }
 }

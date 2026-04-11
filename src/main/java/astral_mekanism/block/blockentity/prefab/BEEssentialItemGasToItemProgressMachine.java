@@ -6,6 +6,8 @@ import java.util.function.BiPredicate;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import com.jerry.mekanism_extras.api.ExtraUpgrade;
+
 import astral_mekanism.integration.AMEEmpowered;
 import astral_mekanism.recipes.cachedRecipe.FormulizedItemGasToItemCachedRecipe;
 import mekanism.api.AutomationType;
@@ -38,6 +40,8 @@ import mekanism.common.integration.computer.SpecialComputerMethodWrapper.Compute
 import mekanism.common.integration.computer.annotation.ComputerMethod;
 import mekanism.common.integration.computer.annotation.WrappingComputerMethod;
 import mekanism.common.integration.computer.computercraft.ComputerConstants;
+import mekanism.common.inventory.container.MekanismContainer;
+import mekanism.common.inventory.container.sync.SyncableInt;
 import mekanism.common.inventory.slot.EnergyInventorySlot;
 import mekanism.common.inventory.slot.InputInventorySlot;
 import mekanism.common.inventory.slot.OutputInventorySlot;
@@ -57,7 +61,8 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 
-public abstract class BEEssentialItemGasToItemProgressMachine extends TileEntityProgressMachine<ItemStackGasToItemStackRecipe> implements
+public abstract class BEEssentialItemGasToItemProgressMachine
+        extends TileEntityProgressMachine<ItemStackGasToItemStackRecipe> implements
         ItemChemicalRecipeLookupHandler<Gas, GasStack, ItemStackGasToItemStackRecipe>,
         ConstantUsageRecipeLookupHandler {
 
@@ -91,8 +96,10 @@ public abstract class BEEssentialItemGasToItemProgressMachine extends TileEntity
     GasInventorySlot secondarySlot;
     @WrappingComputerMethod(wrapper = ComputerIInventorySlotWrapper.class, methodNames = "getEnergyItem", docPlaceholder = "energy slot")
     EnergyInventorySlot energySlot;
+    protected int baselineMaxOperations = 1;
 
-    public BEEssentialItemGasToItemProgressMachine(IBlockProvider blockProvider, BlockPos pos, BlockState state, int baseMultiply) {
+    public BEEssentialItemGasToItemProgressMachine(IBlockProvider blockProvider, BlockPos pos, BlockState state,
+            int baseMultiply) {
         super(blockProvider, pos, state, TRACKED_ERROR_TYPES, 200);
         configComponent = new TileComponentConfig(this, TransmissionType.ITEM, TransmissionType.GAS,
                 TransmissionType.ENERGY);
@@ -108,6 +115,7 @@ public abstract class BEEssentialItemGasToItemProgressMachine extends TileEntity
         outputHandler = OutputHelper.getOutputHandler(outputSlot, RecipeError.NOT_ENOUGH_OUTPUT_SPACE);
         this.baseMultiply = baseMultiply;
         multiply = this.baseMultiply;
+        baselineMaxOperations = 1;
     }
 
     @NotNull
@@ -176,6 +184,7 @@ public abstract class BEEssentialItemGasToItemProgressMachine extends TileEntity
                 .setActive(this::setActive)
                 .setEnergyRequirements(energyContainer::getEnergyPerTick, energyContainer)
                 .setRequiredTicks(this::getTicksRequired)
+                .setBaselineMaxOperations(this::getBaselineMaxOperations)
                 .setOperatingTicksChanged(this::setOperatingTicks)
                 .setOnFinish(this::markForSave);
         return cachedRecipe;
@@ -184,7 +193,9 @@ public abstract class BEEssentialItemGasToItemProgressMachine extends TileEntity
     @Override
     public void recalculateUpgrades(Upgrade upgrade) {
         super.recalculateUpgrades(upgrade);
-        if (upgrade == Upgrade.GAS) {
+        if (upgrade == ExtraUpgrade.STACK) {
+            baselineMaxOperations = 1 << upgradeComponent.getUpgrades(ExtraUpgrade.STACK);
+        } else if (upgrade == Upgrade.GAS) {
             multiply = (int) Math.min(1, (baseMultiply * Math.pow(MekanismConfig.general.maxUpgradeMultiplier.get(),
                     -upgradeComponent.getUpgrades(Upgrade.GAS) / 8d)));
         } else if (AMEEmpowered.empoweredIsLoaded()) {
@@ -192,6 +203,16 @@ public abstract class BEEssentialItemGasToItemProgressMachine extends TileEntity
         } else if (upgrade == Upgrade.SPEED) {
             ticksRequired = MekanismUtils.getTicks(this, baseTicksRequired);
         }
+    }
+
+    protected int getBaselineMaxOperations() {
+        return baselineMaxOperations;
+    }
+
+    @Override
+    public void addContainerTrackers(MekanismContainer container) {
+        super.addContainerTrackers(container);
+        container.track(SyncableInt.create(this::getBaselineMaxOperations, v -> baselineMaxOperations = v));
     }
 
     public MachineEnergyContainer<BEEssentialItemGasToItemProgressMachine> getEnergyContainer() {

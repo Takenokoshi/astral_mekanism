@@ -7,6 +7,7 @@ import astral_mekanism.recipes.recipe.ReconstructionRecipe;
 import fr.iglee42.evolvedmekanism.client.bars.GuiCustomDynamicHorizontalRateBar;
 import mekanism.api.providers.IItemProvider;
 import mekanism.api.recipes.PressurizedReactionRecipe.PressurizedReactionRecipeOutput;
+import mekanism.client.SpecialColors;
 import mekanism.client.gui.element.GuiInnerScreen;
 import mekanism.client.gui.element.gauge.GaugeType;
 import mekanism.client.gui.element.gauge.GuiEnergyGauge;
@@ -37,8 +38,6 @@ public class ReconstructionRecipeCategory extends BaseRecipeCategory<Reconstruct
     private final GuiInnerScreen innerScreen;
     private final GuiCustomDynamicHorizontalRateBar bar;
     private Color chemicalColor = Color.WHITE;
-    private boolean itemNotConsumed = false;
-    private int ticksRequired = 1000;
 
     public ReconstructionRecipeCategory(IGuiHelper helper, MekanismJEIRecipeType<ReconstructionRecipe> recipeType,
             IItemProvider provider) {
@@ -49,22 +48,13 @@ public class ReconstructionRecipeCategory extends BaseRecipeCategory<Reconstruct
         energyGauge = addElement(GuiEnergyGauge.getDummy(GaugeType.STANDARD, this, 197, 17));
         inputSlot = addSlot(SlotType.INPUT, 51, 40);
         outputSlot = addSlot(SlotType.OUTPUT, 155, 40);
-        innerScreen = addElement(new GuiInnerScreen(this, 70, 17, 82, 60, this::getComponents));
+        innerScreen = addElement(new GuiInnerScreen(this, 70, 17, 82, 60));
         bar = addElement(new GuiCustomDynamicHorizontalRateBar(this, getBarProgressTimer(), 30, 79, 160));
         bar.setColorFunction(this::getColor);
     }
 
     private Color getColor(float value) {
         return chemicalColor.blend(Color.WHITE, value);
-    }
-
-    private List<Component> getComponents() {
-        if (itemNotConsumed) {
-            return List.of(Component.literal("Item won't be consumed."),
-                    Component.literal(ticksRequired + " ticks required."));
-        }
-        return List.of(Component.literal("Item will be consumed."),
-                Component.literal(ticksRequired + " ticks required."));
     }
 
     @Override
@@ -83,7 +73,6 @@ public class ReconstructionRecipeCategory extends BaseRecipeCategory<Reconstruct
                     List.of(output.gas()));
         }
         chemicalColor = Color.rgb(recipe.getInputGas().getRepresentations().get(0).getType().getTint());
-        itemNotConsumed = recipe.getItemNotConsumed();
     }
 
     @Override
@@ -101,5 +90,30 @@ public class ReconstructionRecipeCategory extends BaseRecipeCategory<Reconstruct
                     .literal("Energy per tick:" + recipe.getEnergyRequired().add(2000000000).toString() + " Joles."));
         }
         return super.getTooltipStrings(recipe, recipeSlotsView, mouseX, mouseY);
+    }
+
+    @Override
+    public void draw(ReconstructionRecipe recipe,
+            IRecipeSlotsView recipeSlotsView,
+            GuiGraphics guiGraphics,
+            double mouseX,
+            double mouseY) {
+        super.draw(recipe, recipeSlotsView, guiGraphics, mouseX, mouseY);
+        float scale = 0.8F;
+        guiGraphics.pose().pushPose();
+        guiGraphics.pose().scale(scale, scale, 1.0F);
+        guiGraphics.drawString(
+                getFont(),
+                recipe.getItemNotConsumed() ? "Item won't be consumed." : "Item will be consumed.",
+                (int) (70 / scale),
+                (int) (30 / scale),
+                SpecialColors.TEXT_SCREEN.argb());
+        guiGraphics.drawString(
+                getFont(),
+                recipe.getDuration() + " Ticks Required.",
+                (int) (70 / scale),
+                (int) (40 / scale),
+                SpecialColors.TEXT_SCREEN.argb());
+        guiGraphics.pose().popPose();
     }
 }

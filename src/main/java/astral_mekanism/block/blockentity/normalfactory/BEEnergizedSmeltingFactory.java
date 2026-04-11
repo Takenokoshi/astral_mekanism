@@ -107,6 +107,7 @@ public class BEEnergizedSmeltingFactory extends BlockEntityProgressFactory<Smelt
                 .setActive(active -> setActiveState(active, cacheIndex))
                 .setEnergyRequirements(energyContainer::getEnergyPerTick, energyContainer)
                 .setRequiredTicks(this::getTicksRequired)
+                .setBaselineMaxOperations(this::getBaselineMaxOperations)
                 .setOnFinish(this::markForSave)
                 .setOperatingTicksChanged(p -> progress[cacheIndex] = p);
     }

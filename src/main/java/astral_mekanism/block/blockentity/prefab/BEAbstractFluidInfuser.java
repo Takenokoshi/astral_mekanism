@@ -5,8 +5,8 @@ import java.util.List;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-import astral_mekanism.block.blockentity.elements.AstralMekDataType;
 import astral_mekanism.block.blockentity.elements.ExtendedComponentEjector;
+import astral_mekanism.enumexpansion.AMEDataType;
 import astral_mekanism.recipes.cachedRecipe.FluidFluidToFluidCachedRecipe;
 import astral_mekanism.recipes.inputRecipeCache.AMInputRecipeCache.FluidFluid;
 import astral_mekanism.recipes.lookup.AMIRecipeLookUpHandler;
@@ -82,9 +82,9 @@ public abstract class BEAbstractFluidInfuser extends TileEntityRecipeMachine<Flu
             fluidConfig.addSlotInfo(DataType.OUTPUT, new FluidSlotInfo(false, true, outputTank));
             fluidConfig.addSlotInfo(DataType.INPUT_OUTPUT,
                     new FluidSlotInfo(true, true, inputTankA, inputTankB, outputTank));
-            fluidConfig.addSlotInfo(AstralMekDataType.INPUT1_OUTPUT,
+            fluidConfig.addSlotInfo(AMEDataType.INPUT1_OUTPUT,
                     new FluidSlotInfo(true, true, inputTankA, outputTank));
-            fluidConfig.addSlotInfo(AstralMekDataType.INPUT2_OUTPUT,
+            fluidConfig.addSlotInfo(AMEDataType.INPUT2_OUTPUT,
                     new FluidSlotInfo(true, true, inputTankB, outputTank));
             fluidConfig.setCanEject(true);
         }
@@ -94,8 +94,8 @@ public abstract class BEAbstractFluidInfuser extends TileEntityRecipeMachine<Flu
                     return tank == outputTank
                             ? type == DataType.OUTPUT
                                     || type == DataType.INPUT_OUTPUT
-                                    || type == AstralMekDataType.INPUT1_OUTPUT
-                                    || type == AstralMekDataType.INPUT2_OUTPUT
+                                    || type == AMEDataType.INPUT1_OUTPUT
+                                    || type == AMEDataType.INPUT2_OUTPUT
                             : false;
                 });
         inputHandlerA = InputHelper.getInputHandler(inputTankA, NOT_ENOUGH_FLUIDA_INPUT_ERROR);

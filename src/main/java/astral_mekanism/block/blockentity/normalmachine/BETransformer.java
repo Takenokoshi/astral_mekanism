@@ -4,6 +4,8 @@ import java.util.List;
 
 import org.jetbrains.annotations.NotNull;
 
+import com.jerry.mekanism_extras.api.ExtraUpgrade;
+
 import appeng.recipes.transform.TransformRecipe;
 import astral_mekanism.block.blockentity.prefab.BEAbstractTransformer;
 import astral_mekanism.generalrecipe.cachedrecipe.GeneralCachedRecipe;
@@ -27,10 +29,12 @@ public class BETransformer extends BEAbstractTransformer {
     private int operatingTicks;
     protected int baseTicksRequired = 10;
     public int ticksRequired;
+    protected int baselineMaxOperations = 1;
 
     public BETransformer(IBlockProvider blockProvider, BlockPos pos, BlockState state) {
         super(blockProvider, pos, state);
         ticksRequired = baseTicksRequired;
+        baselineMaxOperations = 1;
     }
 
     @Override
@@ -71,9 +75,14 @@ public class BETransformer extends BEAbstractTransformer {
         nbtTags.putInt(NBTConstants.PROGRESS, getOperatingTicks());
     }
 
-    @Override
     public void recalculateUpgrades(Upgrade upgrade) {
         super.recalculateUpgrades(upgrade);
+        if (AMEEmpowered.empoweredIsLoaded()) {
+            if (AMEEmpowered.isEmpoweredSpeed(upgrade) || upgrade == ExtraUpgrade.STACK) {
+                baselineMaxOperations = 1 << (AMEEmpowered.getEmpoweredSpeeds(this)
+                        + upgradeComponent.getUpgrades(ExtraUpgrade.STACK));
+            }
+        }
         if (upgrade == Upgrade.SPEED) {
             ticksRequired = MekanismUtils.getTicks(this, baseTicksRequired);
         }
@@ -90,16 +99,19 @@ public class BETransformer extends BEAbstractTransformer {
         super.addContainerTrackers(container);
         container.track(SyncableInt.create(this::getOperatingTicks, this::setOperatingTicks));
         container.track(SyncableInt.create(this::getTicksRequired, value -> ticksRequired = value));
+        container.track(SyncableInt.create(this::getBaselineMaxOperations, v -> baselineMaxOperations = v));
+    }
+
+    protected int getBaselineMaxOperations() {
+        return baselineMaxOperations;
     }
 
     @Override
     protected GeneralCachedRecipe<TransformRecipe> operateCachedRecipe(
             GeneralCachedRecipe<TransformRecipe> cachedRecipe) {
-        if (AMEEmpowered.empoweredIsLoaded()) {
-            cachedRecipe.setBaselineMaxOperations(() -> 1 << AMEEmpowered.getEmpoweredSpeeds(this));
-        }
         return cachedRecipe
                 .setRequiredTicks(this::getTicksRequired)
+                .setBaselineMaxOperations(this::getBaselineMaxOperations)
                 .setOperatingTicksChanged(this::setOperatingTicks);
     }
 
@@ -108,6 +120,7 @@ public class BETransformer extends BEAbstractTransformer {
             CachedRecipe<MekanicalTransformRecipe> cachedRecipe) {
         return cachedRecipe
                 .setRequiredTicks(this::getTicksRequired)
+                .setBaselineMaxOperations(this::getBaselineMaxOperations)
                 .setOperatingTicksChanged(this::setOperatingTicks);
     }
 

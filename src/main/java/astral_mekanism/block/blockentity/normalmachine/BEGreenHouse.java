@@ -140,6 +140,7 @@ public class BEGreenHouse extends BlockEntityProgressMachine<CropSoilRecipe> imp
                 .setRequiredTicks(() -> AMEEmpowered.empoweredIsLoaded()
                         ? AMEEmpowered.getTicks(recipe.requiredTicks, this)
                         : MekanismUtils.getTicks(this, recipe.requiredTicks))
+                .setBaselineMaxOperations(this::getBaselineMaxOperations)
                 .setOnFinish(this::markForSave)
                 .setOperatingTicksChanged(this::setOperatingTicks);
     }

@@ -8,6 +8,8 @@ import java.util.function.IntConsumer;
 
 import org.jetbrains.annotations.NotNull;
 
+import com.jerry.mekanism_extras.api.ExtraUpgrade;
+
 import astral_mekanism.generalrecipe.lookup.monitor.UnifiedFactoryRecipeCacheLookupMonitor;
 import astral_mekanism.generalrecipe.lookup.monitor.UnifiedRecipeCacheLookupMonitor;
 import astral_mekanism.integration.AMEEmpowered;
@@ -40,6 +42,7 @@ public abstract class BlockEntityProgressFactory<RECIPE extends Recipe<?>, BE ex
     private int ticksRequired;
     private boolean sorting;
     private boolean sortingNeeded = true;
+    protected int baselineMaxOperations = 1;
 
     protected BlockEntityProgressFactory(IBlockProvider blockProvider, BlockPos pos, BlockState state,
             int baseTicksRequired, List<RecipeError> errorTypes, Set<RecipeError> globalErrorTypes) {
@@ -48,6 +51,7 @@ public abstract class BlockEntityProgressFactory<RECIPE extends Recipe<?>, BE ex
         this.progress = new int[tier.processes];
         Arrays.fill(progress, 0);
         this.ticksRequired = this.baseTicksRequired;
+        baselineMaxOperations = 1;
     }
 
     @Override
@@ -138,7 +142,9 @@ public abstract class BlockEntityProgressFactory<RECIPE extends Recipe<?>, BE ex
     @Override
     public void recalculateUpgrades(Upgrade upgrade) {
         super.recalculateUpgrades(upgrade);
-        if (AMEEmpowered.empoweredIsLoaded()) {
+        if (upgrade == ExtraUpgrade.STACK) {
+            baselineMaxOperations = 1 << upgradeComponent.getUpgrades(ExtraUpgrade.STACK);
+        } else if (AMEEmpowered.empoweredIsLoaded()) {
             AMEEmpowered.recalculateUpgrades(getSelf(), upgrade, baseTicksRequired, v -> ticksRequired = v);
         } else if (upgrade == Upgrade.SPEED) {
             ticksRequired = MekanismUtils.getTicks(this, baseTicksRequired);
@@ -150,6 +156,7 @@ public abstract class BlockEntityProgressFactory<RECIPE extends Recipe<?>, BE ex
         super.addContainerTrackers(container);
         container.track(SyncableBoolean.create(this::isSorting, v -> sorting = v));
         container.track(SyncableInt.create(this::getTicksRequired, v -> ticksRequired = v));
+        container.track(SyncableInt.create(this::getBaselineMaxOperations, v -> baselineMaxOperations = v));
         container.trackArray(progress);
     }
 
@@ -158,4 +165,7 @@ public abstract class BlockEntityProgressFactory<RECIPE extends Recipe<?>, BE ex
         return ((double) progress[index]) / ((double) ticksRequired);
     }
 
+    protected int getBaselineMaxOperations() {
+        return baselineMaxOperations;
+    }
 }

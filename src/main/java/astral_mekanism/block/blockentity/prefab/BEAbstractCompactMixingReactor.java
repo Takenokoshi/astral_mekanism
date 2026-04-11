@@ -3,9 +3,9 @@ package astral_mekanism.block.blockentity.prefab;
 import org.jetbrains.annotations.NotNull;
 
 import astral_mekanism.AMETier;
-import astral_mekanism.block.blockentity.elements.AstralMekDataType;
 import astral_mekanism.block.blockentity.elements.ExtendedComponentEjector;
 import astral_mekanism.block.blockentity.interf.IPacketReceiverSetLong;
+import astral_mekanism.enumexpansion.AMEDataType;
 import mekanism.api.Action;
 import mekanism.api.AutomationType;
 import mekanism.api.IContentsListener;
@@ -70,19 +70,19 @@ public abstract class BEAbstractCompactMixingReactor extends TileEntityConfigura
         configComponent = new TileComponentConfig(this, TransmissionType.GAS, TransmissionType.FLUID,
                 TransmissionType.HEAT);
         ConfigInfo gasInfo = configComponent.getConfig(TransmissionType.GAS);
-        gasInfo.addSlotInfo(AstralMekDataType.LEFT_FUEL, new GasSlotInfo(true, false, leftFuelTank));
-        gasInfo.addSlotInfo(AstralMekDataType.MIXED_FUEL, new GasSlotInfo(true, false, mixedFuelTank));
-        gasInfo.addSlotInfo(AstralMekDataType.RIGHT_FUEL, new GasSlotInfo(true, false, rightFuelTank));
-        gasInfo.addSlotInfo(AstralMekDataType.STEAM, new GasSlotInfo(false, true, steamTank));
+        gasInfo.addSlotInfo(AMEDataType.LEFT_FUEL, new GasSlotInfo(true, false, leftFuelTank));
+        gasInfo.addSlotInfo(AMEDataType.MIXED_FUEL, new GasSlotInfo(true, false, mixedFuelTank));
+        gasInfo.addSlotInfo(AMEDataType.RIGHT_FUEL, new GasSlotInfo(true, false, rightFuelTank));
+        gasInfo.addSlotInfo(AMEDataType.STEAM, new GasSlotInfo(false, true, steamTank));
         gasInfo.setCanEject(true);
-        gasInfo.setDataType(AstralMekDataType.MIXED_FUEL, RelativeSide.values());
-        gasInfo.setDataType(AstralMekDataType.STEAM, RelativeSide.RIGHT);
+        gasInfo.setDataType(AMEDataType.MIXED_FUEL, RelativeSide.values());
+        gasInfo.setDataType(AMEDataType.STEAM, RelativeSide.RIGHT);
         configComponent.setupInputConfig(TransmissionType.FLUID, waterTank);
         configComponent.setupIOConfig(TransmissionType.HEAT, heatCapacitor, heatCapacitor,
                 RelativeSide.RIGHT, true, true);
         ejectorComponent = new ExtendedComponentEjector(this, () -> Long.MAX_VALUE)
                 .setOutputData(configComponent, TransmissionType.GAS, TransmissionType.HEAT)
-                .setCanChemicalTankEject((tank, type) -> tank == steamTank && type == AstralMekDataType.STEAM);
+                .setCanChemicalTankEject((tank, type) -> tank == steamTank && type == AMEDataType.STEAM);
         mixingRate = 0;
         lastEnvironmentLoss = 0d;
         lastTransferLoss = 0d;

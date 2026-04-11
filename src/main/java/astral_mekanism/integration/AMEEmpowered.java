@@ -77,4 +77,11 @@ public class AMEEmpowered {
             return;
         } // MachineEnergyContainer's Energy will be set by Mekanism Empowered.
     }
+
+    public static boolean isEmpoweredSpeed(Upgrade upgrade){
+        if (!empoweredIsLoaded()) {
+            return false;
+        }
+        return upgrade == Upgrade.valueOf(EMP_SPEED);
+    }
 }
