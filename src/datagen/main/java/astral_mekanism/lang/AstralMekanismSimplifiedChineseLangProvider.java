@@ -6,14 +6,7 @@ import java.util.function.Supplier;
 import astral_mekanism.AMEConstants;
 import astral_mekanism.registration.MachineRegistryObject;
 import astral_mekanism.registration.SingleSlurryRegistryObject;
-import astral_mekanism.registries.AMEBlockDefinitions;
-import astral_mekanism.registries.AstralMekanismBlocks;
-import astral_mekanism.registries.AstralMekanismFluids;
-import astral_mekanism.registries.AstralMekanismGases;
-import astral_mekanism.registries.AstralMekanismInfuseTypes;
-import astral_mekanism.registries.AstralMekanismItems;
-import astral_mekanism.registries.AstralMekanismMachines;
-import astral_mekanism.registries.AstralMekanismSlurries;
+import astral_mekanism.registries.*;
 import mekanism.api.providers.IBlockProvider;
 import mekanism.api.providers.IItemProvider;
 import mekanism.common.registration.impl.FluidRegistryObject;
@@ -33,15 +26,15 @@ public class AstralMekanismSimplifiedChineseLangProvider extends LanguageProvide
 
     @Override
     protected void addTranslations() {
-        AstralMekanismMachines.MACHINES.getAllMachines().forEach(this::addMachine);
-        AstralMekanismBlocks.BLOCKS.getAllBlocks().forEach(this::addBlock);
+        AMEMachines.MACHINES.getAllMachines().forEach(this::addMachine);
+        AMEBlocks.BLOCKS.getAllBlocks().forEach(this::addBlock);
         AMEBlockDefinitions.INSTANCE.getBlocks().forEach(this::addBlock);
-        AstralMekanismItems.ITEMS.getAllItems().forEach(this::addItem);
-        AstralMekanismFluids.FLUIDS.getAllFluids().forEach(this::addFluid);
-        AstralMekanismGases.GASES.getAllGases().forEach(this::addGas);
-        AstralMekanismInfuseTypes.INFUSE_TYPES.getAllInfuseType().forEach(this::addInfuse);
-        AstralMekanismSlurries.SLURRIES.getAllSlurries().forEach(this::addSlurry);
-        AstralMekanismSlurries.SLURRIES.getAllSingleSlurries().forEach(this::addSlurry);
+        AMEItems.ITEMS.getAllItems().forEach(this::addItem);
+        AMEFluids.FLUIDS.getAllFluids().forEach(this::addFluid);
+        AMEGases.GASES.getAllGases().forEach(this::addGas);
+        AMEInfuseTypes.INFUSE_TYPES.getAllInfuseType().forEach(this::addInfuse);
+        AMESlurries.SLURRIES.getAllSlurries().forEach(this::addSlurry);
+        AMESlurries.SLURRIES.getAllSingleSlurries().forEach(this::addSlurry);
     }
 
     private void addMachine(MachineRegistryObject<?, ?, ?, ?> machine) {
