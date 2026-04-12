@@ -7,13 +7,13 @@ import astral_mekanism.AMEConstants;
 import astral_mekanism.registration.MachineRegistryObject;
 import astral_mekanism.registration.SingleSlurryRegistryObject;
 import astral_mekanism.registries.AMEBlockDefinitions;
-import astral_mekanism.registries.AstralMekanismBlocks;
-import astral_mekanism.registries.AstralMekanismFluids;
-import astral_mekanism.registries.AstralMekanismGases;
-import astral_mekanism.registries.AstralMekanismInfuseTypes;
-import astral_mekanism.registries.AstralMekanismItems;
-import astral_mekanism.registries.AstralMekanismMachines;
-import astral_mekanism.registries.AstralMekanismSlurries;
+import astral_mekanism.registries.AMEBlocks;
+import astral_mekanism.registries.AMEFluids;
+import astral_mekanism.registries.AMEGases;
+import astral_mekanism.registries.AMEInfuseTypes;
+import astral_mekanism.registries.AMEItems;
+import astral_mekanism.registries.AMEMachines;
+import astral_mekanism.registries.AMESlurries;
 import mekanism.api.providers.IBlockProvider;
 import mekanism.api.providers.IItemProvider;
 import mekanism.common.registration.impl.FluidRegistryObject;
@@ -33,15 +33,15 @@ public class AstralMekanismJapaneseLangProvider extends LanguageProvider {
 
     @Override
     protected void addTranslations() {
-        AstralMekanismMachines.MACHINES.getAllMachines().forEach(this::addMachine);
-        AstralMekanismBlocks.BLOCKS.getAllBlocks().forEach(this::addBlock);
+        AMEMachines.MACHINES.getAllMachines().forEach(this::addMachine);
+        AMEBlocks.BLOCKS.getAllBlocks().forEach(this::addBlock);
         AMEBlockDefinitions.INSTANCE.getBlocks().forEach(this::addBlock);
-        AstralMekanismItems.ITEMS.getAllItems().forEach(this::addItem);
-        AstralMekanismFluids.FLUIDS.getAllFluids().forEach(this::addFluid);
-        AstralMekanismGases.GASES.getAllGases().forEach(this::addGas);
-        AstralMekanismInfuseTypes.INFUSE_TYPES.getAllInfuseType().forEach(this::addInfuse);
-        AstralMekanismSlurries.SLURRIES.getAllSlurries().forEach(this::addSlurry);
-        AstralMekanismSlurries.SLURRIES.getAllSingleSlurries().forEach(this::addSlurry);
+        AMEItems.ITEMS.getAllItems().forEach(this::addItem);
+        AMEFluids.FLUIDS.getAllFluids().forEach(this::addFluid);
+        AMEGases.GASES.getAllGases().forEach(this::addGas);
+        AMEInfuseTypes.INFUSE_TYPES.getAllInfuseType().forEach(this::addInfuse);
+        AMESlurries.SLURRIES.getAllSlurries().forEach(this::addSlurry);
+        AMESlurries.SLURRIES.getAllSingleSlurries().forEach(this::addSlurry);
     }
 
     private void addMachine(MachineRegistryObject<?, ?, ?, ?> machine) {
@@ -120,6 +120,9 @@ public class AstralMekanismJapaneseLangProvider extends LanguageProvider {
         path = path.contains("_naquadah_reactor") ? path.replace("_naquadah_reactor", "_ナクアダリアクター") : path;
         path = path.contains("metallurgic_infuser") ? path.replace("metallurgic_infuser", "冶金吹込機") : path;
         path = path.contains("sodium_hydroxide") ? path.replace("sodium_hydroxide", "水酸化ナトリウム") : path;
+        path = path.contains("interstellar_antineutronic_matter_reconstruction_apparatus")
+                ? path.replace("interstellar_antineutronic_matter_reconstruction_apparatus", "星間反中性子式物質再構築装置")
+                : path;
         String[] parts = path.split("_");
         StringBuilder sb = new StringBuilder();
         if (parts[0].equals("alloy")
@@ -336,6 +339,10 @@ public class AstralMekanismJapaneseLangProvider extends LanguageProvider {
         result.put("air", "空気");
         result.put("wisdom", "知恵");
         result.put("radiation", "放射線");
+        result.put("ore", "鉱石");
+        result.put("interstellar", "星間");
+        result.put("nova", "新星");
+        result.put("mold", "金型");
         // material states
         result.put("astral", "アストラル");
         result.put("ingot", "インゴット");
@@ -372,11 +379,13 @@ public class AstralMekanismJapaneseLangProvider extends LanguageProvider {
         result.put("slurry", "の懸濁液");
         result.put("clean", "きれいな");
         result.put("paste", "ペースト");
+        result.put("reconstructed", "再構築された");
+        result.put("sparkling", "煌めく");
         result.put("containing", "含有");
         result.put("sealing", "密封");
-        result.put("intake", "吸引");
         // other
         result.put("item", "アイテム");
+        result.put("chemical", "化学物質");
         result.put("spacetime", "スペース・タイム");
         result.put("modulation", " モジュレーション");
         result.put("core", " コア");
@@ -388,6 +397,11 @@ public class AstralMekanismJapaneseLangProvider extends LanguageProvider {
         result.put("inserter", "搬入機構");
         result.put("base", "ベース");
         result.put("ame", "AME");
+        result.put("hyper", "上位");
+        result.put("speed", "スピード");
+        result.put("intake", "吸引");
+        result.put("bulk", "MEGAバルク");
+        result.put("cell", "ストレージセル");
         return result;
     }).get();
 

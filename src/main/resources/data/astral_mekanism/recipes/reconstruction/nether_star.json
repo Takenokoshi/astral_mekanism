@@ -1,0 +1,26 @@
+{
+    "type": "astral_mekanism:reconstruction",
+    "duration": 256,
+    "energyRequired": 1000000000000,
+    "itemNotConsumed": true,
+    "fluidInput": {
+        "amount": 1000000,
+        "fluid": "astral_mekanism:wisdom_rivulet"
+    },
+    "gasInput": {
+        "amount": 1000000000,
+        "gas": "mekanismgenerators:fusion_fuel"
+    },
+    "gasOutput": {
+        "amount": 1000000,
+        "gas": "mekanism:lithium"
+    },
+    "itemInput": {
+        "ingredient": {
+            "item": "astral_mekanism:sparkling_nova"
+        }
+    },
+    "itemOutput": {
+        "item": "minecraft:nether_star"
+    }
+}

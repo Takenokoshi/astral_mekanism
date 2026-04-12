@@ -1,0 +1,15 @@
+{
+    "type":"astral_mekanism:infusing_condense",
+    "inputGas": {
+        "amount": 1,
+        "gas": "astral_mekanism:astral_ether"
+    },
+    "inputInfusion": {
+        "infuse_type": "astral_mekanism:xp",
+        "amount": 100000
+    },
+    "output": {
+        "fluid": "astral_mekanism:refined_astral_ether",
+        "amount": 1
+    }
+}

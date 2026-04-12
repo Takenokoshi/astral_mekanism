@@ -6,8 +6,8 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import astral_mekanism.block.blockentity.core.BlockEntityUtils;
-import astral_mekanism.block.blockentity.elements.AstralMekDataType;
 import astral_mekanism.block.blockentity.interf.ITripleItemToItemMachine;
+import astral_mekanism.enumexpansion.AMEDataType;
 import astral_mekanism.recipes.cachedRecipe.TripleItemToItemCachedRecipe;
 import astral_mekanism.recipes.recipe.TripleItemToItemRecipe;
 import mekanism.api.IContentsListener;
@@ -71,10 +71,10 @@ public abstract class BETripleItemToItemRecipeMachine<BE extends BETripleItemToI
         ConfigInfo itemInfo = configComponent.getConfig(TransmissionType.ITEM);
         itemInfo.addSlotInfo(DataType.INPUT_1, new InventorySlotInfo(true, false, inputSlotA));
         itemInfo.addSlotInfo(DataType.INPUT_2, new InventorySlotInfo(true, false, inputSlotB));
-        itemInfo.addSlotInfo(AstralMekDataType.INPUT3, new InventorySlotInfo(true, false, inputSlotC));
-        itemInfo.addSlotInfo(AstralMekDataType.INPUT1_OUTPUT, new InventorySlotInfo(true, false, inputSlotA));
-        itemInfo.addSlotInfo(AstralMekDataType.INPUT2_OUTPUT, new InventorySlotInfo(true, false, inputSlotB));
-        itemInfo.addSlotInfo(AstralMekDataType.INPUT3_OUTPUT, new InventorySlotInfo(true, false, inputSlotC));
+        itemInfo.addSlotInfo(AMEDataType.INPUT3, new InventorySlotInfo(true, false, inputSlotC));
+        itemInfo.addSlotInfo(AMEDataType.INPUT1_OUTPUT, new InventorySlotInfo(true, false, inputSlotA));
+        itemInfo.addSlotInfo(AMEDataType.INPUT2_OUTPUT, new InventorySlotInfo(true, false, inputSlotB));
+        itemInfo.addSlotInfo(AMEDataType.INPUT3_OUTPUT, new InventorySlotInfo(true, false, inputSlotC));
         itemInfo.addSlotInfo(DataType.OUTPUT, new InventorySlotInfo(false, true, outputSlot));
         itemInfo.setCanEject(true);
         ejectorComponent = new TileComponentEjector(this);
@@ -128,8 +128,8 @@ public abstract class BETripleItemToItemRecipeMachine<BE extends BETripleItemToI
         energySlot.fillContainerOrConvert();
         recipeCacheLookupMonitor.updateAndProcess();
         BlockEntityUtils.itemEject(this,
-                List.of(AstralMekDataType.INPUT1_OUTPUT, AstralMekDataType.INPUT2_OUTPUT,
-                        AstralMekDataType.INPUT3_OUTPUT),
+                List.of(AMEDataType.INPUT1_OUTPUT, AMEDataType.INPUT2_OUTPUT,
+                        AMEDataType.INPUT3_OUTPUT),
                 DataType.OUTPUT);
     }
 

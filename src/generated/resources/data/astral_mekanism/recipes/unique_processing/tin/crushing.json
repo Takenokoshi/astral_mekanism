@@ -1,17 +1,10 @@
 {
   "type": "mekanism:crushing",
-  "input": [
-    {
-      "ingredient": {
-        "tag": "astral_mekanism:feedstocks/tin"
-      }
-    },
-    {
-      "ingredient": {
-        "tag": "astral_mekanism:shining_clumps/tin"
-      }
+  "input": {
+    "ingredient": {
+      "tag": "astral_mekanism:shining_clumps/tin"
     }
-  ],
+  },
   "output": {
     "count": 8,
     "item": "astral_mekanism:shining_tin_dust"

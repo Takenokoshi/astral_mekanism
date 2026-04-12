@@ -1,8 +1,8 @@
 package astral_mekanism.recipes.irecipe;
 
 import astral_mekanism.recipes.recipe.AstralCraftingRecipe;
-import astral_mekanism.registries.AstralMekanismRecipeSerializers;
-import astral_mekanism.registries.AstralMekanismRecipeTypes;
+import astral_mekanism.registries.AMERecipeSerializers;
+import astral_mekanism.registries.AMERecipeTypes;
 import mekanism.api.recipes.ingredients.ChemicalStackIngredient.GasStackIngredient;
 import mekanism.api.recipes.ingredients.FluidStackIngredient;
 import mekanism.api.recipes.ingredients.ItemStackIngredient;
@@ -20,12 +20,12 @@ public class AstralCraftingIRecipe extends AstralCraftingRecipe {
 
     @Override
     public RecipeSerializer<?> getSerializer() {
-        return AstralMekanismRecipeSerializers.ASTRAL_CRAFTING.get();
+        return AMERecipeSerializers.ASTRAL_CRAFTING.get();
     }
 
     @Override
     public RecipeType<?> getType() {
-        return AstralMekanismRecipeTypes.ASTRAL_CRAFTING.get();
+        return AMERecipeTypes.ASTRAL_CRAFTING.get();
     }
 
 }

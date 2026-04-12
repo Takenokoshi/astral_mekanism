@@ -7,8 +7,8 @@ import java.util.Set;
 
 import astral_mekanism.registration.MachineRegistryObject;
 import astral_mekanism.registries.AMEBlockDefinitions;
-import astral_mekanism.registries.AstralMekanismBlocks;
-import astral_mekanism.registries.AstralMekanismMachines;
+import astral_mekanism.registries.AMEBlocks;
+import astral_mekanism.registries.AMEMachines;
 import mekanism.api.NBTConstants;
 import mekanism.api.annotations.NothingNullByDefault;
 import mekanism.api.annotations.ParametersAreNotNullByDefault;
@@ -55,8 +55,8 @@ public class AstralMekanismBlockLoot extends BlockLootSubProvider {
 
     @Override
     protected void generate() {
-        AstralMekanismMachines.MACHINES.getAllMachines().forEach(this::createMachineDrop);
-        AstralMekanismBlocks.BLOCKS.getAllBlocks().forEach(b -> {
+        AMEMachines.MACHINES.getAllMachines().forEach(this::createMachineDrop);
+        AMEBlocks.BLOCKS.getAllBlocks().forEach(b -> {
             dropSelf(b.getBlock());
         });
         AMEBlockDefinitions.INSTANCE.getBlocks().forEach(this::createLibBlockDrop);
@@ -65,10 +65,10 @@ public class AstralMekanismBlockLoot extends BlockLootSubProvider {
     @Override
     protected Iterable<Block> getKnownBlocks() {
         List<Block> list = new ArrayList<>();
-        for (IBlockProvider blockProvider : AstralMekanismMachines.MACHINES.getAllMachines()) {
+        for (IBlockProvider blockProvider : AMEMachines.MACHINES.getAllMachines()) {
             list.add(blockProvider.getBlock());
         }
-        for (IBlockProvider blockProvider : AstralMekanismBlocks.BLOCKS.getAllBlocks()) {
+        for (IBlockProvider blockProvider : AMEBlocks.BLOCKS.getAllBlocks()) {
             list.add(blockProvider.getBlock());
         }
         for (LibBlockDefinition<?> definition : AMEBlockDefinitions.INSTANCE.getBlocks()) {

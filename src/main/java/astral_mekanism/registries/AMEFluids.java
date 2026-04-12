@@ -1,0 +1,71 @@
+package astral_mekanism.registries;
+
+import astral_mekanism.AMEConstants;
+import mekanism.common.Mekanism;
+import mekanism.common.registration.impl.FluidDeferredRegister;
+import mekanism.common.registration.impl.FluidRegistryObject;
+import mekanism.common.registration.impl.FluidDeferredRegister.MekanismFluidType;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.BucketItem;
+import net.minecraft.world.level.block.LiquidBlock;
+import net.minecraftforge.fluids.ForgeFlowingFluid.Flowing;
+import net.minecraftforge.fluids.ForgeFlowingFluid.Source;
+
+public class AMEFluids {
+    public static final FluidDeferredRegister FLUIDS = new FluidDeferredRegister(AMEConstants.MODID);
+
+    public static final FluidRegistryObject<MekanismFluidType, Source, Flowing, LiquidBlock, BucketItem> RED_LAVA = FLUIDS
+            .register("red_lava", renderProperties -> renderProperties.texture(
+                    new ResourceLocation("block/lava_still"),
+                    new ResourceLocation("block/lava_flow")).tint(0x80800000));
+
+    public static final FluidRegistryObject<MekanismFluidType, Source, Flowing, LiquidBlock, BucketItem> NETHERRACK = FLUIDS
+            .register("netherrack", renderProperties -> renderProperties.texture(
+                    new ResourceLocation("block/netherrack"),
+                    new ResourceLocation("block/netherrack")));
+
+    public static final FluidRegistryObject<MekanismFluidType, Source, Flowing, LiquidBlock, BucketItem> NETHERRACK_LAVA = FLUIDS
+            .register("netherrack_lava", renderProperties -> renderProperties.texture(
+                    new ResourceLocation("block/lava_still"),
+                    new ResourceLocation("block/lava_flow")).tint(0x80700000));
+
+    public static final FluidRegistryObject<MekanismFluidType, Source, Flowing, LiquidBlock, BucketItem> SOUL_LAVA = FLUIDS
+            .register("soul_lava", renderProperties -> renderProperties.texture(
+                    new ResourceLocation("block/lava_still"),
+                    new ResourceLocation("block/lava_flow")).tint(0x80004060));
+
+    public static final FluidRegistryObject<MekanismFluidType, Source, Flowing, LiquidBlock, BucketItem> MIXED_LAVA = FLUIDS
+            .register("mixed_lava", renderProperties -> renderProperties.texture(
+                    new ResourceLocation("block/lava_still"),
+                    new ResourceLocation("block/lava_flow")).tint(0x80804060));
+
+    public static final FluidRegistryObject<MekanismFluidType, Source, Flowing, LiquidBlock, BucketItem> AMMONIA_WATER = FLUIDS
+            .register("ammonia_water", p -> p.texture(
+                    Mekanism.rl("liquid/liquid"),
+                    Mekanism.rl("liquid/liquid_flow")).tint(0x806699ff));
+
+    public static final FluidRegistryObject<MekanismFluidType, Source, Flowing, LiquidBlock, BucketItem> UTILITY_FLUID = FLUIDS
+            .register("utility_fluid", p -> p.texture(
+                    Mekanism.rl("liquid/liquid"),
+                    Mekanism.rl("liquid/liquid_flow")).tint(0x80ff55ff));
+
+    public static final FluidRegistryObject<MekanismFluidType, Source, Flowing, LiquidBlock, BucketItem> ANTIMATTER_FERTILIZER = FLUIDS
+            .register("antimatter_fertilizer", p -> p.texture(
+                    Mekanism.rl("liquid/liquid"),
+                    Mekanism.rl("liquid/liquid_flow")).tint(0x807CFC00));
+
+    public static final FluidRegistryObject<MekanismFluidType, Source, Flowing, LiquidBlock, BucketItem> LIQUID_AIR = FLUIDS
+            .register("liquid_air", p -> p.texture(
+                    Mekanism.rl("liquid/liquid"),
+                    Mekanism.rl("liquid/liquid_flow")).tint(0x08000000));
+
+    public static final FluidRegistryObject<MekanismFluidType, Source, Flowing, LiquidBlock, BucketItem> WISDOM_RIVULET = FLUIDS
+            .register("wisdom_rivulet", p -> p.texture(
+                    Mekanism.rl("liquid/liquid"),
+                    Mekanism.rl("liquid/liquid_flow")).tint(0x807C4DFF));
+
+    public static final FluidRegistryObject<MekanismFluidType, Source, Flowing, LiquidBlock, BucketItem> REFINED_ASTRAL_ETHER = FLUIDS
+            .register("refined_astral_ether", p -> p.texture(
+                    Mekanism.rl("liquid/liquid"),
+                    Mekanism.rl("liquid/liquid_flow")).tint(0xC0D4A1FF));
+}

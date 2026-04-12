@@ -1,0 +1,23 @@
+{
+  "type": "mekanism:compressing",
+  "chemicalInput": {
+    "amount": 5,
+    "gas": "astral_mekanism:sparkling_singularity_rivulet"
+  },
+  "itemInput": [
+    {
+      "ingredient": {
+        "tag": "astral_mekanism:feedstocks/naquadah"
+      }
+    },
+    {
+      "ingredient": {
+        "tag": "astral_mekanism:enriched_ores/naquadah"
+      }
+    }
+  ],
+  "output": {
+    "count": 20,
+    "item": "astral_mekanism:sparkling_naquadah_ore"
+  }
+}

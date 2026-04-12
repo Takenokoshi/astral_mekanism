@@ -5,6 +5,8 @@ import java.util.List;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import com.jerry.mekanism_extras.api.ExtraUpgrade;
+
 import appeng.recipes.handlers.ChargerRecipe;
 import astral_mekanism.block.blockentity.base.BlockEntityProgressMachine;
 import astral_mekanism.block.blockentity.interf.IEnergizedMachine;
@@ -16,6 +18,7 @@ import astral_mekanism.generalrecipe.lookup.cache.recipe.SingleInputGeneralRecip
 import astral_mekanism.generalrecipe.lookup.handler.IUnifiedSingelRecipeLookupHandler;
 import astral_mekanism.integration.AMEEmpowered;
 import mekanism.api.IContentsListener;
+import mekanism.api.Upgrade;
 import mekanism.api.math.FloatingLong;
 import mekanism.api.providers.IBlockProvider;
 import mekanism.api.recipes.cache.CachedRecipe.OperationTracker.RecipeError;
@@ -140,11 +143,19 @@ public class BEMekanicalCharger extends BlockEntityProgressMachine<ChargerRecipe
                 .setActive(this::setActive)
                 .setEnergyRequirements(energyContainer::getEnergyPerTick, energyContainer)
                 .setRequiredTicks(this::getTicksRequired)
-                .setBaselineMaxOperations(() -> AMEEmpowered.empoweredIsLoaded()
-                        ? 1 << AMEEmpowered.getEmpoweredSpeeds(this)
-                        : 1)
+                .setBaselineMaxOperations(this::getBaselineMaxOperations)
                 .setOnFinish(this::markForSave)
                 .setOperatingTicksChanged(this::setOperatingTicks);
+    }
+
+    public void recalculateUpgrades(Upgrade upgrade) {
+        super.recalculateUpgrades(upgrade);
+        if (AMEEmpowered.empoweredIsLoaded()) {
+            if (AMEEmpowered.isEmpoweredSpeed(upgrade) || upgrade == ExtraUpgrade.STACK) {
+                baselineMaxOperations = 1 << (AMEEmpowered.getEmpoweredSpeeds(this)
+                        + upgradeComponent.getUpgrades(ExtraUpgrade.STACK));
+            }
+        }
     }
 
     @Override

@@ -1,17 +1,10 @@
 {
   "type": "mekanism:crushing",
-  "input": [
-    {
-      "ingredient": {
-        "tag": "astral_mekanism:feedstocks/netherite"
-      }
-    },
-    {
-      "ingredient": {
-        "tag": "astral_mekanism:shining_clumps/netherite"
-      }
+  "input": {
+    "ingredient": {
+      "tag": "astral_mekanism:shining_clumps/netherite"
     }
-  ],
+  },
   "output": {
     "count": 8,
     "item": "astral_mekanism:shining_netherite_dust"

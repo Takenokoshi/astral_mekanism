@@ -34,7 +34,7 @@ public class ExtendedSlurryDeferredRegister extends SlurryDeferredRegister {
             Function<SlurryBuilder, SLURRY> creator,
             UnaryOperator<SlurryBuilder> builderModifier) {
         SingleSlurryRegistryObject<SLURRY> slurry = new SingleSlurryRegistryObject<>(
-                internal.register(name, () -> creator.apply(SlurryBuilder.clean())));
+                internal.register(name, () -> creator.apply(builderModifier.apply(SlurryBuilder.clean()))));
         allSingleSlurries.add(slurry);
         return slurry;
     }

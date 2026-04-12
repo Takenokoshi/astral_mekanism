@@ -3,7 +3,7 @@ package astral_mekanism.block.gui.compact;
 import java.util.List;
 
 import astral_mekanism.AstralMekanism;
-import astral_mekanism.AstralMekanismLang;
+import astral_mekanism.AMELang;
 import astral_mekanism.block.blockentity.compact.BECompactFissionReactor;
 import astral_mekanism.network.to_server.PacketGuiSetLong;
 import mekanism.api.text.EnumColor;
@@ -45,19 +45,19 @@ public class GuiCompactFissionReactor
         addRenderableWidget(
                 new GuiFluidGauge(tile::getFluidCoolantTank, () -> tile.getFluidTanks(null),
                         GaugeType.SMALL, this, 25, 34))
-                .setLabel(AstralMekanismLang.LABEL_FLUID_COOLANT.translateColored(EnumColor.DARK_BLUE));
+                .setLabel(AMELang.LABEL_FLUID_COOLANT.translateColored(EnumColor.DARK_BLUE));
         addRenderableWidget(
                 new GuiGasGauge(tile::getGasCoolantTank, tile::getGasTanks,
                         GaugeType.SMALL, this, 43, 34))
-                .setLabel(AstralMekanismLang.LABEL_GAS_COOLANT.translateColored(EnumColor.INDIGO));
+                .setLabel(AMELang.LABEL_GAS_COOLANT.translateColored(EnumColor.INDIGO));
         addRenderableWidget(
                 new GuiGasGauge(tile::getHeatedGasTank, tile::getGasTanks,
                         GaugeType.SMALL, this, 115, 34))
-                .setLabel(AstralMekanismLang.LABEL_HEATED_GAS_COOLANT.translateColored(EnumColor.RED));
+                .setLabel(AMELang.LABEL_HEATED_GAS_COOLANT.translateColored(EnumColor.RED));
         addRenderableWidget(
                 new GuiGasGauge(tile::getHeatedFluidTank, tile::getGasTanks,
                         GaugeType.SMALL, this, 133, 34))
-                .setLabel(AstralMekanismLang.LABEL_HEATED_FLUID_COOLANT.translateColored(EnumColor.DARK_RED));
+                .setLabel(AMELang.LABEL_HEATED_FLUID_COOLANT.translateColored(EnumColor.DARK_RED));
         addRenderableWidget(
                 new GuiGasGauge(tile::getWasteTank, tile::getGasTanks,
                         GaugeType.STANDARD, this, 151, 4))

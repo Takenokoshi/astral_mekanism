@@ -8,8 +8,8 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import appeng.recipes.transform.TransformRecipe;
-import astral_mekanism.block.blockentity.elements.AstralMekDataType;
 import astral_mekanism.block.blockentity.elements.ExtendedComponentEjector;
+import astral_mekanism.enumexpansion.AMEDataType;
 import astral_mekanism.generalrecipe.GeneralRecipeType;
 import astral_mekanism.generalrecipe.IUnifiedRecipeTypeProvider;
 import astral_mekanism.generalrecipe.cachedrecipe.GeneralCachedRecipe;
@@ -24,7 +24,7 @@ import astral_mekanism.recipes.lookup.MekanicalTransformRecipeLookUpHandler;
 import astral_mekanism.recipes.output.AMOutputHelper;
 import astral_mekanism.recipes.output.ItemFluidOutput;
 import astral_mekanism.recipes.recipe.MekanicalTransformRecipe;
-import astral_mekanism.registries.AstralMekanismRecipeTypes;
+import astral_mekanism.registries.AMERecipeTypes;
 import mekanism.api.IContentsListener;
 import mekanism.api.fluid.IExtendedFluidTank;
 import mekanism.api.providers.IBlockProvider;
@@ -126,7 +126,7 @@ public abstract class BEAbstractTransformer extends TileEntityConfigurableMachin
                 inputSlotA, inputSlotB, inputSlotC, outputSlot));
         itemInfo.addSlotInfo(DataType.INPUT_1, new InventorySlotInfo(true, false, inputSlotA));
         itemInfo.addSlotInfo(DataType.INPUT_2, new InventorySlotInfo(true, false, inputSlotB));
-        itemInfo.addSlotInfo(AstralMekDataType.INPUT3, new InventorySlotInfo(true, false, inputSlotC));
+        itemInfo.addSlotInfo(AMEDataType.INPUT3, new InventorySlotInfo(true, false, inputSlotC));
         itemInfo.setCanEject(true);
         ConfigInfo fluidInfo = configComponent.getConfig(TransmissionType.FLUID);
         fluidInfo.addSlotInfo(DataType.INPUT, new FluidSlotInfo(true, false, inputTankA, inputTankB));
@@ -135,9 +135,9 @@ public abstract class BEAbstractTransformer extends TileEntityConfigurableMachin
                 inputTankA, inputTankB, outputTank));
         fluidInfo.addSlotInfo(DataType.INPUT_1, new FluidSlotInfo(true, false, inputTankA));
         fluidInfo.addSlotInfo(DataType.INPUT_2, new FluidSlotInfo(true, false, inputTankB));
-        fluidInfo.addSlotInfo(AstralMekDataType.INPUT1_OUTPUT, new FluidSlotInfo(true, true,
+        fluidInfo.addSlotInfo(AMEDataType.INPUT1_OUTPUT, new FluidSlotInfo(true, true,
                 inputTankA, outputTank));
-        fluidInfo.addSlotInfo(AstralMekDataType.INPUT2_OUTPUT, new FluidSlotInfo(true, true,
+        fluidInfo.addSlotInfo(AMEDataType.INPUT2_OUTPUT, new FluidSlotInfo(true, true,
                 inputTankB, outputTank));
         fluidInfo.setCanEject(true);
         configComponent.setupInputConfig(TransmissionType.ENERGY, energyContainer);
@@ -147,14 +147,14 @@ public abstract class BEAbstractTransformer extends TileEntityConfigurableMachin
                     if (typeT == TransmissionType.ITEM) {
                         return type == DataType.OUTPUT
                                 || type == DataType.INPUT_OUTPUT
-                                || type == AstralMekDataType.INPUT1_OUTPUT
-                                || type == AstralMekDataType.INPUT2_OUTPUT
-                                || type == AstralMekDataType.INPUT3_OUTPUT;
+                                || type == AMEDataType.INPUT1_OUTPUT
+                                || type == AMEDataType.INPUT2_OUTPUT
+                                || type == AMEDataType.INPUT3_OUTPUT;
                     } else if (typeT == TransmissionType.FLUID) {
                         return type == DataType.OUTPUT
                                 || type == DataType.INPUT_OUTPUT
-                                || type == AstralMekDataType.INPUT1_OUTPUT
-                                || type == AstralMekDataType.INPUT2_OUTPUT;
+                                || type == AMEDataType.INPUT1_OUTPUT
+                                || type == AMEDataType.INPUT2_OUTPUT;
                     } else {
                         return false;
                     }
@@ -163,8 +163,8 @@ public abstract class BEAbstractTransformer extends TileEntityConfigurableMachin
                     boolean result = tank == outputTank;
                     result &= type == DataType.OUTPUT
                             || type == DataType.INPUT_OUTPUT
-                            || type == AstralMekDataType.INPUT1_OUTPUT
-                            || type == AstralMekDataType.INPUT2_OUTPUT;
+                            || type == AMEDataType.INPUT1_OUTPUT
+                            || type == AMEDataType.INPUT2_OUTPUT;
                     return result;
                 });
         inputHandlerIA = InputHelper.getInputHandler(inputSlotA, NOT_ENOUGH_INPUT_IA);
@@ -475,7 +475,7 @@ public abstract class BEAbstractTransformer extends TileEntityConfigurableMachin
 
         @Override
         public @NotNull IMekanismRecipeTypeProvider<MekanicalTransformRecipe, MekanicalTransformRecipeCache> getRecipeType() {
-            return AstralMekanismRecipeTypes.MEKANICAL_TRAMSFORM;
+            return AMERecipeTypes.MEKANICAL_TRAMSFORM;
         }
 
         @Override

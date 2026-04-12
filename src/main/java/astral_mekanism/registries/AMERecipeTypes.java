@@ -1,0 +1,81 @@
+package astral_mekanism.registries;
+
+import java.util.function.Function;
+
+import astral_mekanism.AMEConstants;
+import astral_mekanism.mixin.mekanism.recipe.MekanismRecipeTypeMixin;
+import astral_mekanism.recipes.inputRecipeCache.AMInputRecipeCache;
+import astral_mekanism.recipes.inputRecipeCache.AstralCraftingRecipeCache;
+import astral_mekanism.recipes.inputRecipeCache.MekanicalTransformRecipeCache;
+import astral_mekanism.recipes.inputRecipeCache.AMInputRecipeCache.FluidFluid;
+import astral_mekanism.recipes.inputRecipeCache.AMInputRecipeCache.GasInfusion;
+import astral_mekanism.recipes.recipe.AstralCraftingRecipe;
+import astral_mekanism.recipes.recipe.FluidFluidToFluidRecipe;
+import astral_mekanism.recipes.recipe.GasInfusionToFluidRecipe;
+import astral_mekanism.recipes.recipe.MekanicalTransformRecipe;
+import astral_mekanism.recipes.recipe.ReconstructionRecipe;
+import mekanism.api.chemical.gas.Gas;
+import mekanism.api.chemical.gas.GasStack;
+import mekanism.api.recipes.GasToGasRecipe;
+import mekanism.api.recipes.ItemStackToItemStackRecipe;
+import mekanism.api.recipes.MekanismRecipe;
+import mekanism.common.recipe.MekanismRecipeType;
+import mekanism.common.recipe.lookup.cache.IInputRecipeCache;
+import mekanism.common.recipe.lookup.cache.InputRecipeCache;
+import mekanism.common.recipe.lookup.cache.InputRecipeCache.ItemFluidChemical;
+import mekanism.common.recipe.lookup.cache.InputRecipeCache.SingleChemical;
+import mekanism.common.recipe.lookup.cache.InputRecipeCache.SingleItem;
+import mekanism.common.registration.impl.RecipeTypeDeferredRegister;
+import mekanism.common.registration.impl.RecipeTypeRegistryObject;
+
+public class AMERecipeTypes {
+
+    public static final RecipeTypeDeferredRegister RECIPE_TYPES = new RecipeTypeDeferredRegister(
+            AMEConstants.MODID);
+
+    private static <MR extends MekanismRecipe, IIRC extends IInputRecipeCache> RecipeTypeRegistryObject<MR, IIRC> register(
+            String name, Function<MekanismRecipeType<MR, IIRC>, IIRC> inputCacheCreator) {
+        return RECIPE_TYPES.register(name, () -> {
+            MekanismRecipeType<MR, IIRC> recipeType = MekanismRecipeTypeMixin.astral_mekanism$invokeNew(name,
+                    (t) -> null);
+            @SuppressWarnings("unchecked")
+            MekanismRecipeTypeMixin<MR, IIRC> rtMixin = (MekanismRecipeTypeMixin<MR, IIRC>) (Object) recipeType;
+            rtMixin.astral_mekanism$setRegistryName(AMEConstants.rl(name));
+            rtMixin.astral_mekanism$setInputCache(inputCacheCreator.apply(recipeType));
+            return recipeType;
+        });
+    }
+
+    public static final RecipeTypeRegistryObject<FluidFluidToFluidRecipe, FluidFluid<FluidFluidToFluidRecipe>> FLUID_INFUSER_RECIPE = register(
+            "fluid_infuser",
+            recipeType -> new AMInputRecipeCache.FluidFluid<>(recipeType, FluidFluidToFluidRecipe::getInputA,
+                    FluidFluidToFluidRecipe::getInputB));
+
+    public static final RecipeTypeRegistryObject<GasToGasRecipe, SingleChemical<Gas, GasStack, GasToGasRecipe>> SPS_RECIPE = register(
+            "sps", rt -> new InputRecipeCache.SingleChemical<>(rt, GasToGasRecipe::getInput));
+
+    public static final RecipeTypeRegistryObject<AstralCraftingRecipe, AstralCraftingRecipeCache> ASTRAL_CRAFTING = register(
+            "astral_crafting", AstralCraftingRecipeCache::new);
+
+    public static final RecipeTypeRegistryObject<MekanicalTransformRecipe, MekanicalTransformRecipeCache> MEKANICAL_TRAMSFORM = register(
+            "mekanical_transform", MekanicalTransformRecipeCache::new);
+
+    public static final RecipeTypeRegistryObject<ItemStackToItemStackRecipe, SingleItem<ItemStackToItemStackRecipe>> ITEM_COMPRESSING = register(
+            "item_compressing", rt -> new SingleItem<>(rt, ItemStackToItemStackRecipe::getInput));
+
+    public static final RecipeTypeRegistryObject<ItemStackToItemStackRecipe, SingleItem<ItemStackToItemStackRecipe>> ITEM_UNZIPPING = register(
+            "item_unzipping", rt -> new SingleItem<>(rt, ItemStackToItemStackRecipe::getInput));
+
+    public static final RecipeTypeRegistryObject<GasInfusionToFluidRecipe, GasInfusion<GasInfusionToFluidRecipe>> INFUSING_CONDENSE = register(
+            "infusing_condense", rt -> new GasInfusion<>(rt, GasInfusionToFluidRecipe::getGasInput,
+                    GasInfusionToFluidRecipe::getInfusionInput));
+
+    public static final RecipeTypeRegistryObject<GasToGasRecipe, SingleChemical<Gas, GasStack, GasToGasRecipe>> GAS_CONVERSION = register(
+            "ame_gas_conversion", rt -> new InputRecipeCache.SingleChemical<>(rt, GasToGasRecipe::getInput));
+
+    public static final RecipeTypeRegistryObject<ReconstructionRecipe, ItemFluidChemical<Gas, GasStack, ReconstructionRecipe>> RECONSTRUCTION = register(
+            "reconstruction", recipeType -> new ItemFluidChemical<>(recipeType,
+                    ReconstructionRecipe::getInputSolid,
+                    ReconstructionRecipe::getInputFluid,
+                    ReconstructionRecipe::getInputGas));
+}

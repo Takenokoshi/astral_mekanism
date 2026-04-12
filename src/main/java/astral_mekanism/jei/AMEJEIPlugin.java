@@ -24,10 +24,11 @@ import astral_mekanism.jei.recipeCategory.GasInfusionToFluidRecipeCategory;
 import astral_mekanism.jei.recipeCategory.MekanicalComposterRecipeCategory;
 import astral_mekanism.jei.recipeCategory.MekanicalTransformRecipeCategory;
 import astral_mekanism.jei.recipeCategory.MixingReactorRecipeCategory;
+import astral_mekanism.jei.recipeCategory.ReconstructionRecipeCategory;
 import astral_mekanism.jei.recipeCategory.TransformRecipeCategory;
 import astral_mekanism.jei.transferHandler.AstralFormulaicAssemblicatorTransferHandler;
-import astral_mekanism.registries.AstralMekanismMachines;
-import astral_mekanism.registries.AstralMekanismRecipeTypes;
+import astral_mekanism.registries.AMEMachines;
+import astral_mekanism.registries.AMERecipeTypes;
 import fr.iglee42.evolvedmekanism.jei.EMJEI;
 import mekanism.api.providers.IItemProvider;
 import mekanism.client.jei.CatalystRegistryHelper;
@@ -71,24 +72,26 @@ public class AMEJEIPlugin implements IModPlugin {
         IGuiHelper guiHelper = registry.getJeiHelpers().getGuiHelper();
         registry.addRecipeCategories(
                 new IRecipeCategory[] {
+                        new ReconstructionRecipeCategory(guiHelper, AMEJEIRecipeType.RECONSTRUCTION,
+                                AMEMachines.INTERSTELLAR_POSITRONIC_MATTER_RECONSTRUCTION_APPARATUS),
                         new FluidInfuserRecipeCategory(guiHelper, AMEJEIRecipeType.FLUID_INFUSER_RECIPE),
                         new GasToGasRecipeCategory(guiHelper, AMEJEIRecipeType.SPS_RECIPE,
-                                AstralMekanismMachines.COMPACT_SPS),
+                                AMEMachines.COMPACT_SPS),
                         new AstralCraftingRecipeCategory(guiHelper, AMEJEIRecipeType.ASTRAL_CRAFTING,
-                                AstralMekanismMachines.ASTRAL_CRAFTER),
+                                AMEMachines.ASTRAL_CRAFTER),
                         new EssentialSmeltingRecipeCategory(guiHelper, AMEJEIRecipeType.ESSENTIAL_SMELTING,
-                                AstralMekanismMachines.ESSENTIAL_ENERGIZED_SMELTER),
+                                AMEMachines.ESSENTIAL_ENERGIZED_SMELTER),
                         new GasInfusionToFluidRecipeCategory(guiHelper, AMEJEIRecipeType.INFUSING_CONDENSE,
-                                AstralMekanismMachines.INFUSING_CONDENSENTRATOR),
+                                AMEMachines.INFUSING_CONDENSENTRATOR),
                         new MekanicalComposterRecipeCategory(guiHelper,
                                 AMEJEIRecipeType.MEKANICAL_COMPOSTER,
-                                AstralMekanismMachines.MEKANICAL_COMPOSTER),
+                                AMEMachines.MEKANICAL_COMPOSTER),
                         new MekanicalTransformRecipeCategory(guiHelper,
                                 AMEJEIRecipeType.MEKANICAL_TRANSFORM,
-                                AstralMekanismMachines.TRANSFORMER),
+                                AMEMachines.TRANSFORMER),
                         new TransformRecipeCategory(guiHelper,
                                 AMEJEIRecipeType.TRANSFORM,
-                                AstralMekanismMachines.TRANSFORMER),
+                                AMEMachines.TRANSFORMER),
                         new MixingReactorRecipeCategory(guiHelper,
                                 AMEJEIRecipeType.FUSION_REACTOR,
                                 GeneratorsLang.FUSION_REACTOR.translate(),
@@ -99,38 +102,38 @@ public class AMEJEIPlugin implements IModPlugin {
                                 ExtraGenBlocks.NAQUADAH_REACTOR_CONTROLLER),
                         new CropSoilRecipeCategory(guiHelper,
                                 AMEJEIRecipeType.CROP_SOIL,
-                                AstralMekanismMachines.GREEN_HOUSE),
+                                AMEMachines.GREEN_HOUSE),
                         new GasBurningRecipeCategory(guiHelper,
                                 AMEJEIRecipeType.GAS_BURNING,
                                 GeneratorsBlocks.GAS_BURNING_GENERATOR),
                         new ItemStackToItemStackRecipeCategory(guiHelper,
                                 AMEJEIRecipeType.ITEM_COMPRESSING,
-                                AstralMekanismMachines.ITEM_COMPRESSOR),
+                                AMEMachines.ITEM_COMPRESSOR),
                         new ItemStackToItemStackRecipeCategory(guiHelper,
                                 AMEJEIRecipeType.ITEM_UNZIPPING,
-                                AstralMekanismMachines.ITEM_UNZIPPER),
+                                AMEMachines.ITEM_UNZIPPER),
                         new GasToGasRecipeCategory(guiHelper,
                                 AMEJEIRecipeType.GAS_CONVERSION,
-                                AstralMekanismMachines.GAS_CONVERTER),
+                                AMEMachines.GAS_CONVERTER),
                 });
     }
 
     @Override
     public void registerRecipes(IRecipeRegistration registry) {
+        RecipeRegistryHelper.register(registry, AMEJEIRecipeType.RECONSTRUCTION, AMERecipeTypes.RECONSTRUCTION);
         RecipeRegistryHelper.register(registry, AMEJEIRecipeType.FLUID_INFUSER_RECIPE,
-                AstralMekanismRecipeTypes.FLUID_INFUSER_RECIPE);
-        RecipeRegistryHelper.register(registry, AMEJEIRecipeType.SPS_RECIPE,
-                AstralMekanismRecipeTypes.SPS_RECIPE);
+                AMERecipeTypes.FLUID_INFUSER_RECIPE);
+        RecipeRegistryHelper.register(registry, AMEJEIRecipeType.SPS_RECIPE, AMERecipeTypes.SPS_RECIPE);
         RecipeRegistryHelper.register(registry, AMEJEIRecipeType.ASTRAL_CRAFTING,
-                AstralMekanismRecipeTypes.ASTRAL_CRAFTING);
+                AMERecipeTypes.ASTRAL_CRAFTING);
         RecipeRegistryHelper.register(registry, AMEJEIRecipeType.ITEM_COMPRESSING,
-                AstralMekanismRecipeTypes.ITEM_COMPRESSING);
+                AMERecipeTypes.ITEM_COMPRESSING);
         RecipeRegistryHelper.register(registry, AMEJEIRecipeType.ITEM_UNZIPPING,
-                AstralMekanismRecipeTypes.ITEM_UNZIPPING);
+                AMERecipeTypes.ITEM_UNZIPPING);
         RecipeRegistryHelper.register(registry, AMEJEIRecipeType.MEKANICAL_TRANSFORM,
-                AstralMekanismRecipeTypes.MEKANICAL_TRAMSFORM);
+                AMERecipeTypes.MEKANICAL_TRAMSFORM);
         RecipeRegistryHelper.register(registry, AMEJEIRecipeType.INFUSING_CONDENSE,
-                AstralMekanismRecipeTypes.INFUSING_CONDENSE);
+                AMERecipeTypes.INFUSING_CONDENSE);
         RecipeRegistryHelper.register(registry, AMEJEIRecipeType.FUSION_REACTOR,
                 MixingReactorJEIrecipe.fusionRecipes);
         RecipeRegistryHelper.register(registry, AMEJEIRecipeType.NAQUADAH_REACTOR,
@@ -146,86 +149,86 @@ public class AMEJEIPlugin implements IModPlugin {
         RecipeRegistryHelper.register(registry, AMEJEIRecipeType.GAS_BURNING,
                 GasBurningJEIRecipe.getRecipes());
         RecipeRegistryHelper.register(registry, AMEJEIRecipeType.GAS_CONVERSION,
-                AstralMekanismRecipeTypes.GAS_CONVERSION);
+                AMERecipeTypes.GAS_CONVERSION);
     }
 
     @Override
     public void registerRecipeCatalysts(IRecipeCatalystRegistration registry) {
         // ae2
         registry.addRecipeCatalysts(ChargerCategory.RECIPE_TYPE,
-                AstralMekanismMachines.MEKANICAL_CHARGER, AstralMekanismMachines.ASTRAL_MEKANICAL_CHARGER);
+                AMEMachines.MEKANICAL_CHARGER, AMEMachines.ASTRAL_MEKANICAL_CHARGER);
         CatalystRegistryHelper.register(registry, AMEJEIRecipeType.INSCRIBE,
-                AstralMekanismMachines.MEKANICAL_INSCRIBER,
-                AstralMekanismMachines.ASTRAL_MEKANICAL_INSCRIBER);
+                AMEMachines.MEKANICAL_INSCRIBER,
+                AMEMachines.ASTRAL_MEKANICAL_INSCRIBER);
         registry.addRecipeCatalysts(TransformCategory.RECIPE_TYPE,
-                AstralMekanismMachines.TRANSFORMER, AstralMekanismMachines.ASTRAL_TRANSFORMER);
+                AMEMachines.TRANSFORMER, AMEMachines.ASTRAL_TRANSFORMER);
         CatalystRegistryHelper.register(registry, AMEJEIRecipeType.TRANSFORM,
-                AstralMekanismMachines.TRANSFORMER, AstralMekanismMachines.ASTRAL_TRANSFORMER);
+                AMEMachines.TRANSFORMER, AMEMachines.ASTRAL_TRANSFORMER);
         CatalystRegistryHelper.register(registry, AMEJEIRecipeType.MATTER_CONDENSER,
-                AstralMekanismMachines.MEKANICAL_MATTER_CONDENSER);
+                AMEMachines.MEKANICAL_MATTER_CONDENSER);
         // advanced ae
         CatalystRegistryHelper.register(registry, AMEJEIRecipeType.AAE_REACTION,
-                AstralMekanismMachines.ESSENTIAL_REACTION_CHAMBER, AstralMekanismMachines.ASTRAL_REACTION_CHAMBER);
+                AMEMachines.ESSENTIAL_REACTION_CHAMBER, AMEMachines.ASTRAL_REACTION_CHAMBER);
         // mekanism
         CatalystRegistryHelper.register(registry, MekanismJEIRecipeType.INJECTING,
-                AstralMekanismMachines.ASTRAL_CHEMICAL_INJECTION_CHAMBER);
+                AMEMachines.ASTRAL_CHEMICAL_INJECTION_CHAMBER);
         CatalystRegistryHelper.register(registry, MekanismJEIRecipeType.COMPRESSING,
-                AstralMekanismMachines.ASTRAL_OSMIUM_COMPRESSOR);
+                AMEMachines.ASTRAL_OSMIUM_COMPRESSOR);
         CatalystRegistryHelper.register(registry, MekanismJEIRecipeType.PURIFYING,
-                AstralMekanismMachines.ASTRAL_PURIFICATION_CHAMBER);
+                AMEMachines.ASTRAL_PURIFICATION_CHAMBER);
         CatalystRegistryHelper.register(registry, MekanismJEIRecipeType.CRUSHING,
-                AstralMekanismMachines.ASTRAL_CRUSHER);
-        CatalystRegistryHelper.registerRecipeItem(registry, AstralMekanismMachines.ASTRAL_ENERGIZED_SMELTER,
+                AMEMachines.ASTRAL_CRUSHER);
+        CatalystRegistryHelper.registerRecipeItem(registry, AMEMachines.ASTRAL_ENERGIZED_SMELTER,
                 MekanismJEIRecipeType.SMELTING, RecipeTypes.SMELTING);
         CatalystRegistryHelper.register(registry, MekanismJEIRecipeType.SMELTING,
-                AstralMekanismMachines.ENERGIZED_SMELTING_FACTORIES.values().toArray(IItemProvider[]::new));
+                AMEMachines.ENERGIZED_SMELTING_FACTORIES.values().toArray(IItemProvider[]::new));
         CatalystRegistryHelper.register(registry, MekanismJEIRecipeType.SMELTING,
-                AstralMekanismMachines.ASTRAL_ENERGIZED_SMELTING_FACTRIES.values().toArray(IItemProvider[]::new));
+                AMEMachines.ASTRAL_ENERGIZED_SMELTING_FACTRIES.values().toArray(IItemProvider[]::new));
         CatalystRegistryHelper.register(registry, MekanismJEIRecipeType.ENRICHING,
-                AstralMekanismMachines.ASTRAL_ENRICHMENT_CHAMBER);
+                AMEMachines.ASTRAL_ENRICHMENT_CHAMBER);
         CatalystRegistryHelper.register(registry, MekanismJEIRecipeType.NUCLEOSYNTHESIZING,
-                AstralMekanismMachines.ASTRAL_ANTIPROTONIC_NUCLEOSYNTHESIZER);
+                AMEMachines.ASTRAL_ANTIPROTONIC_NUCLEOSYNTHESIZER);
         CatalystRegistryHelper.register(registry, MekanismJEIRecipeType.CHEMICAL_INFUSING,
-                AstralMekanismMachines.ASTRAL_CHEMICAL_INFUSER);
+                AMEMachines.ASTRAL_CHEMICAL_INFUSER);
         CatalystRegistryHelper.register(registry, MekanismJEIRecipeType.OXIDIZING,
-                AstralMekanismMachines.ASTRAL_CHEMICAL_OXIDIZER);
+                AMEMachines.ASTRAL_CHEMICAL_OXIDIZER);
         CatalystRegistryHelper.register(registry, MekanismJEIRecipeType.WASHING,
-                AstralMekanismMachines.ASTRAL_CHEMICAL_WASHER);
+                AMEMachines.ASTRAL_CHEMICAL_WASHER);
         CatalystRegistryHelper.register(registry, MekanismJEIRecipeType.COMBINING,
-                AstralMekanismMachines.ASTRAL_COMBINER);
+                AMEMachines.ASTRAL_COMBINER);
         CatalystRegistryHelper.register(registry, MekanismJEIRecipeType.CRYSTALLIZING,
-                AstralMekanismMachines.ASTRAL_CRYSTALLIZER);
+                AMEMachines.ASTRAL_CRYSTALLIZER);
         CatalystRegistryHelper.register(registry, MekanismJEIRecipeType.DISSOLUTION,
-                AstralMekanismMachines.ASTRAL_DISSOLUTION_CHAMBER);
+                AMEMachines.ASTRAL_DISSOLUTION_CHAMBER);
         CatalystRegistryHelper.register(registry, MekanismJEIRecipeType.SEPARATING,
-                AstralMekanismMachines.ASTRAL_ELECTROLYTIC_SEPARATOR);
+                AMEMachines.ASTRAL_ELECTROLYTIC_SEPARATOR);
         CatalystRegistryHelper.register(registry, MekanismJEIRecipeType.ACTIVATING,
-                AstralMekanismMachines.GLOWSTONE_NEUTRON_ACTIVATOR,
-                AstralMekanismMachines.ASTRAL_GNA);
+                AMEMachines.GLOWSTONE_NEUTRON_ACTIVATOR,
+                AMEMachines.ASTRAL_GNA);
         CatalystRegistryHelper.register(registry, MekanismJEIRecipeType.CENTRIFUGING,
-                AstralMekanismMachines.ASTRAL_ISOTOPIC_CENTRIFUGE);
+                AMEMachines.ASTRAL_ISOTOPIC_CENTRIFUGE);
         CatalystRegistryHelper.register(registry, MekanismJEIRecipeType.METALLURGIC_INFUSING,
-                AstralMekanismMachines.ASTRAL_METALLURGIC_INFUSER,
-                AstralMekanismMachines.ESSENTIAL_METALLURGIC_INFUSER);
+                AMEMachines.ASTRAL_METALLURGIC_INFUSER,
+                AMEMachines.ESSENTIAL_METALLURGIC_INFUSER);
         CatalystRegistryHelper.register(registry, MekanismJEIRecipeType.REACTION,
-                AstralMekanismMachines.ASTRAL_PRC);
+                AMEMachines.ASTRAL_PRC);
         CatalystRegistryHelper.register(registry, MekanismJEIRecipeType.SAWING,
-                AstralMekanismMachines.ASTRAL_PRECISION_SAWMILL);
-        CatalystRegistryHelper.registerRecipeItem(registry, AstralMekanismMachines.ASTRAL_ROTARY_CONDENSENTRATOR,
+                AMEMachines.ASTRAL_PRECISION_SAWMILL);
+        CatalystRegistryHelper.registerRecipeItem(registry, AMEMachines.ASTRAL_ROTARY_CONDENSENTRATOR,
                 MekanismJEIRecipeType.CONDENSENTRATING, MekanismJEIRecipeType.DECONDENSENTRATING);
         CatalystRegistryHelper.register(registry, MekanismJEIRecipeType.SPS,
-                AstralMekanismMachines.COMPACT_SPS,
-                AstralMekanismMachines.ASTRAL_SPS);
+                AMEMachines.COMPACT_SPS,
+                AMEMachines.ASTRAL_SPS);
         CatalystRegistryHelper.register(registry, MekanismJEIRecipeType.INFUSION_CONVERSION,
-                AstralMekanismMachines.INFUSE_SYNTHESIZER);
+                AMEMachines.INFUSE_SYNTHESIZER);
         CatalystRegistryHelper.register(registry, MekanismJEIRecipeType.EVAPORATING,
-                AstralMekanismMachines.COMPACT_TEP.values().toArray(IItemProvider[]::new));
+                AMEMachines.COMPACT_TEP.values().toArray(IItemProvider[]::new));
         CatalystRegistryHelper.register(registry, GeneratorsJEIRecipeType.FISSION,
-                AstralMekanismMachines.COMPACT_FIR.values().toArray(IItemProvider[]::new));
+                AMEMachines.COMPACT_FIR.values().toArray(IItemProvider[]::new));
         CatalystRegistryHelper.register(registry, MekanismJEIRecipeType.GAS_CONVERSION,
-                AstralMekanismMachines.GAS_SYNTHESIZER);
+                AMEMachines.GAS_SYNTHESIZER);
         CatalystRegistryHelper.register(registry, AMEJEIRecipeType.FUSION_REACTOR,
-                AstralMekanismMachines.COMPACT_FUSION_REACTOR.values().toArray(IItemProvider[]::new));
+                AMEMachines.COMPACT_FUSION_REACTOR.values().toArray(IItemProvider[]::new));
         CatalystRegistryHelper.register(registry, AMEJEIRecipeType.FUSION_REACTOR,
                 GeneratorsBlocks.FUSION_REACTOR_CONTROLLER,
                 GeneratorsBlocks.FUSION_REACTOR_FRAME,
@@ -236,21 +239,21 @@ public class AMEJEIPlugin implements IModPlugin {
         CatalystRegistryHelper.register(registry, AMEJEIRecipeType.GAS_BURNING,
                 GeneratorsBlocks.GAS_BURNING_GENERATOR);
         CatalystRegistryHelper.register(registry, AMEJEIRecipeType.GAS_BURNING,
-                AstralMekanismMachines.GAS_BURNING_GENERATORS.values().toArray(IItemProvider[]::new));
+                AMEMachines.GAS_BURNING_GENERATORS.values().toArray(IItemProvider[]::new));
 
         // Evolved Mekanism
         CatalystRegistryHelper.register(registry, EMJEI.APT,
-                AstralMekanismMachines.COMPACT_APT,
-                AstralMekanismMachines.ASTRAL_APT);
-        CatalystRegistryHelper.register(registry, EMJEI.ALLOYING, AstralMekanismMachines.ASTRAL_ALLOYER);
-        CatalystRegistryHelper.register(registry, EMJEI.CHEMIXING, AstralMekanismMachines.ASTRAL_CHEMIXER);
-        CatalystRegistryHelper.register(registry, EMJEI.MELTING, AstralMekanismMachines.ASTRAL_THERMALIZER);
+                AMEMachines.COMPACT_APT,
+                AMEMachines.ASTRAL_APT);
+        CatalystRegistryHelper.register(registry, EMJEI.ALLOYING, AMEMachines.ASTRAL_ALLOYER);
+        CatalystRegistryHelper.register(registry, EMJEI.CHEMIXING, AMEMachines.ASTRAL_CHEMIXER);
+        CatalystRegistryHelper.register(registry, EMJEI.MELTING, AMEMachines.ASTRAL_THERMALIZER);
         CatalystRegistryHelper.register(registry, EMJEI.SOLIDIFICATION,
-                AstralMekanismMachines.ASTRAL_SOLIDIFICATION_CHAMBER);
+                AMEMachines.ASTRAL_SOLIDIFICATION_CHAMBER);
 
         // mekanism extras
         CatalystRegistryHelper.register(registry, AMEJEIRecipeType.NAQUADAH_REACTOR,
-                AstralMekanismMachines.COMPACT_NAQUADAH_REACTOR.values().toArray(IItemProvider[]::new));
+                AMEMachines.COMPACT_NAQUADAH_REACTOR.values().toArray(IItemProvider[]::new));
         CatalystRegistryHelper.register(registry, AMEJEIRecipeType.NAQUADAH_REACTOR,
                 ExtraGenBlocks.NAQUADAH_REACTOR_CASING,
                 ExtraGenBlocks.NAQUADAH_REACTOR_CONTROLLER,
@@ -262,46 +265,48 @@ public class AMEJEIPlugin implements IModPlugin {
 
         // mekanism elements
         CatalystRegistryHelper.register(registry, MSJEIRecipeType.RADIATION_IRRADIATOR,
-                AstralMekanismMachines.ASTRAL_RADIATION_IRRADIATOR);
+                AMEMachines.ASTRAL_RADIATION_IRRADIATOR);
 
         // astral_mekanism
+        CatalystRegistryHelper.register(registry, AMEJEIRecipeType.RECONSTRUCTION,
+                AMEMachines.INTERSTELLAR_POSITRONIC_MATTER_RECONSTRUCTION_APPARATUS);
         CatalystRegistryHelper.register(registry, AMEJEIRecipeType.ASTRAL_CRAFTING,
-                AstralMekanismMachines.ASTRAL_CRAFTER);
+                AMEMachines.ASTRAL_CRAFTER);
         CatalystRegistryHelper.register(registry, AMEJEIRecipeType.FLUID_INFUSER_RECIPE,
-                AstralMekanismMachines.FLUID_INFUSER,
-                AstralMekanismMachines.ASTRAL_FLUID_INFUSER);
+                AMEMachines.FLUID_INFUSER,
+                AMEMachines.ASTRAL_FLUID_INFUSER);
         CatalystRegistryHelper.register(registry, AMEJEIRecipeType.ITEM_COMPRESSING,
-                AstralMekanismMachines.ITEM_COMPRESSOR);
+                AMEMachines.ITEM_COMPRESSOR);
         CatalystRegistryHelper.register(registry, AMEJEIRecipeType.ITEM_UNZIPPING,
-                AstralMekanismMachines.ITEM_UNZIPPER);
+                AMEMachines.ITEM_UNZIPPER);
         CatalystRegistryHelper.register(registry, AMEJEIRecipeType.MEKANICAL_TRANSFORM,
-                AstralMekanismMachines.TRANSFORMER,
-                AstralMekanismMachines.ASTRAL_TRANSFORMER);
+                AMEMachines.TRANSFORMER,
+                AMEMachines.ASTRAL_TRANSFORMER);
         CatalystRegistryHelper.register(registry, AMEJEIRecipeType.ESSENTIAL_SMELTING,
-                AstralMekanismMachines.ESSENTIAL_ENERGIZED_SMELTER,
-                AstralMekanismMachines.ASTRAL_ENERGIZED_SMELTER);
+                AMEMachines.ESSENTIAL_ENERGIZED_SMELTER,
+                AMEMachines.ASTRAL_ENERGIZED_SMELTER);
         CatalystRegistryHelper.register(registry, AMEJEIRecipeType.ESSENTIAL_SMELTING,
-                AstralMekanismMachines.ENERGIZED_SMELTING_FACTORIES.values().toArray(IItemProvider[]::new));
+                AMEMachines.ENERGIZED_SMELTING_FACTORIES.values().toArray(IItemProvider[]::new));
         CatalystRegistryHelper.register(registry, AMEJEIRecipeType.ESSENTIAL_SMELTING,
-                AstralMekanismMachines.ASTRAL_ENERGIZED_SMELTING_FACTRIES.values().toArray(IItemProvider[]::new));
+                AMEMachines.ASTRAL_ENERGIZED_SMELTING_FACTRIES.values().toArray(IItemProvider[]::new));
         CatalystRegistryHelper.register(registry, AMEJEIRecipeType.CROP_SOIL,
-                AstralMekanismMachines.GREEN_HOUSE, AstralMekanismMachines.ASTRAL_GREEN_HOUSE);
+                AMEMachines.GREEN_HOUSE, AMEMachines.ASTRAL_GREEN_HOUSE);
         CatalystRegistryHelper.register(registry, AMEJEIRecipeType.MEKANICAL_COMPOSTER,
-                AstralMekanismMachines.MEKANICAL_COMPOSTER, AstralMekanismMachines.ASTRAL_COMPOSTER);
+                AMEMachines.MEKANICAL_COMPOSTER, AMEMachines.ASTRAL_COMPOSTER);
         CatalystRegistryHelper.register(registry, AMEJEIRecipeType.INFUSING_CONDENSE,
-                AstralMekanismMachines.INFUSING_CONDENSENTRATOR);
+                AMEMachines.INFUSING_CONDENSENTRATOR);
         CatalystRegistryHelper.register(registry, AMEJEIRecipeType.GAS_CONVERSION,
-                AstralMekanismMachines.GAS_CONVERTER);
+                AMEMachines.GAS_CONVERTER);
 
         // minecraft
         registry.addRecipeCatalysts(RecipeTypes.SMELTING,
-                AstralMekanismMachines.ENERGIZED_SMELTING_FACTORIES.values().toArray(ItemLike[]::new));
+                AMEMachines.ENERGIZED_SMELTING_FACTORIES.values().toArray(ItemLike[]::new));
         registry.addRecipeCatalysts(RecipeTypes.SMELTING,
-                AstralMekanismMachines.ASTRAL_ENERGIZED_SMELTING_FACTRIES.values().toArray(ItemLike[]::new));
-        CatalystRegistryHelper.registerRecipeItem(registry, AstralMekanismMachines.ASTRAL_FORMULAIC_ASSEMBLICATOR,
+                AMEMachines.ASTRAL_ENERGIZED_SMELTING_FACTRIES.values().toArray(ItemLike[]::new));
+        CatalystRegistryHelper.registerRecipeItem(registry, AMEMachines.ASTRAL_FORMULAIC_ASSEMBLICATOR,
                 MekanismJEIRecipeType.VANILLA_CRAFTING, RecipeTypes.CRAFTING);
         registry.addRecipeCatalysts(RecipeTypes.COMPOSTING,
-                AstralMekanismMachines.MEKANICAL_COMPOSTER, AstralMekanismMachines.ASTRAL_COMPOSTER);
+                AMEMachines.MEKANICAL_COMPOSTER, AMEMachines.ASTRAL_COMPOSTER);
     }
 
     @Override

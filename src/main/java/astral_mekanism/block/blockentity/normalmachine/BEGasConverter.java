@@ -3,7 +3,7 @@ package astral_mekanism.block.blockentity.normalmachine;
 import org.jetbrains.annotations.NotNull;
 
 import astral_mekanism.block.blockentity.prefab.BEGasToGasBlock;
-import astral_mekanism.registries.AstralMekanismRecipeTypes;
+import astral_mekanism.registries.AMERecipeTypes;
 import mekanism.api.chemical.gas.Gas;
 import mekanism.api.chemical.gas.GasStack;
 import mekanism.api.providers.IBlockProvider;
@@ -21,7 +21,7 @@ public class BEGasConverter extends BEGasToGasBlock {
 
     @Override
     public @NotNull IMekanismRecipeTypeProvider<GasToGasRecipe, SingleChemical<Gas, GasStack, GasToGasRecipe>> getRecipeType() {
-        return AstralMekanismRecipeTypes.GAS_CONVERSION;
+        return AMERecipeTypes.GAS_CONVERSION;
     }
 
     @Override

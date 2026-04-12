@@ -1,5 +1,7 @@
 package astral_mekanism.block.blockentity.astralmachine;
 
+import java.util.List;
+
 import org.jetbrains.annotations.NotNull;
 
 import astral_mekanism.block.blockentity.prefab.BEGasToGasMachine;
@@ -10,7 +12,9 @@ import mekanism.api.recipes.GasToGasRecipe;
 import mekanism.common.recipe.IMekanismRecipeTypeProvider;
 import mekanism.common.recipe.MekanismRecipeType;
 import mekanism.common.recipe.lookup.cache.InputRecipeCache.SingleChemical;
+import mekanism.common.registries.MekanismBlocks;
 import net.minecraft.core.BlockPos;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.state.BlockState;
 
 public class BEAstralIsotopicCentrifuge extends BEGasToGasMachine {
@@ -35,8 +39,8 @@ public class BEAstralIsotopicCentrifuge extends BEGasToGasMachine {
     }
 
     @Override
-    public String getJEI() {
-        return "mekanism:isotopic_centrifuge";
+    public List<ResourceLocation> getJEI() {
+        return List.of(MekanismBlocks.ISOTOPIC_CENTRIFUGE.getRegistryName());
     }
 
 }

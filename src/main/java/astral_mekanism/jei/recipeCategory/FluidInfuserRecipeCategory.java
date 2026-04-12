@@ -1,7 +1,7 @@
 package astral_mekanism.jei.recipeCategory;
 
 import astral_mekanism.recipes.recipe.FluidFluidToFluidRecipe;
-import astral_mekanism.registries.AstralMekanismMachines;
+import astral_mekanism.registries.AMEMachines;
 import mekanism.client.gui.element.bar.GuiHorizontalPowerBar;
 import mekanism.client.gui.element.gauge.GaugeType;
 import mekanism.client.gui.element.gauge.GuiFluidGauge;
@@ -28,7 +28,7 @@ public class FluidInfuserRecipeCategory extends BaseRecipeCategory<FluidFluidToF
 	protected final GuiProgress leftArrow;
 
 	public FluidInfuserRecipeCategory(IGuiHelper helper, MekanismJEIRecipeType<FluidFluidToFluidRecipe> recipeType) {
-		super(helper, recipeType, AstralMekanismMachines.FLUID_INFUSER, 3, 10, 170, 80);
+		super(helper, recipeType, AMEMachines.FLUID_INFUSER, 3, 10, 170, 80);
 		this.inputGaugeA = this.addElement(GuiFluidGauge.getDummy(GaugeType.STANDARD.with(DataType.INPUT_1), this, 25,
 				13));
 		this.inputGaugeB = this.addElement(GuiFluidGauge.getDummy(GaugeType.STANDARD.with(DataType.INPUT_2), this, 133,

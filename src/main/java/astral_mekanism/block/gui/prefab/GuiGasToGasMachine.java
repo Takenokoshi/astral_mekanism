@@ -16,7 +16,6 @@ import mekanism.common.inventory.container.tile.MekanismTileContainer;
 import mekanism.common.inventory.warning.WarningTracker.WarningType;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Inventory;
 
 public class GuiGasToGasMachine<MACHINE extends BEGasToGasMachine>
@@ -41,8 +40,10 @@ public class GuiGasToGasMachine<MACHINE extends BEGasToGasMachine>
         addRenderableWidget(new GuiGasGauge(() -> tile.getOutputTank(), () -> tile.getGasTanks(null),
                 GaugeType.STANDARD, this, 133, 13))
                 .warning(WarningType.NO_SPACE_IN_OUTPUT, tile.getWarningCheck(RecipeError.NOT_ENOUGH_OUTPUT_SPACE));
-        addRenderableWidget(new GuiProgress(tile::getActive, ProgressType.LARGE_RIGHT, this, 64, 39)
-                .jeiCategories(MekanismJEIRecipeType.findType(new ResourceLocation(tile.getJEI()))))
+        addRenderableWidget(new GuiProgress(tile::getActive, ProgressType.LARGE_RIGHT, this, 64, 39))
+                .jeiCategories(tile.getJEI().stream()
+                        .map(MekanismJEIRecipeType::findType)
+                        .toArray(MekanismJEIRecipeType[]::new))
                 .warning(WarningType.INPUT_DOESNT_PRODUCE_OUTPUT,
                         tile.getWarningCheck(RecipeError.INPUT_DOESNT_PRODUCE_OUTPUT));
     }

@@ -1,17 +1,10 @@
 {
   "type": "mekanism:crushing",
-  "input": [
-    {
-      "ingredient": {
-        "tag": "astral_mekanism:feedstocks/redstone"
-      }
-    },
-    {
-      "ingredient": {
-        "tag": "astral_mekanism:shining_clumps/redstone"
-      }
+  "input": {
+    "ingredient": {
+      "tag": "astral_mekanism:shining_clumps/redstone"
     }
-  ],
+  },
   "output": {
     "count": 8,
     "item": "astral_mekanism:shining_redstone"

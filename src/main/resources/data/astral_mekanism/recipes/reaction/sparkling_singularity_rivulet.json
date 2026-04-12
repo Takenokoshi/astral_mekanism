@@ -1,0 +1,25 @@
+{
+    "type": "mekanism:reaction",
+    "duration": 60,
+    "energyRequired": 10000,
+    "fluidInput": {
+        "amount": 100,
+        "fluid": "astral_mekanism:wisdom_rivulet"
+    },
+    "gasInput": {
+        "amount": 100,
+        "gas": "astral_mekanism:singularity_acid"
+    },
+    "gasOutput": {
+        "amount": 100,
+        "gas": "astral_mekanism:sparkling_singularity_rivulet"
+    },
+    "itemInput": {
+        "ingredient": {
+            "item": "mekanism:pellet_antimatter"
+        }
+    },
+    "itemOutput": {
+        "item": "mekanism:pellet_antimatter"
+    }
+}

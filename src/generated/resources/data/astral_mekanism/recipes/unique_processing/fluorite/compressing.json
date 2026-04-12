@@ -1,0 +1,23 @@
+{
+  "type": "mekanism:compressing",
+  "chemicalInput": {
+    "amount": 5,
+    "gas": "astral_mekanism:sparkling_singularity_rivulet"
+  },
+  "itemInput": [
+    {
+      "ingredient": {
+        "tag": "astral_mekanism:feedstocks/fluorite"
+      }
+    },
+    {
+      "ingredient": {
+        "tag": "astral_mekanism:enriched_ores/fluorite"
+      }
+    }
+  ],
+  "output": {
+    "count": 20,
+    "item": "astral_mekanism:sparkling_fluorite_ore"
+  }
+}

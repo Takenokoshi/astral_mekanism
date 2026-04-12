@@ -1,7 +1,7 @@
 package astral_mekanism.recipes.irecipe;
 
-import astral_mekanism.registries.AstralMekanismRecipeSerializers;
-import astral_mekanism.registries.AstralMekanismRecipeTypes;
+import astral_mekanism.registries.AMERecipeSerializers;
+import astral_mekanism.registries.AMERecipeTypes;
 import mekanism.api.chemical.gas.GasStack;
 import mekanism.api.recipes.GasToGasRecipe;
 import mekanism.api.recipes.ingredients.ChemicalStackIngredient.GasStackIngredient;
@@ -17,12 +17,12 @@ public class AMEGasConversionIRecipe extends GasToGasRecipe {
 
     @Override
     public RecipeSerializer<?> getSerializer() {
-        return AstralMekanismRecipeSerializers.GAS_CONVERSION.get();
+        return AMERecipeSerializers.GAS_CONVERSION.get();
     }
 
     @Override
     public RecipeType<?> getType() {
-        return AstralMekanismRecipeTypes.GAS_CONVERSION.get();
+        return AMERecipeTypes.GAS_CONVERSION.get();
     }
     
 }

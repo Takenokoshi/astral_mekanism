@@ -1,6 +1,6 @@
 package astral_mekanism.block.block;
 
-import astral_mekanism.registries.AstralMekanismTileEntityTypes;
+import astral_mekanism.registries.AMETileEntityTypes;
 import mekanism.common.block.transmitter.BlockUniversalCable;
 import mekanism.common.registration.impl.TileEntityTypeRegistryObject;
 import mekanism.common.tier.CableTier;
@@ -14,7 +14,7 @@ public class BlockAstralUniversalcable extends BlockUniversalCable {
 
     @Override
     public TileEntityTypeRegistryObject<TileEntityUniversalCable> getTileType() {
-        return AstralMekanismTileEntityTypes.ASTRAL_UNIVERSAL_CABLE;
+        return AMETileEntityTypes.ASTRAL_UNIVERSAL_CABLE;
     }
 
 }

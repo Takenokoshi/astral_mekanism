@@ -1,7 +1,7 @@
 package astral_mekanism.recipes.irecipe;
 
-import astral_mekanism.registries.AstralMekanismRecipeSerializers;
-import astral_mekanism.registries.AstralMekanismRecipeTypes;
+import astral_mekanism.registries.AMERecipeSerializers;
+import astral_mekanism.registries.AMERecipeTypes;
 import mekanism.api.recipes.ItemStackToItemStackRecipe;
 import mekanism.api.recipes.ingredients.ItemStackIngredient;
 import net.minecraft.resources.ResourceLocation;
@@ -17,12 +17,12 @@ public class ItemUnzippingIRecipe extends ItemStackToItemStackRecipe {
 
     @Override
     public RecipeSerializer<?> getSerializer() {
-        return AstralMekanismRecipeSerializers.ITEM_UNZIPPING.get();
+        return AMERecipeSerializers.ITEM_UNZIPPING.get();
     }
 
     @Override
     public RecipeType<?> getType() {
-        return AstralMekanismRecipeTypes.ITEM_UNZIPPING.get();
+        return AMERecipeTypes.ITEM_UNZIPPING.get();
     }
 
 }

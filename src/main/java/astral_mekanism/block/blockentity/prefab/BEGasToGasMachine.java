@@ -43,6 +43,7 @@ import mekanism.common.tile.component.TileComponentEjector;
 import mekanism.common.tile.prefab.TileEntityRecipeMachine;
 import mekanism.common.util.MekanismUtils;
 import net.minecraft.core.BlockPos;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.state.BlockState;
 
 public abstract class BEGasToGasMachine extends TileEntityRecipeMachine<GasToGasRecipe>
@@ -160,7 +161,7 @@ public abstract class BEGasToGasMachine extends TileEntityRecipeMachine<GasToGas
         return (GasToGasRecipe) findFirstRecipe(inputHandler);
     }
 
-    public abstract String getJEI();
+    public abstract List<ResourceLocation> getJEI();
 
     public MachineEnergyContainer<? extends BEGasToGasMachine> getEnergyContainer() {
         return this.energyContainer;

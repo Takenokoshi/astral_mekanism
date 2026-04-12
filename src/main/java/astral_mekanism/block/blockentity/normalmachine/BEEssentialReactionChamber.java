@@ -6,6 +6,8 @@ import java.util.List;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import com.jerry.mekanism_extras.api.ExtraUpgrade;
+
 import astral_mekanism.block.blockentity.base.BlockEntityProgressMachine;
 import astral_mekanism.block.blockentity.elements.energyContainer.EnergyRequiredRecipeMachineEnergyContainer;
 import astral_mekanism.block.blockentity.interf.IAAEReactionChamber;
@@ -19,6 +21,7 @@ import astral_mekanism.recipes.output.AMOutputHelper;
 import astral_mekanism.recipes.output.ItemFluidOutput;
 import mekanism.api.IContentsListener;
 import mekanism.api.RelativeSide;
+import mekanism.api.Upgrade;
 import mekanism.api.fluid.IExtendedFluidTank;
 import mekanism.api.inventory.IInventorySlot;
 import mekanism.api.math.FloatingLong;
@@ -164,11 +167,19 @@ public class BEEssentialReactionChamber extends BlockEntityProgressMachine<React
                 .setEnergyRequirements(energyContainer::getEnergyPerTick, energyContainer)
                 .setActive(this::setActive)
                 .setRequiredTicks(this::getTicksRequired)
-                .setBaselineMaxOperations(() -> AMEEmpowered.empoweredIsLoaded()
-                        ? 1 << AMEEmpowered.getEmpoweredSpeeds(this)
-                        : 1)
+                .setBaselineMaxOperations(this::getBaselineMaxOperations)
                 .setOnFinish(this::markForSave)
                 .setOperatingTicksChanged(this::setOperatingTicks);
+    }
+
+    public void recalculateUpgrades(Upgrade upgrade) {
+        super.recalculateUpgrades(upgrade);
+        if (AMEEmpowered.empoweredIsLoaded()) {
+            if (AMEEmpowered.isEmpoweredSpeed(upgrade) || upgrade == ExtraUpgrade.STACK) {
+                baselineMaxOperations = 1 << (AMEEmpowered.getEmpoweredSpeeds(this)
+                        + upgradeComponent.getUpgrades(ExtraUpgrade.STACK));
+            }
+        }
     }
 
     @Override

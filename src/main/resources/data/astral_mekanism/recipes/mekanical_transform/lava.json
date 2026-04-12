@@ -25,7 +25,7 @@
     },
     "outputFluid": {
         "fluid": "minecraft:lava",
-        "amount": 200
+        "amount": 1
     },
     "itemAIsCatalyst": true,
     "itemBIsCatalyst": true,

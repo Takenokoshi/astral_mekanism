@@ -1,0 +1,22 @@
+{
+  "type": "astral_mekanism:reconstruction",
+  "duration": 1,
+  "fluidInput": {
+    "amount": 480,
+    "fluid": "astral_mekanism:refined_astral_ether"
+  },
+  "gasInput": {
+    "amount": 480,
+    "gas": "mekanism:antimatter"
+  },
+  "gasOutput": {
+    "amount": 480,
+    "gas": "astral_mekanism:reconstructed_osmium"
+  },
+  "itemInput": {
+    "ingredient": {
+      "tag": "astral_mekanism:shining_crystals/osmium"
+    }
+  },
+  "itemNotConsumed": false
+}

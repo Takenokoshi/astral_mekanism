@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
-    "astral_mekanism:netherite_cluster"
+    "astral_mekanism:netherite_cluster",
+    "#forge:ores/netherite"
   ]
 }

@@ -1,0 +1,22 @@
+{
+  "type": "astral_mekanism:reconstruction",
+  "duration": 1,
+  "fluidInput": {
+    "amount": 1,
+    "fluid": "astral_mekanism:refined_astral_ether"
+  },
+  "gasInput": {
+    "amount": 1,
+    "gas": "mekanism:antimatter"
+  },
+  "gasOutput": {
+    "amount": 1,
+    "gas": "astral_mekanism:reconstructed_amethyst"
+  },
+  "itemInput": {
+    "ingredient": {
+      "tag": "astral_mekanism:final_materials/amethyst"
+    }
+  },
+  "itemNotConsumed": false
+}

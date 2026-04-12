@@ -6,7 +6,7 @@ import java.util.List;
 
 import astral_mekanism.AMEConstants;
 import astral_mekanism.generalrecipe.AMEFakeRecipeType;
-import astral_mekanism.registries.AstralMekanismFluids;
+import astral_mekanism.registries.AMEFluids;
 import mekanism.api.recipes.ingredients.FluidStackIngredient;
 import mekanism.api.recipes.ingredients.ItemStackIngredient;
 import mekanism.api.recipes.ingredients.creator.IngredientCreatorAccess;
@@ -149,7 +149,7 @@ public class CropSoilRecipe implements Recipe<Container>, TriPredicate<ItemStack
                             Math.round(400 / basicSoil.getGrowthModifier()), 6));
                     if (ModList.get().isLoaded("biggerstacks")) {
                         result.add(new CropSoilRecipe(basicCrop, basicSoil,
-                                AstralMekanismFluids.ANTIMATTER_FERTILIZER.getFluidStack(5),
+                                AMEFluids.ANTIMATTER_FERTILIZER.getFluidStack(5),
                                 Math.round(200 / basicSoil.getGrowthModifier()), 192000));
                     }
                 }

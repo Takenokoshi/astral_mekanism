@@ -11,7 +11,7 @@ import astral_mekanism.recipes.cachedRecipe.AstralCraftingCachedRecipe;
 import astral_mekanism.recipes.inputRecipeCache.AstralCraftingRecipeCache;
 import astral_mekanism.recipes.lookup.AstralCraftingRecipeLookUpHandler;
 import astral_mekanism.recipes.recipe.AstralCraftingRecipe;
-import astral_mekanism.registries.AstralMekanismRecipeTypes;
+import astral_mekanism.registries.AMERecipeTypes;
 import mekanism.api.IContentsListener;
 import mekanism.api.chemical.ChemicalTankBuilder;
 import mekanism.api.chemical.gas.Gas;
@@ -232,7 +232,7 @@ public class BEAstralCrafter extends TileEntityProgressMachine<AstralCraftingRec
 
     @Override
     public @NotNull IMekanismRecipeTypeProvider<AstralCraftingRecipe, AstralCraftingRecipeCache> getRecipeType() {
-        return AstralMekanismRecipeTypes.ASTRAL_CRAFTING;
+        return AMERecipeTypes.ASTRAL_CRAFTING;
     }
 
     public MachineEnergyContainer<BEAstralCrafter> getEnergyContainer() {

@@ -1,0 +1,26 @@
+{
+  "type": "astral_mekanism:reconstruction",
+  "duration": 1,
+  "fluidInput": {
+    "amount": 1,
+    "fluid": "minecraft:lava"
+  },
+  "gasInput": {
+    "amount": 1,
+    "gas": "astral_mekanism:astral_ether"
+  },
+  "gasOutput": {
+    "amount": 1,
+    "gas": "astral_mekanism:astral_ether"
+  },
+  "itemInput": {
+    "ingredient": {
+      "item": "astral_mekanism:diamond_starlight"
+    }
+  },
+  "itemNotConsumed": true,
+  "itemOutput": {
+    "count": 64,
+    "item": "astral_mekanism:compressed_diamond_ore"
+  }
+}

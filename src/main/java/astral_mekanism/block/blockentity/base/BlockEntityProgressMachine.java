@@ -4,6 +4,8 @@ import java.util.List;
 
 import org.jetbrains.annotations.NotNull;
 
+import com.jerry.mekanism_extras.api.ExtraUpgrade;
+
 import astral_mekanism.integration.AMEEmpowered;
 import mekanism.api.NBTConstants;
 import mekanism.api.Upgrade;
@@ -24,12 +26,14 @@ public abstract class BlockEntityProgressMachine<RECIPE extends Recipe<?>> exten
     private int operatingTicks;
     protected int baseTicksRequired;
     public int ticksRequired;
+    protected int baselineMaxOperations = 1;
 
     protected BlockEntityProgressMachine(IBlockProvider blockProvider, BlockPos pos, BlockState state,
             List<RecipeError> errorTypes, int baseTicksRequired) {
         super(blockProvider, pos, state, errorTypes);
         this.baseTicksRequired = baseTicksRequired;
         ticksRequired = this.baseTicksRequired;
+        baselineMaxOperations = 1;
     }
 
     public double getScaledProgress() {
@@ -68,7 +72,9 @@ public abstract class BlockEntityProgressMachine<RECIPE extends Recipe<?>> exten
     @Override
     public void recalculateUpgrades(Upgrade upgrade) {
         super.recalculateUpgrades(upgrade);
-        if (AMEEmpowered.empoweredIsLoaded()) {
+        if (upgrade == ExtraUpgrade.STACK) {
+            baselineMaxOperations = 1 << upgradeComponent.getUpgrades(ExtraUpgrade.STACK);
+        } else if (AMEEmpowered.empoweredIsLoaded()) {
             AMEEmpowered.recalculateUpgrades(this, upgrade, baseTicksRequired, v -> ticksRequired = v);
         } else if (upgrade == Upgrade.SPEED) {
             ticksRequired = MekanismUtils.getTicks(this, baseTicksRequired);
@@ -86,6 +92,10 @@ public abstract class BlockEntityProgressMachine<RECIPE extends Recipe<?>> exten
         super.addContainerTrackers(container);
         container.track(SyncableInt.create(this::getOperatingTicks, this::setOperatingTicks));
         container.track(SyncableInt.create(this::getTicksRequired, value -> ticksRequired = value));
+        container.track(SyncableInt.create(this::getBaselineMaxOperations, v -> baselineMaxOperations = v));
     }
 
+    protected int getBaselineMaxOperations() {
+        return baselineMaxOperations;
+    }
 }

@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
-    "minecraft:amethyst_cluster"
+    "minecraft:amethyst_cluster",
+    "#forge:ores/amethyst"
   ]
 }

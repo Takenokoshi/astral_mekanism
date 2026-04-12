@@ -7,7 +7,7 @@ import org.jetbrains.annotations.Nullable;
 import astral_mekanism.AstralMekanism;
 import astral_mekanism.block.container.astralmachine.ContainerAstralFAssemblicator;
 import astral_mekanism.network.to_server.PacketGuiAstralFAssemblicator;
-import astral_mekanism.registries.AstralMekanismMachines;
+import astral_mekanism.registries.AMEMachines;
 import mezz.jei.api.constants.RecipeTypes;
 import mezz.jei.api.gui.ingredient.IRecipeSlotsView;
 import mezz.jei.api.recipe.RecipeType;
@@ -27,7 +27,7 @@ public class AstralFormulaicAssemblicatorTransferHandler
 
     @Override
     public Optional<MenuType<ContainerAstralFAssemblicator>> getMenuType() {
-        return Optional.of(AstralMekanismMachines.ASTRAL_FORMULAIC_ASSEMBLICATOR.getContainer().get());
+        return Optional.of(AMEMachines.ASTRAL_FORMULAIC_ASSEMBLICATOR.getContainer().get());
     }
 
     @Override

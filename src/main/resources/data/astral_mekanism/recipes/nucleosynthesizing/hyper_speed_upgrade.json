@@ -1,0 +1,16 @@
+{
+    "type": "mekanism:nucleosynthesizing",
+    "duration": 200,
+    "gasInput": {
+        "amount": 4,
+        "gas": "mekanism:antimatter"
+    },
+    "itemInput": {
+        "ingredient": {
+            "item": "astral_mekanism:hyper_upgrade_base"
+        }
+    },
+    "output": {
+        "item": "astral_mekanism:hyper_speed_upgrade"
+    }
+}

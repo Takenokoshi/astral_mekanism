@@ -1,0 +1,24 @@
+{
+  "type": "mekanism:nucleosynthesizing",
+  "duration": 2,
+  "gasInput": {
+    "amount": 5,
+    "gas": "mekanism:antimatter"
+  },
+  "itemInput": [
+    {
+      "ingredient": {
+        "tag": "astral_mekanism:feedstocks/quartz"
+      }
+    },
+    {
+      "ingredient": {
+        "tag": "astral_mekanism:reconstructed_ores/quartz"
+      }
+    }
+  ],
+  "output": {
+    "count": 25,
+    "item": "astral_mekanism:enriched_quartz_ore"
+  }
+}

@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
-    "ae2:quartz_cluster"
+    "ae2:quartz_cluster",
+    "#forge:ores/certus_quartz"
   ]
 }

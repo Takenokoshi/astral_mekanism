@@ -1,17 +1,10 @@
 {
   "type": "mekanism:crushing",
-  "input": [
-    {
-      "ingredient": {
-        "tag": "astral_mekanism:feedstocks/quartz"
-      }
-    },
-    {
-      "ingredient": {
-        "tag": "astral_mekanism:shining_gems/quartz"
-      }
+  "input": {
+    "ingredient": {
+      "tag": "astral_mekanism:shining_gems/quartz"
     }
-  ],
+  },
   "output": {
     "count": 8,
     "item": "astral_mekanism:shining_quartz_dust"
