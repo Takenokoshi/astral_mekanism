@@ -6,7 +6,14 @@ import java.util.function.Supplier;
 import astral_mekanism.AMEConstants;
 import astral_mekanism.registration.MachineRegistryObject;
 import astral_mekanism.registration.SingleSlurryRegistryObject;
-import astral_mekanism.registries.*;
+import astral_mekanism.registries.AMEBlockDefinitions;
+import astral_mekanism.registries.AMEBlocks;
+import astral_mekanism.registries.AMEFluids;
+import astral_mekanism.registries.AMEGases;
+import astral_mekanism.registries.AMEInfuseTypes;
+import astral_mekanism.registries.AMEItems;
+import astral_mekanism.registries.AMEMachines;
+import astral_mekanism.registries.AMESlurries;
 import mekanism.api.providers.IBlockProvider;
 import mekanism.api.providers.IItemProvider;
 import mekanism.common.registration.impl.FluidRegistryObject;
@@ -99,9 +106,9 @@ public class AstralMekanismSimplifiedChineseLangProvider extends LanguageProvide
 
     private void addSlurry(SlurryRegistryObject<?, ?> slurry) {
         add(slurry.getCleanSlurry().getTranslationKey(),
-                toTitle(slurry.getCleanSlurry().getRegistryName().getPath()) + "纯净浆液");
+                toTitle(slurry.getCleanSlurry().getRegistryName().getPath()) + "浆液");
         add(slurry.getDirtySlurry().getTranslationKey(),
-                toTitle(slurry.getDirtySlurry().getRegistryName().getPath()) + "污浊浆液");
+                toTitle(slurry.getDirtySlurry().getRegistryName().getPath()) + "浆液");
     }
 
     private void addSlurry(SingleSlurryRegistryObject<?> slurry) {
@@ -110,9 +117,12 @@ public class AstralMekanismSimplifiedChineseLangProvider extends LanguageProvide
 
     private static String toTitle(String path) {
         path = path.contains("_compact_") ? "compact_" + path.replace("_compact_", "_") : path;
-        path = path.contains("_naquadah_reactor") ? path.replace("_naquadah_reactor", "硅岩反应堆") : path;
+        path = path.contains("_naquadah_reactor") ? path.replace("_naquadah_reactor", "_硅岩反应堆") : path;
         path = path.contains("metallurgic_infuser") ? path.replace("metallurgic_infuser", "冶金灌注机") : path;
         path = path.contains("sodium_hydroxide") ? path.replace("sodium_hydroxide", "氢氧化钠") : path;
+        path = path.contains("interstellar_antineutronic_matter_reconstruction_apparatus")
+                ? path.replace("interstellar_antineutronic_matter_reconstruction_apparatus", "星际反中子物质重构装置")
+                : path;
         String[] parts = path.split("_");
         StringBuilder sb = new StringBuilder();
         if (parts[0].equals("alloy")
@@ -147,6 +157,14 @@ public class AstralMekanismSimplifiedChineseLangProvider extends LanguageProvide
             }
             neo[neo.length - 1] = "circuit";
             parts = neo;
+        } else if (parts[0].equals("polonium")) {
+            /* swap first and second
+            Well, in Chinese, "polonium containing" means "含钋" rather than just simply "钋" and "含" （“钋含” was technically not right）
+            And such things like that
+            */
+            String tmp = parts[0];
+            parts[0] = parts[1];
+            parts[1] = tmp;
         }
 
         for (int i = 0; i < parts.length; i++) {
@@ -180,52 +198,55 @@ public class AstralMekanismSimplifiedChineseLangProvider extends LanguageProvide
         result.put("absolute", "绝对");
         result.put("overclocked", "超频");
         result.put("supreme", "至尊");
-        result.put("cosmic", "寰宇");
-        result.put("dense", "致密");
+        result.put("cosmic", "宇宙");
+        result.put("dense", "高密");
         result.put("infinite", "无限");
-        result.put("multiversal", "多元");
+        result.put("multiversal", "多元宇宙");
         result.put("machineastral", "星界");
         result.put("factoryastral", "星界");
         result.put("astronomical", "超现实");
         result.put("logic", "逻辑");
         result.put("calculation", "计算");
         result.put("engineering", "工程");
-        result.put("accumulation", "集群");
+        result.put("accumulation", "累积");
         result.put("photon", "光子");
         result.put("quantum", "量子");
         result.put("composite", "复合");
-        result.put("origin", "本质");
+        result.put("origin", "起源");
         result.put("autonomy", "自主");
         result.put("firmament", "苍穹");
         // machine types
         result.put("energy", "能量");
         result.put("cell", "单元");
         result.put("energized", "电力");
-        result.put("smelting", "精炼");
-        result.put("smelter", "精炼机");
+        result.put("smelting", "熔炼");
+        result.put("smelter", "熔炼炉");
         result.put("chemical", "化学");
-        result.put("injection", "注入");
+        result.put("injection", "压射");
         result.put("chamber", "室");
         result.put("compressor", "压缩机");
-        result.put("purification", "净化");
+        result.put("purification", "提纯");
         result.put("crusher", "粉碎机");
         result.put("enrichment", "富集");
-        result.put("alloyer", "合金炉");
+        result.put("alloyer", "合金化機");
         result.put("apt", "反物质原分子嬗变仪");
         result.put("antiprotonic", "反质子");
         result.put("nucleosynthesizer", "核合成器");
-        result.put("infuser", "混合机");
+        result.put("infuser", "灌注机");
+        result.put("reaction", "反应");
         result.put("oxidizer", "酸化机");
-        result.put("washer", "洗涤器");
+        result.put("washer", "清洗机");
         result.put("chemixer", "化学混合机");
         result.put("combiner", "融合机");
-        result.put("crystallizer", "结晶化装置");
+        result.put("converter", "转换器");
+        result.put("crystallizer", "结晶器");
         result.put("dissolution", "溶解");
         result.put("electrolytic", "电解");
         result.put("separator", "分离机");
-        result.put("fluid", "液体");
+        result.put("fluid", "流体");
+        result.put("liquid", "液态");
         result.put("formulaic", "公式");
-        result.put("assemblicator", "装配器");
+        result.put("assemblicator", "装配机");
         result.put("gna", "荧石中子活化器");
         result.put("greenhouse", "温室");
         result.put("isotopic", "同位素");
@@ -233,48 +254,48 @@ public class AstralMekanismSimplifiedChineseLangProvider extends LanguageProvide
         result.put("charger", "充能器");
         result.put("inscriber", "压印器");
         result.put("transformer", "转化合成器");
-        result.put("thermalizer", "热熔器");
+        result.put("thermalizer", "热解机");
         result.put("metallurgic", "冶金");
-        result.put("infuser2", "灌注器");
+        result.put("infuser2", "灌注机");
         result.put("prc", "加压反应室");
         result.put("precision", "精密");
         result.put("sawmill", "锯木机");
         result.put("rotary", "回旋式");
-        result.put("condensentrator", "流体冷凝机");
-        result.put("solidification", "固化室");
+        result.put("condensentrator", "流体凝缩机");
+        result.put("solidification", "固化");
         result.put("sps", "超临界移相器");
         result.put("compact", "紧凑型");
-        result.put("fir", "裂变");
+        result.put("fir", "裂变反应堆");
         result.put("fusion", "聚变");
         result.put("reactor", "反应堆");
         result.put("tep", "热力蒸馏厂");
-        result.put("burning", "燃烧");
-        result.put("heat", "热");
+        result.put("burning", "燃气");
+        result.put("heat", "热力");
         result.put("generator", "发电机");
         result.put("factory", "工厂");
         result.put("crafter", "扩展工作台");
         result.put("synthesizer", "合成器");
         result.put("neutron", "中子");
-        result.put("activator", "反应器");
+        result.put("activator", "活化器");
         result.put("unzipper", "解压机");
         result.put("storage", "存储器");
         result.put("sortable", "分类");
         result.put("tank", "储罐");
-        result.put("drive", "ME驱动器");
+        result.put("drive", "ME磁盘");
         result.put("green", "温");
         result.put("house", "室");
         result.put("composter", "堆肥桶");
         result.put("matter", "物质");
-        result.put("condenser", "冷凝器");
+        result.put("condenser", "压缩机");
         result.put("irradiator", "辐照器");
         // materal types
         result.put("coal", "煤炭");
         result.put("diamond", "钻石");
         result.put("emerald", "绿宝石");
         result.put("fluorite", "氟石");
-        result.put("lapis", "青金石");
-        result.put("lazuli", "天青石");
-        result.put("quartz", "石英");
+        result.put("lapis", "青金");
+        result.put("lazuli", "石");
+        result.put("quartz", "下界石英");
         result.put("redstone", "红石");
         result.put("certus", "赛特斯");
         result.put("amethyst", "紫水晶");
@@ -287,31 +308,31 @@ public class AstralMekanismSimplifiedChineseLangProvider extends LanguageProvide
         result.put("osmium", "锇");
         result.put("netherite", "下界合金");
         result.put("naquadah", "硅岩");
-        result.put("refined", "精制");
+        result.put("refined", "精炼");
         result.put("glowstone", "荧石");
         result.put("alloy", "合金");
-        result.put("utility", "实用");
+        result.put("utility", "工具");
         result.put("sodium", "钠");
-        result.put("hydroxide", "氢氧化物");
+        result.put("hydroxide", "氢氧化");
         result.put("antimatter", "反物质");
         result.put("biomass", "生物质");
         result.put("singularity", "奇点");
         result.put("nether", "下界");
-        result.put("star", "恒星");
+        result.put("star", "星");
         result.put("coal", "煤炭");
-        result.put("elastic", "弹力");
+        result.put("elastic", "弹性");
         result.put("convergent", "收敛");
         result.put("infuse", "灌注");
         result.put("stardust", "星尘");
         result.put("starry", "星");
         result.put("sky", "空");
         result.put("vibration", "振荡");
-        result.put("resonance", "共振");
+        result.put("resonance", "共鸣");
         result.put("enhanced", "强化");
         result.put("illusion", "幻象");
         result.put("insert", "输入");
         result.put("xp", "经验");
-        result.put("lava", "溶岩");
+        result.put("lava", "熔岩");
         result.put("netherrack", "下界岩");
         result.put("ammonia", "氨");
         result.put("water", "水");
@@ -329,22 +350,26 @@ public class AstralMekanismSimplifiedChineseLangProvider extends LanguageProvide
         result.put("air", "空气");
         result.put("wisdom", "知识");
         result.put("radiation", "辐射");
+        result.put("ore", "矿石");
+        result.put("interstellar", "星际");
+        result.put("nova", "新星");
+        result.put("mold", "模具");
         // material states
         result.put("astral", "星界");
         result.put("ingot", "锭");
-        result.put("block", "方块");
+        result.put("block", "块");
         result.put("processor", "处理器");
         result.put("press", "压印模板");
         result.put("dust", "粉");
-        result.put("golden", "金的");
+        result.put("golden", "注金");
         result.put("charged", "充能");
         result.put("cluster", "簇");
         result.put("enriched", "富集");
-        result.put("control", "控制电路");
-        result.put("circuit", "电路板");
-        result.put("supply", "供給");
+        result.put("control", "控制");
+        result.put("circuit", "电路");
+        result.put("supply", "供应");
         result.put("upgrade", "升级");
-        result.put("starlight", "星辉");
+        result.put("starlight", "星光");
         result.put("rivulet", "凝流");
         result.put("dirty", "污浊");
         result.put("shining", "闪耀");
@@ -355,32 +380,40 @@ public class AstralMekanismSimplifiedChineseLangProvider extends LanguageProvide
         result.put("crystal", "结晶");
         result.put("raw", "粗");
         result.put("shard", "碎片");
-        result.put("mekanical", "通机");
+        result.put("mekanical", "通用");
         result.put("universal", "通用");
-        result.put("gas", "气");
+        result.put("gas", "气体");
         result.put("infuse", "灌注");
-        result.put("red", "红石");
+        result.put("infusing", "灌注");
+        result.put("red", "红色");
         result.put("soul", "灵魂");
         result.put("mixed", "混合");
         result.put("slurry", "浆液");
         result.put("clean", "纯净");
         result.put("paste", "浆糊");
+        result.put("reconstructed", "重构");
+        result.put("sparkling", "辉耀");
         result.put("containing", "含");
         result.put("sealing", "密封");
-        result.put("intake", "吸入");
         // other
         result.put("item", "物品");
+        result.put("chemical", "化学品");
         result.put("spacetime", "时空");
         result.put("modulation", "调制");
         result.put("core", "核心");
-        result.put("light", "光");
-        result.put("cable", "通用线缆");
+        result.put("light", "照明灯");
+        result.put("cable", "线缆");
         result.put("bucket", "桶");
         result.put("ratio", "比例");
-        result.put("evenly", "均等");
+        result.put("evenly", "均匀");
         result.put("inserter", "输入器");
         result.put("base", "基板");
         result.put("ame", "AME");
+        result.put("hyper", "超");
+        result.put("speed", "速");
+        result.put("intake", "吸入");
+        result.put("bulk", "MEGA");
+        result.put("cell", "存储元件");
         return result;
     }).get();
 
