@@ -159,7 +159,7 @@ public class AstralMekanismSimplifiedChineseLangProvider extends LanguageProvide
             parts = neo;
         } else if (parts[0].equals("polonium")) {
             /* swap first and second
-            Well, in Chinese, "polonium containing" means "含钋" rather than just simply "钋" and "含" （“钋含” was technically not right）
+            Well, in Chinese, "polonium containing" means "含钋" instead of just simply "钋" and "含" （“钋含” was technically not right）
             And such things like that
             */
             String tmp = parts[0];
@@ -318,7 +318,7 @@ public class AstralMekanismSimplifiedChineseLangProvider extends LanguageProvide
         result.put("biomass", "生物质");
         result.put("singularity", "奇点");
         result.put("nether", "下界");
-        result.put("star", "星");
+        result.put("star", "之星");
         result.put("coal", "煤炭");
         result.put("elastic", "弹性");
         result.put("convergent", "收敛");
