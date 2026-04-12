@@ -2,6 +2,7 @@ package astral_mekanism.network;
 
 import astral_mekanism.AstralMekanism;
 import astral_mekanism.AMEConstants;
+import astral_mekanism.network.to_server.PacketGuiAEKeySlotSet;
 import astral_mekanism.network.to_server.PacketGuiAstralFAssemblicator;
 import astral_mekanism.network.to_server.PacketGuiCompactTEP;
 import astral_mekanism.network.to_server.PacketGuiProgressFactory;
@@ -31,6 +32,7 @@ public class AMEPacketHandler extends BasePacketHandler {
         registerClientToServer(PacketGuiXpTank.class, PacketGuiXpTank::decode);
         registerClientToServer(PacketGuiAstralFAssemblicator.class, PacketGuiAstralFAssemblicator::decode);
         registerClientToServer(PacketGuiRatioSeparator.class, PacketGuiRatioSeparator::decode);
+        registerClientToServer(PacketGuiAEKeySlotSet.class, PacketGuiAEKeySlotSet::decode);
     }
 
 }
