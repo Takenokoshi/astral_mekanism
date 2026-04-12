@@ -12,6 +12,7 @@ import astral_mekanism.block.AstralMekanismBlockStateProvider;
 import astral_mekanism.item.AstralMekanismItemModelProvider;
 import astral_mekanism.lang.AstralMekanismEnglishLangProvider;
 import astral_mekanism.lang.AstralMekanismJapaneseLangProvider;
+import astral_mekanism.lang.AstralMekanismSimplifiedChineseLangProvider;
 import astral_mekanism.loottable.AstralMekanismLootTableProvider;
 import astral_mekanism.recipe.AstralMekanismRecipeProvider;
 import astral_mekanism.tag.AstralMekanismBlockTags;
@@ -53,6 +54,7 @@ public class AstralMekanismDataGenerator {
             gen.addProvider(true, new AstralMekanismBlockStateProvider(output, helper));
             gen.addProvider(true, new AstralMekanismEnglishLangProvider(output));
             gen.addProvider(true, new AstralMekanismJapaneseLangProvider(output));
+            gen.addProvider(true, new AstralMekanismSimplifiedChineseLangProvider(output));
             gen.addProvider(true, new AstralMekanismItemModelProvider(output, helper));
         }
         System.out.println("### AstralMekanism GatherDataEvent fired ###");
