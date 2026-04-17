@@ -2,17 +2,17 @@
     "type": "ae2:inscriber",
     "ingredients": {
         "bottom": {
-            "item": "advanced_ae:quantum_processor_press"
+            "item": "astral_mekanism:photon_processor_press"
         },
         "middle": {
-            "tag": "forge:ingots/refined_emerald"
+            "item": "astral_mekanism:autonomy_alloy_ingot"
         },
         "top": {
             "item": "astral_mekanism:autonomy_processor_press"
         }
     },
-    "mode": "press",
+    "mode": "inscribe",
     "result": {
-        "item": "astral_mekanism:firmament_processor_press"
+        "item": "astral_mekanism:printed_autonomy_processor"
     }
 }

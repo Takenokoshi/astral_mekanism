@@ -51,7 +51,6 @@ import mekanism.common.upgrade.MetallurgicInfuserUpgradeData;
 import mekanism.common.util.MekanismUtils;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -214,14 +213,6 @@ public class BEEssentialMetallurgicInfuser extends TileEntityProgressMachine<Met
 
     public MachineEnergyContainer<BEEssentialMetallurgicInfuser> getEnergyContainer() {
         return energyContainer;
-    }
-
-    @Override
-    public boolean isConfigurationDataCompatible(BlockEntityType<?> tileType) {
-        // Allow exact match or factories of the same type (as we will just ignore the
-        // extra data)
-        return super.isConfigurationDataCompatible(tileType)
-                || MekanismUtils.isSameTypeFactory(getBlockType(), tileType);
     }
 
     @Override

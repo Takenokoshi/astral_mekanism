@@ -1,0 +1,18 @@
+{
+    "type": "ae2:inscriber",
+    "ingredients": {
+        "bottom": {
+            "item": "astral_mekanism:photon_processor_press"
+        },
+        "middle": {
+            "item": "astral_mekanism:origin_alloy_ingot"
+        },
+        "top": {
+            "item": "astral_mekanism:origin_processor_press"
+        }
+    },
+    "mode": "inscribe",
+    "result": {
+        "item": "astral_mekanism:printed_origin_processor"
+    }
+}

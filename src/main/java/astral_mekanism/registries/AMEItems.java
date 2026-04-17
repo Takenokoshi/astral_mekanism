@@ -31,8 +31,12 @@ public class AMEItems {
             .register("refined_emerald_ingot");
     public static final ItemRegistryObject<Item> COMPOSITE_ALLOY_INGOT = ITEMS
             .register("composite_alloy_ingot", Rarity.RARE);
+    public static final ItemRegistryObject<Item> ORIGIN_ALLOY_INGOT = ITEMS
+            .register("origin_alloy_ingot", Rarity.RARE);
+    public static final ItemRegistryObject<Item> AUTONOMY_ALLOY_INGOT = ITEMS
+            .register("autonomy_alloy_ingot", p -> new Item(p.fireResistant().rarity(Rarity.EPIC)));
     public static final ItemRegistryObject<Item> FIRMAMENT_ALLOY_INGOT = ITEMS
-            .register("firmament_alloy_ingot", Rarity.RARE);
+            .register("firmament_alloy_ingot", p -> new Item(p.fireResistant().rarity(Rarity.EPIC)));
     public static final ItemRegistryObject<GlintItem> STARRY_SKY_ALLOY_INGOT = ITEMS
             .register("starry_sky_alloy_ingot", p -> new GlintItem(p.rarity(Rarity.EPIC)));
     public static final ItemRegistryObject<Item> ELASTIC_ALLOY = ITEMS.register("alloy_elastic", Rarity.UNCOMMON);
@@ -81,9 +85,9 @@ public class AMEItems {
     public static final ItemRegistryObject<Item> ORIGIN_PROCESSOR = ITEMS
             .register("origin_processor", Rarity.RARE);
     public static final ItemRegistryObject<Item> AUTONOMY_PROCESSOR = ITEMS
-            .register("autonomy_processor", Rarity.RARE);
+            .register("autonomy_processor", p -> new Item(p.fireResistant().rarity(Rarity.EPIC)));
     public static final ItemRegistryObject<Item> FIRMAMENT_PROCESSOR = ITEMS
-            .register("firmament_processor", Rarity.RARE);
+            .register("firmament_processor", p -> new Item(p.fireResistant().rarity(Rarity.EPIC)));
     public static final ItemRegistryObject<Item> PRINTED_PHOTON_PROCESSOR = ITEMS
             .register("printed_photon_processor", Rarity.RARE);
     public static final ItemRegistryObject<Item> PRINTED_COMPOSITE_PROCESSOR = ITEMS
@@ -91,13 +95,17 @@ public class AMEItems {
     public static final ItemRegistryObject<Item> PRINTED_ORIGIN_PROCESSOR = ITEMS
             .register("printed_origin_processor", Rarity.RARE);
     public static final ItemRegistryObject<Item> PRINTED_AUTONOMY_PROCESSOR = ITEMS
-            .register("printed_autonomy_processor", p -> new Item(p.fireResistant().rarity(Rarity.RARE)));
+            .register("printed_autonomy_processor", p -> new Item(p.fireResistant().rarity(Rarity.EPIC)));
     public static final ItemRegistryObject<Item> PRINTED_FIRMAMENT_PROCESSOR = ITEMS
-            .register("printed_firmament_processor", Rarity.RARE);
+            .register("printed_firmament_processor", p -> new Item(p.fireResistant().rarity(Rarity.EPIC)));
     public static final ItemRegistryObject<Item> PHOTON_PROCESSOR_PRESS = ITEMS
             .register("photon_processor_press", Rarity.RARE);
+    public static final ItemRegistryObject<Item> ORIGIN_PROCESSOR_PRESS = ITEMS
+            .register("origin_processor_press", Rarity.RARE);
+    public static final ItemRegistryObject<Item> AUTONOMY_PROCESSOR_PRESS = ITEMS
+            .register("autonomy_processor_press", p -> new Item(p.fireResistant().rarity(Rarity.EPIC)));
     public static final ItemRegistryObject<Item> FIRMAMENT_PROCESSOR_PRESS = ITEMS
-            .register("firmament_processor_press", Rarity.RARE);
+            .register("firmament_processor_press", p -> new Item(p.fireResistant().rarity(Rarity.EPIC)));
     public static final ItemRegistryObject<AMEBulkCellItem<?>> BULK_FLUID_CELL = ITEMS.register(
             "bulk_fluid_cell", AMEBulkCellItem::createFluid);
     public static final ItemRegistryObject<AMEBulkCellItem<?>> BULK_CHEMICAL_CELL = ITEMS.register(
