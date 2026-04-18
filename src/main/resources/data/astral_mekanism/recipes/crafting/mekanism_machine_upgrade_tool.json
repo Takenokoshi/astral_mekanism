@@ -1,0 +1,23 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "key": {
+        "X": {
+            "item": "astral_mekanism:astral_diamond"
+        },
+        "A": {
+            "tag": "ae2:all_quartz"
+        },
+        "I": {
+            "item": "astral_mekanism:ame_upgrade_base"
+        }
+    },
+    "pattern": [
+        "AIA",
+        "IXI",
+        "AIA"
+    ],
+    "result": {
+        "item": "astral_mekanism:mekanism_machine_upgrade_tool",
+        "count": 1
+    }
+}

@@ -1,0 +1,22 @@
+{
+    "type": "astral_mekanism:reconstruction",
+    "duration": 2000,
+    "energyRequired": 10000,
+    "itemNotConsumed": false,
+    "fluidInput": {
+        "amount": 1000,
+        "fluid": "astral_mekanism:wisdom_rivulet"
+    },
+    "gasInput": {
+        "amount": 100000,
+        "gas": "mekanism:polonium"
+    },
+    "itemInput": {
+        "ingredient": {
+            "item": "astral_mekanism:stardust_upgrade_base"
+        }
+    },
+    "itemOutput": {
+        "item": "astral_mekanism:stardust_speed_upgrade"
+    }
+}

@@ -6,6 +6,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import astral_mekanism.block.blockentity.interf.IHasCustomSizeContainer;
+import astral_mekanism.enumexpansion.AMEUpgrade;
 import astral_mekanism.recipes.cachedRecipe.ReconstructionCachedRecipe;
 import astral_mekanism.recipes.recipe.ReconstructionRecipe;
 import astral_mekanism.registries.AMERecipeTypes;
@@ -207,10 +208,15 @@ public class BEInterstellarAntineutronicMatterReconstructionApparatus
     @Override
     public void recalculateUpgrades(Upgrade upgrade) {
         super.recalculateUpgrades(upgrade);
+        if (upgrade == AMEUpgrade.STARDUST_SPEED.getValue()) {
+            recalculateSpeed();
+        }
     }
 
     private void recalculateSpeed() {
-        ticksRequired = recipeTicksRequired;
+        int st = upgradeComponent.getUpgrades(AMEUpgrade.STARDUST_SPEED.getValue());
+        ticksRequired = Math.max(1, recipeTicksRequired / (1 << st));
+        baselineMaxOperations = Math.max(1, (1 << st) / recipeTicksRequired);
     }
 
     private int getBaselineMaxOperations() {

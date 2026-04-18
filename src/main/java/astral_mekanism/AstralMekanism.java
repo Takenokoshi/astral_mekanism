@@ -2,6 +2,7 @@ package astral_mekanism;
 
 import com.mojang.logging.LogUtils;
 
+import appeng.api.features.GridLinkables;
 import appeng.api.storage.StorageCells;
 import astral_mekanism.config.AMEConfig;
 import astral_mekanism.item.cell.bulkcell.AMEBulkCellHandler;
@@ -26,6 +27,8 @@ import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import net.pedroksl.ae2addonlib.api.IGridLinkedItem;
+
 import org.slf4j.Logger;
 
 public class AstralMekanism {
@@ -46,7 +49,7 @@ public class AstralMekanism {
         AMEItemDefinitions.INSTANCE.register(modEventBus);
         AMEBlockDefinitions.INSTANCE.register(modEventBus);
         AMEBlockEntityRegistry.INSTANCE.register(modEventBus);
-        modEventBus.addListener(this::commonSetup);
+        modEventBus.addListener(this::commonSetup0);
         AMEMachines.MACHINES.register(modEventBus);
         AMEGases.GASES.register(modEventBus);
         AMEInfuseTypes.INFUSE_TYPES.register(modEventBus);
@@ -58,20 +61,21 @@ public class AstralMekanism {
         AMERecipeSerializers.RECIPE_SERIALIZERS.register(modEventBus);
         AMERecipeTypes.RECIPE_TYPES.register(modEventBus);
         AMECreativeTab.CREATIVE_TABS.register(modEventBus);
-        modEventBus.addListener(this::initCell);
+        modEventBus.addListener(this::commonSetUp1);
         MinecraftForge.EVENT_BUS.register(this);
         version = new Version(context.getActiveContainer());
         this.packetHandler = new AMEPacketHandler();
     }
 
-    private void commonSetup(final FMLCommonSetupEvent event) {
+    private void commonSetup0(final FMLCommonSetupEvent event) {
         LOGGER.info(MODID + " was initialized.");
         packetHandler.initialize();
     }
 
-    private void initCell(final FMLCommonSetupEvent event) {
+    private void commonSetUp1(final FMLCommonSetupEvent event) {
         StorageCells.addCellHandler(AMEBulkCellHandler.CHEMICAL_HANDLER);
         StorageCells.addCellHandler(AMEBulkCellHandler.FLUID_HANDLER);
+        GridLinkables.register(AMEItems.MEK_MACHINE_UPGRADE_TOOL, IGridLinkedItem.LINKABLE_HANDLER);
     }
 
     public static AMEPacketHandler packetHandler() {

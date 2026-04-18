@@ -7,6 +7,7 @@ import astral_mekanism.AMEConstants;
 import astral_mekanism.enumexpansion.AMEUpgrade;
 import astral_mekanism.item.GlintItem;
 import astral_mekanism.item.GlintItemNameColored;
+import astral_mekanism.item.MekMachineUpgradeToolItem;
 import astral_mekanism.item.cell.bulkcell.AMEBulkCellItem;
 import astral_mekanism.registryenum.AMEProcessableMaterialType;
 import astral_mekanism.registryenum.AMEProcessingItemStates;
@@ -112,6 +113,7 @@ public class AMEItems {
             "bulk_chemical_cell", AMEBulkCellItem::createChemical);
     public static final ItemRegistryObject<Item> UPGRADE_BASE = ITEMS.register("ame_upgrade_base");
     public static final ItemRegistryObject<Item> HYPER_UPGRADE_BASE = ITEMS.register("hyper_upgrade_base");
+    public static final ItemRegistryObject<Item> STARDUST_UPGRADE_BASE = ITEMS.register("stardust_upgrade_base");
     public static final ItemRegistryObject<ItemUpgrade> COBBLESTONE_SUPPLY_UPGRADE = registerUpgrade(
             AMEUpgrade.COBBLESTONE_SUPPLY.getValue());
     public static final ItemRegistryObject<ItemUpgrade> WATER_SUPPLY_UPGRADE = registerUpgrade(
@@ -123,7 +125,11 @@ public class AMEItems {
             AMEUpgrade.AIR_INTAKE.getValue());
     public static final ItemRegistryObject<ItemUpgrade> HYPER_SPEED_UPGRADE = registerUpgrade(
             AMEUpgrade.HYPER_SPEED.getValue());
+    public static final ItemRegistryObject<ItemUpgrade> STARDUST_SPEED_UPGRADE = registerUpgrade(
+            AMEUpgrade.STARDUST_SPEED.getValue());
     public static final ItemRegistryObject<Item> INSERT_UPGRADE = ITEMS.register("insert_upgrade");
+    public static final ItemRegistryObject<MekMachineUpgradeToolItem> MEK_MACHINE_UPGRADE_TOOL = ITEMS.register(
+            "mekanism_machine_upgrade_tool", MekMachineUpgradeToolItem::new);
 
     public static final EnumMap<AMEProcessableMaterialType, EnumMap<AMEProcessingItemStates, ItemRegistryObject<?>>> AME_MATERIAL_PROCESSING_ITEMS = createMaterialProcessItemMap();
 

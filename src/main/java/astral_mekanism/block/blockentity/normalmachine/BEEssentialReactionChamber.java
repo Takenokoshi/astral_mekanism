@@ -113,10 +113,10 @@ public class BEEssentialReactionChamber extends BlockEntityProgressMachine<React
     protected IFluidTankHolder getInitialFluidTanks(IContentsListener listener,
             IContentsListener recipeCacheListener) {
         FluidTankHelper builder = FluidTankHelper.forSideWithConfig(this::getDirection, this::getConfig);
-        builder.addTank(inputTank = BasicFluidTank.input(40000,
+        builder.addTank(inputTank = BasicFluidTank.input(0x7fffffff,
                 stack -> containsFluidOther(getItems(), stack),
                 this::containsFluid, recipeCacheListener));
-        builder.addTank(outputTank = BasicFluidTank.output(40000, listener));
+        builder.addTank(outputTank = BasicFluidTank.output(0x7fffffff, listener));
         return builder.build();
     }
 
