@@ -1,7 +1,7 @@
-package astral_mekanism.recipes.handler;
+package astral_mekanism.longRecipe.handler;
 
+import astral_mekanism.longRecipe.LongOperationTracker;
 import mekanism.api.chemical.merged.BoxedChemicalStack;
-import mekanism.api.recipes.cache.CachedRecipe.OperationTracker;
 import mekanism.api.recipes.ingredients.ChemicalStackIngredient;
 
 public interface IBoxedChemicalInputHandler {
@@ -11,5 +11,5 @@ public interface IBoxedChemicalInputHandler {
 
     void use(BoxedChemicalStack recipeInput, long operations);
 
-    void calculateOperationsCanSupport(OperationTracker tracker, BoxedChemicalStack recipeInput, long usageMultiplier);
+    void calculateOperationsCanSupport(LongOperationTracker tracker, BoxedChemicalStack recipeInput, long usageMultiplier);
 }

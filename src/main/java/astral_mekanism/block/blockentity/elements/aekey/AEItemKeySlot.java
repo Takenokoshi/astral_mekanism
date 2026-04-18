@@ -10,12 +10,12 @@ import appeng.api.config.Actionable;
 import appeng.api.networking.security.IActionSource;
 import appeng.api.stacks.AEItemKey;
 import appeng.api.storage.MEStorage;
+import astral_mekanism.longRecipe.LongOperationTracker;
+import astral_mekanism.longRecipe.handler.ILongInputHandler;
+import astral_mekanism.longRecipe.handler.ILongOutputHandler;
 import mekanism.api.IContentsListener;
-import mekanism.api.recipes.cache.CachedRecipe.OperationTracker;
 import mekanism.api.recipes.cache.CachedRecipe.OperationTracker.RecipeError;
 import mekanism.api.recipes.ingredients.InputIngredient;
-import mekanism.api.recipes.inputs.IInputHandler;
-import mekanism.api.recipes.outputs.IOutputHandler;
 import mekanism.common.inventory.container.MekanismContainer;
 import mekanism.common.inventory.container.sync.SyncableItemStack;
 import net.minecraft.world.item.ItemStack;
@@ -33,9 +33,9 @@ public class AEItemKeySlot extends AEKeySlot<AEItemKey> {
         this(storageSupplier, alwaysTrue, listener, slotIndex);
     }
 
-    public IInputHandler<ItemStack> getInputHandler(LongSupplier longSupplier, @Nullable IActionSource actionSource,
+    public ILongInputHandler<ItemStack> getInputHandler(LongSupplier longSupplier, @Nullable IActionSource actionSource,
             RecipeError notEnoughError) {
-        return new IInputHandler<ItemStack>() {
+        return new ILongInputHandler<ItemStack>() {
             @Override
             public ItemStack getInput() {
                 return key != null ? key.toStack() : ItemStack.EMPTY;
@@ -47,7 +47,7 @@ public class AEItemKeySlot extends AEKeySlot<AEItemKey> {
             }
 
             @Override
-            public void use(ItemStack recipeInput, int operations) {
+            public void use(ItemStack recipeInput, long operations) {
                 MEStorage storage = storageSupplier.get();
                 if (key == null || storage == null) {
                     return;
@@ -56,7 +56,7 @@ public class AEItemKeySlot extends AEKeySlot<AEItemKey> {
             }
 
             @Override
-            public void calculateOperationsCanSupport(OperationTracker tracker, ItemStack recipeInput,
+            public void calculateOperationsCanSupport(LongOperationTracker tracker, ItemStack recipeInput,
                     int usageMultiplier) {
                 if (!ItemStack.isSameItemSameTags(getInput(), recipeInput)) {
                     tracker.mismatchedRecipe();
@@ -73,18 +73,18 @@ public class AEItemKeySlot extends AEKeySlot<AEItemKey> {
                     tracker.updateOperations(0);
                     tracker.addError(notEnoughError);
                 } else {
-                    tracker.updateOperations(
-                            (int) Math.min(0x7fffffff, usaAble / (recipeInput.getCount() * usageMultiplier)));
+                    tracker.updateOperations(usaAble / (recipeInput.getCount() * usageMultiplier));
                 }
             }
         };
     }
 
-    public IOutputHandler<ItemStack> getOutputHandler(LongSupplier longSupplier, @Nullable IActionSource actionSource,
+    public ILongOutputHandler<ItemStack> getOutputHandler(LongSupplier longSupplier,
+            @Nullable IActionSource actionSource,
             RecipeError notEnuoghSpaceError) {
-        return new IOutputHandler<ItemStack>() {
+        return new ILongOutputHandler<ItemStack>() {
             @Override
-            public void handleOutput(ItemStack toOutput, int operations) {
+            public void handleOutput(ItemStack toOutput, long operations) {
                 MEStorage storage = storageSupplier.get();
                 if (key == null || storage == null) {
                     return;
@@ -93,7 +93,7 @@ public class AEItemKeySlot extends AEKeySlot<AEItemKey> {
             }
 
             @Override
-            public void calculateOperationsCanSupport(OperationTracker tracker, ItemStack toOutput) {
+            public void calculateOperationsCanSupport(LongOperationTracker tracker, ItemStack toOutput) {
                 AEItemKey outputKey = AEItemKey.of(toOutput);
                 if (outputKey.equals(key)) {
                     setKey(outputKey);
@@ -110,7 +110,7 @@ public class AEItemKeySlot extends AEKeySlot<AEItemKey> {
                     tracker.updateOperations(0);
                     tracker.addError(notEnuoghSpaceError);
                 } else {
-                    tracker.updateOperations((int) Math.min(0x7fffffff, outputAble / toOutput.getCount()));
+                    tracker.updateOperations(outputAble / toOutput.getCount());
                 }
             }
         };

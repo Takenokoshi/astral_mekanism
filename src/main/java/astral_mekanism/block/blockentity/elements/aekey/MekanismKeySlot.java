@@ -11,7 +11,10 @@ import org.jetbrains.annotations.Nullable;
 import appeng.api.config.Actionable;
 import appeng.api.networking.security.IActionSource;
 import appeng.api.storage.MEStorage;
-import astral_mekanism.recipes.handler.IBoxedChemicalInputHandler;
+import astral_mekanism.longRecipe.LongOperationTracker;
+import astral_mekanism.longRecipe.handler.IBoxedChemicalInputHandler;
+import astral_mekanism.longRecipe.handler.ILongInputHandler;
+import astral_mekanism.longRecipe.handler.ILongOutputHandler;
 import me.ramidzkh.mekae2.ae2.MekanismKey;
 import me.ramidzkh.mekae2.ae2.MekanismKeyType;
 import mekanism.api.IContentsListener;
@@ -21,7 +24,6 @@ import mekanism.api.chemical.infuse.InfusionStack;
 import mekanism.api.chemical.merged.BoxedChemicalStack;
 import mekanism.api.chemical.pigment.PigmentStack;
 import mekanism.api.chemical.slurry.SlurryStack;
-import mekanism.api.recipes.cache.CachedRecipe.OperationTracker;
 import mekanism.api.recipes.cache.CachedRecipe.OperationTracker.RecipeError;
 import mekanism.api.recipes.ingredients.ChemicalStackIngredient;
 import mekanism.api.recipes.ingredients.InputIngredient;
@@ -29,8 +31,6 @@ import mekanism.api.recipes.ingredients.ChemicalStackIngredient.GasStackIngredie
 import mekanism.api.recipes.ingredients.ChemicalStackIngredient.InfusionStackIngredient;
 import mekanism.api.recipes.ingredients.ChemicalStackIngredient.PigmentStackIngredient;
 import mekanism.api.recipes.ingredients.ChemicalStackIngredient.SlurryStackIngredient;
-import mekanism.api.recipes.inputs.IInputHandler;
-import mekanism.api.recipes.outputs.IOutputHandler;
 import mekanism.common.inventory.container.MekanismContainer;
 import mekanism.common.inventory.container.sync.list.SyncableStringList;
 import net.minecraft.resources.ResourceLocation;
@@ -48,9 +48,10 @@ public class MekanismKeySlot extends AEKeySlot<MekanismKey> {
         this(storageSupplier, alwaysTrue, listener, slotIndex);
     }
 
-    public IInputHandler<GasStack> getGasInputHandler(LongSupplier longSupplier, @Nullable IActionSource actionSource,
+    public ILongInputHandler<GasStack> getGasInputHandler(LongSupplier longSupplier,
+            @Nullable IActionSource actionSource,
             RecipeError notEnoughError) {
-        return new IInputHandler<GasStack>() {
+        return new ILongInputHandler<GasStack>() {
             @Override
             public GasStack getInput() {
                 return key != null ? key.getForm() == MekanismKey.GAS ? (GasStack) key.getStack() : GasStack.EMPTY
@@ -63,7 +64,7 @@ public class MekanismKeySlot extends AEKeySlot<MekanismKey> {
             }
 
             @Override
-            public void use(GasStack recipeInput, int operations) {
+            public void use(GasStack recipeInput, long operations) {
                 MEStorage storage = storageSupplier.get();
                 if (key == null || storage == null) {
                     return;
@@ -72,7 +73,7 @@ public class MekanismKeySlot extends AEKeySlot<MekanismKey> {
             }
 
             @Override
-            public void calculateOperationsCanSupport(OperationTracker tracker, GasStack recipeInput,
+            public void calculateOperationsCanSupport(LongOperationTracker tracker, GasStack recipeInput,
                     int usageMultiplier) {
                 if (!recipeInput.isTypeEqual(getInput())) {
                     tracker.mismatchedRecipe();
@@ -89,17 +90,16 @@ public class MekanismKeySlot extends AEKeySlot<MekanismKey> {
                     tracker.updateOperations(0);
                     tracker.addError(notEnoughError);
                 } else {
-                    tracker.updateOperations(
-                            (int) Math.min(0x7fffffff, usaAble / (recipeInput.getAmount() * usageMultiplier)));
+                    tracker.updateOperations(usaAble / (recipeInput.getAmount() * usageMultiplier));
                 }
             }
         };
     }
 
-    public IInputHandler<InfusionStack> getInfusionInputHandler(LongSupplier longSupplier,
+    public ILongInputHandler<InfusionStack> getInfusionInputHandler(LongSupplier longSupplier,
             @Nullable IActionSource actionSource,
             RecipeError notEnoughError) {
-        return new IInputHandler<InfusionStack>() {
+        return new ILongInputHandler<InfusionStack>() {
 
             @Override
             public InfusionStack getInput() {
@@ -114,7 +114,7 @@ public class MekanismKeySlot extends AEKeySlot<MekanismKey> {
             }
 
             @Override
-            public void use(InfusionStack recipeInput, int operations) {
+            public void use(InfusionStack recipeInput, long operations) {
                 MEStorage storage = storageSupplier.get();
                 if (key == null || storage == null) {
                     return;
@@ -123,7 +123,7 @@ public class MekanismKeySlot extends AEKeySlot<MekanismKey> {
             }
 
             @Override
-            public void calculateOperationsCanSupport(OperationTracker tracker, InfusionStack recipeInput,
+            public void calculateOperationsCanSupport(LongOperationTracker tracker, InfusionStack recipeInput,
                     int usageMultiplier) {
                 if (!recipeInput.isTypeEqual(getInput())) {
                     tracker.mismatchedRecipe();
@@ -140,17 +140,16 @@ public class MekanismKeySlot extends AEKeySlot<MekanismKey> {
                     tracker.updateOperations(0);
                     tracker.addError(notEnoughError);
                 } else {
-                    tracker.updateOperations(
-                            (int) Math.min(0x7fffffff, usaAble / (recipeInput.getAmount() * usageMultiplier)));
+                    tracker.updateOperations(usaAble / (recipeInput.getAmount() * usageMultiplier));
                 }
             }
         };
     }
 
-    public IInputHandler<PigmentStack> getPigmentInputHandler(LongSupplier longSupplier,
+    public ILongInputHandler<PigmentStack> getPigmentInputHandler(LongSupplier longSupplier,
             @Nullable IActionSource actionSource,
             RecipeError notEnoughError) {
-        return new IInputHandler<PigmentStack>() {
+        return new ILongInputHandler<PigmentStack>() {
 
             @Override
             public PigmentStack getInput() {
@@ -165,7 +164,7 @@ public class MekanismKeySlot extends AEKeySlot<MekanismKey> {
             }
 
             @Override
-            public void use(PigmentStack recipeInput, int operations) {
+            public void use(PigmentStack recipeInput, long operations) {
                 MEStorage storage = storageSupplier.get();
                 if (key == null || storage == null) {
                     return;
@@ -174,7 +173,7 @@ public class MekanismKeySlot extends AEKeySlot<MekanismKey> {
             }
 
             @Override
-            public void calculateOperationsCanSupport(OperationTracker tracker, PigmentStack recipeInput,
+            public void calculateOperationsCanSupport(LongOperationTracker tracker, PigmentStack recipeInput,
                     int usageMultiplier) {
                 if (!recipeInput.isTypeEqual(getInput())) {
                     tracker.mismatchedRecipe();
@@ -191,17 +190,16 @@ public class MekanismKeySlot extends AEKeySlot<MekanismKey> {
                     tracker.updateOperations(0);
                     tracker.addError(notEnoughError);
                 } else {
-                    tracker.updateOperations(
-                            (int) Math.min(0x7fffffff, usaAble / (recipeInput.getAmount() * usageMultiplier)));
+                    tracker.updateOperations(usaAble / (recipeInput.getAmount() * usageMultiplier));
                 }
             }
         };
     }
 
-    public IInputHandler<SlurryStack> getSlurryInputHandler(LongSupplier longSupplier,
+    public ILongInputHandler<SlurryStack> getSlurryInputHandler(LongSupplier longSupplier,
             @Nullable IActionSource actionSource,
             RecipeError notEnoughError) {
-        return new IInputHandler<SlurryStack>() {
+        return new ILongInputHandler<SlurryStack>() {
 
             @Override
             public SlurryStack getInput() {
@@ -216,7 +214,7 @@ public class MekanismKeySlot extends AEKeySlot<MekanismKey> {
             }
 
             @Override
-            public void use(SlurryStack recipeInput, int operations) {
+            public void use(SlurryStack recipeInput, long operations) {
                 MEStorage storage = storageSupplier.get();
                 if (key == null || storage == null) {
                     return;
@@ -225,7 +223,7 @@ public class MekanismKeySlot extends AEKeySlot<MekanismKey> {
             }
 
             @Override
-            public void calculateOperationsCanSupport(OperationTracker tracker, SlurryStack recipeInput,
+            public void calculateOperationsCanSupport(LongOperationTracker tracker, SlurryStack recipeInput,
                     int usageMultiplier) {
                 if (!recipeInput.isTypeEqual(getInput())) {
                     tracker.mismatchedRecipe();
@@ -242,8 +240,7 @@ public class MekanismKeySlot extends AEKeySlot<MekanismKey> {
                     tracker.updateOperations(0);
                     tracker.addError(notEnoughError);
                 } else {
-                    tracker.updateOperations(
-                            (int) Math.min(0x7fffffff, usaAble / (recipeInput.getAmount() * usageMultiplier)));
+                    tracker.updateOperations(usaAble / (recipeInput.getAmount() * usageMultiplier));
                 }
             }
         };
@@ -295,7 +292,7 @@ public class MekanismKeySlot extends AEKeySlot<MekanismKey> {
             }
 
             @Override
-            public void calculateOperationsCanSupport(OperationTracker tracker, BoxedChemicalStack recipeInput,
+            public void calculateOperationsCanSupport(LongOperationTracker tracker, BoxedChemicalStack recipeInput,
                     long usageMultiplier) {
                 if (!recipeInput.getType().equals(getInput().getType())) {
                     tracker.mismatchedRecipe();
@@ -312,19 +309,19 @@ public class MekanismKeySlot extends AEKeySlot<MekanismKey> {
                     tracker.updateOperations(0);
                     tracker.addError(notEnoughError);
                 } else {
-                    tracker.updateOperations((int) Math.min(0x7fffffff,
-                            usaAble / (recipeInput.getChemicalStack().getAmount() * usageMultiplier)));
+                    tracker.updateOperations(usaAble / (recipeInput.getChemicalStack().getAmount() * usageMultiplier));
                 }
             }
         };
     }
 
-    public IOutputHandler<GasStack> getGasOutputHandler(LongSupplier longSupplier, @Nullable IActionSource actionSource,
+    public ILongOutputHandler<GasStack> getGasOutputHandler(LongSupplier longSupplier,
+            @Nullable IActionSource actionSource,
             RecipeError notEnuoghSpaceError) {
-        return new IOutputHandler<GasStack>() {
+        return new ILongOutputHandler<GasStack>() {
 
             @Override
-            public void handleOutput(GasStack toOutput, int operations) {
+            public void handleOutput(GasStack toOutput, long operations) {
                 MEStorage storage = storageSupplier.get();
                 if (key == null || storage == null) {
                     return;
@@ -333,7 +330,7 @@ public class MekanismKeySlot extends AEKeySlot<MekanismKey> {
             }
 
             @Override
-            public void calculateOperationsCanSupport(OperationTracker tracker, GasStack toOutput) {
+            public void calculateOperationsCanSupport(LongOperationTracker tracker, GasStack toOutput) {
                 MekanismKey outputKey = MekanismKey.of(toOutput);
                 if (outputKey.equals(key)) {
                     setKey(outputKey);
@@ -350,19 +347,19 @@ public class MekanismKeySlot extends AEKeySlot<MekanismKey> {
                     tracker.updateOperations(0);
                     tracker.addError(notEnuoghSpaceError);
                 } else {
-                    tracker.updateOperations((int) Math.min(0x7fffffff, outputAble / toOutput.getAmount()));
+                    tracker.updateOperations(outputAble / toOutput.getAmount());
                 }
             }
         };
     }
 
-    public IOutputHandler<InfusionStack> getInfusionOutputHandler(LongSupplier longSupplier,
+    public ILongOutputHandler<InfusionStack> getInfusionOutputHandler(LongSupplier longSupplier,
             @Nullable IActionSource actionSource,
             RecipeError notEnuoghSpaceError) {
-        return new IOutputHandler<InfusionStack>() {
+        return new ILongOutputHandler<InfusionStack>() {
 
             @Override
-            public void handleOutput(InfusionStack toOutput, int operations) {
+            public void handleOutput(InfusionStack toOutput, long operations) {
                 MEStorage storage = storageSupplier.get();
                 if (key == null || storage == null) {
                     return;
@@ -371,7 +368,7 @@ public class MekanismKeySlot extends AEKeySlot<MekanismKey> {
             }
 
             @Override
-            public void calculateOperationsCanSupport(OperationTracker tracker, InfusionStack toOutput) {
+            public void calculateOperationsCanSupport(LongOperationTracker tracker, InfusionStack toOutput) {
                 MekanismKey outputKey = MekanismKey.of(toOutput);
                 if (outputKey.equals(key)) {
                     setKey(outputKey);
@@ -388,19 +385,19 @@ public class MekanismKeySlot extends AEKeySlot<MekanismKey> {
                     tracker.updateOperations(0);
                     tracker.addError(notEnuoghSpaceError);
                 } else {
-                    tracker.updateOperations((int) Math.min(0x7fffffff, outputAble / toOutput.getAmount()));
+                    tracker.updateOperations(outputAble / toOutput.getAmount());
                 }
             }
         };
     }
 
-    public IOutputHandler<PigmentStack> getPigmentOutputHandler(LongSupplier longSupplier,
+    public ILongOutputHandler<PigmentStack> getPigmentOutputHandler(LongSupplier longSupplier,
             @Nullable IActionSource actionSource,
             RecipeError notEnuoghSpaceError) {
-        return new IOutputHandler<PigmentStack>() {
+        return new ILongOutputHandler<PigmentStack>() {
 
             @Override
-            public void handleOutput(PigmentStack toOutput, int operations) {
+            public void handleOutput(PigmentStack toOutput, long operations) {
                 MEStorage storage = storageSupplier.get();
                 if (key == null || storage == null) {
                     return;
@@ -409,7 +406,7 @@ public class MekanismKeySlot extends AEKeySlot<MekanismKey> {
             }
 
             @Override
-            public void calculateOperationsCanSupport(OperationTracker tracker, PigmentStack toOutput) {
+            public void calculateOperationsCanSupport(LongOperationTracker tracker, PigmentStack toOutput) {
                 MekanismKey outputKey = MekanismKey.of(toOutput);
                 if (outputKey.equals(key)) {
                     setKey(outputKey);
@@ -426,19 +423,19 @@ public class MekanismKeySlot extends AEKeySlot<MekanismKey> {
                     tracker.updateOperations(0);
                     tracker.addError(notEnuoghSpaceError);
                 } else {
-                    tracker.updateOperations((int) Math.min(0x7fffffff, outputAble / toOutput.getAmount()));
+                    tracker.updateOperations(outputAble / toOutput.getAmount());
                 }
             }
         };
     }
 
-    public IOutputHandler<SlurryStack> getSlurryOutputHandler(LongSupplier longSupplier,
+    public ILongOutputHandler<SlurryStack> getSlurryOutputHandler(LongSupplier longSupplier,
             @Nullable IActionSource actionSource,
             RecipeError notEnuoghSpaceError) {
-        return new IOutputHandler<SlurryStack>() {
+        return new ILongOutputHandler<SlurryStack>() {
 
             @Override
-            public void handleOutput(SlurryStack toOutput, int operations) {
+            public void handleOutput(SlurryStack toOutput, long operations) {
                 MEStorage storage = storageSupplier.get();
                 if (key == null || storage == null) {
                     return;
@@ -447,7 +444,7 @@ public class MekanismKeySlot extends AEKeySlot<MekanismKey> {
             }
 
             @Override
-            public void calculateOperationsCanSupport(OperationTracker tracker, SlurryStack toOutput) {
+            public void calculateOperationsCanSupport(LongOperationTracker tracker, SlurryStack toOutput) {
                 MekanismKey outputKey = MekanismKey.of(toOutput);
                 if (outputKey.equals(key)) {
                     setKey(outputKey);
@@ -464,19 +461,19 @@ public class MekanismKeySlot extends AEKeySlot<MekanismKey> {
                     tracker.updateOperations(0);
                     tracker.addError(notEnuoghSpaceError);
                 } else {
-                    tracker.updateOperations((int) Math.min(0x7fffffff, outputAble / toOutput.getAmount()));
+                    tracker.updateOperations(outputAble / toOutput.getAmount());
                 }
             }
         };
     }
 
-    public IOutputHandler<BoxedChemicalStack> getBoxedOutputHandler(LongSupplier longSupplier,
+    public ILongOutputHandler<BoxedChemicalStack> getBoxedOutputHandler(LongSupplier longSupplier,
             @Nullable IActionSource actionSource,
             RecipeError notEnuoghSpaceError) {
-        return new IOutputHandler<BoxedChemicalStack>() {
+        return new ILongOutputHandler<BoxedChemicalStack>() {
 
             @Override
-            public void handleOutput(BoxedChemicalStack toOutput, int operations) {
+            public void handleOutput(BoxedChemicalStack toOutput, long operations) {
                 MEStorage storage = storageSupplier.get();
                 if (key == null || storage == null) {
                     return;
@@ -486,7 +483,7 @@ public class MekanismKeySlot extends AEKeySlot<MekanismKey> {
             }
 
             @Override
-            public void calculateOperationsCanSupport(OperationTracker tracker, BoxedChemicalStack toOutput) {
+            public void calculateOperationsCanSupport(LongOperationTracker tracker, BoxedChemicalStack toOutput) {
                 MekanismKey outputKey = MekanismKey.of(toOutput.getChemicalStack());
                 if (outputKey.equals(key)) {
                     setKey(outputKey);

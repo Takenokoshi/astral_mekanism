@@ -10,12 +10,12 @@ import appeng.api.config.Actionable;
 import appeng.api.networking.security.IActionSource;
 import appeng.api.stacks.AEFluidKey;
 import appeng.api.storage.MEStorage;
+import astral_mekanism.longRecipe.LongOperationTracker;
+import astral_mekanism.longRecipe.handler.ILongInputHandler;
+import astral_mekanism.longRecipe.handler.ILongOutputHandler;
 import mekanism.api.IContentsListener;
-import mekanism.api.recipes.cache.CachedRecipe.OperationTracker;
 import mekanism.api.recipes.cache.CachedRecipe.OperationTracker.RecipeError;
 import mekanism.api.recipes.ingredients.InputIngredient;
-import mekanism.api.recipes.inputs.IInputHandler;
-import mekanism.api.recipes.outputs.IOutputHandler;
 import mekanism.common.inventory.container.MekanismContainer;
 import mekanism.common.inventory.container.sync.SyncableFluidStack;
 import net.minecraftforge.fluids.FluidStack;
@@ -33,9 +33,10 @@ public class AEFluidKeySlot extends AEKeySlot<AEFluidKey> {
         this(storageSupplier, alwaysTrue, listener, slotIndex);
     }
 
-    public IInputHandler<FluidStack> getInputHandler(LongSupplier longSupplier, @Nullable IActionSource actionSource,
+    public ILongInputHandler<FluidStack> getInputHandler(LongSupplier longSupplier,
+            @Nullable IActionSource actionSource,
             RecipeError notEnoughError) {
-        return new IInputHandler<FluidStack>() {
+        return new ILongInputHandler<FluidStack>() {
             @Override
             public FluidStack getInput() {
                 return key != null ? key.toStack(1) : FluidStack.EMPTY;
@@ -47,7 +48,7 @@ public class AEFluidKeySlot extends AEKeySlot<AEFluidKey> {
             }
 
             @Override
-            public void use(FluidStack recipeInput, int operations) {
+            public void use(FluidStack recipeInput, long operations) {
                 MEStorage storage = storageSupplier.get();
                 if (key == null || storage == null) {
                     return;
@@ -56,7 +57,7 @@ public class AEFluidKeySlot extends AEKeySlot<AEFluidKey> {
             }
 
             @Override
-            public void calculateOperationsCanSupport(OperationTracker tracker, FluidStack recipeInput,
+            public void calculateOperationsCanSupport(LongOperationTracker tracker, FluidStack recipeInput,
                     int usageMultiplier) {
                 if (!FluidStack.areFluidStackTagsEqual(getInput(), recipeInput)) {
                     tracker.mismatchedRecipe();
@@ -73,18 +74,18 @@ public class AEFluidKeySlot extends AEKeySlot<AEFluidKey> {
                     tracker.updateOperations(0);
                     tracker.addError(notEnoughError);
                 } else {
-                    tracker.updateOperations(
-                            (int) Math.min(0x7fffffff, usaAble / (recipeInput.getAmount() * usageMultiplier)));
+                    tracker.updateOperations(usaAble / (recipeInput.getAmount() * usageMultiplier));
                 }
             }
         };
     }
 
-    public IOutputHandler<FluidStack> getOutputHandler(LongSupplier longSupplier, @Nullable IActionSource actionSource,
+    public ILongOutputHandler<FluidStack> getOutputHandler(LongSupplier longSupplier,
+            @Nullable IActionSource actionSource,
             RecipeError notEnuoghSpaceError) {
-        return new IOutputHandler<FluidStack>() {
+        return new ILongOutputHandler<FluidStack>() {
             @Override
-            public void handleOutput(FluidStack toOutput, int operations) {
+            public void handleOutput(FluidStack toOutput, long operations) {
                 MEStorage storage = storageSupplier.get();
                 if (key == null || storage == null) {
                     return;
@@ -92,7 +93,7 @@ public class AEFluidKeySlot extends AEKeySlot<AEFluidKey> {
             }
 
             @Override
-            public void calculateOperationsCanSupport(OperationTracker tracker, FluidStack toOutput) {
+            public void calculateOperationsCanSupport(LongOperationTracker tracker, FluidStack toOutput) {
                 AEFluidKey outputKey = AEFluidKey.of(toOutput);
                 if (outputKey.equals(key)) {
                     setKey(outputKey);
@@ -109,7 +110,7 @@ public class AEFluidKeySlot extends AEKeySlot<AEFluidKey> {
                     tracker.updateOperations(0);
                     tracker.addError(notEnuoghSpaceError);
                 } else {
-                    tracker.updateOperations((int) Math.min(0x7fffffff, outputAble / toOutput.getAmount()));
+                    tracker.updateOperations(outputAble / toOutput.getAmount());
                 }
             }
         };
