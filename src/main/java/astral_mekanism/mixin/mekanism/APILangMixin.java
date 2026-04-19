@@ -62,5 +62,7 @@ public class APILangMixin {
         AMEAPILang.UPGRADE_AIR_INTAKE_DESCRIPTION = astral_mekanism$createNew("upgrade", "air_intake.description");
         AMEAPILang.UPGRADE_HYPER_SPEED = astral_mekanism$createNew("upgrade", "hyper_speed");
         AMEAPILang.UPGRADE_HYPER_SPEED_DESCRIPTION = astral_mekanism$createNew("upgrade", "hyper_speed.description");
+        AMEAPILang.UPGRADE_STARDUST_SPEED = astral_mekanism$createNew("upgrade", "stardust_speed");
+        AMEAPILang.UPGRADE_STARDUST_SPEED_DESCRIPTION = astral_mekanism$createNew("upgrade", "stardust_speed.description");
     }
 }

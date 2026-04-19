@@ -46,5 +46,9 @@ public class UpgradeUtilsMixin {
             cir.cancel();
             return;
         }
+        if (upgrade==AMEUpgrade.STARDUST_SPEED.getValue()) {
+            cir.setReturnValue(AMEItems.STARDUST_SPEED_UPGRADE.getItemStack(count));
+            cir.cancel();
+        }
     }
 }

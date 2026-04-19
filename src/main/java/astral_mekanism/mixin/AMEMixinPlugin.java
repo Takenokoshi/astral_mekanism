@@ -25,6 +25,9 @@ public class AMEMixinPlugin implements IMixinConfigPlugin {
         if (mixinClassName.contains(".mekmm.")) {
             return LoadingModList.get().getModFileById("mekmm") != null;
         }
+        if (mixinClassName.contains(".morethermalevaporation.")) {
+            return LoadingModList.get().getModFileById("morethermalevaporation") != null;
+        }
         return true;
     }
 

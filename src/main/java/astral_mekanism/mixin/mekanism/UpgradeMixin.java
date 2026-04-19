@@ -77,6 +77,9 @@ public class UpgradeMixin {
         AMEUpgrade.HYPER_SPEED
                 .setValue(astral_mekanism$createNew("hyper_speed", AMEAPILang.UPGRADE_HYPER_SPEED,
                         AMEAPILang.UPGRADE_HYPER_SPEED_DESCRIPTION, 8, EnumColor.PURPLE));
+        AMEUpgrade.STARDUST_SPEED
+                .setValue(astral_mekanism$createNew("stardust_speed", AMEAPILang.UPGRADE_STARDUST_SPEED,
+                        AMEAPILang.UPGRADE_STARDUST_SPEED_DESCRIPTION, 8, EnumColor.WHITE));
         AMEUpgrade.initializeMap();
     }
 

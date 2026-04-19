@@ -1,9 +1,9 @@
 {
     "type": "evolvedmekanism:chemixing",
     "extraInput": {
-        "amount": 8,
+        "amount": 16,
         "ingredient": {
-            "tag": "forge:ingots/composite_alloy"
+        "item": "astral_mekanism:autonomy_alloy_ingot"
         }
     },
     "gasInput": {
@@ -11,7 +11,7 @@
         "gas": "astral_mekanism:astral_ether"
     },
     "mainInput": {
-        "amount": 16,
+        "amount": 64,
         "ingredient": {
             "item": "ae2:sky_dust"
         }

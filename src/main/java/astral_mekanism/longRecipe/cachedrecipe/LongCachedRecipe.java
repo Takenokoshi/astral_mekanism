@@ -1,0 +1,207 @@
+package astral_mekanism.longRecipe.cachedrecipe;
+
+import java.util.Collections;
+import java.util.Objects;
+import java.util.Set;
+import java.util.function.BooleanSupplier;
+import java.util.function.Consumer;
+import java.util.function.IntConsumer;
+import java.util.function.IntSupplier;
+import java.util.function.LongSupplier;
+
+import astral_mekanism.generalrecipe.cachedrecipe.ICachedRecipe;
+import astral_mekanism.longRecipe.LongOperationTracker;
+import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
+import mekanism.api.Action;
+import mekanism.api.AutomationType;
+import mekanism.api.annotations.NothingNullByDefault;
+import mekanism.api.energy.IEnergyContainer;
+import mekanism.api.math.FloatingLong;
+import mekanism.api.math.FloatingLongConsumer;
+import mekanism.api.math.FloatingLongSupplier;
+import mekanism.api.recipes.cache.CachedRecipe.OperationTracker.RecipeError;
+import net.minecraft.world.item.crafting.Recipe;
+
+@NothingNullByDefault
+public abstract class LongCachedRecipe<RECIPE extends Recipe<?>> implements ICachedRecipe<RECIPE> {
+    protected final RECIPE recipe;
+    private Set<RecipeError> errors = Collections.emptySet();
+    private final BooleanSupplier recheckAllErrors;
+    private BooleanSupplier canHolderFunction = () -> true;
+    private BooleanConsumer setActive = active -> {
+    };
+    private IntSupplier requiredTicks = () -> 1;
+    private Runnable onFinish = () -> {
+    };
+    private FloatingLongSupplier perTickEnergy = () -> FloatingLong.ZERO;
+    private FloatingLongSupplier storedEnergy = () -> FloatingLong.ZERO;
+    private FloatingLongConsumer useEnergy = energy -> {
+    };
+    private LongSupplier baselineMaxOperations = () -> 1;
+    private Consumer<LongOperationTracker> postProcessOperations = tracker -> {
+    };
+    private Consumer<Set<RecipeError>> onErrorsChange = errors -> {
+    };
+    private int operatingTicks;
+    private IntConsumer operatingTicksChanged = ticks -> {
+    };
+
+    protected LongCachedRecipe(RECIPE recipe, BooleanSupplier recheckAllErrors) {
+        this.recipe = Objects.requireNonNull(recipe, "Recipe cannot be null.");
+        this.recheckAllErrors = Objects.requireNonNull(recheckAllErrors, "Recheck all errors supplier cannot be null.");
+    }
+
+    public LongCachedRecipe<RECIPE> setCanHolderFunction(BooleanSupplier canHolderFunction) {
+        this.canHolderFunction = Objects.requireNonNull(canHolderFunction, "Can holder function cannot be null.");
+        return this;
+    }
+
+    public LongCachedRecipe<RECIPE> setActive(BooleanConsumer setActive) {
+        this.setActive = Objects.requireNonNull(setActive, "Set active consumer cannot be null.");
+        return this;
+    }
+
+    public LongCachedRecipe<RECIPE> setEnergyRequirements(FloatingLongSupplier perTickEnergy,
+            IEnergyContainer energyContainer) {
+        this.perTickEnergy = Objects.requireNonNull(perTickEnergy, "The per tick energy cannot be null.");
+        Objects.requireNonNull(energyContainer, "Energy container cannot be null.");
+        this.storedEnergy = energyContainer::getEnergy;
+        this.useEnergy = energy -> energyContainer.extract(energy, Action.EXECUTE, AutomationType.INTERNAL);
+        return this;
+    }
+
+    public LongCachedRecipe<RECIPE> setRequiredTicks(IntSupplier requiredTicks) {
+        this.requiredTicks = Objects.requireNonNull(requiredTicks, "Required ticks cannot be null.");
+        return this;
+    }
+
+    public LongCachedRecipe<RECIPE> setOperatingTicksChanged(IntConsumer operatingTicksChanged) {
+        this.operatingTicksChanged = Objects.requireNonNull(operatingTicksChanged,
+                "Operating ticks changed handler cannot be null.");
+        return this;
+    }
+
+    public LongCachedRecipe<RECIPE> setOnFinish(Runnable onFinish) {
+        this.onFinish = Objects.requireNonNull(onFinish, "On finish handling cannot be null.");
+        return this;
+    }
+
+    public LongCachedRecipe<RECIPE> setBaselineMaxOperations(LongSupplier baselineMaxOperations) {
+        this.baselineMaxOperations = Objects.requireNonNull(baselineMaxOperations,
+                "Baseline max operations cannot be null.");
+        return this;
+    }
+
+    public LongCachedRecipe<RECIPE> setPostProcessOperations(Consumer<LongOperationTracker> postProcessOperations) {
+        this.postProcessOperations = Objects.requireNonNull(postProcessOperations,
+                "Post processing of the operation count cannot be null.");
+        return this;
+    }
+
+    public LongCachedRecipe<RECIPE> setErrorsChanged(Consumer<Set<RecipeError>> onErrorsChange) {
+        this.onErrorsChange = Objects.requireNonNull(onErrorsChange, "On errors change consumer cannot be null.");
+        return this;
+    }
+
+    private void updateErrors(Set<RecipeError> errors) {
+        if (!this.errors.equals(errors)) {
+            this.errors = errors;
+            onErrorsChange.accept(errors);
+        }
+    }
+
+    public void loadSavedOperatingTicks(int operatingTicks) {
+        if (operatingTicks > 0 && operatingTicks < requiredTicks.getAsInt()) {
+            this.operatingTicks = operatingTicks;
+        }
+    }
+
+    public void process() {
+        long operations;
+        if (canHolderFunction.getAsBoolean()) {
+            setupVariableValues();
+            LongOperationTracker tracker = new LongOperationTracker(errors, isInputValid(),
+                    baselineMaxOperations.getAsLong());
+            calculateOperationsThisTick(tracker);
+            if (tracker.shouldContinueChecking()) {
+                postProcessOperations.accept(tracker);
+                if (tracker.shouldContinueChecking() && tracker.capAtMaxForEnergy()) {
+                    tracker.addError(RecipeError.NOT_ENOUGH_ENERGY_REDUCED_RATE);
+                }
+            }
+            operations = tracker.getMaxForEnergy();
+            if (tracker.hasErrorsToCopy()) {
+                updateErrors(tracker.getErrors());
+            }
+        } else {
+            operations = 0;
+            if (!errors.isEmpty()) {
+                updateErrors(Collections.emptySet());
+            }
+        }
+        if (operations > 0) {
+            setActive.accept(true);
+            useEnergy(operations);
+            operatingTicks++;
+            int ticksRequired = requiredTicks.getAsInt();
+            if (operatingTicks >= ticksRequired) {
+                operatingTicks = 0;
+                finishProcessing(operations);
+                onFinish.run();
+                resetCache();
+            } else {
+                useResources(operations);
+            }
+            if (ticksRequired > 1) {
+                operatingTicksChanged.accept(operatingTicks);
+            }
+        } else {
+            setActive.accept(false);
+            if (operations < 0) {
+                operatingTicks = 0;
+                operatingTicksChanged.accept(operatingTicks);
+                resetCache();
+            }
+        }
+    }
+
+    protected void setupVariableValues() {
+    }
+
+    protected int getOperatingTicks() {
+        return operatingTicks;
+    }
+
+    protected void useResources(long operations) {
+    }
+
+    protected void resetCache() {
+    }
+
+    protected void useEnergy(long operations) {
+        useEnergy.accept(perTickEnergy.get().multiply(operations));
+    }
+
+    protected void calculateOperationsThisTick(LongOperationTracker tracker) {
+        if (tracker.shouldContinueChecking()) {
+            FloatingLong energyPerTick = perTickEnergy.get();
+            if (!energyPerTick.isZero()) {
+                long operations = storedEnergy.get().divideToLong(energyPerTick);
+                tracker.setNaxForEnergy(operations);
+                if (operations == 0) {
+                    tracker.updateOperations(operations);
+                    tracker.addError(RecipeError.NOT_ENOUGH_ENERGY);
+                }
+            }
+        }
+    }
+
+    protected abstract void finishProcessing(long operations);
+
+    public abstract boolean isInputValid();
+
+    public RECIPE getRecipe() {
+        return recipe;
+    }
+
+}

@@ -8,7 +8,7 @@
             "tag": "forge:ingots/refined_emerald"
         },
         "top": {
-            "item": "astral_mekanism:photon_processor_press"
+            "item": "astral_mekanism:autonomy_processor_press"
         }
     },
     "mode": "press",

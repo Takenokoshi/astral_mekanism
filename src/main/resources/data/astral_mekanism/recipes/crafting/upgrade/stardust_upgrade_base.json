@@ -1,0 +1,20 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "key": {
+        "B": {
+            "item": "astral_mekanism:hyper_upgrade_base"
+        },
+        "A": {
+            "item": "astral_mekanism:alloy_stardust"
+        }
+    },
+    "pattern": [
+        " A ",
+        "ABA",
+        " A "
+    ],
+    "result": {
+        "item": "astral_mekanism:stardust_upgrade_base",
+        "count": 1
+    }
+}

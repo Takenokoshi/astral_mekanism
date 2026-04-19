@@ -1,0 +1,22 @@
+{
+    "type": "evolvedmekanism:chemixing",
+    "extraInput": {
+        "amount": 64,
+        "ingredient": {
+            "item": "ae2:singularity"
+        }
+    },
+    "gasInput": {
+        "amount": 20000,
+        "gas": "astral_mekanism:netherite_ether"
+    },
+    "mainInput": {
+        "amount": 64,
+        "ingredient": {
+            "tag": "forge:ingots/composite_alloy"
+        }
+    },
+    "output": {
+        "item": "astral_mekanism:origin_alloy_ingot"
+    }
+}

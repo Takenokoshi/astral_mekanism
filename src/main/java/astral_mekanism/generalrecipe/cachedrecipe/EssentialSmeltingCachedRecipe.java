@@ -78,4 +78,25 @@ public class EssentialSmeltingCachedRecipe extends GeneralCachedRecipe<SmeltingR
         }
     }
 
+    public static IOutputHandler<ItemInfuseOutput> merge(IOutputHandler<ItemStack> itemOutputHandler,
+            IOutputHandler<InfusionStack> infusionOutputHandler) {
+        return new IOutputHandler<ItemInfuseOutput>() {
+
+            @Override
+            public void handleOutput(ItemInfuseOutput toOutput, int operations) {
+                itemOutputHandler.handleOutput(toOutput.itemStack(), operations);
+                infusionOutputHandler.handleOutput(toOutput.infusionStack(), operations);
+            }
+
+            @Override
+            public void calculateOperationsCanSupport(OperationTracker tracker, ItemInfuseOutput toOutput) {
+                itemOutputHandler.calculateOperationsCanSupport(tracker, toOutput.itemStack());
+                if (!toOutput.infusionStack().isEmpty()) {
+                    infusionOutputHandler.calculateOperationsCanSupport(tracker, toOutput.infusionStack());
+                }
+            }
+
+        };
+    }
+
 }

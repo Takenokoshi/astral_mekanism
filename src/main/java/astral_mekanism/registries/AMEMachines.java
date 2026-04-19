@@ -845,6 +845,7 @@ public class AMEMachines {
                             .withSound(MekanismSounds.SPS)
                             .changeAttributeUpgrade(EnumSet.of(
                                     Upgrade.MUFFLING,
+                                    AMEUpgrade.STARDUST_SPEED.getValue(),
                                     AMEUpgrade.RADIOACTIVE_SEALING.getValue())));
 
     public static final MachineRegistryObject<BEItemCompressor, BlockTileModel<BEItemCompressor, BlockTypeMachine<BEItemCompressor>>, MekanismTileContainer<BEItemCompressor>, ItemBlockMachine> ITEM_COMPRESSOR = MACHINES

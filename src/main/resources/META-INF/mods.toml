@@ -162,6 +162,12 @@ description='''${mod_description}'''
     ordering="NONE"
     side="BOTH"
 [[dependencies.${mod_id}]]
+    modId="stack_upgrade_integration"
+    mandatory=true
+    versionRange="[1.0.1,)"
+    ordering="NONE"
+    side="BOTH"
+[[dependencies.${mod_id}]]
     modId="mekanism_empowered"
     mandatory=false
     versionRange="[20.1.1.2.2,)"
@@ -171,6 +177,12 @@ description='''${mod_description}'''
     modId="mekmm"
     mandatory=false
     versionRange="[1.1.2,)"
+    ordering="AFTER"
+    side="BOTH"
+[[dependencies.${mod_id}]]
+    modId="morethermalevaporation"
+    mandatory=false
+    versionRange="[2.7,)"
     ordering="AFTER"
     side="BOTH"
 

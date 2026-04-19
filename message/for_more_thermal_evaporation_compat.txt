@@ -1,0 +1,5 @@
+The behavior of the Water Supply Upgrade is defined here.
+https://github.com/Takenokoshi/astral_mekanism/blob/main/src/main/java/astral_mekanism/mixin/mekanism/blockentity/TileEntityMekanismMixin.java
+
+
+When an instance of BlockTypeTile or one of its subclasses accepts Water Supply Upgrade, Water Supply Upgrade will start working on that instance.
