@@ -186,6 +186,8 @@ dependencies {
     compileOnly fg.deobf("curse.maven:jei-238222:6075247")
     runtimeOnly fg.deobf("curse.maven:jei-238222:6075247")
 
+    compileOnly fg.deobf("curse.maven:kubejs-238086:5853326")
+
 }
 tasks.named('processResources', ProcessResources).configure {
     var replaceProperties = [
