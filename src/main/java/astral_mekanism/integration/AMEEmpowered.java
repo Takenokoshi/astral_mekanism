@@ -26,10 +26,10 @@ public class AMEEmpowered {
         }
         EnumSet<Upgrade> result = upgrades.clone();
         if (upgrades.contains(Upgrade.SPEED)) {
-            result.add(Upgrade.valueOf("EMPOWERED_SPEED"));
+            result.add(Upgrade.valueOf(EMP_SPEED));
         }
         if (upgrades.contains(Upgrade.ENERGY)) {
-            result.add(Upgrade.valueOf("EMPOWERED_ENERGY"));
+            result.add(Upgrade.valueOf(EMP_ENERGY));
         }
         return result;
     }

@@ -188,10 +188,13 @@ public class AMEJEIPlugin implements IModPlugin {
         CatalystRegistryHelper.register(registry, MekanismJEIRecipeType.ENRICHING,
                 AMEMachines.ASTRAL_ENRICHMENT_CHAMBER);
         CatalystRegistryHelper.register(registry, MekanismJEIRecipeType.NUCLEOSYNTHESIZING,
+                AMEMachines.ENCHANTED_ANTIPROTONIC_NUCLEOSYNTHESIZER,
                 AMEMachines.ASTRAL_ANTIPROTONIC_NUCLEOSYNTHESIZER);
         CatalystRegistryHelper.register(registry, MekanismJEIRecipeType.CHEMICAL_INFUSING,
+                AMEMachines.ENCHANTED_CHEMICAL_INFUSER,
                 AMEMachines.ASTRAL_CHEMICAL_INFUSER);
         CatalystRegistryHelper.register(registry, MekanismJEIRecipeType.OXIDIZING,
+                AMEMachines.ENCHANTED_CHEMICAL_OXIDIZER,
                 AMEMachines.ASTRAL_CHEMICAL_OXIDIZER);
         CatalystRegistryHelper.register(registry, MekanismJEIRecipeType.WASHING,
                 AMEMachines.ASTRAL_CHEMICAL_WASHER);
@@ -202,11 +205,13 @@ public class AMEJEIPlugin implements IModPlugin {
         CatalystRegistryHelper.register(registry, MekanismJEIRecipeType.DISSOLUTION,
                 AMEMachines.ASTRAL_DISSOLUTION_CHAMBER);
         CatalystRegistryHelper.register(registry, MekanismJEIRecipeType.SEPARATING,
+                AMEMachines.ENCHANTED_ELECTROLYTIC_SEPARATOR,
                 AMEMachines.ASTRAL_ELECTROLYTIC_SEPARATOR);
         CatalystRegistryHelper.register(registry, MekanismJEIRecipeType.ACTIVATING,
                 AMEMachines.GLOWSTONE_NEUTRON_ACTIVATOR,
                 AMEMachines.ASTRAL_GNA);
         CatalystRegistryHelper.register(registry, MekanismJEIRecipeType.CENTRIFUGING,
+                AMEMachines.ENCHANTED_ISTOPIC_CENTRIFUGE,
                 AMEMachines.ASTRAL_ISOTOPIC_CENTRIFUGE);
         CatalystRegistryHelper.register(registry, MekanismJEIRecipeType.METALLURGIC_INFUSING,
                 AMEMachines.ASTRAL_METALLURGIC_INFUSER,
@@ -247,7 +252,8 @@ public class AMEJEIPlugin implements IModPlugin {
                 AMEMachines.COMPACT_APT,
                 AMEMachines.ASTRAL_APT);
         CatalystRegistryHelper.register(registry, EMJEI.ALLOYING, AMEMachines.ASTRAL_ALLOYER);
-        CatalystRegistryHelper.register(registry, EMJEI.CHEMIXING, AMEMachines.ASTRAL_CHEMIXER);
+        CatalystRegistryHelper.register(registry, EMJEI.CHEMIXING, AMEMachines.ENCHANTED_CHEMIXER,
+                AMEMachines.ASTRAL_CHEMIXER);
         CatalystRegistryHelper.register(registry, EMJEI.MELTING, AMEMachines.ASTRAL_THERMALIZER);
         CatalystRegistryHelper.register(registry, EMJEI.SOLIDIFICATION,
                 AMEMachines.ASTRAL_SOLIDIFICATION_CHAMBER);
@@ -317,7 +323,7 @@ public class AMEJEIPlugin implements IModPlugin {
 
     @Override
     public void registerGuiHandlers(IGuiHandlerRegistration registration) {
-        //ここで各guiに登録
+        // ここで各guiに登録
     }
 
     @Override

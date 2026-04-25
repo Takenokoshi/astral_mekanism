@@ -12,7 +12,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import com.jerry.mekaf.common.content.blocktype.AdvancedFactoryType;
 import com.jerry.mekaf.common.registries.AdvancedFactoryBlockTypes;
 
-import astral_mekanism.enumexpansion.AMEUpgrade;
+import astral_mekanism.enums.AMEUpgrade;
 import mekanism.api.Upgrade;
 import mekanism.common.block.attribute.AttributeUpgradeSupport;
 import mekanism.common.content.blocktype.BlockTypeTile;

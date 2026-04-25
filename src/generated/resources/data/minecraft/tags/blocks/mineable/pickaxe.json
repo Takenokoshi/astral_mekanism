@@ -1,5 +1,8 @@
 {
   "values": [
+    "astral_mekanism:applied_fission_reactor",
+    "astral_mekanism:applied_fusion_reactor",
+    "astral_mekanism:applied_naquadah_reactor",
     "astral_mekanism:essential_astral_energized_smelting_factory",
     "astral_mekanism:basic_standard_astral_energized_smelting_factory",
     "astral_mekanism:advanced_astral_energized_smelting_factory",
@@ -87,6 +90,12 @@
     "astral_mekanism:cosmic_dense_compact_tep",
     "astral_mekanism:infinite_multiversal_compact_tep",
     "astral_mekanism:astral_compact_tep",
+    "astral_mekanism:enchanted_antiprotonic_nucleosynthesizer",
+    "astral_mekanism:enchanted_chemical_infuser",
+    "astral_mekanism:enchanted_chemical_oxidizer",
+    "astral_mekanism:enchanted_chemixer",
+    "astral_mekanism:enchanted_electrolytic_separator",
+    "astral_mekanism:enchanted_isotopic_centrifuge",
     "astral_mekanism:essential_gas_burning_generator",
     "astral_mekanism:cosmic_gas_burning_generator",
     "astral_mekanism:astral_gas_burning_generator",

@@ -11,7 +11,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 import com.fxd927.mekanismelements.common.registries.MSBlockTypes;
 
-import astral_mekanism.enumexpansion.AMEUpgrade;
+import astral_mekanism.enums.AMEUpgrade;
 import mekanism.api.Upgrade;
 import mekanism.common.block.attribute.AttributeUpgradeSupport;
 import mekanism.common.content.blocktype.BlockTypeTile;

@@ -207,6 +207,7 @@ public class AstralMekanismJapaneseLangProvider extends LanguageProvider {
         result.put("origin", "本質");
         result.put("autonomy", "自律");
         result.put("firmament", "天空");
+        result.put("applied", "電子式");
         // machine types
         result.put("energy", "エナジー");
         result.put("cell", "セル");
@@ -255,6 +256,7 @@ public class AstralMekanismJapaneseLangProvider extends LanguageProvider {
         result.put("sps", "超臨界相転移装置");
         result.put("compact", "コンパクトな");
         result.put("fir", "核分裂炉");
+        result.put("fission", "核分裂");
         result.put("fusion", "核融合");
         result.put("reactor", "炉");
         result.put("tep", "加温蒸発濃縮プラント");
@@ -277,6 +279,7 @@ public class AstralMekanismJapaneseLangProvider extends LanguageProvider {
         result.put("matter", "マター");
         result.put("condenser", "コンデンサー");
         result.put("irradiator", "照射機");
+        result.put("infusing", "吹込");
         // materal types
         result.put("coal", "石炭");
         result.put("diamond", "ダイヤモンド");
@@ -402,6 +405,9 @@ public class AstralMekanismJapaneseLangProvider extends LanguageProvider {
         result.put("intake", "吸引");
         result.put("bulk", "MEGAバルク");
         result.put("cell", "ストレージセル");
+        result.put("information", "情報");
+        result.put("card", "カード");
+        result.put("coolant", "冷媒");
         return result;
     }).get();
 
