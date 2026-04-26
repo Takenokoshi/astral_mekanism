@@ -1,8 +1,8 @@
-package astral_mekanism.block.gui.astralmachine;
+package astral_mekanism.block.gui.enchantedmachine;
 
 import org.jetbrains.annotations.NotNull;
 
-import astral_mekanism.block.blockentity.astralmachine.BEAstralElectrolyticSeparator;
+import astral_mekanism.block.blockentity.prefab.BEAbstractElectrolyticSeparator;
 import mekanism.api.recipes.cache.CachedRecipe.OperationTracker.RecipeError;
 import mekanism.client.gui.GuiConfigurableTile;
 import mekanism.client.gui.element.bar.GuiVerticalPowerBar;
@@ -21,10 +21,10 @@ import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.player.Inventory;
 
-public class GuiAstralElectrolyticSeparator extends
-        GuiConfigurableTile<BEAstralElectrolyticSeparator, MekanismTileContainer<BEAstralElectrolyticSeparator>> {
+public class GuiAMEElectrolyticSeparator<BE extends BEAbstractElectrolyticSeparator> extends
+        GuiConfigurableTile<BE, MekanismTileContainer<BE>> {
 
-    public GuiAstralElectrolyticSeparator(MekanismTileContainer<BEAstralElectrolyticSeparator> container,
+    public GuiAMEElectrolyticSeparator(MekanismTileContainer<BE> container,
             Inventory inv, Component title) {
         super(container, inv, title);
         dynamicSlots = true;

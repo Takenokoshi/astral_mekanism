@@ -1,0 +1,38 @@
+{
+    "type": "astral_mekanism:mekanical_transform",
+    "itemInputA": {
+        "ingredient": {
+            "item": "minecraft:seagrass"
+        },
+        "amount": 16
+    },
+    "itemInputB": {
+        "ingredient": {
+            "item": "minecraft:turtle_egg"
+        },
+        "amount": 1
+    },
+    "itemInputC": {
+        "ingredient": {
+            "item": "minecraft:sand"
+        },
+        "amount": 1
+    },
+    "fluidInputA": {
+        "fluid": "minecraft:water",
+        "amount": 20000
+    },
+    "fluidInputB": {
+        "fluid": "minecraft:water",
+        "amount": 20000
+    },
+    "outputItem": {
+        "item": "minecraft:scute",
+        "count": 1
+    },
+    "itemAIsCatalyst": false,
+    "itemBIsCatalyst": true,
+    "itemCIsCatalyst": true,
+    "fluidAIsCatalyst": true,
+    "fluidBIsCatalyst": false
+}

@@ -35,14 +35,14 @@ public class BEAstralSPS extends BEGasToGasMachine {
     }
 
     @Override
-    protected int maxOperation() {
-        return Integer.MAX_VALUE;
-    }
-
-    @Override
     public List<ResourceLocation> getJEI() {
         return List.of(MekanismBlocks.SPS_CASING.getRegistryName(),
                 AMEMachines.COMPACT_SPS.getRegistryName());
+    }
+
+    @Override
+    protected int getBaselineMaxOperations() {
+        return 0x7fffffff;
     }
 
 }

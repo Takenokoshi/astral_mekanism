@@ -1,157 +1,18 @@
 package astral_mekanism.block.blockentity.astralmachine;
 
-import java.util.List;
-
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
-
-import mekanism.api.IContentsListener;
-import mekanism.api.RelativeSide;
-import mekanism.api.chemical.ChemicalTankBuilder;
-import mekanism.api.chemical.gas.Gas;
-import mekanism.api.chemical.gas.GasStack;
-import mekanism.api.chemical.gas.IGasTank;
-import mekanism.api.math.FloatingLong;
+import astral_mekanism.block.blockentity.prefab.BEAbstractChemicalOxidizer;
 import mekanism.api.providers.IBlockProvider;
-import mekanism.api.recipes.ItemStackToGasRecipe;
-import mekanism.api.recipes.cache.CachedRecipe;
-import mekanism.api.recipes.cache.CachedRecipe.OperationTracker.RecipeError;
-import mekanism.api.recipes.cache.OneInputCachedRecipe;
-import mekanism.api.recipes.inputs.IInputHandler;
-import mekanism.api.recipes.inputs.InputHelper;
-import mekanism.api.recipes.outputs.IOutputHandler;
-import mekanism.api.recipes.outputs.OutputHelper;
-import mekanism.common.capabilities.energy.MachineEnergyContainer;
-import mekanism.common.capabilities.holder.chemical.ChemicalTankHelper;
-import mekanism.common.capabilities.holder.chemical.IChemicalTankHolder;
-import mekanism.common.capabilities.holder.energy.EnergyContainerHelper;
-import mekanism.common.capabilities.holder.energy.IEnergyContainerHolder;
-import mekanism.common.capabilities.holder.slot.IInventorySlotHolder;
-import mekanism.common.capabilities.holder.slot.InventorySlotHelper;
-import mekanism.common.inventory.container.slot.SlotOverlay;
-import mekanism.common.inventory.slot.EnergyInventorySlot;
-import mekanism.common.inventory.slot.InputInventorySlot;
-import mekanism.common.inventory.slot.chemical.GasInventorySlot;
-import mekanism.common.inventory.warning.WarningTracker.WarningType;
-import mekanism.common.lib.transmitter.TransmissionType;
-import mekanism.common.recipe.IMekanismRecipeTypeProvider;
-import mekanism.common.recipe.MekanismRecipeType;
-import mekanism.common.recipe.lookup.ISingleRecipeLookupHandler.ItemRecipeLookupHandler;
-import mekanism.common.recipe.lookup.cache.InputRecipeCache.SingleItem;
-import mekanism.common.tile.component.TileComponentConfig;
-import mekanism.common.tile.component.TileComponentEjector;
-import mekanism.common.tile.prefab.TileEntityRecipeMachine;
-import mekanism.common.util.MekanismUtils;
 import net.minecraft.core.BlockPos;
-import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.state.BlockState;
 
-public class BEAstralChemicalOxidizer extends TileEntityRecipeMachine<ItemStackToGasRecipe>
-        implements ItemRecipeLookupHandler<ItemStackToGasRecipe> {
-    private static final List<RecipeError> TRACKED_ERROR_TYPES = List.of(
-            RecipeError.NOT_ENOUGH_ENERGY,
-            RecipeError.NOT_ENOUGH_INPUT,
-            RecipeError.NOT_ENOUGH_OUTPUT_SPACE,
-            RecipeError.INPUT_DOESNT_PRODUCE_OUTPUT);
-
-    public IGasTank gasTank;
-
-    private final IOutputHandler<@NotNull GasStack> outputHandler;
-    private final IInputHandler<@NotNull ItemStack> inputHandler;
-
-    private MachineEnergyContainer<BEAstralChemicalOxidizer> energyContainer;
-    private InputInventorySlot inputSlot;
-    private GasInventorySlot outputSlot;
-    private EnergyInventorySlot energySlot;
+public class BEAstralChemicalOxidizer extends BEAbstractChemicalOxidizer {
 
     public BEAstralChemicalOxidizer(IBlockProvider blockProvider, BlockPos pos, BlockState state) {
-        super(blockProvider, pos, state, TRACKED_ERROR_TYPES);
-        configComponent = new TileComponentConfig(this, TransmissionType.ITEM, TransmissionType.GAS,
-                TransmissionType.ENERGY);
-        configComponent.setupItemIOConfig(inputSlot, outputSlot, energySlot);
-        configComponent.setupOutputConfig(TransmissionType.GAS, gasTank, RelativeSide.RIGHT);
-        configComponent.setupInputConfig(TransmissionType.ENERGY, energyContainer);
-
-        ejectorComponent = new TileComponentEjector(this, () -> Long.MAX_VALUE);
-        ejectorComponent.setOutputData(configComponent, TransmissionType.GAS);
-
-        inputHandler = InputHelper.getInputHandler(inputSlot, RecipeError.NOT_ENOUGH_INPUT);
-        outputHandler = OutputHelper.getOutputHandler(gasTank, RecipeError.NOT_ENOUGH_OUTPUT_SPACE);
-    }
-
-    @NotNull
-    @Override
-    public IChemicalTankHolder<Gas, GasStack, IGasTank> getInitialGasTanks(IContentsListener listener,
-            IContentsListener recipeCacheListener) {
-        ChemicalTankHelper<Gas, GasStack, IGasTank> builder = ChemicalTankHelper
-                .forSideGasWithConfig(this::getDirection, this::getConfig);
-        builder.addTank(gasTank = ChemicalTankBuilder.GAS.output(Long.MAX_VALUE, listener));
-        return builder.build();
-    }
-
-    @NotNull
-    @Override
-    protected IEnergyContainerHolder getInitialEnergyContainers(IContentsListener listener,
-            IContentsListener recipeCacheListener) {
-        EnergyContainerHelper builder = EnergyContainerHelper.forSideWithConfig(this::getDirection, this::getConfig);
-        builder.addContainer(energyContainer = MachineEnergyContainer.input(this, listener));
-        return builder.build();
-    }
-
-    @NotNull
-    @Override
-    protected IInventorySlotHolder getInitialInventory(IContentsListener listener,
-            IContentsListener recipeCacheListener) {
-        InventorySlotHelper builder = InventorySlotHelper.forSideWithConfig(this::getDirection, this::getConfig);
-        builder.addSlot(inputSlot = InputInventorySlot.at(this::containsRecipe, recipeCacheListener, 26, 36))
-                .tracksWarnings(slot -> slot.warning(WarningType.NO_MATCHING_RECIPE,
-                        getWarningCheck(RecipeError.NOT_ENOUGH_INPUT)));
-        builder.addSlot(outputSlot = GasInventorySlot.drain(gasTank, listener, 152, 55));
-        builder.addSlot(
-                energySlot = EnergyInventorySlot.fillOrConvert(energyContainer, this::getLevel, listener, 152, 14));
-        outputSlot.setSlotOverlay(SlotOverlay.PLUS);
-        return builder.build();
+        super(blockProvider, pos, state);
     }
 
     @Override
-    protected void onUpdateServer() {
-        super.onUpdateServer();
-        energySlot.fillContainerOrConvert();
-        outputSlot.drainTank();
-        recipeCacheLookupMonitor.updateAndProcess();
+    protected int getBaselineMaxOperations() {
+        return 0x7fffffff;
     }
-
-    @NotNull
-    @Override
-    public IMekanismRecipeTypeProvider<ItemStackToGasRecipe, SingleItem<ItemStackToGasRecipe>> getRecipeType() {
-        return MekanismRecipeType.OXIDIZING;
-    }
-
-    @Nullable
-    @Override
-    public ItemStackToGasRecipe getRecipe(int cacheIndex) {
-        return findFirstRecipe(inputHandler);
-    }
-
-    @NotNull
-    @Override
-    public CachedRecipe<ItemStackToGasRecipe> createNewCachedRecipe(@NotNull ItemStackToGasRecipe recipe,
-            int cacheIndex) {
-        return OneInputCachedRecipe.itemToChemical(recipe, recheckAllRecipeErrors, inputHandler, outputHandler)
-                .setErrorsChanged(this::onErrorsChanged)
-                .setCanHolderFunction(() -> MekanismUtils.canFunction(this))
-                .setActive(this::setActive)
-                .setEnergyRequirements(energyContainer::getEnergyPerTick, energyContainer)
-                .setOnFinish(this::markForSave)
-                .setBaselineMaxOperations(() -> Integer.MAX_VALUE);
-    }
-
-    public MachineEnergyContainer<BEAstralChemicalOxidizer> getEnergyContainer() {
-        return energyContainer;
-    }
-
-    public FloatingLong getEnergyUsage() {
-        return getActive() ? energyContainer.getEnergyPerTick() : FloatingLong.ZERO;
-    }
-
 }

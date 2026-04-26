@@ -1,0 +1,26 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "key": {
+        "X": {
+            "item": "mekanism:antiprotonic_nucleosynthesizer"
+        },
+        "A": {
+            "item": "astral_mekanism:alloy_enchanted"
+        },
+        "C": {
+            "item": "astral_mekanism:enhanced_control_circuit"
+        },
+        "I": {
+            "tag": "forge:ingots/refined_obsidian"
+        }
+    },
+    "pattern": [
+        "ACA",
+        "IXI",
+        "ACA"
+    ],
+    "result": {
+        "item": "astral_mekanism:enchanted_antiprotonic_nucleosynthesizer",
+        "count": 1
+    }
+}

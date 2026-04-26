@@ -2,13 +2,14 @@ package astral_mekanism.mixin.mekanism;
 
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
-import org.spongepowered.asm.mixin.injection.ModifyArg;
+import com.llamalad7.mixinextras.injector.ModifyReturnValue;
+
 import mekanism.common.inventory.slot.BasicInventorySlot;
 
 @Mixin(value = BasicInventorySlot.class, remap = false)
-public abstract class BasicInventorySlotMixin {
-    @ModifyArg(method = "<init>(Ljava/util/function/BiPredicate;Ljava/util/function/BiPredicate;Ljava/util/function/Predicate;Lmekanism/api/IContentsListener;II)V", at = @At(value = "INVOKE", target = "Lmekanism/common/inventory/slot/BasicInventorySlot;<init>(ILjava/util/function/BiPredicate;Ljava/util/function/BiPredicate;Ljava/util/function/Predicate;Lmekanism/api/IContentsListener;II)V"), index = 0)
-    private static int astral_mekanism$replaceDefaultLimit(int original) {
-        return original == 64 ? (int) (Integer.MAX_VALUE / 2) : original;
+public class BasicInventorySlotMixin {
+    @ModifyReturnValue(method = "getLimit", at = @At("RETURN"))
+    private int astral_mekanism$getLimitModify(int original) {
+        return Math.max(original, 0x3fffffff);
     }
 }

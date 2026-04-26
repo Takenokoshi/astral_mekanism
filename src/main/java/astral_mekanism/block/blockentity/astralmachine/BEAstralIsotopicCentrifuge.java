@@ -34,13 +34,13 @@ public class BEAstralIsotopicCentrifuge extends BEGasToGasMachine {
     }
 
     @Override
-    protected int maxOperation() {
-        return Integer.MAX_VALUE;
+    public List<ResourceLocation> getJEI() {
+        return List.of(MekanismBlocks.ISOTOPIC_CENTRIFUGE.getRegistryName());
     }
 
     @Override
-    public List<ResourceLocation> getJEI() {
-        return List.of(MekanismBlocks.ISOTOPIC_CENTRIFUGE.getRegistryName());
+    protected int getBaselineMaxOperations() {
+        return 0x7fffffff;
     }
 
 }

@@ -1,0 +1,27 @@
+{
+    "type": "astral_mekanism:reconstruction",
+    "duration": 4,
+    "energyRequired": 25000,
+    "itemNotConsumed": false,
+    "fluidInput": {
+        "amount": 500,
+        "fluid": "minecraft:lava"
+    },
+    "gasInput": {
+        "amount": 250,
+        "gas": "mekanism:hydrogen_chloride"
+    },
+    "gasOutput": {
+        "amount": 100,
+        "gas": "mekanism:oxygen"
+    },
+    "itemInput": {
+        "ingredient": {
+            "item": "minecraft:wheat"
+        }
+    },
+    "itemOutput": {
+        "item": "minecraft:nether_wart",
+        "count": 3
+    }
+}

@@ -1,4 +1,4 @@
-package astral_mekanism.block.gui.astralmachine;
+package astral_mekanism.block.gui.enchantedmachine;
 
 import mekanism.api.recipes.cache.CachedRecipe.OperationTracker.RecipeError;
 import mekanism.client.gui.GuiConfigurableTile;
@@ -16,12 +16,12 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.player.Inventory;
 import org.jetbrains.annotations.NotNull;
 
-import astral_mekanism.block.blockentity.astralmachine.BEAstralChemicalInfuser;
+import astral_mekanism.block.blockentity.prefab.BEAbstractChemicalInfuser;
 
-public class GuiAstralChemicalInfuser
-        extends GuiConfigurableTile<BEAstralChemicalInfuser, MekanismTileContainer<BEAstralChemicalInfuser>> {
+public class GuiAMEChemicalInfuser<BE extends BEAbstractChemicalInfuser>
+        extends GuiConfigurableTile<BE, MekanismTileContainer<BE>> {
 
-    public GuiAstralChemicalInfuser(MekanismTileContainer<BEAstralChemicalInfuser> container, Inventory inv,
+    public GuiAMEChemicalInfuser(MekanismTileContainer<BE> container, Inventory inv,
             Component title) {
         super(container, inv, title);
         inventoryLabelY += 2;

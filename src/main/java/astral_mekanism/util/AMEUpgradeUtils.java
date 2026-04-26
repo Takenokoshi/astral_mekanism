@@ -2,7 +2,7 @@ package astral_mekanism.util;
 
 import org.jetbrains.annotations.Nullable;
 
-import astral_mekanism.enumexpansion.AMEUpgrade;
+import astral_mekanism.enums.AMEUpgrade;
 import astral_mekanism.registries.AMEItems;
 import mekanism.api.Upgrade;
 import mekanism.common.item.ItemUpgrade;

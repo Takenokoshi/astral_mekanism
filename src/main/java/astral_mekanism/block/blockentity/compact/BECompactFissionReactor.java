@@ -55,7 +55,7 @@ import net.minecraftforge.fluids.FluidStack;
 
 public class BECompactFissionReactor extends TileEntityConfigurableMachine implements IPacketReceiverSetLong {
 
-    public BasicHeatCapacitor heatCapacitor;
+    private BasicHeatCapacitor heatCapacitor;
     private double lastEnvironmentLoss;
     private double lastTransferLoss;
 
@@ -274,6 +274,10 @@ public class BECompactFissionReactor extends TileEntityConfigurableMachine imple
         container.track(SyncableLong.create(this::getEfficiency, value -> efficiency = value));
         container.track(SyncableDouble.create(this::getLastTransferLoss, value -> lastTransferLoss = value));
         container.track(SyncableDouble.create(this::getLastEnvironmentLoss, value -> lastEnvironmentLoss = value));
+    }
+
+    public BasicHeatCapacitor getHeatCapacitor(){
+        return heatCapacitor;
     }
 
     public IGasTank getFuelTank() {
