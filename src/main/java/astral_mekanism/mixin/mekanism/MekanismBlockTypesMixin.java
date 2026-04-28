@@ -9,7 +9,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-import astral_mekanism.enumexpansion.AMEUpgrade;
+import astral_mekanism.enums.AMEUpgrade;
 import mekanism.api.Upgrade;
 import mekanism.common.block.attribute.AttributeUpgradeSupport;
 import mekanism.common.content.blocktype.BlockTypeTile;

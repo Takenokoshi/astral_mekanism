@@ -7,7 +7,6 @@ import org.jetbrains.annotations.Nullable;
 
 import mekanism.api.IContentsListener;
 import mekanism.api.RelativeSide;
-import mekanism.api.Upgrade;
 import mekanism.api.chemical.ChemicalTankBuilder;
 import mekanism.api.chemical.attribute.ChemicalAttributeValidator;
 import mekanism.api.chemical.gas.Gas;
@@ -54,14 +53,13 @@ public abstract class BEGasToGasMachine extends TileEntityRecipeMachine<GasToGas
             RecipeError.NOT_ENOUGH_INPUT,
             RecipeError.NOT_ENOUGH_OUTPUT_SPACE,
             RecipeError.INPUT_DOESNT_PRODUCE_OUTPUT);
-    MachineEnergyContainer<? extends BEGasToGasMachine> energyContainer;
+    MachineEnergyContainer<BEGasToGasMachine> energyContainer;
     protected IGasTank inputTank;
     protected IGasTank outputTank;
     EnergyInventorySlot energySlot;
     GasInventorySlot inputSlot;
     GasInventorySlot outputSlot;
     private FloatingLong clientEnergyUsed = FloatingLong.ZERO;
-    protected int baselineMaxOperations = 1;
 
     private final IOutputHandler<@NotNull GasStack> outputHandler;
     private final IInputHandler<@NotNull GasStack> inputHandler;
@@ -74,14 +72,12 @@ public abstract class BEGasToGasMachine extends TileEntityRecipeMachine<GasToGas
         configComponent.setupInputConfig(TransmissionType.ENERGY, energyContainer);
         ejectorComponent = new TileComponentEjector(this, this::tankCapacity);
         ejectorComponent.setOutputData(configComponent, TransmissionType.GAS).setCanTankEject(t -> t == outputTank);
-        baselineMaxOperations = maxOperation();
         inputHandler = InputHelper.getInputHandler(inputTank, RecipeError.NOT_ENOUGH_INPUT);
         outputHandler = OutputHelper.getOutputHandler(outputTank, RecipeError.NOT_ENOUGH_OUTPUT_SPACE);
     }
 
     protected abstract long tankCapacity();
 
-    protected abstract int maxOperation();
 
     @NotNull
     @Override
@@ -138,17 +134,8 @@ public abstract class BEGasToGasMachine extends TileEntityRecipeMachine<GasToGas
                 .setActive(this::setActive)
                 .setEnergyRequirements(energyContainer::getEnergyPerTick, energyContainer)
                 .setRequiredTicks(() -> 1)
-                .setBaselineMaxOperations(() -> baselineMaxOperations)
+                .setBaselineMaxOperations(this::getBaselineMaxOperations)
                 .setOnFinish(this::markForSave);
-    }
-
-    @Override
-    public void recalculateUpgrades(Upgrade upgrade) {
-        super.recalculateUpgrades(upgrade);
-        if (upgrade == Upgrade.SPEED) {
-            baselineMaxOperations = (int) Math.pow(2, upgradeComponent.getUpgrades(Upgrade.SPEED))
-                    * maxOperation();
-        }
     }
 
     public FloatingLong getEnergyUsed() {
@@ -158,8 +145,10 @@ public abstract class BEGasToGasMachine extends TileEntityRecipeMachine<GasToGas
     @Nullable
     @Override
     public GasToGasRecipe getRecipe(int cacheIndex) {
-        return (GasToGasRecipe) findFirstRecipe(inputHandler);
+        return findFirstRecipe(inputHandler);
     }
+
+    protected abstract int getBaselineMaxOperations();
 
     public abstract List<ResourceLocation> getJEI();
 

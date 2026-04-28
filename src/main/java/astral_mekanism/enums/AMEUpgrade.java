@@ -1,4 +1,4 @@
-package astral_mekanism.enumexpansion;
+package astral_mekanism.enums;
 
 import java.util.HashMap;
 import java.util.Map;

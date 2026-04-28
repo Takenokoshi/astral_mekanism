@@ -40,8 +40,11 @@ public class MekanicalTransformRecipeSerializer<RECIPE extends MekanicalTransfor
                 creatorF.deserialize(AMEJsonUtils.read(json, "fluidInputA")),
                 creatorF.deserialize(AMEJsonUtils.read(json, "fluidInputB")),
                 new ItemFluidOutput(
-                        json.has("outputItem") ? SerializerHelper.getItemStack(json, "outputItem") : ItemStack.EMPTY,
-                        json.has("outputFluid") ? SerializerHelper.getFluidStack(json, "outputFluid")
+                        json.has("outputItem")
+                                ? SerializerHelper.getItemStack(json, "outputItem")
+                                : ItemStack.EMPTY,
+                        json.has("outputFluid")
+                                ? SerializerHelper.getFluidStack(json, "outputFluid")
                                 : FluidStack.EMPTY),
                 GsonHelper.getAsBoolean(json, "itemAIsCatalyst"),
                 GsonHelper.getAsBoolean(json, "itemBIsCatalyst"),

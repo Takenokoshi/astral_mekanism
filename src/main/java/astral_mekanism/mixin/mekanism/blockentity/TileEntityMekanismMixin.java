@@ -8,7 +8,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
-import astral_mekanism.enumexpansion.AMEUpgrade;
+import astral_mekanism.enums.AMEUpgrade;
 import astral_mekanism.registries.AMEGases;
 import mekanism.api.Action;
 import mekanism.api.AutomationType;

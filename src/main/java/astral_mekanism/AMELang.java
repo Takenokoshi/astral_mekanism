@@ -60,6 +60,10 @@ public enum AMELang implements ILangEntry {
     SIDE_DATA_LEFT_FUEL("side_data", "left_fuel"),
     SIDE_DATA_RIGHT_FUEL("side_data", "right_fuel"),
     SIDE_DATA_STEAM("side_data", "steam"),
+    ENUM_AMR_MIXED_ONLY("enum.amr_mode", "mixed_only"),
+    ENUM_AMR_MIXED_PRIORITIZE("enum.amr_mode", "mixed_prioritize"),
+    ENUM_AMR_UNMIXED_PRIORITIZE("enum.amr_mode", "unmixed_prioritize"),
+    ENUM_AMR_UNMIXED_ONLY("enum.amr_mode", "unmixed_only"),
     ITEM_GROUP("item_group", "modid"),;
 
     private final String key;

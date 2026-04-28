@@ -12,7 +12,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import com.jerry.mekanism_extras.common.tier.AdvancedFactoryTier;
 import com.jerry.mekanism_extras.common.util.ExtraEnumUtils;
 
-import astral_mekanism.enumexpansion.AMEUpgrade;
+import astral_mekanism.enums.AMEUpgrade;
 import fr.iglee42.evolvedmekanism.registries.EMFactoryType;
 import io.github.masyumero.emextras.common.content.blocktype.EMExtraFactoryType;
 import io.github.masyumero.emextras.common.registry.EMExtrasBlockType;

@@ -66,7 +66,7 @@ public class GuiCompactFissionReactor
             return List.of(this.title, GeneratorsLang.GAS_BURN_RATE.translate(this.tile.getEfficiency()));
         }).clearFormat()).jeiCategories(GeneratorsJEIRecipeType.FISSION);
         addRenderableWidget(new GuiHeatTab(this, () -> {
-            Component temp = MekanismUtils.getTemperatureDisplay(tile.heatCapacitor.getTemperature(),
+            Component temp = MekanismUtils.getTemperatureDisplay(tile.getHeatCapacitor().getTemperature(),
                     TemperatureUnit.KELVIN, true);
             Component transfer = MekanismUtils.getTemperatureDisplay(tile.getLastTransferLoss(),
                     TemperatureUnit.KELVIN, false);

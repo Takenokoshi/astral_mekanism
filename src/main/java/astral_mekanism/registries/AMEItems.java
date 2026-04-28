@@ -4,11 +4,12 @@ import java.util.EnumMap;
 import java.util.function.Supplier;
 
 import astral_mekanism.AMEConstants;
-import astral_mekanism.enumexpansion.AMEUpgrade;
+import astral_mekanism.enums.AMEUpgrade;
 import astral_mekanism.item.GlintItem;
 import astral_mekanism.item.GlintItemNameColored;
 import astral_mekanism.item.MekMachineUpgradeToolItem;
 import astral_mekanism.item.cell.bulkcell.AMEBulkCellItem;
+import astral_mekanism.item.recipecard.CoolantCardItem;
 import astral_mekanism.registryenum.AMEProcessableMaterialType;
 import astral_mekanism.registryenum.AMEProcessingItemStates;
 import mekanism.api.Upgrade;
@@ -130,6 +131,9 @@ public class AMEItems {
     public static final ItemRegistryObject<Item> INSERT_UPGRADE = ITEMS.register("insert_upgrade");
     public static final ItemRegistryObject<MekMachineUpgradeToolItem> MEK_MACHINE_UPGRADE_TOOL = ITEMS.register(
             "mekanism_machine_upgrade_tool", MekMachineUpgradeToolItem::new);
+
+    public static final ItemRegistryObject<CoolantCardItem> COOLANT_INFORMETION_CARD = ITEMS.register(
+            "coolant_information_card", CoolantCardItem::new);
 
     public static final EnumMap<AMEProcessableMaterialType, EnumMap<AMEProcessingItemStates, ItemRegistryObject<?>>> AME_MATERIAL_PROCESSING_ITEMS = createMaterialProcessItemMap();
 

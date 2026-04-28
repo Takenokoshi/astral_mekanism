@@ -20,7 +20,7 @@ import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
 import com.llamalad7.mixinextras.sugar.Local;
 
 import astral_mekanism.enumexpansion.AMEAPILang;
-import astral_mekanism.enumexpansion.AMEUpgrade;
+import astral_mekanism.enums.AMEUpgrade;
 import mekanism.api.Upgrade;
 import mekanism.api.text.APILang;
 import mekanism.api.text.EnumColor;

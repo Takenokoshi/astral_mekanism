@@ -9,7 +9,7 @@ import org.jetbrains.annotations.Nullable;
 import astral_mekanism.block.blockentity.base.BlockEntityRecipeMachine;
 import astral_mekanism.block.blockentity.elements.slot.DrainInfusionSlot;
 import astral_mekanism.block.blockentity.interf.IEssentialEnergizedSmelter;
-import astral_mekanism.enumexpansion.AMEUpgrade;
+import astral_mekanism.enums.AMEUpgrade;
 import astral_mekanism.generalrecipe.GeneralRecipeType;
 import astral_mekanism.generalrecipe.IUnifiedRecipeTypeProvider;
 import astral_mekanism.generalrecipe.cachedrecipe.EssentialSmeltingCachedRecipe;

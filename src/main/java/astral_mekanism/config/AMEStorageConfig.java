@@ -35,7 +35,6 @@ public class AMEStorageConfig extends BaseMekanismConfig {
         aaeReactionChamber = CachedFloatingLongValue.define(this, builder,
                 "Base energy storage (Joules).",
                 "aaeReactionChamber", FloatingLong.createConst(8000000000l));
-
         builder.pop();
         configSpec = builder.build();
     }

@@ -6,7 +6,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import astral_mekanism.block.blockentity.interf.IHasCustomSizeContainer;
-import astral_mekanism.enumexpansion.AMEUpgrade;
+import astral_mekanism.enums.AMEUpgrade;
 import astral_mekanism.recipes.cachedRecipe.ReconstructionCachedRecipe;
 import astral_mekanism.recipes.recipe.ReconstructionRecipe;
 import astral_mekanism.registries.AMERecipeTypes;

@@ -14,11 +14,11 @@ public class AMEConstants {
     public static final String MODID = "astral_mekanism";
 
     public static ResourceLocation rl(String path) {
-        return new ResourceLocation(MODID, path);
+        return ResourceLocation.fromNamespaceAndPath(MODID, path);
     }
 
     public static ResourceLocation reRL(ResourceLocation location, String path) {
-        return new ResourceLocation(MODID, path + location.getNamespace() + "/" + location.getPath());
+        return ResourceLocation.fromNamespaceAndPath(MODID, path + location.getNamespace() + "/" + location.getPath());
     }
 
     public static final int Int1B = 1073741823;

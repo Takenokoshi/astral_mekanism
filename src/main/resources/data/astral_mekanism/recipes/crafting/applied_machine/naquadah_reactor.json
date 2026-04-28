@@ -1,0 +1,23 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "key": {
+        "X": {
+            "item": "astral_mekanism:astral_compact_naquadah_reactor"
+        },
+        "A": {
+            "item": "astral_mekanism:autonomy_alloy_ingot"
+        },
+        "C": {
+            "item": "astral_mekanism:autonomy_processor"
+        }
+    },
+    "pattern": [
+        "ACA",
+        "CXC",
+        "ACA"
+    ],
+    "result": {
+        "item": "astral_mekanism:applied_naquadah_reactor",
+        "count": 1
+    }
+}
