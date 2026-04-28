@@ -7,7 +7,7 @@ import astral_mekanism.block.blockentity.astralmachine.BEAstralComposter;
 import astral_mekanism.block.blockentity.astralmachine.BEAstralEnergizedSmelter;
 import astral_mekanism.block.blockentity.astralmachine.BEAstralFluidInfuser;
 import astral_mekanism.block.blockentity.astralmachine.BEAstralGNA;
-import astral_mekanism.block.blockentity.astralmachine.BEAstralGreenHouse;
+import astral_mekanism.block.blockentity.astralmachine.BEAstralGreenhouse;
 import astral_mekanism.block.blockentity.astralmachine.BEAstralIsotopicCentrifuge;
 import astral_mekanism.block.blockentity.astralmachine.BEAstralMekanicalCharger;
 import astral_mekanism.block.blockentity.astralmachine.BEAstralMekanicalInscriber;
@@ -75,7 +75,7 @@ import astral_mekanism.block.gui.normalmachine.GuiEssentialItemGasToItem;
 import astral_mekanism.block.gui.normalmachine.GuiEssentialMetallurgicInfuser;
 import astral_mekanism.block.gui.normalmachine.GuiFluidInfuser;
 import astral_mekanism.block.gui.normalmachine.GuiGasSynthesizer;
-import astral_mekanism.block.gui.normalmachine.GuiGreenHouse;
+import astral_mekanism.block.gui.normalmachine.GuiGreenhouse;
 import astral_mekanism.block.gui.normalmachine.GuiInfuseSynthesizer;
 import astral_mekanism.block.gui.normalmachine.GuiInfusingCondensentrator;
 import astral_mekanism.block.gui.normalmachine.GuiInterstellarAntineutronicMatterReconstructionApparatus;
@@ -167,7 +167,7 @@ public class AMEClient extends AstralMekanism {
         registerScreenMek(AMEMachines.ASTRAL_FLUID_INFUSER, GuiFluidInfuser<BEAstralFluidInfuser>::new);
         registerScreenMek(AMEMachines.ASTRAL_FORMULAIC_ASSEMBLICATOR, GuiAstralFormulaicAssemblicator::new);
         registerScreenMek(AMEMachines.ASTRAL_GNA, GuiGasToGasBlock<BEAstralGNA>::new);
-        registerScreenMek(AMEMachines.ASTRAL_GREEN_HOUSE, GuiGreenHouse<BEAstralGreenHouse>::new);
+        registerScreenMek(AMEMachines.ASTRAL_GREEN_HOUSE, GuiGreenhouse<BEAstralGreenhouse>::new);
         registerScreenMek(AMEMachines.ASTRAL_ISOTOPIC_CENTRIFUGE,
                 GuiGasToGasMachine<BEAstralIsotopicCentrifuge>::new);
         registerScreenMek(AMEMachines.ASTRAL_MEKANICAL_CHARGER,
@@ -212,7 +212,7 @@ public class AMEClient extends AstralMekanism {
         registerScreenMek(AMEMachines.GAS_SYNTHESIZER, GuiGasSynthesizer::new);
         registerScreenMek(AMEMachines.GLOWSTONE_NEUTRON_ACTIVATOR,
                 GuiGasToGasBlock<BEGlowstoneNeutronActivator>::new);
-        registerScreenMek(AMEMachines.GREEN_HOUSE, GuiGreenHouse<BEGreenHouse>::new);
+        registerScreenMek(AMEMachines.GREEN_HOUSE, GuiGreenhouse<BEGreenHouse>::new);
         registerScreenMek(AMEMachines.INFUSE_SYNTHESIZER, GuiInfuseSynthesizer::new);
         registerScreenMek(AMEMachines.INFUSING_CONDENSENTRATOR,
                 GuiInfusingCondensentrator<BEInfusingCondensentrator>::new);

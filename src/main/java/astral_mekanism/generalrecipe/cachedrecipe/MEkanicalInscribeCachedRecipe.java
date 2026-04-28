@@ -15,7 +15,7 @@ import mekanism.api.recipes.outputs.IOutputHandler;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
 
-public class MekanicalInscribeCachedRecipe extends GeneralCachedRecipe<InscriberRecipe> {
+public class MEkanicalInscribeCachedRecipe extends GeneralCachedRecipe<InscriberRecipe> {
 
     private final IInputHandler<ItemStack> topInputHandler;
     private final IInputHandler<ItemStack> middleInputHandler;
@@ -36,11 +36,11 @@ public class MekanicalInscribeCachedRecipe extends GeneralCachedRecipe<Inscriber
     @Nullable
     private ItemStack recipeOutput;
 
-    public MekanicalInscribeCachedRecipe(InscriberRecipe recipe, BooleanSupplier recheckAllErrors,
-            IInputHandler<ItemStack> topInputHandler,
-            IInputHandler<ItemStack> middleInputHandler,
-            IInputHandler<ItemStack> bottomInputHandler,
-            IOutputHandler<ItemStack> outputHandler) {
+    public MEkanicalInscribeCachedRecipe(InscriberRecipe recipe, BooleanSupplier recheckAllErrors,
+                                         IInputHandler<ItemStack> topInputHandler,
+                                         IInputHandler<ItemStack> middleInputHandler,
+                                         IInputHandler<ItemStack> bottomInputHandler,
+                                         IOutputHandler<ItemStack> outputHandler) {
         super(recipe, recheckAllErrors);
         this.topInputHandler = topInputHandler;
         this.middleInputHandler = middleInputHandler;

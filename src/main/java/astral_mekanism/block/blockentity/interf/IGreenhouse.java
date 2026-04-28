@@ -15,7 +15,7 @@ import mekanism.common.tile.prefab.TileEntityConfigurableMachine;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.fluids.FluidStack;
 
-public interface IGreenHouse<BE extends TileEntityConfigurableMachine & IGreenHouse<BE>>
+public interface IGreenhouse<BE extends TileEntityConfigurableMachine & IGreenhouse<BE>>
         extends IUnifiedRecipeTypedLookupHandler<CropSoilRecipe, CropSoilInputRecipeCache> {
     public static final List<RecipeError> TRACKED_ERROR_TYPES = List.of(
             RecipeError.NOT_ENOUGH_INPUT,

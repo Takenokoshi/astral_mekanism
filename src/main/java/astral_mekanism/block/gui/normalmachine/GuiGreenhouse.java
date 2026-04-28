@@ -2,7 +2,7 @@ package astral_mekanism.block.gui.normalmachine;
 
 import org.jetbrains.annotations.NotNull;
 
-import astral_mekanism.block.blockentity.interf.IGreenHouse;
+import astral_mekanism.block.blockentity.interf.IGreenhouse;
 import astral_mekanism.jei.AMEJEIRecipeType;
 import mekanism.client.gui.GuiConfigurableTile;
 import mekanism.client.gui.element.bar.GuiVerticalPowerBar;
@@ -17,10 +17,10 @@ import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.player.Inventory;
 
-public class GuiGreenHouse<BE extends TileEntityConfigurableMachine & IGreenHouse<BE>>
+public class GuiGreenhouse<BE extends TileEntityConfigurableMachine & IGreenhouse<BE>>
         extends GuiConfigurableTile<BE, MekanismTileContainer<BE>> {
 
-    public GuiGreenHouse(MekanismTileContainer<BE> container, Inventory inv, Component title) {
+    public GuiGreenhouse(MekanismTileContainer<BE> container, Inventory inv, Component title) {
         super(container, inv, title);
         dynamicSlots = true;
     }

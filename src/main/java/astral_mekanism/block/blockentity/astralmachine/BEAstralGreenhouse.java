@@ -6,7 +6,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import astral_mekanism.block.blockentity.base.BlockEntityRecipeMachine;
-import astral_mekanism.block.blockentity.interf.IGreenHouse;
+import astral_mekanism.block.blockentity.interf.IGreenhouse;
 import astral_mekanism.generalrecipe.cachedrecipe.CropSoilCachedRecipe;
 import astral_mekanism.generalrecipe.cachedrecipe.CropSoilCachedRecipe.HarvestEntriesOutputHandler;
 import astral_mekanism.generalrecipe.cachedrecipe.ICachedRecipe;
@@ -40,11 +40,11 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.fluids.FluidStack;
 
-public class BEAstralGreenHouse extends BlockEntityRecipeMachine<CropSoilRecipe>
-        implements IGreenHouse<BEAstralGreenHouse> {
+public class BEAstralGreenhouse extends BlockEntityRecipeMachine<CropSoilRecipe>
+        implements IGreenhouse<BEAstralGreenhouse> {
 
     private BasicFluidTank fluidTank;
-    private MachineEnergyContainer<BEAstralGreenHouse> energyContainer;
+    private MachineEnergyContainer<BEAstralGreenhouse> energyContainer;
 
     private InputInventorySlot cropSlot;
     private InputInventorySlot soilSlot;
@@ -57,7 +57,7 @@ public class BEAstralGreenHouse extends BlockEntityRecipeMachine<CropSoilRecipe>
     private final IInputHandler<FluidStack> fluidHandler;
     private final HarvestEntriesOutputHandler outputHandler;
 
-    public BEAstralGreenHouse(IBlockProvider blockProvider, BlockPos pos, BlockState state) {
+    public BEAstralGreenhouse(IBlockProvider blockProvider, BlockPos pos, BlockState state) {
         super(blockProvider, pos, state, TRACKED_ERROR_TYPES);
         configComponent = new TileComponentConfig(this, TransmissionType.ITEM, TransmissionType.FLUID,
                 TransmissionType.ENERGY);
@@ -146,7 +146,7 @@ public class BEAstralGreenHouse extends BlockEntityRecipeMachine<CropSoilRecipe>
     }
 
     @Override
-    public MachineEnergyContainer<BEAstralGreenHouse> getEnergyContainer() {
+    public MachineEnergyContainer<BEAstralGreenhouse> getEnergyContainer() {
         return energyContainer;
     }
 

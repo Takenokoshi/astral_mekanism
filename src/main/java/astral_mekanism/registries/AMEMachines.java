@@ -28,7 +28,7 @@ import astral_mekanism.block.blockentity.astralmachine.BEAstralEnergizedSmelter;
 import astral_mekanism.block.blockentity.astralmachine.BEAstralFluidInfuser;
 import astral_mekanism.block.blockentity.astralmachine.BEAstralFormulaicAssemblicator;
 import astral_mekanism.block.blockentity.astralmachine.BEAstralGNA;
-import astral_mekanism.block.blockentity.astralmachine.BEAstralGreenHouse;
+import astral_mekanism.block.blockentity.astralmachine.BEAstralGreenhouse;
 import astral_mekanism.block.blockentity.astralmachine.BEAstralIsotopicCentrifuge;
 import astral_mekanism.block.blockentity.astralmachine.BEAstralMekanicalCharger;
 import astral_mekanism.block.blockentity.astralmachine.BEAstralMekanicalInscriber;
@@ -434,10 +434,10 @@ public class AMEMachines {
                     builder -> builder.changeAttributeUpgrade(EnumSet.of(AMEUpgrade.RADIOACTIVE_SEALING.getValue(),
                             AMEUpgrade.AIR_INTAKE.getValue())));
 
-    public static final MachineRegistryObject<BEAstralGreenHouse, BlockTileModel<BEAstralGreenHouse, BlockTypeMachine<BEAstralGreenHouse>>, MekanismTileContainer<BEAstralGreenHouse>, ItemBlockMachine> ASTRAL_GREEN_HOUSE = MACHINES
+    public static final MachineRegistryObject<BEAstralGreenhouse, BlockTileModel<BEAstralGreenhouse, BlockTypeMachine<BEAstralGreenhouse>>, MekanismTileContainer<BEAstralGreenhouse>, ItemBlockMachine> ASTRAL_GREEN_HOUSE = MACHINES
             .registerSimple("astral_green_house",
-                    BEAstralGreenHouse::new,
-                    BEAstralGreenHouse.class,
+                    BEAstralGreenhouse::new,
+                    BEAstralGreenhouse.class,
                     AMELang.DESCRIPTION_ASTRAL_MACHINE,
                     builder -> builder
                             .withEnergyConfig(AMEConfig.usage.greenHouse, MAX_SUPPLIER)

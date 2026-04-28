@@ -6,7 +6,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import astral_mekanism.block.blockentity.base.BlockEntityProgressMachine;
-import astral_mekanism.block.blockentity.interf.IGreenHouse;
+import astral_mekanism.block.blockentity.interf.IGreenhouse;
 import astral_mekanism.generalrecipe.cachedrecipe.CropSoilCachedRecipe.HarvestEntriesOutputHandler;
 import astral_mekanism.generalrecipe.cachedrecipe.CropSoilCachedRecipe;
 import astral_mekanism.generalrecipe.cachedrecipe.ICachedRecipe;
@@ -41,7 +41,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.fluids.FluidStack;
 
-public class BEGreenHouse extends BlockEntityProgressMachine<CropSoilRecipe> implements IGreenHouse<BEGreenHouse> {
+public class BEGreenHouse extends BlockEntityProgressMachine<CropSoilRecipe> implements IGreenhouse<BEGreenHouse> {
 
     private BasicFluidTank fluidTank;
     private MachineEnergyContainer<BEGreenHouse> energyContainer;
