@@ -1,0 +1,16 @@
+{
+    "type": "mekanism:metallurgic_infusing",
+    "itemInput": {
+        "ingredient": {
+            "item": "mekanism:upgrade_stone_generator"
+        },
+        "amount": 1
+    },
+    "chemicalInput": {
+        "infuse_type": "astral_mekanism:xp",
+        "amount": 20000
+    },
+    "output": {
+        "item": "astral_mekanism:advanced_stone_generator_upgrade"
+    }
+}
