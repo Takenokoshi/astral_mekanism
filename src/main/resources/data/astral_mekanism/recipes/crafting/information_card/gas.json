@@ -1,0 +1,20 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "key": {
+        "#": {
+            "tag": "forge:ingots/refined_emerald"
+        },
+        "$": {
+            "item": "mekanism:enriched_gold"
+        }
+    },
+    "pattern": [
+        " # ",
+        "#$#",
+        " # "
+    ],
+    "result": {
+        "item": "astral_mekanism:gas_information_card",
+        "count": 1
+    }
+}

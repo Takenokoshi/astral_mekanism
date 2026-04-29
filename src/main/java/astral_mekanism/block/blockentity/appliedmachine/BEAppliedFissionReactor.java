@@ -57,7 +57,7 @@ public class BEAppliedFissionReactor extends BENetworkConfigurableMachine implem
         super(blockProvider, pos, state);
         configComponent = new TileComponentConfig(this, TransmissionType.HEAT);
         configComponent.setupOutputConfig(TransmissionType.HEAT, heatCapacitor);
-        ejectorComponent = new TileComponentEjector(this, () -> Long.MAX_VALUE);
+        ejectorComponent = new TileComponentEjector(this);
         lastEnvironmentLoss = 0d;
         lastTransferLoss = 0d;
         efficiency = 0l;

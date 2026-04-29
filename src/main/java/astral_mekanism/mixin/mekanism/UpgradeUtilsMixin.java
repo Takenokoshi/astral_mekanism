@@ -14,40 +14,45 @@ import net.minecraft.world.item.ItemStack;
 @Mixin(value = UpgradeUtils.class, remap = false)
 public class UpgradeUtilsMixin {
 
-    @Inject(method = "getStack(Lmekanism/api/Upgrade;I)Lnet/minecraft/world/item/ItemStack;", at = @At("HEAD"),cancellable = true)
-    private static void astral_mekanism$getStackInject(Upgrade upgrade, int count, CallbackInfoReturnable<ItemStack> cir) {
-        if (upgrade==AMEUpgrade.COBBLESTONE_SUPPLY.getValue()) {
+    @Inject(method = "getStack(Lmekanism/api/Upgrade;I)Lnet/minecraft/world/item/ItemStack;", at = @At("HEAD"), cancellable = true)
+    private static void astral_mekanism$getStackInject(Upgrade upgrade, int count,
+            CallbackInfoReturnable<ItemStack> cir) {
+        if (upgrade == AMEUpgrade.COBBLESTONE_SUPPLY.getValue()) {
             cir.setReturnValue(AMEItems.COBBLESTONE_SUPPLY_UPGRADE.getItemStack(count));
             cir.cancel();
             return;
         }
-        if (upgrade==AMEUpgrade.WATER_SUPPLY.getValue()) {
+        if (upgrade == AMEUpgrade.WATER_SUPPLY.getValue()) {
             cir.setReturnValue(AMEItems.WATER_SUPPLY_UPGRADE.getItemStack(count));
             cir.cancel();
             return;
         }
-        if (upgrade==AMEUpgrade.XP.getValue()) {
+        if (upgrade == AMEUpgrade.XP.getValue()) {
             cir.setReturnValue(AMEItems.XP_UPGRADE.getItemStack(count));
             cir.cancel();
             return;
         }
-        if (upgrade==AMEUpgrade.RADIOACTIVE_SEALING.getValue()) {
+        if (upgrade == AMEUpgrade.RADIOACTIVE_SEALING.getValue()) {
             cir.setReturnValue(AMEItems.RADIOACTIVE_SEALING_UPGRADE.getItemStack(count));
             cir.cancel();
             return;
         }
-        if (upgrade==AMEUpgrade.AIR_INTAKE.getValue()) {
+        if (upgrade == AMEUpgrade.AIR_INTAKE.getValue()) {
             cir.setReturnValue(AMEItems.AIR_INTAKE_UPGRADE.getItemStack(count));
             cir.cancel();
             return;
         }
-        if (upgrade==AMEUpgrade.HYPER_SPEED.getValue()) {
+        if (upgrade == AMEUpgrade.HYPER_SPEED.getValue()) {
             cir.setReturnValue(AMEItems.HYPER_SPEED_UPGRADE.getItemStack(count));
             cir.cancel();
             return;
         }
-        if (upgrade==AMEUpgrade.STARDUST_SPEED.getValue()) {
+        if (upgrade == AMEUpgrade.STARDUST_SPEED.getValue()) {
             cir.setReturnValue(AMEItems.STARDUST_SPEED_UPGRADE.getItemStack(count));
+            cir.cancel();
+        }
+        if (upgrade == AMEUpgrade.ADVANCED_STONE_GENERATOR.getValue()) {
+            cir.setReturnValue(AMEItems.ADVANCED_STONE_GENERATOR_UPGRADE.getItemStack(count));
             cir.cancel();
         }
     }

@@ -17,6 +17,7 @@ public enum AMEUpgrade {
     AIR_INTAKE,
     HYPER_SPEED,
     STARDUST_SPEED,
+    ADVANCED_STONE_GENERATOR
     ;
 
     private static final Map<Upgrade, AMEUpgrade> map = new HashMap<>();// don't use EnumMap.

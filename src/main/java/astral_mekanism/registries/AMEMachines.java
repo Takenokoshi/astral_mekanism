@@ -11,9 +11,17 @@ import com.jerry.mekanism_extras.api.ExtraUpgrade;
 import astral_mekanism.AMETier;
 import astral_mekanism.AMEConstants;
 import astral_mekanism.AMELang;
+import astral_mekanism.block.blockentity.appliedmachine.BEAppliedRotaryCondensentrator;
+import astral_mekanism.block.blockentity.appliedmachine.BEAppliedSPS;
+import astral_mekanism.block.blockentity.appliedmachine.BEAppliedCrystallizer;
+import astral_mekanism.block.blockentity.appliedmachine.BEAppliedElectrolyticSeparator;
 import astral_mekanism.block.blockentity.appliedmachine.BEAppliedFissionReactor;
 import astral_mekanism.block.blockentity.appliedmachine.BEAppliedFusionReactor;
+import astral_mekanism.block.blockentity.appliedmachine.BEAppliedIsotopicCentrifuge;
 import astral_mekanism.block.blockentity.appliedmachine.BEAppliedNaquadahReactor;
+import astral_mekanism.block.blockentity.appliedmachine.BEAppliedNeutronActivator;
+import astral_mekanism.block.blockentity.appliedmachine.BEAppliedSmelter;
+import astral_mekanism.block.blockentity.appliedmachine.BEAppliedTEP;
 import astral_mekanism.block.blockentity.astralfactory.BEAstralEnergizedSmeltingFactory;
 import astral_mekanism.block.blockentity.astralmachine.BEAstralAPT;
 import astral_mekanism.block.blockentity.astralmachine.BEAstralAlloyer;
@@ -64,6 +72,7 @@ import astral_mekanism.block.blockentity.enchantedmachine.BEEnchantedChemixer;
 import astral_mekanism.block.blockentity.enchantedmachine.BEEnchantedElectrolyticSeparator;
 import astral_mekanism.block.blockentity.enchantedmachine.BEEnchantedIsotopicCentrifuge;
 import astral_mekanism.block.blockentity.generator.AstralMekGeneratorTier;
+import astral_mekanism.block.blockentity.generator.BEAppliedGasBurningGenerator;
 import astral_mekanism.block.blockentity.generator.BEGasBurningGenerator;
 import astral_mekanism.block.blockentity.generator.BEHeatGenerator;
 import astral_mekanism.block.blockentity.normalfactory.BEEnergizedSmeltingFactory;
@@ -178,6 +187,24 @@ public class AMEMachines {
         return result;
     }
 
+    public static final MachineRegistryObject<BEAppliedCrystallizer, BlockTileModel<BEAppliedCrystallizer, BlockTypeMachine<BEAppliedCrystallizer>>, MekanismTileContainer<BEAppliedCrystallizer>, ItemBlockMachine> APPLIED_CHEMICAL_CRYSTALLIZER = MACHINES
+            .registerSimple("applied_crystallizer",
+                    BEAppliedCrystallizer::new,
+                    BEAppliedCrystallizer.class,
+                    AMELang.DESCRIPTION_ASTRAL_MACHINE,
+                    builder -> builder
+                            .changeAttributeUpgrade(EnumSet.of(Upgrade.ENERGY, Upgrade.MUFFLING))
+                            .withSound(MekanismSounds.CHEMICAL_CRYSTALLIZER));
+
+    public static final MachineRegistryObject<BEAppliedElectrolyticSeparator, BlockTileModel<BEAppliedElectrolyticSeparator, BlockTypeMachine<BEAppliedElectrolyticSeparator>>, MekanismTileContainer<BEAppliedElectrolyticSeparator>, ItemBlockMachine> APPLIED_ELECTROLYTIC_SEPARATOR = MACHINES
+            .registerSimple("applied_electrolytic_separator",
+                    BEAppliedElectrolyticSeparator::new,
+                    BEAppliedElectrolyticSeparator.class,
+                    AMELang.DESCRIPTION_ASTRAL_MACHINE,
+                    builder -> builder
+                            .changeAttributeUpgrade(EnumSet.of(Upgrade.ENERGY, Upgrade.MUFFLING))
+                            .withSound(MekanismSounds.ELECTROLYTIC_SEPARATOR));
+
     public static final MachineRegistryObject<BEAppliedFissionReactor, BlockTileModel<BEAppliedFissionReactor, BlockTypeMachine<BEAppliedFissionReactor>>, MekanismTileContainer<BEAppliedFissionReactor>, ItemBlockMachine> APPLIED_FISSION_REACTOR = MACHINES
             .registerSimple("applied_fission_reactor",
                     BEAppliedFissionReactor::new,
@@ -192,12 +219,60 @@ public class AMEMachines {
                     AMELang.DESCRIPTION_COMPACT_MACHINE,
                     BlockMachineBuilder::removeAttributeUpgrade);
 
+    public static final MachineRegistryObject<BEAppliedIsotopicCentrifuge, BlockTileModel<BEAppliedIsotopicCentrifuge, BlockTypeMachine<BEAppliedIsotopicCentrifuge>>, MekanismTileContainer<BEAppliedIsotopicCentrifuge>, ItemBlockMachine> APPLIED_ISOTPIC_CENTRIFUGE = MACHINES
+            .registerSimple("applied_isotopic_centrifuge",
+                    BEAppliedIsotopicCentrifuge::new,
+                    BEAppliedIsotopicCentrifuge.class,
+                    AMELang.DESCRIPTION_COMPACT_MACHINE,
+                    builder -> builder
+                            .changeAttributeUpgrade(EnumSet.of(Upgrade.ENERGY, Upgrade.MUFFLING)));
+
     public static final MachineRegistryObject<BEAppliedNaquadahReactor, BlockTileModel<BEAppliedNaquadahReactor, BlockTypeMachine<BEAppliedNaquadahReactor>>, MekanismTileContainer<BEAppliedNaquadahReactor>, ItemBlockMachine> APPLIED_NAQUADAH_REACTOR = MACHINES
             .registerSimple("applied_naquadah_reactor",
                     BEAppliedNaquadahReactor::new,
                     BEAppliedNaquadahReactor.class,
                     AMELang.DESCRIPTION_COMPACT_MACHINE,
                     BlockMachineBuilder::removeAttributeUpgrade);
+
+    public static final MachineRegistryObject<BEAppliedNeutronActivator, BlockTileModel<BEAppliedNeutronActivator, BlockTypeMachine<BEAppliedNeutronActivator>>, MekanismTileContainer<BEAppliedNeutronActivator>, ItemBlockMachine> APPLIED_NEUTRON_ACTIVATOR = MACHINES
+            .registerSimple("applied_neutron_activator",
+                    BEAppliedNeutronActivator::new,
+                    BEAppliedNeutronActivator.class,
+                    AMELang.DESCRIPTION_ASTRAL_MACHINE,
+                    builder -> builder
+                            .removeAttributeUpgrade());
+
+    public static final MachineRegistryObject<BEAppliedRotaryCondensentrator, BlockTileModel<BEAppliedRotaryCondensentrator, BlockTypeMachine<BEAppliedRotaryCondensentrator>>, MekanismTileContainer<BEAppliedRotaryCondensentrator>, ItemBlockMachine> APPLIED_ROTALY_CONDENSENTRATOR = MACHINES
+            .registerSimple("applied_rotary_condensentrator",
+                    BEAppliedRotaryCondensentrator::new,
+                    BEAppliedRotaryCondensentrator.class,
+                    AMELang.DESCRIPTION_COMPACT_MACHINE,
+                    builder -> builder
+                            .changeAttributeUpgrade(EnumSet.of(Upgrade.ENERGY, Upgrade.MUFFLING)));
+
+    public static final MachineRegistryObject<BEAppliedSmelter, BlockTileModel<BEAppliedSmelter, BlockTypeMachine<BEAppliedSmelter>>, MekanismTileContainer<BEAppliedSmelter>, ItemBlockMachine> APPLIED_SMELTER = MACHINES
+            .registerSimple("applied_smelter",
+                    BEAppliedSmelter::new,
+                    BEAppliedSmelter.class,
+                    AMELang.DESCRIPTION_COMPACT_MACHINE,
+                    builder -> builder
+                            .changeAttributeUpgrade(EnumSet.of(Upgrade.ENERGY, Upgrade.MUFFLING)));
+
+    public static final MachineRegistryObject<BEAppliedSPS, BlockTileModel<BEAppliedSPS, BlockTypeMachine<BEAppliedSPS>>, MekanismTileContainer<BEAppliedSPS>, ItemBlockMachine> APPLIED_SPS = MACHINES
+            .registerSimple("applied_sps",
+                    BEAppliedSPS::new,
+                    BEAppliedSPS.class,
+                    AMELang.DESCRIPTION_COMPACT_MACHINE,
+                    builder -> builder
+                            .changeAttributeUpgrade(EnumSet.of(Upgrade.MUFFLING)));
+
+    public static final MachineRegistryObject<BEAppliedTEP, BlockTileModel<BEAppliedTEP, BlockTypeMachine<BEAppliedTEP>>, MekanismTileContainer<BEAppliedTEP>, ItemBlockMachine> APPLIED_TEP = MACHINES
+            .registerSimple("applied_tep",
+                    BEAppliedTEP::new,
+                    BEAppliedTEP.class,
+                    AMELang.DESCRIPTION_COMPACT_MACHINE,
+                    builder -> builder
+                            .changeAttributeUpgrade(EnumSet.of(Upgrade.MUFFLING)));
 
     public static final EnumMap<AMETier, MachineRegistryObject<BEAstralEnergizedSmeltingFactory, BlockTileModel<BEAstralEnergizedSmeltingFactory, BlockTypeMachine<BEAstralEnergizedSmeltingFactory>>, ContainerAstralMekanismFactory<BEAstralEnergizedSmeltingFactory>, ItemBlockMachine>> ASTRAL_ENERGIZED_SMELTING_FACTRIES = registerFactories(
             t -> t.nameForAstral + "_astral_energized_smelting_factory",
@@ -789,6 +864,17 @@ public class AMEMachines {
                                             ExtraUpgrade.STACK))
                             .withSound(MekanismSounds.ISOTOPIC_CENTRIFUGE));
 
+    public static final MachineRegistryObject<BEAppliedGasBurningGenerator, BlockTileModel<BEAppliedGasBurningGenerator, BlockTypeMachine<BEAppliedGasBurningGenerator>>, MekanismTileContainer<BEAppliedGasBurningGenerator>, ItemBlockMachine> APPLIED_GAS_BURNING_GENERATOR = MACHINES
+            .registerSimple("applied_gas_burning_generator",
+                    BEAppliedGasBurningGenerator::new,
+                    BEAppliedGasBurningGenerator.class,
+                    AMELang.DESCRIPTION_AM_GENERATOR,
+                    builder -> builder
+                            .withCustomShape(AMEBlockShapes.GAS_BURNING_GENERATOR)
+                            .withSound(GeneratorsSounds.GAS_BURNING_GENERATOR)
+                            .changeAttributeUpgrade(EnumSet.of(Upgrade.MUFFLING,
+                                    AMEUpgrade.RADIOACTIVE_SEALING.getValue())));
+
     public static final EnumMap<AstralMekGeneratorTier, MachineRegistryObject<BEGasBurningGenerator, BlockTileModel<BEGasBurningGenerator, BlockTypeMachine<BEGasBurningGenerator>>, MekanismTileContainer<BEGasBurningGenerator>, ItemBlockMachine>> GAS_BURNING_GENERATORS = MACHINES
             .registerSimpleMap(k -> k.name + "_gas_burning_generator",
                     BEGasBurningGenerator::new,
@@ -797,7 +883,6 @@ public class AMEMachines {
                     (key, btm) -> btm.with(new AttributeTier<>(key))
                             .withCustomShape(AMEBlockShapes.GAS_BURNING_GENERATOR)
                             .withSound(GeneratorsSounds.GAS_BURNING_GENERATOR)
-                            .removeAttributeUpgrade()
                             .changeAttributeUpgrade(EnumSet.of(Upgrade.MUFFLING,
                                     AMEUpgrade.RADIOACTIVE_SEALING.getValue())),
                     AstralMekGeneratorTier.class);

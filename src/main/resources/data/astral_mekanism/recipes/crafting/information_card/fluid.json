@@ -1,0 +1,20 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "key": {
+        "#": {
+            "tag": "forge:ingots/refined_emerald"
+        },
+        "$": {
+            "item": "minecraft:bucket"
+        }
+    },
+    "pattern": [
+        " # ",
+        "#$#",
+        " # "
+    ],
+    "result": {
+        "item": "astral_mekanism:fluid_information_card",
+        "count": 1
+    }
+}

@@ -1,0 +1,15 @@
+{
+    "type": "astral_mekanism:fluid_infuser",
+    "fluidInputA": {
+        "fluid": "minecraft:lava",
+        "amount": 1000
+    },
+    "fluidInputB": {
+        "tag": "minecraft:water",
+        "amount": 10
+    },
+    "fluidOutput": {
+        "fluid": "evolvedmekanism:molten_obsidian",
+        "amount": 810
+    }
+}

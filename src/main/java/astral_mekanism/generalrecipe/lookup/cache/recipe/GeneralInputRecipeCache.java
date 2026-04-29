@@ -32,7 +32,7 @@ public abstract class GeneralInputRecipeCache<C extends Container, RECIPE extend
     }
 
     protected void initCacheIfNeeded(@Nullable Level world) {
-        if (!initialized) {
+        if (!initialized && !recipeType.getRecipes(world).isEmpty()) {
             initialized = true;
             initCache(recipeType.getRecipes(world));
         }
