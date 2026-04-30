@@ -16,7 +16,6 @@ import net.minecraftforge.fluids.FluidStack;
 public abstract class AstralCraftingRecipe extends MekanismRecipe
         implements TriPredicate<ItemStack[], FluidStack, GasStack> {
 
-    // 25スロット固定
     private static final int SLOT_COUNT = 25;
 
     private final ItemStackIngredient[] inputItems;
@@ -33,7 +32,6 @@ public abstract class AstralCraftingRecipe extends MekanismRecipe
     ) {
         super(id);
 
-        // 25スロットに「ループしてコピー」
         this.inputItems = new ItemStackIngredient[SLOT_COUNT];
         for (int i = 0; i < SLOT_COUNT; i++) {
             this.inputItems[i] = inputItems[i % inputItems.length];
@@ -44,23 +42,17 @@ public abstract class AstralCraftingRecipe extends MekanismRecipe
         this.output = output;
     }
 
-    // --- 実際の出力を返す ---
     public ItemStack getOutput(ItemStack[] t, FluidStack f, GasStack g) {
         return output.copy();
     }
 
     @Override
     public boolean test(ItemStack[] t, FluidStack f, GasStack g) {
-        // null セーフにもできる (必要なら)
         if (t == null || f == null || g == null) return false;
 
-        // まず流体とガスが一致しないなら即 false
         if (!inputFluid.test(f) || !inputGas.test(g)) {
             return false;
         }
-
-        // 25スロット全判定
-        // t.length が 25 未満でも % によりループする仕様を維持
         for (int i = 0; i < SLOT_COUNT; i++) {
             if (!inputItems[i].test(t[i % t.length])) {
                 return false;
@@ -71,12 +63,10 @@ public abstract class AstralCraftingRecipe extends MekanismRecipe
 
     @Override
     public boolean isIncomplete() {
-        // Fluid or Gas が揃わなければ incomplete
         if (inputFluid.hasNoMatchingInstances() || inputGas.hasNoMatchingInstances()) {
             return true;
         }
 
-        // Item が一つでも無ければ incomplete
         for (int i = 0; i < SLOT_COUNT; i++) {
             if (inputItems[i].hasNoMatchingInstances()) {
                 return true;
