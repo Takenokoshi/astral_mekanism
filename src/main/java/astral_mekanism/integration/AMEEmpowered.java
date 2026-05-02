@@ -67,6 +67,16 @@ public class AMEEmpowered {
         return tile.getComponent().getUpgrades(Upgrade.valueOf(EMP_SPEED));
     }
 
+    public static int getEmpoweredEnergies(IUpgradeTile tile) {
+        if (!empoweredIsLoaded()) {
+            return 0;
+        }
+        if (tile.getComponent().getUpgrades(Upgrade.ENERGY) < 8 || !tile.supportsUpgrade(Upgrade.valueOf(EMP_ENERGY))) {
+            return 0;
+        }
+        return tile.getComponent().getUpgrades(Upgrade.valueOf(EMP_ENERGY));
+    }
+
     public static void recalculateUpgrades(IUpgradeTile tile, Upgrade upgrade,
             int baseTicksRequired, IntConsumer tickSetter) {
         if (!empoweredIsLoaded()) {
@@ -78,10 +88,17 @@ public class AMEEmpowered {
         } // MachineEnergyContainer's Energy will be set by Mekanism Empowered.
     }
 
-    public static boolean isEmpoweredSpeed(Upgrade upgrade){
+    public static boolean isEmpoweredSpeed(Upgrade upgrade) {
         if (!empoweredIsLoaded()) {
             return false;
         }
         return upgrade == Upgrade.valueOf(EMP_SPEED);
+    }
+
+    public static boolean isEmpoweredEnergy(Upgrade upgrade) {
+        if (!empoweredIsLoaded()) {
+            return false;
+        }
+        return upgrade == Upgrade.valueOf(EMP_ENERGY);
     }
 }

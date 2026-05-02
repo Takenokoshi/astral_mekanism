@@ -10,6 +10,10 @@ import astral_mekanism.item.GlintItemNameColored;
 import astral_mekanism.item.MekMachineUpgradeToolItem;
 import astral_mekanism.item.cell.bulkcell.AMEBulkCellItem;
 import astral_mekanism.item.recipecard.CoolantCardItem;
+import astral_mekanism.item.recipecard.FluidIngredientCardItem;
+import astral_mekanism.item.recipecard.FuelCardItem;
+import astral_mekanism.item.recipecard.GasIngredientCardItem;
+import astral_mekanism.item.recipecard.ItemIngredientCardItem;
 import astral_mekanism.registryenum.AMEProcessableMaterialType;
 import astral_mekanism.registryenum.AMEProcessingItemStates;
 import mekanism.api.Upgrade;
@@ -18,6 +22,7 @@ import mekanism.common.item.ItemUpgrade;
 import mekanism.common.registration.impl.ItemDeferredRegister;
 import mekanism.common.registration.impl.ItemRegistryObject;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Rarity;
 
 public class AMEItems {
@@ -128,12 +133,27 @@ public class AMEItems {
             AMEUpgrade.HYPER_SPEED.getValue());
     public static final ItemRegistryObject<ItemUpgrade> STARDUST_SPEED_UPGRADE = registerUpgrade(
             AMEUpgrade.STARDUST_SPEED.getValue());
+    public static final ItemRegistryObject<ItemUpgrade> ADVANCED_STONE_GENERATOR_UPGRADE = ITEMS.register(
+            "advanced_stone_generator_upgrade", p -> new ItemUpgrade(AMEUpgrade.ADVANCED_STONE_GENERATOR.getValue(), p) {
+                @Override
+                public boolean isFoil(ItemStack stack) {
+                    return true;
+                }
+            });
     public static final ItemRegistryObject<Item> INSERT_UPGRADE = ITEMS.register("insert_upgrade");
     public static final ItemRegistryObject<MekMachineUpgradeToolItem> MEK_MACHINE_UPGRADE_TOOL = ITEMS.register(
             "mekanism_machine_upgrade_tool", MekMachineUpgradeToolItem::new);
 
     public static final ItemRegistryObject<CoolantCardItem> COOLANT_INFORMETION_CARD = ITEMS.register(
             "coolant_information_card", CoolantCardItem::new);
+    public static final ItemRegistryObject<FuelCardItem> FUEL_INFORMATION_CARD = ITEMS.register(
+            "fuel_information_card", FuelCardItem::new);
+    public static final ItemRegistryObject<ItemIngredientCardItem> ITEM_INFORMATION_CARD = ITEMS.register(
+            "item_information_card", ItemIngredientCardItem::new);
+    public static final ItemRegistryObject<FluidIngredientCardItem> FLUID_INFORMATION_CARD = ITEMS.register(
+            "fluid_information_card", FluidIngredientCardItem::new);
+    public static final ItemRegistryObject<GasIngredientCardItem> GAS_INFORMATION_CARD = ITEMS.register(
+            "gas_information_card", GasIngredientCardItem::new);
 
     public static final EnumMap<AMEProcessableMaterialType, EnumMap<AMEProcessingItemStates, ItemRegistryObject<?>>> AME_MATERIAL_PROCESSING_ITEMS = createMaterialProcessItemMap();
 

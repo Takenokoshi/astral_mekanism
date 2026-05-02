@@ -10,6 +10,7 @@ public class AMEAPILang {
     public static APILang UPGRADE_AIR_INTAKE;
     public static APILang UPGRADE_HYPER_SPEED;
     public static APILang UPGRADE_STARDUST_SPEED;
+    public static APILang UPGRADE_ADVANCED_STONE_GENERATOR;
 
     public static APILang UPGRADE_COBBLESTONE_SUPPLY_DESCRIPTION;
     public static APILang UPGRADE_WATER_SUPPLY_DESCRIPTION;
@@ -18,4 +19,5 @@ public class AMEAPILang {
     public static APILang UPGRADE_AIR_INTAKE_DESCRIPTION;
     public static APILang UPGRADE_HYPER_SPEED_DESCRIPTION;
     public static APILang UPGRADE_STARDUST_SPEED_DESCRIPTION;
+    public static APILang UPGRADE_ADVANCED_STONE_GENERATOR_DESCRIPTION;
 }

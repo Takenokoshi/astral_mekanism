@@ -51,18 +51,24 @@ public class APILangMixin {
     @Inject(method = "<clinit>", at = @At("TAIL"))
     private static void astral_mekanism$clinitInject(CallbackInfo ci) {
         AMEAPILang.UPGRADE_COBBLESTONE_SUPPLY = astral_mekanism$createNew("upgrade", "cobblestone_supply");
-        AMEAPILang.UPGRADE_COBBLESTONE_SUPPLY_DESCRIPTION = astral_mekanism$createNew("upgrade", "cobblestone_supply.description");
+        AMEAPILang.UPGRADE_COBBLESTONE_SUPPLY_DESCRIPTION = astral_mekanism$createNew("upgrade",
+                "cobblestone_supply.description");
         AMEAPILang.UPGRADE_WATER_SUPPLY = astral_mekanism$createNew("upgrade", "water_supply");
         AMEAPILang.UPGRADE_WATER_SUPPLY_DESCRIPTION = astral_mekanism$createNew("upgrade", "water_supply.description");
         AMEAPILang.UPGRADE_XP = astral_mekanism$createNew("upgrade", "xp");
         AMEAPILang.UPGRADE_XP_DESCRIPTION = astral_mekanism$createNew("upgrade", "xp.description");
         AMEAPILang.UPGRADE_RADIOACTIVE_SEALING = astral_mekanism$createNew("upgrade", "radioactive_sealing");
-        AMEAPILang.UPGRADE_RADIOACTIVE_SEALING_DESCRIPTION = astral_mekanism$createNew("upgrade", "radioactive_sealing.description");
+        AMEAPILang.UPGRADE_RADIOACTIVE_SEALING_DESCRIPTION = astral_mekanism$createNew("upgrade",
+                "radioactive_sealing.description");
         AMEAPILang.UPGRADE_AIR_INTAKE = astral_mekanism$createNew("upgrade", "air_intake");
         AMEAPILang.UPGRADE_AIR_INTAKE_DESCRIPTION = astral_mekanism$createNew("upgrade", "air_intake.description");
         AMEAPILang.UPGRADE_HYPER_SPEED = astral_mekanism$createNew("upgrade", "hyper_speed");
         AMEAPILang.UPGRADE_HYPER_SPEED_DESCRIPTION = astral_mekanism$createNew("upgrade", "hyper_speed.description");
         AMEAPILang.UPGRADE_STARDUST_SPEED = astral_mekanism$createNew("upgrade", "stardust_speed");
-        AMEAPILang.UPGRADE_STARDUST_SPEED_DESCRIPTION = astral_mekanism$createNew("upgrade", "stardust_speed.description");
+        AMEAPILang.UPGRADE_STARDUST_SPEED_DESCRIPTION = astral_mekanism$createNew("upgrade",
+                "stardust_speed.description");
+        AMEAPILang.UPGRADE_ADVANCED_STONE_GENERATOR = astral_mekanism$createNew("upgrade", "advanced_stone_generator");
+        AMEAPILang.UPGRADE_ADVANCED_STONE_GENERATOR_DESCRIPTION = astral_mekanism$createNew("upgrade",
+                "advanced_stone_generator.description");
     }
 }

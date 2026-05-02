@@ -156,6 +156,12 @@ description='''${mod_description}'''
     ordering="NONE"
     side="BOTH"
 [[dependencies.${mod_id}]]
+    modId="appflux"
+    mandatory=true
+    versionRange="[1.3.7,)"
+    ordering="NONE"
+    side="BOTH"
+[[dependencies.${mod_id}]]
     modId="botanypots"
     mandatory=true
     versionRange="[13.0.41,)"

@@ -80,6 +80,10 @@ public class UpgradeMixin {
         AMEUpgrade.STARDUST_SPEED
                 .setValue(astral_mekanism$createNew("stardust_speed", AMEAPILang.UPGRADE_STARDUST_SPEED,
                         AMEAPILang.UPGRADE_STARDUST_SPEED_DESCRIPTION, 8, EnumColor.WHITE));
+        AMEUpgrade.ADVANCED_STONE_GENERATOR
+                .setValue(astral_mekanism$createNew("advanced_stone_generator",
+                        AMEAPILang.UPGRADE_ADVANCED_STONE_GENERATOR,
+                        AMEAPILang.UPGRADE_ADVANCED_STONE_GENERATOR_DESCRIPTION, 1, EnumColor.ORANGE));
         AMEUpgrade.initializeMap();
     }
 

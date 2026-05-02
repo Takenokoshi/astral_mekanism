@@ -98,7 +98,7 @@ public abstract class BEAbstractAppliedMixingReactor extends BENetworkConfigurab
 
     protected long burn() {
         MEStorage storage = getMeStorage();
-        if (storage == null || heatCapacitor.getHeatCapacity() < workableTemp()) {
+        if (storage == null || heatCapacitor.getTemperature() < workableTemp()) {
             return 0;
         }
         IActionSource source = IActionSource.ofMachine(this);

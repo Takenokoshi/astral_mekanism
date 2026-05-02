@@ -22,6 +22,9 @@ import mekanism.common.util.EnumUtils;
 public class MekanismBlockTypesMixin {
     @Inject(method = "<clinit>", at = @At("TAIL"))
     private static void clinitInject(CallbackInfo ci) {
+
+        addSupportedUpgrade(MekanismBlockTypes.DIGITAL_MINER, AMEUpgrade.ADVANCED_STONE_GENERATOR.getValue());
+
         addSupportedUpgrade(MekanismBlockTypes.ENRICHMENT_CHAMBER, AMEUpgrade.COBBLESTONE_SUPPLY.getValue());
         addSupportedUpgrade(MekanismBlockTypes.CRUSHER, AMEUpgrade.COBBLESTONE_SUPPLY.getValue());
         addSupportedUpgrade(MekanismBlockTypes.ENERGIZED_SMELTER, AMEUpgrade.COBBLESTONE_SUPPLY.getValue());
