@@ -1,10 +1,10 @@
-package astral_mekanism.block.gui.astralmachine;
+package astral_mekanism.block.gui.enchantedmachine;
 
 import java.util.Collections;
 
 import org.jetbrains.annotations.NotNull;
 
-import astral_mekanism.block.blockentity.astralmachine.BEAstralMelter;
+import astral_mekanism.block.blockentity.prefab.BEAbstractMelter;
 import fr.iglee42.evolvedmekanism.jei.EMJEI;
 import fr.iglee42.evolvedmekanism.tiles.machine.TileEntityMelter;
 import mekanism.api.recipes.cache.CachedRecipe.OperationTracker.RecipeError;
@@ -26,9 +26,9 @@ import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.player.Inventory;
 
-public class GuiAstralMelter extends GuiConfigurableTile<BEAstralMelter, MekanismTileContainer<BEAstralMelter>> {
+public class GuiAMEMelter<BE extends BEAbstractMelter> extends GuiConfigurableTile<BE, MekanismTileContainer<BE>> {
 
-    public GuiAstralMelter(MekanismTileContainer<BEAstralMelter> container, Inventory inv, Component title) {
+    public GuiAMEMelter(MekanismTileContainer<BE> container, Inventory inv, Component title) {
         super(container, inv, title);
         dynamicSlots = true;
     }

@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_center": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "emextras:absolute_overclocked_control_circuit"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "astral_mekanism:crafting/mekanical_magma_block/absolute_overclocked"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_center",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "astral_mekanism:crafting/mekanical_magma_block/absolute_overclocked"
+    ]
+  },
+  "sends_telemetry_event": false
+}

@@ -62,8 +62,8 @@ public class BEEnchantedIsotopicCentrifuge extends BEGasToGasMachine {
         super.recalculateUpgrades(upgrade);
         if (AMEEmpowered.empoweredIsLoaded()) {
             if (AMEEmpowered.isEmpoweredSpeed(upgrade) || upgrade == Upgrade.SPEED || upgrade == ExtraUpgrade.STACK) {
-                baselineMaxOperations = 200 * (1 << upgradeComponent.getUpgrades(Upgrade.SPEED) + 2 << AMEEmpowered
-                        .getEmpoweredSpeeds(this)) << upgradeComponent.getUpgrades(ExtraUpgrade.STACK);
+                baselineMaxOperations = 200 *((1 << upgradeComponent.getUpgrades(Upgrade.SPEED)) + (2 << AMEEmpowered
+                        .getEmpoweredSpeeds(this))) << upgradeComponent.getUpgrades(ExtraUpgrade.STACK);
             }
         } else if (upgrade == Upgrade.SPEED || upgrade == ExtraUpgrade.STACK) {
             baselineMaxOperations = 200 << (upgradeComponent.getUpgrades(Upgrade.SPEED)

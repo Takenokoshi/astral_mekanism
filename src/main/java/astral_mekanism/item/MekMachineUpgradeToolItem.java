@@ -55,8 +55,8 @@ public class MekMachineUpgradeToolItem extends Item implements IGridLinkedItem, 
         Player player = context.getPlayer();
         if (player != null && player.isShiftKeyDown()) {
             Level world = context.getLevel();
-            BlockEntity tile = WorldUtils.getTileEntity(world, context.getClickedPos());
-            if (tile instanceof TileEntityMekanism tilemek) {
+            BlockEntity be = WorldUtils.getTileEntity(world, context.getClickedPos());
+            if (be instanceof TileEntityMekanism tilemek) {
                 addUpgrade(context.getItemInHand(), player, tilemek);
                 return InteractionResult.sidedSuccess(world.isClientSide);
             }

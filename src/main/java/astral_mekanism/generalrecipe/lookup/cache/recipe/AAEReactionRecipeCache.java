@@ -67,7 +67,7 @@ public class AAEReactionRecipeCache extends GeneralInputRecipeCache<Container, R
         initCacheIfNeeded(world);
         if (itemRecipesMap.containsKey(itemStack.getItem())) {
             return itemRecipesMap.get(itemStack.getItem()).stream().anyMatch(r -> {
-                if (!checkByFluid(r, fluidStack)) {
+                if (!fluidStack.isEmpty() && !checkByFluid(r, fluidStack)) {
                     return false;
                 }
                 for (ItemStack stack : itemStacks) {

@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "redstone",
+  "key": {
+    "C": {
+      "item": "advanced_ae:quantum_processor"
+    },
+    "M": {
+      "item": "astral_mekanism:absolute_overclocked_mekanical_magma_block"
+    }
+  },
+  "pattern": [
+    "MMM",
+    "MCM",
+    "MMM"
+  ],
+  "result": {
+    "item": "astral_mekanism:quantum_mekanical_magma_block"
+  },
+  "show_notification": true
+}

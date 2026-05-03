@@ -17,6 +17,7 @@ import mekanism.common.item.block.machine.ItemBlockMachine;
 import mekanism.common.registration.impl.BlockDeferredRegister;
 import mekanism.common.registration.impl.TileEntityTypeDeferredRegister;
 import mekanism.common.tile.base.TileEntityMekanism;
+import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.material.MapColor;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -37,7 +38,7 @@ public class MachineDeferredRegister {
         machines = new ArrayList<MachineRegistryObject<?, ?, ?, ?>>();
     }
 
-    public <BE extends TileEntityMekanism, BLOCK extends BlockTileModel<BE, BlockTypeMachine<BE>>, CONTAINER extends MekanismTileContainer<BE>, ITEM extends ItemBlockMachine> MachineRegistryObject<BE, BLOCK, CONTAINER, ITEM> registerFull(
+    public <BE extends TileEntityMekanism, BLOCK extends BlockTileModel<BE, BlockTypeMachine<BE>>, CONTAINER extends MekanismTileContainer<BE>, ITEM extends BlockItem> MachineRegistryObject<BE, BLOCK, CONTAINER, ITEM> registerFull(
             String name,
             Function<BlockTypeMachine<BE>, BLOCK> blockCreator,
             Function<BLOCK, ITEM> itemCreator,
@@ -53,7 +54,7 @@ public class MachineDeferredRegister {
         return object;
     }
 
-    public <BE extends TileEntityMekanism, BLOCK extends BlockTileModel<BE, BlockTypeMachine<BE>>, ITEM extends ItemBlockMachine> MachineRegistryObject<BE, BLOCK, MekanismTileContainer<BE>, ITEM> registerDefaultContainer(
+    public <BE extends TileEntityMekanism, BLOCK extends BlockTileModel<BE, BlockTypeMachine<BE>>, ITEM extends BlockItem> MachineRegistryObject<BE, BLOCK, MekanismTileContainer<BE>, ITEM> registerDefaultContainer(
             String name,
             Function<BlockTypeMachine<BE>, BLOCK> blockCreator,
             Function<BLOCK, ITEM> itemCreator,
@@ -89,7 +90,7 @@ public class MachineDeferredRegister {
                 MekanismTileContainer<BE>::new, entry, operator);
     }
 
-    public <BE extends TileEntityMekanism, CONTAINER extends MekanismTileContainer<BE>, ITEM extends ItemBlockMachine> MachineRegistryObject<BE, BlockTileModel<BE, BlockTypeMachine<BE>>, CONTAINER, ITEM> registerDefaultBlock(
+    public <BE extends TileEntityMekanism, CONTAINER extends MekanismTileContainer<BE>, ITEM extends BlockItem> MachineRegistryObject<BE, BlockTileModel<BE, BlockTypeMachine<BE>>, CONTAINER, ITEM> registerDefaultBlock(
             String name,
             Function<BlockTypeMachine<BE>, BlockTileModel<BE, BlockTypeMachine<BE>>> blockCreator,
             Function<BlockTileModel<BE, BlockTypeMachine<BE>>, ITEM> itemCreator,
@@ -104,7 +105,7 @@ public class MachineDeferredRegister {
                 itemCreator, beConstructor, beClass, contConstructor, entry, operator);
     }
 
-    public <BE extends TileEntityMekanism, ITEM extends ItemBlockMachine> MachineRegistryObject<BE, BlockTileModel<BE, BlockTypeMachine<BE>>, MekanismTileContainer<BE>, ITEM> registerDefaultBlockContainer(
+    public <BE extends TileEntityMekanism, ITEM extends BlockItem> MachineRegistryObject<BE, BlockTileModel<BE, BlockTypeMachine<BE>>, MekanismTileContainer<BE>, ITEM> registerDefaultBlockContainer(
             String name,
             Function<BlockTileModel<BE, BlockTypeMachine<BE>>, ITEM> itemCreator,
             BlockEntityConstructor<BE, BlockTypeMachine<BE>, BlockTileModel<BE, BlockTypeMachine<BE>>> beConstructor,

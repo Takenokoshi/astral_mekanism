@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_center": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "astral_mekanism:illusion_control_circuit"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "astral_mekanism:crafting/mekanical_magma_block/astral"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_center",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "astral_mekanism:crafting/mekanical_magma_block/astral"
+    ]
+  },
+  "sends_telemetry_event": false
+}

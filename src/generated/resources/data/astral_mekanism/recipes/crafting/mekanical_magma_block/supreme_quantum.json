@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "redstone",
+  "key": {
+    "C": {
+      "item": "emextras:supreme_quantum_control_circuit"
+    },
+    "M": {
+      "item": "astral_mekanism:quantum_mekanical_magma_block"
+    }
+  },
+  "pattern": [
+    "MMM",
+    "MCM",
+    "MMM"
+  ],
+  "result": {
+    "item": "astral_mekanism:supreme_quantum_mekanical_magma_block"
+  },
+  "show_notification": true
+}

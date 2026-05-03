@@ -1,5 +1,7 @@
 package astral_mekanism;
 
+import java.util.Arrays;
+
 import astral_mekanism.block.blockentity.appliedmachine.BEAppliedFusionReactor;
 import astral_mekanism.block.blockentity.appliedmachine.BEAppliedNaquadahReactor;
 import astral_mekanism.block.blockentity.astralfactory.BEAstralEnergizedSmeltingFactory;
@@ -18,6 +20,7 @@ import astral_mekanism.block.blockentity.astralmachine.BEAstralGreenHouse;
 import astral_mekanism.block.blockentity.astralmachine.BEAstralIsotopicCentrifuge;
 import astral_mekanism.block.blockentity.astralmachine.BEAstralMekanicalCharger;
 import astral_mekanism.block.blockentity.astralmachine.BEAstralMekanicalInscriber;
+import astral_mekanism.block.blockentity.astralmachine.BEAstralMelter;
 import astral_mekanism.block.blockentity.astralmachine.BEAstralReactionChamber;
 import astral_mekanism.block.blockentity.astralmachine.BEAstralSPS;
 import astral_mekanism.block.blockentity.astralmachine.BEAstralTransformer;
@@ -36,6 +39,7 @@ import astral_mekanism.block.blockentity.enchantedmachine.BEEnchantedChemicalOxi
 import astral_mekanism.block.blockentity.enchantedmachine.BEEnchantedChemixer;
 import astral_mekanism.block.blockentity.enchantedmachine.BEEnchantedElectrolyticSeparator;
 import astral_mekanism.block.blockentity.enchantedmachine.BEEnchantedIsotopicCentrifuge;
+import astral_mekanism.block.blockentity.enchantedmachine.BEEnchantedMelter;
 import astral_mekanism.block.blockentity.normalfactory.BEEnergizedSmeltingFactory;
 import astral_mekanism.block.blockentity.normalmachine.BEEssentialEnergizedSmelter;
 import astral_mekanism.block.blockentity.normalmachine.BEEssentialOsmiumCompressor;
@@ -51,6 +55,7 @@ import astral_mekanism.block.blockentity.normalmachine.BEMekanicalCharger;
 import astral_mekanism.block.blockentity.normalmachine.BEMekanicalComposter;
 import astral_mekanism.block.blockentity.normalmachine.BEMekanicalInscriber;
 import astral_mekanism.block.blockentity.normalmachine.BETransformer;
+import astral_mekanism.block.blockentity.other.BEUpgradeExtractor;
 import astral_mekanism.block.blockentity.storage.BEItemSortableStorage;
 import astral_mekanism.block.blockentity.storage.BEUniversalStorage;
 import astral_mekanism.block.container.other.ContainerItemSortableStorage;
@@ -73,7 +78,6 @@ import astral_mekanism.block.gui.astralmachine.GuiAstralCrystallizer;
 import astral_mekanism.block.gui.astralmachine.GuiAstralDissolutionChamber;
 import astral_mekanism.block.gui.astralmachine.GuiAstralElectricMachine;
 import astral_mekanism.block.gui.astralmachine.GuiAstralFormulaicAssemblicator;
-import astral_mekanism.block.gui.astralmachine.GuiAstralMelter;
 import astral_mekanism.block.gui.astralmachine.GuiAstralMetallurgicInfuser;
 import astral_mekanism.block.gui.astralmachine.GuiAstralPRC;
 import astral_mekanism.block.gui.astralmachine.GuiAstralPrecisionSawmill;
@@ -85,6 +89,7 @@ import astral_mekanism.block.gui.compact.GuiCompactFissionReactor;
 import astral_mekanism.block.gui.compact.GuiCompactMixingReactor;
 import astral_mekanism.block.gui.compact.GuiCompactTEP;
 import astral_mekanism.block.gui.enchantedmachine.GuiAMEElectrolyticSeparator;
+import astral_mekanism.block.gui.enchantedmachine.GuiAMEMelter;
 import astral_mekanism.block.gui.enchantedmachine.GuiAMEChemixer;
 import astral_mekanism.block.gui.enchantedmachine.GuiAMEChemicalOxider;
 import astral_mekanism.block.gui.enchantedmachine.GuiAMEChemicalInfuser;
@@ -108,6 +113,8 @@ import astral_mekanism.block.gui.normalmachine.GuiMekanicalComposter;
 import astral_mekanism.block.gui.normalmachine.GuiMekanicalInscriber;
 import astral_mekanism.block.gui.normalmachine.GuiMekanicalMatterCondenser;
 import astral_mekanism.block.gui.normalmachine.GuiTransformer;
+import astral_mekanism.block.gui.other.GuiMekanicalMagmaBlock;
+import astral_mekanism.block.gui.other.GuiNothing;
 import astral_mekanism.block.gui.prefab.GuiAbstractStorage;
 import astral_mekanism.block.gui.prefab.GuiDoubleItemToItemRecipeMachine;
 import astral_mekanism.block.gui.prefab.GuiGasToGasBlock;
@@ -210,7 +217,7 @@ public class AMEClient extends AstralMekanism {
                 GuiMekanicalCharger<BEAstralMekanicalCharger>::new);
         registerScreenMek(AMEMachines.ASTRAL_MEKANICAL_INSCRIBER,
                 GuiMekanicalInscriber<BEAstralMekanicalInscriber>::new);
-        registerScreenMek(AMEMachines.ASTRAL_THERMALIZER, GuiAstralMelter::new);
+        registerScreenMek(AMEMachines.ASTRAL_THERMALIZER, GuiAMEMelter<BEAstralMelter>::new);
         registerScreenMek(AMEMachines.ASTRAL_METALLURGIC_INFUSER, GuiAstralMetallurgicInfuser::new);
         registerScreenMek(AMEMachines.ASTRAL_PRC, GuiAstralPRC::new);
         registerScreenMek(AMEMachines.ASTRAL_PRECISION_SAWMILL, GuiAstralPrecisionSawmill::new);
@@ -242,6 +249,7 @@ public class AMEClient extends AstralMekanism {
                 GuiAMEElectrolyticSeparator<BEEnchantedElectrolyticSeparator>::new);
         registerScreenMek(AMEMachines.ENCHANTED_ISTOPIC_CENTRIFUGE,
                 GuiGasToGasMachine<BEEnchantedIsotopicCentrifuge>::new);
+        registerScreenMek(AMEMachines.ENCHANTED_MELTER, GuiAMEMelter<BEEnchantedMelter>::new);
         registerScreenMek(AMEMachines.APPLIED_GAS_BURNING_GENERATOR, GuiAppliedGasBurningGenerator::new);
         AMEMachines.GAS_BURNING_GENERATORS
                 .forEach((t, m) -> registerScreenMek(m, GuiGasBurningGenerator::new));
@@ -276,6 +284,9 @@ public class AMEClient extends AstralMekanism {
         registerScreenMek(AMEMachines.MEKANICAL_INSCRIBER, GuiMekanicalInscriber<BEMekanicalInscriber>::new);
         registerScreenMek(AMEMachines.MEKANICAL_MATTER_CONDENSER, GuiMekanicalMatterCondenser::new);
         registerScreenMek(AMEMachines.TRANSFORMER, GuiTransformer<BETransformer>::new);
+        Arrays.asList(AMEMachines.MEKANICAL_MAGMABLOCKS)
+                .forEach(obj -> registerScreenMek(obj, GuiMekanicalMagmaBlock::new));
+        registerScreenMek(AMEMachines.UPGRADE_EXTRACTOR, GuiNothing<BEUpgradeExtractor>::new);
         registerScreenMek(AMEMachines.EVENLY_INSERTER, GuiEvenlyInserter::new);
         registerScreenMek(AMEMachines.UNIVERSAL_STORAGE,
                 GuiAbstractStorage<BEUniversalStorage, ContainerAbstractStorage<BEUniversalStorage>>::new);

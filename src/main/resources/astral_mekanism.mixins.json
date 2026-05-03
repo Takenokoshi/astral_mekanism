@@ -37,6 +37,7 @@
 		"mekmm.AdvancedFactoryBlockTypesMixin",
 		"mekmm.MoreMachineBlockTypesMixin",
 		"minecraft.LootBonusEnchantmentMixin",
+		"minecraft.RecipeManagerMixin",
 		"morethermalevaporation.MoreThermalEvaporationBlockTypesMixin"
 	],
 	"client": [

@@ -1,5 +1,6 @@
 package astral_mekanism.block;
 
+import java.util.Arrays;
 import java.util.EnumMap;
 import java.util.function.BiFunction;
 
@@ -21,6 +22,7 @@ import net.minecraftforge.client.model.generators.BlockModelBuilder;
 import net.minecraftforge.client.model.generators.BlockStateProvider;
 import net.minecraftforge.client.model.generators.ConfiguredModel;
 import net.minecraftforge.client.model.generators.ModelFile;
+import net.minecraftforge.client.model.generators.ModelFile.ExistingModelFile;
 import net.minecraftforge.client.model.generators.loaders.CompositeModelBuilder;
 import net.minecraftforge.common.data.ExistingFileHelper;
 
@@ -53,6 +55,7 @@ public class AstralMekanismBlockStateProvider extends BlockStateProvider {
                 (t, s) -> "block/compact_machine/" + s + "/" + t.nameForNormal, "naquadah_reactor",
                 "block/compact_machine/naquadah_reactor/base");
         registerEnergyCells();
+        registerMekanicalMagmaBlocks();
     }
 
     private void registerOres(EnumMap<AMEProcessableMaterialType, BlockRegistryObject<?, ?>> ores) {
@@ -202,6 +205,18 @@ public class AstralMekanismBlockStateProvider extends BlockStateProvider {
                     .modelFile(files[state.getValue(EnergyCellBlock.ENERGY_STORAGE)])
                     .build());
             itemModels().getBuilder(object.id().getPath()).parent(files[0]);
+        });
+    }
+
+    private void registerMekanicalMagmaBlocks() {
+        ExistingModelFile magma = models()
+                .getExistingFile(ResourceLocation.fromNamespaceAndPath("minecraft", "block/magma_block"));
+        Arrays.asList(AMEMachines.MEKANICAL_MAGMABLOCKS).forEach(obj -> {
+            getVariantBuilder(obj.getBlock()).forAllStates(state -> ConfiguredModel
+                    .builder()
+                    .modelFile(magma)
+                    .build());
+            itemModels().getBuilder(obj.getRegistryName().getPath()).parent(magma);
         });
     }
 

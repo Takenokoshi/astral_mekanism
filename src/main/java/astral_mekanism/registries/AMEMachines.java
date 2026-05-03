@@ -3,6 +3,7 @@ package astral_mekanism.registries;
 import java.util.EnumMap;
 import java.util.EnumSet;
 import java.util.function.Function;
+import java.util.function.Supplier;
 import java.util.function.UnaryOperator;
 
 import com.fxd927.mekanismelements.common.config.MSConfig;
@@ -13,6 +14,7 @@ import astral_mekanism.AMEConstants;
 import astral_mekanism.AMELang;
 import astral_mekanism.block.blockentity.appliedmachine.BEAppliedRotaryCondensentrator;
 import astral_mekanism.block.blockentity.appliedmachine.BEAppliedSPS;
+import astral_mekanism.block.block.AttributeIntTier;
 import astral_mekanism.block.blockentity.appliedmachine.BEAppliedCrystallizer;
 import astral_mekanism.block.blockentity.appliedmachine.BEAppliedElectrolyticSeparator;
 import astral_mekanism.block.blockentity.appliedmachine.BEAppliedFissionReactor;
@@ -71,6 +73,7 @@ import astral_mekanism.block.blockentity.enchantedmachine.BEEnchantedChemicalOxi
 import astral_mekanism.block.blockentity.enchantedmachine.BEEnchantedChemixer;
 import astral_mekanism.block.blockentity.enchantedmachine.BEEnchantedElectrolyticSeparator;
 import astral_mekanism.block.blockentity.enchantedmachine.BEEnchantedIsotopicCentrifuge;
+import astral_mekanism.block.blockentity.enchantedmachine.BEEnchantedMelter;
 import astral_mekanism.block.blockentity.generator.AstralMekGeneratorTier;
 import astral_mekanism.block.blockentity.generator.BEAppliedGasBurningGenerator;
 import astral_mekanism.block.blockentity.generator.BEGasBurningGenerator;
@@ -96,6 +99,8 @@ import astral_mekanism.block.blockentity.normalmachine.BEMekanicalComposter;
 import astral_mekanism.block.blockentity.normalmachine.BEMekanicalInscriber;
 import astral_mekanism.block.blockentity.normalmachine.BEMekanicalMatterCondenser;
 import astral_mekanism.block.blockentity.normalmachine.BETransformer;
+import astral_mekanism.block.blockentity.other.BEMekanicalMagmaBlock;
+import astral_mekanism.block.blockentity.other.BEUpgradeExtractor;
 import astral_mekanism.block.blockentity.storage.BEEvenlyInserter;
 import astral_mekanism.block.blockentity.storage.BEItemSortableStorage;
 import astral_mekanism.block.blockentity.storage.BERatioSeparator;
@@ -132,6 +137,8 @@ import mekanism.common.item.block.machine.ItemBlockMachine;
 import mekanism.common.registries.MekanismSounds;
 import mekanism.common.tile.base.TileEntityMekanism;
 import mekanism.generators.common.registries.GeneratorsSounds;
+import net.minecraft.world.item.BlockItem;
+import net.minecraft.world.item.Item;
 
 public class AMEMachines {
     public static final MachineDeferredRegister MACHINES = new MachineDeferredRegister(AMEConstants.MODID);
@@ -864,6 +871,19 @@ public class AMEMachines {
                                             ExtraUpgrade.STACK))
                             .withSound(MekanismSounds.ISOTOPIC_CENTRIFUGE));
 
+    public static final MachineRegistryObject<BEEnchantedMelter, BlockTileModel<BEEnchantedMelter, BlockTypeMachine<BEEnchantedMelter>>, MekanismTileContainer<BEEnchantedMelter>, ItemBlockMachine> ENCHANTED_MELTER = MACHINES
+            .registerSimple("enchanted_thermalizer",
+                    BEEnchantedMelter::new,
+                    BEEnchantedMelter.class,
+                    AMELang.ITEM_GROUP,
+                    builder -> builder
+                            .changeAttributeUpgrade(
+                                    EnumSet.of(Upgrade.MUFFLING, Upgrade.ENERGY, Upgrade.SPEED,
+                                            AMEUpgrade.AIR_INTAKE.getValue(),
+                                            AMEUpgrade.RADIOACTIVE_SEALING.getValue(),
+                                            ExtraUpgrade.STACK))
+                            .withSound(MekanismSounds.CHEMICAL_OXIDIZER));
+
     public static final MachineRegistryObject<BEAppliedGasBurningGenerator, BlockTileModel<BEAppliedGasBurningGenerator, BlockTypeMachine<BEAppliedGasBurningGenerator>>, MekanismTileContainer<BEAppliedGasBurningGenerator>, ItemBlockMachine> APPLIED_GAS_BURNING_GENERATOR = MACHINES
             .registerSimple("applied_gas_burning_generator",
                     BEAppliedGasBurningGenerator::new,
@@ -905,7 +925,7 @@ public class AMEMachines {
             tier -> builder -> builder
                     .withSound(MekanismSounds.ENERGIZED_SMELTER)
                     .changeAttributeUpgrade(
-                            EnumSet.of(Upgrade.SPEED, Upgrade.ENERGY, ExtraUpgrade.STACK,
+                            EnumSet.of(Upgrade.SPEED, Upgrade.ENERGY, Upgrade.MUFFLING, ExtraUpgrade.STACK,
                                     AMEUpgrade.COBBLESTONE_SUPPLY.getValue(),
                                     AMEUpgrade.XP.getValue()))
                     .withEnergyConfig(MekanismConfig.usage.energizedSmelter,
@@ -930,7 +950,7 @@ public class AMEMachines {
                             .withEnergyConfig(MekanismConfig.usage.energizedSmelter,
                                     MekanismConfig.storage.energizedSmelter)
                             .changeAttributeUpgrade(
-                                    EnumSet.of(Upgrade.SPEED, Upgrade.ENERGY, ExtraUpgrade.STACK,
+                                    EnumSet.of(Upgrade.SPEED, Upgrade.ENERGY, Upgrade.MUFFLING, ExtraUpgrade.STACK,
                                             AMEUpgrade.COBBLESTONE_SUPPLY.getValue(),
                                             AMEUpgrade.XP.getValue()))
                             .withSound(MekanismSounds.ENERGIZED_SMELTER));
@@ -1119,6 +1139,34 @@ public class AMEMachines {
                                             AMEUpgrade.COBBLESTONE_SUPPLY.getValue(),
                                             AMEUpgrade.WATER_SUPPLY.getValue()))
                             .withEnergyConfig(AMEConfig.usage.transformer, AMEConfig.storage.transformer));
+
+    public static final String[] MEKANICAL_MAGMABLOCK_NAMES = { "essential", "basic", "standard", "advanced", "elite",
+            "ultimate", "enchanted", "accumulation", "photon", "absolute_overclocked", "quantum", "supreme_quantum",
+            "composite", "cosmic_dense", "origin", "infinite_multiversal", "autonomy", "firmament",
+            "astral", "starry_sky" };
+    public static final MachineRegistryObject<BEMekanicalMagmaBlock, ?, MekanismTileContainer<BEMekanicalMagmaBlock>, ?>[] MEKANICAL_MAGMABLOCKS = ((Supplier<MachineRegistryObject<BEMekanicalMagmaBlock, ?, MekanismTileContainer<BEMekanicalMagmaBlock>, ?>[]>) () -> {
+        @SuppressWarnings("unchecked")
+        MachineRegistryObject<BEMekanicalMagmaBlock, ?, MekanismTileContainer<BEMekanicalMagmaBlock>, ?>[] result = new MachineRegistryObject[MEKANICAL_MAGMABLOCK_NAMES.length];
+        for (int index = 0; index < MEKANICAL_MAGMABLOCK_NAMES.length; index++) {
+            int i = index;
+            result[i] = MACHINES.registerDefaultBlockContainer(
+                    MEKANICAL_MAGMABLOCK_NAMES[i] + "_mekanical_magma_block",
+                    b -> new BlockItem(b, new Item.Properties().fireResistant()),
+                    BEMekanicalMagmaBlock::new,
+                    BEMekanicalMagmaBlock.class,
+                    AMELang.ITEM_GROUP,
+                    builder -> builder.removeAttributeUpgrade()
+                            .with(new AttributeIntTier(i + 1)));
+        }
+        return result;
+    }).get();
+
+    public static final MachineRegistryObject<BEUpgradeExtractor, BlockTileModel<BEUpgradeExtractor, BlockTypeMachine<BEUpgradeExtractor>>, MekanismTileContainer<BEUpgradeExtractor>, ItemBlockMachine> UPGRADE_EXTRACTOR = MACHINES
+            .registerSimple("upgrade_extractor",
+                    BEUpgradeExtractor::new,
+                    BEUpgradeExtractor.class,
+                    AMELang.ITEM_GROUP,
+                    BlockMachineBuilder::removeAttributeUpgrade);
 
     public static final MachineRegistryObject<BEEvenlyInserter, BlockTileModel<BEEvenlyInserter, BlockTypeMachine<BEEvenlyInserter>>, MekanismTileContainer<BEEvenlyInserter>, ItemBlockMachine> EVENLY_INSERTER = MACHINES
             .registerSimple("evenly_inserter",

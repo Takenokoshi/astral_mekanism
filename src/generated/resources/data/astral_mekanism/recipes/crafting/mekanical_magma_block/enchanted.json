@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "redstone",
+  "key": {
+    "C": {
+      "item": "astral_mekanism:enhanced_control_circuit"
+    },
+    "M": {
+      "item": "astral_mekanism:ultimate_mekanical_magma_block"
+    }
+  },
+  "pattern": [
+    "MMM",
+    "MCM",
+    "MMM"
+  ],
+  "result": {
+    "item": "astral_mekanism:enchanted_mekanical_magma_block"
+  },
+  "show_notification": true
+}

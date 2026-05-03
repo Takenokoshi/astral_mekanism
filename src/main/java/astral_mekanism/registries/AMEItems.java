@@ -5,6 +5,7 @@ import java.util.function.Supplier;
 
 import astral_mekanism.AMEConstants;
 import astral_mekanism.enums.AMEUpgrade;
+import astral_mekanism.item.DegitalMinerFilterToolItem;
 import astral_mekanism.item.GlintItem;
 import astral_mekanism.item.GlintItemNameColored;
 import astral_mekanism.item.MekMachineUpgradeToolItem;
@@ -134,7 +135,8 @@ public class AMEItems {
     public static final ItemRegistryObject<ItemUpgrade> STARDUST_SPEED_UPGRADE = registerUpgrade(
             AMEUpgrade.STARDUST_SPEED.getValue());
     public static final ItemRegistryObject<ItemUpgrade> ADVANCED_STONE_GENERATOR_UPGRADE = ITEMS.register(
-            "advanced_stone_generator_upgrade", p -> new ItemUpgrade(AMEUpgrade.ADVANCED_STONE_GENERATOR.getValue(), p) {
+            "advanced_stone_generator_upgrade",
+            p -> new ItemUpgrade(AMEUpgrade.ADVANCED_STONE_GENERATOR.getValue(), p) {
                 @Override
                 public boolean isFoil(ItemStack stack) {
                     return true;
@@ -143,6 +145,8 @@ public class AMEItems {
     public static final ItemRegistryObject<Item> INSERT_UPGRADE = ITEMS.register("insert_upgrade");
     public static final ItemRegistryObject<MekMachineUpgradeToolItem> MEK_MACHINE_UPGRADE_TOOL = ITEMS.register(
             "mekanism_machine_upgrade_tool", MekMachineUpgradeToolItem::new);
+    public static final ItemRegistryObject<DegitalMinerFilterToolItem> DEGITALMINER_FILTER_TOOL = ITEMS.register(
+            "degitalminer_filter_tool", DegitalMinerFilterToolItem::new);
 
     public static final ItemRegistryObject<CoolantCardItem> COOLANT_INFORMETION_CARD = ITEMS.register(
             "coolant_information_card", CoolantCardItem::new);

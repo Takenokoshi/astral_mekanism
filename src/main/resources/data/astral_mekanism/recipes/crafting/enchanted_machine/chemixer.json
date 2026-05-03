@@ -2,7 +2,7 @@
     "type": "minecraft:crafting_shaped",
     "key": {
         "X": {
-            "item": "evelvedmekanism:chemixer"
+            "item": "evolvedmekanism:chemixer"
         },
         "A": {
             "item": "astral_mekanism:alloy_enchanted"

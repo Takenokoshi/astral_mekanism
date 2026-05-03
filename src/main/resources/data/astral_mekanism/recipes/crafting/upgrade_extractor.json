@@ -1,0 +1,23 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "key": {
+        "X": {
+            "item": "minecraft:torch"
+        },
+        "A": {
+            "tag": "astral_mekanism:ame_upgrade_base"
+        },
+        "C": {
+            "item": "minecraft:glass"
+        }
+    },
+    "pattern": [
+        "ACA",
+        "CXC",
+        "ACA"
+    ],
+    "result": {
+        "item": "astral_mekanism:upgrade_extractor",
+        "count": 1
+    }
+}

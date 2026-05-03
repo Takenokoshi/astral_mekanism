@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "redstone",
+  "key": {
+    "C": {
+      "item": "emextras:cosmic_dense_control_circuit"
+    },
+    "M": {
+      "item": "astral_mekanism:composite_mekanical_magma_block"
+    }
+  },
+  "pattern": [
+    "MMM",
+    "MCM",
+    "MMM"
+  ],
+  "result": {
+    "item": "astral_mekanism:cosmic_dense_mekanical_magma_block"
+  },
+  "show_notification": true
+}

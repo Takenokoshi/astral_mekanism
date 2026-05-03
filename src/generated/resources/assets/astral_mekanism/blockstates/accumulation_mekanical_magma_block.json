@@ -1,0 +1,76 @@
+{
+  "variants": {
+    "active=false,facing=east,fluid_logged=empty": {
+      "model": "minecraft:block/magma_block"
+    },
+    "active=false,facing=east,fluid_logged=lava": {
+      "model": "minecraft:block/magma_block"
+    },
+    "active=false,facing=east,fluid_logged=water": {
+      "model": "minecraft:block/magma_block"
+    },
+    "active=false,facing=north,fluid_logged=empty": {
+      "model": "minecraft:block/magma_block"
+    },
+    "active=false,facing=north,fluid_logged=lava": {
+      "model": "minecraft:block/magma_block"
+    },
+    "active=false,facing=north,fluid_logged=water": {
+      "model": "minecraft:block/magma_block"
+    },
+    "active=false,facing=south,fluid_logged=empty": {
+      "model": "minecraft:block/magma_block"
+    },
+    "active=false,facing=south,fluid_logged=lava": {
+      "model": "minecraft:block/magma_block"
+    },
+    "active=false,facing=south,fluid_logged=water": {
+      "model": "minecraft:block/magma_block"
+    },
+    "active=false,facing=west,fluid_logged=empty": {
+      "model": "minecraft:block/magma_block"
+    },
+    "active=false,facing=west,fluid_logged=lava": {
+      "model": "minecraft:block/magma_block"
+    },
+    "active=false,facing=west,fluid_logged=water": {
+      "model": "minecraft:block/magma_block"
+    },
+    "active=true,facing=east,fluid_logged=empty": {
+      "model": "minecraft:block/magma_block"
+    },
+    "active=true,facing=east,fluid_logged=lava": {
+      "model": "minecraft:block/magma_block"
+    },
+    "active=true,facing=east,fluid_logged=water": {
+      "model": "minecraft:block/magma_block"
+    },
+    "active=true,facing=north,fluid_logged=empty": {
+      "model": "minecraft:block/magma_block"
+    },
+    "active=true,facing=north,fluid_logged=lava": {
+      "model": "minecraft:block/magma_block"
+    },
+    "active=true,facing=north,fluid_logged=water": {
+      "model": "minecraft:block/magma_block"
+    },
+    "active=true,facing=south,fluid_logged=empty": {
+      "model": "minecraft:block/magma_block"
+    },
+    "active=true,facing=south,fluid_logged=lava": {
+      "model": "minecraft:block/magma_block"
+    },
+    "active=true,facing=south,fluid_logged=water": {
+      "model": "minecraft:block/magma_block"
+    },
+    "active=true,facing=west,fluid_logged=empty": {
+      "model": "minecraft:block/magma_block"
+    },
+    "active=true,facing=west,fluid_logged=lava": {
+      "model": "minecraft:block/magma_block"
+    },
+    "active=true,facing=west,fluid_logged=water": {
+      "model": "minecraft:block/magma_block"
+    }
+  }
+}

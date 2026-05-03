@@ -10,17 +10,17 @@ import mekanism.api.providers.IBlockProvider;
 import mekanism.api.text.ILangEntry;
 import mekanism.common.block.prefab.BlockTile.BlockTileModel;
 import mekanism.common.inventory.container.tile.MekanismTileContainer;
-import mekanism.common.item.block.machine.ItemBlockMachine;
 import mekanism.common.registration.INamedEntry;
 import mekanism.common.registration.impl.BlockDeferredRegister;
 import mekanism.common.registration.impl.BlockRegistryObject;
 import mekanism.common.registration.impl.TileEntityTypeDeferredRegister;
 import mekanism.common.registration.impl.TileEntityTypeRegistryObject;
 import mekanism.common.tile.base.TileEntityMekanism;
+import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 
-public class MachineRegistryObject<BE extends TileEntityMekanism, BLOCK extends BlockTileModel<BE, BlockTypeMachine<BE>>, CONTAINER extends MekanismTileContainer<BE>, ITEM extends ItemBlockMachine>
+public class MachineRegistryObject<BE extends TileEntityMekanism, BLOCK extends BlockTileModel<BE, BlockTypeMachine<BE>>, CONTAINER extends MekanismTileContainer<BE>, ITEM extends BlockItem>
         implements INamedEntry, IBlockProvider {
 
     private final BlockRegistryObject<BLOCK, ITEM> blockRegistryObject;

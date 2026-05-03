@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "redstone",
+  "key": {
+    "C": {
+      "item": "astral_mekanism:composite_processor"
+    },
+    "M": {
+      "item": "astral_mekanism:supreme_quantum_mekanical_magma_block"
+    }
+  },
+  "pattern": [
+    "MMM",
+    "MCM",
+    "MMM"
+  ],
+  "result": {
+    "item": "astral_mekanism:composite_mekanical_magma_block"
+  },
+  "show_notification": true
+}
