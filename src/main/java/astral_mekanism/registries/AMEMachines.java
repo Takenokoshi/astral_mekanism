@@ -82,6 +82,7 @@ import astral_mekanism.block.blockentity.enchantedmachine.BEEnchantedEnergizedSm
 import astral_mekanism.block.blockentity.enchantedmachine.BEEnchantedFormulaicAssemblicator;
 import astral_mekanism.block.blockentity.enchantedmachine.BEEnchantedIsotopicCentrifuge;
 import astral_mekanism.block.blockentity.enchantedmachine.BEEnchantedMelter;
+import astral_mekanism.block.blockentity.enchantedmachine.BEEnchantedMetallurgicInfuser;
 import astral_mekanism.block.blockentity.enchantedmachine.BEEnchantedPRC;
 import astral_mekanism.block.blockentity.enchantedmachine.BEEnchantedPaintingMachine;
 import astral_mekanism.block.blockentity.enchantedmachine.BEEnchantedRotaryCondensentrator;
@@ -1071,6 +1072,20 @@ public class AMEMachines {
                                             AMEUpgrade.RADIOACTIVE_SEALING.getValue(),
                                             ExtraUpgrade.STACK))
                             .withSound(MekanismSounds.CHEMICAL_OXIDIZER));
+
+    public static final MachineRegistryObject<BEEnchantedMetallurgicInfuser, BlockTileModel<BEEnchantedMetallurgicInfuser, BlockTypeMachine<BEEnchantedMetallurgicInfuser>>, MekanismTileContainer<BEEnchantedMetallurgicInfuser>, ItemBlockMachine> ENCHANTED_METALLURGIC_INFUSER = MACHINES
+            .registerSimple("enchanted_metallurgic_infuser",
+                    BEEnchantedMetallurgicInfuser::new,
+                    BEEnchantedMetallurgicInfuser.class,
+                    AMELang.ITEM_GROUP,
+                    builder -> builder
+                            .withEnergyConfig(MekanismConfig.usage.metallurgicInfuser,
+                                    () -> MekanismConfig.storage.metallurgicInfuser.get().multiply(200000))
+                            .changeAttributeUpgrade(
+                                    EnumSet.of(Upgrade.MUFFLING, Upgrade.ENERGY, Upgrade.SPEED,
+                                            AMEUpgrade.COBBLESTONE_SUPPLY.getValue(),
+                                            ExtraUpgrade.STACK))
+                            .withSound(MekanismSounds.METALLURGIC_INFUSER));
 
     public static final MachineRegistryObject<BEEnchantedPaintingMachine, BlockTileModel<BEEnchantedPaintingMachine, BlockTypeMachine<BEEnchantedPaintingMachine>>, MekanismTileContainer<BEEnchantedPaintingMachine>, ItemBlockMachine> ENCHANTED_PAINTING_MACHINE = MACHINES
             .registerSimple("enchanted_painting_machine",

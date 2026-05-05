@@ -25,6 +25,7 @@ import astral_mekanism.block.blockentity.astralmachine.BEAstralIsotopicCentrifug
 import astral_mekanism.block.blockentity.astralmachine.BEAstralMekanicalCharger;
 import astral_mekanism.block.blockentity.astralmachine.BEAstralMekanicalInscriber;
 import astral_mekanism.block.blockentity.astralmachine.BEAstralMelter;
+import astral_mekanism.block.blockentity.astralmachine.BEAstralMetallurgicInfuser;
 import astral_mekanism.block.blockentity.astralmachine.BEAstralPRC;
 import astral_mekanism.block.blockentity.astralmachine.BEAstralReactionChamber;
 import astral_mekanism.block.blockentity.astralmachine.BEAstralRotaryCondensentrator;
@@ -63,7 +64,6 @@ import astral_mekanism.block.gui.appliedmachine.GuiAppliedNeutronActivator;
 import astral_mekanism.block.gui.appliedmachine.GuiAppliedSmelter;
 import astral_mekanism.block.gui.appliedmachine.GuiAppliedTEP;
 import astral_mekanism.block.gui.astralmachine.GuiAstralAlloyer;
-import astral_mekanism.block.gui.astralmachine.GuiAstralMetallurgicInfuser;
 import astral_mekanism.block.gui.astralmachine.GuiAstralPrecisionSawmill;
 import astral_mekanism.block.gui.astralmachine.GuiAstralRadiationIrradiator;
 import astral_mekanism.block.gui.astralmachine.GuiAstralSolidifier;
@@ -179,7 +179,8 @@ public class AMEClient extends AstralMekanism {
         registerScreenMek(AMEMachines.ASTRAL_MEKANICAL_INSCRIBER,
                 GuiMekanicalInscriber<BEAstralMekanicalInscriber>::new);
         registerScreenMek(AMEMachines.ASTRAL_THERMALIZER, GuiAMEMelter<BEAstralMelter>::new);
-        registerScreenMek(AMEMachines.ASTRAL_METALLURGIC_INFUSER, GuiAstralMetallurgicInfuser::new);
+        registerScreenMek(AMEMachines.ASTRAL_METALLURGIC_INFUSER,
+                GuiAMEMetallurgicInfuser<BEAstralMetallurgicInfuser>::new);
         registerScreenMek(AMEMachines.ASTRAL_PRC, GuiAMEPRC<BEAstralPRC>::new);
         registerScreenMek(AMEMachines.ASTRAL_PRECISION_SAWMILL, GuiAstralPrecisionSawmill::new);
         registerScreenMek(AMEMachines.ASTRAL_RADIATION_IRRADIATOR, GuiAstralRadiationIrradiator::new);
@@ -231,6 +232,8 @@ public class AMEClient extends AstralMekanism {
         registerScreenMek(AMEMachines.ENCHANTED_ISTOPIC_CENTRIFUGE,
                 GuiGasToGasMachine<BEEnchantedIsotopicCentrifuge>::new);
         registerScreenMek(AMEMachines.ENCHANTED_MELTER, GuiAMEMelter<BEEnchantedMelter>::new);
+        registerScreenMek(AMEMachines.ENCHANTED_METALLURGIC_INFUSER,
+                GuiAMEMetallurgicInfuser<BEEnchantedMetallurgicInfuser>::new);
         registerScreenMek(AMEMachines.ENCHANTED_PAINTING_MACHINE,
                 GuiAMEPaintingMachine<BEEnchantedPaintingMachine>::new);
         registerScreenMek(AMEMachines.ENCHANTED_PRC, GuiAMEPRC<BEEnchantedPRC>::new);

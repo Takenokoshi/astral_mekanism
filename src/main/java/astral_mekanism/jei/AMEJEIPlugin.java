@@ -227,8 +227,9 @@ public class AMEJEIPlugin implements IModPlugin {
                 AMEMachines.ENCHANTED_ISTOPIC_CENTRIFUGE,
                 AMEMachines.ASTRAL_ISOTOPIC_CENTRIFUGE);
         CatalystRegistryHelper.register(registry, MekanismJEIRecipeType.METALLURGIC_INFUSING,
-                AMEMachines.ASTRAL_METALLURGIC_INFUSER,
-                AMEMachines.ESSENTIAL_METALLURGIC_INFUSER);
+                AMEMachines.ESSENTIAL_METALLURGIC_INFUSER,
+                AMEMachines.ENCHANTED_METALLURGIC_INFUSER,
+                AMEMachines.ASTRAL_METALLURGIC_INFUSER);
         CatalystRegistryHelper.register(registry, MekanismJEIRecipeType.REACTION,
                 AMEMachines.ENCHANTED_PRC,
                 AMEMachines.ASTRAL_PRC);

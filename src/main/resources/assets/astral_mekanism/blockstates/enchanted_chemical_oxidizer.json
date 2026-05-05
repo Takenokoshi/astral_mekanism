@@ -1,8 +1,8 @@
 {
   "variants": {
-    "facing=north":  { "model": "astral_mekanism:block/enchanted_machine/crusher", "y": 0 },
-    "facing=south":  { "model": "astral_mekanism:block/enchanted_machine/crusher", "y": 180 },
-    "facing=west":   { "model": "astral_mekanism:block/enchanted_machine/crusher", "y": 270 },
-    "facing=east":   { "model": "astral_mekanism:block/enchanted_machine/crusher", "y": 90 }
+    "facing=north":  { "model": "astral_mekanism:block/enchanted_machine/chemical_oxidizer", "y": 0 },
+    "facing=south":  { "model": "astral_mekanism:block/enchanted_machine/chemical_oxidizer", "y": 180 },
+    "facing=west":   { "model": "astral_mekanism:block/enchanted_machine/chemical_oxidizer", "y": 270 },
+    "facing=east":   { "model": "astral_mekanism:block/enchanted_machine/chemical_oxidizer", "y": 90 }
   }
 }
