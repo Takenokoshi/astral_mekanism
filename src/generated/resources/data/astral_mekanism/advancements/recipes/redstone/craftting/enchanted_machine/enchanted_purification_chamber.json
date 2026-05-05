@@ -3,11 +3,11 @@
   "criteria": {
     "has_the_recipe": {
       "conditions": {
-        "recipe": "astral_mekanism:craftting/enchanted_machine/enchanted_purifycation_chamber"
+        "recipe": "astral_mekanism:craftting/enchanted_machine/enchanted_purification_chamber"
       },
       "trigger": "minecraft:recipe_unlocked"
     },
-    "unlock_enchanted_purifycation_chamber": {
+    "unlock_enchanted_purification_chamber": {
       "conditions": {
         "items": [
           {
@@ -22,13 +22,13 @@
   },
   "requirements": [
     [
-      "unlock_enchanted_purifycation_chamber",
+      "unlock_enchanted_purification_chamber",
       "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
-      "astral_mekanism:craftting/enchanted_machine/enchanted_purifycation_chamber"
+      "astral_mekanism:craftting/enchanted_machine/enchanted_purification_chamber"
     ]
   },
   "sends_telemetry_event": false

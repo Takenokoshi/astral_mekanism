@@ -136,7 +136,7 @@ public abstract class BEAMEAdsorptionSeparator extends MSTileEntityRecipeMachine
     @Override
     protected IFluidTankHolder getInitialFluidTanks(IContentsListener listener, IContentsListener recipeCacheListener) {
         FluidTankHelper builder = FluidTankHelper.forSideWithConfig(this::getDirection, this::getConfig);
-        builder.addTank(inputTank = BasicFluidTank.create(10_000, fluid -> containsRecipeB(inputTank.getFluid()),
+        builder.addTank(inputTank = BasicFluidTank.create(0x7fffffff, fluid -> containsRecipeB(inputTank.getFluid()),
                 this::containsRecipeB, recipeCacheListener));
         return builder.build();
     }

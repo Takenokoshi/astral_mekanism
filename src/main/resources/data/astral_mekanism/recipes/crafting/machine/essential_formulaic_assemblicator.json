@@ -1,0 +1,26 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "key": {
+        "X": {
+            "item": "mekanism:formulaic_assemblicator"
+        },
+        "A": {
+            "item": "astral_mekanism:alloy_elastic"
+        },
+        "C": {
+            "item": "astral_mekanism:vibration_control_circuit"
+        },
+        "I": {
+            "item": "minecraft:experience_bottle"
+        }
+    },
+    "pattern": [
+        "ACA",
+        "IXI",
+        "ACA"
+    ],
+    "result": {
+        "item": "astral_mekanism:essential_formulaic_assemblicator",
+        "count": 1
+    }
+}

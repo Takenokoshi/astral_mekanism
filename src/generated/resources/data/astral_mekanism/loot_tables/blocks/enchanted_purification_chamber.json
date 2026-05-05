@@ -63,12 +63,12 @@
               "source": "block_entity"
             }
           ],
-          "name": "astral_mekanism:enchanted_purifycation_chamber"
+          "name": "astral_mekanism:enchanted_purification_chamber"
         }
       ],
       "name": "main",
       "rolls": 1.0
     }
   ],
-  "random_sequence": "astral_mekanism:blocks/enchanted_purifycation_chamber"
+  "random_sequence": "astral_mekanism:blocks/enchanted_purification_chamber"
 }

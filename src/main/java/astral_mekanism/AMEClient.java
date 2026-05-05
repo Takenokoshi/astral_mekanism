@@ -204,7 +204,7 @@ public class AMEClient extends AstralMekanism {
                 GuiAMEAdvancedMachine<BEEnchantedChemicalInjectionChamber>::new);
         registerScreenMek(AMEMachines.ENCHANTED_OSMIUM_COMPRESSOR,
                 GuiAMEAdvancedMachine<BEEnchantedOsmiumCompressor>::new);
-        registerScreenMek(AMEMachines.ENCHANTED_PURIFYCATION_CHAMBER,
+        registerScreenMek(AMEMachines.ENCHANTED_PURIFICATION_CHAMBER,
                 GuiAMEAdvancedMachine<BEEnchantedPurificationChamber>::new);
         registerScreenMek(AMEMachines.ENCHANTED_CRUSHER, GuiAMEElectricMachine<BEEnchantedCrusher>::new);
         registerScreenMek(AMEMachines.ENCHANTED_ENRICHMENT_CHAMBER,

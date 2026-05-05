@@ -92,7 +92,7 @@ public class BEAMEAirCompressor extends TileEntityConfigurableMachine implements
     @Override
     public IChemicalTankHolder<Gas, GasStack, IGasTank> getInitialGasTanks(IContentsListener listener) {
         ChemicalTankHelper<Gas, GasStack, IGasTank> builder = ChemicalTankHelper.forSide(this::getDirection);
-        builder.addTank(gasTank = ChemicalTankBuilder.GAS.output(10_000, listener));
+        builder.addTank(gasTank = ChemicalTankBuilder.GAS.output(0x7fffffff, listener));
         return builder.build();
     }
 

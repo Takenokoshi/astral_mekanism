@@ -1,0 +1,7 @@
+{
+    "parent": "astral_mekanism:block/machine_base",
+    "textures": {
+        "front": "astral_mekanism:block/enchanted_machine/enrichment_chamber_front",
+        "up": "astral_mekanism:block/machine_base/up_astral"
+    }
+}

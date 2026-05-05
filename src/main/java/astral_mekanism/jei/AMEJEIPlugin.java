@@ -11,6 +11,9 @@ import appeng.integration.modules.jei.ChargerCategory;
 import appeng.integration.modules.jei.TransformCategory;
 import appeng.recipes.AERecipeTypes;
 import astral_mekanism.AMEConstants;
+import astral_mekanism.block.container.prefab.ContainerAMEFormulaicAssemblicator.ContainerAstralFormulaicAssemblicator;
+import astral_mekanism.block.container.prefab.ContainerAMEFormulaicAssemblicator.ContainerEnchantedFormulaicAssemblicator;
+import astral_mekanism.block.container.prefab.ContainerAMEFormulaicAssemblicator.ContainerEssentialFormulaicAseemblicator;
 import astral_mekanism.generalrecipe.recipe.CropSoilRecipe;
 import astral_mekanism.jei.jeirecipe.GasBurningJEIRecipe;
 import astral_mekanism.jei.jeirecipe.MekanicalComposterJEIRecipe;
@@ -178,7 +181,7 @@ public class AMEJEIPlugin implements IModPlugin {
                 AMEMachines.ENCHANTED_OSMIUM_COMPRESSOR,
                 AMEMachines.ASTRAL_OSMIUM_COMPRESSOR);
         CatalystRegistryHelper.register(registry, MekanismJEIRecipeType.PURIFYING,
-                AMEMachines.ENCHANTED_OSMIUM_COMPRESSOR,
+                AMEMachines.ENCHANTED_PURIFICATION_CHAMBER,
                 AMEMachines.ASTRAL_PURIFICATION_CHAMBER);
         CatalystRegistryHelper.register(registry, MekanismJEIRecipeType.CRUSHING,
                 AMEMachines.ENCHANTED_CRUSHER,
@@ -340,13 +343,16 @@ public class AMEJEIPlugin implements IModPlugin {
     @Override
     public void registerRecipeTransferHandlers(IRecipeTransferRegistration registration) {
         registration.addRecipeTransferHandler(
-                new AMEFormulaicAssemblicatorTransferHandler<>(AMEMachines.ASTRAL_FORMULAIC_ASSEMBLICATOR),
+                new AMEFormulaicAssemblicatorTransferHandler<>(AMEMachines.ASTRAL_FORMULAIC_ASSEMBLICATOR,
+                        ContainerAstralFormulaicAssemblicator.class),
                 RecipeTypes.CRAFTING);
         registration.addRecipeTransferHandler(
-                new AMEFormulaicAssemblicatorTransferHandler<>(AMEMachines.ENCHANTED_FORMULAIC_ASSEMBLICATOR),
+                new AMEFormulaicAssemblicatorTransferHandler<>(AMEMachines.ENCHANTED_FORMULAIC_ASSEMBLICATOR,
+                        ContainerEnchantedFormulaicAssemblicator.class),
                 RecipeTypes.CRAFTING);
         registration.addRecipeTransferHandler(
-                new AMEFormulaicAssemblicatorTransferHandler<>(AMEMachines.ESSENTIAL_FORMULAIC_ASSEMBLICATOR),
+                new AMEFormulaicAssemblicatorTransferHandler<>(AMEMachines.ESSENTIAL_FORMULAIC_ASSEMBLICATOR,
+                        ContainerEssentialFormulaicAseemblicator.class),
                 RecipeTypes.CRAFTING);
     }
 

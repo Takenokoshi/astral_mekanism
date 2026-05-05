@@ -127,10 +127,12 @@ import astral_mekanism.block.container.factory.ContainerAstralMekanismFactory;
 import astral_mekanism.block.container.normalmachine.ContainerAstralCrafter;
 import astral_mekanism.block.container.normalmachine.ContainerTransformer;
 import astral_mekanism.block.container.other.ContainerItemSortableStorage;
-import astral_mekanism.block.container.prefab.ContainerAMEFormulaicAssemblicator;
 import astral_mekanism.block.container.prefab.ContainerAbstractStorage;
 import astral_mekanism.block.container.prefab.ContainerMachineCustomSize;
 import astral_mekanism.block.container.prefab.ContainerPagedMachine;
+import astral_mekanism.block.container.prefab.ContainerAMEFormulaicAssemblicator.ContainerAstralFormulaicAssemblicator;
+import astral_mekanism.block.container.prefab.ContainerAMEFormulaicAssemblicator.ContainerEnchantedFormulaicAssemblicator;
+import astral_mekanism.block.container.prefab.ContainerAMEFormulaicAssemblicator.ContainerEssentialFormulaicAseemblicator;
 import astral_mekanism.block.shape.AMEBlockShapes;
 import astral_mekanism.config.AMEConfig;
 import astral_mekanism.enums.AMEUpgrade;
@@ -544,11 +546,11 @@ public class AMEMachines {
                                     EnumSet.of(Upgrade.MUFFLING, Upgrade.ENERGY, AMEUpgrade.WATER_SUPPLY.getValue()))
                             .withSound(MekanismSounds.CHEMICAL_INFUSER));
 
-    public static final MachineRegistryObject<BEAstralFormulaicAssemblicator, BlockTileModel<BEAstralFormulaicAssemblicator, BlockTypeMachine<BEAstralFormulaicAssemblicator>>, ContainerAMEFormulaicAssemblicator<BEAstralFormulaicAssemblicator>, ItemBlockMachine> ASTRAL_FORMULAIC_ASSEMBLICATOR = MACHINES
+    public static final MachineRegistryObject<BEAstralFormulaicAssemblicator, BlockTileModel<BEAstralFormulaicAssemblicator, BlockTypeMachine<BEAstralFormulaicAssemblicator>>, ContainerAstralFormulaicAssemblicator, ItemBlockMachine> ASTRAL_FORMULAIC_ASSEMBLICATOR = MACHINES
             .registerDefaultBlockItem("astral_formulaic_assemblicator",
                     BEAstralFormulaicAssemblicator::new,
                     BEAstralFormulaicAssemblicator.class,
-                    ContainerAMEFormulaicAssemblicator<BEAstralFormulaicAssemblicator>::new,
+                    ContainerAstralFormulaicAssemblicator::new,
                     AMELang.DESCRIPTION_ASTRAL_MACHINE,
                     builder -> builder
                             .withEnergyConfig(MekanismConfig.usage.formulaicAssemblicator, MAX_SUPPLIER)
@@ -827,8 +829,8 @@ public class AMEMachines {
                                     AMEUpgrade.RADIOACTIVE_SEALING.getValue(),
                                     ExtraUpgrade.STACK)));
 
-    public static final MachineRegistryObject<BEEnchantedPurificationChamber, BlockTileModel<BEEnchantedPurificationChamber, BlockTypeMachine<BEEnchantedPurificationChamber>>, MekanismTileContainer<BEEnchantedPurificationChamber>, ItemBlockMachine> ENCHANTED_PURIFYCATION_CHAMBER = MACHINES
-            .registerSimple("enchanted_purifycation_chamber",
+    public static final MachineRegistryObject<BEEnchantedPurificationChamber, BlockTileModel<BEEnchantedPurificationChamber, BlockTypeMachine<BEEnchantedPurificationChamber>>, MekanismTileContainer<BEEnchantedPurificationChamber>, ItemBlockMachine> ENCHANTED_PURIFICATION_CHAMBER = MACHINES
+            .registerSimple("enchanted_purification_chamber",
                     BEEnchantedPurificationChamber::new,
                     BEEnchantedPurificationChamber.class,
                     AMELang.ITEM_GROUP,
@@ -1023,16 +1025,16 @@ public class AMEMachines {
                                     () -> MekanismConfig.storage.electrolyticSeparator.get().multiply(200000))
                             .changeAttributeUpgrade(
                                     EnumSet.of(Upgrade.MUFFLING, Upgrade.ENERGY, Upgrade.SPEED,
-                                            AMEUpgrade.WATER_SUPPLY.getValue(),
-                                            AMEUpgrade.RADIOACTIVE_SEALING.getValue(),
+                                            AMEUpgrade.COBBLESTONE_SUPPLY.getValue(),
+                                            AMEUpgrade.XP.getValue(),
                                             ExtraUpgrade.STACK))
                             .withSound(MekanismSounds.ELECTROLYTIC_SEPARATOR));
 
-    public static final MachineRegistryObject<BEEnchantedFormulaicAssemblicator, BlockTileModel<BEEnchantedFormulaicAssemblicator, BlockTypeMachine<BEEnchantedFormulaicAssemblicator>>, ContainerAMEFormulaicAssemblicator<BEEnchantedFormulaicAssemblicator>, ItemBlockMachine> ENCHANTED_FORMULAIC_ASSEMBLICATOR = MACHINES
+    public static final MachineRegistryObject<BEEnchantedFormulaicAssemblicator, BlockTileModel<BEEnchantedFormulaicAssemblicator, BlockTypeMachine<BEEnchantedFormulaicAssemblicator>>, ContainerEnchantedFormulaicAssemblicator, ItemBlockMachine> ENCHANTED_FORMULAIC_ASSEMBLICATOR = MACHINES
             .registerDefaultBlockItem("enchanted_formulaic_assemblicator",
                     BEEnchantedFormulaicAssemblicator::new,
                     BEEnchantedFormulaicAssemblicator.class,
-                    ContainerAMEFormulaicAssemblicator<BEEnchantedFormulaicAssemblicator>::new,
+                    ContainerEnchantedFormulaicAssemblicator::new,
                     AMELang.ITEM_GROUP,
                     builder -> builder
                             .withEnergyConfig(MekanismConfig.usage.formulaicAssemblicator,
@@ -1187,11 +1189,11 @@ public class AMEMachines {
                                             AMEUpgrade.XP.getValue()))
                             .withSound(MekanismSounds.ENERGIZED_SMELTER));
 
-    public static final MachineRegistryObject<BEEssentialFormulaicAssemblicator, BlockTileModel<BEEssentialFormulaicAssemblicator, BlockTypeMachine<BEEssentialFormulaicAssemblicator>>, ContainerAMEFormulaicAssemblicator<BEEssentialFormulaicAssemblicator>, ItemBlockMachine> ESSENTIAL_FORMULAIC_ASSEMBLICATOR = MACHINES
+    public static final MachineRegistryObject<BEEssentialFormulaicAssemblicator, BlockTileModel<BEEssentialFormulaicAssemblicator, BlockTypeMachine<BEEssentialFormulaicAssemblicator>>, ContainerEssentialFormulaicAseemblicator, ItemBlockMachine> ESSENTIAL_FORMULAIC_ASSEMBLICATOR = MACHINES
             .registerDefaultBlockItem("essential_formulaic_assemblicator",
                     BEEssentialFormulaicAssemblicator::new,
                     BEEssentialFormulaicAssemblicator.class,
-                    ContainerAMEFormulaicAssemblicator<BEEssentialFormulaicAssemblicator>::new,
+                    ContainerEssentialFormulaicAseemblicator::new,
                     AMELang.ITEM_GROUP,
                     builder -> builder
                             .withEnergyConfig(MekanismConfig.usage.formulaicAssemblicator,

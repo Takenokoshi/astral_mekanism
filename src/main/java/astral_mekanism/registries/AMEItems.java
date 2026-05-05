@@ -142,6 +142,8 @@ public class AMEItems {
                     return true;
                 }
             });
+    public static final ItemRegistryObject<GlintItem> BUNDLED_GAS_UPGRADE = ITEMS.register("bundled_gas_upgrade",
+            GlintItem::new);
     public static final ItemRegistryObject<Item> INSERT_UPGRADE = ITEMS.register("insert_upgrade");
     public static final ItemRegistryObject<MekMachineUpgradeToolItem> MEK_MACHINE_UPGRADE_TOOL = ITEMS.register(
             "mekanism_machine_upgrade_tool", MekMachineUpgradeToolItem::new);

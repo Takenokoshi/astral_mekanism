@@ -18,24 +18,25 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.MenuType;
 import net.minecraft.world.item.crafting.CraftingRecipe;
 
-public class AMEFormulaicAssemblicatorTransferHandler<BE extends BEAMEFormulaicAssemblicator>
-        implements IRecipeTransferHandler<ContainerAMEFormulaicAssemblicator<BE>, CraftingRecipe> {
+public class AMEFormulaicAssemblicatorTransferHandler<BE extends BEAMEFormulaicAssemblicator, CONTAINER extends ContainerAMEFormulaicAssemblicator<BE>>
+        implements IRecipeTransferHandler<CONTAINER, CraftingRecipe> {
 
-    private final MachineRegistryObject<BE, ?, ContainerAMEFormulaicAssemblicator<BE>, ?> machine;
+    private final MachineRegistryObject<BE, ?, CONTAINER, ?> machine;
+    private final Class<CONTAINER> clazz;
 
     public AMEFormulaicAssemblicatorTransferHandler(
-            MachineRegistryObject<BE, ?, ContainerAMEFormulaicAssemblicator<BE>, ?> machine) {
+            MachineRegistryObject<BE, ?, CONTAINER, ?> machine, Class<CONTAINER> clazz) {
         this.machine = machine;
-    }
-
-    @SuppressWarnings("unchecked")
-    @Override
-    public Class<ContainerAMEFormulaicAssemblicator<BE>> getContainerClass() {
-        return (Class<ContainerAMEFormulaicAssemblicator<BE>>) (Object) ContainerAMEFormulaicAssemblicator.class;
+        this.clazz = clazz;
     }
 
     @Override
-    public Optional<MenuType<ContainerAMEFormulaicAssemblicator<BE>>> getMenuType() {
+    public Class<CONTAINER> getContainerClass() {
+        return clazz;
+    }
+
+    @Override
+    public Optional<MenuType<CONTAINER>> getMenuType() {
         return Optional.of(machine.getContainer().get());
     }
 
@@ -46,7 +47,7 @@ public class AMEFormulaicAssemblicatorTransferHandler<BE extends BEAMEFormulaicA
 
     @Override
     public @Nullable IRecipeTransferError transferRecipe(
-            ContainerAMEFormulaicAssemblicator<BE> container,
+            CONTAINER container,
             CraftingRecipe recipe,
             IRecipeSlotsView recipeSlots,
             Player player,

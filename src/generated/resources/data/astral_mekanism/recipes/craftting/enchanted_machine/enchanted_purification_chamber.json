@@ -9,7 +9,7 @@
       "item": "astral_mekanism:enhanced_control_circuit"
     },
     "I": {
-      "item": "mekanism:ingot_refined_obsidian"
+      "item": "astral_mekanism:bundled_gas_upgrade"
     },
     "N": {
       "item": "mekanism:purification_chamber"
@@ -21,7 +21,7 @@
     "ACA"
   ],
   "result": {
-    "item": "astral_mekanism:enchanted_purifycation_chamber"
+    "item": "astral_mekanism:enchanted_purification_chamber"
   },
   "show_notification": true
 }

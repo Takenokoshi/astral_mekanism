@@ -1,0 +1,20 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "key": {
+        "G": {
+            "item": "mekanism:upgrade_gas"
+        },
+        "I": {
+            "tag": "forge:ingots/refined_obsidian"
+        }
+    },
+    "pattern": [
+        " G ",
+        "GIG",
+        " G "
+    ],
+    "result": {
+        "item": "astral_mekanism:bundled_gas_upgrade",
+        "count": 1
+    }
+}
