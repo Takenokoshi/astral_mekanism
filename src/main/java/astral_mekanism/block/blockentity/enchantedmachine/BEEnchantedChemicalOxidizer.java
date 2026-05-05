@@ -2,7 +2,7 @@ package astral_mekanism.block.blockentity.enchantedmachine;
 
 import com.jerry.mekanism_extras.api.ExtraUpgrade;
 
-import astral_mekanism.block.blockentity.prefab.BEAbstractChemicalOxidizer;
+import astral_mekanism.block.blockentity.basemachine.BEAMEChemicalOxidizer;
 import astral_mekanism.integration.AMEEmpowered;
 import mekanism.api.Upgrade;
 import mekanism.api.providers.IBlockProvider;
@@ -11,7 +11,7 @@ import mekanism.common.inventory.container.sync.SyncableInt;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.block.state.BlockState;
 
-public class BEEnchantedChemicalOxidizer extends BEAbstractChemicalOxidizer {
+public class BEEnchantedChemicalOxidizer extends BEAMEChemicalOxidizer {
     private int baselineMaxOperations = 200;
 
     public BEEnchantedChemicalOxidizer(IBlockProvider blockProvider, BlockPos pos, BlockState state) {

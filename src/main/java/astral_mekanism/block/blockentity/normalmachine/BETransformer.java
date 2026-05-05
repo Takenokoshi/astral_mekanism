@@ -7,7 +7,7 @@ import org.jetbrains.annotations.NotNull;
 import com.jerry.mekanism_extras.api.ExtraUpgrade;
 
 import appeng.recipes.transform.TransformRecipe;
-import astral_mekanism.block.blockentity.prefab.BEAbstractTransformer;
+import astral_mekanism.block.blockentity.basemachine.BEAbstractTransformer;
 import astral_mekanism.generalrecipe.cachedrecipe.GeneralCachedRecipe;
 import astral_mekanism.integration.AMEEmpowered;
 import astral_mekanism.recipes.recipe.MekanicalTransformRecipe;
@@ -75,6 +75,7 @@ public class BETransformer extends BEAbstractTransformer {
         nbtTags.putInt(NBTConstants.PROGRESS, getOperatingTicks());
     }
 
+    @Override
     public void recalculateUpgrades(Upgrade upgrade) {
         super.recalculateUpgrades(upgrade);
         if (AMEEmpowered.empoweredIsLoaded()) {
@@ -82,6 +83,8 @@ public class BETransformer extends BEAbstractTransformer {
                 baselineMaxOperations = 1 << (AMEEmpowered.getEmpoweredSpeeds(this)
                         + upgradeComponent.getUpgrades(ExtraUpgrade.STACK));
             }
+        } else if (upgrade == ExtraUpgrade.STACK) {
+            baselineMaxOperations = 1 << upgradeComponent.getUpgrades(ExtraUpgrade.STACK);
         }
         if (upgrade == Upgrade.SPEED) {
             ticksRequired = MekanismUtils.getTicks(this, baseTicksRequired);

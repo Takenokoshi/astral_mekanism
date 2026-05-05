@@ -1,11 +1,11 @@
 package astral_mekanism.block.blockentity.astralmachine;
 
+import astral_mekanism.block.blockentity.basemachine.BEAMEChemicalInfuser;
 import mekanism.api.providers.IBlockProvider;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.block.state.BlockState;
-import astral_mekanism.block.blockentity.prefab.BEAbstractChemicalInfuser;
 
-public class BEAstralChemicalInfuser extends BEAbstractChemicalInfuser {
+public class BEAstralChemicalInfuser extends BEAMEChemicalInfuser {
 
     public BEAstralChemicalInfuser(IBlockProvider blockProvider, BlockPos pos, BlockState state) {
         super(blockProvider, pos, state);

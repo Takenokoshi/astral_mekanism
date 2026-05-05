@@ -8,7 +8,7 @@
         "fluid": "astral_mekanism:wisdom_rivulet"
     },
     "gasInput": {
-        "amount": 1000000000,
+        "amount": 100000000,
         "gas": "mekanismgenerators:fusion_fuel"
     },
     "gasOutput": {

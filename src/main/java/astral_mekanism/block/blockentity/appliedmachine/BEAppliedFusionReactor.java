@@ -4,7 +4,7 @@ import appeng.api.config.Actionable;
 import appeng.api.networking.security.IActionSource;
 import appeng.api.storage.MEStorage;
 import astral_mekanism.AMEConstants;
-import astral_mekanism.block.blockentity.prefab.BEAbstractAppliedMixingReactor;
+import astral_mekanism.block.blockentity.appliedmachine.prefab.BEAbstractAppliedMixingReactor;
 import me.ramidzkh.mekae2.ae2.MekanismKey;
 import mekanism.api.providers.IBlockProvider;
 import mekanism.common.registries.MekanismGases;

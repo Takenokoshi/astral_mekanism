@@ -1,6 +1,6 @@
 package astral_mekanism.block.blockentity.astralmachine;
 
-import astral_mekanism.block.blockentity.prefab.BEAbstractMekanicalComposter;
+import astral_mekanism.block.blockentity.basemachine.BEAbstractMekanicalComposter;
 import mekanism.api.providers.IBlockProvider;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.block.state.BlockState;

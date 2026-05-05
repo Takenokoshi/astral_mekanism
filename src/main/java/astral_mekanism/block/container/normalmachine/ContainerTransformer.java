@@ -2,7 +2,7 @@ package astral_mekanism.block.container.normalmachine;
 
 import org.jetbrains.annotations.NotNull;
 
-import astral_mekanism.block.blockentity.prefab.BEAbstractTransformer;
+import astral_mekanism.block.blockentity.basemachine.BEAbstractTransformer;
 import mekanism.common.inventory.container.tile.MekanismTileContainer;
 import mekanism.common.registration.impl.ContainerTypeRegistryObject;
 import net.minecraft.world.entity.player.Inventory;

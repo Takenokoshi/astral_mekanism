@@ -66,5 +66,4 @@ public interface IGreenHouse<BE extends TileEntityConfigurableMachine & IGreenHo
     public MachineEnergyContainer<BE> getEnergyContainer();
 
     public double getScaledProgress();
-
 }

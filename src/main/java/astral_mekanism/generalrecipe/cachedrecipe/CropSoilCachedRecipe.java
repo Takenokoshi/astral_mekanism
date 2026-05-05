@@ -112,7 +112,7 @@ public class CropSoilCachedRecipe extends GeneralCachedRecipe<CropSoilRecipe> {
             }
             int p = 0x7fffffff;
             for (HarvestEntry harvestEntry : toOutput) {
-                int q = harvestEntry.getItem().getMaxStackSize()
+                int q = 0x3fffffff
                         / harvestEntry.getMaxRolls()
                         / harvestEntry.getItem().getCount();
                 if (p > q) {

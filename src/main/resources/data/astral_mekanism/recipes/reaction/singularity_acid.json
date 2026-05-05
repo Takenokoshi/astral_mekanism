@@ -1,6 +1,6 @@
 {
     "type": "mekanism:reaction",
-    "duration": 60,
+    "duration": 1,
     "energyRequired": 10000,
     "fluidInput": {
         "amount": 100,
@@ -21,6 +21,7 @@
         }
     },
     "itemOutput": {
+        "count": 16,
         "item": "minecraft:ender_pearl"
     }
 }

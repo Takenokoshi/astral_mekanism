@@ -1,6 +1,6 @@
 package astral_mekanism.network.to_server;
 
-import astral_mekanism.block.blockentity.astralmachine.BEAstralFormulaicAssemblicator;
+import astral_mekanism.block.blockentity.interf.IAMEFormulaicAssemblicator;
 import mekanism.common.network.IMekanismPacket;
 import mekanism.common.util.WorldUtils;
 import net.minecraft.core.BlockPos;
@@ -29,7 +29,7 @@ public class PacketGuiAstralFAssemblicator implements IMekanismPacket {
         if (player != null) {
             Level world = player.level();
             Recipe<?> recipe = world.getRecipeManager().byKey(id).orElse(null);
-            if (WorldUtils.getTileEntity(world, pos) instanceof BEAstralFormulaicAssemblicator assemblicator
+            if (WorldUtils.getTileEntity(world, pos) instanceof IAMEFormulaicAssemblicator assemblicator
                     && recipe != null && recipe instanceof CraftingRecipe craftingRecipe) {
                 assemblicator.setSavedRecipe(craftingRecipe);
             }

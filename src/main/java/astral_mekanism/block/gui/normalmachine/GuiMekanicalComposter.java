@@ -2,7 +2,7 @@ package astral_mekanism.block.gui.normalmachine;
 
 import org.jetbrains.annotations.NotNull;
 
-import astral_mekanism.block.blockentity.prefab.BEAbstractMekanicalComposter;
+import astral_mekanism.block.blockentity.basemachine.BEAbstractMekanicalComposter;
 import astral_mekanism.jei.AMEJEIRecipeType;
 import mekanism.client.gui.GuiConfigurableTile;
 import mekanism.client.gui.element.progress.GuiProgress;

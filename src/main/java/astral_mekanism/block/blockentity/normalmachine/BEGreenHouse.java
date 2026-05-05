@@ -13,6 +13,7 @@ import astral_mekanism.generalrecipe.cachedrecipe.ICachedRecipe;
 import astral_mekanism.generalrecipe.recipe.CropSoilRecipe;
 import astral_mekanism.integration.AMEEmpowered;
 import mekanism.api.IContentsListener;
+import mekanism.api.Upgrade;
 import mekanism.api.fluid.IExtendedFluidTank;
 import mekanism.api.inventory.IInventorySlot;
 import mekanism.api.providers.IBlockProvider;
@@ -27,7 +28,9 @@ import mekanism.common.capabilities.holder.fluid.FluidTankHelper;
 import mekanism.common.capabilities.holder.fluid.IFluidTankHolder;
 import mekanism.common.capabilities.holder.slot.IInventorySlotHolder;
 import mekanism.common.capabilities.holder.slot.InventorySlotHelper;
+import mekanism.common.inventory.container.MekanismContainer;
 import mekanism.common.inventory.container.slot.SlotOverlay;
+import mekanism.common.inventory.container.sync.SyncableInt;
 import mekanism.common.inventory.slot.EnergyInventorySlot;
 import mekanism.common.inventory.slot.FluidInventorySlot;
 import mekanism.common.inventory.slot.InputInventorySlot;
@@ -45,6 +48,7 @@ public class BEGreenHouse extends BlockEntityProgressMachine<CropSoilRecipe> imp
 
     private BasicFluidTank fluidTank;
     private MachineEnergyContainer<BEGreenHouse> energyContainer;
+    private int recipeTicksRequired;
 
     private InputInventorySlot cropSlot;
     private InputInventorySlot soilSlot;
@@ -70,6 +74,7 @@ public class BEGreenHouse extends BlockEntityProgressMachine<CropSoilRecipe> imp
         soilHandler = InputHelper.getInputHandler(soilSlot, RecipeError.NOT_ENOUGH_INPUT);
         fluidHandler = InputHelper.getInputHandler(fluidTank, RecipeError.NOT_ENOUGH_INPUT);
         outputHandler = new HarvestEntriesOutputHandler(RecipeError.NOT_ENOUGH_OUTPUT_SPACE, outputSlots);
+        recipeTicksRequired = baseTicksRequired;
     }
 
     @NotNull
@@ -137,13 +142,18 @@ public class BEGreenHouse extends BlockEntityProgressMachine<CropSoilRecipe> imp
                 .setCanHolderFunction(() -> MekanismUtils.canFunction(this))
                 .setEnergyRequirements(energyContainer::getEnergyPerTick, energyContainer)
                 .setActive(this::setActive)
-                .setRequiredTicks(() -> AMEEmpowered.empoweredIsLoaded()
-                        ? AMEEmpowered.getTicks(recipe.requiredTicks, this)
-                        : MekanismUtils.getTicks(this, recipe.requiredTicks))
+                .setRequiredTicks(this::getTicksRequired)
                 .setBaselineMaxOperations(this::getBaselineMaxOperations)
                 .setOnFinish(this::markForSave)
                 .setOperatingTicksChanged(this::setOperatingTicks);
     }
+
+    @Override
+    public void onCachedRecipeChanged(@Nullable ICachedRecipe<CropSoilRecipe> cachedRecipe, int cacheIndex) {
+        super.onCachedRecipeChanged(cachedRecipe, cacheIndex);
+        recipeTicksRequired = cachedRecipe.getRecipe().requiredTicks;
+        recalculateRecipeTicks();
+    };
 
     @Override
     public IExtendedFluidTank getFluidTank() {
@@ -153,5 +163,25 @@ public class BEGreenHouse extends BlockEntityProgressMachine<CropSoilRecipe> imp
     @Override
     public MachineEnergyContainer<BEGreenHouse> getEnergyContainer() {
         return energyContainer;
+    }
+
+    @Override
+    public void recalculateUpgrades(Upgrade upgrade) {
+        super.recalculateUpgrades(upgrade);
+        recalculateRecipeTicks();
+    }
+
+    private void recalculateRecipeTicks() {
+        ticksRequired = AMEEmpowered.empoweredIsLoaded()
+                ? AMEEmpowered.getTicks(recipeTicksRequired, this)
+                : MekanismUtils.getTicks(this, recipeTicksRequired);
+    }
+
+    public void addContainerTrackers(MekanismContainer container) {
+        super.addContainerTrackers(container);
+        container.track(SyncableInt.create(() -> recipeTicksRequired, v -> {
+            recipeTicksRequired = v;
+            recalculateRecipeTicks();
+        }));
     }
 }

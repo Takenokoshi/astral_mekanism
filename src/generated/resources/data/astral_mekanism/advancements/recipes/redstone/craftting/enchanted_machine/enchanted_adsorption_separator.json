@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "astral_mekanism:craftting/enchanted_machine/enchanted_adsorption_separator"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "unlock_enchanted_adsorption_separator": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "astral_mekanism:alloy_enchanted"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "unlock_enchanted_adsorption_separator",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "astral_mekanism:craftting/enchanted_machine/enchanted_adsorption_separator"
+    ]
+  },
+  "sends_telemetry_event": false
+}

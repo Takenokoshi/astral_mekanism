@@ -3,7 +3,7 @@ package astral_mekanism.block.gui.normalmachine;
 import org.jetbrains.annotations.NotNull;
 
 import astral_mekanism.AstralMekanism;
-import astral_mekanism.block.blockentity.prefab.BEAbstractTransformer;
+import astral_mekanism.block.blockentity.basemachine.BEAbstractTransformer;
 import astral_mekanism.block.container.normalmachine.ContainerTransformer;
 import astral_mekanism.jei.AMEJEIRecipeType;
 import astral_mekanism.network.to_server.PacketGuiTransformerMode;

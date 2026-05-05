@@ -5,8 +5,8 @@ import java.util.List;
 import org.jetbrains.annotations.NotNull;
 
 import astral_mekanism.AstralMekanism;
+import astral_mekanism.block.blockentity.compact.BECompactMixingReactor;
 import astral_mekanism.AMELang;
-import astral_mekanism.block.blockentity.prefab.BEAbstractCompactMixingReactor;
 import astral_mekanism.network.to_server.PacketGuiSetLong;
 import mekanism.api.text.EnumColor;
 import mekanism.client.gui.GuiConfigurableTile;
@@ -14,6 +14,7 @@ import mekanism.client.gui.element.GuiInnerScreen;
 import mekanism.client.gui.element.gauge.GaugeType;
 import mekanism.client.gui.element.gauge.GuiFluidGauge;
 import mekanism.client.gui.element.gauge.GuiGasGauge;
+import mekanism.client.gui.element.tab.GuiEnergyTab;
 import mekanism.client.gui.element.tab.GuiHeatTab;
 import mekanism.client.gui.element.text.GuiTextField;
 import mekanism.client.jei.MekanismJEIRecipeType;
@@ -21,13 +22,14 @@ import mekanism.common.MekanismLang;
 import mekanism.common.inventory.container.tile.MekanismTileContainer;
 import mekanism.common.util.MekanismUtils;
 import mekanism.common.util.UnitDisplayUtils.TemperatureUnit;
+import mekanism.common.util.text.EnergyDisplay;
 import mekanism.common.util.text.InputValidator;
 import mekanism.generators.common.GeneratorsLang;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.player.Inventory;
 
-public class GuiCompactMixingReactor<BE extends BEAbstractCompactMixingReactor>
+public class GuiCompactMixingReactor<BE extends BECompactMixingReactor>
         extends GuiConfigurableTile<BE, MekanismTileContainer<BE>> {
 
     private GuiTextField field;
@@ -57,8 +59,11 @@ public class GuiCompactMixingReactor<BE extends BEAbstractCompactMixingReactor>
                 GaugeType.SMALL, this, 151, 34))
                 .setLabel(GeneratorsLang.FISSION_HEATED_COOLANT_TANK.translateColored(EnumColor.WHITE));
         addRenderableWidget(new GuiInnerScreen(this, 61, 4, 108, 30, () -> {
-            return List.of(this.title, GeneratorsLang.REACTOR_INJECTION_RATE.translate(tile.getMixingRate()));
-        }).clearFormat()).jeiCategories(MekanismJEIRecipeType.findType(tile.getJEICategoryName()));
+            return List.of(
+                    GeneratorsLang.REACTOR_PLASMA.translate(
+                            MekanismUtils.getTemperatureDisplay(tile.getPlasmaTemp(), TemperatureUnit.KELVIN, true)),
+                    GeneratorsLang.REACTOR_INJECTION_RATE.translate(tile.getInjectionRate()));
+        })).clearFormat().jeiCategories(MekanismJEIRecipeType.findType(tile.getJEICategoryName()));
         addRenderableWidget(new GuiHeatTab(this, () -> {
             Component temp = MekanismUtils.getTemperatureDisplay(tile.heatCapacitor.getTemperature(),
                     TemperatureUnit.KELVIN, true);
@@ -69,6 +74,10 @@ public class GuiCompactMixingReactor<BE extends BEAbstractCompactMixingReactor>
             return List.of(MekanismLang.TEMPERATURE.translate(temp), MekanismLang.TRANSFERRED_RATE.translate(transfer),
                     MekanismLang.DISSIPATED_RATE.translate(environment));
         }));
+        addRenderableWidget(new GuiEnergyTab(this, () -> List.of(
+                GeneratorsLang.PRODUCING_AMOUNT.translate(
+                        EnergyDisplay.of(tile.energyGeneration.min(tile.getEnergyContainer().getMaxEnergy()))),
+                MekanismLang.MAX_OUTPUT.translate(EnergyDisplay.of(tile.getEnergyContainer().getMaxEnergy())))));
 
         addRenderableWidget(new GuiInnerScreen(this, 61, 34, 54, 12));
         field = addRenderableWidget(new GuiTextField(this, 61, 34, 54, 12));

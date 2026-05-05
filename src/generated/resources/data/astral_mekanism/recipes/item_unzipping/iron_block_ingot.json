@@ -1,0 +1,12 @@
+{
+  "type": "astral_mekanism:item_unzipping",
+  "input": {
+    "ingredient": {
+      "item": "minecraft:iron_block"
+    }
+  },
+  "output": {
+    "count": 9,
+    "item": "minecraft:iron_ingot"
+  }
+}

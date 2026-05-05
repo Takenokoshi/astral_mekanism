@@ -1,11 +1,11 @@
 package astral_mekanism.block.blockentity.astralmachine;
 
-import astral_mekanism.block.blockentity.prefab.BEAbstractAntiprotonicNucleosynthesizer;
+import astral_mekanism.block.blockentity.basemachine.BEAMEAntiprotonicNucleosynthesizer;
 import mekanism.api.providers.IBlockProvider;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.block.state.BlockState;
 
-public class BEAstralAntiprotonicNucleosynthesizer extends BEAbstractAntiprotonicNucleosynthesizer<BEAstralAntiprotonicNucleosynthesizer> {
+public class BEAstralAntiprotonicNucleosynthesizer extends BEAMEAntiprotonicNucleosynthesizer<BEAstralAntiprotonicNucleosynthesizer> {
 
     public BEAstralAntiprotonicNucleosynthesizer(IBlockProvider blockProvider, BlockPos pos, BlockState state) {
         super(blockProvider, pos, state);

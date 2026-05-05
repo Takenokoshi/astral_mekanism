@@ -27,7 +27,7 @@ public class AMEStorageConfig extends BaseMekanismConfig {
         mekanicalInscriber = CachedFloatingLongValue.define(this, builder, "Base energy storage (Joules).",
                 "mekanicalInscriber", FloatingLong.createConst(20000));
         transformer = CachedFloatingLongValue.define(this, builder, "Base energy storage (Joules).",
-                "transformer", FloatingLong.createConst(20000));
+                "transformer", FloatingLong.createConst(2000000));
         essentialCrafter = CachedFloatingLongValue.define(this, builder, "Base energy storage (Joules).",
                 "essentialCrafter", FloatingLong.createConst(20000));
         fluidInfuser = CachedFloatingLongValue.define(this, builder, "Base energy storage (Joules).",

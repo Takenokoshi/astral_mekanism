@@ -1,0 +1,12 @@
+{
+  "type": "astral_mekanism:item_compressing",
+  "input": {
+    "amount": 9,
+    "ingredient": {
+      "item": "minecraft:iron_ingot"
+    }
+  },
+  "output": {
+    "item": "minecraft:iron_block"
+  }
+}

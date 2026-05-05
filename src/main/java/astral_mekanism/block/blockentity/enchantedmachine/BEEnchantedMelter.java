@@ -2,7 +2,7 @@ package astral_mekanism.block.blockentity.enchantedmachine;
 
 import com.jerry.mekanism_extras.api.ExtraUpgrade;
 
-import astral_mekanism.block.blockentity.prefab.BEAbstractMelter;
+import astral_mekanism.block.blockentity.basemachine.BEAMEMelter;
 import astral_mekanism.integration.AMEEmpowered;
 import mekanism.api.Upgrade;
 import mekanism.api.providers.IBlockProvider;
@@ -11,7 +11,7 @@ import mekanism.common.inventory.container.sync.SyncableInt;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.block.state.BlockState;
 
-public class BEEnchantedMelter extends BEAbstractMelter {
+public class BEEnchantedMelter extends BEAMEMelter {
 
     private int baselineMaxOperations;
 

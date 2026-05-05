@@ -1,6 +1,6 @@
 package astral_mekanism.network.to_server;
 
-import astral_mekanism.block.blockentity.prefab.BEAbstractTransformer;
+import astral_mekanism.block.blockentity.basemachine.BEAbstractTransformer;
 import mekanism.common.network.IMekanismPacket;
 import mekanism.common.util.WorldUtils;
 import net.minecraft.core.BlockPos;

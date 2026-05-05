@@ -2,6 +2,7 @@ package astral_mekanism.block.blockentity.astralmachine.advanced;
 
 import org.jetbrains.annotations.NotNull;
 
+import astral_mekanism.block.blockentity.basemachine.BEAMEAdvancedMachine;
 import mekanism.api.chemical.gas.Gas;
 import mekanism.api.chemical.gas.GasStack;
 import mekanism.api.providers.IBlockProvider;
@@ -12,7 +13,7 @@ import mekanism.common.recipe.lookup.cache.InputRecipeCache.ItemChemical;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.block.state.BlockState;
 
-public class BEAstralPurificationChamber extends BEAstralAdvancedMachine {
+public class BEAstralPurificationChamber extends BEAMEAdvancedMachine {
 
     public BEAstralPurificationChamber(IBlockProvider blockProvider, BlockPos pos, BlockState state) {
         super(blockProvider, pos, state, "mekanism:purification_chamber",20);
@@ -21,6 +22,11 @@ public class BEAstralPurificationChamber extends BEAstralAdvancedMachine {
     @Override
     public @NotNull IMekanismRecipeTypeProvider<ItemStackGasToItemStackRecipe, ItemChemical<Gas, GasStack, ItemStackGasToItemStackRecipe>> getRecipeType() {
         return MekanismRecipeType.PURIFYING;
+    }
+
+    @Override
+    protected int getBaselineMaxOperations() {
+        return 0x7fffffff;
     }
 
 }

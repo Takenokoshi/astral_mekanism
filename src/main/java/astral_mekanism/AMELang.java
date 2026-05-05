@@ -64,7 +64,8 @@ public enum AMELang implements ILangEntry {
     ENUM_AMR_MIXED_PRIORITIZE("enum.amr_mode", "mixed_prioritize"),
     ENUM_AMR_UNMIXED_PRIORITIZE("enum.amr_mode", "unmixed_prioritize"),
     ENUM_AMR_UNMIXED_ONLY("enum.amr_mode", "unmixed_only"),
-    ITEM_GROUP("item_group", "modid"),;
+    ITEM_GROUP("item_group", "modid"),
+    WIP("wip", "wip"),;
 
     private final String key;
 

@@ -1,0 +1,24 @@
+{
+  "variants":
+  {
+    "facing=north":
+    {
+      "model":"mekanismelements:block/adsorption_separator"
+    },
+    "facing=south":
+    {
+      "model":"mekanismelements:block/adsorption_separator",
+      "y":180
+    },
+    "facing=east":
+    {
+      "model":"mekanismelements:block/adsorption_separator",
+      "y":90
+    },
+    "facing=west":
+    {
+      "model":"mekanismelements:block/adsorption_separator",
+      "y":-90
+    }
+  }
+}

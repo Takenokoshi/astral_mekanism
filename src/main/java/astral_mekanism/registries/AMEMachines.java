@@ -7,6 +7,7 @@ import java.util.function.Supplier;
 import java.util.function.UnaryOperator;
 
 import com.fxd927.mekanismelements.common.config.MSConfig;
+import com.fxd927.mekanismelements.common.content.blocktype.MSBlockShapes;
 import com.jerry.mekanism_extras.api.ExtraUpgrade;
 
 import astral_mekanism.AMETier;
@@ -67,13 +68,28 @@ import astral_mekanism.block.blockentity.compact.BECompactFusionReactor;
 import astral_mekanism.block.blockentity.compact.BECompactNaquadahReactor;
 import astral_mekanism.block.blockentity.compact.BECompactSPS;
 import astral_mekanism.block.blockentity.compact.BECompactTEP;
+import astral_mekanism.block.blockentity.enchantedmachine.BEEnchantedAdsorptionSeparator;
+import astral_mekanism.block.blockentity.enchantedmachine.BEEnchantedAirCompressor;
 import astral_mekanism.block.blockentity.enchantedmachine.BEEnchantedAntiprotonicNucleosynthesizer;
 import astral_mekanism.block.blockentity.enchantedmachine.BEEnchantedChemicalInfuser;
 import astral_mekanism.block.blockentity.enchantedmachine.BEEnchantedChemicalOxidizer;
+import astral_mekanism.block.blockentity.enchantedmachine.BEEnchantedChemicalWasher;
 import astral_mekanism.block.blockentity.enchantedmachine.BEEnchantedChemixer;
+import astral_mekanism.block.blockentity.enchantedmachine.BEEnchantedCrystallizer;
+import astral_mekanism.block.blockentity.enchantedmachine.BEEnchantedDissolutionChamber;
 import astral_mekanism.block.blockentity.enchantedmachine.BEEnchantedElectrolyticSeparator;
+import astral_mekanism.block.blockentity.enchantedmachine.BEEnchantedEnergizedSmelter;
+import astral_mekanism.block.blockentity.enchantedmachine.BEEnchantedFormulaicAssemblicator;
 import astral_mekanism.block.blockentity.enchantedmachine.BEEnchantedIsotopicCentrifuge;
 import astral_mekanism.block.blockentity.enchantedmachine.BEEnchantedMelter;
+import astral_mekanism.block.blockentity.enchantedmachine.BEEnchantedPRC;
+import astral_mekanism.block.blockentity.enchantedmachine.BEEnchantedPaintingMachine;
+import astral_mekanism.block.blockentity.enchantedmachine.BEEnchantedRotaryCondensentrator;
+import astral_mekanism.block.blockentity.enchantedmachine.advanced.BEEnchantedChemicalInjectionChamber;
+import astral_mekanism.block.blockentity.enchantedmachine.advanced.BEEnchantedOsmiumCompressor;
+import astral_mekanism.block.blockentity.enchantedmachine.advanced.BEEnchantedPurificationChamber;
+import astral_mekanism.block.blockentity.enchantedmachine.electric.BEEnchantedCrusher;
+import astral_mekanism.block.blockentity.enchantedmachine.electric.BEEnchantedEnrichmentChamber;
 import astral_mekanism.block.blockentity.generator.AstralMekGeneratorTier;
 import astral_mekanism.block.blockentity.generator.BEAppliedGasBurningGenerator;
 import astral_mekanism.block.blockentity.generator.BEGasBurningGenerator;
@@ -81,6 +97,7 @@ import astral_mekanism.block.blockentity.generator.BEHeatGenerator;
 import astral_mekanism.block.blockentity.normalfactory.BEEnergizedSmeltingFactory;
 import astral_mekanism.block.blockentity.normalmachine.BEAstralCrafter;
 import astral_mekanism.block.blockentity.normalmachine.BEEssentialEnergizedSmelter;
+import astral_mekanism.block.blockentity.normalmachine.BEEssentialFormulaicAssemblicator;
 import astral_mekanism.block.blockentity.normalmachine.BEEssentialMetallurgicInfuser;
 import astral_mekanism.block.blockentity.normalmachine.BEEssentialOsmiumCompressor;
 import astral_mekanism.block.blockentity.normalmachine.BEEssentialReactionChamber;
@@ -106,11 +123,11 @@ import astral_mekanism.block.blockentity.storage.BEItemSortableStorage;
 import astral_mekanism.block.blockentity.storage.BERatioSeparator;
 import astral_mekanism.block.blockentity.storage.BEUniversalStorage;
 import astral_mekanism.block.blockentity.storage.BEXpTank;
-import astral_mekanism.block.container.astralmachine.ContainerAstralFAssemblicator;
 import astral_mekanism.block.container.factory.ContainerAstralMekanismFactory;
 import astral_mekanism.block.container.normalmachine.ContainerAstralCrafter;
 import astral_mekanism.block.container.normalmachine.ContainerTransformer;
 import astral_mekanism.block.container.other.ContainerItemSortableStorage;
+import astral_mekanism.block.container.prefab.ContainerAMEFormulaicAssemblicator;
 import astral_mekanism.block.container.prefab.ContainerAbstractStorage;
 import astral_mekanism.block.container.prefab.ContainerMachineCustomSize;
 import astral_mekanism.block.container.prefab.ContainerPagedMachine;
@@ -527,11 +544,11 @@ public class AMEMachines {
                                     EnumSet.of(Upgrade.MUFFLING, Upgrade.ENERGY, AMEUpgrade.WATER_SUPPLY.getValue()))
                             .withSound(MekanismSounds.CHEMICAL_INFUSER));
 
-    public static final MachineRegistryObject<BEAstralFormulaicAssemblicator, BlockTileModel<BEAstralFormulaicAssemblicator, BlockTypeMachine<BEAstralFormulaicAssemblicator>>, ContainerAstralFAssemblicator, ItemBlockMachine> ASTRAL_FORMULAIC_ASSEMBLICATOR = MACHINES
+    public static final MachineRegistryObject<BEAstralFormulaicAssemblicator, BlockTileModel<BEAstralFormulaicAssemblicator, BlockTypeMachine<BEAstralFormulaicAssemblicator>>, ContainerAMEFormulaicAssemblicator<BEAstralFormulaicAssemblicator>, ItemBlockMachine> ASTRAL_FORMULAIC_ASSEMBLICATOR = MACHINES
             .registerDefaultBlockItem("astral_formulaic_assemblicator",
                     BEAstralFormulaicAssemblicator::new,
                     BEAstralFormulaicAssemblicator.class,
-                    ContainerAstralFAssemblicator::new,
+                    ContainerAMEFormulaicAssemblicator<BEAstralFormulaicAssemblicator>::new,
                     AMELang.DESCRIPTION_ASTRAL_MACHINE,
                     builder -> builder
                             .withEnergyConfig(MekanismConfig.usage.formulaicAssemblicator, MAX_SUPPLIER)
@@ -782,6 +799,101 @@ public class AMEMachines {
                     .withSound(MekanismSounds.RESISTIVE_HEATER)
                     .changeAttributeUpgrade(EnumSet.of(Upgrade.MUFFLING, AMEUpgrade.WATER_SUPPLY.getValue())));
 
+    public static final MachineRegistryObject<BEEnchantedChemicalInjectionChamber, BlockTileModel<BEEnchantedChemicalInjectionChamber, BlockTypeMachine<BEEnchantedChemicalInjectionChamber>>, MekanismTileContainer<BEEnchantedChemicalInjectionChamber>, ItemBlockMachine> ENCHANTED_CHEMICAL_INJECTION_CHAMBER = MACHINES
+            .registerSimple("enchanted_chemical_injection_chamber",
+                    BEEnchantedChemicalInjectionChamber::new,
+                    BEEnchantedChemicalInjectionChamber.class,
+                    AMELang.ITEM_GROUP,
+                    builder -> builder
+                            .withEnergyConfig(MekanismConfig.usage.chemicalInjectionChamber,
+                                    () -> MekanismConfig.storage.chemicalInjectionChamber.get().multiply(200000))
+                            .withSound(MekanismSounds.CHEMICAL_INJECTION_CHAMBER)
+                            .changeAttributeUpgrade(EnumSet.of(Upgrade.MUFFLING, Upgrade.SPEED, Upgrade.ENERGY,
+                                    AMEUpgrade.COBBLESTONE_SUPPLY.getValue(),
+                                    AMEUpgrade.RADIOACTIVE_SEALING.getValue(),
+                                    ExtraUpgrade.STACK)));
+
+    public static final MachineRegistryObject<BEEnchantedOsmiumCompressor, BlockTileModel<BEEnchantedOsmiumCompressor, BlockTypeMachine<BEEnchantedOsmiumCompressor>>, MekanismTileContainer<BEEnchantedOsmiumCompressor>, ItemBlockMachine> ENCHANTED_OSMIUM_COMPRESSOR = MACHINES
+            .registerSimple("enchanted_osmium_compressor",
+                    BEEnchantedOsmiumCompressor::new,
+                    BEEnchantedOsmiumCompressor.class,
+                    AMELang.ITEM_GROUP,
+                    builder -> builder
+                            .withEnergyConfig(MekanismConfig.usage.osmiumCompressor,
+                                    () -> MekanismConfig.storage.osmiumCompressor.get().multiply(200000))
+                            .withSound(MekanismSounds.OSMIUM_COMPRESSOR)
+                            .changeAttributeUpgrade(EnumSet.of(Upgrade.MUFFLING, Upgrade.SPEED, Upgrade.ENERGY,
+                                    AMEUpgrade.COBBLESTONE_SUPPLY.getValue(),
+                                    AMEUpgrade.RADIOACTIVE_SEALING.getValue(),
+                                    ExtraUpgrade.STACK)));
+
+    public static final MachineRegistryObject<BEEnchantedPurificationChamber, BlockTileModel<BEEnchantedPurificationChamber, BlockTypeMachine<BEEnchantedPurificationChamber>>, MekanismTileContainer<BEEnchantedPurificationChamber>, ItemBlockMachine> ENCHANTED_PURIFYCATION_CHAMBER = MACHINES
+            .registerSimple("enchanted_purifycation_chamber",
+                    BEEnchantedPurificationChamber::new,
+                    BEEnchantedPurificationChamber.class,
+                    AMELang.ITEM_GROUP,
+                    builder -> builder
+                            .withEnergyConfig(MekanismConfig.usage.purificationChamber,
+                                    () -> MekanismConfig.storage.purificationChamber.get().multiply(200000))
+                            .withSound(MekanismSounds.PURIFICATION_CHAMBER)
+                            .changeAttributeUpgrade(EnumSet.of(Upgrade.MUFFLING, Upgrade.SPEED, Upgrade.ENERGY,
+                                    AMEUpgrade.COBBLESTONE_SUPPLY.getValue(),
+                                    AMEUpgrade.RADIOACTIVE_SEALING.getValue(),
+                                    ExtraUpgrade.STACK)));
+
+    public static final MachineRegistryObject<BEEnchantedCrusher, BlockTileModel<BEEnchantedCrusher, BlockTypeMachine<BEEnchantedCrusher>>, MekanismTileContainer<BEEnchantedCrusher>, ItemBlockMachine> ENCHANTED_CRUSHER = MACHINES
+            .registerSimple("enchanted_crusher",
+                    BEEnchantedCrusher::new,
+                    BEEnchantedCrusher.class,
+                    AMELang.ITEM_GROUP,
+                    builder -> builder
+                            .withEnergyConfig(MekanismConfig.usage.crusher,
+                                    () -> MekanismConfig.storage.crusher.get().multiply(200000))
+                            .withSound(MekanismSounds.CRUSHER)
+                            .changeAttributeUpgrade(EnumSet.of(Upgrade.MUFFLING, Upgrade.SPEED, Upgrade.ENERGY,
+                                    AMEUpgrade.COBBLESTONE_SUPPLY.getValue(),
+                                    ExtraUpgrade.STACK)));
+
+    public static final MachineRegistryObject<BEEnchantedEnrichmentChamber, BlockTileModel<BEEnchantedEnrichmentChamber, BlockTypeMachine<BEEnchantedEnrichmentChamber>>, MekanismTileContainer<BEEnchantedEnrichmentChamber>, ItemBlockMachine> ENCHANTED_ENRICHMENT_CHAMBER = MACHINES
+            .registerSimple("enchanted_enrichment_chamber",
+                    BEEnchantedEnrichmentChamber::new,
+                    BEEnchantedEnrichmentChamber.class,
+                    AMELang.ITEM_GROUP,
+                    builder -> builder
+                            .withEnergyConfig(MekanismConfig.usage.enrichmentChamber,
+                                    () -> MekanismConfig.storage.enrichmentChamber.get().multiply(200000))
+                            .withSound(MekanismSounds.ENRICHMENT_CHAMBER)
+                            .changeAttributeUpgrade(EnumSet.of(Upgrade.MUFFLING, Upgrade.SPEED, Upgrade.ENERGY,
+                                    AMEUpgrade.COBBLESTONE_SUPPLY.getValue(),
+                                    ExtraUpgrade.STACK)));
+
+    public static final MachineRegistryObject<BEEnchantedAdsorptionSeparator, BlockTileModel<BEEnchantedAdsorptionSeparator, BlockTypeMachine<BEEnchantedAdsorptionSeparator>>, MekanismTileContainer<BEEnchantedAdsorptionSeparator>, ItemBlockMachine> ENCHANTED_ADSORPTION_SEPARATOR = MACHINES
+            .registerSimple("enchanted_adsorption_separator",
+                    BEEnchantedAdsorptionSeparator::new,
+                    BEEnchantedAdsorptionSeparator.class,
+                    AMELang.ITEM_GROUP,
+                    builder -> builder
+                            .withEnergyConfig(MSConfig.usageConfig.adsorptionSeparator,
+                                    () -> MSConfig.storageConfig.adsorptionSeparator.get().multiply(200000))
+                            .withSound(MekanismSounds.CHEMICAL_INFUSER)
+                            .withCustomShape(MSBlockShapes.ADSORPTION_SEPARATOR)
+                            .changeAttributeUpgrade(EnumSet.of(Upgrade.MUFFLING, Upgrade.SPEED, Upgrade.ENERGY,
+                                    AMEUpgrade.RADIOACTIVE_SEALING.getValue(),
+                                    ExtraUpgrade.STACK)));
+
+    public static final MachineRegistryObject<BEEnchantedAirCompressor, BlockTileModel<BEEnchantedAirCompressor, BlockTypeMachine<BEEnchantedAirCompressor>>, MekanismTileContainer<BEEnchantedAirCompressor>, ItemBlockMachine> ENCHANTED_AIR_COMPRESSOR = MACHINES
+            .registerSimple("enchanted_air_compressor",
+                    BEEnchantedAirCompressor::new,
+                    BEEnchantedAirCompressor.class,
+                    AMELang.ITEM_GROUP,
+                    builder -> builder
+                            .withEnergyConfig(MSConfig.usageConfig.airCompressor,
+                                    () -> MSConfig.storageConfig.airCompressor.get().multiply(200000))
+                            .withSound(MekanismSounds.CHEMICAL_INFUSER)
+                            .changeAttributeUpgrade(EnumSet.of(Upgrade.MUFFLING, Upgrade.SPEED, Upgrade.ENERGY,
+                                    AMEUpgrade.RADIOACTIVE_SEALING.getValue(),
+                                    ExtraUpgrade.STACK)));
+
     public static final MachineRegistryObject<BEEnchantedAntiprotonicNucleosynthesizer, BlockTileModel<BEEnchantedAntiprotonicNucleosynthesizer, BlockTypeMachine<BEEnchantedAntiprotonicNucleosynthesizer>>, MekanismTileContainer<BEEnchantedAntiprotonicNucleosynthesizer>, ItemBlockMachine> ENCHANTED_ANTIPROTONIC_NUCLEOSYNTHESIZER = MACHINES
             .registerSimple("enchanted_antiprotonic_nucleosynthesizer",
                     BEEnchantedAntiprotonicNucleosynthesizer::new,
@@ -809,6 +921,20 @@ public class AMEMachines {
                             .changeAttributeUpgrade(EnumSet.of(Upgrade.MUFFLING, Upgrade.SPEED, Upgrade.ENERGY,
                                     AMEUpgrade.RADIOACTIVE_SEALING.getValue(),
                                     AMEUpgrade.AIR_INTAKE.getValue(),
+                                    ExtraUpgrade.STACK)));
+
+    public static final MachineRegistryObject<BEEnchantedChemicalWasher, BlockTileModel<BEEnchantedChemicalWasher, BlockTypeMachine<BEEnchantedChemicalWasher>>, MekanismTileContainer<BEEnchantedChemicalWasher>, ItemBlockMachine> ENCHANTED_CHEMICAL_WASHER = MACHINES
+            .registerSimple("enchanted_chemical_washer",
+                    BEEnchantedChemicalWasher::new,
+                    BEEnchantedChemicalWasher.class,
+                    AMELang.ITEM_GROUP,
+                    builder -> builder
+                            .withEnergyConfig(MekanismConfig.usage.chemicalWasher,
+                                    () -> MekanismConfig.storage.chemicalWasher.get().multiply(200000))
+                            .withSound(MekanismSounds.CHEMICAL_OXIDIZER)
+                            .changeAttributeUpgrade(EnumSet.of(Upgrade.MUFFLING, Upgrade.SPEED, Upgrade.ENERGY,
+                                    AMEUpgrade.WATER_SUPPLY.getValue(),
+                                    AMEUpgrade.RADIOACTIVE_SEALING.getValue(),
                                     ExtraUpgrade.STACK)));
 
     public static final MachineRegistryObject<BEEnchantedChemicalOxidizer, BlockTileModel<BEEnchantedChemicalOxidizer, BlockTypeMachine<BEEnchantedChemicalOxidizer>>, MekanismTileContainer<BEEnchantedChemicalOxidizer>, ItemBlockMachine> ENCHANTED_CHEMICAL_OXIDIZER = MACHINES
@@ -841,6 +967,37 @@ public class AMEMachines {
                                             ExtraUpgrade.STACK))
                             .withSound(MekanismSounds.PRESSURIZED_REACTION_CHAMBER));
 
+    public static final MachineRegistryObject<BEEnchantedCrystallizer, BlockTileModel<BEEnchantedCrystallizer, BlockTypeMachine<BEEnchantedCrystallizer>>, MekanismTileContainer<BEEnchantedCrystallizer>, ItemBlockMachine> ENCHANTED_CRYSTALLIZER = MACHINES
+            .registerSimple("enchanted_crystallizer",
+                    BEEnchantedCrystallizer::new,
+                    BEEnchantedCrystallizer.class,
+                    AMELang.ITEM_GROUP,
+                    builder -> builder
+                            .withEnergyConfig(MekanismConfig.usage.chemicalCrystallizer,
+                                    () -> MekanismConfig.storage.chemicalCrystallizer.get().multiply(200000))
+                            .changeAttributeUpgrade(
+                                    EnumSet.of(Upgrade.MUFFLING, Upgrade.ENERGY, Upgrade.SPEED,
+                                            AMEUpgrade.RADIOACTIVE_SEALING.getValue(),
+                                            AMEUpgrade.AIR_INTAKE.getValue(),
+                                            ExtraUpgrade.STACK))
+                            .withSound(MekanismSounds.CHEMICAL_CRYSTALLIZER));
+
+    public static final MachineRegistryObject<BEEnchantedDissolutionChamber, BlockTileModel<BEEnchantedDissolutionChamber, BlockTypeMachine<BEEnchantedDissolutionChamber>>, MekanismTileContainer<BEEnchantedDissolutionChamber>, ItemBlockMachine> ENCHANTED_DISSOLUTION_CHAMBER = MACHINES
+            .registerSimple("enchanted_dissolution_chamber",
+                    BEEnchantedDissolutionChamber::new,
+                    BEEnchantedDissolutionChamber.class,
+                    AMELang.ITEM_GROUP,
+                    builder -> builder
+                            .withEnergyConfig(MekanismConfig.usage.chemicalDissolutionChamber,
+                                    () -> MekanismConfig.storage.chemicalDissolutionChamber.get().multiply(200000))
+                            .changeAttributeUpgrade(
+                                    EnumSet.of(Upgrade.MUFFLING, Upgrade.ENERGY, Upgrade.SPEED,
+                                            AMEUpgrade.RADIOACTIVE_SEALING.getValue(),
+                                            AMEUpgrade.COBBLESTONE_SUPPLY.getValue(),
+                                            AMEUpgrade.AIR_INTAKE.getValue(),
+                                            ExtraUpgrade.STACK))
+                            .withSound(MekanismSounds.CHEMICAL_DISSOLUTION_CHAMBER));
+
     public static final MachineRegistryObject<BEEnchantedElectrolyticSeparator, BlockTileModel<BEEnchantedElectrolyticSeparator, BlockTypeMachine<BEEnchantedElectrolyticSeparator>>, MekanismTileContainer<BEEnchantedElectrolyticSeparator>, ItemBlockMachine> ENCHANTED_ELECTROLYTIC_SEPARATOR = MACHINES
             .registerSimple("enchanted_electrolytic_separator",
                     BEEnchantedElectrolyticSeparator::new,
@@ -855,6 +1012,35 @@ public class AMEMachines {
                                             AMEUpgrade.RADIOACTIVE_SEALING.getValue(),
                                             ExtraUpgrade.STACK))
                             .withSound(MekanismSounds.ELECTROLYTIC_SEPARATOR));
+
+    public static final MachineRegistryObject<BEEnchantedEnergizedSmelter, BlockTileModel<BEEnchantedEnergizedSmelter, BlockTypeMachine<BEEnchantedEnergizedSmelter>>, MekanismTileContainer<BEEnchantedEnergizedSmelter>, ItemBlockMachine> ENCHANTED_ENERGIZED_SMELTER = MACHINES
+            .registerSimple("enchanted_energized_smelter",
+                    BEEnchantedEnergizedSmelter::new,
+                    BEEnchantedEnergizedSmelter.class,
+                    AMELang.ITEM_GROUP,
+                    builder -> builder
+                            .withEnergyConfig(() -> MekanismConfig.general.FROM_H2.get().multiply(2),
+                                    () -> MekanismConfig.storage.electrolyticSeparator.get().multiply(200000))
+                            .changeAttributeUpgrade(
+                                    EnumSet.of(Upgrade.MUFFLING, Upgrade.ENERGY, Upgrade.SPEED,
+                                            AMEUpgrade.WATER_SUPPLY.getValue(),
+                                            AMEUpgrade.RADIOACTIVE_SEALING.getValue(),
+                                            ExtraUpgrade.STACK))
+                            .withSound(MekanismSounds.ELECTROLYTIC_SEPARATOR));
+
+    public static final MachineRegistryObject<BEEnchantedFormulaicAssemblicator, BlockTileModel<BEEnchantedFormulaicAssemblicator, BlockTypeMachine<BEEnchantedFormulaicAssemblicator>>, ContainerAMEFormulaicAssemblicator<BEEnchantedFormulaicAssemblicator>, ItemBlockMachine> ENCHANTED_FORMULAIC_ASSEMBLICATOR = MACHINES
+            .registerDefaultBlockItem("enchanted_formulaic_assemblicator",
+                    BEEnchantedFormulaicAssemblicator::new,
+                    BEEnchantedFormulaicAssemblicator.class,
+                    ContainerAMEFormulaicAssemblicator<BEEnchantedFormulaicAssemblicator>::new,
+                    AMELang.ITEM_GROUP,
+                    builder -> builder
+                            .withEnergyConfig(MekanismConfig.usage.formulaicAssemblicator,
+                                    () -> MekanismConfig.storage.formulaicAssemblicator.get().multiply(200000))
+                            .changeAttributeUpgrade(
+                                    EnumSet.of(Upgrade.ENERGY, Upgrade.SPEED,
+                                            AMEUpgrade.COBBLESTONE_SUPPLY.getValue(),
+                                            ExtraUpgrade.STACK)));
 
     public static final MachineRegistryObject<BEEnchantedIsotopicCentrifuge, BlockTileModel<BEEnchantedIsotopicCentrifuge, BlockTypeMachine<BEEnchantedIsotopicCentrifuge>>, MekanismTileContainer<BEEnchantedIsotopicCentrifuge>, ItemBlockMachine> ENCHANTED_ISTOPIC_CENTRIFUGE = MACHINES
             .registerSimple("enchanted_isotopic_centrifuge",
@@ -883,6 +1069,52 @@ public class AMEMachines {
                                             AMEUpgrade.RADIOACTIVE_SEALING.getValue(),
                                             ExtraUpgrade.STACK))
                             .withSound(MekanismSounds.CHEMICAL_OXIDIZER));
+
+    public static final MachineRegistryObject<BEEnchantedPaintingMachine, BlockTileModel<BEEnchantedPaintingMachine, BlockTypeMachine<BEEnchantedPaintingMachine>>, MekanismTileContainer<BEEnchantedPaintingMachine>, ItemBlockMachine> ENCHANTED_PAINTING_MACHINE = MACHINES
+            .registerSimple("enchanted_painting_machine",
+                    BEEnchantedPaintingMachine::new,
+                    BEEnchantedPaintingMachine.class,
+                    AMELang.ITEM_GROUP,
+                    builder -> builder
+                            .withEnergyConfig(MekanismConfig.usage.paintingMachine,
+                                    () -> MekanismConfig.storage.paintingMachine.get().multiply(200000))
+                            .changeAttributeUpgrade(
+                                    EnumSet.of(Upgrade.MUFFLING, Upgrade.ENERGY, Upgrade.SPEED,
+                                            AMEUpgrade.COBBLESTONE_SUPPLY.getValue(),
+                                            ExtraUpgrade.STACK))
+                            .withSound(MekanismSounds.PAINTING_MACHINE));
+
+    public static final MachineRegistryObject<BEEnchantedPRC, BlockTileModel<BEEnchantedPRC, BlockTypeMachine<BEEnchantedPRC>>, MekanismTileContainer<BEEnchantedPRC>, ItemBlockMachine> ENCHANTED_PRC = MACHINES
+            .registerSimple("enchanted_prc",
+                    BEEnchantedPRC::new,
+                    BEEnchantedPRC.class,
+                    AMELang.ITEM_GROUP,
+                    builder -> builder
+                            .withEnergyConfig(MekanismConfig.usage.pressurizedReactionBase,
+                                    () -> MekanismConfig.storage.pressurizedReactionBase.get().multiply(2000000))
+                            .changeAttributeUpgrade(
+                                    EnumSet.of(Upgrade.MUFFLING, Upgrade.ENERGY, Upgrade.SPEED,
+                                            AMEUpgrade.COBBLESTONE_SUPPLY.getValue(),
+                                            AMEUpgrade.WATER_SUPPLY.getValue(),
+                                            AMEUpgrade.AIR_INTAKE.getValue(),
+                                            ExtraUpgrade.STACK))
+                            .withSound(MekanismSounds.PRESSURIZED_REACTION_CHAMBER));
+
+    public static final MachineRegistryObject<BEEnchantedRotaryCondensentrator, BlockTileModel<BEEnchantedRotaryCondensentrator, BlockTypeMachine<BEEnchantedRotaryCondensentrator>>, MekanismTileContainer<BEEnchantedRotaryCondensentrator>, ItemBlockMachine> ENCHANTED_ROTARY_CONDENSENTRATOR = MACHINES
+            .registerSimple("enchanted_rotary_condensentrator",
+                    BEEnchantedRotaryCondensentrator::new,
+                    BEEnchantedRotaryCondensentrator.class,
+                    AMELang.ITEM_GROUP,
+                    builder -> builder
+                            .withEnergyConfig(MekanismConfig.usage.rotaryCondensentrator,
+                                    () -> MekanismConfig.storage.rotaryCondensentrator.get().multiply(200000))
+                            .changeAttributeUpgrade(
+                                    EnumSet.of(Upgrade.MUFFLING, Upgrade.ENERGY, Upgrade.SPEED,
+                                            AMEUpgrade.AIR_INTAKE.getValue(),
+                                            AMEUpgrade.WATER_SUPPLY.getValue(),
+                                            AMEUpgrade.RADIOACTIVE_SEALING.getValue(),
+                                            ExtraUpgrade.STACK))
+                            .withSound(MekanismSounds.ROTARY_CONDENSENTRATOR));
 
     public static final MachineRegistryObject<BEAppliedGasBurningGenerator, BlockTileModel<BEAppliedGasBurningGenerator, BlockTypeMachine<BEAppliedGasBurningGenerator>>, MekanismTileContainer<BEAppliedGasBurningGenerator>, ItemBlockMachine> APPLIED_GAS_BURNING_GENERATOR = MACHINES
             .registerSimple("applied_gas_burning_generator",
@@ -954,6 +1186,20 @@ public class AMEMachines {
                                             AMEUpgrade.COBBLESTONE_SUPPLY.getValue(),
                                             AMEUpgrade.XP.getValue()))
                             .withSound(MekanismSounds.ENERGIZED_SMELTER));
+
+    public static final MachineRegistryObject<BEEssentialFormulaicAssemblicator, BlockTileModel<BEEssentialFormulaicAssemblicator, BlockTypeMachine<BEEssentialFormulaicAssemblicator>>, ContainerAMEFormulaicAssemblicator<BEEssentialFormulaicAssemblicator>, ItemBlockMachine> ESSENTIAL_FORMULAIC_ASSEMBLICATOR = MACHINES
+            .registerDefaultBlockItem("essential_formulaic_assemblicator",
+                    BEEssentialFormulaicAssemblicator::new,
+                    BEEssentialFormulaicAssemblicator.class,
+                    ContainerAMEFormulaicAssemblicator<BEEssentialFormulaicAssemblicator>::new,
+                    AMELang.ITEM_GROUP,
+                    builder -> builder
+                            .withEnergyConfig(MekanismConfig.usage.formulaicAssemblicator,
+                                    () -> MekanismConfig.storage.formulaicAssemblicator.get().multiply(200000))
+                            .changeAttributeUpgrade(
+                                    EnumSet.of(Upgrade.ENERGY, Upgrade.SPEED,
+                                            AMEUpgrade.COBBLESTONE_SUPPLY.getValue(),
+                                            ExtraUpgrade.STACK)));
 
     public static final MachineRegistryObject<BEEssentialMetallurgicInfuser, BlockTileModel<BEEssentialMetallurgicInfuser, BlockTypeMachine<BEEssentialMetallurgicInfuser>>, MekanismTileContainer<BEEssentialMetallurgicInfuser>, ItemBlockMachine> ESSENTIAL_METALLURGIC_INFUSER = MACHINES
             .registerSimple("essential_metallurgic_infuser",
@@ -1165,7 +1411,7 @@ public class AMEMachines {
             .registerSimple("upgrade_extractor",
                     BEUpgradeExtractor::new,
                     BEUpgradeExtractor.class,
-                    AMELang.ITEM_GROUP,
+                    AMELang.WIP,
                     BlockMachineBuilder::removeAttributeUpgrade);
 
     public static final MachineRegistryObject<BEEvenlyInserter, BlockTileModel<BEEvenlyInserter, BlockTypeMachine<BEEvenlyInserter>>, MekanismTileContainer<BEEvenlyInserter>, ItemBlockMachine> EVENLY_INSERTER = MACHINES

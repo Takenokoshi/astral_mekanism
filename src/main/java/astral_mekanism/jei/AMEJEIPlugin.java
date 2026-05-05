@@ -26,7 +26,7 @@ import astral_mekanism.jei.recipeCategory.MekanicalTransformRecipeCategory;
 import astral_mekanism.jei.recipeCategory.MixingReactorRecipeCategory;
 import astral_mekanism.jei.recipeCategory.ReconstructionRecipeCategory;
 import astral_mekanism.jei.recipeCategory.TransformRecipeCategory;
-import astral_mekanism.jei.transferHandler.AstralFormulaicAssemblicatorTransferHandler;
+import astral_mekanism.jei.transferHandler.AMEFormulaicAssemblicatorTransferHandler;
 import astral_mekanism.registries.AMEMachines;
 import astral_mekanism.registries.AMERecipeTypes;
 import fr.iglee42.evolvedmekanism.jei.EMJEI;
@@ -172,20 +172,27 @@ public class AMEJEIPlugin implements IModPlugin {
                 AMEMachines.ESSENTIAL_REACTION_CHAMBER, AMEMachines.ASTRAL_REACTION_CHAMBER);
         // mekanism
         CatalystRegistryHelper.register(registry, MekanismJEIRecipeType.INJECTING,
+                AMEMachines.ENCHANTED_CHEMICAL_INJECTION_CHAMBER,
                 AMEMachines.ASTRAL_CHEMICAL_INJECTION_CHAMBER);
         CatalystRegistryHelper.register(registry, MekanismJEIRecipeType.COMPRESSING,
+                AMEMachines.ENCHANTED_OSMIUM_COMPRESSOR,
                 AMEMachines.ASTRAL_OSMIUM_COMPRESSOR);
         CatalystRegistryHelper.register(registry, MekanismJEIRecipeType.PURIFYING,
+                AMEMachines.ENCHANTED_OSMIUM_COMPRESSOR,
                 AMEMachines.ASTRAL_PURIFICATION_CHAMBER);
         CatalystRegistryHelper.register(registry, MekanismJEIRecipeType.CRUSHING,
+                AMEMachines.ENCHANTED_CRUSHER,
                 AMEMachines.ASTRAL_CRUSHER);
         CatalystRegistryHelper.registerRecipeItem(registry, AMEMachines.ASTRAL_ENERGIZED_SMELTER,
+                MekanismJEIRecipeType.SMELTING, RecipeTypes.SMELTING);
+        CatalystRegistryHelper.registerRecipeItem(registry, AMEMachines.ENCHANTED_ENERGIZED_SMELTER,
                 MekanismJEIRecipeType.SMELTING, RecipeTypes.SMELTING);
         CatalystRegistryHelper.register(registry, MekanismJEIRecipeType.SMELTING,
                 AMEMachines.ENERGIZED_SMELTING_FACTORIES.values().toArray(IItemProvider[]::new));
         CatalystRegistryHelper.register(registry, MekanismJEIRecipeType.SMELTING,
                 AMEMachines.ASTRAL_ENERGIZED_SMELTING_FACTRIES.values().toArray(IItemProvider[]::new));
         CatalystRegistryHelper.register(registry, MekanismJEIRecipeType.ENRICHING,
+                AMEMachines.ENCHANTED_ENRICHMENT_CHAMBER,
                 AMEMachines.ASTRAL_ENRICHMENT_CHAMBER);
         CatalystRegistryHelper.register(registry, MekanismJEIRecipeType.NUCLEOSYNTHESIZING,
                 AMEMachines.ENCHANTED_ANTIPROTONIC_NUCLEOSYNTHESIZER,
@@ -197,12 +204,15 @@ public class AMEJEIPlugin implements IModPlugin {
                 AMEMachines.ENCHANTED_CHEMICAL_OXIDIZER,
                 AMEMachines.ASTRAL_CHEMICAL_OXIDIZER);
         CatalystRegistryHelper.register(registry, MekanismJEIRecipeType.WASHING,
+                AMEMachines.ENCHANTED_CHEMICAL_WASHER,
                 AMEMachines.ASTRAL_CHEMICAL_WASHER);
         CatalystRegistryHelper.register(registry, MekanismJEIRecipeType.COMBINING,
                 AMEMachines.ASTRAL_COMBINER);
         CatalystRegistryHelper.register(registry, MekanismJEIRecipeType.CRYSTALLIZING,
+                AMEMachines.ENCHANTED_CRYSTALLIZER,
                 AMEMachines.ASTRAL_CRYSTALLIZER);
         CatalystRegistryHelper.register(registry, MekanismJEIRecipeType.DISSOLUTION,
+                AMEMachines.ENCHANTED_DISSOLUTION_CHAMBER,
                 AMEMachines.ASTRAL_DISSOLUTION_CHAMBER);
         CatalystRegistryHelper.register(registry, MekanismJEIRecipeType.SEPARATING,
                 AMEMachines.ENCHANTED_ELECTROLYTIC_SEPARATOR,
@@ -217,9 +227,12 @@ public class AMEJEIPlugin implements IModPlugin {
                 AMEMachines.ASTRAL_METALLURGIC_INFUSER,
                 AMEMachines.ESSENTIAL_METALLURGIC_INFUSER);
         CatalystRegistryHelper.register(registry, MekanismJEIRecipeType.REACTION,
+                AMEMachines.ENCHANTED_PRC,
                 AMEMachines.ASTRAL_PRC);
         CatalystRegistryHelper.register(registry, MekanismJEIRecipeType.SAWING,
                 AMEMachines.ASTRAL_PRECISION_SAWMILL);
+        CatalystRegistryHelper.registerRecipeItem(registry, AMEMachines.ENCHANTED_ROTARY_CONDENSENTRATOR,
+                MekanismJEIRecipeType.CONDENSENTRATING, MekanismJEIRecipeType.DECONDENSENTRATING);
         CatalystRegistryHelper.registerRecipeItem(registry, AMEMachines.ASTRAL_ROTARY_CONDENSENTRATOR,
                 MekanismJEIRecipeType.CONDENSENTRATING, MekanismJEIRecipeType.DECONDENSENTRATING);
         CatalystRegistryHelper.register(registry, MekanismJEIRecipeType.SPS,
@@ -246,6 +259,8 @@ public class AMEJEIPlugin implements IModPlugin {
                 GeneratorsBlocks.GAS_BURNING_GENERATOR);
         CatalystRegistryHelper.register(registry, AMEJEIRecipeType.GAS_BURNING,
                 AMEMachines.GAS_BURNING_GENERATORS.values().toArray(IItemProvider[]::new));
+        CatalystRegistryHelper.register(registry, MekanismJEIRecipeType.PAINTING,
+                AMEMachines.ENCHANTED_PAINTING_MACHINE);
 
         // Evolved Mekanism
         CatalystRegistryHelper.register(registry, EMJEI.APT,
@@ -254,7 +269,9 @@ public class AMEJEIPlugin implements IModPlugin {
         CatalystRegistryHelper.register(registry, EMJEI.ALLOYING, AMEMachines.ASTRAL_ALLOYER);
         CatalystRegistryHelper.register(registry, EMJEI.CHEMIXING, AMEMachines.ENCHANTED_CHEMIXER,
                 AMEMachines.ASTRAL_CHEMIXER);
-        CatalystRegistryHelper.register(registry, EMJEI.MELTING, AMEMachines.ASTRAL_THERMALIZER);
+        CatalystRegistryHelper.register(registry, EMJEI.MELTING,
+                AMEMachines.ASTRAL_THERMALIZER,
+                AMEMachines.ENCHANTED_MELTER);
         CatalystRegistryHelper.register(registry, EMJEI.SOLIDIFICATION,
                 AMEMachines.ASTRAL_SOLIDIFICATION_CHAMBER);
 
@@ -273,6 +290,8 @@ public class AMEJEIPlugin implements IModPlugin {
         // mekanism elements
         CatalystRegistryHelper.register(registry, MSJEIRecipeType.RADIATION_IRRADIATOR,
                 AMEMachines.ASTRAL_RADIATION_IRRADIATOR);
+        CatalystRegistryHelper.register(registry, MSJEIRecipeType.ADSORPTION_SEPARATOR,
+                AMEMachines.ENCHANTED_ADSORPTION_SEPARATOR);
 
         // astral_mekanism
         CatalystRegistryHelper.register(registry, AMEJEIRecipeType.RECONSTRUCTION,
@@ -310,20 +329,29 @@ public class AMEJEIPlugin implements IModPlugin {
                 AMEMachines.ENERGIZED_SMELTING_FACTORIES.values().toArray(ItemLike[]::new));
         registry.addRecipeCatalysts(RecipeTypes.SMELTING,
                 AMEMachines.ASTRAL_ENERGIZED_SMELTING_FACTRIES.values().toArray(ItemLike[]::new));
-        CatalystRegistryHelper.registerRecipeItem(registry, AMEMachines.ASTRAL_FORMULAIC_ASSEMBLICATOR,
-                MekanismJEIRecipeType.VANILLA_CRAFTING, RecipeTypes.CRAFTING);
+        CatalystRegistryHelper.register(registry, MekanismJEIRecipeType.VANILLA_CRAFTING,
+                AMEMachines.ESSENTIAL_FORMULAIC_ASSEMBLICATOR,
+                AMEMachines.ENCHANTED_FORMULAIC_ASSEMBLICATOR,
+                AMEMachines.ASTRAL_FORMULAIC_ASSEMBLICATOR);
         registry.addRecipeCatalysts(RecipeTypes.COMPOSTING,
                 AMEMachines.MEKANICAL_COMPOSTER, AMEMachines.ASTRAL_COMPOSTER);
     }
 
     @Override
     public void registerRecipeTransferHandlers(IRecipeTransferRegistration registration) {
-        registration.addRecipeTransferHandler(new AstralFormulaicAssemblicatorTransferHandler(), RecipeTypes.CRAFTING);
+        registration.addRecipeTransferHandler(
+                new AMEFormulaicAssemblicatorTransferHandler<>(AMEMachines.ASTRAL_FORMULAIC_ASSEMBLICATOR),
+                RecipeTypes.CRAFTING);
+        registration.addRecipeTransferHandler(
+                new AMEFormulaicAssemblicatorTransferHandler<>(AMEMachines.ENCHANTED_FORMULAIC_ASSEMBLICATOR),
+                RecipeTypes.CRAFTING);
+        registration.addRecipeTransferHandler(
+                new AMEFormulaicAssemblicatorTransferHandler<>(AMEMachines.ESSENTIAL_FORMULAIC_ASSEMBLICATOR),
+                RecipeTypes.CRAFTING);
     }
 
     @Override
     public void registerGuiHandlers(IGuiHandlerRegistration registration) {
-        // ここで各guiに登録
     }
 
     @Override

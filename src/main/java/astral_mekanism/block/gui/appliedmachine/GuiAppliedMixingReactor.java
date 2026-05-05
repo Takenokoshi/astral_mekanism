@@ -5,7 +5,7 @@ import java.util.List;
 
 import astral_mekanism.AMEConstants;
 import astral_mekanism.AstralMekanism;
-import astral_mekanism.block.blockentity.prefab.BEAbstractAppliedMixingReactor;
+import astral_mekanism.block.blockentity.appliedmachine.prefab.BEAbstractAppliedMixingReactor;
 import astral_mekanism.block.gui.element.EnumToggleButton;
 import astral_mekanism.block.gui.element.GuiMEKeySlot;
 import astral_mekanism.enums.AppliedMixingReactorMode;

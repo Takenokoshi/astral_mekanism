@@ -2,7 +2,7 @@ package astral_mekanism.block.gui.normalmachine;
 
 import org.jetbrains.annotations.NotNull;
 
-import astral_mekanism.block.blockentity.prefab.BEAbstractInfusingCondensentrator;
+import astral_mekanism.block.blockentity.basemachine.BEAbstractInfusingCondensentrator;
 import astral_mekanism.jei.AMEJEIRecipeType;
 import mekanism.api.recipes.cache.CachedRecipe.OperationTracker.RecipeError;
 import mekanism.client.gui.GuiConfigurableTile;

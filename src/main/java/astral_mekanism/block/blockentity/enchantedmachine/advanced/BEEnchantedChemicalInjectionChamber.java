@@ -1,0 +1,59 @@
+package astral_mekanism.block.blockentity.enchantedmachine.advanced;
+
+import org.jetbrains.annotations.NotNull;
+
+import com.jerry.mekanism_extras.api.ExtraUpgrade;
+
+import astral_mekanism.block.blockentity.basemachine.BEAMEAdvancedMachine;
+import astral_mekanism.integration.AMEEmpowered;
+import mekanism.api.Upgrade;
+import mekanism.api.chemical.gas.Gas;
+import mekanism.api.chemical.gas.GasStack;
+import mekanism.api.providers.IBlockProvider;
+import mekanism.api.recipes.ItemStackGasToItemStackRecipe;
+import mekanism.common.inventory.container.MekanismContainer;
+import mekanism.common.inventory.container.sync.SyncableInt;
+import mekanism.common.recipe.IMekanismRecipeTypeProvider;
+import mekanism.common.recipe.MekanismRecipeType;
+import mekanism.common.recipe.lookup.cache.InputRecipeCache.ItemChemical;
+import net.minecraft.core.BlockPos;
+import net.minecraft.world.level.block.state.BlockState;
+
+public class BEEnchantedChemicalInjectionChamber extends BEAMEAdvancedMachine {
+    private int baselineMaxOperations = 200;
+
+    public BEEnchantedChemicalInjectionChamber(IBlockProvider blockProvider, BlockPos pos, BlockState state) {
+        super(blockProvider, pos, state, "mekanism:chemical_injection_chamber", 20);
+    }
+
+    @Override
+    public @NotNull IMekanismRecipeTypeProvider<ItemStackGasToItemStackRecipe, ItemChemical<Gas, GasStack, ItemStackGasToItemStackRecipe>> getRecipeType() {
+        return MekanismRecipeType.INJECTING;
+    }
+
+    @Override
+    protected int getBaselineMaxOperations() {
+        return baselineMaxOperations;
+    }
+
+    @Override
+    public void addContainerTrackers(MekanismContainer container) {
+        super.addContainerTrackers(container);
+        container.track(SyncableInt.create(this::getBaselineMaxOperations, v -> baselineMaxOperations = v));
+    }
+
+    @Override
+    public void recalculateUpgrades(Upgrade upgrade) {
+        super.recalculateUpgrades(upgrade);
+        if (AMEEmpowered.empoweredIsLoaded()) {
+            if (AMEEmpowered.isEmpoweredSpeed(upgrade) || upgrade == Upgrade.SPEED || upgrade == ExtraUpgrade.STACK) {
+                baselineMaxOperations = 200 * ((1 << upgradeComponent.getUpgrades(Upgrade.SPEED)) + (2 << AMEEmpowered
+                        .getEmpoweredSpeeds(this))) << upgradeComponent.getUpgrades(ExtraUpgrade.STACK);
+            }
+        } else if (upgrade == Upgrade.SPEED || upgrade == ExtraUpgrade.STACK) {
+            baselineMaxOperations = 200 << (upgradeComponent.getUpgrades(Upgrade.SPEED)
+                    + upgradeComponent.getUpgrades(ExtraUpgrade.STACK));
+        }
+    }
+    
+}

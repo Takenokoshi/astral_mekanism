@@ -2,7 +2,7 @@ package astral_mekanism.block.blockentity.enchantedmachine;
 
 import com.jerry.mekanism_extras.api.ExtraUpgrade;
 
-import astral_mekanism.block.blockentity.prefab.BEAbstractAntiprotonicNucleosynthesizer;
+import astral_mekanism.block.blockentity.basemachine.BEAMEAntiprotonicNucleosynthesizer;
 import astral_mekanism.enums.AMEUpgrade;
 import mekanism.api.Upgrade;
 import mekanism.api.providers.IBlockProvider;
@@ -12,7 +12,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.block.state.BlockState;
 
 public class BEEnchantedAntiprotonicNucleosynthesizer
-        extends BEAbstractAntiprotonicNucleosynthesizer<BEEnchantedAntiprotonicNucleosynthesizer> {
+        extends BEAMEAntiprotonicNucleosynthesizer<BEEnchantedAntiprotonicNucleosynthesizer> {
     private int baselineMaxOperations = 100;
 
     public BEEnchantedAntiprotonicNucleosynthesizer(IBlockProvider blockProvider, BlockPos pos, BlockState state) {

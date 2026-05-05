@@ -1,7 +1,7 @@
 package astral_mekanism.block.blockentity.astralmachine;
 
 import appeng.recipes.transform.TransformRecipe;
-import astral_mekanism.block.blockentity.prefab.BEAbstractTransformer;
+import astral_mekanism.block.blockentity.basemachine.BEAbstractTransformer;
 import astral_mekanism.generalrecipe.cachedrecipe.GeneralCachedRecipe;
 import astral_mekanism.recipes.recipe.MekanicalTransformRecipe;
 import mekanism.api.providers.IBlockProvider;

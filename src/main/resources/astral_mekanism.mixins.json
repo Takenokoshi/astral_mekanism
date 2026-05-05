@@ -18,7 +18,6 @@
 		"mekanism.blockentity.TileEntityAntiprotonicNucleosynthesizerMixin",
 		"mekanism.blockentity.TileEntityDigitalMinerMixin",
 		"mekanism.blockentity.TileEntityMekanismMixin",
-		"mekanism.blockentity.TileEntityRotaryCondensentratorMixin",
 		"mekanism.recipe.MekanismRecipeTypeMixin",
 		"mekanism.APILangMixin",
 		"mekanism.BaseTierMixin",

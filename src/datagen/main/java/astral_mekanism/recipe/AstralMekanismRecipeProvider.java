@@ -45,6 +45,8 @@ public class AstralMekanismRecipeProvider extends RecipeProvider {
                 "normal_factory/energized_smelting");
         buildEnergyCellRecipes(consumer);
         buildMekanicalMagmaBlockRecipes(consumer);
+        CompressUnzipRecipeBuilding.buildRecipes(consumer);
+        EnchatedMachineRecipeBuilding.build(consumer, AstralMekanismRecipeProvider::has);
     }
 
     private static void buildTierMachineUpgradeRecipes(EnumMap<AMETier, ? extends IItemProvider> machines,

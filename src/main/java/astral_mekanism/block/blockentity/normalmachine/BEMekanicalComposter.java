@@ -1,6 +1,6 @@
 package astral_mekanism.block.blockentity.normalmachine;
 
-import astral_mekanism.block.blockentity.prefab.BEAbstractMekanicalComposter;
+import astral_mekanism.block.blockentity.basemachine.BEAbstractMekanicalComposter;
 import astral_mekanism.integration.AMEEmpowered;
 import mekanism.api.Upgrade;
 import mekanism.api.providers.IBlockProvider;
