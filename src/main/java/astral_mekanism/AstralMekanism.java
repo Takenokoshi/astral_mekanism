@@ -6,6 +6,7 @@ import appeng.api.features.GridLinkables;
 import appeng.api.storage.StorageCells;
 import astral_mekanism.config.AMEConfig;
 import astral_mekanism.item.cell.bulkcell.AMEBulkCellHandler;
+import astral_mekanism.item.cell.pigment.InfinityPigmentCellHandler;
 import astral_mekanism.network.AMEPacketHandler;
 import astral_mekanism.registries.AMEBlockEntityRegistry;
 import astral_mekanism.registries.AMEItemDefinitions;
@@ -75,6 +76,7 @@ public class AstralMekanism {
     private void commonSetUp1(final FMLCommonSetupEvent event) {
         StorageCells.addCellHandler(AMEBulkCellHandler.CHEMICAL_HANDLER);
         StorageCells.addCellHandler(AMEBulkCellHandler.FLUID_HANDLER);
+        StorageCells.addCellHandler(new InfinityPigmentCellHandler());
         GridLinkables.register(AMEItems.MEK_MACHINE_UPGRADE_TOOL, IGridLinkedItem.LINKABLE_HANDLER);
     }
 

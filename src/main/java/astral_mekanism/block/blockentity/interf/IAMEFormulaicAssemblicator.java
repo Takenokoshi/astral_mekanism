@@ -9,4 +9,6 @@ public interface IAMEFormulaicAssemblicator {
     void setSavedRecipe(CraftingRecipe recipe);
 
     CraftingRecipe getSavedRecipe();
+
+    double getScaledProgress();
 }

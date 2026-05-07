@@ -6,6 +6,7 @@ import astral_mekanism.block.blockentity.appliedmachine.BEAppliedFusionReactor;
 import astral_mekanism.block.blockentity.appliedmachine.BEAppliedNaquadahReactor;
 import astral_mekanism.block.blockentity.astralfactory.BEAstralEnergizedSmeltingFactory;
 import astral_mekanism.block.blockentity.astralmachine.BEAstralAPT;
+import astral_mekanism.block.blockentity.astralmachine.BEAstralAlloyer;
 import astral_mekanism.block.blockentity.astralmachine.BEAstralAntiprotonicNucleosynthesizer;
 import astral_mekanism.block.blockentity.astralmachine.BEAstralChemicalInfuser;
 import astral_mekanism.block.blockentity.astralmachine.BEAstralChemicalOxidizer;
@@ -53,17 +54,7 @@ import astral_mekanism.block.blockentity.storage.BEItemSortableStorage;
 import astral_mekanism.block.blockentity.storage.BEUniversalStorage;
 import astral_mekanism.block.container.other.ContainerItemSortableStorage;
 import astral_mekanism.block.container.prefab.ContainerAbstractStorage;
-import astral_mekanism.block.gui.appliedmachine.GuiAppliedRotaryCondensentrator;
-import astral_mekanism.block.gui.appliedmachine.GuiAppliedSPS;
-import astral_mekanism.block.gui.appliedmachine.GuiAppliedCrystallizer;
-import astral_mekanism.block.gui.appliedmachine.GuiAppliedElectrolyticSeparator;
-import astral_mekanism.block.gui.appliedmachine.GuiAppliedFissionReactor;
-import astral_mekanism.block.gui.appliedmachine.GuiAppliedIsotopicCentrifuge;
-import astral_mekanism.block.gui.appliedmachine.GuiAppliedMixingReactor;
-import astral_mekanism.block.gui.appliedmachine.GuiAppliedNeutronActivator;
-import astral_mekanism.block.gui.appliedmachine.GuiAppliedSmelter;
-import astral_mekanism.block.gui.appliedmachine.GuiAppliedTEP;
-import astral_mekanism.block.gui.astralmachine.GuiAstralAlloyer;
+import astral_mekanism.block.gui.appliedmachine.*;
 import astral_mekanism.block.gui.astralmachine.GuiAstralPrecisionSawmill;
 import astral_mekanism.block.gui.astralmachine.GuiAstralRadiationIrradiator;
 import astral_mekanism.block.gui.astralmachine.GuiAstralSolidifier;
@@ -149,7 +140,7 @@ public class AMEClient extends AstralMekanism {
         registerScreenMek(AMEMachines.ASTRAL_CRUSHER, GuiAMEElectricMachine<BEAstralCrusher>::new);
         registerScreenMek(AMEMachines.ASTRAL_ENRICHMENT_CHAMBER,
                 GuiAMEElectricMachine<BEAstralEnrichmentChamber>::new);
-        registerScreenMek(AMEMachines.ASTRAL_ALLOYER, GuiAstralAlloyer::new);
+        registerScreenMek(AMEMachines.ASTRAL_ALLOYER, GuiAMEAlloyer<BEAstralAlloyer>::new);
         registerScreenMek(AMEMachines.ASTRAL_ANTIPROTONIC_NUCLEOSYNTHESIZER,
                 GuiAMEAntiprotonicNucleoSynthesizer<BEAstralAntiprotonicNucleosynthesizer>::new);
         registerScreenMek(AMEMachines.ASTRAL_APT, GuiCompactAPT<BEAstralAPT>::new);
@@ -213,6 +204,7 @@ public class AMEClient extends AstralMekanism {
         registerScreenMek(AMEMachines.ENCHANTED_ADSORPTION_SEPARATOR,
                 GuiAMEAdsorptionSeparator<BEEnchantedAdsorptionSeparator>::new);
         registerScreenMek(AMEMachines.ENCHANTED_AIR_COMPRESSOR, GuiAMEAirCompressor<BEEnchantedAirCompressor>::new);
+        registerScreenMek(AMEMachines.ENCHANTED_ALLOYER, GuiAMEAlloyer<BEEnchantedAlloyer>::new);
         registerScreenMek(AMEMachines.ENCHANTED_ANTIPROTONIC_NUCLEOSYNTHESIZER,
                 GuiAMEAntiprotonicNucleoSynthesizer<BEEnchantedAntiprotonicNucleosynthesizer>::new);
         registerScreenMek(AMEMachines.ENCHANTED_CHEMICAL_INFUSER,

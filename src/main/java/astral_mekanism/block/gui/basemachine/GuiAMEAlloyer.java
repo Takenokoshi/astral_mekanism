@@ -1,8 +1,8 @@
-package astral_mekanism.block.gui.astralmachine;
+package astral_mekanism.block.gui.basemachine;
 
 import org.jetbrains.annotations.NotNull;
 
-import astral_mekanism.block.blockentity.astralmachine.BEAstralAlloyer;
+import astral_mekanism.block.blockentity.basemachine.BEAMEAlloyer;
 import fr.iglee42.evolvedmekanism.jei.EMJEI;
 import mekanism.api.recipes.cache.CachedRecipe.OperationTracker.RecipeError;
 import mekanism.client.gui.GuiConfigurableTile;
@@ -17,9 +17,9 @@ import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.player.Inventory;
 
-public class GuiAstralAlloyer extends GuiConfigurableTile<BEAstralAlloyer, MekanismTileContainer<BEAstralAlloyer>> {
+public class GuiAMEAlloyer<BE extends BEAMEAlloyer> extends GuiConfigurableTile<BE, MekanismTileContainer<BE>> {
 
-    public GuiAstralAlloyer(MekanismTileContainer<BEAstralAlloyer> container, Inventory inv, Component title) {
+    public GuiAMEAlloyer(MekanismTileContainer<BE> container, Inventory inv, Component title) {
         super(container, inv, title);
         dynamicSlots = true;
     }

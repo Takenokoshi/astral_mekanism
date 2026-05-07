@@ -94,7 +94,9 @@ public class EnchatedMachineRecipeBuilding {
         LIST_NORMAL.add(new EnchantedAndNormal(AMEMachines.ENCHANTED_PRC, MekanismBlocks.PRESSURIZED_REACTION_CHAMBER));
         LIST_NORMAL.add(new EnchantedAndNormal(AMEMachines.ENCHANTED_ROTARY_CONDENSENTRATOR,
                 MekanismBlocks.ROTARY_CONDENSENTRATOR));
-        LIST_NORMAL.add(new EnchantedAndNormal(AMEMachines.ENCHANTED_METALLURGIC_INFUSER, MekanismBlocks.METALLURGIC_INFUSER));
+        LIST_NORMAL.add(
+                new EnchantedAndNormal(AMEMachines.ENCHANTED_METALLURGIC_INFUSER, MekanismBlocks.METALLURGIC_INFUSER));
+        LIST_NORMAL.add(new EnchantedAndNormal(AMEMachines.ENCHANTED_ALLOYER, EMBlocks.ALLOYER));
 
         LIST_GASUPGRADE.add(new EnchantedAndNormal(AMEMachines.ENCHANTED_CHEMICAL_INJECTION_CHAMBER,
                 MekanismBlocks.CHEMICAL_INJECTION_CHAMBER));

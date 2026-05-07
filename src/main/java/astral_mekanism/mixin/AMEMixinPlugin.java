@@ -28,9 +28,6 @@ public class AMEMixinPlugin implements IMixinConfigPlugin {
         if (mixinClassName.contains(".morethermalevaporation.")) {
             return LoadingModList.get().getModFileById("morethermalevaporation") != null;
         }
-        if (mixinClassName.contains(".morethermalevaporationcompat.")) {
-            return LoadingModList.get().getModFileById("morethermalevaporationcompat") != null;
-        }
         if (mixinClassName.contains(".BasicInventorySlotMixin")) {
             return LoadingModList.get().getModFileById("biggerstacks") != null;
         }

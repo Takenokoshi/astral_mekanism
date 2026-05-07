@@ -42,7 +42,7 @@ import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.item.crafting.ShapedRecipe;
 import net.minecraft.world.level.block.state.BlockState;
 
-public abstract class BEAMEFormulaicAssemblicator extends TileEntityConfigurableMachine
+public abstract class BETickWorkFormulaicAssemblicator extends TileEntityConfigurableMachine
         implements IAMEFormulaicAssemblicator,
         IHasCustomSizeContainer {
 
@@ -59,7 +59,7 @@ public abstract class BEAMEFormulaicAssemblicator extends TileEntityConfigurable
     private OutputInventorySlot outputSlot;
     private IInventorySlot[] secondaryOutputSlots;
 
-    private MachineEnergyContainer<BEAMEFormulaicAssemblicator> energyContainer;
+    private MachineEnergyContainer<BETickWorkFormulaicAssemblicator> energyContainer;
     private EnergyInventorySlot energySlot;
 
     @Nullable
@@ -76,7 +76,7 @@ public abstract class BEAMEFormulaicAssemblicator extends TileEntityConfigurable
 
     protected final FloatingLong energyPerCraft = MekanismConfig.usage.formulaicAssemblicator.getOrDefault();
 
-    public BEAMEFormulaicAssemblicator(IBlockProvider blockProvider, BlockPos pos, BlockState state) {
+    public BETickWorkFormulaicAssemblicator(IBlockProvider blockProvider, BlockPos pos, BlockState state) {
         super(blockProvider, pos, state);
         List<IInventorySlot> outputSlots = new ArrayList<>();
         outputSlots.add(outputSlot);
@@ -329,7 +329,7 @@ public abstract class BEAMEFormulaicAssemblicator extends TileEntityConfigurable
         return getActive() ? lastEnergyUsed : FloatingLong.ZERO;
     }
 
-    public MachineEnergyContainer<BEAMEFormulaicAssemblicator> getEnergyContainer() {
+    public MachineEnergyContainer<BETickWorkFormulaicAssemblicator> getEnergyContainer() {
         return energyContainer;
     }
 

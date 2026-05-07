@@ -3,7 +3,8 @@ package astral_mekanism.block.gui.basemachine;
 import java.util.List;
 import org.jetbrains.annotations.NotNull;
 import astral_mekanism.AMELang;
-import astral_mekanism.block.blockentity.basemachine.BEAMEFormulaicAssemblicator;
+import astral_mekanism.block.blockentity.interf.IAMEFormulaicAssemblicator;
+import astral_mekanism.block.blockentity.interf.IHasCustomSizeContainer;
 import astral_mekanism.block.container.prefab.ContainerMachineCustomSize;
 import astral_mekanism.jei.AMEJEIPlugin;
 import mekanism.client.gui.GuiConfigurableTile;
@@ -14,6 +15,7 @@ import mekanism.client.gui.element.progress.GuiProgress;
 import mekanism.client.gui.element.progress.ProgressType;
 import mekanism.client.gui.element.tab.GuiEnergyTab;
 import mekanism.client.jei.MekanismJEIRecipeType;
+import mekanism.common.tile.prefab.TileEntityConfigurableMachine;
 import mezz.jei.api.constants.RecipeTypes;
 import mezz.jei.api.runtime.IJeiRuntime;
 import net.minecraft.client.gui.GuiGraphics;
@@ -21,7 +23,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Inventory;
 
-public class GuiAMEFormulaicAssemblicator<BE extends BEAMEFormulaicAssemblicator> extends
+public class GuiAMEFormulaicAssemblicator<BE extends TileEntityConfigurableMachine & IAMEFormulaicAssemblicator & IHasCustomSizeContainer> extends
         GuiConfigurableTile<BE, ContainerMachineCustomSize<BE>> {
 
     public GuiAMEFormulaicAssemblicator(ContainerMachineCustomSize<BE> container,

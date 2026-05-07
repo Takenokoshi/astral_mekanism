@@ -10,6 +10,7 @@ import astral_mekanism.item.GlintItem;
 import astral_mekanism.item.GlintItemNameColored;
 import astral_mekanism.item.MekMachineUpgradeToolItem;
 import astral_mekanism.item.cell.bulkcell.AMEBulkCellItem;
+import astral_mekanism.item.cell.pigment.InfinityPigmentCellItem;
 import astral_mekanism.item.recipecard.CoolantCardItem;
 import astral_mekanism.item.recipecard.FluidIngredientCardItem;
 import astral_mekanism.item.recipecard.FuelCardItem;
@@ -114,10 +115,6 @@ public class AMEItems {
             .register("autonomy_processor_press", p -> new Item(p.fireResistant().rarity(Rarity.EPIC)));
     public static final ItemRegistryObject<Item> FIRMAMENT_PROCESSOR_PRESS = ITEMS
             .register("firmament_processor_press", p -> new Item(p.fireResistant().rarity(Rarity.EPIC)));
-    public static final ItemRegistryObject<AMEBulkCellItem<?>> BULK_FLUID_CELL = ITEMS.register(
-            "bulk_fluid_cell", AMEBulkCellItem::createFluid);
-    public static final ItemRegistryObject<AMEBulkCellItem<?>> BULK_CHEMICAL_CELL = ITEMS.register(
-            "bulk_chemical_cell", AMEBulkCellItem::createChemical);
     public static final ItemRegistryObject<Item> UPGRADE_BASE = ITEMS.register("ame_upgrade_base");
     public static final ItemRegistryObject<Item> HYPER_UPGRADE_BASE = ITEMS.register("hyper_upgrade_base");
     public static final ItemRegistryObject<Item> STARDUST_UPGRADE_BASE = ITEMS.register("stardust_upgrade_base");
@@ -160,6 +157,13 @@ public class AMEItems {
             "fluid_information_card", FluidIngredientCardItem::new);
     public static final ItemRegistryObject<GasIngredientCardItem> GAS_INFORMATION_CARD = ITEMS.register(
             "gas_information_card", GasIngredientCardItem::new);
+
+    public static final ItemRegistryObject<AMEBulkCellItem<?>> BULK_FLUID_CELL = ITEMS.register(
+            "bulk_fluid_cell", AMEBulkCellItem::createFluid);
+    public static final ItemRegistryObject<AMEBulkCellItem<?>> BULK_CHEMICAL_CELL = ITEMS.register(
+            "bulk_chemical_cell", AMEBulkCellItem::createChemical);
+    public static final ItemRegistryObject<InfinityPigmentCellItem> INFINITY_PIGMENT_CELL = ITEMS.register(
+            "infinity_pigment_cell", InfinityPigmentCellItem::new);
 
     public static final EnumMap<AMEProcessableMaterialType, EnumMap<AMEProcessingItemStates, ItemRegistryObject<?>>> AME_MATERIAL_PROCESSING_ITEMS = createMaterialProcessItemMap();
 

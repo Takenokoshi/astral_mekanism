@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "astral_mekanism:craftting/enchanted_machine/enchanted_alloyer"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "unlock_enchanted_alloyer": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "astral_mekanism:alloy_enchanted"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "unlock_enchanted_alloyer",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "astral_mekanism:craftting/enchanted_machine/enchanted_alloyer"
+    ]
+  },
+  "sends_telemetry_event": false
+}

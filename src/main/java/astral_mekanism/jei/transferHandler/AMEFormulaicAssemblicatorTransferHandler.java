@@ -5,10 +5,12 @@ import java.util.Optional;
 import org.jetbrains.annotations.Nullable;
 
 import astral_mekanism.AstralMekanism;
-import astral_mekanism.block.blockentity.basemachine.BEAMEFormulaicAssemblicator;
+import astral_mekanism.block.blockentity.interf.IAMEFormulaicAssemblicator;
+import astral_mekanism.block.blockentity.interf.IHasCustomSizeContainer;
 import astral_mekanism.block.container.prefab.ContainerAMEFormulaicAssemblicator;
 import astral_mekanism.network.to_server.PacketGuiAstralFAssemblicator;
 import astral_mekanism.registration.MachineRegistryObject;
+import mekanism.common.tile.prefab.TileEntityConfigurableMachine;
 import mezz.jei.api.constants.RecipeTypes;
 import mezz.jei.api.gui.ingredient.IRecipeSlotsView;
 import mezz.jei.api.recipe.RecipeType;
@@ -18,7 +20,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.MenuType;
 import net.minecraft.world.item.crafting.CraftingRecipe;
 
-public class AMEFormulaicAssemblicatorTransferHandler<BE extends BEAMEFormulaicAssemblicator, CONTAINER extends ContainerAMEFormulaicAssemblicator<BE>>
+public class AMEFormulaicAssemblicatorTransferHandler<BE extends TileEntityConfigurableMachine & IAMEFormulaicAssemblicator & IHasCustomSizeContainer, CONTAINER extends ContainerAMEFormulaicAssemblicator<BE>>
         implements IRecipeTransferHandler<CONTAINER, CraftingRecipe> {
 
     private final MachineRegistryObject<BE, ?, CONTAINER, ?> machine;

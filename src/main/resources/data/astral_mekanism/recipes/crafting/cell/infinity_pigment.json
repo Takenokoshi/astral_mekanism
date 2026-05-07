@@ -1,0 +1,27 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "category": "misc",
+    "key": {
+        "a": {
+            "item": "mekanism:structural_glass"
+        },
+        "b": {
+            "item": "mekanism:dye_base"
+        },
+        "c": {
+            "item": "ae2:cell_component_1k"
+        },
+        "d": {
+            "item": "mekanism:dynamic_tank"
+        }
+    },
+    "pattern": [
+        "aba",
+        "bcb",
+        "ddd"
+    ],
+    "result": {
+        "item": "astral_mekanism:infinity_pigment_cell"
+    },
+    "show_notification": true
+}

@@ -70,6 +70,7 @@ import astral_mekanism.block.blockentity.compact.BECompactSPS;
 import astral_mekanism.block.blockentity.compact.BECompactTEP;
 import astral_mekanism.block.blockentity.enchantedmachine.BEEnchantedAdsorptionSeparator;
 import astral_mekanism.block.blockentity.enchantedmachine.BEEnchantedAirCompressor;
+import astral_mekanism.block.blockentity.enchantedmachine.BEEnchantedAlloyer;
 import astral_mekanism.block.blockentity.enchantedmachine.BEEnchantedAntiprotonicNucleosynthesizer;
 import astral_mekanism.block.blockentity.enchantedmachine.BEEnchantedChemicalInfuser;
 import astral_mekanism.block.blockentity.enchantedmachine.BEEnchantedChemicalOxidizer;
@@ -895,6 +896,19 @@ public class AMEMachines {
                             .withSound(MekanismSounds.CHEMICAL_INFUSER)
                             .changeAttributeUpgrade(EnumSet.of(Upgrade.MUFFLING, Upgrade.SPEED, Upgrade.ENERGY,
                                     AMEUpgrade.RADIOACTIVE_SEALING.getValue(),
+                                    ExtraUpgrade.STACK)));
+
+    public static final MachineRegistryObject<BEEnchantedAlloyer, BlockTileModel<BEEnchantedAlloyer, BlockTypeMachine<BEEnchantedAlloyer>>, MekanismTileContainer<BEEnchantedAlloyer>, ItemBlockMachine> ENCHANTED_ALLOYER = MACHINES
+            .registerSimple("enchanted_alloyer",
+                    BEEnchantedAlloyer::new,
+                    BEEnchantedAlloyer.class,
+                    AMELang.ITEM_GROUP,
+                    builder -> builder
+                            .withEnergyConfig(MekanismConfig.usage.combiner,
+                                    () -> MekanismConfig.storage.combiner.get().multiply(200000))
+                            .withSound(MekanismSounds.COMBINER)
+                            .changeAttributeUpgrade(EnumSet.of(Upgrade.MUFFLING, Upgrade.SPEED, Upgrade.ENERGY,
+                                    AMEUpgrade.COBBLESTONE_SUPPLY.getValue(),
                                     ExtraUpgrade.STACK)));
 
     public static final MachineRegistryObject<BEEnchantedAntiprotonicNucleosynthesizer, BlockTileModel<BEEnchantedAntiprotonicNucleosynthesizer, BlockTypeMachine<BEEnchantedAntiprotonicNucleosynthesizer>>, MekanismTileContainer<BEEnchantedAntiprotonicNucleosynthesizer>, ItemBlockMachine> ENCHANTED_ANTIPROTONIC_NUCLEOSYNTHESIZER = MACHINES

@@ -1,29 +1,57 @@
 package astral_mekanism.mixin.morethermalevaporationcompat;
 
+import java.lang.reflect.Method;
 import java.util.EnumSet;
 import java.util.Set;
 
 import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Pseudo;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 import astral_mekanism.enums.AMEUpgrade;
-import io.github.masyumero.morethermalevaporationcompat.common.registries.MoreThermalEvaporationCompatBlockTypes;
-import io.github.masyumero.morethermalevaporationcompat.common.tier.TETier;
 import mekanism.api.Upgrade;
 import mekanism.common.block.attribute.AttributeUpgradeSupport;
 import mekanism.common.content.blocktype.BlockTypeTile;
 
-@Mixin(value = { MoreThermalEvaporationCompatBlockTypes.class }, remap = false)
+@Pseudo
+@Mixin(targets = {
+        "io.github.masyumero.morethermalevaporationcompat.common.registries.MoreThermalEvaporationCompatBlockTypes"
+}, remap = false)
 public class MoreThermalEvaporationCompatBlockTypesMixin {
 
     @Inject(method = "<clinit>", at = @At("TAIL"))
     private static void astral_mekanism$clinitInject(CallbackInfo ci) {
-        for (TETier tier : TETier.values()) {
-            astral_mekanism$addSupportedUpgrade(MoreThermalEvaporationCompatBlockTypes.getCompactBlockType(tier),
-                    AMEUpgrade.WATER_SUPPLY.getValue());
+        try {
+            ClassLoader loader = MoreThermalEvaporationCompatBlockTypesMixin.class.getClassLoader();
+
+            Class<?> tierClass = Class.forName(
+                    "io.github.masyumero.morethermalevaporationcompat.common.tier.TETier",
+                    false,
+                    loader);
+
+            Class<?> registryClass = Class.forName(
+                    "io.github.masyumero.morethermalevaporationcompat.common.registries.MoreThermalEvaporationCompatBlockTypes",
+                    false,
+                    loader);
+
+            Method getCompactBlockType = registryClass.getDeclaredMethod(
+                    "getCompactBlockType",
+                    tierClass);
+
+            Object[] tiers = tierClass.getEnumConstants();
+
+            for (Object tier : tiers) {
+                BlockTypeTile<?> tile = (BlockTypeTile<?>) getCompactBlockType.invoke(null, tier);
+
+                astral_mekanism$addSupportedUpgrade(
+                        tile,
+                        AMEUpgrade.WATER_SUPPLY.getValue());
+            }
+
+        } catch (Throwable t) {
         }
     }
 

@@ -388,7 +388,6 @@ public class AstralMekanismJapaneseLangProvider extends LanguageProvider {
         result.put("sealing", "密封");
         // other
         result.put("item", "アイテム");
-        result.put("chemical", "化学物質");
         result.put("spacetime", "スペース・タイム");
         result.put("modulation", " モジュレーション");
         result.put("core", " コア");
@@ -408,6 +407,8 @@ public class AstralMekanismJapaneseLangProvider extends LanguageProvider {
         result.put("information", "情報");
         result.put("card", "カード");
         result.put("coolant", "冷媒");
+        result.put("infinity", "無限");
+        result.put("pigment", "顔料");
         return result;
     }).get();
 
