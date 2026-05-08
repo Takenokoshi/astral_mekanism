@@ -1257,7 +1257,7 @@ public class AMEMachines {
                     AMELang.ITEM_GROUP,
                     builder -> builder
                             .withEnergyConfig(MekanismConfig.usage.formulaicAssemblicator,
-                                    () -> MekanismConfig.storage.formulaicAssemblicator.get().multiply(25600))
+                                    MekanismConfig.storage.formulaicAssemblicator)
                             .changeAttributeUpgrade(
                                     EnumSet.of(Upgrade.ENERGY, Upgrade.SPEED,
                                             AMEUpgrade.COBBLESTONE_SUPPLY.getValue(),
