@@ -74,8 +74,6 @@ public class EnchatedMachineRecipeBuilding {
         LIST_NORMAL.add(new EnchantedAndNormal(AMEMachines.ENCHANTED_CRUSHER, MekanismBlocks.CRUSHER));
         LIST_NORMAL
                 .add(new EnchantedAndNormal(AMEMachines.ENCHANTED_CRYSTALLIZER, MekanismBlocks.CHEMICAL_CRYSTALLIZER));
-        LIST_NORMAL.add(new EnchantedAndNormal(AMEMachines.ENCHANTED_DISSOLUTION_CHAMBER,
-                MekanismBlocks.CHEMICAL_DISSOLUTION_CHAMBER));
         LIST_NORMAL.add(new EnchantedAndNormal(AMEMachines.ENCHANTED_ELECTROLYTIC_SEPARATOR,
                 MekanismBlocks.ELECTROLYTIC_SEPARATOR));
         LIST_NORMAL.add(new EnchantedAndNormal(AMEMachines.ENCHANTED_ENERGIZED_SMELTER,
@@ -103,5 +101,7 @@ public class EnchatedMachineRecipeBuilding {
                 MekanismBlocks.CHEMICAL_INJECTION_CHAMBER));
         LIST_GASUPGRADE.add(new EnchantedAndNormal(AMEMachines.ENCHANTED_PURIFICATION_CHAMBER,
                 MekanismBlocks.PURIFICATION_CHAMBER));
+        LIST_GASUPGRADE.add(new EnchantedAndNormal(AMEMachines.ENCHANTED_DISSOLUTION_CHAMBER,
+                MekanismBlocks.CHEMICAL_DISSOLUTION_CHAMBER));
     }
 }
