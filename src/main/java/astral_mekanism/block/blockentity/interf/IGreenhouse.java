@@ -11,11 +11,10 @@ import mekanism.api.fluid.IExtendedFluidTank;
 import mekanism.api.recipes.cache.CachedRecipe.OperationTracker.RecipeError;
 import mekanism.api.recipes.inputs.IInputHandler;
 import mekanism.common.capabilities.energy.MachineEnergyContainer;
-import mekanism.common.tile.prefab.TileEntityConfigurableMachine;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.fluids.FluidStack;
 
-public interface IGreenHouse<BE extends TileEntityConfigurableMachine & IGreenHouse<BE>>
+public interface IGreenHouse
         extends IUnifiedRecipeTypedLookupHandler<CropSoilRecipe, CropSoilInputRecipeCache> {
     public static final List<RecipeError> TRACKED_ERROR_TYPES = List.of(
             RecipeError.NOT_ENOUGH_INPUT,
@@ -63,7 +62,7 @@ public interface IGreenHouse<BE extends TileEntityConfigurableMachine & IGreenHo
 
     public IExtendedFluidTank getFluidTank();
 
-    public MachineEnergyContainer<BE> getEnergyContainer();
+    public MachineEnergyContainer<?> getEnergyContainer();
 
     public double getScaledProgress();
 }

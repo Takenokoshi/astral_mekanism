@@ -96,6 +96,7 @@ public class EnchatedMachineRecipeBuilding {
                 new EnchantedAndNormal(AMEMachines.ENCHANTED_METALLURGIC_INFUSER, MekanismBlocks.METALLURGIC_INFUSER));
         LIST_NORMAL.add(new EnchantedAndNormal(AMEMachines.ENCHANTED_ALLOYER, EMBlocks.ALLOYER));
         LIST_NORMAL.add(new EnchantedAndNormal(AMEMachines.ENCHANTED_SPS, AMEMachines.COMPACT_SPS));
+        LIST_NORMAL.add(new EnchantedAndNormal(AMEMachines.ENCHANTED_GREEN_HOUSE, AMEMachines.GREEN_HOUSE));
 
         LIST_GASUPGRADE.add(new EnchantedAndNormal(AMEMachines.ENCHANTED_CHEMICAL_INJECTION_CHAMBER,
                 MekanismBlocks.CHEMICAL_INJECTION_CHAMBER));

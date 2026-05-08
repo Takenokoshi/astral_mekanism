@@ -17,7 +17,7 @@ import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.player.Inventory;
 
-public class GuiGreenHouse<BE extends TileEntityConfigurableMachine & IGreenHouse<BE>>
+public class GuiGreenHouse<BE extends TileEntityConfigurableMachine & IGreenHouse>
         extends GuiConfigurableTile<BE, MekanismTileContainer<BE>> {
 
     public GuiGreenHouse(MekanismTileContainer<BE> container, Inventory inv, Component title) {

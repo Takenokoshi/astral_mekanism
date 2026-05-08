@@ -9,10 +9,10 @@
       "item": "astral_mekanism:enhanced_control_circuit"
     },
     "I": {
-      "item": "astral_mekanism:bundled_gas_upgrade"
+      "item": "mekanism:ingot_refined_obsidian"
     },
     "N": {
-      "item": "mekanism:chemical_dissolution_chamber"
+      "item": "astral_mekanism:green_house"
     }
   },
   "pattern": [
@@ -21,7 +21,7 @@
     "ACA"
   ],
   "result": {
-    "item": "astral_mekanism:enchanted_dissolution_chamber"
+    "item": "astral_mekanism:enchanted_green_house"
   },
   "show_notification": true
 }

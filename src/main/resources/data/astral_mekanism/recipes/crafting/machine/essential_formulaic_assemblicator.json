@@ -11,7 +11,7 @@
             "item": "astral_mekanism:vibration_control_circuit"
         },
         "I": {
-            "tag": "forga:ingots/copper"
+            "tag": "forge:ingots/copper"
         }
     },
     "pattern": [

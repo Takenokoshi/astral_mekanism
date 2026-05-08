@@ -81,6 +81,7 @@ import astral_mekanism.block.blockentity.enchantedmachine.BEEnchantedDissolution
 import astral_mekanism.block.blockentity.enchantedmachine.BEEnchantedElectrolyticSeparator;
 import astral_mekanism.block.blockentity.enchantedmachine.BEEnchantedEnergizedSmelter;
 import astral_mekanism.block.blockentity.enchantedmachine.BEEnchantedFormulaicAssemblicator;
+import astral_mekanism.block.blockentity.enchantedmachine.BEEnchantedGreenHouse;
 import astral_mekanism.block.blockentity.enchantedmachine.BEEnchantedIsotopicCentrifuge;
 import astral_mekanism.block.blockentity.enchantedmachine.BEEnchantedMelter;
 import astral_mekanism.block.blockentity.enchantedmachine.BEEnchantedMetallurgicInfuser;
@@ -1038,7 +1039,7 @@ public class AMEMachines {
                     AMELang.ITEM_GROUP,
                     builder -> builder
                             .withEnergyConfig(() -> MekanismConfig.general.FROM_H2.get().multiply(2),
-                                    () -> MekanismConfig.storage.electrolyticSeparator.get().multiply(400))
+                                    () -> MekanismConfig.storage.electrolyticSeparator.get().multiply(25600))
                             .changeAttributeUpgrade(
                                     EnumSet.of(Upgrade.MUFFLING, Upgrade.ENERGY, Upgrade.SPEED,
                                             AMEUpgrade.COBBLESTONE_SUPPLY.getValue(),
@@ -1058,6 +1059,20 @@ public class AMEMachines {
                             .changeAttributeUpgrade(
                                     EnumSet.of(Upgrade.ENERGY, Upgrade.SPEED,
                                             AMEUpgrade.COBBLESTONE_SUPPLY.getValue(),
+                                            ExtraUpgrade.STACK)));
+
+    public static final MachineRegistryObject<BEEnchantedGreenHouse, BlockTileModel<BEEnchantedGreenHouse, BlockTypeMachine<BEEnchantedGreenHouse>>, MekanismTileContainer<BEEnchantedGreenHouse>, ItemBlockMachine> ENCHANTED_GREEN_HOUSE = MACHINES
+            .registerSimple("enchanted_green_house",
+                    BEEnchantedGreenHouse::new,
+                    BEEnchantedGreenHouse.class,
+                    AMELang.ITEM_GROUP,
+                    builder -> builder
+                            .withEnergyConfig(AMEConfig.usage.greenHouse,
+                                    () -> AMEConfig.storage.greenHouse.get().multiply(25600))
+                            .changeAttributeUpgrade(
+                                    EnumSet.of(Upgrade.ENERGY, Upgrade.SPEED,
+                                            AMEUpgrade.COBBLESTONE_SUPPLY.getValue(),
+                                            AMEUpgrade.WATER_SUPPLY.getValue(),
                                             ExtraUpgrade.STACK)));
 
     public static final MachineRegistryObject<BEEnchantedIsotopicCentrifuge, BlockTileModel<BEEnchantedIsotopicCentrifuge, BlockTypeMachine<BEEnchantedIsotopicCentrifuge>>, MekanismTileContainer<BEEnchantedIsotopicCentrifuge>, ItemBlockMachine> ENCHANTED_ISTOPIC_CENTRIFUGE = MACHINES

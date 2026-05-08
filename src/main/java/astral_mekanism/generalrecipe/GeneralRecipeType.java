@@ -91,9 +91,7 @@ public class GeneralRecipeType<C extends Container, RECIPE extends Recipe<C>, IN
         if (cachedRecipes.isEmpty()) {
             List<RECIPE> recipes = getRecipesUncached(world.getRecipeManager(), world.registryAccess());
             cachedRecipes = recipes.stream()
-                    .filter(recipe -> !recipe.isIncomplete()
-                            || recipe instanceof InscriberRecipe
-                            || recipe instanceof ReactionChamberRecipe)
+                    .filter(this::isNotRecipeIncomplete)
                     .toList();
         }
         return cachedRecipes;
@@ -114,6 +112,10 @@ public class GeneralRecipeType<C extends Container, RECIPE extends Recipe<C>, IN
             incomplete = true;
         }
         return incomplete;
+    }
+
+    protected boolean isNotRecipeIncomplete(RECIPE recipe) {
+        return !recipe.isIncomplete();
     }
 
     private static class BaseIsFake<C extends Container, RECIPE extends Recipe<C>, INPUT_CACHE extends IInputRecipeCache>
@@ -150,10 +152,20 @@ public class GeneralRecipeType<C extends Container, RECIPE extends Recipe<C>, IN
                             .map(IngredientCreatorAccess.item()::from)
                             .toArray(ItemStackIngredient[]::new)),
                     (stack, recipe) -> recipe.getIngredients().stream()
-                            .anyMatch(ingredient -> ingredient.test(stack))));
+                            .anyMatch(ingredient -> ingredient.test(stack)))) {
+        @Override
+        protected boolean isNotRecipeIncomplete(ChargerRecipe recipe) {
+            return true;
+        }
+    };
 
     public static final GeneralRecipeType<Container, InscriberRecipe, InscriberRecipeInputRecipeCache> INSCRIBE = new GeneralRecipeType<>(
-            AERecipeTypes.INSCRIBER, InscriberRecipeInputRecipeCache::new);
+            AERecipeTypes.INSCRIBER, InscriberRecipeInputRecipeCache::new) {
+        @Override
+        protected boolean isNotRecipeIncomplete(InscriberRecipe recipe) {
+            return true;
+        }
+    };
 
     public static final GeneralRecipeType<Container, TransformRecipe, TransformRecipeInputRecipeCache> TRANSFORM = new GeneralRecipeType<>(
             AERecipeTypes.TRANSFORM, TransformRecipeInputRecipeCache::new);
