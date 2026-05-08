@@ -7,8 +7,6 @@ import org.jetbrains.annotations.Nullable;
 
 import astral_mekanism.block.blockentity.interf.IItemGasToItemMachine;
 import mekanism.api.IContentsListener;
-import mekanism.api.chemical.ChemicalTankBuilder;
-import mekanism.api.chemical.attribute.ChemicalAttributeValidator;
 import mekanism.api.chemical.gas.Gas;
 import mekanism.api.chemical.gas.GasStack;
 import mekanism.api.chemical.gas.IGasTank;
@@ -46,10 +44,11 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.state.BlockState;
 
-public abstract class BEAMEAntiprotonicNucleosynthesizer<BE extends BEAMEAntiprotonicNucleosynthesizer<BE>> extends TileEntityRecipeMachine<NucleosynthesizingRecipe>
+public abstract class BEAMEAntiprotonicNucleosynthesizer<BE extends BEAMEAntiprotonicNucleosynthesizer<BE>>
+        extends TileEntityRecipeMachine<NucleosynthesizingRecipe>
         implements IItemGasToItemMachine<BE, NucleosynthesizingRecipe> {
 
-    private InputInventorySlot inputSlot;
+    protected InputInventorySlot inputSlot;
     private IGasTank inputTank;
     private OutputInventorySlot outputSlot;
     private MachineEnergyContainer<BE> energyContainer;
@@ -97,13 +96,11 @@ public abstract class BEAMEAntiprotonicNucleosynthesizer<BE extends BEAMEAntipro
             IContentsListener recipeCacheListener) {
         ChemicalTankHelper<Gas, GasStack, IGasTank> builder = ChemicalTankHelper
                 .forSideGasWithConfig(this::getDirection, this::getConfig);
-        builder.addTank(inputTank = ChemicalTankBuilder.GAS.create(Long.MAX_VALUE,
-                (gas, a) -> false,
-                (gas, a) -> containsRecipeBA(inputSlot.getStack(), gas),
-                this::containsRecipeB,
-                ChemicalAttributeValidator.ALWAYS_ALLOW, recipeCacheListener));
+        builder.addTank(inputTank = createInputTank(recipeCacheListener));
         return builder.build();
     }
+
+    protected abstract IGasTank createInputTank(IContentsListener recipeCacheListener);
 
     @SuppressWarnings("unchecked")
     @NotNull

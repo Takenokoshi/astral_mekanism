@@ -1,10 +1,13 @@
 package astral_mekanism.block.blockentity.basemachine;
 
 import java.util.List;
+import java.util.function.BiPredicate;
+import java.util.function.Predicate;
 
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import mekanism.api.AutomationType;
 import mekanism.api.IContentsListener;
 import mekanism.api.RelativeSide;
 import mekanism.api.chemical.ChemicalTankBuilder;
@@ -92,12 +95,16 @@ public abstract class BEAMEMetallurgicInfuser extends TileEntityRecipeMachine<Me
             IContentsListener listener, IContentsListener recipeCacheListener) {
         ChemicalTankHelper<InfuseType, InfusionStack, IInfusionTank> builder = ChemicalTankHelper
                 .forSideInfusionWithConfig(this::getDirection, this::getConfig);
-        builder.addTank(infusionTank = ChemicalTankBuilder.INFUSION.create(Long.MAX_VALUE,
+        builder.addTank(infusionTank = createInfusionTank(
                 ChemicalTankBuilder.INFUSION.alwaysTrueBi,
                 (infuseType, automationType) -> containsRecipeBA(inputSlot.getStack(), infuseType),
                 this::containsRecipeB, recipeCacheListener));
         return builder.build();
     }
+
+    protected abstract IInfusionTank createInfusionTank(BiPredicate<InfuseType, AutomationType> canExtract,
+            BiPredicate<InfuseType, AutomationType> canInsert, Predicate<InfuseType> validator,
+            @Nullable IContentsListener listener);
 
     @NotNull
     @Override

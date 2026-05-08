@@ -7,10 +7,10 @@ import java.util.function.Predicate;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-import com.jerry.mekanism_extras.api.ExtraUpgrade;
-
 import astral_mekanism.block.blockentity.prefab.BEGasToGasMachine;
-import astral_mekanism.integration.AMEEmpowered;
+import astral_mekanism.enums.AMEUpgrade;
+import astral_mekanism.registries.AMEMachines;
+import astral_mekanism.registries.AMERecipeTypes;
 import mekanism.api.AutomationType;
 import mekanism.api.IContentsListener;
 import mekanism.api.Upgrade;
@@ -25,30 +25,23 @@ import mekanism.common.inventory.container.MekanismContainer;
 import mekanism.common.inventory.container.sync.SyncableInt;
 import mekanism.common.inventory.container.sync.SyncableLong;
 import mekanism.common.recipe.IMekanismRecipeTypeProvider;
-import mekanism.common.recipe.MekanismRecipeType;
 import mekanism.common.recipe.lookup.cache.InputRecipeCache.SingleChemical;
 import mekanism.common.registries.MekanismBlocks;
 import net.minecraft.core.BlockPos;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.state.BlockState;
 
-public class BEEnchantedIsotopicCentrifuge extends BEGasToGasMachine {
+public class BEEnchantedSPS extends BEGasToGasMachine {
 
     int baselineMaxOperations = 200;
     private long inputTankCapacity = 200 * 5000;
-
-    public BEEnchantedIsotopicCentrifuge(IBlockProvider blockProvider, BlockPos pos, BlockState state) {
+    public BEEnchantedSPS(IBlockProvider blockProvider, BlockPos pos, BlockState state) {
         super(blockProvider, pos, state);
     }
 
     @Override
     public @NotNull IMekanismRecipeTypeProvider<GasToGasRecipe, SingleChemical<Gas, GasStack, GasToGasRecipe>> getRecipeType() {
-        return MekanismRecipeType.CENTRIFUGING;
-    }
-
-    @Override
-    public List<ResourceLocation> getJEI() {
-        return List.of(MekanismBlocks.ISOTOPIC_CENTRIFUGE.getRegistryName());
+        return AMERecipeTypes.SPS_RECIPE;
     }
 
     @Override
@@ -70,14 +63,10 @@ public class BEEnchantedIsotopicCentrifuge extends BEGasToGasMachine {
     @Override
     public void recalculateUpgrades(Upgrade upgrade) {
         super.recalculateUpgrades(upgrade);
-        if (AMEEmpowered.empoweredIsLoaded()) {
-            if (AMEEmpowered.isEmpoweredSpeed(upgrade) || upgrade == Upgrade.SPEED || upgrade == ExtraUpgrade.STACK) {
-                baselineMaxOperations = 200 * ((1 << upgradeComponent.getUpgrades(Upgrade.SPEED)) + (2 << AMEEmpowered
-                        .getEmpoweredSpeeds(this))) << upgradeComponent.getUpgrades(ExtraUpgrade.STACK);
-            }
-        } else if (upgrade == Upgrade.SPEED || upgrade == ExtraUpgrade.STACK) {
-            baselineMaxOperations = 200 << (upgradeComponent.getUpgrades(Upgrade.SPEED)
-                    + upgradeComponent.getUpgrades(ExtraUpgrade.STACK));
+        super.recalculateUpgrades(upgrade);
+        if (upgrade == AMEUpgrade.HYPER_SPEED.getValue()) {
+            int hyperSpeed = upgradeComponent.getUpgrades(AMEUpgrade.HYPER_SPEED.getValue());
+            baselineMaxOperations = 2 << hyperSpeed;
         }
         inputTankCapacity = 5000l * baselineMaxOperations;
     }
@@ -89,4 +78,10 @@ public class BEEnchantedIsotopicCentrifuge extends BEGasToGasMachine {
         return VariableCapacityChemicalTankBuilder.GAS.create(this::getInputTankCapacity, canExtract, canInsert,
                 validator, attributeValidator, listener);
     }
+
+    @Override
+    public List<ResourceLocation> getJEI() {
+        return List.of(MekanismBlocks.SPS_CASING.getRegistryName(), AMEMachines.COMPACT_SPS.getRegistryName());
+    }
+    
 }

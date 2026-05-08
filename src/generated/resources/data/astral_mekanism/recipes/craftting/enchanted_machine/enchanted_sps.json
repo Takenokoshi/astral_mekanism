@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "redstone",
+  "key": {
+    "A": {
+      "item": "astral_mekanism:alloy_enchanted"
+    },
+    "C": {
+      "item": "astral_mekanism:enhanced_control_circuit"
+    },
+    "I": {
+      "item": "mekanism:ingot_refined_obsidian"
+    },
+    "N": {
+      "item": "astral_mekanism:compact_sps"
+    }
+  },
+  "pattern": [
+    "ACA",
+    "INI",
+    "ACA"
+  ],
+  "result": {
+    "item": "astral_mekanism:enchanted_sps"
+  },
+  "show_notification": true
+}

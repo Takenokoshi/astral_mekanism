@@ -104,7 +104,7 @@ public class BECompactAPT extends TileEntityProgressMachine<ItemStackGasToItemSt
             IContentsListener recipeCacheListener) {
         ChemicalTankHelper<Gas, GasStack, IGasTank> builder = ChemicalTankHelper
                 .forSideGasWithConfig(this::getDirection, this::getConfig);
-        builder.addTank(inputTank = ChemicalTankBuilder.GAS.create(5000,
+        builder.addTank(inputTank = ChemicalTankBuilder.GAS.create(2560000,
                 (gas, a) -> false,
                 (gas, a) -> containsRecipeBA(inputSlot.getStack(), gas),
                 this::containsRecipeB,
@@ -174,6 +174,9 @@ public class BECompactAPT extends TileEntityProgressMachine<ItemStackGasToItemSt
         ticksRequired = (int) (recipeTicksRequired
                 * Math.pow(MekanismConfig.general.maxUpgradeMultiplier.getAsInt(), -hyperSpeed / 8d)
                 / (superCharging + 1));
+        if (ticksRequired < 1) {
+            ticksRequired = 1;
+        }
     }
 
     @Override

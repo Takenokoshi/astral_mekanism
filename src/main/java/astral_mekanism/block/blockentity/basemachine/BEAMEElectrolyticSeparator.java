@@ -3,6 +3,7 @@ package astral_mekanism.block.blockentity.basemachine;
 import java.util.List;
 import java.util.Map;
 import java.util.function.BiFunction;
+import java.util.function.Predicate;
 
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -155,9 +156,12 @@ public abstract class BEAMEElectrolyticSeparator extends TileEntityRecipeMachine
     @Override
     protected IFluidTankHolder getInitialFluidTanks(IContentsListener listener, IContentsListener recipeCacheListener) {
         FluidTankHelper builder = FluidTankHelper.forSideWithConfig(this::getDirection, this::getConfig);
-        builder.addTank(fluidTank = BasicFluidTank.input(Integer.MAX_VALUE, this::containsRecipe, recipeCacheListener));
+        builder.addTank(fluidTank = createFluidTank(this::containsRecipe, recipeCacheListener));
         return builder.build();
     }
+
+    protected abstract BasicFluidTank createFluidTank(Predicate<FluidStack> validator,
+            @Nullable IContentsListener listener);
 
     @NotNull
     @Override

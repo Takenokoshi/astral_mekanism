@@ -1,12 +1,12 @@
 package astral_mekanism.block.blockentity.basemachine;
 
 import java.util.List;
+import java.util.function.Predicate;
 
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import mekanism.api.IContentsListener;
-import mekanism.api.chemical.ChemicalTankBuilder;
 import mekanism.api.chemical.IChemicalTank;
 import mekanism.api.chemical.gas.Gas;
 import mekanism.api.chemical.gas.GasStack;
@@ -93,19 +93,29 @@ public abstract class BEAMECrystallizer extends TileEntityRecipeMachine<Chemical
     protected void presetVariables() {
         super.presetVariables();
         inputTank = MergedChemicalTank.create(
-                ChemicalTankBuilder.GAS.input(Long.MAX_VALUE,
+                createGasTank(
                         gas -> getRecipeType().getInputCache().containsInput(level, gas),
                         getRecipeCacheSaveOnlyListener()),
-                ChemicalTankBuilder.INFUSION.input(Long.MAX_VALUE,
+                createInfusionTank(
                         infuseType -> getRecipeType().getInputCache().containsInput(level, infuseType),
                         getRecipeCacheSaveOnlyListener()),
-                ChemicalTankBuilder.PIGMENT.input(Long.MAX_VALUE,
+                createPigmentTank(
                         pigment -> getRecipeType().getInputCache().containsInput(level, pigment),
                         getRecipeCacheSaveOnlyListener()),
-                ChemicalTankBuilder.SLURRY.input(Long.MAX_VALUE,
+                createSlurryTank(
                         slurry -> getRecipeType().getInputCache().containsInput(level, slurry),
                         getRecipeCacheSaveOnlyListener()));
     }
+
+    protected abstract IGasTank createGasTank(Predicate<Gas> validator, @Nullable IContentsListener listener);
+
+    protected abstract IInfusionTank createInfusionTank(Predicate<InfuseType> validator,
+            @Nullable IContentsListener listener);
+
+    protected abstract IPigmentTank createPigmentTank(Predicate<Pigment> validator,
+            @Nullable IContentsListener listener);
+
+    protected abstract ISlurryTank createSlurryTank(Predicate<Slurry> validator, @Nullable IContentsListener listener);
 
     @NotNull
     @Override

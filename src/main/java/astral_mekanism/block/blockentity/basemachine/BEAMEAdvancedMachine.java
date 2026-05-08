@@ -6,7 +6,6 @@ import org.jetbrains.annotations.Nullable;
 
 import astral_mekanism.recipes.cachedRecipe.FormulizedItemGasToItemCachedRecipe;
 import mekanism.api.IContentsListener;
-import mekanism.api.chemical.ChemicalTankBuilder;
 import mekanism.api.chemical.gas.Gas;
 import mekanism.api.chemical.gas.GasStack;
 import mekanism.api.chemical.gas.IGasTank;
@@ -114,12 +113,11 @@ public abstract class BEAMEAdvancedMachine
             IContentsListener recipeCacheListener) {
         ChemicalTankHelper<Gas, GasStack, IGasTank> builder = ChemicalTankHelper
                 .forSideGasWithConfig(this::getDirection, this::getConfig);
-        builder.addTank(gasTank = ChemicalTankBuilder.GAS.create(Long.MAX_VALUE,
-                ChemicalTankBuilder.GAS.notExternal,
-                (gas, automationType) -> containsRecipeBA(inputInventorySlot.getStack(), gas),
-                this::containsRecipeB, recipeCacheListener));
+        builder.addTank(gasTank = createGasTank(recipeCacheListener));
         return builder.build();
     }
+
+    protected abstract IGasTank createGasTank(IContentsListener recipeCacheListener);
 
     @NotNull
     @Override

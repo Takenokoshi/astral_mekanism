@@ -1,7 +1,9 @@
 package astral_mekanism.block.blockentity.basemachine;
 
 import java.util.List;
+import java.util.function.BiPredicate;
 import java.util.function.BooleanSupplier;
+import java.util.function.Predicate;
 
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -10,7 +12,6 @@ import mekanism.api.AutomationType;
 import mekanism.api.IContentsListener;
 import mekanism.api.NBTConstants;
 import mekanism.api.RelativeSide;
-import mekanism.api.chemical.ChemicalTankBuilder;
 import mekanism.api.chemical.attribute.ChemicalAttributeValidator;
 import mekanism.api.chemical.gas.Gas;
 import mekanism.api.chemical.gas.GasStack;
@@ -151,7 +152,7 @@ public abstract class BEAMERotaryCondensentrator extends TileEntityRecipeMachine
         ChemicalTankHelper<Gas, GasStack, IGasTank> builder = ChemicalTankHelper
                 .forSideGasWithConfig(this::getDirection, this::getConfig);
         // Only allow extraction
-        builder.addTank(gasTank = ChemicalTankBuilder.GAS.create(CAPACITY,
+        builder.addTank(gasTank = createGasTank(
                 (gas, automationType) -> automationType == AutomationType.MANUAL || mode,
                 (gas, automationType) -> automationType == AutomationType.INTERNAL || !mode, this::isValidGas,
                 ChemicalAttributeValidator.ALWAYS_ALLOW, recipeCacheListener));
@@ -162,11 +163,15 @@ public abstract class BEAMERotaryCondensentrator extends TileEntityRecipeMachine
         return getRecipeType().getInputCache().containsInput(level, gas.getStack(1));
     }
 
+    protected abstract IGasTank createGasTank(BiPredicate<Gas, AutomationType> canExtract,
+            BiPredicate<Gas, AutomationType> canInsert, Predicate<Gas> validator,
+            @Nullable ChemicalAttributeValidator attributeValidator, @Nullable IContentsListener listener);
+
     @NotNull
     @Override
     protected IFluidTankHolder getInitialFluidTanks(IContentsListener listener, IContentsListener recipeCacheListener) {
         FluidTankHelper builder = FluidTankHelper.forSideWithConfig(this::getDirection, this::getConfig);
-        builder.addTank(fluidTank = BasicFluidTank.create(CAPACITY,
+        builder.addTank(fluidTank = createFluidTank(
                 (fluid, automationType) -> automationType == AutomationType.MANUAL || !mode,
                 (fluid, automationType) -> automationType == AutomationType.INTERNAL || mode, this::isValidFluid,
                 recipeCacheListener));
@@ -176,6 +181,10 @@ public abstract class BEAMERotaryCondensentrator extends TileEntityRecipeMachine
     private boolean isValidFluid(@NotNull FluidStack fluidStack) {
         return getRecipeType().getInputCache().containsInput(level, fluidStack);
     }
+
+    protected abstract BasicFluidTank createFluidTank(BiPredicate<FluidStack, AutomationType> canExtract,
+            BiPredicate<FluidStack, AutomationType> canInsert, Predicate<FluidStack> validator,
+            @Nullable IContentsListener listener);
 
     @NotNull
     @Override

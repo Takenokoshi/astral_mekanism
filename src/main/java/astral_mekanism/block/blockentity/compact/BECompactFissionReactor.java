@@ -10,6 +10,7 @@ import astral_mekanism.enumexpansion.AMEDataType;
 import mekanism.api.Action;
 import mekanism.api.AutomationType;
 import mekanism.api.IContentsListener;
+import mekanism.api.RelativeSide;
 import mekanism.api.chemical.ChemicalTankBuilder;
 import mekanism.api.chemical.gas.Gas;
 import mekanism.api.chemical.gas.GasStack;
@@ -97,7 +98,7 @@ public class BECompactFissionReactor extends TileEntityConfigurableMachine imple
             fluidConfig.addSlotInfo(AMEDataType.FLUID_COOLANT, new FluidSlotInfo(true, false, coolantFluidTank));
             fluidConfig.setCanEject(false);
         }
-        configComponent.setupOutputConfig(TransmissionType.HEAT, heatCapacitor);
+        configComponent.setupIOConfig(TransmissionType.HEAT, heatCapacitor, RelativeSide.RIGHT);
         ejectorComponent = new TileComponentEjector(this, () -> Long.MAX_VALUE);
         ejectorComponent.setOutputData(configComponent, TransmissionType.GAS);
         lastEnvironmentLoss = 0d;
@@ -276,7 +277,7 @@ public class BECompactFissionReactor extends TileEntityConfigurableMachine imple
         container.track(SyncableDouble.create(this::getLastEnvironmentLoss, value -> lastEnvironmentLoss = value));
     }
 
-    public BasicHeatCapacitor getHeatCapacitor(){
+    public BasicHeatCapacitor getHeatCapacitor() {
         return heatCapacitor;
     }
 

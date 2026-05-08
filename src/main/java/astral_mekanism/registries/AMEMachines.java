@@ -87,6 +87,7 @@ import astral_mekanism.block.blockentity.enchantedmachine.BEEnchantedMetallurgic
 import astral_mekanism.block.blockentity.enchantedmachine.BEEnchantedPRC;
 import astral_mekanism.block.blockentity.enchantedmachine.BEEnchantedPaintingMachine;
 import astral_mekanism.block.blockentity.enchantedmachine.BEEnchantedRotaryCondensentrator;
+import astral_mekanism.block.blockentity.enchantedmachine.BEEnchantedSPS;
 import astral_mekanism.block.blockentity.enchantedmachine.advanced.BEEnchantedChemicalInjectionChamber;
 import astral_mekanism.block.blockentity.enchantedmachine.advanced.BEEnchantedOsmiumCompressor;
 import astral_mekanism.block.blockentity.enchantedmachine.advanced.BEEnchantedPurificationChamber;
@@ -784,7 +785,7 @@ public class AMEMachines {
                     AMELang.DESCRIPTION_COMPACT_MACHINE,
                     builder -> builder
                             .withEnergyConfig(() -> MekanismConfig.general.spsEnergyPerInput.get().multiply(1000),
-                                    () -> MekanismConfig.general.spsEnergyPerInput.get().multiply(64000))
+                                    () -> MekanismConfig.general.spsEnergyPerInput.get().multiply(4096000))
                             .withSound(MekanismSounds.SPS)
                             .removeAttributeUpgrade()
                             .changeAttributeUpgrade(EnumSet.of(
@@ -810,7 +811,7 @@ public class AMEMachines {
                     AMELang.ITEM_GROUP,
                     builder -> builder
                             .withEnergyConfig(MekanismConfig.usage.chemicalInjectionChamber,
-                                    () -> MekanismConfig.storage.chemicalInjectionChamber.get().multiply(200000))
+                                    () -> MekanismConfig.storage.chemicalInjectionChamber.get().multiply(400))
                             .withSound(MekanismSounds.CHEMICAL_INJECTION_CHAMBER)
                             .changeAttributeUpgrade(EnumSet.of(Upgrade.MUFFLING, Upgrade.SPEED, Upgrade.ENERGY,
                                     AMEUpgrade.COBBLESTONE_SUPPLY.getValue(),
@@ -824,7 +825,7 @@ public class AMEMachines {
                     AMELang.ITEM_GROUP,
                     builder -> builder
                             .withEnergyConfig(MekanismConfig.usage.osmiumCompressor,
-                                    () -> MekanismConfig.storage.osmiumCompressor.get().multiply(200000))
+                                    () -> MekanismConfig.storage.osmiumCompressor.get().multiply(400))
                             .withSound(MekanismSounds.OSMIUM_COMPRESSOR)
                             .changeAttributeUpgrade(EnumSet.of(Upgrade.MUFFLING, Upgrade.SPEED, Upgrade.ENERGY,
                                     AMEUpgrade.COBBLESTONE_SUPPLY.getValue(),
@@ -838,7 +839,7 @@ public class AMEMachines {
                     AMELang.ITEM_GROUP,
                     builder -> builder
                             .withEnergyConfig(MekanismConfig.usage.purificationChamber,
-                                    () -> MekanismConfig.storage.purificationChamber.get().multiply(200000))
+                                    () -> MekanismConfig.storage.purificationChamber.get().multiply(400))
                             .withSound(MekanismSounds.PURIFICATION_CHAMBER)
                             .changeAttributeUpgrade(EnumSet.of(Upgrade.MUFFLING, Upgrade.SPEED, Upgrade.ENERGY,
                                     AMEUpgrade.COBBLESTONE_SUPPLY.getValue(),
@@ -852,7 +853,7 @@ public class AMEMachines {
                     AMELang.ITEM_GROUP,
                     builder -> builder
                             .withEnergyConfig(MekanismConfig.usage.crusher,
-                                    () -> MekanismConfig.storage.crusher.get().multiply(200000))
+                                    () -> MekanismConfig.storage.crusher.get().multiply(400))
                             .withSound(MekanismSounds.CRUSHER)
                             .changeAttributeUpgrade(EnumSet.of(Upgrade.MUFFLING, Upgrade.SPEED, Upgrade.ENERGY,
                                     AMEUpgrade.COBBLESTONE_SUPPLY.getValue(),
@@ -865,7 +866,7 @@ public class AMEMachines {
                     AMELang.ITEM_GROUP,
                     builder -> builder
                             .withEnergyConfig(MekanismConfig.usage.enrichmentChamber,
-                                    () -> MekanismConfig.storage.enrichmentChamber.get().multiply(200000))
+                                    () -> MekanismConfig.storage.enrichmentChamber.get().multiply(400))
                             .withSound(MekanismSounds.ENRICHMENT_CHAMBER)
                             .changeAttributeUpgrade(EnumSet.of(Upgrade.MUFFLING, Upgrade.SPEED, Upgrade.ENERGY,
                                     AMEUpgrade.COBBLESTONE_SUPPLY.getValue(),
@@ -878,7 +879,7 @@ public class AMEMachines {
                     AMELang.ITEM_GROUP,
                     builder -> builder
                             .withEnergyConfig(MSConfig.usageConfig.adsorptionSeparator,
-                                    () -> MSConfig.storageConfig.adsorptionSeparator.get().multiply(200000))
+                                    () -> MSConfig.storageConfig.adsorptionSeparator.get().multiply(400))
                             .withSound(MekanismSounds.CHEMICAL_INFUSER)
                             .withCustomShape(MSBlockShapes.ADSORPTION_SEPARATOR)
                             .changeAttributeUpgrade(EnumSet.of(Upgrade.MUFFLING, Upgrade.SPEED, Upgrade.ENERGY,
@@ -892,7 +893,7 @@ public class AMEMachines {
                     AMELang.ITEM_GROUP,
                     builder -> builder
                             .withEnergyConfig(MSConfig.usageConfig.airCompressor,
-                                    () -> MSConfig.storageConfig.airCompressor.get().multiply(200000))
+                                    () -> MSConfig.storageConfig.airCompressor.get().multiply(400))
                             .withSound(MekanismSounds.CHEMICAL_INFUSER)
                             .changeAttributeUpgrade(EnumSet.of(Upgrade.MUFFLING, Upgrade.SPEED, Upgrade.ENERGY,
                                     AMEUpgrade.RADIOACTIVE_SEALING.getValue(),
@@ -905,7 +906,7 @@ public class AMEMachines {
                     AMELang.ITEM_GROUP,
                     builder -> builder
                             .withEnergyConfig(MekanismConfig.usage.combiner,
-                                    () -> MekanismConfig.storage.combiner.get().multiply(200000))
+                                    () -> MekanismConfig.storage.combiner.get().multiply(400))
                             .withSound(MekanismSounds.COMBINER)
                             .changeAttributeUpgrade(EnumSet.of(Upgrade.MUFFLING, Upgrade.SPEED, Upgrade.ENERGY,
                                     AMEUpgrade.COBBLESTONE_SUPPLY.getValue(),
@@ -918,7 +919,7 @@ public class AMEMachines {
                     AMELang.ITEM_GROUP,
                     builder -> builder
                             .withEnergyConfig(MekanismConfig.usage.antiprotonicNucleosynthesizer,
-                                    () -> MekanismConfig.storage.antiprotonicNucleosynthesizer.get().multiply(200000))
+                                    () -> MekanismConfig.storage.antiprotonicNucleosynthesizer.get().multiply(400))
                             .withSound(MekanismSounds.ANTIPROTONIC_NUCLEOSYNTHESIZER)
                             .changeAttributeUpgrade(EnumSet.of(Upgrade.MUFFLING, AMEUpgrade.HYPER_SPEED.getValue(),
                                     AMEUpgrade.COBBLESTONE_SUPPLY.getValue(),
@@ -933,7 +934,7 @@ public class AMEMachines {
                     AMELang.ITEM_GROUP,
                     builder -> builder
                             .withEnergyConfig(MekanismConfig.usage.chemicalInfuser,
-                                    () -> MekanismConfig.storage.chemicalInfuser.get().multiply(200000))
+                                    () -> MekanismConfig.storage.chemicalInfuser.get().multiply(400))
                             .withSound(MekanismSounds.CHEMICAL_INFUSER)
                             .changeAttributeUpgrade(EnumSet.of(Upgrade.MUFFLING, Upgrade.SPEED, Upgrade.ENERGY,
                                     AMEUpgrade.RADIOACTIVE_SEALING.getValue(),
@@ -947,7 +948,7 @@ public class AMEMachines {
                     AMELang.ITEM_GROUP,
                     builder -> builder
                             .withEnergyConfig(MekanismConfig.usage.chemicalWasher,
-                                    () -> MekanismConfig.storage.chemicalWasher.get().multiply(200000))
+                                    () -> MekanismConfig.storage.chemicalWasher.get().multiply(400))
                             .withSound(MekanismSounds.CHEMICAL_OXIDIZER)
                             .changeAttributeUpgrade(EnumSet.of(Upgrade.MUFFLING, Upgrade.SPEED, Upgrade.ENERGY,
                                     AMEUpgrade.WATER_SUPPLY.getValue(),
@@ -961,7 +962,7 @@ public class AMEMachines {
                     AMELang.ITEM_GROUP,
                     builder -> builder
                             .withEnergyConfig(MekanismConfig.usage.oxidationChamber,
-                                    () -> MekanismConfig.storage.oxidationChamber.get().multiply(200000))
+                                    () -> MekanismConfig.storage.oxidationChamber.get().multiply(400))
                             .withSound(MekanismSounds.CHEMICAL_OXIDIZER)
                             .changeAttributeUpgrade(EnumSet.of(Upgrade.MUFFLING, Upgrade.SPEED, Upgrade.ENERGY,
                                     AMEUpgrade.COBBLESTONE_SUPPLY.getValue(),
@@ -975,7 +976,7 @@ public class AMEMachines {
                     AMELang.ITEM_GROUP,
                     builder -> builder
                             .withEnergyConfig(MekanismConfig.usage.combiner,
-                                    () -> MekanismConfig.storage.combiner.get().multiply(200000))
+                                    () -> MekanismConfig.storage.combiner.get().multiply(400))
                             .changeAttributeUpgrade(
                                     EnumSet.of(Upgrade.MUFFLING, Upgrade.ENERGY, Upgrade.SPEED,
                                             AMEUpgrade.COBBLESTONE_SUPPLY.getValue(),
@@ -991,7 +992,7 @@ public class AMEMachines {
                     AMELang.ITEM_GROUP,
                     builder -> builder
                             .withEnergyConfig(MekanismConfig.usage.chemicalCrystallizer,
-                                    () -> MekanismConfig.storage.chemicalCrystallizer.get().multiply(200000))
+                                    () -> MekanismConfig.storage.chemicalCrystallizer.get().multiply(400))
                             .changeAttributeUpgrade(
                                     EnumSet.of(Upgrade.MUFFLING, Upgrade.ENERGY, Upgrade.SPEED,
                                             AMEUpgrade.RADIOACTIVE_SEALING.getValue(),
@@ -1006,7 +1007,7 @@ public class AMEMachines {
                     AMELang.ITEM_GROUP,
                     builder -> builder
                             .withEnergyConfig(MekanismConfig.usage.chemicalDissolutionChamber,
-                                    () -> MekanismConfig.storage.chemicalDissolutionChamber.get().multiply(200000))
+                                    () -> MekanismConfig.storage.chemicalDissolutionChamber.get().multiply(400))
                             .changeAttributeUpgrade(
                                     EnumSet.of(Upgrade.MUFFLING, Upgrade.ENERGY, Upgrade.SPEED,
                                             AMEUpgrade.RADIOACTIVE_SEALING.getValue(),
@@ -1022,7 +1023,7 @@ public class AMEMachines {
                     AMELang.ITEM_GROUP,
                     builder -> builder
                             .withEnergyConfig(() -> MekanismConfig.general.FROM_H2.get().multiply(2),
-                                    () -> MekanismConfig.storage.electrolyticSeparator.get().multiply(200000))
+                                    () -> MekanismConfig.storage.electrolyticSeparator.get().multiply(400))
                             .changeAttributeUpgrade(
                                     EnumSet.of(Upgrade.MUFFLING, Upgrade.ENERGY, Upgrade.SPEED,
                                             AMEUpgrade.WATER_SUPPLY.getValue(),
@@ -1037,7 +1038,7 @@ public class AMEMachines {
                     AMELang.ITEM_GROUP,
                     builder -> builder
                             .withEnergyConfig(() -> MekanismConfig.general.FROM_H2.get().multiply(2),
-                                    () -> MekanismConfig.storage.electrolyticSeparator.get().multiply(200000))
+                                    () -> MekanismConfig.storage.electrolyticSeparator.get().multiply(400))
                             .changeAttributeUpgrade(
                                     EnumSet.of(Upgrade.MUFFLING, Upgrade.ENERGY, Upgrade.SPEED,
                                             AMEUpgrade.COBBLESTONE_SUPPLY.getValue(),
@@ -1053,7 +1054,7 @@ public class AMEMachines {
                     AMELang.ITEM_GROUP,
                     builder -> builder
                             .withEnergyConfig(MekanismConfig.usage.formulaicAssemblicator,
-                                    () -> MekanismConfig.storage.formulaicAssemblicator.get().multiply(200000))
+                                    () -> MekanismConfig.storage.formulaicAssemblicator.get().multiply(25600))
                             .changeAttributeUpgrade(
                                     EnumSet.of(Upgrade.ENERGY, Upgrade.SPEED,
                                             AMEUpgrade.COBBLESTONE_SUPPLY.getValue(),
@@ -1066,7 +1067,22 @@ public class AMEMachines {
                     AMELang.ITEM_GROUP,
                     builder -> builder
                             .withEnergyConfig(MekanismConfig.usage.isotopicCentrifuge,
-                                    () -> MekanismConfig.storage.isotopicCentrifuge.get().multiply(200000))
+                                    () -> MekanismConfig.storage.isotopicCentrifuge.get().multiply(25600))
+                            .changeAttributeUpgrade(
+                                    EnumSet.of(Upgrade.MUFFLING, Upgrade.ENERGY, Upgrade.SPEED,
+                                            AMEUpgrade.AIR_INTAKE.getValue(),
+                                            AMEUpgrade.RADIOACTIVE_SEALING.getValue(),
+                                            ExtraUpgrade.STACK))
+                            .withSound(MekanismSounds.ISOTOPIC_CENTRIFUGE));
+
+    public static final MachineRegistryObject<BEEnchantedSPS, BlockTileModel<BEEnchantedSPS, BlockTypeMachine<BEEnchantedSPS>>, MekanismTileContainer<BEEnchantedSPS>, ItemBlockMachine> ENCHANTED_SPS = MACHINES
+            .registerSimple("enchanted_sps",
+                    BEEnchantedSPS::new,
+                    BEEnchantedSPS.class,
+                    AMELang.ITEM_GROUP,
+                    builder -> builder
+                            .withEnergyConfig(() -> MekanismConfig.general.spsEnergyPerInput.get().multiply(1000),
+                                    () -> MekanismConfig.general.spsEnergyPerInput.get().multiply(2560000))
                             .changeAttributeUpgrade(
                                     EnumSet.of(Upgrade.MUFFLING, Upgrade.ENERGY, Upgrade.SPEED,
                                             AMEUpgrade.AIR_INTAKE.getValue(),
@@ -1094,7 +1110,7 @@ public class AMEMachines {
                     AMELang.ITEM_GROUP,
                     builder -> builder
                             .withEnergyConfig(MekanismConfig.usage.metallurgicInfuser,
-                                    () -> MekanismConfig.storage.metallurgicInfuser.get().multiply(200000))
+                                    () -> MekanismConfig.storage.metallurgicInfuser.get().multiply(25600))
                             .changeAttributeUpgrade(
                                     EnumSet.of(Upgrade.MUFFLING, Upgrade.ENERGY, Upgrade.SPEED,
                                             AMEUpgrade.COBBLESTONE_SUPPLY.getValue(),
@@ -1108,7 +1124,7 @@ public class AMEMachines {
                     AMELang.ITEM_GROUP,
                     builder -> builder
                             .withEnergyConfig(MekanismConfig.usage.paintingMachine,
-                                    () -> MekanismConfig.storage.paintingMachine.get().multiply(200000))
+                                    () -> MekanismConfig.storage.paintingMachine.get().multiply(25600))
                             .changeAttributeUpgrade(
                                     EnumSet.of(Upgrade.MUFFLING, Upgrade.ENERGY, Upgrade.SPEED,
                                             AMEUpgrade.COBBLESTONE_SUPPLY.getValue(),
@@ -1122,7 +1138,7 @@ public class AMEMachines {
                     AMELang.ITEM_GROUP,
                     builder -> builder
                             .withEnergyConfig(MekanismConfig.usage.pressurizedReactionBase,
-                                    () -> MekanismConfig.storage.pressurizedReactionBase.get().multiply(2000000))
+                                    () -> MekanismConfig.storage.pressurizedReactionBase.get().multiply(256000))
                             .changeAttributeUpgrade(
                                     EnumSet.of(Upgrade.MUFFLING, Upgrade.ENERGY, Upgrade.SPEED,
                                             AMEUpgrade.COBBLESTONE_SUPPLY.getValue(),
@@ -1138,7 +1154,7 @@ public class AMEMachines {
                     AMELang.ITEM_GROUP,
                     builder -> builder
                             .withEnergyConfig(MekanismConfig.usage.rotaryCondensentrator,
-                                    () -> MekanismConfig.storage.rotaryCondensentrator.get().multiply(200000))
+                                    () -> MekanismConfig.storage.rotaryCondensentrator.get().multiply(25600))
                             .changeAttributeUpgrade(
                                     EnumSet.of(Upgrade.MUFFLING, Upgrade.ENERGY, Upgrade.SPEED,
                                             AMEUpgrade.AIR_INTAKE.getValue(),
@@ -1226,7 +1242,7 @@ public class AMEMachines {
                     AMELang.ITEM_GROUP,
                     builder -> builder
                             .withEnergyConfig(MekanismConfig.usage.formulaicAssemblicator,
-                                    () -> MekanismConfig.storage.formulaicAssemblicator.get().multiply(200000))
+                                    () -> MekanismConfig.storage.formulaicAssemblicator.get().multiply(25600))
                             .changeAttributeUpgrade(
                                     EnumSet.of(Upgrade.ENERGY, Upgrade.SPEED,
                                             AMEUpgrade.COBBLESTONE_SUPPLY.getValue(),

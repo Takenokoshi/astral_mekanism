@@ -1,12 +1,12 @@
 package astral_mekanism.block.blockentity.basemachine;
 
 import java.util.List;
+import java.util.function.Predicate;
 
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import mekanism.api.IContentsListener;
-import mekanism.api.chemical.ChemicalTankBuilder;
 import mekanism.api.chemical.pigment.IPigmentTank;
 import mekanism.api.chemical.pigment.Pigment;
 import mekanism.api.chemical.pigment.PigmentStack;
@@ -51,18 +51,19 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.state.BlockState;
 
-public abstract class BEAMEPaintingMachine extends TileEntityRecipeMachine<PaintingRecipe> implements ItemChemicalRecipeLookupHandler<Pigment, PigmentStack, PaintingRecipe> {
+public abstract class BEAMEPaintingMachine extends TileEntityRecipeMachine<PaintingRecipe>
+        implements ItemChemicalRecipeLookupHandler<Pigment, PigmentStack, PaintingRecipe> {
 
     private static final List<RecipeError> TRACKED_ERROR_TYPES = List.of(
-          RecipeError.NOT_ENOUGH_ENERGY,
-          RecipeError.NOT_ENOUGH_INPUT,
-          RecipeError.NOT_ENOUGH_SECONDARY_INPUT,
-          RecipeError.NOT_ENOUGH_OUTPUT_SPACE,
-          RecipeError.INPUT_DOESNT_PRODUCE_OUTPUT
-    );
+            RecipeError.NOT_ENOUGH_ENERGY,
+            RecipeError.NOT_ENOUGH_INPUT,
+            RecipeError.NOT_ENOUGH_SECONDARY_INPUT,
+            RecipeError.NOT_ENOUGH_OUTPUT_SPACE,
+            RecipeError.INPUT_DOESNT_PRODUCE_OUTPUT);
 
-    @WrappingComputerMethod(wrapper = ComputerChemicalTankWrapper.class, methodNames = {"getPigmentInput", "getPigmentInputCapacity", "getPigmentInputNeeded",
-                                                                                        "getPigmentInputFilledPercentage"}, docPlaceholder = "pigment tank")
+    @WrappingComputerMethod(wrapper = ComputerChemicalTankWrapper.class, methodNames = { "getPigmentInput",
+            "getPigmentInputCapacity", "getPigmentInputNeeded",
+            "getPigmentInputFilledPercentage" }, docPlaceholder = "pigment tank")
     public IPigmentTank pigmentTank;
 
     private final IOutputHandler<@NotNull ItemStack> outputHandler;
@@ -81,7 +82,8 @@ public abstract class BEAMEPaintingMachine extends TileEntityRecipeMachine<Paint
 
     public BEAMEPaintingMachine(IBlockProvider blockProvider, BlockPos pos, BlockState state) {
         super(blockProvider, pos, state, TRACKED_ERROR_TYPES);
-        configComponent = new TileComponentConfig(this, TransmissionType.ITEM, TransmissionType.PIGMENT, TransmissionType.ENERGY);
+        configComponent = new TileComponentConfig(this, TransmissionType.ITEM, TransmissionType.PIGMENT,
+                TransmissionType.ENERGY);
         configComponent.setupItemIOExtraConfig(inputSlot, outputSlot, pigmentInputSlot, energySlot);
         configComponent.setupInputConfig(TransmissionType.PIGMENT, pigmentTank);
         configComponent.setupInputConfig(TransmissionType.ENERGY, energyContainer);
@@ -96,16 +98,23 @@ public abstract class BEAMEPaintingMachine extends TileEntityRecipeMachine<Paint
 
     @NotNull
     @Override
-    public IChemicalTankHolder<Pigment, PigmentStack, IPigmentTank> getInitialPigmentTanks(IContentsListener listener, IContentsListener recipeCacheListener) {
-        ChemicalTankHelper<Pigment, PigmentStack, IPigmentTank> builder = ChemicalTankHelper.forSidePigmentWithConfig(this::getDirection, this::getConfig);
-        builder.addTank(pigmentTank = ChemicalTankBuilder.PIGMENT.input(Long.MAX_VALUE, pigment -> containsRecipeBA(inputSlot.getStack(), pigment),
-              this::containsRecipeB, recipeCacheListener));
+    public IChemicalTankHolder<Pigment, PigmentStack, IPigmentTank> getInitialPigmentTanks(IContentsListener listener,
+            IContentsListener recipeCacheListener) {
+        ChemicalTankHelper<Pigment, PigmentStack, IPigmentTank> builder = ChemicalTankHelper
+                .forSidePigmentWithConfig(this::getDirection, this::getConfig);
+        builder.addTank(pigmentTank = createPigmentTank(
+                pigment -> containsRecipeBA(inputSlot.getStack(), pigment),
+                this::containsRecipeB, recipeCacheListener));
         return builder.build();
     }
 
+    protected abstract IPigmentTank createPigmentTank(Predicate<Pigment> canInsert, Predicate<Pigment> validator,
+            @Nullable IContentsListener listener);
+
     @NotNull
     @Override
-    protected IEnergyContainerHolder getInitialEnergyContainers(IContentsListener listener, IContentsListener recipeCacheListener) {
+    protected IEnergyContainerHolder getInitialEnergyContainers(IContentsListener listener,
+            IContentsListener recipeCacheListener) {
         EnergyContainerHelper builder = EnergyContainerHelper.forSideWithConfig(this::getDirection, this::getConfig);
         builder.addContainer(energyContainer = MachineEnergyContainer.input(this, listener));
         return builder.build();
@@ -113,14 +122,19 @@ public abstract class BEAMEPaintingMachine extends TileEntityRecipeMachine<Paint
 
     @NotNull
     @Override
-    protected IInventorySlotHolder getInitialInventory(IContentsListener listener, IContentsListener recipeCacheListener) {
+    protected IInventorySlotHolder getInitialInventory(IContentsListener listener,
+            IContentsListener recipeCacheListener) {
         InventorySlotHelper builder = InventorySlotHelper.forSideWithConfig(this::getDirection, this::getConfig);
         builder.addSlot(pigmentInputSlot = PigmentInventorySlot.fill(pigmentTank, listener, 6, 56));
-        builder.addSlot(inputSlot = InputInventorySlot.at(item -> containsRecipeAB(item, pigmentTank.getStack()), this::containsRecipeA, recipeCacheListener, 45, 35))
-              .tracksWarnings(slot -> slot.warning(WarningType.NO_MATCHING_RECIPE, getWarningCheck(RecipeError.NOT_ENOUGH_INPUT)));
+        builder.addSlot(inputSlot = InputInventorySlot.at(item -> containsRecipeAB(item, pigmentTank.getStack()),
+                this::containsRecipeA, recipeCacheListener, 45, 35))
+                .tracksWarnings(slot -> slot.warning(WarningType.NO_MATCHING_RECIPE,
+                        getWarningCheck(RecipeError.NOT_ENOUGH_INPUT)));
         builder.addSlot(outputSlot = OutputInventorySlot.at(listener, 116, 35))
-              .tracksWarnings(slot -> slot.warning(WarningType.NO_SPACE_IN_OUTPUT, getWarningCheck(RecipeError.NOT_ENOUGH_OUTPUT_SPACE)));
-        builder.addSlot(energySlot = EnergyInventorySlot.fillOrConvert(energyContainer, this::getLevel, listener, 144, 35));
+                .tracksWarnings(slot -> slot.warning(WarningType.NO_SPACE_IN_OUTPUT,
+                        getWarningCheck(RecipeError.NOT_ENOUGH_OUTPUT_SPACE)));
+        builder.addSlot(
+                energySlot = EnergyInventorySlot.fillOrConvert(energyContainer, this::getLevel, listener, 144, 35));
         pigmentInputSlot.setSlotOverlay(SlotOverlay.MINUS);
         return builder.build();
     }
@@ -148,13 +162,15 @@ public abstract class BEAMEPaintingMachine extends TileEntityRecipeMachine<Paint
     @NotNull
     @Override
     public CachedRecipe<PaintingRecipe> createNewCachedRecipe(@NotNull PaintingRecipe recipe, int cacheIndex) {
-        return TwoInputCachedRecipe.itemChemicalToItem(recipe, recheckAllRecipeErrors, itemInputHandler, pigmentInputHandler, outputHandler)
-              .setErrorsChanged(this::onErrorsChanged)
-              .setCanHolderFunction(() -> MekanismUtils.canFunction(this))
-              .setActive(this::setActive)
-              .setEnergyRequirements(energyContainer::getEnergyPerTick, energyContainer)
-              .setBaselineMaxOperations(this::getBaselineMaxOperations)
-              .setOnFinish(this::markForSave);
+        return TwoInputCachedRecipe
+                .itemChemicalToItem(recipe, recheckAllRecipeErrors, itemInputHandler, pigmentInputHandler,
+                        outputHandler)
+                .setErrorsChanged(this::onErrorsChanged)
+                .setCanHolderFunction(() -> MekanismUtils.canFunction(this))
+                .setActive(this::setActive)
+                .setEnergyRequirements(energyContainer::getEnergyPerTick, energyContainer)
+                .setBaselineMaxOperations(this::getBaselineMaxOperations)
+                .setOnFinish(this::markForSave);
     }
 
     public MachineEnergyContainer<BEAMEPaintingMachine> getEnergyContainer() {
@@ -163,10 +179,10 @@ public abstract class BEAMEPaintingMachine extends TileEntityRecipeMachine<Paint
 
     protected abstract int getBaselineMaxOperations();
 
-    //Methods relating to IComputerTile
+    // Methods relating to IComputerTile
     @ComputerMethod(methodDescription = ComputerConstants.DESCRIPTION_GET_ENERGY_USAGE)
     FloatingLong getEnergyUsage() {
         return getActive() ? energyContainer.getEnergyPerTick() : FloatingLong.ZERO;
     }
-    //End methods IComputerTile
-} 
+    // End methods IComputerTile
+}

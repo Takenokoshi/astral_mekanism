@@ -1,19 +1,32 @@
 package astral_mekanism.block.blockentity.enchantedmachine;
 
+import java.util.function.BiPredicate;
+import java.util.function.Predicate;
+
+import org.jetbrains.annotations.Nullable;
+
 import com.jerry.mekanism_extras.api.ExtraUpgrade;
 
 import astral_mekanism.block.blockentity.basemachine.BEAMEMetallurgicInfuser;
 import astral_mekanism.integration.AMEEmpowered;
+import mekanism.api.AutomationType;
+import mekanism.api.IContentsListener;
 import mekanism.api.Upgrade;
+import mekanism.api.chemical.infuse.IInfusionTank;
+import mekanism.api.chemical.infuse.InfuseType;
 import mekanism.api.providers.IBlockProvider;
+import mekanism.common.capabilities.chemical.variable.VariableCapacityChemicalTankBuilder;
 import mekanism.common.inventory.container.MekanismContainer;
 import mekanism.common.inventory.container.sync.SyncableInt;
+import mekanism.common.inventory.container.sync.SyncableLong;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.block.state.BlockState;
 
 public class BEEnchantedMetallurgicInfuser extends BEAMEMetallurgicInfuser {
 
     private int baselineMaxOperations = 200;
+    private long tankCapacity = 200 * 10000000;
+
     public BEEnchantedMetallurgicInfuser(IBlockProvider blockProvider, BlockPos pos, BlockState state) {
         super(blockProvider, pos, state);
     }
@@ -27,6 +40,7 @@ public class BEEnchantedMetallurgicInfuser extends BEAMEMetallurgicInfuser {
     public void addContainerTrackers(MekanismContainer container) {
         super.addContainerTrackers(container);
         container.track(SyncableInt.create(this::getBaselineMaxOperations, v -> baselineMaxOperations = v));
+        container.track(SyncableLong.create(this::getTankCapacity, v -> tankCapacity = v));
     }
 
     @Override
@@ -41,6 +55,19 @@ public class BEEnchantedMetallurgicInfuser extends BEAMEMetallurgicInfuser {
             baselineMaxOperations = 200 << (upgradeComponent.getUpgrades(Upgrade.SPEED)
                     + upgradeComponent.getUpgrades(ExtraUpgrade.STACK));
         }
+        tankCapacity = 10000000l * baselineMaxOperations;
     }
-    
+
+    private long getTankCapacity() {
+        return tankCapacity;
+    }
+
+    @Override
+    protected IInfusionTank createInfusionTank(BiPredicate<InfuseType, AutomationType> canExtract,
+            BiPredicate<InfuseType, AutomationType> canInsert, Predicate<InfuseType> validator,
+            @Nullable IContentsListener listener) {
+        return VariableCapacityChemicalTankBuilder.INFUSION.create(this::getTankCapacity, canExtract, canInsert,
+                validator, listener);
+    }
+
 }

@@ -1,10 +1,13 @@
 package astral_mekanism.block.blockentity.prefab;
 
 import java.util.List;
+import java.util.function.BiPredicate;
+import java.util.function.Predicate;
 
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import mekanism.api.AutomationType;
 import mekanism.api.IContentsListener;
 import mekanism.api.RelativeSide;
 import mekanism.api.chemical.ChemicalTankBuilder;
@@ -70,14 +73,11 @@ public abstract class BEGasToGasMachine extends TileEntityRecipeMachine<GasToGas
         configComponent.setupIOConfig(TransmissionType.GAS, inputTank, outputTank, RelativeSide.RIGHT)
                 .setEjecting(true);
         configComponent.setupInputConfig(TransmissionType.ENERGY, energyContainer);
-        ejectorComponent = new TileComponentEjector(this, this::tankCapacity);
+        ejectorComponent = new TileComponentEjector(this, () -> Long.MAX_VALUE);
         ejectorComponent.setOutputData(configComponent, TransmissionType.GAS).setCanTankEject(t -> t == outputTank);
         inputHandler = InputHelper.getInputHandler(inputTank, RecipeError.NOT_ENOUGH_INPUT);
         outputHandler = OutputHelper.getOutputHandler(outputTank, RecipeError.NOT_ENOUGH_OUTPUT_SPACE);
     }
-
-    protected abstract long tankCapacity();
-
 
     @NotNull
     @Override
@@ -85,13 +85,17 @@ public abstract class BEGasToGasMachine extends TileEntityRecipeMachine<GasToGas
             IContentsListener recipeCacheListener) {
         ChemicalTankHelper<Gas, GasStack, IGasTank> builder = ChemicalTankHelper
                 .forSideGasWithConfig(this::getDirection, this::getConfig);
-        builder.addTank(inputTank = ChemicalTankBuilder.GAS.create(tankCapacity(),
+        builder.addTank(inputTank = createInputTank(
                 ChemicalTankHelper.radioactiveInputTankPredicate(() -> outputTank),
                 ChemicalTankBuilder.GAS.alwaysTrueBi, this::containsRecipe,
                 ChemicalAttributeValidator.ALWAYS_ALLOW, recipeCacheListener));
-        builder.addTank(outputTank = ChemicalTankBuilder.GAS.output(tankCapacity(), listener));
+        builder.addTank(outputTank = ChemicalTankBuilder.GAS.output(Long.MAX_VALUE, listener));
         return builder.build();
     }
+
+    protected abstract IGasTank createInputTank(BiPredicate<Gas, AutomationType> canExtract,
+            BiPredicate<Gas, AutomationType> canInsert, Predicate<Gas> validator,
+            @Nullable ChemicalAttributeValidator attributeValidator, @Nullable IContentsListener listener);
 
     @NotNull
     @Override

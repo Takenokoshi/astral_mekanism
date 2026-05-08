@@ -1,0 +1,13 @@
+{
+  "type": "mekanism:infusion_conversion",
+  "input": {
+    "ingredient": {
+      "item": "astral_mekanism:xp_crystal"
+    },
+    "amount": 1
+  },
+  "output": {
+    "infuse_type": "astral_mekanism:xp",
+    "amount": 128000
+  }
+}

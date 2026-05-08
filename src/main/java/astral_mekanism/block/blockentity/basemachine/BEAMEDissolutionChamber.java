@@ -1,15 +1,19 @@
 package astral_mekanism.block.blockentity.basemachine;
 
 import java.util.List;
+import java.util.function.BiPredicate;
+import java.util.function.Predicate;
 
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import astral_mekanism.recipes.cachedRecipe.FormulizedDissolutionCachedRecipe;
 import astral_mekanism.recipes.output.AMOutputHelper;
+import mekanism.api.AutomationType;
 import mekanism.api.IContentsListener;
 import mekanism.api.RelativeSide;
 import mekanism.api.chemical.ChemicalTankBuilder;
+import mekanism.api.chemical.attribute.ChemicalAttributeValidator;
 import mekanism.api.chemical.gas.Gas;
 import mekanism.api.chemical.gas.GasStack;
 import mekanism.api.chemical.gas.IGasTank;
@@ -125,12 +129,18 @@ public abstract class BEAMEDissolutionChamber extends TileEntityRecipeMachine<Ch
             IContentsListener recipeCacheListener) {
         ChemicalTankHelper<Gas, GasStack, IGasTank> builder = ChemicalTankHelper
                 .forSideGasWithConfig(this::getDirection, this::getConfig);
-        builder.addTank(injectTank = ChemicalTankBuilder.GAS.input(Long.MAX_VALUE,
-                gas -> containsRecipeBA(inputSlot.getStack(), gas), this::containsRecipeB,
+        builder.addTank(injectTank = createInjectTank(
+                (gas, type) -> type != AutomationType.EXTERNAL,
+                (gas, type) -> containsRecipeBA(inputSlot.getStack(), gas), this::containsRecipeB,
+                ChemicalAttributeValidator.ALWAYS_ALLOW,
                 recipeCacheListener));
         builder.addTank(outputTank.getGasTank());
         return builder.build();
     }
+
+    protected abstract IGasTank createInjectTank(BiPredicate<Gas, AutomationType> canExtract,
+            BiPredicate<Gas, AutomationType> canInsert, Predicate<Gas> validator,
+            @Nullable ChemicalAttributeValidator attributeValidator, @Nullable IContentsListener listener);
 
     @NotNull
     @Override
@@ -201,7 +211,8 @@ public abstract class BEAMEDissolutionChamber extends TileEntityRecipeMachine<Ch
     @Override
     public @NotNull CachedRecipe<ChemicalDissolutionRecipe> createNewCachedRecipe(
             @NotNull ChemicalDissolutionRecipe recipe, int cacheIndex) {
-        return new FormulizedDissolutionCachedRecipe(recipe, recheckAllRecipeErrors, itemInputHandler, gasInputHandler, outputHandler,10)
+        return new FormulizedDissolutionCachedRecipe(recipe, recheckAllRecipeErrors, itemInputHandler, gasInputHandler,
+                outputHandler, 10)
                 .setErrorsChanged(this::onErrorsChanged)
                 .setCanHolderFunction(() -> MekanismUtils.canFunction(this))
                 .setActive(this::setActive)

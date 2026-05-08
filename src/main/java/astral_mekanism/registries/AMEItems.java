@@ -9,6 +9,7 @@ import astral_mekanism.item.DegitalMinerFilterToolItem;
 import astral_mekanism.item.GlintItem;
 import astral_mekanism.item.GlintItemNameColored;
 import astral_mekanism.item.MekMachineUpgradeToolItem;
+import astral_mekanism.item.XpCrystalItem;
 import astral_mekanism.item.cell.bulkcell.AMEBulkCellItem;
 import astral_mekanism.item.cell.pigment.InfinityPigmentCellItem;
 import astral_mekanism.item.recipecard.CoolantCardItem;
@@ -67,6 +68,7 @@ public class AMEItems {
             "crystal_antimatter", GlintItemNameColored.getSup(EnumColor.PURPLE));
     public static final ItemRegistryObject<GlintItemNameColored> CRYSTAL_ANTIMATTER_CHARGED = ITEMS.register(
             "crystal_antimatter_charged", GlintItemNameColored.getSup(EnumColor.PURPLE));
+    public static final ItemRegistryObject<XpCrystalItem> XP_CRYSTAL = ITEMS.register("xp_crystal", XpCrystalItem::new);
     public static final ItemRegistryObject<Item> NETHERITE_CLUSTER = ITEMS.register("netherite_cluster");
     public static final ItemRegistryObject<Item> BIOMASS_PASTE = ITEMS.register("biomass_paste");
     public static final ItemRegistryObject<Item> ENRICHED_UTILITY = ITEMS.register("enriched_utility");

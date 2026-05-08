@@ -1,10 +1,13 @@
 package astral_mekanism.block.blockentity.basemachine;
 
 import java.util.List;
+import java.util.function.BiPredicate;
+import java.util.function.Predicate;
 
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import mekanism.api.AutomationType;
 import mekanism.api.IContentsListener;
 import mekanism.api.RelativeSide;
 import mekanism.api.chemical.ChemicalTankBuilder;
@@ -109,24 +112,31 @@ public abstract class BEAMEPressurizedReactionChamber extends TileEntityRecipeMa
             IContentsListener recipeCacheListener) {
         ChemicalTankHelper<Gas, GasStack, IGasTank> builder = ChemicalTankHelper
                 .forSideGasWithConfig(this::getDirection, this::getConfig);
-        builder.addTank(inputGasTank = ChemicalTankBuilder.GAS.create(Long.MAX_VALUE,
+        builder.addTank(inputGasTank = ChemicalTankBuilder.GAS.create(Long.MAX_VALUE, createInputGasTank(
                 ChemicalTankHelper.radioactiveInputTankPredicate(() -> outputGasTank),
                 (gas, automationType) -> containsRecipeCAB(inputSlot.getStack(), inputFluidTank.getFluid(), gas),
                 this::containsRecipeC,
-                ChemicalAttributeValidator.ALWAYS_ALLOW, recipeCacheListener));
+                ChemicalAttributeValidator.ALWAYS_ALLOW, recipeCacheListener)));
         builder.addTank(outputGasTank = ChemicalTankBuilder.GAS.output(Long.MAX_VALUE, listener));
         return builder.build();
     }
+
+    protected abstract IGasTank createInputGasTank(BiPredicate<Gas, AutomationType> canExtract,
+            BiPredicate<Gas, AutomationType> canInsert, Predicate<Gas> validator,
+            @Nullable ChemicalAttributeValidator attributeValidator, @Nullable IContentsListener listener);
 
     @NotNull
     @Override
     protected IFluidTankHolder getInitialFluidTanks(IContentsListener listener, IContentsListener recipeCacheListener) {
         FluidTankHelper builder = FluidTankHelper.forSideWithConfig(this::getDirection, this::getConfig);
-        builder.addTank(inputFluidTank = BasicFluidTank.input(Integer.MAX_VALUE,
+        builder.addTank(inputFluidTank = createInputFluidTank(
                 fluid -> containsRecipeBAC(inputSlot.getStack(), fluid, inputGasTank.getStack()),
                 this::containsRecipeB, recipeCacheListener));
         return builder.build();
     }
+
+    protected abstract BasicFluidTank createInputFluidTank(Predicate<FluidStack> canInsert,
+            Predicate<FluidStack> validator, @Nullable IContentsListener listener);
 
     @NotNull
     @Override

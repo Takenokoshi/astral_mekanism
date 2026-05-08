@@ -1,6 +1,7 @@
 package astral_mekanism.block.blockentity.basemachine;
 
 import java.util.List;
+import java.util.function.Predicate;
 
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -145,13 +146,16 @@ public abstract class BEAMEChemicalInfuser extends TileEntityRecipeMachine<Chemi
             IContentsListener recipeCacheListener) {
         ChemicalTankHelper<Gas, GasStack, IGasTank> builder = ChemicalTankHelper
                 .forSideGasWithConfig(this::getDirection, this::getConfig);
-        builder.addTank(leftTank = ChemicalTankBuilder.GAS.input(MAX_GAS,
-                gas -> containsRecipe(gas, rightTank.getStack()), this::containsRecipe, recipeCacheListener));
-        builder.addTank(rightTank = ChemicalTankBuilder.GAS.input(MAX_GAS,
-                gas -> containsRecipe(gas, leftTank.getStack()), this::containsRecipe, recipeCacheListener));
+        builder.addTank(leftTank = createGasTank(gas -> containsRecipe(gas, rightTank.getStack()), this::containsRecipe,
+                recipeCacheListener));
+        builder.addTank(rightTank = createGasTank(gas -> containsRecipe(gas, leftTank.getStack()), this::containsRecipe,
+                recipeCacheListener));
         builder.addTank(centerTank = ChemicalTankBuilder.GAS.output(MAX_GAS, listener));
         return builder.build();
     }
+
+    protected abstract IGasTank createGasTank(Predicate<Gas> canInsert, Predicate<Gas> validator,
+            IContentsListener recipeCacheListener);
 
     @NotNull
     @Override

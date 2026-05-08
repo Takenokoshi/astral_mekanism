@@ -1,0 +1,11 @@
+{
+  "type": "mekanism:crystallizing",
+  "chemicalType": "infuse_type",
+  "input": {
+    "amount": 128000,
+    "infuse_type": "astral_mekanism:xp"
+  },
+  "output": {
+    "item": "astral_mekanism:xp_crystal"
+  }
+}

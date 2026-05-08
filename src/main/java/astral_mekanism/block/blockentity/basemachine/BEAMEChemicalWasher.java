@@ -2,6 +2,7 @@ package astral_mekanism.block.blockentity.basemachine;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.function.Predicate;
 
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -123,21 +124,27 @@ public abstract class BEAMEChemicalWasher extends TileEntityRecipeMachine<FluidS
             IContentsListener recipeCacheListener) {
         ChemicalTankHelper<Slurry, SlurryStack, ISlurryTank> builder = ChemicalTankHelper
                 .forSideSlurryWithConfig(this::getDirection, this::getConfig);
-        builder.addTank(inputTank = ChemicalTankBuilder.SLURRY.input(MAX_SLURRY,
+        builder.addTank(inputTank = createInputTank(
                 slurry -> containsRecipeBA(fluidTank.getFluid(), slurry), this::containsRecipeB,
                 recipeCacheListener));
         builder.addTank(outputTank = ChemicalTankBuilder.SLURRY.output(MAX_SLURRY, listener));
         return builder.build();
     }
 
+    protected abstract ISlurryTank createInputTank(Predicate<Slurry> canInsert, Predicate<Slurry> validator,
+            @Nullable IContentsListener listener);
+
     @NotNull
     @Override
     protected IFluidTankHolder getInitialFluidTanks(IContentsListener listener, IContentsListener recipeCacheListener) {
         FluidTankHelper builder = FluidTankHelper.forSideWithConfig(this::getDirection, this::getConfig);
-        builder.addTank(fluidTank = BasicFluidTank.input(MAX_FLUID,
-                fluid -> containsRecipeAB(fluid, inputTank.getStack()), this::containsRecipeA, recipeCacheListener));
+        builder.addTank(fluidTank = createFluidTank(fluid -> containsRecipeAB(fluid, inputTank.getStack()),
+                this::containsRecipeA, recipeCacheListener));
         return builder.build();
     }
+
+    protected abstract BasicFluidTank createFluidTank(Predicate<FluidStack> canInsert, Predicate<FluidStack> validator,
+            @Nullable IContentsListener listener);
 
     @NotNull
     @Override

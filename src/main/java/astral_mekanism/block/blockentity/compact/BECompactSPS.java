@@ -1,16 +1,24 @@
 package astral_mekanism.block.blockentity.compact;
 
 import java.util.List;
+import java.util.function.BiPredicate;
+import java.util.function.Predicate;
 
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import astral_mekanism.block.blockentity.prefab.BEGasToGasMachine;
 import astral_mekanism.enums.AMEUpgrade;
 import astral_mekanism.registries.AMEMachines;
 import astral_mekanism.registries.AMERecipeTypes;
+import mekanism.api.AutomationType;
+import mekanism.api.IContentsListener;
 import mekanism.api.Upgrade;
+import mekanism.api.chemical.ChemicalTankBuilder;
+import mekanism.api.chemical.attribute.ChemicalAttributeValidator;
 import mekanism.api.chemical.gas.Gas;
 import mekanism.api.chemical.gas.GasStack;
+import mekanism.api.chemical.gas.IGasTank;
 import mekanism.api.providers.IBlockProvider;
 import mekanism.api.recipes.GasToGasRecipe;
 import mekanism.common.inventory.container.MekanismContainer;
@@ -42,11 +50,6 @@ public class BECompactSPS extends BEGasToGasMachine {
     }
 
     @Override
-    protected long tankCapacity() {
-        return 40000000;
-    }
-
-    @Override
     public void recalculateUpgrades(Upgrade upgrade) {
         super.recalculateUpgrades(upgrade);
         if (upgrade == AMEUpgrade.HYPER_SPEED.getValue()) {
@@ -64,5 +67,12 @@ public class BECompactSPS extends BEGasToGasMachine {
     public void addContainerTrackers(MekanismContainer container) {
         super.addContainerTrackers(container);
         container.track(SyncableInt.create(this::getBaselineMaxOperations, v -> baselineMaxOperations = v));
+    }
+
+    @Override
+    protected IGasTank createInputTank(BiPredicate<Gas, AutomationType> canExtract,
+            BiPredicate<Gas, AutomationType> canInsert, Predicate<Gas> validator,
+            @Nullable ChemicalAttributeValidator attributeValidator, @Nullable IContentsListener listener) {
+        return ChemicalTankBuilder.GAS.create(40000000, canExtract, canInsert, validator, attributeValidator, listener);
     }
 }

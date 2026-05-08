@@ -1,6 +1,8 @@
 package astral_mekanism.block.blockentity.basemachine;
 
 import java.util.List;
+import java.util.function.BiPredicate;
+import java.util.function.Predicate;
 
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -9,15 +11,12 @@ import fr.iglee42.evolvedmekanism.interfaces.ChemixerCachedRecipe;
 import fr.iglee42.evolvedmekanism.interfaces.EMInputRecipeCache;
 import fr.iglee42.evolvedmekanism.recipes.ChemixerRecipe;
 import fr.iglee42.evolvedmekanism.registries.EMRecipeType;
-import fr.iglee42.evolvedmekanism.registries.EMUpgrades;
 import mekanism.api.AutomationType;
 import mekanism.api.IContentsListener;
-import mekanism.api.chemical.ChemicalTankBuilder;
 import mekanism.api.chemical.attribute.ChemicalAttributeValidator;
 import mekanism.api.chemical.gas.Gas;
 import mekanism.api.chemical.gas.GasStack;
 import mekanism.api.chemical.gas.IGasTank;
-import mekanism.api.chemical.gas.attribute.GasAttributes;
 import mekanism.api.math.FloatingLong;
 import mekanism.api.providers.IBlockProvider;
 import mekanism.api.recipes.cache.CachedRecipe;
@@ -99,18 +98,18 @@ public abstract class BEAMEChemixer extends TileEntityRecipeMachine<ChemixerReci
         ChemicalTankHelper<Gas, GasStack, IGasTank> builder = ChemicalTankHelper
                 .forSideGasWithConfig(this::getDirection, this::getConfig);
         builder.addTank(
-                inputGasTank = ChemicalTankBuilder.GAS.create(Long.MAX_VALUE,
+                inputGasTank = createInputTank(
                         (gas, type) -> type != AutomationType.EXTERNAL,
-                        (gas, automationType) -> {
-                            boolean flag = upgradeComponent != null
-                                    && upgradeComponent.getUpgrades(EMUpgrades.RADIOACTIVE_UPGRADE) > 0;
-                            if (!flag && gas.has(GasAttributes.Radiation.class))
-                                return false;
-                            return containsRecipeCAB(mainInputSlot.getStack(), extraInputSlot.getStack(), gas);
-                        }, this::containsRecipeC,
+                        (gas, automationType) -> containsRecipeCAB(mainInputSlot.getStack(), extraInputSlot.getStack(),
+                                gas),
+                        this::containsRecipeC,
                         ChemicalAttributeValidator.ALWAYS_ALLOW, recipeCacheListener));
         return builder.build();
     }
+
+    protected abstract IGasTank createInputTank(BiPredicate<Gas, AutomationType> canExtract,
+            BiPredicate<Gas, AutomationType> canInsert, Predicate<Gas> validator,
+            @Nullable ChemicalAttributeValidator attributeValidator, @Nullable IContentsListener listener);
 
     @NotNull
     @Override
@@ -169,7 +168,7 @@ public abstract class BEAMEChemixer extends TileEntityRecipeMachine<ChemixerReci
         return energyContainer;
     }
 
-    public IGasTank getInputGasTank(){
+    public IGasTank getInputGasTank() {
         return inputGasTank;
     }
 

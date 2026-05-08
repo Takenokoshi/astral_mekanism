@@ -241,6 +241,11 @@ public class AMEJEIPlugin implements IModPlugin {
                 MekanismJEIRecipeType.CONDENSENTRATING, MekanismJEIRecipeType.DECONDENSENTRATING);
         CatalystRegistryHelper.register(registry, MekanismJEIRecipeType.SPS,
                 AMEMachines.COMPACT_SPS,
+                AMEMachines.ENCHANTED_SPS,
+                AMEMachines.ASTRAL_SPS);
+        CatalystRegistryHelper.register(registry, AMEJEIRecipeType.SPS_RECIPE,
+                AMEMachines.COMPACT_SPS,
+                AMEMachines.ENCHANTED_SPS,
                 AMEMachines.ASTRAL_SPS);
         CatalystRegistryHelper.register(registry, MekanismJEIRecipeType.INFUSION_CONVERSION,
                 AMEMachines.INFUSE_SYNTHESIZER);
@@ -270,7 +275,9 @@ public class AMEJEIPlugin implements IModPlugin {
         CatalystRegistryHelper.register(registry, EMJEI.APT,
                 AMEMachines.COMPACT_APT,
                 AMEMachines.ASTRAL_APT);
-        CatalystRegistryHelper.register(registry, EMJEI.ALLOYING, AMEMachines.ASTRAL_ALLOYER);
+        CatalystRegistryHelper.register(registry, EMJEI.ALLOYING,
+            AMEMachines.ENCHANTED_ALLOYER,
+            AMEMachines.ASTRAL_ALLOYER);
         CatalystRegistryHelper.register(registry, EMJEI.CHEMIXING, AMEMachines.ENCHANTED_CHEMIXER,
                 AMEMachines.ASTRAL_CHEMIXER);
         CatalystRegistryHelper.register(registry, EMJEI.MELTING,
