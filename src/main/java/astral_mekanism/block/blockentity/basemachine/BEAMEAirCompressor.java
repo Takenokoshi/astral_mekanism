@@ -81,7 +81,7 @@ public class BEAMEAirCompressor extends TileEntityConfigurableMachine implements
         configComponent.setupOutputConfig(TransmissionType.GAS, gasTank);
         configComponent.setupInputConfig(TransmissionType.ENERGY, energyContainer);
 
-        ejectorComponent = new TileComponentEjector(this);
+        ejectorComponent = new TileComponentEjector(this,() -> 0x7fffffffffffffffl);
         ejectorComponent.setOutputData(configComponent, TransmissionType.ITEM)
                 .setCanEject(type -> MekanismUtils.canFunction(this));
         ejectorComponent.setOutputData(configComponent, TransmissionType.GAS)

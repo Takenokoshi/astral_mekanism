@@ -98,7 +98,7 @@ public abstract class BEAMEDissolutionChamber extends TileEntityRecipeMachine<Ch
         configComponent.setupOutputConfig(TransmissionType.SLURRY, outputTank.getSlurryTank(), RelativeSide.RIGHT);
         configComponent.setupInputConfig(TransmissionType.ENERGY, energyContainer);
 
-        ejectorComponent = new TileComponentEjector(this);
+        ejectorComponent = new TileComponentEjector(this,() -> 0x7fffffffffffffffl);
         ejectorComponent
                 .setOutputData(configComponent, TransmissionType.ITEM, TransmissionType.GAS, TransmissionType.INFUSION,
                         TransmissionType.PIGMENT,

@@ -127,7 +127,7 @@ public abstract class BEAMERotaryCondensentrator extends TileEntityRecipeMachine
         configComponent.setupIOConfig(TransmissionType.FLUID, fluidTank, RelativeSide.RIGHT, true).setEjecting(true);
         configComponent.setupInputConfig(TransmissionType.ENERGY, energyContainer);
 
-        ejectorComponent = new TileComponentEjector(this, () -> 0x7fffffff, () -> 0x7fffffff);
+        ejectorComponent = new TileComponentEjector(this,() -> 0x7fffffffffffffffl, () -> 0x7fffffff);
         ejectorComponent
                 .setOutputData(configComponent, TransmissionType.ITEM, TransmissionType.GAS, TransmissionType.FLUID)
                 .setCanEject(transmissionType -> {

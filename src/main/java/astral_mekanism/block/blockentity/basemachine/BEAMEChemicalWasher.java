@@ -109,7 +109,7 @@ public abstract class BEAMEChemicalWasher extends TileEntityRecipeMachine<FluidS
         configComponent.setupInputConfig(TransmissionType.FLUID, fluidTank);
         configComponent.setupInputConfig(TransmissionType.ENERGY, energyContainer);
 
-        ejectorComponent = new TileComponentEjector(this, () -> Long.MAX_VALUE);
+        ejectorComponent = new TileComponentEjector(this, () -> Long.MAX_VALUE, () -> 0x7fffffff);
         ejectorComponent.setOutputData(configComponent, TransmissionType.ITEM, TransmissionType.SLURRY)
                 .setCanTankEject(tank -> tank != inputTank);
 

@@ -91,7 +91,7 @@ public abstract class BEAMEMelter extends TileEntityRecipeMachine<ItemStackToFlu
         configComponent.setupOutputConfig(TransmissionType.FLUID, fluidTank, RelativeSide.RIGHT);
         configComponent.setupInputConfig(TransmissionType.HEAT, heatCapacitor);
 
-        ejectorComponent = new TileComponentEjector(this);
+        ejectorComponent = new TileComponentEjector(this,()->0,()->0x7fffffff);
         ejectorComponent.setOutputData(configComponent, TransmissionType.FLUID);
 
         inputHandler = InputHelper.getInputHandler(inputSlot, RecipeError.NOT_ENOUGH_INPUT);

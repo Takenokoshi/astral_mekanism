@@ -131,7 +131,7 @@ public abstract class BEAMEChemicalInfuser extends TileEntityRecipeMachine<Chemi
 
         configComponent.setupInputConfig(TransmissionType.ENERGY, energyContainer);
 
-        ejectorComponent = new TileComponentEjector(this);
+        ejectorComponent = new TileComponentEjector(this, () -> 0x7fffffffffffffffl);
         ejectorComponent.setOutputData(configComponent, TransmissionType.ITEM, TransmissionType.GAS)
                 .setCanTankEject(tank -> tank == centerTank);
 
