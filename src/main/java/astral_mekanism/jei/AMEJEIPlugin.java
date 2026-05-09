@@ -234,6 +234,7 @@ public class AMEJEIPlugin implements IModPlugin {
                 AMEMachines.ENCHANTED_PRC,
                 AMEMachines.ASTRAL_PRC);
         CatalystRegistryHelper.register(registry, MekanismJEIRecipeType.SAWING,
+                AMEMachines.ENCHANTED_PRECISION_SAWMILL,
                 AMEMachines.ASTRAL_PRECISION_SAWMILL);
         CatalystRegistryHelper.registerRecipeItem(registry, AMEMachines.ENCHANTED_ROTARY_CONDENSENTRATOR,
                 MekanismJEIRecipeType.CONDENSENTRATING, MekanismJEIRecipeType.DECONDENSENTRATING);
@@ -284,6 +285,7 @@ public class AMEJEIPlugin implements IModPlugin {
                 AMEMachines.ASTRAL_THERMALIZER,
                 AMEMachines.ENCHANTED_MELTER);
         CatalystRegistryHelper.register(registry, EMJEI.SOLIDIFICATION,
+                AMEMachines.ENCHANTED_SOLIDIFIER,
                 AMEMachines.ASTRAL_SOLIDIFICATION_CHAMBER);
 
         // mekanism extras
@@ -300,6 +302,7 @@ public class AMEJEIPlugin implements IModPlugin {
 
         // mekanism elements
         CatalystRegistryHelper.register(registry, MSJEIRecipeType.RADIATION_IRRADIATOR,
+                AMEMachines.ENCHANTED_RADIATION_IRRADIATOR,
                 AMEMachines.ASTRAL_RADIATION_IRRADIATOR);
         CatalystRegistryHelper.register(registry, MSJEIRecipeType.ADSORPTION_SEPARATOR,
                 AMEMachines.ENCHANTED_ADSORPTION_SEPARATOR);

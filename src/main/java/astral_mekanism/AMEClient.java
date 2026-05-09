@@ -28,9 +28,12 @@ import astral_mekanism.block.blockentity.astralmachine.BEAstralMekanicalInscribe
 import astral_mekanism.block.blockentity.astralmachine.BEAstralMelter;
 import astral_mekanism.block.blockentity.astralmachine.BEAstralMetallurgicInfuser;
 import astral_mekanism.block.blockentity.astralmachine.BEAstralPRC;
+import astral_mekanism.block.blockentity.astralmachine.BEAstralPrecisionSawmill;
+import astral_mekanism.block.blockentity.astralmachine.BEAstralRadiationIrradiator;
 import astral_mekanism.block.blockentity.astralmachine.BEAstralReactionChamber;
 import astral_mekanism.block.blockentity.astralmachine.BEAstralRotaryCondensentrator;
 import astral_mekanism.block.blockentity.astralmachine.BEAstralSPS;
+import astral_mekanism.block.blockentity.astralmachine.BEAstralSolidifier;
 import astral_mekanism.block.blockentity.astralmachine.BEAstralTransformer;
 import astral_mekanism.block.blockentity.astralmachine.advanced.BEAstralChemicalInjectionChamber;
 import astral_mekanism.block.blockentity.astralmachine.advanced.BEAstralOsmiumCompressor;
@@ -55,9 +58,6 @@ import astral_mekanism.block.blockentity.storage.BEUniversalStorage;
 import astral_mekanism.block.container.other.ContainerItemSortableStorage;
 import astral_mekanism.block.container.prefab.ContainerAbstractStorage;
 import astral_mekanism.block.gui.appliedmachine.*;
-import astral_mekanism.block.gui.astralmachine.GuiAstralPrecisionSawmill;
-import astral_mekanism.block.gui.astralmachine.GuiAstralRadiationIrradiator;
-import astral_mekanism.block.gui.astralmachine.GuiAstralSolidifier;
 import astral_mekanism.block.gui.basemachine.*;
 import astral_mekanism.block.gui.compact.*;
 import astral_mekanism.block.gui.factory.GuiEnergizedSmeltingFactory;
@@ -173,14 +173,15 @@ public class AMEClient extends AstralMekanism {
         registerScreenMek(AMEMachines.ASTRAL_METALLURGIC_INFUSER,
                 GuiAMEMetallurgicInfuser<BEAstralMetallurgicInfuser>::new);
         registerScreenMek(AMEMachines.ASTRAL_PRC, GuiAMEPRC<BEAstralPRC>::new);
-        registerScreenMek(AMEMachines.ASTRAL_PRECISION_SAWMILL, GuiAstralPrecisionSawmill::new);
-        registerScreenMek(AMEMachines.ASTRAL_RADIATION_IRRADIATOR, GuiAstralRadiationIrradiator::new);
+        registerScreenMek(AMEMachines.ASTRAL_PRECISION_SAWMILL, GuiAMEPrecisionSawmill<BEAstralPrecisionSawmill>::new);
+        registerScreenMek(AMEMachines.ASTRAL_RADIATION_IRRADIATOR,
+                GuiAMERadiationIrradiator<BEAstralRadiationIrradiator>::new);
         registerScreenMek(AMEMachines.ASTRAL_REACTION_CHAMBER,
                 GuiAAEReactionChamber<BEAstralReactionChamber>::new);
         registerScreenMek(AMEMachines.ASTRAL_ROTARY_CONDENSENTRATOR,
                 GuiAMERotaryCondensentrator<BEAstralRotaryCondensentrator>::new);
         registerScreenMek(AMEMachines.ASTRAL_SPS, GuiGasToGasMachine<BEAstralSPS>::new);
-        registerScreenMek(AMEMachines.ASTRAL_SOLIDIFICATION_CHAMBER, GuiAstralSolidifier::new);
+        registerScreenMek(AMEMachines.ASTRAL_SOLIDIFICATION_CHAMBER, GuiAMESolidifier<BEAstralSolidifier>::new);
         registerScreenMek(AMEMachines.ASTRAL_TRANSFORMER, GuiTransformer<BEAstralTransformer>::new);
         registerScreenMek(AMEMachines.COMPACT_APT, GuiCompactAPT<BECompactAPT>::new);
         AMEMachines.COMPACT_FIR
@@ -231,8 +232,13 @@ public class AMEClient extends AstralMekanism {
         registerScreenMek(AMEMachines.ENCHANTED_PAINTING_MACHINE,
                 GuiAMEPaintingMachine<BEEnchantedPaintingMachine>::new);
         registerScreenMek(AMEMachines.ENCHANTED_PRC, GuiAMEPRC<BEEnchantedPRC>::new);
+        registerScreenMek(AMEMachines.ENCHANTED_PRECISION_SAWMILL,
+                GuiAMEPrecisionSawmill<BEEnchantedPrecisionSawmill>::new);
+        registerScreenMek(AMEMachines.ENCHANTED_RADIATION_IRRADIATOR,
+                GuiAMERadiationIrradiator<BEEnchantedRadiationIrradiator>::new);
         registerScreenMek(AMEMachines.ENCHANTED_ROTARY_CONDENSENTRATOR,
                 GuiAMERotaryCondensentrator<BEEnchantedRotaryCondensentrator>::new);
+        registerScreenMek(AMEMachines.ENCHANTED_SOLIDIFIER, GuiAMESolidifier<BEEnchantedSolidifier>::new);
         registerScreenMek(AMEMachines.APPLIED_GAS_BURNING_GENERATOR, GuiAppliedGasBurningGenerator::new);
         AMEMachines.GAS_BURNING_GENERATORS
                 .forEach((t, m) -> registerScreenMek(m, GuiGasBurningGenerator::new));

@@ -1,8 +1,9 @@
-package astral_mekanism.block.gui.astralmachine;
+package astral_mekanism.block.gui.basemachine;
 
 import org.jetbrains.annotations.NotNull;
 
 import astral_mekanism.block.blockentity.astralmachine.BEAstralPrecisionSawmill;
+import astral_mekanism.block.blockentity.basemachine.BEAMEPrecisionSawmill;
 import mekanism.api.recipes.cache.CachedRecipe.OperationTracker.RecipeError;
 import mekanism.client.gui.GuiConfigurableTile;
 import mekanism.client.gui.element.GuiUpArrow;
@@ -19,10 +20,10 @@ import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.player.Inventory;
 
-public class GuiAstralPrecisionSawmill
-        extends GuiConfigurableTile<BEAstralPrecisionSawmill, MekanismTileContainer<BEAstralPrecisionSawmill>> {
+public class GuiAMEPrecisionSawmill<BE extends BEAMEPrecisionSawmill>
+        extends GuiConfigurableTile<BE, MekanismTileContainer<BE>> {
 
-    public GuiAstralPrecisionSawmill(MekanismTileContainer<BEAstralPrecisionSawmill> container, Inventory inv,
+    public GuiAMEPrecisionSawmill(MekanismTileContainer<BE> container, Inventory inv,
             Component title) {
         super(container, inv, title);
         dynamicSlots = true;

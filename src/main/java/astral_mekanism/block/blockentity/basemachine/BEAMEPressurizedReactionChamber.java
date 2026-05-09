@@ -112,11 +112,11 @@ public abstract class BEAMEPressurizedReactionChamber extends TileEntityRecipeMa
             IContentsListener recipeCacheListener) {
         ChemicalTankHelper<Gas, GasStack, IGasTank> builder = ChemicalTankHelper
                 .forSideGasWithConfig(this::getDirection, this::getConfig);
-        builder.addTank(inputGasTank = ChemicalTankBuilder.GAS.create(Long.MAX_VALUE, createInputGasTank(
+        builder.addTank(inputGasTank = createInputGasTank(
                 ChemicalTankHelper.radioactiveInputTankPredicate(() -> outputGasTank),
                 (gas, automationType) -> containsRecipeCAB(inputSlot.getStack(), inputFluidTank.getFluid(), gas),
                 this::containsRecipeC,
-                ChemicalAttributeValidator.ALWAYS_ALLOW, recipeCacheListener)));
+                ChemicalAttributeValidator.ALWAYS_ALLOW, recipeCacheListener));
         builder.addTank(outputGasTank = ChemicalTankBuilder.GAS.output(Long.MAX_VALUE, listener));
         return builder.build();
     }

@@ -1,8 +1,9 @@
-package astral_mekanism.block.gui.astralmachine;
+package astral_mekanism.block.gui.basemachine;
 
 import org.jetbrains.annotations.NotNull;
 
 import astral_mekanism.block.blockentity.astralmachine.BEAstralSolidifier;
+import astral_mekanism.block.blockentity.basemachine.BEAMESolidifier;
 import fr.iglee42.evolvedmekanism.jei.EMJEI;
 import mekanism.api.recipes.cache.CachedRecipe.OperationTracker.RecipeError;
 import mekanism.client.gui.GuiConfigurableTile;
@@ -18,10 +19,10 @@ import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.player.Inventory;
 
-public class GuiAstralSolidifier
-        extends GuiConfigurableTile<BEAstralSolidifier, MekanismTileContainer<BEAstralSolidifier>> {
+public class GuiAMESolidifier<BE extends BEAMESolidifier>
+        extends GuiConfigurableTile<BE, MekanismTileContainer<BE>> {
 
-    public GuiAstralSolidifier(MekanismTileContainer<BEAstralSolidifier> container, Inventory inv, Component title) {
+    public GuiAMESolidifier(MekanismTileContainer<BE> container, Inventory inv, Component title) {
         super(container, inv, title);
         dynamicSlots = true;
     }

@@ -87,8 +87,11 @@ import astral_mekanism.block.blockentity.enchantedmachine.BEEnchantedMelter;
 import astral_mekanism.block.blockentity.enchantedmachine.BEEnchantedMetallurgicInfuser;
 import astral_mekanism.block.blockentity.enchantedmachine.BEEnchantedPRC;
 import astral_mekanism.block.blockentity.enchantedmachine.BEEnchantedPaintingMachine;
+import astral_mekanism.block.blockentity.enchantedmachine.BEEnchantedPrecisionSawmill;
+import astral_mekanism.block.blockentity.enchantedmachine.BEEnchantedRadiationIrradiator;
 import astral_mekanism.block.blockentity.enchantedmachine.BEEnchantedRotaryCondensentrator;
 import astral_mekanism.block.blockentity.enchantedmachine.BEEnchantedSPS;
+import astral_mekanism.block.blockentity.enchantedmachine.BEEnchantedSolidifier;
 import astral_mekanism.block.blockentity.enchantedmachine.advanced.BEEnchantedChemicalInjectionChamber;
 import astral_mekanism.block.blockentity.enchantedmachine.advanced.BEEnchantedOsmiumCompressor;
 import astral_mekanism.block.blockentity.enchantedmachine.advanced.BEEnchantedPurificationChamber;
@@ -1162,6 +1165,35 @@ public class AMEMachines {
                                             ExtraUpgrade.STACK))
                             .withSound(MekanismSounds.PRESSURIZED_REACTION_CHAMBER));
 
+    public static final MachineRegistryObject<BEEnchantedPrecisionSawmill, BlockTileModel<BEEnchantedPrecisionSawmill, BlockTypeMachine<BEEnchantedPrecisionSawmill>>, MekanismTileContainer<BEEnchantedPrecisionSawmill>, ItemBlockMachine> ENCHANTED_PRECISION_SAWMILL = MACHINES
+            .registerSimple("enchanted_precision_sawmill",
+                    BEEnchantedPrecisionSawmill::new,
+                    BEEnchantedPrecisionSawmill.class,
+                    AMELang.ITEM_GROUP,
+                    builder -> builder
+                            .withEnergyConfig(MekanismConfig.usage.precisionSawmill,
+                                    () -> MekanismConfig.storage.precisionSawmill.get().multiply(25600))
+                            .changeAttributeUpgrade(
+                                    EnumSet.of(Upgrade.MUFFLING, Upgrade.ENERGY, Upgrade.SPEED,
+                                            AMEUpgrade.COBBLESTONE_SUPPLY.getValue(),
+                                            ExtraUpgrade.STACK))
+                            .withSound(MekanismSounds.PRECISION_SAWMILL));
+
+    public static final MachineRegistryObject<BEEnchantedRadiationIrradiator, BlockTileModel<BEEnchantedRadiationIrradiator, BlockTypeMachine<BEEnchantedRadiationIrradiator>>, MekanismTileContainer<BEEnchantedRadiationIrradiator>, ItemBlockMachine> ENCHANTED_RADIATION_IRRADIATOR = MACHINES
+            .registerSimple("enchanted_radiation_irradiator",
+                    BEEnchantedRadiationIrradiator::new,
+                    BEEnchantedRadiationIrradiator.class,
+                    AMELang.ITEM_GROUP,
+                    builder -> builder
+                            .withEnergyConfig(MSConfig.usageConfig.radiationIrradiator,
+                                    () -> MSConfig.storageConfig.radiationIrradiator.get().multiply(25600))
+                            .changeAttributeUpgrade(
+                                    EnumSet.of(Upgrade.ENERGY, Upgrade.SPEED,
+                                            AMEUpgrade.AIR_INTAKE.getValue(),
+                                            AMEUpgrade.COBBLESTONE_SUPPLY.getValue(),
+                                            AMEUpgrade.RADIOACTIVE_SEALING.getValue(),
+                                            ExtraUpgrade.STACK)));
+
     public static final MachineRegistryObject<BEEnchantedRotaryCondensentrator, BlockTileModel<BEEnchantedRotaryCondensentrator, BlockTypeMachine<BEEnchantedRotaryCondensentrator>>, MekanismTileContainer<BEEnchantedRotaryCondensentrator>, ItemBlockMachine> ENCHANTED_ROTARY_CONDENSENTRATOR = MACHINES
             .registerSimple("enchanted_rotary_condensentrator",
                     BEEnchantedRotaryCondensentrator::new,
@@ -1177,6 +1209,21 @@ public class AMEMachines {
                                             AMEUpgrade.RADIOACTIVE_SEALING.getValue(),
                                             ExtraUpgrade.STACK))
                             .withSound(MekanismSounds.ROTARY_CONDENSENTRATOR));
+
+    public static final MachineRegistryObject<BEEnchantedSolidifier, BlockTileModel<BEEnchantedSolidifier, BlockTypeMachine<BEEnchantedSolidifier>>, MekanismTileContainer<BEEnchantedSolidifier>, ItemBlockMachine> ENCHANTED_SOLIDIFIER = MACHINES
+            .registerSimple("enchanted_solidification_chamber",
+                    BEEnchantedSolidifier::new,
+                    BEEnchantedSolidifier.class,
+                    AMELang.ITEM_GROUP,
+                    builder -> builder
+                            .withEnergyConfig(MekanismConfig.usage.pressurizedReactionBase,
+                                    () -> MekanismConfig.storage.pressurizedReactionBase.get().multiply(25600))
+                            .changeAttributeUpgrade(
+                                    EnumSet.of(Upgrade.MUFFLING, Upgrade.ENERGY, Upgrade.SPEED,
+                                            AMEUpgrade.COBBLESTONE_SUPPLY.getValue(),
+                                            AMEUpgrade.WATER_SUPPLY.getValue(),
+                                            ExtraUpgrade.STACK))
+                            .withSound(MekanismSounds.PRESSURIZED_REACTION_CHAMBER));
 
     public static final MachineRegistryObject<BEAppliedGasBurningGenerator, BlockTileModel<BEAppliedGasBurningGenerator, BlockTypeMachine<BEAppliedGasBurningGenerator>>, MekanismTileContainer<BEAppliedGasBurningGenerator>, ItemBlockMachine> APPLIED_GAS_BURNING_GENERATOR = MACHINES
             .registerSimple("applied_gas_burning_generator",

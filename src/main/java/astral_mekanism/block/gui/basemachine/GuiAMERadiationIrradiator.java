@@ -1,10 +1,10 @@
-package astral_mekanism.block.gui.astralmachine;
+package astral_mekanism.block.gui.basemachine;
 
 import org.jetbrains.annotations.NotNull;
 
 import com.fxd927.mekanismelements.client.MSJEIRecipeType;
 
-import astral_mekanism.block.blockentity.astralmachine.BEAstralRadiationIrradiator;
+import astral_mekanism.block.blockentity.basemachine.BEAMERadiationIrradiator;
 import mekanism.api.recipes.cache.CachedRecipe;
 import mekanism.client.gui.GuiConfigurableTile;
 import mekanism.client.gui.element.bar.GuiHorizontalPowerBar;
@@ -20,10 +20,10 @@ import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.player.Inventory;
 
-public class GuiAstralRadiationIrradiator
-        extends GuiConfigurableTile<BEAstralRadiationIrradiator, MekanismTileContainer<BEAstralRadiationIrradiator>> {
+public class GuiAMERadiationIrradiator<BE extends BEAMERadiationIrradiator>
+        extends GuiConfigurableTile<BE, MekanismTileContainer<BE>> {
 
-    public GuiAstralRadiationIrradiator(MekanismTileContainer<BEAstralRadiationIrradiator> container, Inventory inv,
+    public GuiAMERadiationIrradiator(MekanismTileContainer<BE> container, Inventory inv,
             Component title) {
         super(container, inv, title);
         dynamicSlots = true;
