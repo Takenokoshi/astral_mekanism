@@ -35,7 +35,7 @@ public class BEEnchantedPurificationChamber extends BEAMEAdvancedMachine {
 
     @Override
     public @NotNull IMekanismRecipeTypeProvider<ItemStackGasToItemStackRecipe, ItemChemical<Gas, GasStack, ItemStackGasToItemStackRecipe>> getRecipeType() {
-        return MekanismRecipeType.INJECTING;
+        return MekanismRecipeType.PURIFYING;
     }
 
     @Override
