@@ -212,6 +212,7 @@ public class AMEClient extends AstralMekanism {
                 GuiAMEChemicalInfuser<BEEnchantedChemicalInfuser>::new);
         registerScreenMek(AMEMachines.ENCHANTED_CHEMICAL_OXIDIZER,
                 GuiAMEChemicalOxider<BEEnchantedChemicalOxidizer>::new);
+        registerScreenMek(AMEMachines.ENCHANTED_CHEMICAL_WASHER, GuiAMEChemicalWasher<BEEnchantedChemicalWasher>::new);
         registerScreenMek(AMEMachines.ENCHANTED_CHEMIXER, GuiAMEChemixer<BEEnchantedChemixer>::new);
         registerScreenMek(AMEMachines.ENCHANTED_CRYSTALLIZER, GuiAMECrystallizer<BEEnchantedCrystallizer>::new);
         registerScreenMek(AMEMachines.ENCHANTED_DISSOLUTION_CHAMBER,
