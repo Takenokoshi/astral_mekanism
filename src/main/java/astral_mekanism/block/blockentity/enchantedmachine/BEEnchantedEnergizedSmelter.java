@@ -12,7 +12,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.block.state.BlockState;
 
 public class BEEnchantedEnergizedSmelter extends BETickWorkEnergizedSmelter<BEEnchantedEnergizedSmelter> {
-    private int baselineMaxOperations = 200;
+    private int baselineMaxOperations = 1;
 
     public BEEnchantedEnergizedSmelter(IBlockProvider blockProvider, BlockPos pos, BlockState state) {
         super(blockProvider, pos, state);
@@ -34,11 +34,11 @@ public class BEEnchantedEnergizedSmelter extends BETickWorkEnergizedSmelter<BEEn
         super.recalculateUpgrades(upgrade);
         if (AMEEmpowered.empoweredIsLoaded()) {
             if (AMEEmpowered.isEmpoweredSpeed(upgrade) || upgrade == Upgrade.SPEED || upgrade == ExtraUpgrade.STACK) {
-                baselineMaxOperations = 200 * ((1 << upgradeComponent.getUpgrades(Upgrade.SPEED)) + (2 << AMEEmpowered
+                baselineMaxOperations = 1 * ((1 << upgradeComponent.getUpgrades(Upgrade.SPEED)) + (2 << AMEEmpowered
                         .getEmpoweredSpeeds(this))) << upgradeComponent.getUpgrades(ExtraUpgrade.STACK);
             }
         } else if (upgrade == Upgrade.SPEED || upgrade == ExtraUpgrade.STACK) {
-            baselineMaxOperations = 200 << (upgradeComponent.getUpgrades(Upgrade.SPEED)
+            baselineMaxOperations = 1 << (upgradeComponent.getUpgrades(Upgrade.SPEED)
                     + upgradeComponent.getUpgrades(ExtraUpgrade.STACK));
         }
     }

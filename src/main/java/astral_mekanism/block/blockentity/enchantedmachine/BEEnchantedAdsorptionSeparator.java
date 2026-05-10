@@ -17,8 +17,8 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.block.state.BlockState;
 
 public class BEEnchantedAdsorptionSeparator extends BEAMEAdsorptionSeparator {
-    private int baselineMaxOperations = 200;
-    private int inputTankCapacity = 200 * 5000;
+    private int baselineMaxOperations = 1;
+    private int inputTankCapacity = 1 * 5000;
 
     public BEEnchantedAdsorptionSeparator(IBlockProvider blockProvider, BlockPos pos, BlockState state) {
         super(blockProvider, pos, state);
@@ -41,11 +41,11 @@ public class BEEnchantedAdsorptionSeparator extends BEAMEAdsorptionSeparator {
         super.recalculateUpgrades(upgrade);
         if (AMEEmpowered.empoweredIsLoaded()) {
             if (AMEEmpowered.isEmpoweredSpeed(upgrade) || upgrade == Upgrade.SPEED || upgrade == ExtraUpgrade.STACK) {
-                baselineMaxOperations = 200 * ((1 << upgradeComponent.getUpgrades(Upgrade.SPEED)) + (2 << AMEEmpowered
+                baselineMaxOperations = 1 * ((1 << upgradeComponent.getUpgrades(Upgrade.SPEED)) + (2 << AMEEmpowered
                         .getEmpoweredSpeeds(this))) << upgradeComponent.getUpgrades(ExtraUpgrade.STACK);
             }
         } else if (upgrade == Upgrade.SPEED || upgrade == ExtraUpgrade.STACK) {
-            baselineMaxOperations = 200 << (upgradeComponent.getUpgrades(Upgrade.SPEED)
+            baselineMaxOperations = 1 << (upgradeComponent.getUpgrades(Upgrade.SPEED)
                     + upgradeComponent.getUpgrades(ExtraUpgrade.STACK));
         }
         inputTankCapacity = MathUtils.clampToInt(5000l * baselineMaxOperations);

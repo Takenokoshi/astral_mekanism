@@ -176,7 +176,7 @@ description='''${mod_description}'''
 [[dependencies.${mod_id}]]
     modId="mekanism_empowered"
     mandatory=false
-    versionRange="[20.1.1.2.2,)"
+    versionRange="[20.1,)"
     ordering="AFTER"
     side="BOTH"
 [[dependencies.${mod_id}]]

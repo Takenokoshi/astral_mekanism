@@ -24,8 +24,8 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.block.state.BlockState;
 
 public class BEEnchantedChemixer extends BEAMEChemixer {
-    int baselineMaxOperations = 400;
-    private long gasTankCapacity = 400 * 5000;
+    int baselineMaxOperations = 2;
+    private long gasTankCapacity = 2 * 5000;
 
     public BEEnchantedChemixer(IBlockProvider blockProvider, BlockPos pos, BlockState state) {
         super(blockProvider, pos, state);
@@ -48,11 +48,11 @@ public class BEEnchantedChemixer extends BEAMEChemixer {
         super.recalculateUpgrades(upgrade);
         if (AMEEmpowered.empoweredIsLoaded()) {
             if (AMEEmpowered.isEmpoweredSpeed(upgrade) || upgrade == Upgrade.SPEED || upgrade == ExtraUpgrade.STACK) {
-                baselineMaxOperations = 400 * ((1 << upgradeComponent.getUpgrades(Upgrade.SPEED)) + (2 << AMEEmpowered
+                baselineMaxOperations = 2 * ((1 << upgradeComponent.getUpgrades(Upgrade.SPEED)) + (2 << AMEEmpowered
                         .getEmpoweredSpeeds(this))) << upgradeComponent.getUpgrades(ExtraUpgrade.STACK);
             }
         } else if (upgrade == Upgrade.SPEED || upgrade == ExtraUpgrade.STACK) {
-            baselineMaxOperations = 400 << (upgradeComponent.getUpgrades(Upgrade.SPEED)
+            baselineMaxOperations = 2 << (upgradeComponent.getUpgrades(Upgrade.SPEED)
                     + upgradeComponent.getUpgrades(ExtraUpgrade.STACK));
         }
         gasTankCapacity = 5000l * baselineMaxOperations;

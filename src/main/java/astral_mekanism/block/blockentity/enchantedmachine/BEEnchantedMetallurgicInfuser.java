@@ -24,8 +24,8 @@ import net.minecraft.world.level.block.state.BlockState;
 
 public class BEEnchantedMetallurgicInfuser extends BEAMEMetallurgicInfuser {
 
-    private int baselineMaxOperations = 200;
-    private long tankCapacity = 200 * 10000000;
+    private int baselineMaxOperations = 1;
+    private long tankCapacity = 1 * 10000000;
 
     public BEEnchantedMetallurgicInfuser(IBlockProvider blockProvider, BlockPos pos, BlockState state) {
         super(blockProvider, pos, state);
@@ -48,11 +48,11 @@ public class BEEnchantedMetallurgicInfuser extends BEAMEMetallurgicInfuser {
         super.recalculateUpgrades(upgrade);
         if (AMEEmpowered.empoweredIsLoaded()) {
             if (AMEEmpowered.isEmpoweredSpeed(upgrade) || upgrade == Upgrade.SPEED || upgrade == ExtraUpgrade.STACK) {
-                baselineMaxOperations = 200 * ((1 << upgradeComponent.getUpgrades(Upgrade.SPEED)) + (2 << AMEEmpowered
+                baselineMaxOperations = 1 * ((1 << upgradeComponent.getUpgrades(Upgrade.SPEED)) + (2 << AMEEmpowered
                         .getEmpoweredSpeeds(this))) << upgradeComponent.getUpgrades(ExtraUpgrade.STACK);
             }
         } else if (upgrade == Upgrade.SPEED || upgrade == ExtraUpgrade.STACK) {
-            baselineMaxOperations = 200 << (upgradeComponent.getUpgrades(Upgrade.SPEED)
+            baselineMaxOperations = 1 << (upgradeComponent.getUpgrades(Upgrade.SPEED)
                     + upgradeComponent.getUpgrades(ExtraUpgrade.STACK));
         }
         tankCapacity = 10000000l * baselineMaxOperations;
