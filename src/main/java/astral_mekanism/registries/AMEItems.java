@@ -3,6 +3,9 @@ package astral_mekanism.registries;
 import java.util.EnumMap;
 import java.util.function.Supplier;
 
+import appeng.api.parts.PartModels;
+import appeng.items.parts.PartItem;
+import appeng.items.parts.PartModelsHelper;
 import astral_mekanism.AMEConstants;
 import astral_mekanism.enums.AMEUpgrade;
 import astral_mekanism.item.DegitalMinerFilterToolItem;
@@ -17,6 +20,7 @@ import astral_mekanism.item.recipecard.FluidIngredientCardItem;
 import astral_mekanism.item.recipecard.FuelCardItem;
 import astral_mekanism.item.recipecard.GasIngredientCardItem;
 import astral_mekanism.item.recipecard.ItemIngredientCardItem;
+import astral_mekanism.part.PhotonAnnihilationPlanePart;
 import astral_mekanism.registryenum.AMEProcessableMaterialType;
 import astral_mekanism.registryenum.AMEProcessingItemStates;
 import mekanism.api.Upgrade;
@@ -166,6 +170,13 @@ public class AMEItems {
             "bulk_chemical_cell", AMEBulkCellItem::createChemical);
     public static final ItemRegistryObject<InfinityPigmentCellItem> INFINITY_PIGMENT_CELL = ITEMS.register(
             "infinity_pigment_cell", InfinityPigmentCellItem::new);
+
+    public static final ItemRegistryObject<PartItem<PhotonAnnihilationPlanePart>> PHOTON_ANNIHILATION_PLANE = ITEMS
+            .register(
+                    "photon_annihilation_plane", p -> {
+                        PartModels.registerModels(PartModelsHelper.createModels(PhotonAnnihilationPlanePart.class));
+                        return new PartItem<>(p, PhotonAnnihilationPlanePart.class, PhotonAnnihilationPlanePart::new);
+                    });
 
     public static final EnumMap<AMEProcessableMaterialType, EnumMap<AMEProcessingItemStates, ItemRegistryObject<?>>> AME_MATERIAL_PROCESSING_ITEMS = createMaterialProcessItemMap();
 

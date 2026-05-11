@@ -409,6 +409,8 @@ public class AstralMekanismJapaneseLangProvider extends LanguageProvider {
         result.put("coolant", "冷媒");
         result.put("infinity", "無限");
         result.put("pigment", "顔料");
+        result.put("annihilation", "消滅");
+        result.put("plane", "プレーン");
         return result;
     }).get();
 

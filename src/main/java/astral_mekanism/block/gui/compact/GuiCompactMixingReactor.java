@@ -11,6 +11,7 @@ import astral_mekanism.network.to_server.PacketGuiSetLong;
 import mekanism.api.text.EnumColor;
 import mekanism.client.gui.GuiConfigurableTile;
 import mekanism.client.gui.element.GuiInnerScreen;
+import mekanism.client.gui.element.bar.GuiHorizontalPowerBar;
 import mekanism.client.gui.element.gauge.GaugeType;
 import mekanism.client.gui.element.gauge.GuiFluidGauge;
 import mekanism.client.gui.element.gauge.GuiGasGauge;
@@ -43,6 +44,7 @@ public class GuiCompactMixingReactor<BE extends BECompactMixingReactor>
     @Override
     protected void addGuiElements() {
         super.addGuiElements();
+        addRenderableWidget(new GuiHorizontalPowerBar(this, tile.getEnergyContainer(), 115, 75));
         addRenderableWidget(new GuiGasGauge(tile::getLeftFuelTank, () -> tile.getGasTanks(null),
                 GaugeType.STANDARD, this, 7, 4))
                 .setLabel(AMELang.LABEL_LEFT_FUEL.translateColored(EnumColor.RED));

@@ -1,0 +1,26 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "QLQ",
+        "PAP",
+        "QLQ"
+    ],
+    "key": {
+        "Q": {
+            "item": "ae2:annihilation_plane"
+        },
+        "L": {
+            "item": "astral_mekanism:astral_glowstone_ingot"
+        },
+        "P": {
+            "item": "astral_mekanism:photon_processor"
+        },
+        "A": {
+            "item": "ae2:annihilation_core"
+        }
+    },
+    "result": {
+        "item": "astral_mekanism:photon_annihilation_plane",
+        "count": 1
+    }
+}
