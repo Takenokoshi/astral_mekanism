@@ -50,6 +50,13 @@ public class GeneralRecipeType<C extends Container, RECIPE extends Recipe<C>, IN
         this.inputCache = function.apply(this);
     }
 
+    public GeneralRecipeType(RecipeType<RECIPE> recipeType, ResourceLocation registryName,
+            Function<GeneralRecipeType<C, RECIPE, INPUT_CACHE>, INPUT_CACHE> function) {
+        this.recipeType = recipeType;
+        this.registryName = registryName;
+        this.inputCache = function.apply(this);
+    }
+
     @Override
     public String toString() {
         return registryName.toString();
@@ -174,7 +181,7 @@ public class GeneralRecipeType<C extends Container, RECIPE extends Recipe<C>, IN
             AMEFakeRecipeType.CROP_SOIL_FLUID, CropSoilInputRecipeCache::new);
 
     public static final GeneralRecipeType<Container, ReactionChamberRecipe, AAEReactionRecipeCache> AAE_REACTION = new GeneralRecipeType<>(
-            ReactionChamberRecipe.TYPE, AAEReactionRecipeCache::new){
+            ReactionChamberRecipe.TYPE, AAEReactionRecipeCache::new) {
         @Override
         protected boolean isNotRecipeIncomplete(ReactionChamberRecipe recipe) {
             return true;

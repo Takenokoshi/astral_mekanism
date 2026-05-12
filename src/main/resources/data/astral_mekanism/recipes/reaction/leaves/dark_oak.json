@@ -1,0 +1,33 @@
+{
+    "conditions": [
+        {
+            "type": "forge:mod_loaded",
+            "modid": "biggerstacks"
+        }
+    ],
+    "type": "mekanism:reaction",
+    "duration": 1,
+    "energyRequired": 1,
+    "fluidInput": {
+        "fluid": "astral_mekanism:antimatter_fertilizer",
+        "amount": 1
+    },
+    "gasInput": {
+        "amount": 100,
+        "gas": "astral_mekanism:utility_gas"
+    },
+    "gasOutput": {
+        "amount": 100,
+        "gas": "astral_mekanism:utility_gas"
+    },
+    "itemInput": {
+        "ingredient": {
+            "item": "minecraft:dark_oak_sapling"
+        },
+        "amount": 1
+    },
+    "itemOutput": {
+        "count": 192000,
+        "item": "minecraft:dark_oak_leaves"
+    }
+}
