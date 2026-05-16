@@ -18,7 +18,7 @@ import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.player.Inventory;
 
-public class GuiMekanicalInscriber<BE extends BlockEntityRecipeMachine<InscriberRecipe> & IMekanicalInscriber<BE>>
+public class GuiMekanicalInscriber<BE extends BlockEntityRecipeMachine<InscriberRecipe> & IMekanicalInscriber>
         extends GuiConfigurableTile<BE, MekanismTileContainer<BE>> {
 
     public GuiMekanicalInscriber(MekanismTileContainer<BE> container, Inventory inv, Component title) {

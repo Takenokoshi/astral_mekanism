@@ -9,12 +9,11 @@ import astral_mekanism.generalrecipe.lookup.cache.recipe.InscriberRecipeInputRec
 import astral_mekanism.generalrecipe.lookup.handler.IUnifiedRecipeTypedLookupHandler;
 import mekanism.api.recipes.cache.CachedRecipe.OperationTracker.RecipeError;
 import mekanism.api.recipes.inputs.IInputHandler;
-import mekanism.common.tile.base.TileEntityMekanism;
+import mekanism.common.capabilities.energy.MachineEnergyContainer;
 import net.minecraft.world.item.ItemStack;
 
-public interface IMekanicalInscriber<BE extends TileEntityMekanism & IMekanicalInscriber<BE>>
-        extends IUnifiedRecipeTypedLookupHandler<InscriberRecipe, InscriberRecipeInputRecipeCache>,
-        IEnergizedMachine<BE> {
+public interface IMekanicalInscriber
+        extends IUnifiedRecipeTypedLookupHandler<InscriberRecipe, InscriberRecipeInputRecipeCache> {
 
     public static final RecipeError NOT_ENOUGH_TOP_INPUT = RecipeError.create();
     public static final RecipeError NOT_ENOUGH_MIDDLE_INPUT = RecipeError.create();
@@ -65,4 +64,7 @@ public interface IMekanicalInscriber<BE extends TileEntityMekanism & IMekanicalI
     default IUnifiedRecipeTypeProvider<InscriberRecipe, InscriberRecipeInputRecipeCache> getRecipeType() {
         return GeneralRecipeType.INSCRIBE;
     }
+    public MachineEnergyContainer<?> getEnergyContainer();
+
+    public double getProgressScaled();
 }

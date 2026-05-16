@@ -7,6 +7,7 @@ import java.util.function.Predicate;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import astral_mekanism.recipes.output.IncomparableItemOutputHandler;
 import fr.iglee42.evolvedmekanism.interfaces.ChemixerCachedRecipe;
 import fr.iglee42.evolvedmekanism.interfaces.EMInputRecipeCache;
 import fr.iglee42.evolvedmekanism.recipes.ChemixerRecipe;
@@ -24,7 +25,6 @@ import mekanism.api.recipes.cache.CachedRecipe.OperationTracker.RecipeError;
 import mekanism.api.recipes.inputs.IInputHandler;
 import mekanism.api.recipes.inputs.InputHelper;
 import mekanism.api.recipes.outputs.IOutputHandler;
-import mekanism.api.recipes.outputs.OutputHelper;
 import mekanism.common.capabilities.energy.MachineEnergyContainer;
 import mekanism.common.capabilities.holder.chemical.ChemicalTankHelper;
 import mekanism.common.capabilities.holder.chemical.IChemicalTankHolder;
@@ -88,7 +88,7 @@ public abstract class BEAMEChemixer extends TileEntityRecipeMachine<ChemixerReci
         itemInputHandler = InputHelper.getInputHandler(mainInputSlot, NOT_ENOUGH_ITEM_INPUT_ERROR);
         extraInputHandler = InputHelper.getInputHandler(extraInputSlot, NOT_ENOUGH_SECONDARY_INPUT);
         gasInputHandler = InputHelper.getInputHandler(inputGasTank, NOT_ENOUGH_GAS_INPUT_ERROR);
-        outputHandler = OutputHelper.getOutputHandler(outputSlot, NOT_ENOUGH_SPACE_ITEM_OUTPUT_ERROR);
+        outputHandler = new IncomparableItemOutputHandler(outputSlot, NOT_ENOUGH_SPACE_ITEM_OUTPUT_ERROR);
     }
 
     @NotNull

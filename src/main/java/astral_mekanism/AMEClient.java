@@ -226,6 +226,7 @@ public class AMEClient extends AstralMekanism {
         registerScreenMek(AMEMachines.ENCHANTED_GREEN_HOUSE, GuiGreenHouse<BEEnchantedGreenHouse>::new);
         registerScreenMek(AMEMachines.ENCHANTED_ISTOPIC_CENTRIFUGE,
                 GuiGasToGasMachine<BEEnchantedIsotopicCentrifuge>::new);
+        registerScreenMek(AMEMachines.ENCHANTED_MEKANICAL_INSCRIBER, GuiMekanicalInscriber<BEEnchantedMekanicalInscriber>::new);
         registerScreenMek(AMEMachines.ENCHANTED_SPS, GuiGasToGasMachine<BEEnchantedSPS>::new);
         registerScreenMek(AMEMachines.ENCHANTED_MELTER, GuiAMEMelter<BEEnchantedMelter>::new);
         registerScreenMek(AMEMachines.ENCHANTED_METALLURGIC_INFUSER,

@@ -1,0 +1,17 @@
+{
+	"type": "mekanism:metallurgic_infusing",
+	"itemInput": {
+		"ingredient": {
+			"item":"astral_mekanism:xp_crystal"
+		},
+		"amount": 8
+	},
+	"chemicalInput": {
+		"infuse_type": "astral_mekanism:singularity",
+		"amount": 200
+	},
+	"output": {
+		"item": "astral_mekanism:alloy_convergent",
+        "count": 32
+	}
+}

@@ -6,10 +6,15 @@
         },
         "B": {
             "item": "astral_mekanism:alloy_enchanted"
+        },
+        "C": {
+            "item": "advanced_ae:quantum_processor"
         }
     },
     "pattern": [
-	"BAB"
+        "CB ",
+        "BAB",
+        " BC"
     ],
     "result": {
         "item": "astral_mekanism:enhanced_control_circuit",

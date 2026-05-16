@@ -5,7 +5,7 @@ import mekanism.common.tile.base.TileEntityMekanism;
 
 public interface IEnergizedMachine<BE extends TileEntityMekanism & IEnergizedMachine<BE>> {
 
-    public MachineEnergyContainer<BE> getEnergyContainer();
+    public MachineEnergyContainer<?> getEnergyContainer();
 
     public double getProgressScaled();
 }

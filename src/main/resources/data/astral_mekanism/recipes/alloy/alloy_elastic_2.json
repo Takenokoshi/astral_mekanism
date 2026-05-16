@@ -1,0 +1,17 @@
+{
+    "type": "mekanism:metallurgic_infusing",
+    "itemInput": {
+        "ingredient": {
+            "tag": "mekanism:crystals/tin"
+        },
+        "amount": 1
+    },
+    "chemicalInput": {
+        "infuse_type": "astral_mekanism:utility_infuse",
+        "amount": 100
+    },
+    "output": {
+        "item": "astral_mekanism:alloy_elastic",
+        "count": 32
+    }
+}

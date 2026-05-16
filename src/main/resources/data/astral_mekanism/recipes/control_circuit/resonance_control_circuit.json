@@ -6,10 +6,15 @@
         },
         "B": {
             "item": "astral_mekanism:alloy_convergent"
+        },
+        "C": {
+            "item": "megacells:accumulation_processor"
         }
     },
     "pattern": [
-	"BAB"
+        "CB ",
+        "BAB",
+        " BC"
     ],
     "result": {
         "item": "astral_mekanism:resonance_control_circuit",

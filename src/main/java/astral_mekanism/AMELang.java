@@ -7,6 +7,7 @@ public enum AMELang implements ILangEntry {
 
     DESCRIPTION_ASTRAL_MACHINE("description", "astral_machine"),
     DESCRIPTION_COMPACT_MACHINE("description", "compact_machine"),
+    DESCRIPTION_APPLIED_MACHINE("description", "applied_machine"),
     DESCRIPTION_AM_GENERATOR("description", "am_generator"),
     DESCRIPTION_ASTRAL_CRAFTER("description", "essential_crafter"),
     DESCRIPTION_FLUID_INFUSER("description", "fluid_infuser"),
@@ -25,6 +26,7 @@ public enum AMELang implements ILangEntry {
     DESCRIPTION_AMETHYST_ORE("description", "amethyst_ore"),
     DESCRIPTION_CERTUS_QUARTZ_ORE("description", "certus_quartz_ore"),
     DESCRIPTION_NETHERITE_ORE("description", "netherite_ore"),
+    DESCRIPTION_MEKMACHINE_UPGRADE_TOOL("description", "mekmachine_upgrade_tool"),
     EXPLAIN_ASSEMBLICATOR_BOOKBUTTON("explain", "assemblicator_bookbutton"),
     EXPLAIN_ASSEMBLICATOR_TORCHBUTTON("explain", "assemblicator_torchbutton"),
     LABEL_FLUID_COOLANT("label", "fluid_coolant"),

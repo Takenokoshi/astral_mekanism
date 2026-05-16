@@ -8,6 +8,7 @@ import org.jetbrains.annotations.Nullable;
 
 import astral_mekanism.block.blockentity.elements.energyContainer.EnergyRequiredRecipeMachineEnergyContainer;
 import astral_mekanism.block.blockentity.interf.IEnergyRequiredRecipeMachine;
+import astral_mekanism.recipes.output.IncomparableItemOutputHandler;
 import fr.iglee42.evolvedmekanism.interfaces.EMInputRecipeCache;
 import fr.iglee42.evolvedmekanism.interfaces.SolidificationCachedRecipe;
 import fr.iglee42.evolvedmekanism.recipes.SolidificationRecipe;
@@ -25,7 +26,6 @@ import mekanism.api.recipes.ingredients.InputIngredient;
 import mekanism.api.recipes.inputs.IInputHandler;
 import mekanism.api.recipes.inputs.InputHelper;
 import mekanism.api.recipes.outputs.IOutputHandler;
-import mekanism.api.recipes.outputs.OutputHelper;
 import mekanism.common.capabilities.fluid.BasicFluidTank;
 import mekanism.common.capabilities.holder.energy.EnergyContainerHelper;
 import mekanism.common.capabilities.holder.energy.IEnergyContainerHolder;
@@ -100,7 +100,7 @@ public abstract class BEAMESolidifier extends TileEntityRecipeMachine<Solidifica
         itemInputHandler = new SolidiferItemInputHandler(inputSlot, NOT_ENOUGH_ITEM_INPUT_ERROR);
         fluidInputHandler = InputHelper.getInputHandler(inputFluidTank, NOT_ENOUGH_FLUID_INPUT_ERROR);
         fluidExtraInputHandler = InputHelper.getInputHandler(inputFluidExtraTank, NOT_ENOUGH_EXTRA_FLUID_INPUT_ERROR);
-        outputHandler = OutputHelper.getOutputHandler(outputSlot, NOT_ENOUGH_SPACE_ITEM_OUTPUT_ERROR);
+        outputHandler = new IncomparableItemOutputHandler(outputSlot, NOT_ENOUGH_SPACE_ITEM_OUTPUT_ERROR);
     }
 
     @NotNull

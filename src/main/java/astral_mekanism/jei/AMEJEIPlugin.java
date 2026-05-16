@@ -163,6 +163,7 @@ public class AMEJEIPlugin implements IModPlugin {
                 AMEMachines.MEKANICAL_CHARGER, AMEMachines.ASTRAL_MEKANICAL_CHARGER);
         CatalystRegistryHelper.register(registry, AMEJEIRecipeType.INSCRIBE,
                 AMEMachines.MEKANICAL_INSCRIBER,
+                AMEMachines.ENCHANTED_MEKANICAL_INSCRIBER,
                 AMEMachines.ASTRAL_MEKANICAL_INSCRIBER);
         registry.addRecipeCatalysts(TransformCategory.RECIPE_TYPE,
                 AMEMachines.TRANSFORMER, AMEMachines.ASTRAL_TRANSFORMER);

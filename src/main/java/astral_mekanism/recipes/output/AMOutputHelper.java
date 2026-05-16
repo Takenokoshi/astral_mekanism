@@ -173,7 +173,7 @@ public class AMOutputHelper {
     private static void calculateOperationsCanSupport(CachedRecipe.OperationTracker tracker,
             RecipeError notEnoughSpace, IInventorySlot slot, ItemStack toOutput) {
         if (!toOutput.isEmpty()) {
-            ItemStack output = toOutput.copyWithCount(toOutput.getMaxStackSize());
+            ItemStack output = toOutput.copyWithCount(slot.getLimit(toOutput));
             ItemStack remainder = slot.insertItem(output, Action.SIMULATE, AutomationType.INTERNAL);
             int amountUsed = output.getCount() - remainder.getCount();
             int operations = amountUsed / toOutput.getCount();
@@ -207,7 +207,7 @@ public class AMOutputHelper {
         }
     }
 
-    private static <STACK extends ChemicalStack<?>> void calculateOperationsCanSupport(OperationTracker tracker,
+    static <STACK extends ChemicalStack<?>> void calculateOperationsCanSupport(OperationTracker tracker,
             RecipeError notEnoughSpace, IChemicalTank<?, STACK> tank,
             STACK toOutput) {
         // If our output is empty, we have nothing to add, so we treat it as being able

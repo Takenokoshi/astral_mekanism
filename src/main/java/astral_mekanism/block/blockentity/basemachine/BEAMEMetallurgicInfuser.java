@@ -7,6 +7,7 @@ import java.util.function.Predicate;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import astral_mekanism.recipes.output.IncomparableItemOutputHandler;
 import mekanism.api.AutomationType;
 import mekanism.api.IContentsListener;
 import mekanism.api.RelativeSide;
@@ -23,7 +24,6 @@ import mekanism.api.recipes.cache.TwoInputCachedRecipe;
 import mekanism.api.recipes.inputs.IInputHandler;
 import mekanism.api.recipes.inputs.InputHelper;
 import mekanism.api.recipes.outputs.IOutputHandler;
-import mekanism.api.recipes.outputs.OutputHelper;
 import mekanism.common.capabilities.energy.MachineEnergyContainer;
 import mekanism.common.capabilities.holder.chemical.ChemicalTankHelper;
 import mekanism.common.capabilities.holder.chemical.IChemicalTankHolder;
@@ -86,7 +86,7 @@ public abstract class BEAMEMetallurgicInfuser extends TileEntityRecipeMachine<Me
 
         infusionInputHandler = InputHelper.getInputHandler(infusionTank, RecipeError.NOT_ENOUGH_INPUT);
         itemInputHandler = InputHelper.getInputHandler(inputSlot, RecipeError.NOT_ENOUGH_SECONDARY_INPUT);
-        outputHandler = OutputHelper.getOutputHandler(outputSlot, RecipeError.NOT_ENOUGH_OUTPUT_SPACE);
+        outputHandler = new IncomparableItemOutputHandler(outputSlot, RecipeError.NOT_ENOUGH_OUTPUT_SPACE);
     }
 
     @NotNull

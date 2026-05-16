@@ -14,6 +14,7 @@ import astral_mekanism.generalrecipe.cachedrecipe.GeneralCachedRecipe;
 import astral_mekanism.generalrecipe.cachedrecipe.MekanicalChargingCachedRecipe;
 import astral_mekanism.generalrecipe.lookup.cache.recipe.SingleInputGeneralRecipeCache.GeneralSingleItem;
 import astral_mekanism.generalrecipe.lookup.handler.IUnifiedSingelRecipeLookupHandler;
+import astral_mekanism.recipes.output.IncomparableItemOutputHandler;
 import mekanism.api.IContentsListener;
 import mekanism.api.math.FloatingLong;
 import mekanism.api.providers.IBlockProvider;
@@ -21,7 +22,6 @@ import mekanism.api.recipes.cache.CachedRecipe.OperationTracker.RecipeError;
 import mekanism.api.recipes.inputs.IInputHandler;
 import mekanism.api.recipes.inputs.InputHelper;
 import mekanism.api.recipes.outputs.IOutputHandler;
-import mekanism.api.recipes.outputs.OutputHelper;
 import mekanism.common.capabilities.energy.MachineEnergyContainer;
 import mekanism.common.capabilities.holder.energy.EnergyContainerHelper;
 import mekanism.common.capabilities.holder.energy.IEnergyContainerHolder;
@@ -67,7 +67,7 @@ public class BEAstralMekanicalCharger extends BlockEntityRecipeMachine<ChargerRe
         ejectorComponent.setOutputData(configComponent, TransmissionType.ITEM);
 
         inputHandler = InputHelper.getInputHandler(inputSlot, RecipeError.NOT_ENOUGH_INPUT);
-        outputHandler = OutputHelper.getOutputHandler(outputSlot, RecipeError.NOT_ENOUGH_OUTPUT_SPACE);
+        outputHandler = new IncomparableItemOutputHandler(outputSlot, RecipeError.NOT_ENOUGH_OUTPUT_SPACE);
     }
 
     @NotNull

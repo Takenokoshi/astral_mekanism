@@ -1,13 +1,14 @@
-package astral_mekanism.block.blockentity.normalmachine;
+package astral_mekanism.block.blockentity.basemachine;
 
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import appeng.recipes.handlers.InscriberRecipe;
-import astral_mekanism.block.blockentity.base.BlockEntityProgressMachine;
+import astral_mekanism.block.blockentity.base.BlockEntityRecipeMachine;
 import astral_mekanism.block.blockentity.interf.IMekanicalInscriber;
 import astral_mekanism.generalrecipe.cachedrecipe.ICachedRecipe;
 import astral_mekanism.generalrecipe.cachedrecipe.MekanicalInscribeCachedRecipe;
+import astral_mekanism.recipes.output.IncomparableItemOutputHandler;
 import mekanism.api.IContentsListener;
 import mekanism.api.math.FloatingLong;
 import mekanism.api.providers.IBlockProvider;
@@ -15,7 +16,6 @@ import mekanism.api.recipes.cache.CachedRecipe.OperationTracker.RecipeError;
 import mekanism.api.recipes.inputs.IInputHandler;
 import mekanism.api.recipes.inputs.InputHelper;
 import mekanism.api.recipes.outputs.IOutputHandler;
-import mekanism.api.recipes.outputs.OutputHelper;
 import mekanism.common.capabilities.energy.MachineEnergyContainer;
 import mekanism.common.capabilities.holder.energy.EnergyContainerHelper;
 import mekanism.common.capabilities.holder.energy.IEnergyContainerHolder;
@@ -37,10 +37,10 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.state.BlockState;
 
-public class BEMekanicalInscriber extends BlockEntityProgressMachine<InscriberRecipe>
+public abstract class BETickWorkMekanicalInscriber extends BlockEntityRecipeMachine<InscriberRecipe>
         implements IMekanicalInscriber {
 
-    private MachineEnergyContainer<BEMekanicalInscriber> energyContainer;
+    private MachineEnergyContainer<?> energyContainer;
     private InputInventorySlot topSlot;
     private InputInventorySlot middleSlot;
     private InputInventorySlot bottomSlot;
@@ -52,8 +52,8 @@ public class BEMekanicalInscriber extends BlockEntityProgressMachine<InscriberRe
     private final IInputHandler<ItemStack> bottomHandler;
     private final IOutputHandler<ItemStack> outputHandler;
 
-    public BEMekanicalInscriber(IBlockProvider blockProvider, BlockPos pos, BlockState state) {
-        super(blockProvider, pos, state, TRACKED_ERROR_TYPES, 80);
+    public BETickWorkMekanicalInscriber(IBlockProvider blockProvider, BlockPos pos, BlockState state) {
+        super(blockProvider, pos, state, TRACKED_ERROR_TYPES);
         configComponent = new TileComponentConfig(this, TransmissionType.ITEM, TransmissionType.ENERGY);
         ConfigInfo itemConfig = configComponent.getConfig(TransmissionType.ITEM);
         itemConfig.addSlotInfo(DataType.INPUT_1, new InventorySlotInfo(true, false, middleSlot));
@@ -61,7 +61,7 @@ public class BEMekanicalInscriber extends BlockEntityProgressMachine<InscriberRe
         itemConfig.addSlotInfo(DataType.INPUT, new InventorySlotInfo(true, false, topSlot, middleSlot, bottomSlot));
         itemConfig.addSlotInfo(DataType.OUTPUT, new InventorySlotInfo(false, true, outputSlot));
         itemConfig.addSlotInfo(DataType.INPUT_OUTPUT,
-                new InventorySlotInfo(true, true, topSlot, middleSlot, bottomSlot, outputSlot));
+                new InventorySlotInfo(true, true, topSlot, middleSlot, bottomSlot, bottomSlot));
         itemConfig.setDefaults();
         itemConfig.setCanEject(true);
         configComponent.setupInputConfig(TransmissionType.ENERGY, energyContainer);
@@ -70,7 +70,7 @@ public class BEMekanicalInscriber extends BlockEntityProgressMachine<InscriberRe
         topHandler = InputHelper.getInputHandler(topSlot, NOT_ENOUGH_TOP_INPUT);
         middleHandler = InputHelper.getInputHandler(middleSlot, NOT_ENOUGH_MIDDLE_INPUT);
         bottomHandler = InputHelper.getInputHandler(bottomSlot, NOT_ENOUGH_BOTTOM_INPUT);
-        outputHandler = OutputHelper.getOutputHandler(outputSlot, RecipeError.NOT_ENOUGH_OUTPUT_SPACE);
+        outputHandler = new IncomparableItemOutputHandler(outputSlot, RecipeError.NOT_ENOUGH_OUTPUT_SPACE);
     }
 
     @NotNull
@@ -123,19 +123,19 @@ public class BEMekanicalInscriber extends BlockEntityProgressMachine<InscriberRe
                 .setCanHolderFunction(() -> MekanismUtils.canFunction(this))
                 .setActive(this::setActive)
                 .setEnergyRequirements(energyContainer::getEnergyPerTick, energyContainer)
-                .setRequiredTicks(this::getTicksRequired)
-                .setBaselineMaxOperations(this::getBaselineMaxOperations)
                 .setOnFinish(this::markForSave)
-                .setOperatingTicksChanged(this::setOperatingTicks);
+                .setBaselineMaxOperations(this::getBaselineMaxOperations);
     }
+
+    protected abstract int getBaselineMaxOperations();
 
     @Override
     public double getProgressScaled() {
-        return getScaledProgress();
+        return getActive() ? 1 : 0;
     }
 
     @Override
-    public MachineEnergyContainer<BEMekanicalInscriber> getEnergyContainer() {
+    public MachineEnergyContainer<?> getEnergyContainer() {
         return energyContainer;
     }
 

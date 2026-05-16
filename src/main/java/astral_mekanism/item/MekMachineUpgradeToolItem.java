@@ -19,6 +19,7 @@ import appeng.core.localization.GuiText;
 import appeng.core.localization.Tooltips;
 import appeng.items.contents.CellConfig;
 import appeng.util.ConfigInventory;
+import astral_mekanism.AMELang;
 import mekanism.api.Upgrade;
 import mekanism.api.text.EnumColor;
 import mekanism.api.text.TextComponentUtil;
@@ -138,6 +139,7 @@ public class MekMachineUpgradeToolItem extends Item implements IGridLinkedItem, 
         } else {
             lines.add(Tooltips.of(GuiText.Linked, Tooltips.GREEN));
         }
+        lines.add(AMELang.DESCRIPTION_MEKMACHINE_UPGRADE_TOOL.translate());
     }
 
     @Override

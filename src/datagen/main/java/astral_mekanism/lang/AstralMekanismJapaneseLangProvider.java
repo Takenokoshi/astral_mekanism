@@ -225,7 +225,7 @@ public class AstralMekanismJapaneseLangProvider extends LanguageProvider {
         result.put("apt", "反物質式超分子変換装置");
         result.put("antiprotonic", "反陽子");
         result.put("nucleosynthesizer", "核合成機");
-        result.put("infuser", "混合機");
+        result.put("infuser", "混成機");
         result.put("oxidizer", "酸化機");
         result.put("washer", "洗浄機");
         result.put("chemixer", "化学混合機");
@@ -242,7 +242,7 @@ public class AstralMekanismJapaneseLangProvider extends LanguageProvider {
         result.put("isotopic", "同位体");
         result.put("centrifuge", "遠心分離機");
         result.put("charger", "チャージャー");
-        result.put("inscriber", "インスクライバー");
+        result.put("inscriber", "刻印機");
         result.put("transformer", "トランスフォーマー");
         result.put("thermalizer", "サーマライザ");
         result.put("metallurgic", "冶金");
@@ -252,7 +252,7 @@ public class AstralMekanismJapaneseLangProvider extends LanguageProvider {
         result.put("sawmill", "製材機");
         result.put("rotary", "回転式");
         result.put("condensentrator", "流体凝縮機");
-        result.put("solidification", "ソリデフィケーション");
+        result.put("solidification", "冷却凝固");
         result.put("sps", "超臨界相転移装置");
         result.put("compact", "コンパクトな");
         result.put("fir", "核分裂炉");
@@ -280,6 +280,7 @@ public class AstralMekanismJapaneseLangProvider extends LanguageProvider {
         result.put("condenser", "コンデンサー");
         result.put("irradiator", "照射機");
         result.put("infusing", "吹込");
+        result.put("reaction", "反応");
         // materal types
         result.put("coal", "石炭");
         result.put("diamond", "ダイヤモンド");
@@ -411,6 +412,9 @@ public class AstralMekanismJapaneseLangProvider extends LanguageProvider {
         result.put("pigment", "顔料");
         result.put("annihilation", "消滅");
         result.put("plane", "プレーン");
+        result.put("mekanism", "Mek");
+        result.put("machine", "機械");
+        result.put("tool", "ツール");
         return result;
     }).get();
 

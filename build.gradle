@@ -30,7 +30,6 @@ configurations {
     datagenRuntimeOnly.extendsFrom runtimeOnly
 }
 
-// Mojang ships Java 17 to end users in 1.18+, so your mod should target Java 17.
 java.toolchain.languageVersion = JavaLanguageVersion.of(17)
 sourceSets {
     datagen {
@@ -44,6 +43,14 @@ sourceSets {
         compileClasspath += sourceSets.main.output
         runtimeClasspath += sourceSets.main.output
     }
+}
+sourceSets.main.resources {
+    srcDir('src/generated/resources')
+    exclude("**/*.bbmodel")
+    exclude("**/.cache/**")
+    exclude("**/lang/*_generated.json") 
+    exclude("**/aaaaa/**/*.json") 
+    exclude("**/aaaaa/**.json") 
 }
 
 
@@ -101,7 +108,6 @@ mixin {
 
     config "${mod_id}.mixins.json"
 }
-sourceSets.main.resources { srcDir 'src/generated/resources' }
 
 repositories {
     maven {

@@ -18,6 +18,7 @@ import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
 import mezz.jei.api.helpers.IGuiHelper;
 import mezz.jei.api.recipe.IFocusGroup;
 import mezz.jei.api.recipe.RecipeIngredientRole;
+import net.minecraft.network.chat.Component;
 import net.minecraftforge.fluids.FluidStack;
 
 public class MekanicalTransformRecipeCategory extends BaseRecipeCategory<MekanicalTransformRecipe> {
@@ -35,7 +36,7 @@ public class MekanicalTransformRecipeCategory extends BaseRecipeCategory<Mekanic
 
     public MekanicalTransformRecipeCategory(IGuiHelper helper,
             MekanismJEIRecipeType<MekanicalTransformRecipe> recipeType, IItemProvider provider) {
-        super(helper, recipeType, provider, 10,10, 200, 60);
+        super(helper, recipeType, provider, 10, 10, 200, 60);
         addSlot(SlotType.NORMAL, 10, 17).with(SlotOverlay.MINUS);
         addSlot(SlotType.NORMAL, 10, 53);
         addSlot(SlotType.NORMAL, 82, 17).with(SlotOverlay.MINUS);
@@ -57,15 +58,40 @@ public class MekanicalTransformRecipeCategory extends BaseRecipeCategory<Mekanic
     @Override
     public void setRecipe(IRecipeLayoutBuilder builder, MekanicalTransformRecipe recipe, IFocusGroup focusGroup) {
         initItem(builder, convertBoolRole(recipe.isItemACatalyst()), inputSlotA,
-                recipe.getInputItemA().getRepresentations());
+                recipe.getInputItemA().getRepresentations())
+                .addRichTooltipCallback((recipeSlotView, tooltip) -> {
+                    if (recipe.isItemACatalyst()) {
+                        tooltip.add(Component.literal("Non consume."));
+                    }
+                });
         initItem(builder, convertBoolRole(recipe.isItemBCatalyst()), inputSlotB,
-                recipe.getInputItemB().getRepresentations());
+                recipe.getInputItemB().getRepresentations())
+                .addRichTooltipCallback((recipeSlotView, tooltip) -> {
+                    if (recipe.isItemBCatalyst()) {
+                        tooltip.add(Component.literal("Non consume."));
+                    }
+                });
         initItem(builder, convertBoolRole(recipe.isItemCCatalyst()), inputSlotC,
-                recipe.getInputItemC().getRepresentations());
+                recipe.getInputItemC().getRepresentations())
+                .addRichTooltipCallback((recipeSlotView, tooltip) -> {
+                    if (recipe.isItemCCatalyst()) {
+                        tooltip.add(Component.literal("Non consume."));
+                    }
+                });
         initFluid(builder, convertBoolRole(recipe.isFluidACatalyst()), inputTankA,
-                recipe.getInputFluidA().getRepresentations());
+                recipe.getInputFluidA().getRepresentations())
+                .addRichTooltipCallback((recipeSlotView, tooltip) -> {
+                    if (recipe.isFluidACatalyst()) {
+                        tooltip.add(Component.literal("Non consume."));
+                    }
+                });
         initFluid(builder, convertBoolRole(recipe.isFluidBCatalyst()), inputTankB,
-                recipe.getInputFluidB().getRepresentations());
+                recipe.getInputFluidB().getRepresentations())
+                .addRichTooltipCallback((recipeSlotView, tooltip) -> {
+                    if (recipe.isFluidBCatalyst()) {
+                        tooltip.add(Component.literal("Non consume."));
+                    }
+                });
         initItem(builder, RecipeIngredientRole.OUTPUT, outputSlot,
                 recipe.getOutputDefinition().stream().map(ItemFluidOutput::item).toList());
         initFluid(builder, RecipeIngredientRole.OUTPUT, outputTank,

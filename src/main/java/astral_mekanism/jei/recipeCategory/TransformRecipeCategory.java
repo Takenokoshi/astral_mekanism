@@ -37,7 +37,8 @@ public class TransformRecipeCategory extends BaseRecipeCategory<TransformRecipe>
     private final GuiGauge<FluidStack> outputTank = addElement(
             GuiFluidGauge.getDummy(GaugeType.STANDARD, this, 150, 10));
 
-    public TransformRecipeCategory(IGuiHelper helper, MekanismJEIRecipeType<TransformRecipe> recipeType, IItemProvider provider) {
+    public TransformRecipeCategory(IGuiHelper helper, MekanismJEIRecipeType<TransformRecipe> recipeType,
+            IItemProvider provider) {
         super(helper, recipeType, provider, 10, 10, 200, 60);
         addSlot(SlotType.NORMAL, 10, 17).with(SlotOverlay.MINUS);
         addSlot(SlotType.NORMAL, 10, 53);
@@ -60,7 +61,10 @@ public class TransformRecipeCategory extends BaseRecipeCategory<TransformRecipe>
             return;
         }
         initFluid(builder, RecipeIngredientRole.CATALYST, inputTankA,
-                AMEConstants.transformFluidExtractor.apply(recipe).getRepresentations());
+                AMEConstants.transformFluidExtractor.apply(recipe).getRepresentations())
+                .addRichTooltipCallback((recipeSlotView, tooltip) -> {
+                    tooltip.add(Component.literal("Non consume."));
+                });
         initItem(builder, RecipeIngredientRole.INPUT, inputSlotA, List.of(recipe.ingredients.get(0).getItems()));
         if (size > 1) {
             initItem(builder, RecipeIngredientRole.INPUT, inputSlotB, List.of(recipe.ingredients.get(1).getItems()));

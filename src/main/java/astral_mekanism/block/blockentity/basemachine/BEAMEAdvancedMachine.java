@@ -5,6 +5,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import astral_mekanism.recipes.cachedRecipe.FormulizedItemGasToItemCachedRecipe;
+import astral_mekanism.recipes.output.IncomparableItemOutputHandler;
 import mekanism.api.IContentsListener;
 import mekanism.api.chemical.gas.Gas;
 import mekanism.api.chemical.gas.GasStack;
@@ -18,7 +19,6 @@ import mekanism.api.recipes.inputs.IInputHandler;
 import mekanism.api.recipes.inputs.ILongInputHandler;
 import mekanism.api.recipes.inputs.InputHelper;
 import mekanism.api.recipes.outputs.IOutputHandler;
-import mekanism.api.recipes.outputs.OutputHelper;
 import mekanism.common.capabilities.energy.MachineEnergyContainer;
 import mekanism.common.capabilities.holder.chemical.ChemicalTankHelper;
 import mekanism.common.capabilities.holder.chemical.IChemicalTankHolder;
@@ -80,7 +80,7 @@ public abstract class BEAMEAdvancedMachine
         ejectorComponent.setOutputData(configComponent, TransmissionType.ITEM);
 
         inputHandler = InputHelper.getInputHandler(inputInventorySlot, RecipeError.NOT_ENOUGH_INPUT);
-        outputHandler = OutputHelper.getOutputHandler(outputInventorySlot, RecipeError.NOT_ENOUGH_OUTPUT_SPACE);
+        outputHandler = new IncomparableItemOutputHandler(outputInventorySlot, RecipeError.NOT_ENOUGH_OUTPUT_SPACE);
         gasInputHandler = InputHelper.getInputHandler(gasTank, RecipeError.NOT_ENOUGH_SECONDARY_INPUT);
         this.multiply = multiply;
         this.jeiRecipeType = jeiRecipeType;

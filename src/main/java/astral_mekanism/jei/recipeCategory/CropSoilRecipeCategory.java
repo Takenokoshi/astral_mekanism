@@ -49,8 +49,14 @@ public class CropSoilRecipeCategory extends BaseRecipeCategory<CropSoilRecipe> {
 
     @Override
     public void setRecipe(IRecipeLayoutBuilder builder, CropSoilRecipe recipe, IFocusGroup focusGroup) {
-        initItem(builder, RecipeIngredientRole.CATALYST, cropSlot, recipe.getCrop().getRepresentations());
-        initItem(builder, RecipeIngredientRole.CATALYST, soilSlot, recipe.getSoil().getRepresentations());
+        initItem(builder, RecipeIngredientRole.CATALYST, cropSlot, recipe.getCrop().getRepresentations())
+                .addRichTooltipCallback((recipeSlotView, tooltip) -> {
+                    tooltip.add(Component.literal("Non consume."));
+                });
+        initItem(builder, RecipeIngredientRole.CATALYST, soilSlot, recipe.getSoil().getRepresentations())
+                .addRichTooltipCallback((recipeSlotView, tooltip) -> {
+                    tooltip.add(Component.literal("Non consume."));
+                });
         initFluid(builder, RecipeIngredientRole.INPUT, fluidGauge, recipe.getWater().getRepresentations());
         final List<HarvestEntry> entries = recipe.getOutput();
         int size = entries.size();

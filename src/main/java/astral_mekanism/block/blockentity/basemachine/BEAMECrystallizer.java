@@ -6,6 +6,7 @@ import java.util.function.Predicate;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import astral_mekanism.recipes.output.IncomparableItemOutputHandler;
 import mekanism.api.IContentsListener;
 import mekanism.api.chemical.IChemicalTank;
 import mekanism.api.chemical.gas.Gas;
@@ -30,7 +31,6 @@ import mekanism.api.recipes.cache.CachedRecipe.OperationTracker.RecipeError;
 import mekanism.api.recipes.cache.ChemicalCrystallizerCachedRecipe;
 import mekanism.api.recipes.inputs.BoxedChemicalInputHandler;
 import mekanism.api.recipes.outputs.IOutputHandler;
-import mekanism.api.recipes.outputs.OutputHelper;
 import mekanism.common.capabilities.energy.MachineEnergyContainer;
 import mekanism.common.capabilities.holder.chemical.ChemicalTankHelper;
 import mekanism.common.capabilities.holder.chemical.IChemicalTankHolder;
@@ -86,7 +86,7 @@ public abstract class BEAMECrystallizer extends TileEntityRecipeMachine<Chemical
         ejectorComponent = new TileComponentEjector(this);
         ejectorComponent.setOutputData(configComponent, TransmissionType.ITEM);
         inputHandler = new BoxedChemicalInputHandler(inputTank, RecipeError.NOT_ENOUGH_INPUT);
-        outputHandler = OutputHelper.getOutputHandler(outputSlot, RecipeError.NOT_ENOUGH_OUTPUT_SPACE);
+        outputHandler = new IncomparableItemOutputHandler(outputSlot, RecipeError.NOT_ENOUGH_OUTPUT_SPACE);
     }
 
     @Override

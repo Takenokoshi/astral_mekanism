@@ -6,6 +6,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import astral_mekanism.block.blockentity.interf.IEnergizedMachine;
+import astral_mekanism.recipes.output.IncomparableItemOutputHandler;
 import fr.iglee42.evolvedmekanism.interfaces.EMInputRecipeCache.TripleItem;
 import fr.iglee42.evolvedmekanism.interfaces.ThreeInputCachedRecipe;
 import fr.iglee42.evolvedmekanism.interfaces.TripleItemRecipeLookupHandler;
@@ -20,7 +21,6 @@ import mekanism.api.recipes.cache.CachedRecipe.OperationTracker.RecipeError;
 import mekanism.api.recipes.inputs.IInputHandler;
 import mekanism.api.recipes.inputs.InputHelper;
 import mekanism.api.recipes.outputs.IOutputHandler;
-import mekanism.api.recipes.outputs.OutputHelper;
 import mekanism.common.capabilities.energy.MachineEnergyContainer;
 import mekanism.common.capabilities.holder.energy.EnergyContainerHelper;
 import mekanism.common.capabilities.holder.energy.IEnergyContainerHolder;
@@ -76,7 +76,7 @@ public abstract class BEAMEAlloyer extends TileEntityRecipeMachine<AlloyerRecipe
         extraInputHandler = InputHelper.getInputHandler(extraInputSlot, RecipeError.NOT_ENOUGH_SECONDARY_INPUT);
         secondExtraInputHandler = InputHelper.getInputHandler(secondExtraInputSlot,
                 RecipeError.NOT_ENOUGH_SECONDARY_INPUT);
-        outputHandler = OutputHelper.getOutputHandler(outputSlot, RecipeError.NOT_ENOUGH_OUTPUT_SPACE);
+        outputHandler = new IncomparableItemOutputHandler(outputSlot, RecipeError.NOT_ENOUGH_OUTPUT_SPACE);
     }
 
     private static ConfigInfo setupItemIOExtraConfig(TileComponentConfig config, IInventorySlot inputSlot,

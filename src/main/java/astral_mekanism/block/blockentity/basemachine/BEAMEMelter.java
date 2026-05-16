@@ -7,7 +7,6 @@ import java.util.List;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-import astral_mekanism.block.blockentity.astralmachine.BEAstralMelter;
 import fr.iglee42.evolvedmekanism.registries.EMRecipeType;
 import mekanism.api.IContentsListener;
 import mekanism.api.RelativeSide;
@@ -23,7 +22,6 @@ import mekanism.api.recipes.inputs.IInputHandler;
 import mekanism.api.recipes.inputs.InputHelper;
 import mekanism.api.recipes.outputs.IOutputHandler;
 import mekanism.api.recipes.outputs.OutputHelper;
-import mekanism.common.capabilities.energy.MachineEnergyContainer;
 import mekanism.common.capabilities.fluid.BasicFluidTank;
 import mekanism.common.capabilities.heat.BasicHeatCapacitor;
 import mekanism.common.capabilities.heat.CachedAmbientTemperature;
@@ -67,7 +65,6 @@ public abstract class BEAMEMelter extends TileEntityRecipeMachine<ItemStackToFlu
     private BasicHeatCapacitor heatCapacitor;
     private final IOutputHandler<@NotNull FluidStack> outputHandler;
     private final IInputHandler<@NotNull ItemStack> inputHandler;
-    private MachineEnergyContainer<BEAstralMelter> energyContainer;
     private InputInventorySlot inputSlot;
     private FluidInventorySlot containerFillSlot;
     private OutputInventorySlot outputSlot;
@@ -193,10 +190,6 @@ public abstract class BEAMEMelter extends TileEntityRecipeMachine<ItemStackToFlu
 
     public BasicHeatCapacitor getHeatCapacitor() {
         return heatCapacitor;
-    }
-
-    public MachineEnergyContainer<BEAstralMelter> getEnergyContainer() {
-        return energyContainer;
     }
 
     public double getBiomeAmbientTemp() {

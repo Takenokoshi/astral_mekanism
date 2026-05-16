@@ -83,6 +83,7 @@ import astral_mekanism.block.blockentity.enchantedmachine.BEEnchantedEnergizedSm
 import astral_mekanism.block.blockentity.enchantedmachine.BEEnchantedFormulaicAssemblicator;
 import astral_mekanism.block.blockentity.enchantedmachine.BEEnchantedGreenHouse;
 import astral_mekanism.block.blockentity.enchantedmachine.BEEnchantedIsotopicCentrifuge;
+import astral_mekanism.block.blockentity.enchantedmachine.BEEnchantedMekanicalInscriber;
 import astral_mekanism.block.blockentity.enchantedmachine.BEEnchantedMelter;
 import astral_mekanism.block.blockentity.enchantedmachine.BEEnchantedMetallurgicInfuser;
 import astral_mekanism.block.blockentity.enchantedmachine.BEEnchantedPRC;
@@ -224,7 +225,7 @@ public class AMEMachines {
             .registerSimple("applied_crystallizer",
                     BEAppliedCrystallizer::new,
                     BEAppliedCrystallizer.class,
-                    AMELang.DESCRIPTION_ASTRAL_MACHINE,
+                    AMELang.DESCRIPTION_APPLIED_MACHINE,
                     builder -> builder
                             .changeAttributeUpgrade(EnumSet.of(Upgrade.ENERGY, Upgrade.MUFFLING))
                             .withSound(MekanismSounds.CHEMICAL_CRYSTALLIZER));
@@ -233,7 +234,7 @@ public class AMEMachines {
             .registerSimple("applied_electrolytic_separator",
                     BEAppliedElectrolyticSeparator::new,
                     BEAppliedElectrolyticSeparator.class,
-                    AMELang.DESCRIPTION_ASTRAL_MACHINE,
+                    AMELang.DESCRIPTION_APPLIED_MACHINE,
                     builder -> builder
                             .changeAttributeUpgrade(EnumSet.of(Upgrade.ENERGY, Upgrade.MUFFLING))
                             .withSound(MekanismSounds.ELECTROLYTIC_SEPARATOR));
@@ -242,21 +243,21 @@ public class AMEMachines {
             .registerSimple("applied_fission_reactor",
                     BEAppliedFissionReactor::new,
                     BEAppliedFissionReactor.class,
-                    AMELang.DESCRIPTION_COMPACT_MACHINE,
+                    AMELang.DESCRIPTION_APPLIED_MACHINE,
                     BlockMachineBuilder::removeAttributeUpgrade);
 
     public static final MachineRegistryObject<BEAppliedFusionReactor, BlockTileModel<BEAppliedFusionReactor, BlockTypeMachine<BEAppliedFusionReactor>>, MekanismTileContainer<BEAppliedFusionReactor>, ItemBlockMachine> APPLIED_FUSION_REACTOR = MACHINES
             .registerSimple("applied_fusion_reactor",
                     BEAppliedFusionReactor::new,
                     BEAppliedFusionReactor.class,
-                    AMELang.DESCRIPTION_COMPACT_MACHINE,
+                    AMELang.DESCRIPTION_APPLIED_MACHINE,
                     BlockMachineBuilder::removeAttributeUpgrade);
 
     public static final MachineRegistryObject<BEAppliedIsotopicCentrifuge, BlockTileModel<BEAppliedIsotopicCentrifuge, BlockTypeMachine<BEAppliedIsotopicCentrifuge>>, MekanismTileContainer<BEAppliedIsotopicCentrifuge>, ItemBlockMachine> APPLIED_ISOTPIC_CENTRIFUGE = MACHINES
             .registerSimple("applied_isotopic_centrifuge",
                     BEAppliedIsotopicCentrifuge::new,
                     BEAppliedIsotopicCentrifuge.class,
-                    AMELang.DESCRIPTION_COMPACT_MACHINE,
+                    AMELang.DESCRIPTION_APPLIED_MACHINE,
                     builder -> builder
                             .changeAttributeUpgrade(EnumSet.of(Upgrade.ENERGY, Upgrade.MUFFLING)));
 
@@ -264,14 +265,14 @@ public class AMEMachines {
             .registerSimple("applied_naquadah_reactor",
                     BEAppliedNaquadahReactor::new,
                     BEAppliedNaquadahReactor.class,
-                    AMELang.DESCRIPTION_COMPACT_MACHINE,
+                    AMELang.DESCRIPTION_APPLIED_MACHINE,
                     BlockMachineBuilder::removeAttributeUpgrade);
 
     public static final MachineRegistryObject<BEAppliedNeutronActivator, BlockTileModel<BEAppliedNeutronActivator, BlockTypeMachine<BEAppliedNeutronActivator>>, MekanismTileContainer<BEAppliedNeutronActivator>, ItemBlockMachine> APPLIED_NEUTRON_ACTIVATOR = MACHINES
             .registerSimple("applied_neutron_activator",
                     BEAppliedNeutronActivator::new,
                     BEAppliedNeutronActivator.class,
-                    AMELang.DESCRIPTION_ASTRAL_MACHINE,
+                    AMELang.DESCRIPTION_APPLIED_MACHINE,
                     builder -> builder
                             .removeAttributeUpgrade());
 
@@ -279,7 +280,7 @@ public class AMEMachines {
             .registerSimple("applied_rotary_condensentrator",
                     BEAppliedRotaryCondensentrator::new,
                     BEAppliedRotaryCondensentrator.class,
-                    AMELang.DESCRIPTION_COMPACT_MACHINE,
+                    AMELang.DESCRIPTION_APPLIED_MACHINE,
                     builder -> builder
                             .changeAttributeUpgrade(EnumSet.of(Upgrade.ENERGY, Upgrade.MUFFLING)));
 
@@ -287,7 +288,7 @@ public class AMEMachines {
             .registerSimple("applied_smelter",
                     BEAppliedSmelter::new,
                     BEAppliedSmelter.class,
-                    AMELang.DESCRIPTION_COMPACT_MACHINE,
+                    AMELang.DESCRIPTION_APPLIED_MACHINE,
                     builder -> builder
                             .changeAttributeUpgrade(EnumSet.of(Upgrade.ENERGY, Upgrade.MUFFLING)));
 
@@ -295,7 +296,7 @@ public class AMEMachines {
             .registerSimple("applied_sps",
                     BEAppliedSPS::new,
                     BEAppliedSPS.class,
-                    AMELang.DESCRIPTION_COMPACT_MACHINE,
+                    AMELang.DESCRIPTION_APPLIED_MACHINE,
                     builder -> builder
                             .changeAttributeUpgrade(EnumSet.of(Upgrade.MUFFLING)));
 
@@ -303,7 +304,7 @@ public class AMEMachines {
             .registerSimple("applied_tep",
                     BEAppliedTEP::new,
                     BEAppliedTEP.class,
-                    AMELang.DESCRIPTION_COMPACT_MACHINE,
+                    AMELang.DESCRIPTION_APPLIED_MACHINE,
                     builder -> builder
                             .changeAttributeUpgrade(EnumSet.of(Upgrade.MUFFLING)));
 
@@ -922,7 +923,8 @@ public class AMEMachines {
                     BEEnchantedAntiprotonicNucleosynthesizer.class,
                     AMELang.ITEM_GROUP,
                     builder -> builder
-                            .withEnergyConfig(() -> MekanismConfig.usage.antiprotonicNucleosynthesizer.get().multiply(200),
+                            .withEnergyConfig(
+                                    () -> MekanismConfig.usage.antiprotonicNucleosynthesizer.get().multiply(200),
                                     () -> MekanismConfig.storage.antiprotonicNucleosynthesizer.get().multiply(12800))
                             .withSound(MekanismSounds.ANTIPROTONIC_NUCLEOSYNTHESIZER)
                             .changeAttributeUpgrade(EnumSet.of(Upgrade.MUFFLING, AMEUpgrade.HYPER_SPEED.getValue(),
@@ -1070,7 +1072,7 @@ public class AMEMachines {
                     BEEnchantedGreenHouse.class,
                     AMELang.ITEM_GROUP,
                     builder -> builder
-                            .withEnergyConfig(()-> AMEConfig.usage.greenHouse.get().multiply(200),
+                            .withEnergyConfig(() -> AMEConfig.usage.greenHouse.get().multiply(200),
                                     () -> AMEConfig.storage.greenHouse.get().multiply(12800))
                             .changeAttributeUpgrade(
                                     EnumSet.of(Upgrade.ENERGY, Upgrade.SPEED,
@@ -1092,6 +1094,19 @@ public class AMEMachines {
                                             AMEUpgrade.RADIOACTIVE_SEALING.getValue(),
                                             ExtraUpgrade.STACK))
                             .withSound(MekanismSounds.ISOTOPIC_CENTRIFUGE));
+
+    public static final MachineRegistryObject<BEEnchantedMekanicalInscriber, ?, MekanismTileContainer<BEEnchantedMekanicalInscriber>, ?> ENCHANTED_MEKANICAL_INSCRIBER = MACHINES
+            .registerSimple("enchanted_mekanical_inscriber",
+                    BEEnchantedMekanicalInscriber::new,
+                    BEEnchantedMekanicalInscriber.class,
+                    AMELang.DESCRIPTION_MEKANICAL_INSCRIBER,
+                    builder -> builder
+                            .withEnergyConfig(() -> AMEConfig.usage.mekanicalInscriber.get().multiply(200),
+                                    () -> AMEConfig.storage.mekanicalInscriber.get().multiply(12800))
+                            .changeAttributeUpgrade(
+                                    EnumSet.of(Upgrade.ENERGY, Upgrade.SPEED,
+                                            AMEUpgrade.COBBLESTONE_SUPPLY.getValue(),
+                                            ExtraUpgrade.STACK)));
 
     public static final MachineRegistryObject<BEEnchantedSPS, BlockTileModel<BEEnchantedSPS, BlockTypeMachine<BEEnchantedSPS>>, MekanismTileContainer<BEEnchantedSPS>, ItemBlockMachine> ENCHANTED_SPS = MACHINES
             .registerSimple("enchanted_sps",
@@ -1185,7 +1200,7 @@ public class AMEMachines {
                     BEEnchantedRadiationIrradiator.class,
                     AMELang.ITEM_GROUP,
                     builder -> builder
-                            .withEnergyConfig(()-> MSConfig.usageConfig.radiationIrradiator.get().multiply(200),
+                            .withEnergyConfig(() -> MSConfig.usageConfig.radiationIrradiator.get().multiply(200),
                                     () -> MSConfig.storageConfig.radiationIrradiator.get().multiply(12800))
                             .changeAttributeUpgrade(
                                     EnumSet.of(Upgrade.ENERGY, Upgrade.SPEED,
