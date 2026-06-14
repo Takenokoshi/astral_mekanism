@@ -70,5 +70,11 @@ public class APILangMixin {
         AMEAPILang.UPGRADE_ADVANCED_STONE_GENERATOR = astral_mekanism$createNew("upgrade", "advanced_stone_generator");
         AMEAPILang.UPGRADE_ADVANCED_STONE_GENERATOR_DESCRIPTION = astral_mekanism$createNew("upgrade",
                 "advanced_stone_generator.description");
+        AMEAPILang.UPGRADE_TANK_CAPACITY = astral_mekanism$createNew("upgrade", "tank_capacity");
+        AMEAPILang.UPGRADE_TANK_CAPACITY_DESCRIPTION = astral_mekanism$createNew("upgrade",
+                "tank_capacity.description");
+        AMEAPILang.UPGRADE_ADVANCED_TANK_CAPACITY = astral_mekanism$createNew("upgrade", "advanced_tank_capacity");
+        AMEAPILang.UPGRADE_ADVANCED_TANK_CAPACITY_DESCRIPTION = astral_mekanism$createNew("upgrade",
+                "advanced_tank_capacity.description");
     }
 }

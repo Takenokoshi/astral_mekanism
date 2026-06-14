@@ -139,8 +139,6 @@ import astral_mekanism.block.blockentity.storage.BEXpTank;
 import astral_mekanism.block.container.factory.ContainerAstralMekanismFactory;
 import astral_mekanism.block.container.normalmachine.ContainerAstralCrafter;
 import astral_mekanism.block.container.normalmachine.ContainerTransformer;
-import astral_mekanism.block.container.other.ContainerItemSortableStorage;
-import astral_mekanism.block.container.prefab.ContainerAbstractStorage;
 import astral_mekanism.block.container.prefab.ContainerMachineCustomSize;
 import astral_mekanism.block.container.prefab.ContainerPagedMachine;
 import astral_mekanism.block.container.prefab.ContainerAMEFormulaicAssemblicator.ContainerAstralFormulaicAssemblicator;
@@ -1605,24 +1603,30 @@ public class AMEMachines {
                     AMELang.ITEM_GROUP,
                     builder -> builder.changeAttributeUpgrade(EnumSet.of(AMEUpgrade.RADIOACTIVE_SEALING.getValue())));
 
-    public static final MachineRegistryObject<BEUniversalStorage, BlockTileModel<BEUniversalStorage, BlockTypeMachine<BEUniversalStorage>>, ContainerAbstractStorage<BEUniversalStorage>, ItemBlockMachine> UNIVERSAL_STORAGE = MACHINES
+    public static final MachineRegistryObject<BEUniversalStorage, ?, ContainerPagedMachine<BEUniversalStorage>, ?> UNIVERSAL_STORAGE = MACHINES
             .registerDefaultBlockItem("universal_storage",
                     BEUniversalStorage::new,
                     BEUniversalStorage.class,
-                    ContainerAbstractStorage<BEUniversalStorage>::new,
+                    ContainerPagedMachine<BEUniversalStorage>::new,
                     AMELang.DESCRIPTION_UNIVERSAL_STORAGE,
                     builder -> builder.changeAttributeUpgrade(
-                            EnumSet.of(AMEUpgrade.COBBLESTONE_SUPPLY.getValue(), AMEUpgrade.WATER_SUPPLY.getValue(),
+                            EnumSet.of(Upgrade.ENERGY,
+                                    AMEUpgrade.TANK_CAPACITY.getValue(), AMEUpgrade.ADVANCED_TANK_CAPACITY.getValue(),
+                                    AMEUpgrade.COBBLESTONE_SUPPLY.getValue(), AMEUpgrade.WATER_SUPPLY.getValue(),
                                     AMEUpgrade.RADIOACTIVE_SEALING.getValue(),
                                     AMEUpgrade.AIR_INTAKE.getValue())));
 
-    public static final MachineRegistryObject<BEItemSortableStorage, BlockTileModel<BEItemSortableStorage, BlockTypeMachine<BEItemSortableStorage>>, ContainerItemSortableStorage<BEItemSortableStorage>, ItemBlockMachine> ITEM_SORTABLE_STORAGE = MACHINES
+    public static final MachineRegistryObject<BEItemSortableStorage, ?, ContainerPagedMachine<BEItemSortableStorage>, ItemBlockMachine> ITEM_SORTABLE_STORAGE = MACHINES
             .registerDefaultBlockItem("item_sortable_storage",
                     BEItemSortableStorage::new,
                     BEItemSortableStorage.class,
-                    ContainerItemSortableStorage<BEItemSortableStorage>::new,
+                    ContainerPagedMachine<BEItemSortableStorage>::new,
                     AMELang.DESCRIPTION_ITEM_SORTABLE_STORAGE,
-                    builder -> builder.changeAttributeUpgrade(EnumSet.of(AMEUpgrade.RADIOACTIVE_SEALING.getValue())));
+                    builder -> builder.changeAttributeUpgrade(EnumSet.of(Upgrade.ENERGY,
+                            AMEUpgrade.TANK_CAPACITY.getValue(), AMEUpgrade.ADVANCED_TANK_CAPACITY.getValue(),
+                            AMEUpgrade.COBBLESTONE_SUPPLY.getValue(), AMEUpgrade.WATER_SUPPLY.getValue(),
+                            AMEUpgrade.RADIOACTIVE_SEALING.getValue(),
+                            AMEUpgrade.AIR_INTAKE.getValue())));
 
     public static final MachineRegistryObject<BERatioSeparator, BlockTileModel<BERatioSeparator, BlockTypeMachine<BERatioSeparator>>, ContainerPagedMachine<BERatioSeparator>, ItemBlockMachine> RATIO_SEPARATOR = MACHINES
             .registerDefaultBlockItem("ratio_separator",

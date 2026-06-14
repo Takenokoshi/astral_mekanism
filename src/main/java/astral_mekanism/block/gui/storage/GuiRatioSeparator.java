@@ -9,7 +9,7 @@ import astral_mekanism.block.blockentity.storage.BERatioSeparator;
 import astral_mekanism.block.container.prefab.ContainerPagedMachine;
 import astral_mekanism.block.gui.element.PagedGuiFluidGauge;
 import astral_mekanism.block.gui.element.PagedGuiGasGauge;
-import astral_mekanism.block.gui.element.PagedGuiInfusiongauge;
+import astral_mekanism.block.gui.element.PagedGuiInfusionGauge;
 import astral_mekanism.block.gui.element.PagedGuiInnerScreen;
 import astral_mekanism.block.gui.element.PagedGuiPigmentGauge;
 import astral_mekanism.block.gui.element.PagedGuiSlurryGauge;
@@ -49,11 +49,11 @@ public class GuiRatioSeparator extends GuiPagedMachine<BERatioSeparator> {
                 GaugeType.SMALL, this, 88, 13, 2));
         addRenderableWidget(new PagedGuiGasGauge(() -> tile.outputGasTankB, () -> tile.getGasTanks(null),
                 GaugeType.SMALL, this, 88, 43, 2));
-        addRenderableWidget(new PagedGuiInfusiongauge(() -> tile.inputInfusionTank, () -> tile.getInfusionTanks(null),
+        addRenderableWidget(new PagedGuiInfusionGauge(() -> tile.inputInfusionTank, () -> tile.getInfusionTanks(null),
                 GaugeType.STANDARD, this, 7, 13, 3));
-        addRenderableWidget(new PagedGuiInfusiongauge(() -> tile.outputInfusionTankA, () -> tile.getInfusionTanks(null),
+        addRenderableWidget(new PagedGuiInfusionGauge(() -> tile.outputInfusionTankA, () -> tile.getInfusionTanks(null),
                 GaugeType.SMALL, this, 88, 13, 3));
-        addRenderableWidget(new PagedGuiInfusiongauge(() -> tile.outputInfusionTankB, () -> tile.getInfusionTanks(null),
+        addRenderableWidget(new PagedGuiInfusionGauge(() -> tile.outputInfusionTankB, () -> tile.getInfusionTanks(null),
                 GaugeType.SMALL, this, 88, 43, 3));
         addRenderableWidget(new PagedGuiPigmentGauge(() -> tile.inputPigmentTank, () -> tile.getPigmentTanks(null),
                 GaugeType.STANDARD, this, 7, 13, 4));

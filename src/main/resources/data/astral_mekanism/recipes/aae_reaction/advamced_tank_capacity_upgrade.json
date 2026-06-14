@@ -1,0 +1,65 @@
+{
+    "type": "advanced_ae:reaction",
+    "energy": 2000000,
+    "fluid": {
+        "fluidStack": {
+            "Amount": 16000,
+            "FluidName": "mekanism:heavy_water"
+        }
+    },
+    "input_items": [
+        {
+            "amount": 1,
+            "ingredient": {
+                "item": "astral_mekanism:hyper_upgrade_base"
+            }
+        },
+        {
+            "amount": 2,
+            "ingredient": {
+                "item": "evolvedmekanism:alloy_hypercharged"
+            }
+        },
+        {
+            "amount": 2,
+            "ingredient": {
+                "item": "mekanism_extras:alloy_radiance"
+            }
+        },
+        {
+            "amount": 4,
+            "ingredient": {
+                "item": "astral_mekanism:alloy_enchanted"
+            }
+        },
+        {
+            "amount": 8,
+            "ingredient": {
+                "item": "ae2:matter_ball"
+            }
+        },
+        {
+            "amount": 16,
+            "ingredient": {
+                "item": "mekanism:hdpe_sheet"
+            }
+        },
+        {
+            "amount": 32,
+            "ingredient": {
+                "item": "mekanism:structural_glass"
+            }
+        },
+        {
+            "amount": 64,
+            "ingredient": {
+                "item": "mekanism:dynamic_tank"
+            }
+        }
+    ],
+    "output": {
+        "#": 1,
+        "#c": "ae2:i",
+        "id": "astral_mekanism:advanced_tank_capacity_upgrade"
+    }
+}

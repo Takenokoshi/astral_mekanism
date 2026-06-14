@@ -1,18 +1,23 @@
 package astral_mekanism.block.blockentity.storage;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Stream;
 
-import astral_mekanism.block.blockentity.core.BlockEntityUtils;
-import astral_mekanism.block.blockentity.elements.slot.GhostInventorySlot;
-import astral_mekanism.block.blockentity.prefab.BEAbstractItemSortble;
-import astral_mekanism.block.blockentity.prefab.BEAbstractStorage;
+import astral_mekanism.block.blockentity.elements.slot.paged.PagedBasicInventorySlot;
+import astral_mekanism.block.blockentity.elements.slot.paged.PagedInputInventorySlot;
+import astral_mekanism.block.blockentity.elements.slot.paged.PagedOutputInventorySlot;
 import astral_mekanism.enumexpansion.AMEDataType;
+import astral_mekanism.item.SortableStorageFilterCardItem;
+import mekanism.api.Action;
+import mekanism.api.AutomationType;
 import mekanism.api.IContentsListener;
 import mekanism.api.inventory.IInventorySlot;
 import mekanism.api.math.FloatingLong;
 import mekanism.api.providers.IBlockProvider;
 import mekanism.common.capabilities.holder.slot.InventorySlotHelper;
-import mekanism.common.inventory.slot.BasicInventorySlot;
+import mekanism.common.inventory.container.slot.SlotOverlay;
 import mekanism.common.tile.component.config.ConfigInfo;
 import mekanism.common.tile.component.config.DataType;
 import mekanism.common.tile.component.config.slot.InventorySlotInfo;
@@ -20,152 +25,147 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.state.BlockState;
 
-public class BEItemSortableStorage extends BEAbstractStorage implements BEAbstractItemSortble {
+public class BEItemSortableStorage extends BEAbstractStorage {
 
-    private static final FloatingLong energyCapacity = FloatingLong.create(2000000);
-    private static final int fluidTankCapacity = 200000;
-    private static final long chemicalTankCapacity = 200000l;
+    private PagedInputInventorySlot[] inputSlots;
+    private PagedBasicInventorySlot[][] filterSlots;
+    private PagedOutputInventorySlot[][] outputSlots;
+    private PagedOutputInventorySlot[] leftItemOutputSlots;
 
-    private BasicInventorySlot[] inputInventorySlots;
-    private BasicInventorySlot[] outputInventorySlotsA;
-    private BasicInventorySlot[] outputInventorySlotsB;
-    private BasicInventorySlot[] outputInventorySlotsC;
-    private GhostInventorySlot[] filterInventorySlotsA;
-    private GhostInventorySlot[] filterInventorySlotsB;
-    private BasicInventorySlot insertUpgradeSlot;
+    private List<ItemStack>[] filterCache;
 
     public BEItemSortableStorage(IBlockProvider blockProvider, BlockPos pos, BlockState state) {
         super(blockProvider, pos, state);
     }
 
+    @SuppressWarnings("unchecked")
+    @Override
+    protected void presetVariables() {
+        super.presetVariables();
+        filterCache = new List[2];
+        for (int i = 0; i < 2; i++) {
+            filterCache[i] = new ArrayList<>();
+        }
+    }
+
     @Override
     protected void setUpItemConfig(ConfigInfo itemConfig) {
-        itemConfig.addSlotInfo(DataType.INPUT, new InventorySlotInfo(true, false, inputInventorySlots));
-        itemConfig.addSlotInfo(DataType.OUTPUT_1, new InventorySlotInfo(false, true, outputInventorySlotsA));
-        itemConfig.addSlotInfo(DataType.OUTPUT_2, new InventorySlotInfo(false, true, outputInventorySlotsB));
-        itemConfig.addSlotInfo(AMEDataType.OUTPUTleft, new InventorySlotInfo(false, true, outputInventorySlotsC));
+        itemConfig.addSlotInfo(DataType.INPUT, new InventorySlotInfo(true, false, inputSlots));
+        itemConfig.addSlotInfo(DataType.OUTPUT_1, new InventorySlotInfo(false, true, outputSlots[0]));
+        itemConfig.addSlotInfo(DataType.OUTPUT_2, new InventorySlotInfo(false, true, outputSlots[1]));
+        itemConfig.addSlotInfo(AMEDataType.OUTPUTleft, new InventorySlotInfo(false, true, leftItemOutputSlots));
         itemConfig.addSlotInfo(AMEDataType.INPUT_OUTPUT1,
-                new InventorySlotInfo(true, false, inputInventorySlots));
+                new InventorySlotInfo(true, true, Stream.of(inputSlots, outputSlots[0])
+                        .flatMap(Arrays::stream)
+                        .toArray(IInventorySlot[]::new)));
         itemConfig.addSlotInfo(AMEDataType.INPUT_OUTPUT2,
-                new InventorySlotInfo(true, false, inputInventorySlots));
+                new InventorySlotInfo(true, true, Stream.of(inputSlots, outputSlots[1])
+                        .flatMap(Arrays::stream)
+                        .toArray(IInventorySlot[]::new)));
         itemConfig.addSlotInfo(AMEDataType.INPUT_OUTPUTleft,
-                new InventorySlotInfo(true, false, inputInventorySlots));
+                new InventorySlotInfo(true, true, Stream.of(inputSlots, leftItemOutputSlots)
+                        .flatMap(Arrays::stream)
+                        .toArray(IInventorySlot[]::new)));
         itemConfig.setCanEject(true);
     }
 
     @Override
-    protected InventorySlotHelper addUniqueSlots(InventorySlotHelper builder, IContentsListener listener) {
-        inputInventorySlots = new BasicInventorySlot[9];
-        filterInventorySlotsA = new GhostInventorySlot[9];
-        outputInventorySlotsA = new BasicInventorySlot[9];
-        filterInventorySlotsB = new GhostInventorySlot[9];
-        outputInventorySlotsB = new BasicInventorySlot[9];
-        outputInventorySlotsC = new BasicInventorySlot[9];
-        for (int i = 0; i < 9; i++) {
-            builder.addSlot(inputInventorySlots[i] = BasicInventorySlot.at(listener, 8 + 18 * i, 18));
-            builder.addSlot(filterInventorySlotsA[i] = new GhostInventorySlot(listener, 8 + 18 * i, 54));
-            builder.addSlot(outputInventorySlotsA[i] = BasicInventorySlot.at(listener, 8 + 18 * i, 72));
-            builder.addSlot(filterInventorySlotsB[i] = new GhostInventorySlot(listener, 8 + 18 * i, 108));
-            builder.addSlot(outputInventorySlotsB[i] = BasicInventorySlot.at(listener, 8 + 18 * i, 126));
-            builder.addSlot(outputInventorySlotsC[i] = BasicInventorySlot.at(listener, 8 + 18 * i, 162));
-        }
-        builder.addSlot(insertUpgradeSlot = BasicInventorySlot.at(listener, 170, 18));
-        return builder;
+    protected FloatingLong getInitialBaseEnergyCapacity() {
+        return FloatingLong.create(1l << 16);
     }
 
     @Override
-    protected void onUSUnique() {
-        if (isInsertUpgrade.test(insertUpgradeSlot.getStack())) {
-            BlockEntityUtils.itemInsert(this, List.of(DataType.INPUT, AMEDataType.INPUT_OUTPUT1,
-                    AMEDataType.INPUT_OUTPUT2, AMEDataType.INPUT_OUTPUTleft));
+    protected void addSlots(InventorySlotHelper builder, IContentsListener listener) {
+        inputSlots = new PagedInputInventorySlot[27];
+        for (int i = 0; i < 27; i++) {
+            builder.addSlot(inputSlots[i] = PagedInputInventorySlot.at(listener, 8 + i % 9 * 18, 18 + i / 9 * 18, 0))
+                    .setSlotOverlay(SlotOverlay.INPUT);
         }
-        filtering();
-        BlockEntityUtils.itemEject(this, List.of(AMEDataType.INPUT_OUTPUT1), DataType.OUTPUT_1);
-        BlockEntityUtils.itemEject(this, List.of(AMEDataType.INPUT_OUTPUT2), DataType.OUTPUT_2);
-        BlockEntityUtils.itemEject(this, List.of(AMEDataType.INPUT_OUTPUTleft, AMEDataType.OUTPUTleft),
-                AMEDataType.OUTPUTleft);
+        filterSlots = new PagedBasicInventorySlot[2][9];
+        outputSlots = new PagedOutputInventorySlot[2][18];
+        for (int index = 0; index < 2; index++) {
+            int value = index;
+            for (int filterIndex = 0; filterIndex < 9; filterIndex++) {
+                builder.addSlot(filterSlots[index][filterIndex] = PagedBasicInventorySlot.at(
+                        stack -> stack.getItem() instanceof SortableStorageFilterCardItem,
+                        () -> {
+                            listener.onContentsChanged();
+                            createFilterCache(value);
+                        },
+                        8 + filterIndex * 18, 18, index + 1)).setSlotOverlay(SlotOverlay.CHECK);
+            }
+            for (int outputIndex = 0; outputIndex < 18; outputIndex++) {
+                builder.addSlot(outputSlots[index][outputIndex] = PagedOutputInventorySlot.at(
+                        listener, 8 + outputIndex % 9 * 18, 36 + outputIndex / 9 * 18, index + 1))
+                        .setSlotOverlay(SlotOverlay.OUTPUT);
+            }
+        }
+        leftItemOutputSlots = new PagedOutputInventorySlot[27];
+        for (int i = 0; i < 27; i++) {
+            builder.addSlot(leftItemOutputSlots[i] = PagedOutputInventorySlot.at(
+                    listener, 8 + i % 9 * 18, 18 + i / 9 * 18, 3))
+                    .setSlotOverlay(SlotOverlay.OUTPUT);
+        }
     }
 
-    private void filtering() {
-        for (BasicInventorySlot inputSlot : inputInventorySlots) {
-            if (inputSlot.isEmpty()) {
+    private void createFilterCache(int filterIndex) {
+        filterCache[filterIndex].clear();
+        for (int index = 0; index < 9; index++) {
+            if (filterSlots[filterIndex][index].isEmpty() || !(filterSlots[filterIndex][index].getStack()
+                    .getItem() instanceof SortableStorageFilterCardItem filterCardItem)) {
                 continue;
             }
-            ItemStack stack = inputSlot.getStack();
-            for (GhostInventorySlot filterSlot : filterInventorySlotsA) {
-                if (ItemStack.isSameItemSameTags(filterSlot.getStack(), stack)) {
-                    stack = BlockEntityUtils.insertItem(outputInventorySlotsA, stack);
-                    break;
-                }
-            }
-            if (stack.isEmpty()) {
-                inputSlot.setEmpty();
+            filterCache[filterIndex].addAll(filterCardItem.getFilterItems(filterSlots[filterIndex][index].getStack()));
+        }
+    }
+
+    @Override
+    public int getPagesForItem() {
+        return 4;
+    }
+
+    @Override
+    protected void onUpdateServer() {
+        super.onUpdateServer();
+        for (int sortingIndex = 0; sortingIndex < 27; sortingIndex++) {
+            ItemStack sorting = inputSlots[sortingIndex].getStack().copy();
+            if (sorting.isEmpty()) {
                 continue;
             }
-            for (GhostInventorySlot filterSlot : filterInventorySlotsB) {
-                if (ItemStack.isSameItemSameTags(filterSlot.getStack(), stack)) {
-                    stack = BlockEntityUtils.insertItem(outputInventorySlotsB, stack);
+            boolean sortCompleted = false;
+            for (int filterIndex = 0; filterIndex < 2; filterIndex++) {
+                if (sortCompleted) {
                     break;
                 }
+                for (ItemStack filter : filterCache[filterIndex]) {
+                    if (sortCompleted) {
+                        break;
+                    }
+                    if (ItemStack.isSameItemSameTags(filter, sorting)) {
+                        for (PagedOutputInventorySlot outputSlot : outputSlots[filterIndex]) {
+                            sorting = outputSlot.insertItem(sorting, Action.EXECUTE, AutomationType.INTERNAL);
+                            if (sorting.isEmpty()) {
+                                sortCompleted = true;
+                                break;
+                            }
+                        }
+                    }
+                }
             }
-            stack = BlockEntityUtils.insertItem(outputInventorySlotsC, stack);
-            inputSlot.setStack(stack);
-        }
-    }
-
-    @Override
-    protected FloatingLong energyCapacitySetter() {
-        return energyCapacity;
-    }
-
-    @Override
-    protected int fluidTankCapacitySetter() {
-        return fluidTankCapacity;
-    }
-
-    @Override
-    protected long chemicalTankCapacitySetter() {
-        return chemicalTankCapacity;
-    }
-
-    @Override
-    public SlotKind getSlotKind(IInventorySlot slot) {
-        for (int i = 0; i < 9; i++) {
-            if (inputInventorySlots[i] == slot) {
-                return SlotKind.INPUT;
+            if (!sortCompleted) {
+                for (PagedOutputInventorySlot outputSlot : leftItemOutputSlots) {
+                    sorting = outputSlot.insertItem(sorting, Action.EXECUTE, AutomationType.INTERNAL);
+                    if (sorting.isEmpty()) {
+                        sortCompleted = true;
+                        break;
+                    }
+                }
             }
-            if (filterInventorySlotsA[i] == slot || filterInventorySlotsB[i] == slot) {
-                return SlotKind.FILTER;
+            if (sortCompleted) {
+                inputSlots[sortingIndex].setEmpty();
+            } else {
+                inputSlots[sortingIndex].setStack(sorting);
             }
-            if (outputInventorySlotsA[i] == slot || outputInventorySlotsB[i] == slot
-                    || outputInventorySlotsC[i] == slot) {
-                return SlotKind.OUTPUT;
-            }
-        }
-        return SlotKind.OTHER;
-    }
-
-    @Override
-    public IInventorySlot[] getSlots(SlotKind slotType) {
-        if (slotType == SlotKind.INPUT) {
-            return inputInventorySlots;
-        } else if (slotType == SlotKind.OUTPUT) {
-            IInventorySlot[] result = new IInventorySlot[27];
-            for (int i = 0; i < 9; i++) {
-                result[i] = outputInventorySlotsA[i];
-                result[i + 9] = outputInventorySlotsB[i];
-                result[i + 18] = outputInventorySlotsC[i];
-            }
-            return result;
-        } else if (slotType == SlotKind.FILTER) {
-            IInventorySlot[] result = new IInventorySlot[18];
-            for (int i = 0; i < 9; i++) {
-                result[i] = filterInventorySlotsA[i];
-                result[i + 9] = filterInventorySlotsB[i];
-            }
-            return result;
-        } else {
-            return new IInventorySlot[] {};
         }
     }
 

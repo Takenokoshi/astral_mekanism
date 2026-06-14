@@ -41,6 +41,7 @@
 		"morethermalevaporationcompat.MoreThermalEvaporationCompatBlockTypesMixin"
 	],
 	"client": [
+        "mekanismclient.GuiGaugesMixin"
 	],
 	"server": []
 }

@@ -39,27 +39,27 @@ public class MekanicalTransformRecipeCache
 
     public boolean containsInputIA(Level world, ItemStack input) {
         createCache(world);
-        return allRecipesCache.stream().anyMatch(r -> r.getInputItemA().test(input));
+        return allRecipesCache.stream().anyMatch(r -> r.getInputItemA().testType(input));
     }
 
     public boolean containsInputIB(Level world, ItemStack input) {
         createCache(world);
-        return allRecipesCache.stream().anyMatch(r -> r.getInputItemB().test(input));
+        return allRecipesCache.stream().anyMatch(r -> r.getInputItemB().testType(input));
     }
 
     public boolean containsInputIC(Level world, ItemStack input) {
         createCache(world);
-        return allRecipesCache.stream().anyMatch(r -> r.getInputItemC().test(input));
+        return allRecipesCache.stream().anyMatch(r -> r.getInputItemC().testType(input));
     }
 
     public boolean containsInputFA(Level world, FluidStack input) {
         createCache(world);
-        return allRecipesCache.stream().anyMatch(r -> r.getInputFluidA().test(input));
+        return allRecipesCache.stream().anyMatch(r -> r.getInputFluidA().testType(input));
     }
 
     public boolean containsInputFB(Level world, FluidStack input) {
         createCache(world);
-        return allRecipesCache.stream().anyMatch(r -> r.getInputFluidB().test(input));
+        return allRecipesCache.stream().anyMatch(r -> r.getInputFluidB().testType(input));
     }
 
     public boolean containsInputIAOther(Level world, ItemStack inputIA, ItemStack inputIB, ItemStack inputIC,

@@ -27,6 +27,7 @@ public enum AMELang implements ILangEntry {
     DESCRIPTION_CERTUS_QUARTZ_ORE("description", "certus_quartz_ore"),
     DESCRIPTION_NETHERITE_ORE("description", "netherite_ore"),
     DESCRIPTION_MEKMACHINE_UPGRADE_TOOL("description", "mekmachine_upgrade_tool"),
+    DESCRIPTION_SORTABLE_STORAGE_FILTER_CARD("description", "sortable_storage_filter_card"),
     EXPLAIN_ASSEMBLICATOR_BOOKBUTTON("explain", "assemblicator_bookbutton"),
     EXPLAIN_ASSEMBLICATOR_TORCHBUTTON("explain", "assemblicator_torchbutton"),
     LABEL_FLUID_COOLANT("label", "fluid_coolant"),

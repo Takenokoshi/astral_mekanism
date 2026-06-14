@@ -12,6 +12,7 @@ import astral_mekanism.item.DegitalMinerFilterToolItem;
 import astral_mekanism.item.GlintItem;
 import astral_mekanism.item.GlintItemNameColored;
 import astral_mekanism.item.MekMachineUpgradeToolItem;
+import astral_mekanism.item.SortableStorageFilterCardItem;
 import astral_mekanism.item.XpCrystalItem;
 import astral_mekanism.item.cell.bulkcell.AMEBulkCellItem;
 import astral_mekanism.item.cell.pigment.InfinityPigmentCellItem;
@@ -145,9 +146,14 @@ public class AMEItems {
                     return true;
                 }
             });
+    public static final ItemRegistryObject<ItemUpgrade> TANK_CAPACITY_UPGRADE = registerUpgrade(
+            AMEUpgrade.TANK_CAPACITY.getValue());
+    public static final ItemRegistryObject<ItemUpgrade> ADVANCED_TANK_CAPACITY_UPGRADE = registerUpgrade(
+            AMEUpgrade.ADVANCED_TANK_CAPACITY.getValue());
     public static final ItemRegistryObject<GlintItem> BUNDLED_GAS_UPGRADE = ITEMS.register("bundled_gas_upgrade",
             GlintItem::new);
-    public static final ItemRegistryObject<Item> INSERT_UPGRADE = ITEMS.register("insert_upgrade");
+    public static final ItemRegistryObject<SortableStorageFilterCardItem> FILTER_CARD = ITEMS
+            .register("filter_card", SortableStorageFilterCardItem::new);
     public static final ItemRegistryObject<MekMachineUpgradeToolItem> MEK_MACHINE_UPGRADE_TOOL = ITEMS.register(
             "mekanism_machine_upgrade_tool", MekMachineUpgradeToolItem::new);
     public static final ItemRegistryObject<DegitalMinerFilterToolItem> DEGITALMINER_FILTER_TOOL = ITEMS.register(

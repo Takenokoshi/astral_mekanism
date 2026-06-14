@@ -155,8 +155,7 @@ public class DataTypeMixin {
                 || self == AMEDataType.HEATED_GAS_COOLANT
                 || self == AMEDataType.DOUBLE_GAS_COOLANT
                 || self == AMEDataType.NUCLEAR_WASTE
-                || self == AMEDataType.STEAM
-                || self == AMEDataType.INPUT_OUTPUT_astral;
+                || self == AMEDataType.STEAM;
     }
 
 }
