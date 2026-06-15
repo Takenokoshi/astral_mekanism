@@ -16,6 +16,8 @@ import astral_mekanism.AMELang;
 import astral_mekanism.block.blockentity.appliedmachine.BEAppliedRotaryCondensentrator;
 import astral_mekanism.block.blockentity.appliedmachine.BEAppliedSPS;
 import astral_mekanism.block.block.AttributeIntTier;
+import astral_mekanism.block.blockentity.appliedmachine.BEAppliedCharger;
+import astral_mekanism.block.blockentity.appliedmachine.BEAppliedChemicalOxidizer;
 import astral_mekanism.block.blockentity.appliedmachine.BEAppliedCrusher;
 import astral_mekanism.block.blockentity.appliedmachine.BEAppliedCrystallizer;
 import astral_mekanism.block.blockentity.appliedmachine.BEAppliedElectrolyticSeparator;
@@ -223,6 +225,23 @@ public class AMEMachines {
         }
         return result;
     }
+
+    public static final MachineRegistryObject<BEAppliedCharger, ?, MekanismTileContainer<BEAppliedCharger>, ?> APPLIED_CHARGER = MACHINES
+            .registerSimple("applied_mekanical_charger",
+                    BEAppliedCharger::new,
+                    BEAppliedCharger.class,
+                    AMELang.DESCRIPTION_APPLIED_MACHINE,
+                    builder -> builder
+                            .changeAttributeUpgrade(EnumSet.of(Upgrade.ENERGY)));
+
+    public static final MachineRegistryObject<BEAppliedChemicalOxidizer, ?, MekanismTileContainer<BEAppliedChemicalOxidizer>, ?> APPLIED_CHEMICAL_OXIDIZER = MACHINES
+            .registerSimple("applied_chemical_oxidizer",
+                    BEAppliedChemicalOxidizer::new,
+                    BEAppliedChemicalOxidizer.class,
+                    AMELang.DESCRIPTION_APPLIED_MACHINE,
+                    builder -> builder
+                            .changeAttributeUpgrade(EnumSet.of(Upgrade.ENERGY, Upgrade.MUFFLING))
+                            .withSound(MekanismSounds.CHEMICAL_OXIDIZER));
 
     public static final MachineRegistryObject<BEAppliedCrusher, ?, MekanismTileContainer<BEAppliedCrusher>, ?> APPLIED_CRUSHER = MACHINES
             .registerSimple("applied_crusher",

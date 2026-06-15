@@ -27,7 +27,7 @@ import net.minecraft.world.level.block.state.BlockState;
 
 public class BEEnchantedOsmiumCompressor extends BEAMEAdvancedMachine {
     private int baselineMaxOperations = 1;
-    private long gasTankCapacity = 1 * 5000;
+    private long gasTankCapacity = 1 * 10000;
 
     public BEEnchantedOsmiumCompressor(IBlockProvider blockProvider, BlockPos pos, BlockState state) {
         super(blockProvider, pos, state, "mekanism:osmium_compressor", 200);
@@ -62,7 +62,7 @@ public class BEEnchantedOsmiumCompressor extends BEAMEAdvancedMachine {
             baselineMaxOperations = 1 << (upgradeComponent.getUpgrades(Upgrade.SPEED)
                     + upgradeComponent.getUpgrades(ExtraUpgrade.STACK));
         }
-        gasTankCapacity = 5000l * baselineMaxOperations;
+        gasTankCapacity = 10000l * baselineMaxOperations;
     }
 
     private long getGasTankCapacity() {

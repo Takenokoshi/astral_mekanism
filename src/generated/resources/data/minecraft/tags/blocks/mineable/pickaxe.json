@@ -1,5 +1,7 @@
 {
   "values": [
+    "astral_mekanism:applied_mekanical_charger",
+    "astral_mekanism:applied_chemical_oxidizer",
     "astral_mekanism:applied_crusher",
     "astral_mekanism:applied_crystallizer",
     "astral_mekanism:applied_electrolytic_separator",
