@@ -56,8 +56,6 @@ import astral_mekanism.block.blockentity.normalmachine.*;
 import astral_mekanism.block.blockentity.other.BEUpgradeExtractor;
 import astral_mekanism.block.blockentity.storage.BEItemSortableStorage;
 import astral_mekanism.block.blockentity.storage.BEUniversalStorage;
-import astral_mekanism.block.container.other.ContainerItemSortableStorage;
-import astral_mekanism.block.container.prefab.ContainerAbstractStorage;
 import astral_mekanism.block.gui.appliedmachine.*;
 import astral_mekanism.block.gui.basemachine.*;
 import astral_mekanism.block.gui.compact.*;
@@ -68,7 +66,6 @@ import astral_mekanism.block.gui.generator.GuiHeatGenerator;
 import astral_mekanism.block.gui.normalmachine.*;
 import astral_mekanism.block.gui.other.GuiMekanicalMagmaBlock;
 import astral_mekanism.block.gui.other.GuiNothing;
-import astral_mekanism.block.gui.prefab.GuiAbstractStorage;
 import astral_mekanism.block.gui.prefab.GuiDoubleItemToItemRecipeMachine;
 import astral_mekanism.block.gui.prefab.GuiGasToGasBlock;
 import astral_mekanism.block.gui.prefab.GuiGasToGasMachine;
@@ -116,6 +113,8 @@ public class AMEClient extends AstralMekanism {
     }
 
     private static void initScreens() {
+        registerScreenMek(AMEMachines.APPLIED_CHARGER, GuiAppliedCharger::new);
+        registerScreenMek(AMEMachines.APPLIED_CHEMICAL_OXIDIZER, GuiAppliedChemicalOxidizer::new);
         registerScreenMek(AMEMachines.APPLIED_CRUSHER, GuiAppliedCrusher::new);
         registerScreenMek(AMEMachines.APPLIED_CHEMICAL_CRYSTALLIZER, GuiAppliedCrystallizer::new);
         registerScreenMek(AMEMachines.APPLIED_ELECTROLYTIC_SEPARATOR, GuiAppliedElectrolyticSeparator::new);
@@ -290,10 +289,8 @@ public class AMEClient extends AstralMekanism {
                 .forEach(obj -> registerScreenMek(obj, GuiMekanicalMagmaBlock::new));
         registerScreenMek(AMEMachines.UPGRADE_EXTRACTOR, GuiNothing<BEUpgradeExtractor>::new);
         registerScreenMek(AMEMachines.EVENLY_INSERTER, GuiEvenlyInserter::new);
-        registerScreenMek(AMEMachines.UNIVERSAL_STORAGE,
-                GuiAbstractStorage<BEUniversalStorage, ContainerAbstractStorage<BEUniversalStorage>>::new);
-        registerScreenMek(AMEMachines.ITEM_SORTABLE_STORAGE,
-                GuiAbstractStorage<BEItemSortableStorage, ContainerItemSortableStorage<BEItemSortableStorage>>::new);
+        registerScreenMek(AMEMachines.UNIVERSAL_STORAGE, GuiUniversalStorage<BEUniversalStorage>::new);
+        registerScreenMek(AMEMachines.ITEM_SORTABLE_STORAGE, GuiUniversalStorage<BEItemSortableStorage>::new);
         registerScreenMek(AMEMachines.RATIO_SEPARATOR, GuiRatioSeparator::new);
         registerScreenMek(AMEMachines.XP_TANK, GuiXpTank::new);
     }

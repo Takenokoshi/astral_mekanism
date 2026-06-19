@@ -1,0 +1,26 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "key": {
+        "B": {
+            "item": "astral_mekanism:ame_upgrade_base"
+        },
+        "A": {
+            "item": "astral_mekanism:alloy_convergent"
+        },
+        "S": {
+            "item": "mekanism:structural_glass"
+        },
+        "T": {
+            "item": "mekanism:dynamic_tank"
+        }
+    },
+    "pattern": [
+        "TST",
+        "ABA",
+        "TST"
+    ],
+    "result": {
+        "item": "astral_mekanism:tank_capacity_upgrade",
+        "count": 1
+    }
+}

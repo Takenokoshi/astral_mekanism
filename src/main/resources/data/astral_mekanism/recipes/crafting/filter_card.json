@@ -1,0 +1,18 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "key": {
+        "A": {
+            "item": "astral_mekanism:vibration_control_circuit"
+        },
+        "C": {
+            "item": "minecraft:paper"
+        }
+    },
+    "pattern": [
+        "AC"
+    ],
+    "result": {
+        "item": "astral_mekanism:filter_card",
+        "count": 64
+    }
+}

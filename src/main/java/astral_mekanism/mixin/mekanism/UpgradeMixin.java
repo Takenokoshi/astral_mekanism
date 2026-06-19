@@ -84,6 +84,14 @@ public class UpgradeMixin {
                 .setValue(astral_mekanism$createNew("advanced_stone_generator",
                         AMEAPILang.UPGRADE_ADVANCED_STONE_GENERATOR,
                         AMEAPILang.UPGRADE_ADVANCED_STONE_GENERATOR_DESCRIPTION, 1, EnumColor.ORANGE));
+        AMEUpgrade.TANK_CAPACITY
+                .setValue(astral_mekanism$createNew("tank_capacity",
+                        AMEAPILang.UPGRADE_TANK_CAPACITY,
+                        AMEAPILang.UPGRADE_TANK_CAPACITY_DESCRIPTION, 8, EnumColor.INDIGO));
+        AMEUpgrade.ADVANCED_TANK_CAPACITY
+                .setValue(astral_mekanism$createNew("advanced_tank_capacity",
+                        AMEAPILang.UPGRADE_ADVANCED_TANK_CAPACITY,
+                        AMEAPILang.UPGRADE_ADVANCED_TANK_CAPACITY_DESCRIPTION, 8, EnumColor.BRIGHT_GREEN));
         AMEUpgrade.initializeMap();
     }
 

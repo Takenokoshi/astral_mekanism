@@ -55,5 +55,13 @@ public class UpgradeUtilsMixin {
             cir.setReturnValue(AMEItems.ADVANCED_STONE_GENERATOR_UPGRADE.getItemStack(count));
             cir.cancel();
         }
+        if (upgrade==AMEUpgrade.TANK_CAPACITY.getValue()) {
+            cir.setReturnValue(AMEItems.TANK_CAPACITY_UPGRADE.getItemStack(count));
+            cir.cancel();
+        }
+        if (upgrade==AMEUpgrade.ADVANCED_TANK_CAPACITY.getValue()) {
+            cir.setReturnValue(AMEItems.ADVANCED_TANK_CAPACITY_UPGRADE.getItemStack(count));
+            cir.cancel();
+        }
     }
 }

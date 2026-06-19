@@ -66,11 +66,11 @@ public abstract class MekanicalTransformRecipe extends MekanismRecipe
     }
 
     public boolean anotherTest(ItemStack ia, ItemStack ib, ItemStack ic, FluidStack fa, FluidStack fb) {
-        return (ia.isEmpty() || inputItemA.test(ia))
-                && (ib.isEmpty() || inputItemB.test(ib))
-                && (ic.isEmpty() || inputItemC.test(ic))
-                && (fa.isEmpty() || inputFluidA.test(fa))
-                && (fb.isEmpty() || inputFluidB.test(fb));
+        return (ia.isEmpty() || inputItemA.testType(ia))
+                && (ib.isEmpty() || inputItemB.testType(ib))
+                && (ic.isEmpty() || inputItemC.testType(ic))
+                && (fa.isEmpty() || inputFluidA.testType(fa))
+                && (fb.isEmpty() || inputFluidB.testType(fb));
     }
 
     @Override
