@@ -9,8 +9,8 @@ import appeng.api.stacks.AEKey;
 import appeng.api.storage.MEStorage;
 import astral_mekanism.block.blockentity.appliedmachine.prefab.BEAppliedEnergizedMachine;
 import astral_mekanism.block.blockentity.interf.applied.IAppliedSingleToSingleMachine;
+import astral_mekanism.item.recipecard.ChemicalIngredientCardItem;
 import astral_mekanism.item.recipecard.FluidIngredientCardItem;
-import astral_mekanism.item.recipecard.GasIngredientCardItem;
 import astral_mekanism.util.AMEKeyUtils;
 import me.ramidzkh.mekae2.ae2.MekanismKey;
 import mekanism.api.IContentsListener;
@@ -49,7 +49,7 @@ public class BEAppliedRotaryCondensentrator extends BEAppliedEnergizedMachine im
         builder.addSlot(
                 cardSlot = BasicInventorySlot.at(stack -> {
                     Item item = stack.getItem();
-                    return item instanceof FluidIngredientCardItem || item instanceof GasIngredientCardItem;
+                    return item instanceof FluidIngredientCardItem || item instanceof ChemicalIngredientCardItem;
                 }, () -> {
                     listener.onContentsChanged();
                     recalculateRecipeInfo();
@@ -70,7 +70,7 @@ public class BEAppliedRotaryCondensentrator extends BEAppliedEnergizedMachine im
             return;
         }
         ItemStack is = cardSlot.getStack();
-        if (is.getItem() instanceof GasIngredientCardItem gasCard) {
+        if (is.getItem() instanceof ChemicalIngredientCardItem gasCard) {
             MekanismKey key = gasCard.getKey(is);
             if (key != null && hasLevel()) {
                 GasStack gasStack = AMEKeyUtils.getGas(key);

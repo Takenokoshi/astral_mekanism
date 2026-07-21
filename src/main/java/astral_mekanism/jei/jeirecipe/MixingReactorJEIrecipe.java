@@ -2,8 +2,8 @@ package astral_mekanism.jei.jeirecipe;
 
 import java.util.List;
 
-import com.jerry.generator_extras.common.genregistry.ExtraGenGases;
-import com.jerry.mekanism_extras.common.registry.ExtraGases;
+import com.jerry.generator_extras.common.genregistries.ExtraGenGases;
+import com.jerry.mekanism_extras.common.registries.ExtraGases;
 
 import mekanism.api.chemical.gas.GasStack;
 import mekanism.common.registries.MekanismGases;

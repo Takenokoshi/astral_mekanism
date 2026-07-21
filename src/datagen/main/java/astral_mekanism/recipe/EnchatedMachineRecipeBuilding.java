@@ -7,7 +7,7 @@ import java.util.function.Function;
 
 import com.fxd927.mekanismelements.common.registries.MSBlocks;
 import com.fxd927.mekanismelements.common.registries.MSItems;
-import com.jerry.mekanism_extras.common.registry.ExtraItem;
+import com.jerry.mekanism_extras.common.registries.ExtraItems;
 
 import astral_mekanism.AMEConstants;
 import astral_mekanism.registries.AMEItems;
@@ -61,7 +61,7 @@ public class EnchatedMachineRecipeBuilding {
                 .input(AMEMachines.COMPACT_APT, 1)
                 .input(EMItems.DENSE_CONTROL_CIRCUIT, 2)
                 .input(EMItems.SINGULAR_ALLOY, 4)
-                .input(ExtraItem.INGOT_NAQUADAH, 8)
+                .input(ExtraItems.INGOT_NAQUADAH, 8)
                 .input(MSItems.NEUTRON_SOURCE_PELLET, 16)
                 .input(AMEItems.ENHANCED_CONTROL_CIRCUIT, 32)
                 .input(AMEItems.ENCHANTED_ALLOY, 64)

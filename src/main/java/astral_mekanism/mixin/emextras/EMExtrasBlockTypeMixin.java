@@ -9,11 +9,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-import com.jerry.mekanism_extras.common.tier.AdvancedFactoryTier;
-import com.jerry.mekanism_extras.common.util.ExtraEnumUtils;
-
 import astral_mekanism.enums.AMEUpgrade;
-import fr.iglee42.evolvedmekanism.registries.EMFactoryType;
 import io.github.masyumero.emextras.common.content.blocktype.EMExtraFactoryType;
 import io.github.masyumero.emextras.common.registry.EMExtrasBlockType;
 import io.github.masyumero.emextras.common.tier.EMExtraFactoryTier;
@@ -64,8 +60,8 @@ public class EMExtrasBlockTypeMixin {
                 }
             }
         }
-        for (AdvancedFactoryTier tier : ExtraEnumUtils.ADVANCED_FACTORY_TIERS) {
-            astral_mekanism$addSupportedUpgrade(EMExtrasBlockType.getAdvancedFactory(tier, EMFactoryType.ALLOYING),
+        for (EMExtraFactoryTier tier : EMExtraEnumUtils.EMEXTRA_FACTORY_TIERS) {
+            astral_mekanism$addSupportedUpgrade(EMExtrasBlockType.getEMExtraFactory(tier, EMExtraFactoryType.ALLOYING),
                     AMEUpgrade.COBBLESTONE_SUPPLY.getValue());
         }
     }

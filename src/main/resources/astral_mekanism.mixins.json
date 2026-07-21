@@ -30,6 +30,8 @@
 		"mekanism.TileComponentEjectorMixin",
 		"mekanism.UpgradeMixin",
 		"mekanism.UpgradeUtilsMixin",
+		"mekanism_extras.mekmm.ExtraAdvancedFactoryBlockTypesMixin",
+		"mekanism_extras.mekmm.ExtraMoreMachineBlockTypesMixin",
 		"mekanism_extras.ExtraBlockTypeMixin",
 		"mekanism_extras.ExtrasFactorySlotMixin",
 		"mekanismelements.MSBlockTypesMixin",

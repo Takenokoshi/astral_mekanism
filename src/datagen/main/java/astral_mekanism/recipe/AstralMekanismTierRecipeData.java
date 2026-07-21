@@ -1,6 +1,6 @@
 package astral_mekanism.recipe;
 
-import com.jerry.mekanism_extras.common.registry.ExtraItem;
+import com.jerry.mekanism_extras.common.registries.ExtraItems;
 
 import appeng.core.definitions.AEItems;
 import astral_mekanism.AMETier;
@@ -51,7 +51,7 @@ public enum AstralMekanismTierRecipeData {
             AMETier.ABSOLUTE,
             Items.GLOWSTONE,
             EMItems.HYPERCHARGED_ALLOY,
-            ExtraItem.RADIANCE_ALLOY,
+            ExtraItems.RADIANCE_ALLOY,
             EMExtrasItem.ABSOLUTE_OVERCLOCKED_CONTROL_CIRCUIT,
             AAEItems.QUANTUM_PROCESSOR),
     ABSOLUTE_TO_SUPREME(
@@ -59,7 +59,7 @@ public enum AstralMekanismTierRecipeData {
             AMETier.SUPREME,
             Items.SHULKER_SHELL,
             EMItems.SUBATOMIC_ALLOY,
-            ExtraItem.THERMONUCLEAR_ALLOY,
+            ExtraItems.THERMONUCLEAR_ALLOY,
             EMExtrasItem.SUPREME_QUANTUM_CONTROL_CIRCUIT,
             AMEItems.COMPOSITE_PROCESSOR),
     SUPREME_TO_COSMIC(
@@ -67,7 +67,7 @@ public enum AstralMekanismTierRecipeData {
             AMETier.COSMIC,
             MekanismItems.REFINED_OBSIDIAN_INGOT,
             EMItems.SINGULAR_ALLOY,
-            ExtraItem.SHINING_ALLOY,
+            ExtraItems.SHINING_ALLOY,
             EMExtrasItem.COSMIC_DENSE_CONTROL_CIRCUIT,
             AMEItems.ORIGIN_PROCESSOR),
     COSMIC_TO_INFINITE(
@@ -75,7 +75,7 @@ public enum AstralMekanismTierRecipeData {
             AMETier.INFINITE,
             Items.NETHERITE_INGOT,
             EMItems.EXOVERSAL_ALLOY,
-            ExtraItem.SPECTRUM_ALLOY,
+            ExtraItems.SPECTRUM_ALLOY,
             EMExtrasItem.INFINITE_MULTIVERSAL_CONTROL_CIRCUIT,
             AMEItems.AUTONOMY_PROCESSOR),
     INFINITE_TO_ASTRAL(

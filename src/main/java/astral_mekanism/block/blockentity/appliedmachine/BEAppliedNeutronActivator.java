@@ -8,7 +8,7 @@ import appeng.api.stacks.AEKey;
 import appeng.api.storage.MEStorage;
 import astral_mekanism.block.blockentity.base.BENetworkMekanismMachine;
 import astral_mekanism.block.blockentity.interf.applied.IAppliedSingleToSingleMachine;
-import astral_mekanism.item.recipecard.GasIngredientCardItem;
+import astral_mekanism.item.recipecard.ChemicalIngredientCardItem;
 import astral_mekanism.util.AMEKeyUtils;
 import me.ramidzkh.mekae2.ae2.MekanismKey;
 import mekanism.api.IContentsListener;
@@ -42,7 +42,7 @@ public class BEAppliedNeutronActivator extends BENetworkMekanismMachine implemen
     protected IInventorySlotHolder getInitialInventory(IContentsListener listener) {
         InventorySlotHelper builder = InventorySlotHelper.forSide(this::getDirection);
         builder.addSlot(
-                cardSlot = InputInventorySlot.at(stack -> stack.getItem() instanceof GasIngredientCardItem, () -> {
+                cardSlot = InputInventorySlot.at(stack -> stack.getItem() instanceof ChemicalIngredientCardItem, () -> {
                     listener.onContentsChanged();
                     recalculateRecipeInfo();
                 }, 64, 53));
@@ -62,7 +62,7 @@ public class BEAppliedNeutronActivator extends BENetworkMekanismMachine implemen
             return;
         }
         ItemStack is = cardSlot.getStack();
-        if (is.getItem() instanceof GasIngredientCardItem cardItem) {
+        if (is.getItem() instanceof ChemicalIngredientCardItem cardItem) {
             MekanismKey key = cardItem.getKey(is);
             if (key != null && hasLevel()) {
                 GasStack stack = AMEKeyUtils.getGas(key);

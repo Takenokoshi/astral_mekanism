@@ -1,8 +1,8 @@
 package astral_mekanism.block.blockentity.appliedmachine;
 
 import com.jerry.generator_extras.common.config.GenLoadConfig;
-import com.jerry.generator_extras.common.genregistry.ExtraGenGases;
-import com.jerry.mekanism_extras.common.registry.ExtraGases;
+import com.jerry.generator_extras.common.genregistries.ExtraGenGases;
+import com.jerry.mekanism_extras.common.registries.ExtraGases;
 
 import appeng.api.config.Actionable;
 import appeng.api.networking.security.IActionSource;

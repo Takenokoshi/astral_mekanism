@@ -3,8 +3,8 @@ package astral_mekanism;
 import java.util.function.Consumer;
 
 import com.fxd927.mekanismelements.common.registries.MSGases;
-import com.jerry.mekanism_extras.common.registry.ExtraBlock;
-import com.jerry.mekanism_extras.common.registry.ExtraItem;
+import com.jerry.mekanism_extras.common.registries.ExtraBlocks;
+import com.jerry.mekanism_extras.common.registries.ExtraItems;
 import com.jerry.mekanism_extras.common.resource.ore.ExtraOreType;
 
 import appeng.core.definitions.AEItems;
@@ -60,8 +60,8 @@ public enum AMEProcessingData {
     TIN(AMEProcessableMaterialType.TIN, PrimaryResource.TIN),
     LEAD(AMEProcessableMaterialType.LEAD, PrimaryResource.LEAD),
     URANIUM(AMEProcessableMaterialType.URANIUM, PrimaryResource.URANIUM),
-    NAQUADAH(AMEProcessableMaterialType.NAQUADAH, ExtraItem.NAQUADAH_DUST, ExtraItem.INGOT_NAQUADAH,
-            ExtraBlock.ORES.get(ExtraOreType.NAQUADAH).stone()),
+    NAQUADAH(AMEProcessableMaterialType.NAQUADAH, ExtraItems.NAQUADAH_DUST, ExtraItems.INGOT_NAQUADAH,
+            ExtraBlocks.ORES.get(ExtraOreType.NAQUADAH).stone()),
     COAL(AMEProcessableMaterialType.COAL, MekanismItems.COAL_DUST, Items.COAL, Items.COAL_ORE),
     DIAMOND(AMEProcessableMaterialType.DIAMOND, MekanismItems.DIAMOND_DUST, Items.DIAMOND, Items.DIAMOND_ORE),
     EMERALD(AMEProcessableMaterialType.EMERALD, MekanismItems.EMERALD_DUST, Items.EMERALD, Items.EMERALD_ORE),

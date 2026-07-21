@@ -9,8 +9,8 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-import com.jerry.mekanism_extras.common.registry.ExtraBlockType;
-import com.jerry.mekanism_extras.common.tier.AdvancedFactoryTier;
+import com.jerry.mekanism_extras.common.registries.ExtraBlockTypes;
+import com.jerry.mekanism_extras.common.tier.ExtraFactoryTier;
 import com.jerry.mekanism_extras.common.util.ExtraEnumUtils;
 
 import astral_mekanism.enums.AMEUpgrade;
@@ -20,39 +20,39 @@ import mekanism.common.content.blocktype.BlockTypeTile;
 import mekanism.common.content.blocktype.FactoryType;
 import mekanism.common.util.EnumUtils;
 
-@Mixin(value = ExtraBlockType.class, remap = false)
+@Mixin(value = ExtraBlockTypes.class, remap = false)
 public class ExtraBlockTypeMixin {
 
     @Inject(method = "<clinit>", at = @At("TAIL"))
     private static void astral_mekanism$clinitInject(CallbackInfo ci) {
-        astral_mekanism$addSupportedUpgrade(ExtraBlockType.ENRICHMENT_CHAMBER,
+        astral_mekanism$addSupportedUpgrade(ExtraBlockTypes.ENRICHMENT_CHAMBER,
                 AMEUpgrade.COBBLESTONE_SUPPLY.getValue());
-        astral_mekanism$addSupportedUpgrade(ExtraBlockType.CRUSHER, AMEUpgrade.COBBLESTONE_SUPPLY.getValue());
-        astral_mekanism$addSupportedUpgrade(ExtraBlockType.ENERGIZED_SMELTER, AMEUpgrade.COBBLESTONE_SUPPLY.getValue());
-        astral_mekanism$addSupportedUpgrade(ExtraBlockType.PRECISION_SAWMILL, AMEUpgrade.COBBLESTONE_SUPPLY.getValue());
-        astral_mekanism$addSupportedUpgrade(ExtraBlockType.OSMIUM_COMPRESSOR,
+        astral_mekanism$addSupportedUpgrade(ExtraBlockTypes.CRUSHER, AMEUpgrade.COBBLESTONE_SUPPLY.getValue());
+        astral_mekanism$addSupportedUpgrade(ExtraBlockTypes.ENERGIZED_SMELTER, AMEUpgrade.COBBLESTONE_SUPPLY.getValue());
+        astral_mekanism$addSupportedUpgrade(ExtraBlockTypes.PRECISION_SAWMILL, AMEUpgrade.COBBLESTONE_SUPPLY.getValue());
+        astral_mekanism$addSupportedUpgrade(ExtraBlockTypes.OSMIUM_COMPRESSOR,
                 AMEUpgrade.COBBLESTONE_SUPPLY.getValue(), AMEUpgrade.RADIOACTIVE_SEALING.getValue(),
                                             AMEUpgrade.AIR_INTAKE.getValue());
-        astral_mekanism$addSupportedUpgrade(ExtraBlockType.COMBINER, AMEUpgrade.COBBLESTONE_SUPPLY.getValue());
-        astral_mekanism$addSupportedUpgrade(ExtraBlockType.METALLURGIC_INFUSER,
+        astral_mekanism$addSupportedUpgrade(ExtraBlockTypes.COMBINER, AMEUpgrade.COBBLESTONE_SUPPLY.getValue());
+        astral_mekanism$addSupportedUpgrade(ExtraBlockTypes.METALLURGIC_INFUSER,
                 AMEUpgrade.COBBLESTONE_SUPPLY.getValue(), AMEUpgrade.RADIOACTIVE_SEALING.getValue());
-        astral_mekanism$addSupportedUpgrade(ExtraBlockType.PURIFICATION_CHAMBER,
+        astral_mekanism$addSupportedUpgrade(ExtraBlockTypes.PURIFICATION_CHAMBER,
                 AMEUpgrade.COBBLESTONE_SUPPLY.getValue(), AMEUpgrade.RADIOACTIVE_SEALING.getValue(),
                                             AMEUpgrade.AIR_INTAKE.getValue());
-        astral_mekanism$addSupportedUpgrade(ExtraBlockType.CHEMICAL_INJECTION_CHAMBER,
+        astral_mekanism$addSupportedUpgrade(ExtraBlockTypes.CHEMICAL_INJECTION_CHAMBER,
                 AMEUpgrade.COBBLESTONE_SUPPLY.getValue(), AMEUpgrade.RADIOACTIVE_SEALING.getValue(),
                                             AMEUpgrade.AIR_INTAKE.getValue());
-        for (AdvancedFactoryTier tier : ExtraEnumUtils.ADVANCED_FACTORY_TIERS) {
+        for (ExtraFactoryTier tier : ExtraEnumUtils.EXTRA_FACTORY_TIERS) {
             for (FactoryType type : EnumUtils.FACTORY_TYPES) {
                 if (type == FactoryType.COMPRESSING
                         || type == FactoryType.INFUSING
                         || type == FactoryType.INJECTING
                         || type == FactoryType.PURIFYING) {
-                    astral_mekanism$addSupportedUpgrade(ExtraBlockType.getAdvancedFactory(tier, type),
+                    astral_mekanism$addSupportedUpgrade(ExtraBlockTypes.getAdvancedFactory(tier, type),
                             AMEUpgrade.COBBLESTONE_SUPPLY.getValue(), AMEUpgrade.RADIOACTIVE_SEALING.getValue(),
                                             AMEUpgrade.AIR_INTAKE.getValue());
                 } else {
-                    astral_mekanism$addSupportedUpgrade(ExtraBlockType.getAdvancedFactory(tier, type),
+                    astral_mekanism$addSupportedUpgrade(ExtraBlockTypes.getAdvancedFactory(tier, type),
                             AMEUpgrade.COBBLESTONE_SUPPLY.getValue());
                 }
             }

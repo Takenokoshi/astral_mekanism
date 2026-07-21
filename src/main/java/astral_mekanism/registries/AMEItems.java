@@ -16,10 +16,10 @@ import astral_mekanism.item.SortableStorageFilterCardItem;
 import astral_mekanism.item.XpCrystalItem;
 import astral_mekanism.item.cell.bulkcell.AMEBulkCellItem;
 import astral_mekanism.item.cell.pigment.InfinityPigmentCellItem;
+import astral_mekanism.item.recipecard.ChemicalIngredientCardItem;
 import astral_mekanism.item.recipecard.CoolantCardItem;
 import astral_mekanism.item.recipecard.FluidIngredientCardItem;
 import astral_mekanism.item.recipecard.FuelCardItem;
-import astral_mekanism.item.recipecard.GasIngredientCardItem;
 import astral_mekanism.item.recipecard.ItemIngredientCardItem;
 import astral_mekanism.part.PhotonAnnihilationPlanePart;
 import astral_mekanism.registryenum.AMEProcessableMaterialType;
@@ -167,8 +167,8 @@ public class AMEItems {
             "item_information_card", ItemIngredientCardItem::new);
     public static final ItemRegistryObject<FluidIngredientCardItem> FLUID_INFORMATION_CARD = ITEMS.register(
             "fluid_information_card", FluidIngredientCardItem::new);
-    public static final ItemRegistryObject<GasIngredientCardItem> GAS_INFORMATION_CARD = ITEMS.register(
-            "gas_information_card", GasIngredientCardItem::new);
+    public static final ItemRegistryObject<ChemicalIngredientCardItem> GAS_INFORMATION_CARD = ITEMS.register(
+            "chemical_information_card", ChemicalIngredientCardItem::new);
 
     public static final ItemRegistryObject<AMEBulkCellItem<?>> BULK_FLUID_CELL = ITEMS.register(
             "bulk_fluid_cell", AMEBulkCellItem::createFluid);

@@ -1,9 +1,9 @@
 package astral_mekanism.block.blockentity.compact;
 
-import com.jerry.mekanism_extras.common.ExtraTag;
+import com.jerry.mekanism_extras.common.ExtraTags;
 import com.jerry.generator_extras.common.config.GenLoadConfig;
-import com.jerry.generator_extras.common.genregistry.ExtraGenGases;
-import com.jerry.mekanism_extras.common.registry.ExtraGases;
+import com.jerry.generator_extras.common.genregistries.ExtraGenGases;
+import com.jerry.mekanism_extras.common.registries.ExtraGases;
 
 import astral_mekanism.AMEConstants;
 import mekanism.api.Action;
@@ -56,17 +56,17 @@ public class BECompactNaquadahReactor extends BECompactMixingReactor {
 
     @Override
     protected boolean isLeftFuel(Gas gas) {
-        return ExtraTag.Gases.RICH_NAQUADAH_FUEL_LOOKUP.contains(gas);
+        return ExtraTags.Gases.RICH_NAQUADAH_FUEL_LOOKUP.contains(gas);
     }
 
     @Override
     protected boolean isRightFuel(Gas gas) {
-        return ExtraTag.Gases.RICH_URANIUM_FUEL_LOOKUP.contains(gas);
+        return ExtraTags.Gases.RICH_URANIUM_FUEL_LOOKUP.contains(gas);
     }
 
     @Override
     protected boolean isMixedFuel(Gas gas) {
-        return ExtraTag.Gases.NAQUADAH_URANIUM_FUEL_LOOKUP.contains(gas);
+        return ExtraTags.Gases.NAQUADAH_URANIUM_FUEL_LOOKUP.contains(gas);
     }
 
     @Override

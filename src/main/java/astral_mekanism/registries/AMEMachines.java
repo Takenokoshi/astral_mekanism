@@ -865,7 +865,7 @@ public class AMEMachines {
             .registerSimple("enchanted_chemical_injection_chamber",
                     BEEnchantedChemicalInjectionChamber::new,
                     BEEnchantedChemicalInjectionChamber.class,
-                    AMELang.ITEM_GROUP,
+                    AMELang.DESCRIPTION_ENCHANTED_MACHINE,
                     builder -> builder
                             .withEnergyConfig(() -> MekanismConfig.usage.chemicalInjectionChamber.get().multiply(200),
                                     () -> MekanismConfig.storage.chemicalInjectionChamber.get().multiply(12800))
@@ -879,7 +879,7 @@ public class AMEMachines {
             .registerSimple("enchanted_osmium_compressor",
                     BEEnchantedOsmiumCompressor::new,
                     BEEnchantedOsmiumCompressor.class,
-                    AMELang.ITEM_GROUP,
+                    AMELang.DESCRIPTION_ENCHANTED_MACHINE,
                     builder -> builder
                             .withEnergyConfig(() -> MekanismConfig.usage.osmiumCompressor.get().multiply(200),
                                     () -> MekanismConfig.storage.osmiumCompressor.get().multiply(12800))
@@ -893,7 +893,7 @@ public class AMEMachines {
             .registerSimple("enchanted_purification_chamber",
                     BEEnchantedPurificationChamber::new,
                     BEEnchantedPurificationChamber.class,
-                    AMELang.ITEM_GROUP,
+                    AMELang.DESCRIPTION_ENCHANTED_MACHINE,
                     builder -> builder
                             .withEnergyConfig(() -> MekanismConfig.usage.purificationChamber.get().multiply(200),
                                     () -> MekanismConfig.storage.purificationChamber.get().multiply(12800))
@@ -907,7 +907,7 @@ public class AMEMachines {
             .registerSimple("enchanted_crusher",
                     BEEnchantedCrusher::new,
                     BEEnchantedCrusher.class,
-                    AMELang.ITEM_GROUP,
+                    AMELang.DESCRIPTION_ENCHANTED_MACHINE,
                     builder -> builder
                             .withEnergyConfig(() -> MekanismConfig.usage.crusher.get().multiply(200),
                                     () -> MekanismConfig.storage.crusher.get().multiply(12800))
@@ -920,7 +920,7 @@ public class AMEMachines {
             .registerSimple("enchanted_enrichment_chamber",
                     BEEnchantedEnrichmentChamber::new,
                     BEEnchantedEnrichmentChamber.class,
-                    AMELang.ITEM_GROUP,
+                    AMELang.DESCRIPTION_ENCHANTED_MACHINE,
                     builder -> builder
                             .withEnergyConfig(() -> MekanismConfig.usage.enrichmentChamber.get().multiply(200),
                                     () -> MekanismConfig.storage.enrichmentChamber.get().multiply(12800))
@@ -933,7 +933,7 @@ public class AMEMachines {
             .registerSimple("enchanted_adsorption_separator",
                     BEEnchantedAdsorptionSeparator::new,
                     BEEnchantedAdsorptionSeparator.class,
-                    AMELang.ITEM_GROUP,
+                    AMELang.DESCRIPTION_ENCHANTED_MACHINE,
                     builder -> builder
                             .withEnergyConfig(() -> MSConfig.usageConfig.adsorptionSeparator.get().multiply(200),
                                     () -> MSConfig.storageConfig.adsorptionSeparator.get().multiply(12800))
@@ -947,7 +947,7 @@ public class AMEMachines {
             .registerSimple("enchanted_air_compressor",
                     BEEnchantedAirCompressor::new,
                     BEEnchantedAirCompressor.class,
-                    AMELang.ITEM_GROUP,
+                    AMELang.DESCRIPTION_ENCHANTED_MACHINE,
                     builder -> builder
                             .withEnergyConfig(MSConfig.usageConfig.airCompressor,
                                     () -> MSConfig.storageConfig.airCompressor.get().multiply(400))
@@ -960,7 +960,7 @@ public class AMEMachines {
             .registerSimple("enchanted_alloyer",
                     BEEnchantedAlloyer::new,
                     BEEnchantedAlloyer.class,
-                    AMELang.ITEM_GROUP,
+                    AMELang.DESCRIPTION_ENCHANTED_MACHINE,
                     builder -> builder
                             .withEnergyConfig(() -> MekanismConfig.usage.combiner.get().multiply(200),
                                     () -> MekanismConfig.storage.combiner.get().multiply(12800))
@@ -973,7 +973,7 @@ public class AMEMachines {
             .registerSimple("enchanted_antiprotonic_nucleosynthesizer",
                     BEEnchantedAntiprotonicNucleosynthesizer::new,
                     BEEnchantedAntiprotonicNucleosynthesizer.class,
-                    AMELang.ITEM_GROUP,
+                    AMELang.DESCRIPTION_ENCHANTED_MACHINE,
                     builder -> builder
                             .withEnergyConfig(
                                     () -> MekanismConfig.usage.antiprotonicNucleosynthesizer.get().multiply(200),
@@ -989,7 +989,7 @@ public class AMEMachines {
             .registerSimple("enchanted_apt",
                     BEEnchantedAPT::new,
                     BEEnchantedAPT.class,
-                    AMELang.DESCRIPTION_COMPACT_MACHINE,
+                    AMELang.DESCRIPTION_ENCHANTED_MACHINE,
                     builder -> builder
                             .withEnergyConfig(() -> EMConfig.general.aptEnergyConsumption.get().multiply(100),
                                     () -> EMConfig.general.aptEnergyStorage.get().multiply(400))
@@ -1002,7 +1002,7 @@ public class AMEMachines {
             .registerSimple("enchanted_chemical_infuser",
                     BEEnchantedChemicalInfuser::new,
                     BEEnchantedChemicalInfuser.class,
-                    AMELang.ITEM_GROUP,
+                    AMELang.DESCRIPTION_ENCHANTED_MACHINE,
                     builder -> builder
                             .withEnergyConfig(MekanismConfig.usage.chemicalInfuser,
                                     () -> MekanismConfig.storage.chemicalInfuser.get().multiply(400))
@@ -1016,7 +1016,7 @@ public class AMEMachines {
             .registerSimple("enchanted_chemical_washer",
                     BEEnchantedChemicalWasher::new,
                     BEEnchantedChemicalWasher.class,
-                    AMELang.ITEM_GROUP,
+                    AMELang.DESCRIPTION_ENCHANTED_MACHINE,
                     builder -> builder
                             .withEnergyConfig(MekanismConfig.usage.chemicalWasher,
                                     () -> MekanismConfig.storage.chemicalWasher.get().multiply(400))
@@ -1030,7 +1030,7 @@ public class AMEMachines {
             .registerSimple("enchanted_chemical_oxidizer",
                     BEEnchantedChemicalOxidizer::new,
                     BEEnchantedChemicalOxidizer.class,
-                    AMELang.ITEM_GROUP,
+                    AMELang.DESCRIPTION_ENCHANTED_MACHINE,
                     builder -> builder
                             .withEnergyConfig(() -> MekanismConfig.usage.oxidationChamber.get().multiply(200),
                                     () -> MekanismConfig.storage.oxidationChamber.get().multiply(12800))
@@ -1044,7 +1044,7 @@ public class AMEMachines {
             .registerSimple("enchanted_chemixer",
                     BEEnchantedChemixer::new,
                     BEEnchantedChemixer.class,
-                    AMELang.ITEM_GROUP,
+                    AMELang.DESCRIPTION_ENCHANTED_MACHINE,
                     builder -> builder
                             .withEnergyConfig(() -> MekanismConfig.usage.combiner.get().multiply(200),
                                     () -> MekanismConfig.storage.combiner.get().multiply(12800))
@@ -1060,7 +1060,7 @@ public class AMEMachines {
             .registerSimple("enchanted_crystallizer",
                     BEEnchantedCrystallizer::new,
                     BEEnchantedCrystallizer.class,
-                    AMELang.ITEM_GROUP,
+                    AMELang.DESCRIPTION_ENCHANTED_MACHINE,
                     builder -> builder
                             .withEnergyConfig(() -> MekanismConfig.usage.chemicalCrystallizer.get().multiply(200),
                                     () -> MekanismConfig.storage.chemicalCrystallizer.get().multiply(12800))
@@ -1075,7 +1075,7 @@ public class AMEMachines {
             .registerSimple("enchanted_dissolution_chamber",
                     BEEnchantedDissolutionChamber::new,
                     BEEnchantedDissolutionChamber.class,
-                    AMELang.ITEM_GROUP,
+                    AMELang.DESCRIPTION_ENCHANTED_MACHINE,
                     builder -> builder
                             .withEnergyConfig(() -> MekanismConfig.usage.chemicalDissolutionChamber.get().multiply(200),
                                     () -> MekanismConfig.storage.chemicalDissolutionChamber.get().multiply(12800))
@@ -1091,7 +1091,7 @@ public class AMEMachines {
             .registerSimple("enchanted_electrolytic_separator",
                     BEEnchantedElectrolyticSeparator::new,
                     BEEnchantedElectrolyticSeparator.class,
-                    AMELang.ITEM_GROUP,
+                    AMELang.DESCRIPTION_ENCHANTED_MACHINE,
                     builder -> builder
                             .withEnergyConfig(() -> MekanismConfig.general.FROM_H2.get().multiply(2),
                                     () -> MekanismConfig.storage.electrolyticSeparator.get().multiply(400))
@@ -1106,7 +1106,7 @@ public class AMEMachines {
             .registerSimple("enchanted_energized_smelter",
                     BEEnchantedEnergizedSmelter::new,
                     BEEnchantedEnergizedSmelter.class,
-                    AMELang.ITEM_GROUP,
+                    AMELang.DESCRIPTION_ENCHANTED_MACHINE,
                     builder -> builder
                             .withEnergyConfig(() -> MekanismConfig.usage.energizedSmelter.get().multiply(200),
                                     () -> MekanismConfig.storage.energizedSmelter.get().multiply(12800))
@@ -1122,7 +1122,7 @@ public class AMEMachines {
                     BEEnchantedFormulaicAssemblicator::new,
                     BEEnchantedFormulaicAssemblicator.class,
                     ContainerEnchantedFormulaicAssemblicator::new,
-                    AMELang.ITEM_GROUP,
+                    AMELang.DESCRIPTION_ENCHANTED_MACHINE,
                     builder -> builder
                             .withEnergyConfig(() -> MekanismConfig.usage.formulaicAssemblicator.get().multiply(200),
                                     () -> MekanismConfig.storage.formulaicAssemblicator.get().multiply(12800))
@@ -1135,7 +1135,7 @@ public class AMEMachines {
             .registerSimple("enchanted_green_house",
                     BEEnchantedGreenHouse::new,
                     BEEnchantedGreenHouse.class,
-                    AMELang.ITEM_GROUP,
+                    AMELang.DESCRIPTION_ENCHANTED_MACHINE,
                     builder -> builder
                             .withEnergyConfig(() -> AMEConfig.usage.greenHouse.get().multiply(200),
                                     () -> AMEConfig.storage.greenHouse.get().multiply(12800))
@@ -1149,7 +1149,7 @@ public class AMEMachines {
             .registerSimple("enchanted_infusing_condensentrator",
                     BEEnchantedInfusingCondensentrator::new,
                     BEEnchantedInfusingCondensentrator.class,
-                    AMELang.ITEM_GROUP,
+                    AMELang.DESCRIPTION_ENCHANTED_MACHINE,
                     builder -> builder
                             .withEnergyConfig(AMEConfig.usage.greenHouse,
                                     () -> AMEConfig.storage.greenHouse.get().multiply(200))
@@ -1161,7 +1161,7 @@ public class AMEMachines {
             .registerSimple("enchanted_isotopic_centrifuge",
                     BEEnchantedIsotopicCentrifuge::new,
                     BEEnchantedIsotopicCentrifuge.class,
-                    AMELang.ITEM_GROUP,
+                    AMELang.DESCRIPTION_ENCHANTED_MACHINE,
                     builder -> builder
                             .withEnergyConfig(MekanismConfig.usage.isotopicCentrifuge,
                                     () -> MekanismConfig.storage.isotopicCentrifuge.get().multiply(400))
@@ -1176,7 +1176,7 @@ public class AMEMachines {
             .registerSimple("enchanted_mekanical_inscriber",
                     BEEnchantedMekanicalInscriber::new,
                     BEEnchantedMekanicalInscriber.class,
-                    AMELang.DESCRIPTION_MEKANICAL_INSCRIBER,
+                    AMELang.DESCRIPTION_ENCHANTED_MACHINE,
                     builder -> builder
                             .withEnergyConfig(() -> AMEConfig.usage.mekanicalInscriber.get().multiply(200),
                                     () -> AMEConfig.storage.mekanicalInscriber.get().multiply(12800))
@@ -1189,7 +1189,7 @@ public class AMEMachines {
             .registerSimple("enchanted_sps",
                     BEEnchantedSPS::new,
                     BEEnchantedSPS.class,
-                    AMELang.ITEM_GROUP,
+                    AMELang.DESCRIPTION_ENCHANTED_MACHINE,
                     builder -> builder
                             .withEnergyConfig(() -> MekanismConfig.general.spsEnergyPerInput.get().multiply(200000),
                                     () -> MekanismConfig.general.spsEnergyPerInput.get().multiply(2560000000l))
@@ -1204,7 +1204,7 @@ public class AMEMachines {
             .registerSimple("enchanted_thermalizer",
                     BEEnchantedMelter::new,
                     BEEnchantedMelter.class,
-                    AMELang.ITEM_GROUP,
+                    AMELang.DESCRIPTION_ENCHANTED_MACHINE,
                     builder -> builder
                             .changeAttributeUpgrade(
                                     EnumSet.of(Upgrade.MUFFLING, Upgrade.ENERGY, Upgrade.SPEED,
@@ -1217,7 +1217,7 @@ public class AMEMachines {
             .registerSimple("enchanted_metallurgic_infuser",
                     BEEnchantedMetallurgicInfuser::new,
                     BEEnchantedMetallurgicInfuser.class,
-                    AMELang.ITEM_GROUP,
+                    AMELang.DESCRIPTION_ENCHANTED_MACHINE,
                     builder -> builder
                             .withEnergyConfig(() -> MekanismConfig.usage.metallurgicInfuser.get().multiply(200),
                                     () -> MekanismConfig.storage.metallurgicInfuser.get().multiply(12800))
@@ -1231,7 +1231,7 @@ public class AMEMachines {
             .registerSimple("enchanted_painting_machine",
                     BEEnchantedPaintingMachine::new,
                     BEEnchantedPaintingMachine.class,
-                    AMELang.ITEM_GROUP,
+                    AMELang.DESCRIPTION_ENCHANTED_MACHINE,
                     builder -> builder
                             .withEnergyConfig(() -> MekanismConfig.usage.paintingMachine.get().multiply(200),
                                     () -> MekanismConfig.storage.paintingMachine.get().multiply(12800))
@@ -1245,7 +1245,7 @@ public class AMEMachines {
             .registerSimple("enchanted_prc",
                     BEEnchantedPRC::new,
                     BEEnchantedPRC.class,
-                    AMELang.ITEM_GROUP,
+                    AMELang.DESCRIPTION_ENCHANTED_MACHINE,
                     builder -> builder
                             .withEnergyConfig(() -> MekanismConfig.usage.pressurizedReactionBase.get().multiply(200),
                                     () -> MekanismConfig.storage.pressurizedReactionBase.get().multiply(12800))
@@ -1261,7 +1261,7 @@ public class AMEMachines {
             .registerSimple("enchanted_precision_sawmill",
                     BEEnchantedPrecisionSawmill::new,
                     BEEnchantedPrecisionSawmill.class,
-                    AMELang.ITEM_GROUP,
+                    AMELang.DESCRIPTION_ENCHANTED_MACHINE,
                     builder -> builder
                             .withEnergyConfig(() -> MekanismConfig.usage.precisionSawmill.get().multiply(200),
                                     () -> MekanismConfig.storage.precisionSawmill.get().multiply(12800))
@@ -1275,7 +1275,7 @@ public class AMEMachines {
             .registerSimple("enchanted_radiation_irradiator",
                     BEEnchantedRadiationIrradiator::new,
                     BEEnchantedRadiationIrradiator.class,
-                    AMELang.ITEM_GROUP,
+                    AMELang.DESCRIPTION_ENCHANTED_MACHINE,
                     builder -> builder
                             .withEnergyConfig(() -> MSConfig.usageConfig.radiationIrradiator.get().multiply(200),
                                     () -> MSConfig.storageConfig.radiationIrradiator.get().multiply(12800))
@@ -1290,7 +1290,7 @@ public class AMEMachines {
             .registerSimple("enchanted_rotary_condensentrator",
                     BEEnchantedRotaryCondensentrator::new,
                     BEEnchantedRotaryCondensentrator.class,
-                    AMELang.ITEM_GROUP,
+                    AMELang.DESCRIPTION_ENCHANTED_MACHINE,
                     builder -> builder
                             .withEnergyConfig(MekanismConfig.usage.rotaryCondensentrator,
                                     () -> MekanismConfig.storage.rotaryCondensentrator.get().multiply(400))
@@ -1306,7 +1306,7 @@ public class AMEMachines {
             .registerSimple("enchanted_solidification_chamber",
                     BEEnchantedSolidifier::new,
                     BEEnchantedSolidifier.class,
-                    AMELang.ITEM_GROUP,
+                    AMELang.DESCRIPTION_ENCHANTED_MACHINE,
                     builder -> builder
                             .withEnergyConfig(() -> MekanismConfig.usage.pressurizedReactionBase.get().multiply(200),
                                     () -> MekanismConfig.storage.pressurizedReactionBase.get().multiply(12800))
@@ -1354,7 +1354,7 @@ public class AMEMachines {
             tier -> tier.nameForNormal + "_energized_smelting_factory",
             BEEnergizedSmeltingFactory::new,
             BEEnergizedSmeltingFactory.class,
-            MekanismLang.FACTORY_TYPE,
+            MekanismLang.DESCRIPTION_FACTORY,
             tier -> builder -> builder
                     .withSound(MekanismSounds.ENERGIZED_SMELTER)
                     .changeAttributeUpgrade(
@@ -1369,7 +1369,7 @@ public class AMEMachines {
                     BEAstralCrafter::new,
                     BEAstralCrafter.class,
                     ContainerAstralCrafter::new,
-                    AMELang.DESCRIPTION_ASTRAL_CRAFTER,
+                    AMELang.DESCRIPTION_ESSENTIAL_CRAFTER,
                     builder -> builder
                             .withEnergyConfig(AMEConfig.usage.essentialCrafter, AMEConfig.storage.essentialCrafter)
                             .changeAttributeUpgrade(EnumSet.of(AMEUpgrade.RADIOACTIVE_SEALING.getValue())));
@@ -1393,7 +1393,7 @@ public class AMEMachines {
                     BEEssentialFormulaicAssemblicator::new,
                     BEEssentialFormulaicAssemblicator.class,
                     ContainerEssentialFormulaicAseemblicator::new,
-                    AMELang.ITEM_GROUP,
+                    MekanismLang.DESCRIPTION_FORMULAIC_ASSEMBLICATOR,
                     builder -> builder
                             .withEnergyConfig(MekanismConfig.usage.formulaicAssemblicator,
                                     MekanismConfig.storage.formulaicAssemblicator)
@@ -1436,7 +1436,7 @@ public class AMEMachines {
             .registerSimple("essential_reaction_chamber",
                     BEEssentialReactionChamber::new,
                     BEEssentialReactionChamber.class,
-                    AMELang.ITEM_GROUP,
+                    AMELang.DESCRIPTION_ESSENTIAL_REACTION_CHAMBER,
                     builder -> builder
                             .withEnergyConfig(AMEConfig.usage.aaeReactionChamber, AMEConfig.storage.aaeReactionChamber)
                             .withCustomShape(AMEBlockShapes.AAE_REACTION_CHAMBER)
@@ -1466,7 +1466,7 @@ public class AMEMachines {
             .registerSimple("gas_synthesizer",
                     BEGasSynthesizer::new,
                     BEGasSynthesizer.class,
-                    AMELang.DESCRIPTION_INFUSE_SYNTHESIZER,
+                    AMELang.DESCRIPTION_GAS_SYNTHESIZER,
                     builder -> builder.changeAttributeUpgrade(EnumSet.of(AMEUpgrade.RADIOACTIVE_SEALING.getValue())));
 
     public static final MachineRegistryObject<BEGlowstoneNeutronActivator, BlockTileModel<BEGlowstoneNeutronActivator, BlockTypeMachine<BEGlowstoneNeutronActivator>>, MekanismTileContainer<BEGlowstoneNeutronActivator>, ItemBlockMachine> GLOWSTONE_NEUTRON_ACTIVATOR = MACHINES
@@ -1498,7 +1498,7 @@ public class AMEMachines {
             .registerSimple("infusing_condensentrator",
                     BEInfusingCondensentrator::new,
                     BEInfusingCondensentrator.class,
-                    AMELang.ITEM_GROUP,
+                    AMELang.DESCRIPTION_INFUSING_CONDENSENTRATOR,
                     builder -> builder
                             .withEnergyConfig(AMEConfig.usage.greenHouse, AMEConfig.storage.greenHouse)
                             .changeAttributeUpgrade(EnumSet.of(Upgrade.SPEED, Upgrade.ENERGY, Upgrade.MUFFLING,
@@ -1510,7 +1510,7 @@ public class AMEMachines {
                     BEInterstellarAntineutronicMatterReconstructionApparatus::new,
                     BEInterstellarAntineutronicMatterReconstructionApparatus.class,
                     ContainerMachineCustomSize<BEInterstellarAntineutronicMatterReconstructionApparatus>::new,
-                    AMELang.ITEM_GROUP,
+                    AMELang.DESCRIPTION_IAMRA,
                     builder -> builder
                             .withEnergyConfig(() -> FloatingLong.create(2000000000), MAX_SUPPLIER)
                             .withSound(MekanismSounds.SPS)
@@ -1549,7 +1549,7 @@ public class AMEMachines {
             .registerSimple("mekanical_composter",
                     BEMekanicalComposter::new,
                     BEMekanicalComposter.class,
-                    AMELang.ITEM_GROUP,
+                    AMELang.DESCRIPTION_MEKANICAL_COMPOSTER,
                     builder -> builder
                             .changeAttributeUpgrade(EnumSet.of(Upgrade.SPEED, AMEUpgrade.COBBLESTONE_SUPPLY.getValue()))
                             .withCustomShape(AMEBlockShapes.COMPOSTER));
@@ -1568,7 +1568,9 @@ public class AMEMachines {
 
     public static final MachineRegistryObject<BEMekanicalMatterCondenser, BlockTileModel<BEMekanicalMatterCondenser, BlockTypeMachine<BEMekanicalMatterCondenser>>, MekanismTileContainer<BEMekanicalMatterCondenser>, ItemBlockMachine> MEKANICAL_MATTER_CONDENSER = MACHINES
             .registerSimple("mekanical_matter_condenser",
-                    BEMekanicalMatterCondenser::new, BEMekanicalMatterCondenser.class, AMELang.ITEM_GROUP,
+                    BEMekanicalMatterCondenser::new, 
+                    BEMekanicalMatterCondenser.class, 
+                    AMELang.DESCRIPTION_MEKANICAL_MATTER_CONDENSER,
                     builder -> builder
                             .changeAttributeUpgrade(EnumSet.of(Upgrade.SPEED,
                                     AMEUpgrade.COBBLESTONE_SUPPLY.getValue(),
@@ -1601,7 +1603,7 @@ public class AMEMachines {
                     b -> new BlockItem(b, new Item.Properties().fireResistant()),
                     BEMekanicalMagmaBlock::new,
                     BEMekanicalMagmaBlock.class,
-                    AMELang.ITEM_GROUP,
+                    AMELang.DESCRIPTION_MEKANICAL_MAGMABLOCK,
                     builder -> builder.removeAttributeUpgrade()
                             .with(new AttributeIntTier(i + 1)));
         }
@@ -1619,7 +1621,7 @@ public class AMEMachines {
             .registerSimple("evenly_inserter",
                     BEEvenlyInserter::new,
                     BEEvenlyInserter.class,
-                    AMELang.ITEM_GROUP,
+                    AMELang.DESCRIPTION_EVENLY_INSERTER,
                     builder -> builder.changeAttributeUpgrade(EnumSet.of(AMEUpgrade.RADIOACTIVE_SEALING.getValue())));
 
     public static final MachineRegistryObject<BEUniversalStorage, ?, ContainerPagedMachine<BEUniversalStorage>, ?> UNIVERSAL_STORAGE = MACHINES
@@ -1652,14 +1654,14 @@ public class AMEMachines {
                     BERatioSeparator::new,
                     BERatioSeparator.class,
                     ContainerPagedMachine<BERatioSeparator>::new,
-                    AMELang.ITEM_GROUP,
+                    AMELang.DESCRIPTION_RATIO_SEPARATOR,
                     builder -> builder.changeAttributeUpgrade(EnumSet.of(AMEUpgrade.RADIOACTIVE_SEALING.getValue())));
 
     public static final MachineRegistryObject<BEXpTank, BlockTileModel<BEXpTank, BlockTypeMachine<BEXpTank>>, MekanismTileContainer<BEXpTank>, ItemBlockMachine> XP_TANK = MACHINES
             .registerSimple("xp_tank",
                     BEXpTank::new,
                     BEXpTank.class,
-                    MekanismLang.ACTIVE,
+                    AMELang.DESCRIPTION_XP_TANK,
                     BlockMachineBuilder::removeAttributeUpgrade);
 
 }
