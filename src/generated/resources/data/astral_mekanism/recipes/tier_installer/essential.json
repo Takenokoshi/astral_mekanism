@@ -1,0 +1,33 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "redstone",
+  "key": {
+    "A": {
+      "item": "astral_mekanism:alloy_elastic"
+    },
+    "B": {
+      "item": "minecraft:amethyst_block"
+    },
+    "C": {
+      "item": "astral_mekanism:alloy_elastic"
+    },
+    "D": {
+      "item": "astral_mekanism:vibration_control_circuit"
+    },
+    "E": {
+      "tag": "minecraft:planks"
+    },
+    "F": {
+      "item": "astral_mekanism:vibration_control_circuit"
+    }
+  },
+  "pattern": [
+    "ABC",
+    "DEF",
+    "ABC"
+  ],
+  "result": {
+    "item": "astral_mekanism:essential_tier_installer"
+  },
+  "show_notification": true
+}

@@ -2,6 +2,9 @@ package astral_mekanism.block.blockentity.compact;
 
 import java.util.List;
 
+import astral_mekanism.upgrade.TEPUpgradeData;
+import mekanism.common.tile.component.ITileComponent;
+import mekanism.common.upgrade.IUpgradeData;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -314,6 +317,34 @@ public class BECompactTEP extends TileEntityRecipeMachine<FluidToFluidRecipe>
         container.track(SyncableDouble.create(this::getTempMultipleier,
                 value -> tempMultiplier = value));
         container.track(SyncableFloatingLong.create(this::getEnergyUsed, value -> clientEnergyUsed = value));
+    }
+
+    @Override
+    public void parseUpgradeData(@NotNull IUpgradeData upgradeData) {
+        if (upgradeData instanceof TEPUpgradeData data) {
+            redstone = data.redstone;
+            setControlType(data.controlType);
+            getEnergyContainer().setEnergy(data.energyContainer.getEnergy());
+            energySlot.deserializeNBT(data.energySlot.serializeNBT());
+            heatCapacitor.deserializeNBT(data.heatCapacitor.serializeNBT());
+            setEnergyUsageFromPacket(((MachineEnergyContainer<?>)data.energyContainer).getEnergyPerTick());
+            inputTank.deserializeNBT(data.inputTank.serializeNBT());
+            outputTank.deserializeNBT(data.outputTank.serializeNBT());
+            inputInputSlot.deserializeNBT(data.inputInputSlot.serializeNBT());
+            outputInputSlot.deserializeNBT(data.outputInputSlot.serializeNBT());
+            inputOutputSlot.deserializeNBT(data.inputOutputSlot.serializeNBT());
+            outputOutputSlot.deserializeNBT(data.outputOutputSlot.serializeNBT());
+            for (ITileComponent component : getComponents()) {
+                component.read(data.components);
+            }
+        } else {
+            super.parseUpgradeData(upgradeData);
+        }
+    }
+
+    @Override
+    public TEPUpgradeData getUpgradeData() {
+        return new TEPUpgradeData(redstone, getControlType(), energyContainer, heatCapacitor, inputTank, outputTank, inputInputSlot, outputInputSlot, energySlot, inputOutputSlot, outputOutputSlot, getComponents());
     }
 
     public void setEnergyUsageFromPacket(FloatingLong floatingLong) {

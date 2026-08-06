@@ -18,8 +18,10 @@ import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.data.recipes.RecipeProvider;
 import net.minecraft.data.recipes.ShapedRecipeBuilder;
+import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.ItemLike;
+import net.minecraft.world.level.block.Blocks;
 import net.pedroksl.advanced_ae.common.definitions.AAEItems;
 
 public class AstralMekanismRecipeProvider extends RecipeProvider {
@@ -48,6 +50,56 @@ public class AstralMekanismRecipeProvider extends RecipeProvider {
         CompressUnzipRecipeBuilding.buildRecipes(consumer);
         EnchatedMachineRecipeBuilding.build(consumer, AstralMekanismRecipeProvider::has);
         BuildAppliedMachineRecipe.build(consumer, AstralMekanismRecipeProvider::has);
+
+        buildTierInstallerRecipes(AMEItems.ESSENTIAL_TIER_INSTALLER,
+                Blocks.AMETHYST_BLOCK.asItem(),
+                AMEItems.ELASTIC_ALLOY,
+                AMEItems.VIBRATION_CONTROL_CIRCUIT,
+                AMEItems.ELASTIC_ALLOY,
+                AMEItems.VIBRATION_CONTROL_CIRCUIT,
+                AMETier.ESSENTIAL, consumer);
+        buildTierInstallerRecipes(AMEItems.BASIC_STANDARD_TIER_INSTALLER, AstralMekanismTierRecipeData.ESSENTIAL_TO_BASIC, consumer);
+        buildTierInstallerRecipes(AMEItems.ADVANCED_TIER_INSTALLER, AstralMekanismTierRecipeData.BASIC_TO_ADVANCED, consumer);
+        buildTierInstallerRecipes(AMEItems.ELITE_TIER_INSTALLER, AstralMekanismTierRecipeData.ADVANCED_TO_ELITE, consumer);
+        buildTierInstallerRecipes(AMEItems.ENCHANTED_ULTIMATE_TIER_INSTALLER, AstralMekanismTierRecipeData.ELITE_TO_ULTIMATE, consumer);
+        buildTierInstallerRecipes(AMEItems.ABSOLUTE_OVERCLOCKED_TIER_INSTALLER, AstralMekanismTierRecipeData.ULTIMATE_TO_ABSOLUTE, consumer);
+        buildTierInstallerRecipes(AMEItems.SUPREME_QUANTUM_TIER_INSTALLER, AstralMekanismTierRecipeData.ABSOLUTE_TO_SUPREME, consumer);
+        buildTierInstallerRecipes(AMEItems.COSMIC_DENSE_TIER_INSTALLER, AstralMekanismTierRecipeData.SUPREME_TO_COSMIC, consumer);
+        buildTierInstallerRecipes(AMEItems.INFINITE_MULTIVERSAL_TIER_INSTALLER, AstralMekanismTierRecipeData.COSMIC_TO_INFINITE, consumer);
+        buildTierInstallerRecipes(AMEItems.ASTRONOMICAL_TIER_INSTALLER, AstralMekanismTierRecipeData.INFINITE_TO_ASTRAL, consumer);
+    }
+
+    private static void buildTierInstallerRecipes(IItemProvider result,
+                                                  ItemLike centerItem,
+                                                  ItemLike leftAlloy,
+                                                  ItemLike leftCircuit,
+                                                  ItemLike rightAlloy,
+                                                  ItemLike rightCircuit,
+                                                  AMETier tier,
+                                                  Consumer<FinishedRecipe> consumer) {
+        ShapedRecipeBuilder.shaped(RecipeCategory.REDSTONE, result)
+                .pattern("ABC")
+                .pattern("DEF")
+                .pattern("ABC")
+                .define('A', leftAlloy)
+                .define('B', centerItem)
+                .define('C', rightAlloy)
+                .define('D', leftCircuit)
+                .define('E', ItemTags.PLANKS)
+                .define('F', rightCircuit)
+                .unlockedBy("has_circuit", has(rightCircuit))
+                .save(consumer, AMEConstants.rl("tier_installer" + "/" + tier.nameForNormal));
+    }
+
+    private static void buildTierInstallerRecipes(IItemProvider result, AstralMekanismTierRecipeData data,
+                                                       Consumer<FinishedRecipe> consumer) {
+        buildTierInstallerRecipes(result,
+                data.centerItem,
+                data.leftAlloy,
+                data.leftCircuit,
+                data.rightAlloy,
+                data.rightCircuit,
+                data.afterTier, consumer);
     }
 
     private static void buildTierMachineUpgradeRecipes(EnumMap<AMETier, ? extends IItemProvider> machines,

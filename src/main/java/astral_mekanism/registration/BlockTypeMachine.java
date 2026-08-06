@@ -2,9 +2,13 @@
 package astral_mekanism.registration;
 
 import java.util.EnumSet;
+import java.util.function.Function;
 import java.util.function.Supplier;
 
+import astral_mekanism.AMETier;
+import astral_mekanism.block.block.AMEAttributeUpgradeable;
 import astral_mekanism.integration.AMEEmpowered;
+import astral_mekanism.util.AMEEnumUtils;
 import mekanism.api.Upgrade;
 import mekanism.api.text.ILangEntry;
 import mekanism.common.block.attribute.AttributeFactoryType;
@@ -22,6 +26,7 @@ import mekanism.common.tier.FactoryTier;
 import mekanism.common.tile.base.TileEntityMekanism;
 import net.minecraft.core.particles.DustParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
+import org.jetbrains.annotations.Nullable;
 
 //This class is almost thie same as `mekanism.common.content.blocktype.Machine`.
 //This class allows me to use `ILangEntry` instead of `MekanismLang`.
@@ -87,6 +92,17 @@ public class BlockTypeMachine<TILE extends TileEntityMekanism> extends BlockType
                 upgrades = AMEEmpowered.getEmpoweredUpgrades(upgrades);
             }
             this.withSupportedUpgrades(upgrades);
+            return this;
+        }
+
+        public BlockMachineBuilder<MACHINE, TILE> createAttributeUpgradeable(@Nullable AMETier tier, Function<AMETier, MachineRegistryObject<?, ?, ?, ?>> upgradeBlock) {
+            if (tier == null) {
+                this.with(new AMEAttributeUpgradeable(() -> upgradeBlock.apply(AMETier.ESSENTIAL).getBlockObject()));
+                return this;
+            }
+            if (tier.ordinal() < AMETier.values().length - 1) {
+                this.with(new AMEAttributeUpgradeable(() -> upgradeBlock.apply(AMEEnumUtils.AME_TIERS[tier.ordinal() + 1]).getBlockObject()));
+            }
             return this;
         }
     }

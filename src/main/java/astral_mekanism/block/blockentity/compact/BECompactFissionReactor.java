@@ -1,6 +1,10 @@
 package astral_mekanism.block.blockentity.compact;
 
 import java.util.List;
+
+import astral_mekanism.upgrade.FissionUpgradeData;
+import mekanism.common.tile.component.ITileComponent;
+import mekanism.common.upgrade.IUpgradeData;
 import org.jetbrains.annotations.NotNull;
 
 import astral_mekanism.AMETier;
@@ -275,6 +279,38 @@ public class BECompactFissionReactor extends TileEntityConfigurableMachine imple
         container.track(SyncableLong.create(this::getEfficiency, value -> efficiency = value));
         container.track(SyncableDouble.create(this::getLastTransferLoss, value -> lastTransferLoss = value));
         container.track(SyncableDouble.create(this::getLastEnvironmentLoss, value -> lastEnvironmentLoss = value));
+    }
+
+    @Override
+    public void parseUpgradeData(@NotNull IUpgradeData upgradeData) {
+        if (upgradeData instanceof FissionUpgradeData data) {
+            redstone = data.redstone;
+            setControlType(data.controlType);
+            efficiency = data.efficiency;
+            heatCapacitor.deserializeNBT(data.heatCapacitor.serializeNBT());
+            fissionFuelTank.deserializeNBT(data.fissionFuelTank.serializeNBT());
+            nuclearWasteTank.deserializeNBT(data.nuclearWasteTank.serializeNBT());
+            coolantFluidTank.deserializeNBT(data.coolantFluidTank.serializeNBT());
+            coolantGasTank.deserializeNBT(data.coolantGasTank.serializeNBT());
+            heatedFluidCoolantGasTank.deserializeNBT(data.heatedFluidCoolantGasTank.serializeNBT());
+            heatedGasCoolantGasTank.deserializeNBT(data.heatedGasCoolantGasTank.serializeNBT());
+            fissionFuelSlot.deserializeNBT(data.fissionFuelSlot.serializeNBT());
+            nuclearWasteSlot.deserializeNBT(data.nuclearWasteSlot.serializeNBT());
+            fluidCoolantSlot.deserializeNBT(data.fluidCoolantSlot.serializeNBT());
+            gasCoolantSlot.deserializeNBT(data.gasCoolantSlot.serializeNBT());
+            heatedFluidSlot.deserializeNBT(data.heatedFluidSlot.serializeNBT());
+            heatedGasSlot.deserializeNBT(data.heatedGasSlot.serializeNBT());
+            for (ITileComponent component : getComponents()) {
+                component.read(data.components);
+            }
+        } else {
+            super.parseUpgradeData(upgradeData);
+        }
+    }
+
+    @Override
+    public FissionUpgradeData getUpgradeData() {
+        return new FissionUpgradeData(redstone, getControlType(), getEfficiency(), heatCapacitor, fissionFuelTank, nuclearWasteTank, coolantFluidTank, coolantGasTank, heatedFluidCoolantGasTank, heatedGasCoolantGasTank, fissionFuelSlot, nuclearWasteSlot, fluidCoolantSlot, gasCoolantSlot, heatedFluidSlot, heatedGasSlot, getComponents());
     }
 
     public BasicHeatCapacitor getHeatCapacitor() {

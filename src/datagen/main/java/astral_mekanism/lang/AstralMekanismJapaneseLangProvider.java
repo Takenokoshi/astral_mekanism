@@ -83,6 +83,8 @@ public class AstralMekanismJapaneseLangProvider extends LanguageProvider {
             path = path.replace("crystal_antimatter", "反物質の水晶");
         } else if (path.contains("infuse")) {
             path = path.replace("infuse", "融合");
+        } else if (path.contains("tier_installer")) {
+            path = path.replace("tier_installer", "ティアインストーラー");
         }
         add(item.asItem(), toTitle(path));
     }

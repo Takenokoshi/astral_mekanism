@@ -5,6 +5,9 @@ import java.util.List;
 import java.util.Set;
 import java.util.function.BooleanSupplier;
 
+import mekanism.common.tile.component.ITileComponent;
+import mekanism.common.upgrade.IUpgradeData;
+import mekanism.common.upgrade.MachineUpgradeData;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -245,6 +248,21 @@ public abstract class BlockEntityRecipeFactory<RECIPE extends Recipe<?>, BE exte
         super.addContainerTrackers(container);
         errorTracker.track(container);
         container.track(SyncableFloatingLong.create(this::getEnergyUsage, value -> lastUsage = value));
+    }
+
+    @Override
+    public void parseUpgradeData(@NotNull IUpgradeData upgradeData) {
+        if (upgradeData instanceof MachineUpgradeData data) {
+            redstone = data.redstone;
+            setControlType(data.controlType);
+            getEnergyContainer().setEnergy(data.energyContainer.getEnergy());
+            energySlot.deserializeNBT(data.energySlot.serializeNBT());
+            for (ITileComponent component : getComponents()) {
+                component.read(data.components);
+            }
+        } else {
+            super.parseUpgradeData(upgradeData);
+        }
     }
 
     @Override

@@ -6,6 +6,9 @@ import java.util.Map;
 import java.util.Set;
 import java.util.function.IntConsumer;
 
+import mekanism.common.tile.component.ITileComponent;
+import mekanism.common.upgrade.IUpgradeData;
+import mekanism.common.upgrade.MachineUpgradeData;
 import org.jetbrains.annotations.NotNull;
 
 import com.jerry.mekanism_extras.api.ExtraUpgrade;
@@ -158,6 +161,23 @@ public abstract class BlockEntityProgressFactory<RECIPE extends Recipe<?>, BE ex
         container.track(SyncableInt.create(this::getTicksRequired, v -> ticksRequired = v));
         container.track(SyncableInt.create(this::getBaselineMaxOperations, v -> baselineMaxOperations = v));
         container.trackArray(progress);
+    }
+
+    @Override
+    public void parseUpgradeData(@NotNull IUpgradeData upgradeData) {
+        if (upgradeData instanceof MachineUpgradeData data) {
+            redstone = data.redstone;
+            setControlType(data.controlType);
+            getEnergyContainer().setEnergy(data.energyContainer.getEnergy());
+            sorting = data.sorting;
+            energySlot.deserializeNBT(data.energySlot.serializeNBT());
+            System.arraycopy(data.progress, 0, progress, 0, data.progress.length);
+            for (ITileComponent component : getComponents()) {
+                component.read(data.components);
+            }
+        } else {
+            super.parseUpgradeData(upgradeData);
+        }
     }
 
     @Override

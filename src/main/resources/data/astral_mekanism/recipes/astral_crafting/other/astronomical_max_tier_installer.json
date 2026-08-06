@@ -1,0 +1,165 @@
+{
+    "type": "astral_mekanism:astral_crafting",
+    "itemInputA1": {
+        "amount": 1,
+        "ingredient": {
+            "item": "astral_mekanism:vibration_control_circuit"
+        }
+    },
+    "itemInputA2": {
+        "amount": 1,
+        "ingredient": {
+            "item": "astral_mekanism:alloy_elastic"
+        }
+    },
+    "itemInputA3": {
+        "amount": 1,
+        "ingredient": {
+            "item": "astral_mekanism:alloy_elastic"
+        }
+    },
+    "itemInputA4": {
+        "amount": 1,
+        "ingredient": {
+            "item": "astral_mekanism:alloy_elastic"
+        }
+    },
+    "itemInputA5": {
+        "amount": 1,
+        "ingredient": {
+            "item": "astral_mekanism:vibration_control_circuit"
+        }
+    },
+    "itemInputB1": {
+        "amount": 1,
+        "ingredient": {
+            "item": "astral_mekanism:alloy_elastic"
+        }
+    },
+    "itemInputB2": {
+        "amount": 1,
+        "ingredient": {
+            "item": "astral_mekanism:supreme_quantum_tier_installer"
+        }
+    },
+    "itemInputB3": {
+        "amount": 1,
+        "ingredient": {
+            "item": "astral_mekanism:infinite_multiversal_tier_installer"
+        }
+    },
+    "itemInputB4": {
+        "amount": 1,
+        "ingredient": {
+            "item": "astral_mekanism:astronomical_tier_installer"
+        }
+    },
+    "itemInputB5": {
+        "amount": 1,
+        "ingredient": {
+            "item": "astral_mekanism:alloy_elastic"
+        }
+    },
+    "itemInputC1": {
+        "amount": 1,
+        "ingredient": {
+            "item": "astral_mekanism:alloy_elastic"
+        }
+    },
+    "itemInputC2": {
+        "amount": 1,
+        "ingredient": {
+            "item": "astral_mekanism:elite_tier_installer"
+        }
+    },
+    "itemInputC3": {
+        "amount": 1,
+        "ingredient": {
+            "item": "astral_mekanism:absolute_overclocked_tier_installer"
+        }
+    },
+    "itemInputC4": {
+        "amount": 1,
+        "ingredient": {
+            "item": "astral_mekanism:cosmic_dense_tier_installer"
+        }
+    },
+    "itemInputC5": {
+        "amount": 1,
+        "ingredient": {
+            "item": "astral_mekanism:alloy_elastic"
+        }
+    },
+    "itemInputD1": {
+        "amount": 1,
+        "ingredient": {
+            "item": "astral_mekanism:alloy_elastic"
+        }
+    },
+    "itemInputD2": {
+        "amount": 1,
+        "ingredient": {
+            "item": "astral_mekanism:essential_tier_installer"
+        }
+    },
+    "itemInputD3": {
+        "amount": 1,
+        "ingredient": {
+            "item": "astral_mekanism:advanced_tier_installer"
+        }
+    },
+    "itemInputD4": {
+        "amount": 1,
+        "ingredient": {
+            "item": "astral_mekanism:enchanted_ultimate_tier_installer"
+        }
+    },
+    "itemInputD5": {
+        "amount": 1,
+        "ingredient": {
+            "item": "astral_mekanism:alloy_elastic"
+        }
+    },
+    "itemInputE1": {
+        "amount": 1,
+        "ingredient": {
+            "item": "astral_mekanism:basic_standard_tier_installer"
+        }
+    },
+    "itemInputE2": {
+        "amount": 1,
+        "ingredient": {
+            "item": "astral_mekanism:alloy_elastic"
+        }
+    },
+    "itemInputE3": {
+        "amount": 1,
+        "ingredient": {
+            "item": "astral_mekanism:alloy_elastic"
+        }
+    },
+    "itemInputE4": {
+        "amount": 1,
+        "ingredient": {
+            "item": "astral_mekanism:alloy_elastic"
+        }
+    },
+    "itemInputE5": {
+        "amount": 1,
+        "ingredient": {
+            "item": "astral_mekanism:vibration_control_circuit"
+        }
+    },
+    "fluidInput": {
+        "fluid": "minecraft:lava",
+        "amount": 10000
+    },
+    "gasInput": {
+        "gas": "astral_mekanism:astral_ether",
+        "amount": 10000
+    },
+    "output": {
+        "item": "astral_mekanism:astronomical_max_tier_installer",
+        "count": 1
+    }
+}

@@ -2,6 +2,7 @@ package astral_mekanism.block.blockentity.basemachine;
 
 import java.util.Map;
 
+import astral_mekanism.upgrade.SmeltingUpgradeData;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -182,6 +183,11 @@ public abstract class BETickWorkEnergizedSmelter<BE extends BETickWorkEnergizedS
         super.addContainerTrackers(container);
         container.track(SyncableEnum.create(GasMode::byIndexStatic, GasMode.IDLE, this::getGasMode, v -> gasMode = v));
         container.track(SyncableFloatingLong.create(this::getEnergyUsage, v -> lastEnergyUsage = v));
+    }
+
+    @Override
+    public SmeltingUpgradeData getUpgradeData() {
+        return new SmeltingUpgradeData(redstone, getControlType(), getEnergyContainer(), 0, gasMode, energySlot, infusionTank, inputSlot, outputSlot, getComponents());
     }
 
     @Override

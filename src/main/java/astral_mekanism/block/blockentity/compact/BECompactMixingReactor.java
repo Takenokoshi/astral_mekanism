@@ -1,5 +1,8 @@
 package astral_mekanism.block.blockentity.compact;
 
+import astral_mekanism.upgrade.MixingReactorUpgradeData;
+import mekanism.common.tile.component.ITileComponent;
+import mekanism.common.upgrade.IUpgradeData;
 import org.jetbrains.annotations.NotNull;
 
 import astral_mekanism.AMETier;
@@ -348,6 +351,31 @@ public abstract class BECompactMixingReactor extends TileEntityConfigurableMachi
         container.track(SyncableDouble.create(this::getLastPlasmaTemp, this::setLastPlasmaTemp));
         container.track(SyncableFloatingLong.create(() -> energyGeneration, v -> energyGeneration = v));
         container.track(SyncableDouble.create(this::getPlasmaTemp, this::setPlasmaTemp));
+    }
+
+    @Override
+    public void parseUpgradeData(@NotNull IUpgradeData upgradeData) {
+        if (upgradeData instanceof MixingReactorUpgradeData data) {
+            redstone = data.redstone;
+            setControlType(data.controlType);
+            setInjectionRate(data.injectionRate);
+            heatCapacitor.deserializeNBT(data.heatCapacitor.serializeNBT());
+            leftFuelTank.deserializeNBT(data.leftFuelTank.serializeNBT());
+            mixedFuelTank.deserializeNBT(data.mixedFuelTank.serializeNBT());
+            rightFuelTank.deserializeNBT(data.rightFuelTank.serializeNBT());
+            waterTank.deserializeNBT(data.waterTank.serializeNBT());
+            steamTank.deserializeNBT(data.steamTank.serializeNBT());
+            for (ITileComponent component : getComponents()) {
+                component.read(data.components);
+            }
+        } else {
+            super.parseUpgradeData(upgradeData);
+        }
+    }
+
+    @Override
+    public MixingReactorUpgradeData getUpgradeData() {
+        return new MixingReactorUpgradeData(redstone, getControlType(), energyContainer, getInjectionRate(), heatCapacitor, leftFuelTank, mixedFuelTank, rightFuelTank, waterTank, steamTank, getComponents());
     }
 
     @Override
