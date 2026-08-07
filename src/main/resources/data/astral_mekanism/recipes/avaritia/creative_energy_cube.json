@@ -1,0 +1,63 @@
+{
+    "type": "forge:conditional",
+    "recipes": [
+        {
+            "conditions": [
+                {
+                    "type": "forge:mod_loaded",
+                    "modid": "avaritia"
+                }
+            ],
+            "recipe": {
+                "type": "avaritia:shaped_table",
+                "category": "equipment",
+                "key": {
+                    "A": {
+                        "item": "evolvedmekanism:multiversal_energy_cube"
+                    },
+                    "B": {
+                        "item": "mekanism:induction_casing"
+                    },
+                    "C": {
+                        "item": "mekanism:induction_port"
+                    },
+                    "D": {
+                        "item": "mekanism:ultimate_induction_cell"
+                    },
+                    "E": {
+                        "item": "mekanism:ultimate_induction_provider"
+                    },
+                    "F": {
+                        "item": "mekanism_extras:infinite_energy_cube"
+                    },
+                    "T": {
+                        "item": "astral_mekanism:timespace_control_circuit"
+                    },
+                    "I": {
+                        "item": "avaritia:infinity_ingot"
+                    },
+                    "S": {
+                        "item": "avaritia:infinity_catalyst"
+                    }
+                },
+                "pattern": [
+                    "BBTCECTBB",
+                    "BDDDADDDB",
+                    "TDSDADSDT",
+                    "CDDDIDDDC",
+                    "EFFISIFFE",
+                    "CDDDIDDDC",
+                    "TDSDADSDT",
+                    "BDDDADDDB",
+                    "BBTCECTBB"
+                ],
+                "result": {
+                    "item": "mekanism:creative_energy_cube",
+                    "nbt": "{mekData:{EnergyContainers:[{Container:0b,stored:\"18446744073709551615.9999\"}]}}"
+                },
+                "show_notification": true,
+                "tier": 4
+            }
+        }
+    ]
+}

@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "redstone",
+  "key": {
+    "c": {
+      "item": "astral_mekanism:control_circuit_component"
+    },
+    "p": {
+      "item": "ae2:calculation_processor"
+    },
+    "r": {
+      "tag": "forge:dusts/redstone"
+    }
+  },
+  "pattern": [
+    "rcr",
+    "cpc",
+    "rcr"
+  ],
+  "result": {
+    "count": 1,
+    "item": "astral_mekanism:control_circuit_core"
+  }
+}

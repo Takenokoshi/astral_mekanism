@@ -1,0 +1,165 @@
+{
+    "type": "astral_mekanism:astral_crafting",
+    "itemInputA1": {
+        "amount": 8,
+        "ingredient": {
+            "item": "astral_mekanism:coodinate_alloy"
+        }
+    },
+    "itemInputA2": {
+        "amount": 8,
+        "ingredient": {
+            "item": "astral_mekanism:coodinate_alloy"
+        }
+    },
+    "itemInputA3": {
+        "amount": 8,
+        "ingredient": {
+            "item": "astral_mekanism:coodinate_alloy"
+        }
+    },
+    "itemInputA4": {
+        "amount": 8,
+        "ingredient": {
+            "item": "astral_mekanism:coodinate_alloy"
+        }
+    },
+    "itemInputA5": {
+        "amount": 8,
+        "ingredient": {
+            "item": "astral_mekanism:coodinate_alloy"
+        }
+    },
+    "itemInputB1": {
+        "amount": 8,
+        "ingredient": {
+            "item": "astral_mekanism:coodinate_alloy"
+        }
+    },
+    "itemInputB2": {
+        "amount": 4,
+        "ingredient": {
+            "item": "evolvedmekanism:alloy_creative"
+        }
+    },
+    "itemInputB3": {
+        "amount": 1,
+        "ingredient": {
+            "item": "mekanism_extras:infinite_bin"
+        }
+    },
+    "itemInputB4": {
+        "amount": 4,
+        "ingredient": {
+            "item": "evolvedmekanism:alloy_creative"
+        }
+    },
+    "itemInputB5": {
+        "amount": 8,
+        "ingredient": {
+            "item": "astral_mekanism:coodinate_alloy"
+        }
+    },
+    "itemInputC1": {
+        "amount": 8,
+        "ingredient": {
+            "item": "astral_mekanism:coodinate_alloy"
+        }
+    },
+    "itemInputC2": {
+        "amount": 1,
+        "ingredient": {
+            "item": "evolvedmekanism:multiversal_bin"
+        }
+    },
+    "itemInputC3": {
+        "amount": 16,
+        "ingredient": {
+            "item": "evolvedmekanism:creative_control_circuit"
+        }
+    },
+    "itemInputC4": {
+        "amount": 1,
+        "ingredient": {
+            "item": "evolvedmekanism:multiversal_bin"
+        }
+    },
+    "itemInputC5": {
+        "amount": 8,
+        "ingredient": {
+            "item": "astral_mekanism:coodinate_alloy"
+        }
+    },
+    "itemInputD1": {
+        "amount": 8,
+        "ingredient": {
+            "item": "astral_mekanism:coodinate_alloy"
+        }
+    },
+    "itemInputD2": {
+        "amount": 4,
+        "ingredient": {
+            "item": "evolvedmekanism:alloy_creative"
+        }
+    },
+    "itemInputD3": {
+        "amount": 1,
+        "ingredient": {
+            "item": "mekanism_extras:infinite_bin"
+        }
+    },
+    "itemInputD4": {
+        "amount": 4,
+        "ingredient": {
+            "item": "evolvedmekanism:alloy_creative"
+        }
+    },
+    "itemInputD5": {
+        "amount": 8,
+        "ingredient": {
+            "item": "astral_mekanism:coodinate_alloy"
+        }
+    },
+    "itemInputE1": {
+        "amount": 8,
+        "ingredient": {
+            "item": "astral_mekanism:coodinate_alloy"
+        }
+    },
+    "itemInputE2": {
+        "amount": 8,
+        "ingredient": {
+            "item": "astral_mekanism:coodinate_alloy"
+        }
+    },
+    "itemInputE3": {
+        "amount": 8,
+        "ingredient": {
+            "item": "astral_mekanism:coodinate_alloy"
+        }
+    },
+    "itemInputE4": {
+        "amount": 8,
+        "ingredient": {
+            "item": "astral_mekanism:coodinate_alloy"
+        }
+    },
+    "itemInputE5": {
+        "amount": 8,
+        "ingredient": {
+            "item": "astral_mekanism:coodinate_alloy"
+        }
+    },
+    "fluidInput": {
+        "fluid": "minecraft:lava",
+        "amount": 10000
+    },
+    "gasInput": {
+        "gas": "mekanism:antimatter",
+        "amount": 10000
+    },
+    "output": {
+        "item": "mekanism:creative_bin",
+        "count": 1
+    }
+}

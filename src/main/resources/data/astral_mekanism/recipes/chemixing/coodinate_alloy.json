@@ -1,0 +1,22 @@
+{
+    "type": "evolvedmekanism:chemixing",
+    "extraInput": {
+        "amount": 16,
+        "ingredient": {
+            "item": "astral_mekanism:starry_sky_alloy_ingot"
+        }
+    },
+    "gasInput": {
+        "amount": 200000000,
+        "gas": "astral_mekanism:interstellar_antimatter"
+    },
+    "mainInput": {
+        "amount": 1,
+        "ingredient": {
+            "item": "astral_mekanism:eternal_starlight"
+        }
+    },
+    "output": {
+        "item": "astral_mekanism:coodinate_alloy"
+    }
+}

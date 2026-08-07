@@ -1,0 +1,19 @@
+{
+  "type": "ae2:inscriber",
+  "ingredients": {
+    "bottom": {
+      "item": "ae2:silicon"
+    },
+    "middle": {
+      "tag": "forge:dusts/redstone"
+    },
+    "top": {
+      "tag": "forge:ingots/osmium"
+    }
+  },
+  "mode": "press",
+  "result": {
+    "count": 1,
+    "item": "astral_mekanism:control_circuit_component"
+  }
+}

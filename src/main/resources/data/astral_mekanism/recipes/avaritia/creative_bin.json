@@ -1,0 +1,62 @@
+{
+    "type": "forge:conditional",
+    "recipes": [
+        {
+            "conditions": [
+                {
+                    "type": "forge:mod_loaded",
+                    "modid": "avaritia"
+                }
+            ],
+            "recipe": {
+                "type": "avaritia:shaped_table",
+                "category": "equipment",
+                "key": {
+                    "A": {
+                        "item": "mekanismgenerators:fusion_reactor_frame"
+                    },
+                    "B": {
+                        "item": "mekanism:ultimate_energy_cube"
+                    },
+                    "C": {
+                        "item": "mekanism:ultimate_fluid_tank"
+                    },
+                    "D": {
+                        "item": "mekanism:ultimate_chemical_tank"
+                    },
+                    "E": {
+                        "item": "evolvedmekanism:multiversal_bin"
+                    },
+                    "F": {
+                        "item": "mekanism_extras:infinite_bin"
+                    },
+                    "T": {
+                        "item": "astral_mekanism:timespace_control_circuit"
+                    },
+                    "I": {
+                        "item": "avaritia:infinity_ingot"
+                    },
+                    "S": {
+                        "item": "avaritia:infinity_catalyst"
+                    }
+                },
+                "pattern": [
+                    "ATTTTTTTA",
+                    "TEIIIIIFT",
+                    "TFIIIIIET",
+                    "TEIIIIIFT",
+                    "TFEESFFET",
+                    "TEFFEEFFT",
+                    "TEBCDCBET",
+                    "TFBCECBFT",
+                    "ATTTTTTTA"
+                ],
+                "result": {
+                    "item": "mekanism:creative_bin"
+                },
+                "show_notification": true,
+                "tier": 4
+            }
+        }
+    ]
+}

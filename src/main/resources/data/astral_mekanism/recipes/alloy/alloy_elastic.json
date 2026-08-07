@@ -4,11 +4,11 @@
 		"ingredient": {
 			"tag": "forge:ingots/tin"
 		},
-		"amount": 1
+		"amount": 8
 	},
 	"chemicalInput": {
 		"infuse_type": "astral_mekanism:utility_infuse",
-		"amount": 10
+		"amount": 80
 	},
 	"output": {
 		"item": "astral_mekanism:alloy_elastic"

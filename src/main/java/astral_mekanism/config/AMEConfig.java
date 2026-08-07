@@ -29,6 +29,10 @@ public class AMEConfig {
             .comment("Whether to log the dirt block on common setup")
             .define("logDirtBlock", true);
 
+    public static final ForgeConfigSpec.BooleanValue MAKE_RECIPE_DIFFICULT = BUILDER
+            .comment("Makes Mekanism Alloy/Control Circuit Recipe Defficult")
+            .define("makeRecipeDifficult", true);
+
     private static final ForgeConfigSpec.IntValue ENERGY_RATE = BUILDER
             .comment("Machine energy using rate")
             .defineInRange("value", 1, 0, Integer.MAX_VALUE);

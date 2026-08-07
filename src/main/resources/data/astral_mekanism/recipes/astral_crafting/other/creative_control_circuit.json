@@ -1,0 +1,165 @@
+{
+    "type": "astral_mekanism:astral_crafting",
+    "itemInputA1": {
+        "amount": 8,
+        "ingredient": {
+            "item": "astral_mekanism:alloy_stardust"
+        }
+    },
+    "itemInputA2": {
+        "amount": 64,
+        "ingredient": {
+            "item": "ae2:engineering_processor"
+        }
+    },
+    "itemInputA3": {
+        "amount": 64,
+        "ingredient": {
+            "item": "ae2:logic_processor"
+        }
+    },
+    "itemInputA4": {
+        "amount": 64,
+        "ingredient": {
+            "item": "ae2:calculation_processor"
+        }
+    },
+    "itemInputA5": {
+        "amount": 8,
+        "ingredient": {
+            "item": "astral_mekanism:alloy_stardust"
+        }
+    },
+    "itemInputB1": {
+        "amount": 64,
+        "ingredient": {
+            "item": "appflux:energy_processor"
+        }
+    },
+    "itemInputB2": {
+        "amount": 8,
+        "ingredient": {
+            "item": "astral_mekanism:coodinate_alloy"
+        }
+    },
+    "itemInputB3": {
+        "amount": 2,
+        "ingredient": {
+            "item": "evolvedmekanism:alloy_creative"
+        }
+    },
+    "itemInputB4": {
+        "amount": 8,
+        "ingredient": {
+            "item": "astral_mekanism:coodinate_alloy"
+        }
+    },
+    "itemInputB5": {
+        "amount": 64,
+        "ingredient": {
+            "item": "megacells:accumulation_processor"
+        }
+    },
+    "itemInputC1": {
+        "amount": 64,
+        "ingredient": {
+            "item": "advanced_ae:quantum_processor"
+        }
+    },
+    "itemInputC2": {
+        "amount": 2,
+        "ingredient": {
+            "item": "evolvedmekanism:alloy_creative"
+        }
+    },
+    "itemInputC3": {
+        "amount": 1,
+        "ingredient": {
+            "item": "astral_mekanism:timespace_control_circuit"
+        }
+    },
+    "itemInputC4": {
+        "amount": 2,
+        "ingredient": {
+            "item": "evolvedmekanism:alloy_creative"
+        }
+    },
+    "itemInputC5": {
+        "amount": 64,
+        "ingredient": {
+            "item": "advanced_ae:quantum_processor"
+        }
+    },
+    "itemInputD1": {
+        "amount": 64,
+        "ingredient": {
+            "item": "megacells:accumulation_processor"
+        }
+    },
+    "itemInputD2": {
+        "amount": 8,
+        "ingredient": {
+            "item": "astral_mekanism:coodinate_alloy"
+        }
+    },
+    "itemInputD3": {
+        "amount": 2,
+        "ingredient": {
+            "item": "evolvedmekanism:alloy_creative"
+        }
+    },
+    "itemInputD4": {
+        "amount": 8,
+        "ingredient": {
+            "item": "astral_mekanism:coodinate_alloy"
+        }
+    },
+    "itemInputD5": {
+        "amount": 64,
+        "ingredient": {
+            "item": "appflux:energy_processor"
+        }
+    },
+    "itemInputE1": {
+        "amount": 8,
+        "ingredient": {
+            "item": "astral_mekanism:alloy_stardust"
+        }
+    },
+    "itemInputE2": {
+        "amount": 64,
+        "ingredient": {
+            "item": "ae2:calculation_processor"
+        }
+    },
+    "itemInputE3": {
+        "amount": 64,
+        "ingredient": {
+            "item": "ae2:logic_processor"
+        }
+    },
+    "itemInputE4": {
+        "amount": 64,
+        "ingredient": {
+            "item": "ae2:engineering_processor"
+        }
+    },
+    "itemInputE5": {
+        "amount": 8,
+        "ingredient": {
+            "item": "astral_mekanism:alloy_stardust"
+        }
+    },
+    "fluidInput": {
+        "fluid": "minecraft:lava",
+        "amount": 10000
+    },
+    "gasInput": {
+        "gas": "mekanism:antimatter",
+        "amount": 10000
+    },
+    "output": {
+        "item": "evolvedmekanism:creative_control_circuit",
+        "count": 1
+    }
+}

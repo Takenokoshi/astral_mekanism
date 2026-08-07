@@ -1,0 +1,20 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "key": {
+        "A": {
+            "item": "astral_mekanism:starry_sky_control_processor"
+        },
+        "C": {
+            "item": "astral_mekanism:coodinate_alloy"
+        }
+    },
+    "pattern": [
+        "CCC",
+        "CAC",
+        "CCC"
+    ],
+    "result": {
+        "item": "astral_mekanism:timespace_control_circuit",
+        "count": 1
+    }
+}

@@ -1,20 +1,23 @@
 {
     "type": "minecraft:crafting_shaped",
     "key": {
-        "A": {
-            "item": "astral_mekanism:resonance_control_circuit"
-        },
-        "B": {
+        "a": {
             "item": "astral_mekanism:alloy_enchanted"
         },
-        "C": {
+        "b": {
+            "item": "astral_mekanism:resonance_control_circuit"
+        },
+        "c": {
+            "item": "mekanism_incomparable:control_circuit_component"
+        },
+        "p": {
             "item": "advanced_ae:quantum_processor"
         }
     },
     "pattern": [
-        "CB ",
-        "BAB",
-        " BC"
+        "aca",
+        "pbp",
+        "aca"
     ],
     "result": {
         "item": "astral_mekanism:enhanced_control_circuit",

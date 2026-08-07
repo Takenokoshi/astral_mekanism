@@ -1,0 +1,17 @@
+{
+    "type": "mekanism:metallurgic_infusing",
+    "chemicalInput": {
+        "amount": 80,
+        "infuse_type": "mekanism:redstone"
+    },
+    "itemInput": {
+        "amount": 8,
+        "ingredient": {
+            "tag": "forge:ingots/iron"
+        }
+    },
+    "output": {
+        "count": 1,
+        "item": "mekanism:alloy_infused"
+    }
+}

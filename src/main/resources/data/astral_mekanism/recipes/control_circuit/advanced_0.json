@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "redstone",
+  "key": {
+    "a": {
+      "item": "mekanism:alloy_infused"
+    },
+    "b": {
+      "item": "mekanism:basic_control_circuit"
+    },
+    "c": {
+      "item": "astral_mekanism:control_circuit_component"
+    },
+    "p": {
+      "item": "appflux:energy_processor"
+    }
+  },
+  "pattern": [
+    "aca",
+    "pbp",
+    "aca"
+  ],
+  "result": {
+    "count": 1,
+    "item": "mekanism:advanced_control_circuit"
+  }
+}

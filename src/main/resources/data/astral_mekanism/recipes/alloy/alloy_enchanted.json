@@ -4,7 +4,7 @@
         "ingredient": {
             "item": "astral_mekanism:alloy_convergent"
         },
-        "amount": 1
+        "amount": 8
     },
     "chemicalInput": {
         "infuse_type": "astral_mekanism:xp",

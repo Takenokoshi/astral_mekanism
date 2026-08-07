@@ -349,6 +349,8 @@ public class AstralMekanismJapaneseLangProvider extends LanguageProvider {
         result.put("mold", "金型");
         // material states
         result.put("astral", "アストラル");
+        result.put("timespace", "時空");
+        result.put("coodinate", "座標");
         result.put("ingot", "インゴット");
         result.put("block", "ブロック");
         result.put("processor", "プロセッサ");

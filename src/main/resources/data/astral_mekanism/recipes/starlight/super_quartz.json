@@ -1,0 +1,33 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "a": {
+      "item": "astral_mekanism:certus_quartz_starlight"
+    },
+    "b": {
+      "item": "astral_mekanism:quartz_starlight"
+    },
+    "c": {
+      "item": "astral_mekanism:certus_quartz_starlight"
+    },
+    "l": {
+      "item": "astral_mekanism:amethyst_starlight"
+    },
+    "r": {
+      "item": "astral_mekanism:quartz_starlight"
+    },
+    "t": {
+      "item": "astral_mekanism:amethyst_starlight"
+    }
+  },
+  "pattern": [
+    "ata",
+    "lcr",
+    "aba"
+  ],
+  "result": {
+    "count": 1,
+    "item": "astral_mekanism:super_quartz_starlight"
+  }
+}

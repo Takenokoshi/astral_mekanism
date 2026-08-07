@@ -218,7 +218,34 @@ public class AMEItems {
         return result;
     })).get();
 
+    public static final ItemRegistryObject<Item> SUPER_QUARTZ_STARLIGHT = registerFoiling("super_quartz_starlight");
+    public static final ItemRegistryObject<Item> RADIOACTIVE_STARLIGHT = registerFoiling("radioactive_starlight");
+    public static final ItemRegistryObject<Item> HEAVY_METAL_STARLIGHT = registerFoiling("heavy_metal_starlight");
+    public static final ItemRegistryObject<Item> INDUSTRIAL_STARLIGHT = registerFoiling("industrial_starlight");
+    public static final ItemRegistryObject<Item> ENERGITIC_STARLIGHT = registerFoiling("energitic_starlight");
+    public static final ItemRegistryObject<Item> JEWELRY_STARLIGHT = registerFoiling("jewelry_starlight");
+
+    public static final ItemRegistryObject<Item> ETERNAL_STARLIGHT = ITEMS.register("eternal_starlight",
+            EnumColor.INDIGO);
+    public static final ItemRegistryObject<Item> COODINATE_ALLOY = ITEMS
+            .register("coodinate_alloy", EnumColor.INDIGO);
+    public static final ItemRegistryObject<Item> TIMESPACE_CONTROL_CIRCUIT = ITEMS
+            .register("timespace_control_circuit", EnumColor.INDIGO);
+
+    public static final ItemRegistryObject<Item> CONTROL_CIRCUIT_COMPONENT = ITEMS
+            .register("control_circuit_component");
+    public static final ItemRegistryObject<Item> CONTROL_CIRCUIT_CORE = ITEMS
+            .register("control_circuit_core");
+
     private static ItemRegistryObject<ItemUpgrade> registerUpgrade(Upgrade type) {
         return ITEMS.register(type.getRawName() + "_upgrade", properties -> new ItemUpgrade(type, properties));
+    }
+
+    private static ItemRegistryObject<Item> registerFoiling(String name) {
+        return ITEMS.register(name, props -> new Item(props) {
+            public boolean isFoil(ItemStack stack) {
+                return true;
+            };
+        });
     }
 }

@@ -1,0 +1,27 @@
+{
+    "type": "astral_mekanism:reconstruction",
+    "duration": 256,
+    "energyRequired": 10000000000000,
+    "itemNotConsumed": false,
+    "fluidInput": {
+        "amount": 1000000,
+        "fluid": "astral_mekanism:wisdom_rivulet"
+    },
+    "gasInput": {
+        "amount": 100000000,
+        "gas": "astral_mekanism:interstellar_antimatter"
+    },
+    "gasOutput": {
+        "amount": 1000000000,
+        "gas": "mekanism:lithium"
+    },
+    "itemInput": {
+        "amount": 4,
+        "ingredient": {
+            "item": "astral_mekanism:coodinate_alloy"
+        }
+    },
+    "itemOutput": {
+        "item": "evolvedmekanism:alloy_creative"
+    }
+}

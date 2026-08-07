@@ -1,15 +1,23 @@
 {
     "type": "minecraft:crafting_shaped",
     "key": {
-        "A": {
+        "a": {
+            "item": "astral_mekanism:alloy_elastic"
+        },
+        "b": {
             "item": "mekanism:basic_control_circuit"
         },
-        "B": {
-            "item": "astral_mekanism:alloy_elastic"
+        "c": {
+            "item": "astral_mekanism:control_circuit_component"
+        },
+        "p": {
+            "item": "ae2:calculation_processor"
         }
     },
     "pattern": [
-	"BAB"
+        "aca",
+        "pbp",
+        "aca"
     ],
     "result": {
         "item": "astral_mekanism:vibration_control_circuit",

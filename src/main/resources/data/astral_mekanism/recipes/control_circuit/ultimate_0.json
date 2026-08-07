@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "redstone",
+  "key": {
+    "a": {
+      "item": "mekanism:alloy_atomic"
+    },
+    "b": {
+      "item": "mekanism:elite_control_circuit"
+    },
+    "c": {
+      "item": "astral_mekanism:control_circuit_component"
+    },
+    "p": {
+      "item": "megacells:accumulation_processor"
+    }
+  },
+  "pattern": [
+    "aca",
+    "pbp",
+    "aca"
+  ],
+  "result": {
+    "count": 1,
+    "item": "mekanism:ultimate_control_circuit"
+  }
+}

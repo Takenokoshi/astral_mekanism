@@ -4,11 +4,11 @@
 		"ingredient": {
 			"item":"astral_mekanism:alloy_elastic"
 		},
-		"amount": 1
+		"amount": 8
 	},
 	"chemicalInput": {
 		"infuse_type": "astral_mekanism:singularity",
-		"amount": 20
+		"amount": 160
 	},
 	"output": {
 		"item": "astral_mekanism:alloy_convergent"

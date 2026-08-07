@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "c": {
+      "item": "astral_mekanism:coal_starlight"
+    },
+    "r": {
+      "item": "astral_mekanism:redstone_starlight"
+    }
+  },
+  "pattern": [
+    "rcr",
+    "crc",
+    "rcr"
+  ],
+  "result": {
+    "count": 1,
+    "item": "astral_mekanism:energitic_starlight"
+  }
+}

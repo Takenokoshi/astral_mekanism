@@ -1,0 +1,62 @@
+{
+    "type": "forge:conditional",
+    "recipes": [
+        {
+            "conditions": [
+                {
+                    "type": "forge:mod_loaded",
+                    "modid": "avaritia"
+                }
+            ],
+            "recipe": {
+                "type": "avaritia:shaped_table",
+                "category": "equipment",
+                "key": {
+                    "A": {
+                        "item": "evolvedmekanism:multiversal_fluid_tank"
+                    },
+                    "B": {
+                        "item": "mekanism:dynamic_tank"
+                    },
+                    "C": {
+                        "item": "mekanism:structural_glass"
+                    },
+                    "D": {
+                        "item": "mekanism:dynamic_valve"
+                    },
+                    "E": {
+                        "item": "mekanism_extras:infinite_fluid_tank"
+                    },
+                    "T": {
+                        "item": "astral_mekanism:timespace_control_circuit"
+                    },
+                    "I": {
+                        "item": "avaritia:infinity_ingot"
+                    },
+                    "S": {
+                        "item": "avaritia:infinity_catalyst"
+                    },
+                    "P": {
+                        "item": "astral_mekanism:coodinate_alloy"
+                    }
+                },
+                "pattern": [
+                    "PPPITIPPP",
+                    "PSAADEESP",
+                    "PABBCBBEP",
+                    "IABBCBBEI",
+                    "TACCICCET",
+                    "IABBCBBEI",
+                    "PABBCBBEP",
+                    "PSAADEESP",
+                    "PPPITIPPP"
+                ],
+                "result": {
+                    "item": "mekanism:creative_fluid_tank"
+                },
+                "show_notification": true,
+                "tier": 4
+            }
+        }
+    ]
+}

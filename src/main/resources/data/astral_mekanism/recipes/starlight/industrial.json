@@ -1,0 +1,33 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "a": {
+      "item": "astral_mekanism:iron_starlight"
+    },
+    "b": {
+      "item": "astral_mekanism:tin_starlight"
+    },
+    "c": {
+      "item": "astral_mekanism:iron_starlight"
+    },
+    "l": {
+      "item": "astral_mekanism:iron_starlight"
+    },
+    "r": {
+      "item": "astral_mekanism:iron_starlight"
+    },
+    "t": {
+      "item": "astral_mekanism:copper_starlight"
+    }
+  },
+  "pattern": [
+    "ata",
+    "lcr",
+    "aba"
+  ],
+  "result": {
+    "count": 1,
+    "item": "astral_mekanism:industrial_starlight"
+  }
+}

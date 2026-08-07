@@ -1,0 +1,33 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "e": {
+      "item": "astral_mekanism:energitic_starlight"
+    },
+    "h": {
+      "item": "astral_mekanism:heavy_metal_starlight"
+    },
+    "i": {
+      "item": "astral_mekanism:industrial_starlight"
+    },
+    "j": {
+      "item": "astral_mekanism:jewelry_starlight"
+    },
+    "r": {
+      "item": "astral_mekanism:radioactive_starlight"
+    },
+    "s": {
+      "item": "astral_mekanism:super_quartz_starlight"
+    }
+  },
+  "pattern": [
+    "iri",
+    "sej",
+    "hih"
+  ],
+  "result": {
+    "count": 1,
+    "item": "astral_mekanism:eternal_starlight"
+  }
+}

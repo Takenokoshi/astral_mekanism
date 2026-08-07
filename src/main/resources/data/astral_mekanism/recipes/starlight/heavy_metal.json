@@ -1,0 +1,33 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "a": {
+      "item": "astral_mekanism:osmium_starlight"
+    },
+    "b": {
+      "item": "astral_mekanism:lead_starlight"
+    },
+    "c": {
+      "item": "astral_mekanism:osmium_starlight"
+    },
+    "l": {
+      "item": "astral_mekanism:gold_starlight"
+    },
+    "r": {
+      "item": "astral_mekanism:netherite_starlight"
+    },
+    "t": {
+      "item": "astral_mekanism:netherite_starlight"
+    }
+  },
+  "pattern": [
+    "ata",
+    "lcr",
+    "aba"
+  ],
+  "result": {
+    "count": 1,
+    "item": "astral_mekanism:heavy_metal_starlight"
+  }
+}
