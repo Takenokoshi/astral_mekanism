@@ -8,7 +8,7 @@
             "item": "astral_mekanism:resonance_control_circuit"
         },
         "c": {
-            "item": "mekanism_incomparable:control_circuit_component"
+            "item": "astral_mekanism:control_circuit_component"
         },
         "p": {
             "item": "advanced_ae:quantum_processor"
