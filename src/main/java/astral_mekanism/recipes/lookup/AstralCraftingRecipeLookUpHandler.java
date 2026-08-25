@@ -37,6 +37,12 @@ public interface AstralCraftingRecipeLookUpHandler
                 inputGas);
     }
 
+    default int getMaxInputAmount(ItemStack input, int index,
+            ItemStack[] inputItems, FluidStack inputFluid, GasStack inputGas) {
+        return this.getRecipeType().getInputCache().getMaxInputAmount(this.getHandlerWorld(), input, index,
+                inputItems, inputFluid, inputGas);
+    }
+
     default boolean containsInputFluidOther(FluidStack input,
             ItemStack[] inputItems, GasStack inputGas) {
         return this.getRecipeType().getInputCache().containsInputFluidOther(this.getHandlerWorld(), input, inputItems,
