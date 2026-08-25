@@ -97,6 +97,45 @@ public class AstralCraftingRecipeCache extends AbstractInputRecipeCache<AstralCr
         });
     }
 
+    /**
+     * Gets the largest amount of {@code input} that any recipe compatible with the current sibling slot/tank
+     * contents would accept at slot {@code index}, so that an input slot can reject any surplus beyond what the
+     * recipe actually needs there instead of accepting up to the item's real max stack size.
+     *
+     * @return the required amount, or {@code 0} if no matching recipe was found for this slot/input combination.
+     */
+    public int getMaxInputAmount(@Nullable Level world, ItemStack input, int index,
+                                 ItemStack[] inputItems, FluidStack inputFluid, GasStack inputGas) {
+        if (index < 0 || index >= SLOT_COUNT || inputItems.length != SLOT_COUNT || input.isEmpty()) {
+            return 0;
+        }
+        initCacheIfNeeded(world);
+
+        int[] maxAmount = {0};
+        cacheItems[index].contains(input, r -> {
+            // type match only, not amounts, mirroring containsInputItemOther's sibling compatibility check
+            if (!cacheFluid.isEmpty(inputFluid) && !r.getInputFluid().testType(inputFluid)) return false;
+            if (!cacheGas.isEmpty(inputGas) && !r.getInputGas().testType(inputGas)) return false;
+
+            for (int i = 0; i < SLOT_COUNT; i++) {
+                if (i == index) continue;
+                if (!cacheItems[i].isEmpty(inputItems[i]) && !r.getInputItem(i).testType(inputItems[i])) {
+                    return false;
+                }
+            }
+
+            long needed = r.getInputItem(index).getNeededAmount(input);
+            if (needed > maxAmount[0]) {
+                maxAmount[0] = (int) needed;
+            }
+            // Always return false so every sibling-compatible candidate recipe gets inspected instead of
+            // short-circuiting after the first one found.
+            return false;
+        });
+
+        return maxAmount[0];
+    }
+
     public boolean containsInputFluidOther(@Nullable Level world, FluidStack input,
                                            ItemStack[] inputItems, GasStack inputGas) {
         if (inputItems.length != SLOT_COUNT) {
