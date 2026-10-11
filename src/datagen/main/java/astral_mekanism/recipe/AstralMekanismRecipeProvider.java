@@ -10,7 +10,7 @@ import astral_mekanism.registries.AMEBlockDefinitions;
 import astral_mekanism.registries.AMEItems;
 import astral_mekanism.registries.AMEMachines;
 import gripe._90.megacells.definition.MEGAItems;
-import io.github.masyumero.emextras.common.registry.EMExtrasItem;
+import io.github.masyumero.emextras.common.registry.EMExtraItems;
 import mekanism.api.providers.IItemProvider;
 import mekanism.common.registries.MekanismItems;
 import net.minecraft.data.PackOutput;
@@ -94,10 +94,10 @@ public class AstralMekanismRecipeProvider extends RecipeProvider {
                 MekanismItems.ADVANCED_CONTROL_CIRCUIT, MekanismItems.ELITE_CONTROL_CIRCUIT,
                 MekanismItems.ULTIMATE_CONTROL_CIRCUIT, AMEItems.ENHANCED_CONTROL_CIRCUIT,
                 MEGAItems.ACCUMULATION_PROCESSOR, AMEItems.PHOTON_PROCESSOR,
-                EMExtrasItem.ABSOLUTE_OVERCLOCKED_CONTROL_CIRCUIT, AAEItems.QUANTUM_PROCESSOR,
-                EMExtrasItem.SUPREME_QUANTUM_CONTROL_CIRCUIT, AMEItems.COMPOSITE_PROCESSOR,
-                EMExtrasItem.COSMIC_DENSE_CONTROL_CIRCUIT, AMEItems.ORIGIN_PROCESSOR,
-                EMExtrasItem.INFINITE_MULTIVERSAL_CONTROL_CIRCUIT, AMEItems.AUTONOMY_PROCESSOR,
+                EMExtraItems.ABSOLUTE_OVERCLOCKED_CONTROL_CIRCUIT, AAEItems.QUANTUM_PROCESSOR,
+                EMExtraItems.SUPREME_QUANTUM_CONTROL_CIRCUIT, AMEItems.COMPOSITE_PROCESSOR,
+                EMExtraItems.COSMIC_DENSE_CONTROL_CIRCUIT, AMEItems.ORIGIN_PROCESSOR,
+                EMExtraItems.INFINITE_MULTIVERSAL_CONTROL_CIRCUIT, AMEItems.AUTONOMY_PROCESSOR,
                 AMEItems.FIRMAMENT_PROCESSOR,
                 AMEItems.ILLUSION_CONTROL_CIRCUIT, AMEItems.STARRY_SKY_CONTROL_PROCESSOR };
         for (int i = 1; i < AMEMachines.MEKANICAL_MAGMABLOCK_NAMES.length; i++) {

@@ -6,8 +6,8 @@ import java.util.function.Function;
 import java.util.function.Supplier;
 import java.util.function.UnaryOperator;
 
-import com.fxd927.mekanismelements.common.config.MSConfig;
-import com.fxd927.mekanismelements.common.content.blocktype.MSBlockShapes;
+import fixdol.mekanismelements.common.config.MSConfig;
+import fixdol.mekanismelements.common.content.blocktype.MSBlockShapes;
 import com.jerry.mekanism_extras.api.ExtraUpgrade;
 
 import astral_mekanism.AMETier;

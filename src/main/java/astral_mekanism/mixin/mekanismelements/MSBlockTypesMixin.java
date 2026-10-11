@@ -9,7 +9,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-import com.fxd927.mekanismelements.common.registries.MSBlockTypes;
+import fixdol.mekanismelements.common.registries.MSBlockTypes;
 
 import astral_mekanism.enums.AMEUpgrade;
 import mekanism.api.Upgrade;

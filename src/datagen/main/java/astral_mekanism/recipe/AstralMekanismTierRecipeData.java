@@ -7,7 +7,7 @@ import astral_mekanism.AMETier;
 import astral_mekanism.registries.AMEItems;
 import fr.iglee42.evolvedmekanism.registries.EMItems;
 import gripe._90.megacells.definition.MEGAItems;
-import io.github.masyumero.emextras.common.registry.EMExtrasItem;
+import io.github.masyumero.emextras.common.registry.EMExtraItems;
 import mekanism.common.registries.MekanismItems;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.ItemLike;
@@ -52,7 +52,7 @@ public enum AstralMekanismTierRecipeData {
             Items.GLOWSTONE,
             EMItems.HYPERCHARGED_ALLOY,
             ExtraItems.RADIANCE_ALLOY,
-            EMExtrasItem.ABSOLUTE_OVERCLOCKED_CONTROL_CIRCUIT,
+            EMExtraItems.ABSOLUTE_OVERCLOCKED_CONTROL_CIRCUIT,
             AAEItems.QUANTUM_PROCESSOR),
     ABSOLUTE_TO_SUPREME(
             AMETier.ABSOLUTE,
@@ -60,7 +60,7 @@ public enum AstralMekanismTierRecipeData {
             Items.SHULKER_SHELL,
             EMItems.SUBATOMIC_ALLOY,
             ExtraItems.THERMONUCLEAR_ALLOY,
-            EMExtrasItem.SUPREME_QUANTUM_CONTROL_CIRCUIT,
+            EMExtraItems.SUPREME_QUANTUM_CONTROL_CIRCUIT,
             AMEItems.COMPOSITE_PROCESSOR),
     SUPREME_TO_COSMIC(
             AMETier.SUPREME,
@@ -68,7 +68,7 @@ public enum AstralMekanismTierRecipeData {
             MekanismItems.REFINED_OBSIDIAN_INGOT,
             EMItems.SINGULAR_ALLOY,
             ExtraItems.SHINING_ALLOY,
-            EMExtrasItem.COSMIC_DENSE_CONTROL_CIRCUIT,
+            EMExtraItems.COSMIC_DENSE_CONTROL_CIRCUIT,
             AMEItems.ORIGIN_PROCESSOR),
     COSMIC_TO_INFINITE(
             AMETier.COSMIC,
@@ -76,7 +76,7 @@ public enum AstralMekanismTierRecipeData {
             Items.NETHERITE_INGOT,
             EMItems.EXOVERSAL_ALLOY,
             ExtraItems.SPECTRUM_ALLOY,
-            EMExtrasItem.INFINITE_MULTIVERSAL_CONTROL_CIRCUIT,
+            EMExtraItems.INFINITE_MULTIVERSAL_CONTROL_CIRCUIT,
             AMEItems.AUTONOMY_PROCESSOR),
     INFINITE_TO_ASTRAL(
             AMETier.INFINITE,

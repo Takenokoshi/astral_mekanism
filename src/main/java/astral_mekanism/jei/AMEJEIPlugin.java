@@ -2,7 +2,7 @@ package astral_mekanism.jei;
 
 import org.jetbrains.annotations.Nullable;
 
-import com.fxd927.mekanismelements.client.MSJEIRecipeType;
+import fixdol.mekanismelements.client.MSJEIRecipeType;
 import com.jerry.generator_extras.common.ExtraGenLang;
 import com.jerry.generator_extras.common.genregistries.ExtraGenBlocks;
 import com.jerry.generator_extras.common.genregistries.ExtraGenItem;

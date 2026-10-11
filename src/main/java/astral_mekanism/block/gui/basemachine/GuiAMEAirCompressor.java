@@ -5,7 +5,7 @@ import java.util.List;
 
 import javax.annotation.Nonnull;
 
-import com.fxd927.mekanismelements.common.tile.machine.TileEntityAirCompressor;
+import fixdol.mekanismelements.common.tile.machine.TileEntityAirCompressor;
 
 import astral_mekanism.block.blockentity.basemachine.BEAMEAirCompressor;
 import mekanism.api.chemical.gas.GasStack;

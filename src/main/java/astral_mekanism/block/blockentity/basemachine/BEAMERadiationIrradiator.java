@@ -7,15 +7,14 @@ import java.util.function.Predicate;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-import com.fxd927.mekanismelements.api.recipes.RadiationIrradiatingRecipe;
-import com.fxd927.mekanismelements.common.recipe.IMSRecipeTypeProvider;
-import com.fxd927.mekanismelements.common.recipe.MSRecipeType;
-import com.fxd927.mekanismelements.common.recipe.lookup.IMSDoubleRecipeLookupHandler;
-import com.fxd927.mekanismelements.common.recipe.lookup.cache.MSInputRecipeCache;
-import com.fxd927.mekanismelements.common.tile.prefab.MSTileEntityRecipeMachine;
+import fixdol.mekanismelements.api.recipes.RadiationIrradiatingRecipe;
+import fixdol.mekanismelements.common.recipe.IMSRecipeTypeProvider;
+import fixdol.mekanismelements.common.recipe.MSRecipeType;
+import fixdol.mekanismelements.common.recipe.lookup.IMSDoubleRecipeLookupHandler;
+import fixdol.mekanismelements.common.recipe.lookup.cache.MSInputRecipeCache;
+import fixdol.mekanismelements.common.tile.prefab.MSTileEntityRecipeMachine;
 
 import astral_mekanism.recipes.cachedRecipe.FormulizedRadiationIrradiatingCachedRecipe;
-import astral_mekanism.recipes.output.AMOutputHelper;
 import mekanism.api.AutomationType;
 import mekanism.api.IContentsListener;
 import mekanism.api.RelativeSide;
@@ -26,17 +25,6 @@ import mekanism.api.chemical.attribute.ChemicalAttributeValidator;
 import mekanism.api.chemical.gas.Gas;
 import mekanism.api.chemical.gas.GasStack;
 import mekanism.api.chemical.gas.IGasTank;
-import mekanism.api.chemical.infuse.IInfusionTank;
-import mekanism.api.chemical.infuse.InfuseType;
-import mekanism.api.chemical.infuse.InfusionStack;
-import mekanism.api.chemical.merged.BoxedChemicalStack;
-import mekanism.api.chemical.merged.MergedChemicalTank;
-import mekanism.api.chemical.pigment.IPigmentTank;
-import mekanism.api.chemical.pigment.Pigment;
-import mekanism.api.chemical.pigment.PigmentStack;
-import mekanism.api.chemical.slurry.ISlurryTank;
-import mekanism.api.chemical.slurry.Slurry;
-import mekanism.api.chemical.slurry.SlurryStack;
 import mekanism.api.math.FloatingLong;
 import mekanism.api.providers.IBlockProvider;
 import mekanism.api.recipes.cache.CachedRecipe;
@@ -44,6 +32,7 @@ import mekanism.api.recipes.cache.CachedRecipe.OperationTracker.RecipeError;
 import mekanism.api.recipes.inputs.IInputHandler;
 import mekanism.api.recipes.inputs.InputHelper;
 import mekanism.api.recipes.outputs.IOutputHandler;
+import mekanism.api.recipes.outputs.OutputHelper;
 import mekanism.common.capabilities.energy.MachineEnergyContainer;
 import mekanism.common.capabilities.holder.chemical.ChemicalTankHelper;
 import mekanism.common.capabilities.holder.chemical.IChemicalTankHolder;
@@ -61,10 +50,8 @@ import mekanism.common.inventory.container.sync.SyncableFloatingLong;
 import mekanism.common.inventory.slot.EnergyInventorySlot;
 import mekanism.common.inventory.slot.InputInventorySlot;
 import mekanism.common.inventory.slot.chemical.GasInventorySlot;
-import mekanism.common.inventory.slot.chemical.MergedChemicalInventorySlot;
 import mekanism.common.inventory.warning.WarningTracker;
 import mekanism.common.lib.transmitter.TransmissionType;
-import mekanism.common.tile.base.SubstanceType;
 import mekanism.common.tile.component.TileComponentConfig;
 import mekanism.common.tile.component.TileComponentEjector;
 import mekanism.common.util.MekanismUtils;
@@ -73,7 +60,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.state.BlockState;
 
 public abstract class BEAMERadiationIrradiator extends MSTileEntityRecipeMachine<RadiationIrradiatingRecipe> implements
-        IMSDoubleRecipeLookupHandler.ItemChemicalRecipeLookupHandler<Gas, GasStack, RadiationIrradiatingRecipe> {
+        IMSDoubleRecipeLookupHandler.ItemChemicalRecipeLookupHandler<RadiationIrradiatingRecipe> {
 
     private static final List<CachedRecipe.OperationTracker.RecipeError> TRACKED_ERROR_TYPES = List.of(
             CachedRecipe.OperationTracker.RecipeError.NOT_ENOUGH_ENERGY,
@@ -84,11 +71,11 @@ public abstract class BEAMERadiationIrradiator extends MSTileEntityRecipeMachine
             CachedRecipe.OperationTracker.RecipeError.INPUT_DOESNT_PRODUCE_OUTPUT);
 
     public IGasTank injectTank;
-    public MergedChemicalTank outputTank;
+    public IGasTank outputTank;
     public double injectUsage = 1;
     private static final long MAX_CHEMICAL = Long.MAX_VALUE;
 
-    private final IOutputHandler<BoxedChemicalStack> outputHandler;
+    private final IOutputHandler<GasStack> outputHandler;
     private final IInputHandler<@NotNull ItemStack> itemInputHandler;
     private final IInputHandler<GasStack> gasInputHandler;
 
@@ -98,7 +85,7 @@ public abstract class BEAMERadiationIrradiator extends MSTileEntityRecipeMachine
     @WrappingComputerMethod(wrapper = SpecialComputerMethodWrapper.ComputerIInventorySlotWrapper.class, methodNames = "getInputItem", docPlaceholder = "input slot")
     InputInventorySlot inputSlot;
     @WrappingComputerMethod(wrapper = SpecialComputerMethodWrapper.ComputerIInventorySlotWrapper.class, methodNames = "getOutputItem", docPlaceholder = "output slot")
-    MergedChemicalInventorySlot<MergedChemicalTank> outputSlot;
+    GasInventorySlot outputSlot;
     @WrappingComputerMethod(wrapper = SpecialComputerMethodWrapper.ComputerIInventorySlotWrapper.class, methodNames = "getEnergyItem", docPlaceholder = "energy slot")
     EnergyInventorySlot energySlot;
 
@@ -110,11 +97,8 @@ public abstract class BEAMERadiationIrradiator extends MSTileEntityRecipeMachine
                 TransmissionType.INFUSION, TransmissionType.PIGMENT,
                 TransmissionType.SLURRY, TransmissionType.ENERGY);
         configComponent.setupItemIOExtraConfig(inputSlot, outputSlot, gasInputSlot, energySlot);
-        configComponent.setupIOConfig(TransmissionType.GAS, injectTank, outputTank.getGasTank(), RelativeSide.RIGHT)
+        configComponent.setupIOConfig(TransmissionType.GAS, injectTank, outputTank, RelativeSide.RIGHT)
                 .setEjecting(true);
-        configComponent.setupOutputConfig(TransmissionType.INFUSION, outputTank.getInfusionTank(), RelativeSide.RIGHT);
-        configComponent.setupOutputConfig(TransmissionType.PIGMENT, outputTank.getPigmentTank(), RelativeSide.RIGHT);
-        configComponent.setupOutputConfig(TransmissionType.SLURRY, outputTank.getSlurryTank(), RelativeSide.RIGHT);
         configComponent.setupInputConfig(TransmissionType.ENERGY, energyContainer);
 
         ejectorComponent = new TileComponentEjector(this, () -> Long.MAX_VALUE);
@@ -127,19 +111,7 @@ public abstract class BEAMERadiationIrradiator extends MSTileEntityRecipeMachine
         itemInputHandler = InputHelper.getInputHandler(inputSlot,
                 CachedRecipe.OperationTracker.RecipeError.NOT_ENOUGH_INPUT);
         gasInputHandler = InputHelper.getInputHandler(injectTank, RecipeError.NOT_ENOUGH_SECONDARY_INPUT);
-        outputHandler = AMOutputHelper.getOutputHandler(outputTank, RecipeError.NOT_ENOUGH_OUTPUT_SPACE);
-    }
-
-    @Override
-    protected void presetVariables() {
-        super.presetVariables();
-        IContentsListener saveOnlyListener = this::markForSave;
-        outputTank = MergedChemicalTank.create(
-                ChemicalTankBuilder.GAS.output(MAX_CHEMICAL, getListener(SubstanceType.GAS, saveOnlyListener)),
-                ChemicalTankBuilder.INFUSION.output(MAX_CHEMICAL,
-                        getListener(SubstanceType.INFUSION, saveOnlyListener)),
-                ChemicalTankBuilder.PIGMENT.output(MAX_CHEMICAL, getListener(SubstanceType.PIGMENT, saveOnlyListener)),
-                ChemicalTankBuilder.SLURRY.output(MAX_CHEMICAL, getListener(SubstanceType.SLURRY, saveOnlyListener)));
+        outputHandler = OutputHelper.getOutputHandler(outputTank, RecipeError.NOT_ENOUGH_OUTPUT_SPACE);
     }
 
     @NotNull
@@ -149,46 +121,16 @@ public abstract class BEAMERadiationIrradiator extends MSTileEntityRecipeMachine
         ChemicalTankHelper<Gas, GasStack, IGasTank> builder = ChemicalTankHelper
                 .forSideGasWithConfig(this::getDirection, this::getConfig);
         builder.addTank(injectTank = createInjectTank(
-                ChemicalTankHelper.radioactiveInputTankPredicate(() -> outputTank.getGasTank()),
+                ChemicalTankHelper.radioactiveInputTankPredicate(() -> outputTank),
                 ChemicalTankBuilder.GAS.alwaysTrueBi, this::containsRecipeB, ChemicalAttributeValidator.ALWAYS_ALLOW,
                 recipeCacheListener));
-        builder.addTank(outputTank.getGasTank());
+        builder.addTank(outputTank = ChemicalTankBuilder.GAS.output(MAX_CHEMICAL, listener));
         return builder.build();
     }
 
     protected abstract IGasTank createInjectTank(BiPredicate<Gas, AutomationType> canExtract,
             BiPredicate<Gas, AutomationType> canInsert, Predicate<Gas> validator,
             @Nullable ChemicalAttributeValidator attributeValidator, @Nullable IContentsListener listener);
-
-    @NotNull
-    @Override
-    public IChemicalTankHolder<InfuseType, InfusionStack, IInfusionTank> getInitialInfusionTanks(
-            IContentsListener listener, IContentsListener recipeCacheListener) {
-        ChemicalTankHelper<InfuseType, InfusionStack, IInfusionTank> builder = ChemicalTankHelper
-                .forSideInfusionWithConfig(this::getDirection, this::getConfig);
-        builder.addTank(outputTank.getInfusionTank());
-        return builder.build();
-    }
-
-    @NotNull
-    @Override
-    public IChemicalTankHolder<Pigment, PigmentStack, IPigmentTank> getInitialPigmentTanks(IContentsListener listener,
-            IContentsListener recipeCacheListener) {
-        ChemicalTankHelper<Pigment, PigmentStack, IPigmentTank> builder = ChemicalTankHelper
-                .forSidePigmentWithConfig(this::getDirection, this::getConfig);
-        builder.addTank(outputTank.getPigmentTank());
-        return builder.build();
-    }
-
-    @NotNull
-    @Override
-    public IChemicalTankHolder<Slurry, SlurryStack, ISlurryTank> getInitialSlurryTanks(IContentsListener listener,
-            IContentsListener recipeCacheListener) {
-        ChemicalTankHelper<Slurry, SlurryStack, ISlurryTank> builder = ChemicalTankHelper
-                .forSideSlurryWithConfig(this::getDirection, this::getConfig);
-        builder.addTank(outputTank.getSlurryTank());
-        return builder.build();
-    }
 
     @NotNull
     @Override
@@ -209,7 +151,7 @@ public abstract class BEAMERadiationIrradiator extends MSTileEntityRecipeMachine
                 this::containsRecipeA, recipeCacheListener, 7, 36))
                 .tracksWarnings(slot -> slot.warning(WarningTracker.WarningType.NO_MATCHING_RECIPE,
                         getWarningCheck(CachedRecipe.OperationTracker.RecipeError.NOT_ENOUGH_INPUT)));
-        builder.addSlot(outputSlot = MergedChemicalInventorySlot.drain(outputTank, listener, 152, 55));
+        builder.addSlot(outputSlot = GasInventorySlot.drain(outputTank, listener, 152, 55));
         builder.addSlot(
                 energySlot = EnergyInventorySlot.fillOrConvert(energyContainer, this::getLevel, listener, 152, 14));
         gasInputSlot.setSlotOverlay(SlotOverlay.MINUS);
@@ -222,12 +164,12 @@ public abstract class BEAMERadiationIrradiator extends MSTileEntityRecipeMachine
         super.onUpdateServer();
         energySlot.fillContainerOrConvert();
         gasInputSlot.fillTankOrConvert();
-        outputSlot.drainChemicalTanks();
+        outputSlot.drainTank();
         lastEnergyUsage = recipeCacheLookupMonitor.updateAndProcess(energyContainer);
     }
 
     @Override
-    public IMSRecipeTypeProvider<RadiationIrradiatingRecipe, MSInputRecipeCache.ItemChemical<Gas, GasStack, RadiationIrradiatingRecipe>> getMSRecipeType() {
+    public IMSRecipeTypeProvider<RadiationIrradiatingRecipe, MSInputRecipeCache.ItemChemical<RadiationIrradiatingRecipe>> getMSRecipeType() {
         return MSRecipeType.RADIATION_IRRADIATING;
     }
 
@@ -259,6 +201,10 @@ public abstract class BEAMERadiationIrradiator extends MSTileEntityRecipeMachine
                 .setOnFinish(this::markForSave);
     }
 
+    @Override
+    public void onCachedRecipeChanged(@Nullable CachedRecipe<RadiationIrradiatingRecipe> arg0, int arg1) {
+    }
+
     protected abstract int getBaselineMaxOperations();
 
     public MachineEnergyContainer<?> getEnergyContainer() {
@@ -275,9 +221,7 @@ public abstract class BEAMERadiationIrradiator extends MSTileEntityRecipeMachine
             "getOutput", "getOutputCapacity", "getOutputNeeded",
             "getOutputFilledPercentage" }, docPlaceholder = "output tank")
     IChemicalTank<?, ?> getOutputTank() {
-        MergedChemicalTank.Current current = outputTank.getCurrent();
-        return outputTank.getTankFromCurrent(
-                current == MergedChemicalTank.Current.EMPTY ? MergedChemicalTank.Current.GAS : current);
+        return outputTank;
     }
     // End methods IComputerTile
 

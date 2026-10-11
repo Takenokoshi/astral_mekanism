@@ -2,7 +2,7 @@ package astral_mekanism.block.gui.basemachine;
 
 import org.jetbrains.annotations.NotNull;
 
-import com.fxd927.mekanismelements.client.MSJEIRecipeType;
+import fixdol.mekanismelements.client.MSJEIRecipeType;
 
 import astral_mekanism.block.blockentity.basemachine.BEAMEAdsorptionSeparator;
 import mekanism.api.recipes.cache.CachedRecipe;

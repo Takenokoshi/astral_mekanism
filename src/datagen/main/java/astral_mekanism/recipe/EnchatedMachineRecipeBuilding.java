@@ -5,8 +5,8 @@ import java.util.List;
 import java.util.function.Consumer;
 import java.util.function.Function;
 
-import com.fxd927.mekanismelements.common.registries.MSBlocks;
-import com.fxd927.mekanismelements.common.registries.MSItems;
+import fixdol.mekanismelements.common.registries.MSBlocks;
+import fixdol.mekanismelements.common.registries.MSItems;
 import com.jerry.mekanism_extras.common.registries.ExtraItems;
 
 import astral_mekanism.AMEConstants;

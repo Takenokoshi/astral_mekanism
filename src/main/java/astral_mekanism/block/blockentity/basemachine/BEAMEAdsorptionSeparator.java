@@ -5,14 +5,14 @@ import java.util.List;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-import com.fxd927.mekanismelements.api.recipes.AdsorptionRecipe;
-import com.fxd927.mekanismelements.api.recipes.cache.AdsorptionCachedRecipe;
-import com.fxd927.mekanismelements.common.inventory.slot.MSInputInventorySlot;
-import com.fxd927.mekanismelements.common.recipe.IMSRecipeTypeProvider;
-import com.fxd927.mekanismelements.common.recipe.MSRecipeType;
-import com.fxd927.mekanismelements.common.recipe.lookup.IMSDoubleRecipeLookupHandler;
-import com.fxd927.mekanismelements.common.recipe.lookup.cache.MSInputRecipeCache;
-import com.fxd927.mekanismelements.common.tile.prefab.MSTileEntityRecipeMachine;
+import fixdol.mekanismelements.api.recipes.AdsorptionRecipe;
+import fixdol.mekanismelements.api.recipes.cache.AdsorptionCachedRecipe;
+import fixdol.mekanismelements.common.inventory.slot.MSInputInventorySlot;
+import fixdol.mekanismelements.common.recipe.IMSRecipeTypeProvider;
+import fixdol.mekanismelements.common.recipe.MSRecipeType;
+import fixdol.mekanismelements.common.recipe.lookup.IMSDoubleRecipeLookupHandler;
+import fixdol.mekanismelements.common.recipe.lookup.cache.MSInputRecipeCache;
+import fixdol.mekanismelements.common.tile.prefab.MSTileEntityRecipeMachine;
 
 import astral_mekanism.block.blockentity.interf.IEnergizedMachine;
 import mekanism.api.IContentsListener;
@@ -247,6 +247,10 @@ public abstract class BEAMEAdsorptionSeparator extends MSTileEntityRecipeMachine
                 .setEnergyRequirements(energyContainer::getEnergyPerTick, energyContainer)
                 .setBaselineMaxOperations(this::getBaselineMaxOperations)
                 .setOnFinish(this::markForSave);
+    }
+
+    @Override
+    public void onCachedRecipeChanged(@Nullable CachedRecipe<AdsorptionRecipe> arg0, int arg1) {
     }
 
     protected abstract int getBaselineMaxOperations();

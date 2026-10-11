@@ -2,7 +2,7 @@ package astral_mekanism;
 
 import java.util.function.Consumer;
 
-import com.fxd927.mekanismelements.common.registries.MSGases;
+import fixdol.mekanismelements.common.registries.MSGases;
 import com.jerry.mekanism_extras.common.registries.ExtraBlocks;
 import com.jerry.mekanism_extras.common.registries.ExtraItems;
 import com.jerry.mekanism_extras.common.resource.ore.ExtraOreType;

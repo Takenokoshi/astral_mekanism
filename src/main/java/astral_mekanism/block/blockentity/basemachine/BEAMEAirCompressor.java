@@ -7,7 +7,7 @@ import javax.annotation.Nonnull;
 
 import org.jetbrains.annotations.Nullable;
 
-import com.fxd927.mekanismelements.common.registries.MSGases;
+import fixdol.mekanismelements.common.registries.MSGases;
 import mekanism.api.Action;
 import mekanism.api.AutomationType;
 import mekanism.api.IConfigurable;

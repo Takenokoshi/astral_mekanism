@@ -151,10 +151,11 @@ dependencies {
     implementation fg.deobf("curse.maven:mekanism-generators-268566:6552914")
     implementation fg.deobf("curse.maven:mekanism-tools-268567:6552915")
     implementation fg.deobf("curse.maven:evolved-mekanism-1230085:7599591")
-    implementation fg.deobf("curse.maven:evolved-mekanism-extras-1268159:8294797")
-    implementation fg.deobf("curse.maven:mekanism-elements-1103224:6537553")
+    implementation fg.deobf("curse.maven:evolved-mekanism-extras-1268159:8472135")
+    implementation fg.deobf("curse.maven:mekanism-elements-1103224:8884438")
     implementation fg.deobf("curse.maven:mekanism-extras-1026040:8247562")
     implementation fg.deobf("curse.maven:iglee-library-541199:6987117")
+    implementation fg.deobf("curse.maven:patchouli-306770:7731017")
 
     implementation fg.deobf("curse.maven:compact-mekanism-machines-1161015:7388773")
     implementation fg.deobf("curse.maven:stack-upgrade-integration-1510741:8298822")

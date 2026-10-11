@@ -49,6 +49,9 @@ public class BlockMekanismMixin {
             LootTable loottable = serverlevel.getServer().getLootData().getLootTable(resourcelocation);
             List<ItemStack> result = loottable.getRandomItems(lootparams);
             for (ItemStack stack : result) {
+                if (!stack.hasTag()) {
+                    continue;
+                }
                 NBTUtils.setCompoundIfPresent(ItemDataUtils.getDataMap(stack), NBTConstants.COMPONENT_UPGRADE,
                         upgradeNBT -> {
                             Map<Upgrade, Integer> upgrades = Upgrade.buildMap(upgradeNBT);
