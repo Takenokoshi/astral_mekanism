@@ -19,6 +19,7 @@ import mekanism.common.inventory.warning.WarningTracker;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.player.Inventory;
+import net.minecraftforge.fml.ModList;
 
 public class GuiAMEAdsorptionSeparator<BE extends BEAMEAdsorptionSeparator>
         extends GuiConfigurableTile<BE, MekanismTileContainer<BE>> {
@@ -28,20 +29,30 @@ public class GuiAMEAdsorptionSeparator<BE extends BEAMEAdsorptionSeparator>
         dynamicSlots = true;
         titleLabelY = 4;
     }
+
     @Override
     protected void addGuiElements() {
         super.addGuiElements();
         addRenderableWidget(new GuiHorizontalPowerBar(this, tile.getEnergyContainer(), 115, 75))
-                .warning(WarningTracker.WarningType.NOT_ENOUGH_ENERGY, tile.getWarningCheck(CachedRecipe.OperationTracker.RecipeError.NOT_ENOUGH_ENERGY))
-                .warning(WarningTracker.WarningType.NOT_ENOUGH_ENERGY_REDUCED_RATE, tile.getWarningCheck(CachedRecipe.OperationTracker.RecipeError.NOT_ENOUGH_ENERGY_REDUCED_RATE));
+                .warning(WarningTracker.WarningType.NOT_ENOUGH_ENERGY,
+                        tile.getWarningCheck(CachedRecipe.OperationTracker.RecipeError.NOT_ENOUGH_ENERGY))
+                .warning(WarningTracker.WarningType.NOT_ENOUGH_ENERGY_REDUCED_RATE,
+                        tile.getWarningCheck(CachedRecipe.OperationTracker.RecipeError.NOT_ENOUGH_ENERGY_REDUCED_RATE));
         addRenderableWidget(new GuiEnergyTab(this, tile.getEnergyContainer(), tile::getEnergyUsage));
-        addRenderableWidget(new GuiFluidGauge(() -> tile.inputTank, () -> tile.getFluidTanks(null), GaugeType.MEDIUM, this, 17, 13))
-                .warning(WarningTracker.WarningType.NO_MATCHING_RECIPE, tile.getWarningCheck(CachedRecipe.OperationTracker.RecipeError.NOT_ENOUGH_SECONDARY_INPUT));
-        addRenderableWidget(new GuiMergedChemicalTankGauge<>(() -> tile.outputTank, () -> tile, GaugeType.STANDARD, this, 131, 13))
-                .warning(WarningTracker.WarningType.NO_SPACE_IN_OUTPUT, tile.getWarningCheck(CachedRecipe.OperationTracker.RecipeError.NOT_ENOUGH_OUTPUT_SPACE));
-        addRenderableWidget(new GuiProgress(tile::getActive, ProgressType.LARGE_RIGHT, this, 64, 40))
-                .warning(WarningTracker.WarningType.INPUT_DOESNT_PRODUCE_OUTPUT, tile.getWarningCheck(CachedRecipe.OperationTracker.RecipeError.INPUT_DOESNT_PRODUCE_OUTPUT))
-                .jeiCategories(MSJEIRecipeType.ADSORPTION_SEPARATOR);
+        addRenderableWidget(
+                new GuiFluidGauge(() -> tile.inputTank, () -> tile.getFluidTanks(null), GaugeType.MEDIUM, this, 17, 13))
+                .warning(WarningTracker.WarningType.NO_MATCHING_RECIPE,
+                        tile.getWarningCheck(CachedRecipe.OperationTracker.RecipeError.NOT_ENOUGH_SECONDARY_INPUT));
+        addRenderableWidget(
+                new GuiMergedChemicalTankGauge<>(() -> tile.outputTank, () -> tile, GaugeType.STANDARD, this, 131, 13))
+                .warning(WarningTracker.WarningType.NO_SPACE_IN_OUTPUT,
+                        tile.getWarningCheck(CachedRecipe.OperationTracker.RecipeError.NOT_ENOUGH_OUTPUT_SPACE));
+        var progress = addRenderableWidget(new GuiProgress(tile::getActive, ProgressType.LARGE_RIGHT, this, 64, 40))
+                .warning(WarningTracker.WarningType.INPUT_DOESNT_PRODUCE_OUTPUT,
+                        tile.getWarningCheck(CachedRecipe.OperationTracker.RecipeError.INPUT_DOESNT_PRODUCE_OUTPUT));
+        if (ModList.get().isLoaded("emi")) {
+            progress.jeiCategories(MSJEIRecipeType.ADSORPTION_SEPARATOR);
+        }
     }
 
     @Override

@@ -31,7 +31,7 @@ public class AMEConfig {
 
     public static final ForgeConfigSpec.BooleanValue MAKE_RECIPE_DIFFICULT = BUILDER
             .comment("Makes Mekanism Alloy/Control Circuit Recipe Defficult")
-            .define("makeRecipeDifficult", true);
+            .define("makeRecipeDifficult", false);
 
     private static final ForgeConfigSpec.IntValue ENERGY_RATE = BUILDER
             .comment("Machine energy using rate")

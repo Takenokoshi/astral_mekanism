@@ -59,6 +59,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.level.ItemLike;
+import net.minecraftforge.fml.ModList;
 
 @JeiPlugin
 
@@ -279,8 +280,8 @@ public class AMEJEIPlugin implements IModPlugin {
                 AMEMachines.ENCHANTED_APT,
                 AMEMachines.ASTRAL_APT);
         CatalystRegistryHelper.register(registry, EMJEI.ALLOYING,
-            AMEMachines.ENCHANTED_ALLOYER,
-            AMEMachines.ASTRAL_ALLOYER);
+                AMEMachines.ENCHANTED_ALLOYER,
+                AMEMachines.ASTRAL_ALLOYER);
         CatalystRegistryHelper.register(registry, EMJEI.CHEMIXING, AMEMachines.ENCHANTED_CHEMIXER,
                 AMEMachines.ASTRAL_CHEMIXER);
         CatalystRegistryHelper.register(registry, EMJEI.MELTING,
@@ -301,13 +302,6 @@ public class AMEJEIPlugin implements IModPlugin {
                 ExtraGenBlocks.LEAD_COATED_GLASS,
                 ExtraGenBlocks.LEAD_COATED_LASER_FOCUS_MATRIX,
                 ExtraGenItem.HOHLRAUM);
-
-        // mekanism elements
-        CatalystRegistryHelper.register(registry, MSJEIRecipeType.RADIATION_IRRADIATOR,
-                AMEMachines.ENCHANTED_RADIATION_IRRADIATOR,
-                AMEMachines.ASTRAL_RADIATION_IRRADIATOR);
-        CatalystRegistryHelper.register(registry, MSJEIRecipeType.ADSORPTION_SEPARATOR,
-                AMEMachines.ENCHANTED_ADSORPTION_SEPARATOR);
 
         // astral_mekanism
         CatalystRegistryHelper.register(registry, AMEJEIRecipeType.RECONSTRUCTION,
@@ -353,6 +347,17 @@ public class AMEJEIPlugin implements IModPlugin {
                 AMEMachines.ASTRAL_FORMULAIC_ASSEMBLICATOR);
         registry.addRecipeCatalysts(RecipeTypes.COMPOSTING,
                 AMEMachines.MEKANICAL_COMPOSTER, AMEMachines.ASTRAL_COMPOSTER);
+
+        if (ModList.get().isLoaded("emi")) {
+            return;
+        }
+
+        // mekanism elements
+        CatalystRegistryHelper.register(registry, MSJEIRecipeType.RADIATION_IRRADIATOR,
+                AMEMachines.ENCHANTED_RADIATION_IRRADIATOR,
+                AMEMachines.ASTRAL_RADIATION_IRRADIATOR);
+        CatalystRegistryHelper.register(registry, MSJEIRecipeType.ADSORPTION_SEPARATOR,
+                AMEMachines.ENCHANTED_ADSORPTION_SEPARATOR);
     }
 
     @Override

@@ -18,6 +18,7 @@ import mekanism.common.inventory.warning.WarningTracker;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.player.Inventory;
+import net.minecraftforge.fml.ModList;
 
 public class GuiAMERadiationIrradiator<BE extends BEAMERadiationIrradiator>
         extends GuiConfigurableTile<BE, MekanismTileContainer<BE>> {
@@ -46,10 +47,12 @@ public class GuiAMERadiationIrradiator<BE extends BEAMERadiationIrradiator>
                 new GuiGasGauge(() -> tile.outputTank, () -> tile.getGasTanks(null), GaugeType.STANDARD, this, 131, 13))
                 .warning(WarningTracker.WarningType.NO_SPACE_IN_OUTPUT,
                         tile.getWarningCheck(CachedRecipe.OperationTracker.RecipeError.NOT_ENOUGH_OUTPUT_SPACE));
-        addRenderableWidget(new GuiProgress(tile::getActive, ProgressType.LARGE_RIGHT, this, 64, 40))
+        var progress = addRenderableWidget(new GuiProgress(tile::getActive, ProgressType.LARGE_RIGHT, this, 64, 40))
                 .warning(WarningTracker.WarningType.INPUT_DOESNT_PRODUCE_OUTPUT,
-                        tile.getWarningCheck(CachedRecipe.OperationTracker.RecipeError.INPUT_DOESNT_PRODUCE_OUTPUT))
-                .jeiCategories(MSJEIRecipeType.RADIATION_IRRADIATOR);
+                        tile.getWarningCheck(CachedRecipe.OperationTracker.RecipeError.INPUT_DOESNT_PRODUCE_OUTPUT));
+        if (ModList.get().isLoaded("emi")) {
+            progress.jeiCategories(MSJEIRecipeType.RADIATION_IRRADIATOR);
+        }
     }
 
     @Override
