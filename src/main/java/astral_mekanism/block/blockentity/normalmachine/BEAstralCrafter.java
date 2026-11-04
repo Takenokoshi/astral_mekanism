@@ -7,6 +7,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import astral_mekanism.AMEConstants;
+import astral_mekanism.inventory.slot.EssentialCrafterInputSlot;
 import astral_mekanism.recipes.cachedRecipe.AstralCraftingCachedRecipe;
 import astral_mekanism.recipes.inputRecipeCache.AstralCraftingRecipeCache;
 import astral_mekanism.recipes.lookup.AstralCraftingRecipeLookUpHandler;
@@ -149,11 +150,14 @@ public class BEAstralCrafter extends TileEntityProgressMachine<AstralCraftingRec
         builder.addSlot(energySlot = EnergyInventorySlot.fill(energyContainer, recipeCacheListener, 170, 18));
         inputSlots = new InputInventorySlot[25];
         for (int i : AMEConstants.ZERO_24) {
-            builder.addSlot(inputSlots[i] = InputInventorySlot.at(
+            builder.addSlot(inputSlots[i] = EssentialCrafterInputSlot.at(
                     stack -> containsInputItemOther(stack, i,
                             Arrays.stream(inputSlots).map(IInventorySlot::getStack).toArray(ItemStack[]::new),
                             fluidTank.getFluid(), gasTank.getStack()),
                     stack -> containsInputItem(stack, i),
+                    stack -> getMaxInputAmount(stack, i,
+                            Arrays.stream(inputSlots).map(IInventorySlot::getStack).toArray(ItemStack[]::new),
+                            fluidTank.getFluid(), gasTank.getStack()),
                     recipeCacheListener,
                     44 + (i % 5) * 18, 18 + (i / 5) * 18))
                     .tracksWarnings(
