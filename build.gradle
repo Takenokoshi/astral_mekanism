@@ -150,7 +150,7 @@ dependencies {
     implementation fg.deobf("mekanism:Mekanism:1.20.1-10.4.16.80")
     implementation fg.deobf("curse.maven:mekanism-generators-268566:6552914")
     implementation fg.deobf("curse.maven:mekanism-tools-268567:6552915")
-    implementation fg.deobf("curse.maven:evolved-mekanism-1230085:7599591")
+    implementation fg.deobf("curse.maven:evolved-mekanism-1230085:9352796")
     implementation fg.deobf("curse.maven:evolved-mekanism-extras-1268159:8472135")
     implementation fg.deobf("curse.maven:mekanism-elements-1103224:8884438")
     implementation fg.deobf("curse.maven:mekanism-extras-1026040:8247562")
